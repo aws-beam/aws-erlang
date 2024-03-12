@@ -44,6 +44,393 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% update_certificate_options_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Options">> := certificate_options()
+%% }
+-type update_certificate_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% domain_validation_option() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"ValidationDomain">> => string()
+%% }
+-type domain_validation_option() :: #{binary() => any()}.
+
+%% Example:
+%% request_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% export_certificate_response() :: #{
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateChain">> => string(),
+%%   <<"PrivateKey">> => string()
+%% }
+-type export_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_certificate_response() :: #{
+%%   <<"CertificateArn">> => string()
+%% }
+-type import_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_certificate_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Passphrase">> := binary()
+%% }
+-type export_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% renewal_summary() :: #{
+%%   <<"DomainValidationOptions">> => list(domain_validation()()),
+%%   <<"RenewalStatus">> => list(any()),
+%%   <<"RenewalStatusReason">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type renewal_summary() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificates_request() :: #{
+%%   <<"CertificateStatuses">> => list(list(any())()),
+%%   <<"Includes">> => filters(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_certificates_request() :: #{binary() => any()}.
+
+%% Example:
+%% request_certificate_request() :: #{
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"DomainName">> := string(),
+%%   <<"DomainValidationOptions">> => list(domain_validation_option()()),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"Options">> => certificate_options(),
+%%   <<"SubjectAlternativeNames">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ValidationMethod">> => list(any())
+%% }
+-type request_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_certificate_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type remove_tags_from_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_args_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_args_exception() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_summary() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"Exported">> => boolean(),
+%%   <<"ExtendedKeyUsages">> => list(list(any())()),
+%%   <<"HasAdditionalSubjectAlternativeNames">> => boolean(),
+%%   <<"ImportedAt">> => non_neg_integer(),
+%%   <<"InUse">> => boolean(),
+%%   <<"IssuedAt">> => non_neg_integer(),
+%%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"KeyUsages">> => list(list(any())()),
+%%   <<"NotAfter">> => non_neg_integer(),
+%%   <<"NotBefore">> => non_neg_integer(),
+%%   <<"RenewalEligibility">> => list(any()),
+%%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubjectAlternativeNameSummaries">> => list(string()()),
+%%   <<"Type">> => list(any())
+%% }
+-type certificate_summary() :: #{binary() => any()}.
+
+%% Example:
+%% renew_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type renew_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_options() :: #{
+%%   <<"CertificateTransparencyLoggingPreference">> => list(any())
+%% }
+-type certificate_options() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type list_tags_for_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% expiry_events_configuration() :: #{
+%%   <<"DaysBeforeExpiry">> => integer()
+%% }
+-type expiry_events_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_configuration_request() :: #{
+%%   <<"ExpiryEvents">> => expiry_events_configuration(),
+%%   <<"IdempotencyToken">> := string()
+%% }
+-type put_account_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type get_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type describe_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% request_certificate_response() :: #{
+%%   <<"CertificateArn">> => string()
+%% }
+-type request_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_configuration_response() :: #{
+%%   <<"ExpiryEvents">> => expiry_events_configuration()
+%% }
+-type get_account_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% resend_validation_email_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Domain">> := string(),
+%%   <<"ValidationDomain">> := string()
+%% }
+-type resend_validation_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_certificate_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_domain_validation_options_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_domain_validation_options_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_certificate_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type add_tags_to_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_certificate_request() :: #{
+%%   <<"Certificate">> := binary(),
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateChain">> => binary(),
+%%   <<"PrivateKey">> := binary(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type import_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_certificate_request() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type delete_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_response() :: #{
+%%   <<"Certificate">> => certificate_detail()
+%% }
+-type describe_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% filters() :: #{
+%%   <<"extendedKeyUsage">> => list(list(any())()),
+%%   <<"keyTypes">> => list(list(any())()),
+%%   <<"keyUsage">> => list(list(any())())
+%% }
+-type filters() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% extended_key_usage() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"OID">> => string()
+%% }
+-type extended_key_usage() :: #{binary() => any()}.
+
+%% Example:
+%% domain_validation() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"ResourceRecord">> => resource_record(),
+%%   <<"ValidationDomain">> => string(),
+%%   <<"ValidationEmails">> => list(string()()),
+%%   <<"ValidationMethod">> => list(any()),
+%%   <<"ValidationStatus">> => list(any())
+%% }
+-type domain_validation() :: #{binary() => any()}.
+
+%% Example:
+%% resource_record() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type resource_record() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_certificate_response() :: #{
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateChain">> => string()
+%% }
+-type get_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% key_usage() :: #{
+%%   <<"Name">> => list(any())
+%% }
+-type key_usage() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificates_response() :: #{
+%%   <<"CertificateSummaryList">> => list(certificate_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_certificates_response() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_detail() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainValidationOptions">> => list(domain_validation()()),
+%%   <<"ExtendedKeyUsages">> => list(extended_key_usage()()),
+%%   <<"FailureReason">> => list(any()),
+%%   <<"ImportedAt">> => non_neg_integer(),
+%%   <<"InUseBy">> => list(string()()),
+%%   <<"IssuedAt">> => non_neg_integer(),
+%%   <<"Issuer">> => string(),
+%%   <<"KeyAlgorithm">> => list(any()),
+%%   <<"KeyUsages">> => list(key_usage()()),
+%%   <<"NotAfter">> => non_neg_integer(),
+%%   <<"NotBefore">> => non_neg_integer(),
+%%   <<"Options">> => certificate_options(),
+%%   <<"RenewalEligibility">> => list(any()),
+%%   <<"RenewalSummary">> => renewal_summary(),
+%%   <<"RevocationReason">> => list(any()),
+%%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"Serial">> => string(),
+%%   <<"SignatureAlgorithm">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Subject">> => string(),
+%%   <<"SubjectAlternativeNames">> => list(string()()),
+%%   <<"Type">> => list(any())
+%% }
+-type certificate_detail() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -76,9 +463,30 @@
 %% action. To
 %% view all of the tags that have been applied to the certificate, use the
 %% `ListTagsForCertificate' action.
+-spec add_tags_to_certificate(map(), add_tags_to_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 add_tags_to_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_certificate(Client, Input, []).
+
+-spec add_tags_to_certificate(map(), add_tags_to_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 add_tags_to_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToCertificate">>, Input, Options).
@@ -97,9 +505,28 @@ add_tags_to_certificate(Client, Input, Options)
 %% delete a certificate that is in use, the certificate association must
 %% first be
 %% removed.
+-spec delete_certificate(map(), delete_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
+
+-spec delete_certificate(map(), delete_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificate">>, Input, Options).
@@ -110,9 +537,20 @@ delete_certificate(Client, Input, Options)
 %% action,
 %% there is a delay of several seconds before you can retrieve information
 %% about it.
+-spec describe_certificate(map(), describe_certificate_request()) ->
+    {ok, describe_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate(Client, Input, []).
+
+-spec describe_certificate(map(), describe_certificate_request(), proplists:proplist()) ->
+    {ok, describe_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificate">>, Input, Options).
@@ -133,18 +571,42 @@ describe_certificate(Client, Input, Options)
 %% CLI, see Export a
 %% Private Certificate:
 %% https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html.
+-spec export_certificate(map(), export_certificate_request()) ->
+    {ok, export_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, request_in_progress_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 export_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     export_certificate(Client, Input, []).
+
+-spec export_certificate(map(), export_certificate_request(), proplists:proplist()) ->
+    {ok, export_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, request_in_progress_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 export_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportCertificate">>, Input, Options).
 
 %% @doc Returns the account configuration options associated with an Amazon
 %% Web Services account.
+-spec get_account_configuration(map(), #{}) ->
+    {ok, get_account_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_account_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_configuration(Client, Input, []).
+
+-spec get_account_configuration(map(), #{}, proplists:proplist()) ->
+    {ok, get_account_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_account_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountConfiguration">>, Input, Options).
@@ -157,9 +619,22 @@ get_account_configuration(Client, Input, Options)
 %% CAs. All of the certificates are base64 encoded. You can use OpenSSL:
 %% https://wiki.openssl.org/index.php/Command_Line_Utilities to decode
 %% the certificates and inspect individual fields.
+-spec get_certificate(map(), get_certificate_request()) ->
+    {ok, get_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, request_in_progress_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_certificate(Client, Input, []).
+
+-spec get_certificate(map(), get_certificate_request(), proplists:proplist()) ->
+    {ok, get_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, request_in_progress_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificate">>, Input, Options).
@@ -244,9 +719,30 @@ get_certificate(Client, Input, Options)
 %% Resource Name (ARN):
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% of the imported certificate.
+-spec import_certificate(map(), import_certificate_request()) ->
+    {ok, import_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 import_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_certificate(Client, Input, []).
+
+-spec import_certificate(map(), import_certificate_request(), proplists:proplist()) ->
+    {ok, import_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 import_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificate">>, Input, Options).
@@ -259,9 +755,20 @@ import_certificate(Client, Input, Options)
 %% attributes of the certificate. Default filtering returns only
 %% `RSA_2048'
 %% certificates. For more information, see `Filters'.
+-spec list_certificates(map(), list_certificates_request()) ->
+    {ok, list_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_args_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
+
+-spec list_certificates(map(), list_certificates_request(), proplists:proplist()) ->
+    {ok, list_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_args_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCertificates">>, Input, Options).
@@ -273,9 +780,20 @@ list_certificates(Client, Input, Options)
 %% ACM certificate,
 %% use the `AddTagsToCertificate' action. To delete a tag, use the
 %% `RemoveTagsFromCertificate' action.
+-spec list_tags_for_certificate(map(), list_tags_for_certificate_request()) ->
+    {ok, list_tags_for_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_certificate(Client, Input, []).
+
+-spec list_tags_for_certificate(map(), list_tags_for_certificate_request(), proplists:proplist()) ->
+    {ok, list_tags_for_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForCertificate">>, Input, Options).
@@ -291,9 +809,24 @@ list_tags_for_certificate(Client, Input, Options)
 %% certificate expires. By default, accounts receive events starting 45 days
 %% before certificate
 %% expiration.
+-spec put_account_configuration(map(), put_account_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_account_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_configuration(Client, Input, []).
+
+-spec put_account_configuration(map(), put_account_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_account_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountConfiguration">>, Input, Options).
@@ -311,9 +844,28 @@ put_account_configuration(Client, Input, Options)
 %% To
 %% view all of the tags that have been applied to a specific ACM certificate,
 %% use the `ListTagsForCertificate' action.
+-spec remove_tags_from_certificate(map(), remove_tags_from_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 remove_tags_from_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_certificate(Client, Input, []).
+
+-spec remove_tags_from_certificate(map(), remove_tags_from_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 remove_tags_from_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromCertificate">>, Input, Options).
@@ -329,9 +881,20 @@ remove_tags_from_certificate(Client, Input, Options)
 %% For more information, see Testing Managed Renewal:
 %% https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html
 %% in the ACM User Guide.
+-spec renew_certificate(map(), renew_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 renew_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_certificate(Client, Input, []).
+
+-spec renew_certificate(map(), renew_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 renew_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RenewCertificate">>, Input, Options).
@@ -366,9 +929,30 @@ renew_certificate(Client, Input, Options)
 %% is a
 %% delay of several seconds before you can retrieve information about the new
 %% certificate.
+-spec request_certificate(map(), request_certificate_request()) ->
+    {ok, request_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_domain_validation_options_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 request_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_certificate(Client, Input, []).
+
+-spec request_certificate(map(), request_certificate_request(), proplists:proplist()) ->
+    {ok, request_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_domain_validation_options_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 request_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestCertificate">>, Input, Options).
@@ -392,9 +976,24 @@ request_certificate(Client, Input, Options)
 %% information about setting up your contact email addresses, see Configure
 %% Email for your Domain:
 %% https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html.
+-spec resend_validation_email(map(), resend_validation_email_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_domain_validation_options_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 resend_validation_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_validation_email(Client, Input, []).
+
+-spec resend_validation_email(map(), resend_validation_email_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_domain_validation_options_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 resend_validation_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendValidationEmail">>, Input, Options).
@@ -407,9 +1006,24 @@ resend_validation_email(Client, Input, Options)
 %% information, see Opting Out of
 %% Certificate Transparency Logging:
 %% https://docs.aws.amazon.com/acm/latest/userguide/acm-bestpractices.html#best-practices-transparency.
+-spec update_certificate_options(map(), update_certificate_options_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_certificate_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_certificate_options(Client, Input, []).
+
+-spec update_certificate_options(map(), update_certificate_options_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_arn_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_certificate_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCertificateOptions">>, Input, Options).

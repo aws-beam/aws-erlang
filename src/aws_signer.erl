@@ -94,13 +94,557 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% cancel_signing_profile_request() :: #{}
+-type cancel_signing_profile_request() :: #{}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_profile_permission_response() :: #{
+%%   <<"revisionId">> => string()
+%% }
+-type remove_profile_permission_response() :: #{binary() => any()}.
+
+%% Example:
+%% s3_source() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"key">> => string(),
+%%   <<"version">> => string()
+%% }
+-type s3_source() :: #{binary() => any()}.
+
+%% Example:
+%% signing_platform_overrides() :: #{
+%%   <<"signingConfiguration">> => signing_configuration_overrides(),
+%%   <<"signingImageFormat">> => list(any())
+%% }
+-type signing_platform_overrides() :: #{binary() => any()}.
+
+%% Example:
+%% signing_configuration_overrides() :: #{
+%%   <<"encryptionAlgorithm">> => list(any()),
+%%   <<"hashAlgorithm">> => list(any())
+%% }
+-type signing_configuration_overrides() :: #{binary() => any()}.
+
+%% Example:
+%% start_signing_job_request() :: #{
+%%   <<"clientRequestToken">> := string(),
+%%   <<"destination">> := destination(),
+%%   <<"profileName">> := string(),
+%%   <<"profileOwner">> => string(),
+%%   <<"source">> := source()
+%% }
+-type start_signing_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% signing_platform() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"displayName">> => string(),
+%%   <<"maxSizeInMB">> => integer(),
+%%   <<"partner">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"revocationSupported">> => boolean(),
+%%   <<"signingConfiguration">> => signing_configuration(),
+%%   <<"signingImageFormat">> => signing_image_format(),
+%%   <<"target">> => string()
+%% }
+-type signing_platform() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% signing_image_format() :: #{
+%%   <<"defaultFormat">> => list(any()),
+%%   <<"supportedFormats">> => list(list(any())())
+%% }
+-type signing_image_format() :: #{binary() => any()}.
+
+%% Example:
+%% remove_profile_permission_request() :: #{
+%%   <<"revisionId">> := string()
+%% }
+-type remove_profile_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% signing_profile() :: #{
+%%   <<"arn">> => string(),
+%%   <<"platformDisplayName">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"profileName">> => string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"profileVersionArn">> => string(),
+%%   <<"signatureValidityPeriod">> => signature_validity_period(),
+%%   <<"signingMaterial">> => signing_material(),
+%%   <<"signingParameters">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type signing_profile() :: #{binary() => any()}.
+
+%% Example:
+%% list_signing_jobs_response() :: #{
+%%   <<"jobs">> => list(signing_job()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_signing_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_profile_permission_request() :: #{
+%%   <<"action">> := string(),
+%%   <<"principal">> := string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"statementId">> := string()
+%% }
+-type add_profile_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_signing_profile_request() :: #{
+%%   <<"overrides">> => signing_platform_overrides(),
+%%   <<"platformId">> := string(),
+%%   <<"signatureValidityPeriod">> => signature_validity_period(),
+%%   <<"signingMaterial">> => signing_material(),
+%%   <<"signingParameters">> => map(),
+%%   <<"tags">> => map()
+%% }
+-type put_signing_profile_request() :: #{binary() => any()}.
+%% Example:
+%% get_signing_platform_request() :: #{}
+-type get_signing_platform_request() :: #{}.
+
+%% Example:
+%% signing_configuration() :: #{
+%%   <<"encryptionAlgorithmOptions">> => encryption_algorithm_options(),
+%%   <<"hashAlgorithmOptions">> => hash_algorithm_options()
+%% }
+-type signing_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_signing_profile_request() :: #{
+%%   <<"profileOwner">> => string()
+%% }
+-type get_signing_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% signature_validity_period() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type signature_validity_period() :: #{binary() => any()}.
+
+%% Example:
+%% signing_job_revocation_record() :: #{
+%%   <<"reason">> => string(),
+%%   <<"revokedAt">> => non_neg_integer(),
+%%   <<"revokedBy">> => string()
+%% }
+-type signing_job_revocation_record() :: #{binary() => any()}.
+%% Example:
+%% describe_signing_job_request() :: #{}
+-type describe_signing_job_request() :: #{}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_signing_profile_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"profileVersionArn">> => string()
+%% }
+-type put_signing_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_signing_platform_response() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"displayName">> => string(),
+%%   <<"maxSizeInMB">> => integer(),
+%%   <<"partner">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"revocationSupported">> => boolean(),
+%%   <<"signingConfiguration">> => signing_configuration(),
+%%   <<"signingImageFormat">> => signing_image_format(),
+%%   <<"target">> => string()
+%% }
+-type get_signing_platform_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_revocation_status_response() :: #{
+%%   <<"revokedEntities">> => list(string()())
+%% }
+-type get_revocation_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_signing_job_response() :: #{
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"jobId">> => string(),
+%%   <<"jobInvoker">> => string(),
+%%   <<"jobOwner">> => string(),
+%%   <<"overrides">> => signing_platform_overrides(),
+%%   <<"platformDisplayName">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"profileName">> => string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"requestedBy">> => string(),
+%%   <<"revocationRecord">> => signing_job_revocation_record(),
+%%   <<"signatureExpiresAt">> => non_neg_integer(),
+%%   <<"signedObject">> => signed_object(),
+%%   <<"signingMaterial">> => signing_material(),
+%%   <<"signingParameters">> => map(),
+%%   <<"source">> => source(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type describe_signing_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_revocation_status_request() :: #{
+%%   <<"certificateHashes">> := list(string()()),
+%%   <<"jobArn">> := string(),
+%%   <<"platformId">> := string(),
+%%   <<"profileVersionArn">> := string(),
+%%   <<"signatureTimestamp">> := non_neg_integer()
+%% }
+-type get_revocation_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_profile_permissions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> => list(permission()()),
+%%   <<"policySizeBytes">> => integer(),
+%%   <<"revisionId">> => string()
+%% }
+-type list_profile_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type s3_destination() :: #{binary() => any()}.
+
+%% Example:
+%% list_signing_jobs_request() :: #{
+%%   <<"isRevoked">> => boolean(),
+%%   <<"jobInvoker">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"requestedBy">> => string(),
+%%   <<"signatureExpiresAfter">> => non_neg_integer(),
+%%   <<"signatureExpiresBefore">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type list_signing_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% source() :: #{
+%%   <<"s3">> => s3_source()
+%% }
+-type source() :: #{binary() => any()}.
+
+%% Example:
+%% signed_object() :: #{
+%%   <<"s3">> => s3_signed_object()
+%% }
+-type signed_object() :: #{binary() => any()}.
+
+%% Example:
+%% signing_material() :: #{
+%%   <<"certificateArn">> => string()
+%% }
+-type signing_material() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_signing_job_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobOwner">> => string()
+%% }
+-type start_signing_job_response() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% list_signing_profiles_request() :: #{
+%%   <<"includeCanceled">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"statuses">> => list(list(any())())
+%% }
+-type list_signing_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% signing_profile_revocation_record() :: #{
+%%   <<"revocationEffectiveFrom">> => non_neg_integer(),
+%%   <<"revokedAt">> => non_neg_integer(),
+%%   <<"revokedBy">> => string()
+%% }
+-type signing_profile_revocation_record() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% destination() :: #{
+%%   <<"s3">> => s3_destination()
+%% }
+-type destination() :: #{binary() => any()}.
+
+%% Example:
+%% service_limit_exceeded_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type service_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% signing_job() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"isRevoked">> => boolean(),
+%%   <<"jobId">> => string(),
+%%   <<"jobInvoker">> => string(),
+%%   <<"jobOwner">> => string(),
+%%   <<"platformDisplayName">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"profileName">> => string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"signatureExpiresAt">> => non_neg_integer(),
+%%   <<"signedObject">> => signed_object(),
+%%   <<"signingMaterial">> => signing_material(),
+%%   <<"source">> => source(),
+%%   <<"status">> => list(any())
+%% }
+-type signing_job() :: #{binary() => any()}.
+
+%% Example:
+%% hash_algorithm_options() :: #{
+%%   <<"allowedValues">> => list(list(any())()),
+%%   <<"defaultValue">> => list(any())
+%% }
+-type hash_algorithm_options() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_signing_profile_request() :: #{
+%%   <<"effectiveTime">> := non_neg_integer(),
+%%   <<"profileVersion">> := string(),
+%%   <<"reason">> := string()
+%% }
+-type revoke_signing_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_signed_object() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3_signed_object() :: #{binary() => any()}.
+
+%% Example:
+%% sign_payload_request() :: #{
+%%   <<"payload">> := binary(),
+%%   <<"payloadFormat">> := string(),
+%%   <<"profileName">> := string(),
+%%   <<"profileOwner">> => string()
+%% }
+-type sign_payload_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_signing_profile_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"overrides">> => signing_platform_overrides(),
+%%   <<"platformDisplayName">> => string(),
+%%   <<"platformId">> => string(),
+%%   <<"profileName">> => string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"profileVersionArn">> => string(),
+%%   <<"revocationRecord">> => signing_profile_revocation_record(),
+%%   <<"signatureValidityPeriod">> => signature_validity_period(),
+%%   <<"signingMaterial">> => signing_material(),
+%%   <<"signingParameters">> => map(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_signing_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_signing_profiles_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"profiles">> => list(signing_profile()())
+%% }
+-type list_signing_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% sign_payload_response() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobOwner">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"signature">> => binary()
+%% }
+-type sign_payload_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_signing_platforms_request() :: #{
+%%   <<"category">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"partner">> => string(),
+%%   <<"target">> => string()
+%% }
+-type list_signing_platforms_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_signature_request() :: #{
+%%   <<"jobOwner">> => string(),
+%%   <<"reason">> := string()
+%% }
+-type revoke_signature_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_profile_permission_response() :: #{
+%%   <<"revisionId">> => string()
+%% }
+-type add_profile_permission_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_signing_platforms_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"platforms">> => list(signing_platform()())
+%% }
+-type list_signing_platforms_response() :: #{binary() => any()}.
+
+%% Example:
+%% permission() :: #{
+%%   <<"action">> => string(),
+%%   <<"principal">> => string(),
+%%   <<"profileVersion">> => string(),
+%%   <<"statementId">> => string()
+%% }
+-type permission() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_algorithm_options() :: #{
+%%   <<"allowedValues">> => list(list(any())()),
+%%   <<"defaultValue">> => list(any())
+%% }
+-type encryption_algorithm_options() :: #{binary() => any()}.
+
+%% Example:
+%% list_profile_permissions_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_profile_permissions_request() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Adds cross-account permissions to a signing profile.
+-spec add_profile_permission(map(), binary() | list(), add_profile_permission_request()) ->
+    {ok, add_profile_permission_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_limit_exceeded_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 add_profile_permission(Client, ProfileName, Input) ->
     add_profile_permission(Client, ProfileName, Input, []).
+
+-spec add_profile_permission(map(), binary() | list(), add_profile_permission_request(), proplists:proplist()) ->
+    {ok, add_profile_permission_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_limit_exceeded_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 add_profile_permission(Client, ProfileName, Input0, Options0) ->
     Method = post,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions"],
@@ -130,8 +674,23 @@ add_profile_permission(Client, ProfileName, Input0, Options0) ->
 %% operation, but it cannot perform new signing jobs, and is deleted two
 %% years after
 %% cancelation.
+-spec cancel_signing_profile(map(), binary() | list(), cancel_signing_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 cancel_signing_profile(Client, ProfileName, Input) ->
     cancel_signing_profile(Client, ProfileName, Input, []).
+
+-spec cancel_signing_profile(map(), binary() | list(), cancel_signing_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 cancel_signing_profile(Client, ProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
@@ -159,14 +718,35 @@ cancel_signing_profile(Client, ProfileName, Input0, Options0) ->
 %% You specify the job by using the
 %% `jobId' value that is returned by the `StartSigningJob'
 %% operation.
+-spec describe_signing_job(map(), binary() | list()) ->
+    {ok, describe_signing_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_signing_job(Client, JobId)
   when is_map(Client) ->
     describe_signing_job(Client, JobId, #{}, #{}).
 
+-spec describe_signing_job(map(), binary() | list(), map(), map()) ->
+    {ok, describe_signing_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_signing_job(Client, JobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_signing_job(Client, JobId, QueryMap, HeadersMap, []).
 
+-spec describe_signing_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_signing_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_signing_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-jobs/", aws_util:encode_uri(JobId), ""],
@@ -186,14 +766,35 @@ describe_signing_job(Client, JobId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the revocation status of one or more of the signing
 %% profile, signing job,
 %% and signing certificate.
+-spec get_revocation_status(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_revocation_status_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp)
   when is_map(Client) ->
     get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, #{}, #{}).
 
+-spec get_revocation_status(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_revocation_status_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, QueryMap, HeadersMap, []).
 
+-spec get_revocation_status(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_revocation_status_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVersionArn, SignatureTimestamp, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/revocations"],
@@ -219,14 +820,35 @@ get_revocation_status(Client, CertificateHashes, JobArn, PlatformId, ProfileVers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information on a specific signing platform.
+-spec get_signing_platform(map(), binary() | list()) ->
+    {ok, get_signing_platform_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_signing_platform(Client, PlatformId)
   when is_map(Client) ->
     get_signing_platform(Client, PlatformId, #{}, #{}).
 
+-spec get_signing_platform(map(), binary() | list(), map(), map()) ->
+    {ok, get_signing_platform_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_signing_platform(Client, PlatformId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, []).
 
+-spec get_signing_platform(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_signing_platform_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-platforms/", aws_util:encode_uri(PlatformId), ""],
@@ -244,14 +866,35 @@ get_signing_platform(Client, PlatformId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information on a specific signing profile.
+-spec get_signing_profile(map(), binary() | list()) ->
+    {ok, get_signing_profile_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_signing_profile(Client, ProfileName)
   when is_map(Client) ->
     get_signing_profile(Client, ProfileName, #{}, #{}).
 
+-spec get_signing_profile(map(), binary() | list(), map(), map()) ->
+    {ok, get_signing_profile_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_signing_profile(Client, ProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, []).
 
+-spec get_signing_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_signing_profile_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
@@ -274,14 +917,38 @@ get_signing_profile(Client, ProfileName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the cross-account permissions associated with a signing
 %% profile.
+-spec list_profile_permissions(map(), binary() | list()) ->
+    {ok, list_profile_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_profile_permissions(Client, ProfileName)
   when is_map(Client) ->
     list_profile_permissions(Client, ProfileName, #{}, #{}).
 
+-spec list_profile_permissions(map(), binary() | list(), map(), map()) ->
+    {ok, list_profile_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, []).
 
+-spec list_profile_permissions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_profile_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions"],
@@ -313,14 +980,35 @@ list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, Options0)
 %% continue calling `ListSigningJobs' with your `maxResults'
 %% parameter and with new values that Signer returns in the `nextToken'
 %% parameter until all of your signing jobs have been returned.
+-spec list_signing_jobs(map()) ->
+    {ok, list_signing_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_signing_jobs(Client)
   when is_map(Client) ->
     list_signing_jobs(Client, #{}, #{}).
 
+-spec list_signing_jobs(map(), map(), map()) ->
+    {ok, list_signing_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_signing_jobs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_signing_jobs(Client, QueryMap, HeadersMap, []).
 
+-spec list_signing_jobs(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_signing_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_signing_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-jobs"],
@@ -360,14 +1048,35 @@ list_signing_jobs(Client, QueryMap, HeadersMap, Options0)
 %% `maxResults' parameter and with new values that Signer returns in the
 %% `nextToken' parameter until all of your signing jobs have been
 %% returned.
+-spec list_signing_platforms(map()) ->
+    {ok, list_signing_platforms_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_signing_platforms(Client)
   when is_map(Client) ->
     list_signing_platforms(Client, #{}, #{}).
 
+-spec list_signing_platforms(map(), map(), map()) ->
+    {ok, list_signing_platforms_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_signing_platforms(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_signing_platforms(Client, QueryMap, HeadersMap, []).
 
+-spec list_signing_platforms(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_signing_platforms_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_signing_platforms(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-platforms"],
@@ -405,14 +1114,32 @@ list_signing_platforms(Client, QueryMap, HeadersMap, Options0)
 %% new values that Signer returns in the `nextToken' parameter until all
 %% of
 %% your signing jobs have been returned.
+-spec list_signing_profiles(map()) ->
+    {ok, list_signing_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_signing_profiles(Client)
   when is_map(Client) ->
     list_signing_profiles(Client, #{}, #{}).
 
+-spec list_signing_profiles(map(), map(), map()) ->
+    {ok, list_signing_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_signing_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_signing_profiles(Client, QueryMap, HeadersMap, []).
 
+-spec list_signing_profiles(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_signing_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_signing_profiles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/signing-profiles"],
@@ -439,14 +1166,35 @@ list_signing_profiles(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of the tags associated with a signing profile
 %% resource.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -467,8 +1215,25 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% A signing profile is a code-signing template that can be used to
 %% carry out a pre-defined signing job.
+-spec put_signing_profile(map(), binary() | list(), put_signing_profile_request()) ->
+    {ok, put_signing_profile_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_signing_profile(Client, ProfileName, Input) ->
     put_signing_profile(Client, ProfileName, Input, []).
+
+-spec put_signing_profile(map(), binary() | list(), put_signing_profile_request(), proplists:proplist()) ->
+    {ok, put_signing_profile_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_signing_profile(Client, ProfileName, Input0, Options0) ->
     Method = put,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), ""],
@@ -492,8 +1257,27 @@ put_signing_profile(Client, ProfileName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes cross-account permissions from a signing profile.
+-spec remove_profile_permission(map(), binary() | list(), binary() | list(), remove_profile_permission_request()) ->
+    {ok, remove_profile_permission_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 remove_profile_permission(Client, ProfileName, StatementId, Input) ->
     remove_profile_permission(Client, ProfileName, StatementId, Input, []).
+
+-spec remove_profile_permission(map(), binary() | list(), binary() | list(), remove_profile_permission_request(), proplists:proplist()) ->
+    {ok, remove_profile_permission_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 remove_profile_permission(Client, ProfileName, StatementId, Input0, Options0) ->
     Method = delete,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/permissions/", aws_util:encode_uri(StatementId), ""],
@@ -521,8 +1305,25 @@ remove_profile_permission(Client, ProfileName, StatementId, Input0, Options0) ->
 %%
 %% This indicates that the signature is no
 %% longer valid.
+-spec revoke_signature(map(), binary() | list(), revoke_signature_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 revoke_signature(Client, JobId, Input) ->
     revoke_signature(Client, JobId, Input, []).
+
+-spec revoke_signature(map(), binary() | list(), revoke_signature_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 revoke_signature(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/signing-jobs/", aws_util:encode_uri(JobId), "/revoke"],
@@ -551,8 +1352,25 @@ revoke_signature(Client, JobId, Input0, Options0) ->
 %% generated using the signing profile after an effective start date are no
 %% longer
 %% valid.
+-spec revoke_signing_profile(map(), binary() | list(), revoke_signing_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 revoke_signing_profile(Client, ProfileName, Input) ->
     revoke_signing_profile(Client, ProfileName, Input, []).
+
+-spec revoke_signing_profile(map(), binary() | list(), revoke_signing_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 revoke_signing_profile(Client, ProfileName, Input0, Options0) ->
     Method = put,
     Path = ["/signing-profiles/", aws_util:encode_uri(ProfileName), "/revoke"],
@@ -576,8 +1394,25 @@ revoke_signing_profile(Client, ProfileName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Signs a binary payload and returns a signature envelope.
+-spec sign_payload(map(), sign_payload_request()) ->
+    {ok, sign_payload_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 sign_payload(Client, Input) ->
     sign_payload(Client, Input, []).
+
+-spec sign_payload(map(), sign_payload_request(), proplists:proplist()) ->
+    {ok, sign_payload_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 sign_payload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/signing-jobs/with-payload"],
@@ -631,8 +1466,27 @@ sign_payload(Client, Input0, Options0) ->
 %%
 %% For a Java example that shows how to use this action, see StartSigningJob:
 %% https://docs.aws.amazon.com/signer/latest/developerguide/api-startsigningjob.html.
+-spec start_signing_job(map(), start_signing_job_request()) ->
+    {ok, start_signing_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_signing_job(Client, Input) ->
     start_signing_job(Client, Input, []).
+
+-spec start_signing_job(map(), start_signing_job_request(), proplists:proplist()) ->
+    {ok, start_signing_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_signing_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/signing-jobs"],
@@ -663,8 +1517,23 @@ start_signing_job(Client, Input0, Options0) ->
 %% value. To specify the signing profile, use its Amazon Resource Name (ARN).
 %% To specify
 %% the tag, use a key-value pair.
+-spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -691,8 +1560,23 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% To remove the tags, specify a list of
 %% tag keys.
+-spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -720,7 +1604,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

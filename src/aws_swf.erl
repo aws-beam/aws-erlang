@@ -105,6 +105,1371 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% workflow_execution_infos() :: #{
+%%   <<"executionInfos">> => list(workflow_execution_info()()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type workflow_execution_infos() :: #{binary() => any()}.
+
+%% Example:
+%% respond_decision_task_completed_input() :: #{
+%%   <<"decisions">> => list(decision()()),
+%%   <<"executionContext">> => string(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskListScheduleToStartTimeout">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type respond_decision_task_completed_input() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_detail() :: #{
+%%   <<"configuration">> => workflow_type_configuration(),
+%%   <<"typeInfo">> => workflow_type_info()
+%% }
+-type workflow_type_detail() :: #{binary() => any()}.
+
+%% Example:
+%% timer_canceled_event_attributes() :: #{
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"timerId">> => string()
+%% }
+-type timer_canceled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_cancel_requested_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"externalInitiatedEventId">> => float(),
+%%   <<"externalWorkflowExecution">> => workflow_execution()
+%% }
+-type workflow_execution_cancel_requested_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_status() :: #{
+%%   <<"cancelRequested">> => boolean()
+%% }
+-type activity_task_status() :: #{binary() => any()}.
+
+%% Example:
+%% undeprecate_workflow_type_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"workflowType">> := workflow_type()
+%% }
+-type undeprecate_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_scheduled_event_attributes() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"activityType">> => activity_type(),
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"heartbeatTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"scheduleToCloseTimeout">> => string(),
+%%   <<"scheduleToStartTimeout">> => string(),
+%%   <<"startToCloseTimeout">> => string(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string()
+%% }
+-type activity_task_scheduled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% count_closed_workflow_executions_input() :: #{
+%%   <<"closeStatusFilter">> => close_status_filter(),
+%%   <<"closeTimeFilter">> => execution_time_filter(),
+%%   <<"domain">> := string(),
+%%   <<"executionFilter">> => workflow_execution_filter(),
+%%   <<"startTimeFilter">> => execution_time_filter(),
+%%   <<"tagFilter">> => tag_filter(),
+%%   <<"typeFilter">> => workflow_type_filter()
+%% }
+-type count_closed_workflow_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% activity_type_configuration() :: #{
+%%   <<"defaultTaskHeartbeatTimeout">> => string(),
+%%   <<"defaultTaskList">> => task_list(),
+%%   <<"defaultTaskPriority">> => string(),
+%%   <<"defaultTaskScheduleToCloseTimeout">> => string(),
+%%   <<"defaultTaskScheduleToStartTimeout">> => string(),
+%%   <<"defaultTaskStartToCloseTimeout">> => string()
+%% }
+-type activity_type_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_completed_event_attributes() :: #{
+%%   <<"result">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
+%% }
+-type lambda_function_completed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_child_workflow_execution_decision_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"control">> => string(),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"tagList">> => list(string()()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
+%%   <<"workflowId">> => string(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type start_child_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_timed_out_event_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"timeoutType">> => list(any())
+%% }
+-type workflow_execution_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_decision_task_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"identity">> => string(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"reverseOrder">> => boolean(),
+%%   <<"startAtPreviousStartedEvent">> => boolean(),
+%%   <<"taskList">> := task_list()
+%% }
+-type poll_for_decision_task_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workflow_execution_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"execution">> := workflow_execution()
+%% }
+-type describe_workflow_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% close_status_filter() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type close_status_filter() :: #{binary() => any()}.
+
+%% Example:
+%% child_workflow_execution_canceled_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"initiatedEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type child_workflow_execution_canceled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% register_activity_type_input() :: #{
+%%   <<"defaultTaskHeartbeatTimeout">> => string(),
+%%   <<"defaultTaskList">> => task_list(),
+%%   <<"defaultTaskPriority">> => string(),
+%%   <<"defaultTaskScheduleToCloseTimeout">> => string(),
+%%   <<"defaultTaskScheduleToStartTimeout">> => string(),
+%%   <<"defaultTaskStartToCloseTimeout">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"name">> := string(),
+%%   <<"version">> := string()
+%% }
+-type register_activity_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_count() :: #{
+%%   <<"count">> => integer(),
+%%   <<"truncated">> => boolean()
+%% }
+-type workflow_execution_count() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_started_event_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"continuedExecutionRunId">> => string(),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"parentInitiatedEventId">> => float(),
+%%   <<"parentWorkflowExecution">> => workflow_execution(),
+%%   <<"tagList">> => list(string()()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type workflow_execution_started_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
+%% }
+-type workflow_type_filter() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_activity_task_decision_attributes() :: #{
+%%   <<"activityId">> => string()
+%% }
+-type request_cancel_activity_task_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_workflow_execution_decision_attributes() :: #{
+%%   <<"details">> => string()
+%% }
+-type cancel_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% complete_workflow_execution_decision_attributes() :: #{
+%%   <<"result">> => string()
+%% }
+-type complete_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% external_workflow_execution_signaled_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution()
+%% }
+-type external_workflow_execution_signaled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% child_workflow_execution_completed_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"result">> => string(),
+%%   <<"startedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type child_workflow_execution_completed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% decision_task_timed_out_event_attributes() :: #{
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"timeoutType">> => list(any())
+%% }
+-type decision_task_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_canceled_event_attributes() :: #{
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"details">> => string()
+%% }
+-type workflow_execution_canceled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_configuration() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string()
+%% }
+-type workflow_execution_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_infos() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"typeInfos">> => list(workflow_type_info()())
+%% }
+-type workflow_type_infos() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_already_started_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type workflow_execution_already_started_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflow_types_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"registrationStatus">> := list(any()),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type list_workflow_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_canceled_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"latestCancelRequestedEventId">> => float(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
+%% }
+-type activity_task_canceled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => list(resource_tag()())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_lambda_function_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type schedule_lambda_function_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% respond_activity_task_failed_input() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type respond_activity_task_failed_input() :: #{binary() => any()}.
+
+%% Example:
+%% execution_time_filter() :: #{
+%%   <<"latestDate">> => non_neg_integer(),
+%%   <<"oldestDate">> => non_neg_integer()
+%% }
+-type execution_time_filter() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_timer_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"timerId">> => string()
+%% }
+-type cancel_timer_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_timer_decision_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"startToFireTimeout">> => string(),
+%%   <<"timerId">> => string()
+%% }
+-type start_timer_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_configuration() :: #{
+%%   <<"defaultChildPolicy">> => list(any()),
+%%   <<"defaultExecutionStartToCloseTimeout">> => string(),
+%%   <<"defaultLambdaRole">> => string(),
+%%   <<"defaultTaskList">> => task_list(),
+%%   <<"defaultTaskPriority">> => string(),
+%%   <<"defaultTaskStartToCloseTimeout">> => string()
+%% }
+-type workflow_type_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% register_domain_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(resource_tag()()),
+%%   <<"workflowExecutionRetentionPeriodInDays">> := string()
+%% }
+-type register_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% undeprecate_domain_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type undeprecate_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_activity_task_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"identity">> => string(),
+%%   <<"taskList">> := task_list()
+%% }
+-type poll_for_activity_task_input() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_scheduled_event_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"id">> => string(),
+%%   <<"input">> => string(),
+%%   <<"name">> => string(),
+%%   <<"startToCloseTimeout">> => string()
+%% }
+-type lambda_function_scheduled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_external_workflow_execution_decision_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type request_cancel_external_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% continue_as_new_workflow_execution_decision_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"tagList">> => list(string()()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
+%%   <<"workflowTypeVersion">> => string()
+%% }
+-type continue_as_new_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_timed_out_event_attributes() :: #{
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"timeoutType">> => list(any())
+%% }
+-type lambda_function_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% record_activity_task_heartbeat_input() :: #{
+%%   <<"details">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type record_activity_task_heartbeat_input() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_workflow_execution_input() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"details">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"reason">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> := string()
+%% }
+-type terminate_workflow_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% respond_activity_task_completed_input() :: #{
+%%   <<"result">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type respond_activity_task_completed_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_workflow_executions_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"executionFilter">> => workflow_execution_filter(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"reverseOrder">> => boolean(),
+%%   <<"startTimeFilter">> := execution_time_filter(),
+%%   <<"tagFilter">> => tag_filter(),
+%%   <<"typeFilter">> => workflow_type_filter()
+%% }
+-type list_open_workflow_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution() :: #{
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type workflow_execution() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_domain_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type deprecate_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_workflow_type_input() :: #{
+%%   <<"defaultChildPolicy">> => list(any()),
+%%   <<"defaultExecutionStartToCloseTimeout">> => string(),
+%%   <<"defaultLambdaRole">> => string(),
+%%   <<"defaultTaskList">> => task_list(),
+%%   <<"defaultTaskPriority">> => string(),
+%%   <<"defaultTaskStartToCloseTimeout">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"name">> := string(),
+%%   <<"version">> := string()
+%% }
+-type register_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% decision() :: #{
+%%   <<"cancelTimerDecisionAttributes">> => cancel_timer_decision_attributes(),
+%%   <<"cancelWorkflowExecutionDecisionAttributes">> => cancel_workflow_execution_decision_attributes(),
+%%   <<"completeWorkflowExecutionDecisionAttributes">> => complete_workflow_execution_decision_attributes(),
+%%   <<"continueAsNewWorkflowExecutionDecisionAttributes">> => continue_as_new_workflow_execution_decision_attributes(),
+%%   <<"decisionType">> => list(any()),
+%%   <<"failWorkflowExecutionDecisionAttributes">> => fail_workflow_execution_decision_attributes(),
+%%   <<"recordMarkerDecisionAttributes">> => record_marker_decision_attributes(),
+%%   <<"requestCancelActivityTaskDecisionAttributes">> => request_cancel_activity_task_decision_attributes(),
+%%   <<"requestCancelExternalWorkflowExecutionDecisionAttributes">> => request_cancel_external_workflow_execution_decision_attributes(),
+%%   <<"scheduleActivityTaskDecisionAttributes">> => schedule_activity_task_decision_attributes(),
+%%   <<"scheduleLambdaFunctionDecisionAttributes">> => schedule_lambda_function_decision_attributes(),
+%%   <<"signalExternalWorkflowExecutionDecisionAttributes">> => signal_external_workflow_execution_decision_attributes(),
+%%   <<"startChildWorkflowExecutionDecisionAttributes">> => start_child_workflow_execution_decision_attributes(),
+%%   <<"startTimerDecisionAttributes">> => start_timer_decision_attributes()
+%% }
+-type decision() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type_info() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"deprecationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type workflow_type_info() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_started_event_attributes() :: #{
+%%   <<"scheduledEventId">> => float()
+%% }
+-type lambda_function_started_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% child_workflow_execution_failed_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"initiatedEventId">> => float(),
+%%   <<"reason">> => string(),
+%%   <<"startedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type child_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% decision_task_started_event_attributes() :: #{
+%%   <<"identity">> => string(),
+%%   <<"scheduledEventId">> => float()
+%% }
+-type decision_task_started_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% pending_task_count() :: #{
+%%   <<"count">> => integer(),
+%%   <<"truncated">> => boolean()
+%% }
+-type pending_task_count() :: #{binary() => any()}.
+
+%% Example:
+%% list_closed_workflow_executions_input() :: #{
+%%   <<"closeStatusFilter">> => close_status_filter(),
+%%   <<"closeTimeFilter">> => execution_time_filter(),
+%%   <<"domain">> := string(),
+%%   <<"executionFilter">> => workflow_execution_filter(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"reverseOrder">> => boolean(),
+%%   <<"startTimeFilter">> => execution_time_filter(),
+%%   <<"tagFilter">> => tag_filter(),
+%%   <<"typeFilter">> => workflow_type_filter()
+%% }
+-type list_closed_workflow_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% decision_task_completed_event_attributes() :: #{
+%%   <<"executionContext">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskListScheduleToStartTimeout">> => string()
+%% }
+-type decision_task_completed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% signal_external_workflow_execution_initiated_event_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"input">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"signalName">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type signal_external_workflow_execution_initiated_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% record_marker_decision_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"markerName">> => string()
+%% }
+-type record_marker_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_terminated_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"childPolicy">> => list(any()),
+%%   <<"details">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type workflow_execution_terminated_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_workflow_execution_input() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"domain">> := string(),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"tagList">> => list(string()()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
+%%   <<"workflowId">> := string(),
+%%   <<"workflowType">> := workflow_type()
+%% }
+-type start_workflow_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_timed_out_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"timeoutType">> => list(any())
+%% }
+-type activity_task_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% continue_as_new_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type continue_as_new_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% fail_workflow_execution_decision_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type fail_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% complete_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type complete_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% task_list() :: #{
+%%   <<"name">> => string()
+%% }
+-type task_list() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_activity_type_input() :: #{
+%%   <<"activityType">> := activity_type(),
+%%   <<"domain">> := string()
+%% }
+-type deprecate_activity_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_timer_decision_attributes() :: #{
+%%   <<"timerId">> => string()
+%% }
+-type cancel_timer_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% decision_task() :: #{
+%%   <<"events">> => list(history_event()()),
+%%   <<"nextPageToken">> => string(),
+%%   <<"previousStartedEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"taskToken">> => string(),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type decision_task() :: #{binary() => any()}.
+
+%% Example:
+%% child_workflow_execution_timed_out_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"timeoutType">> => list(any()),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type child_workflow_execution_timed_out_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% fail_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type fail_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_activity_task_decision_attributes() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"activityType">> => activity_type(),
+%%   <<"control">> => string(),
+%%   <<"heartbeatTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"scheduleToCloseTimeout">> => string(),
+%%   <<"scheduleToStartTimeout">> => string(),
+%%   <<"startToCloseTimeout">> => string(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string()
+%% }
+-type schedule_activity_task_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% signal_external_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"initiatedEventId">> => float(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type signal_external_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% type_deprecated_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type type_deprecated_fault() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_activity_task_failed_event_attributes() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type request_cancel_activity_task_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_activity_task_failed_event_attributes() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"activityType">> => activity_type(),
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type schedule_activity_task_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_detail() :: #{
+%%   <<"executionConfiguration">> => workflow_execution_configuration(),
+%%   <<"executionInfo">> => workflow_execution_info(),
+%%   <<"latestActivityTaskTimestamp">> => non_neg_integer(),
+%%   <<"latestExecutionContext">> => string(),
+%%   <<"openCounts">> => workflow_execution_open_counts()
+%% }
+-type workflow_execution_detail() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_failed_event_attributes() :: #{
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"details">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% count_open_workflow_executions_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"executionFilter">> => workflow_execution_filter(),
+%%   <<"startTimeFilter">> := execution_time_filter(),
+%%   <<"tagFilter">> => tag_filter(),
+%%   <<"typeFilter">> => workflow_type_filter()
+%% }
+-type count_open_workflow_executions_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(resource_tag()())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_type() :: #{
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
+%% }
+-type workflow_type() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_info() :: #{
+%%   <<"cancelRequested">> => boolean(),
+%%   <<"closeStatus">> => list(any()),
+%%   <<"closeTimestamp">> => non_neg_integer(),
+%%   <<"execution">> => workflow_execution(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"parent">> => workflow_execution(),
+%%   <<"startTimestamp">> => non_neg_integer(),
+%%   <<"tagList">> => list(string()()),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type workflow_execution_info() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"activityType">> => activity_type(),
+%%   <<"input">> => string(),
+%%   <<"startedEventId">> => float(),
+%%   <<"taskToken">> => string(),
+%%   <<"workflowExecution">> => workflow_execution()
+%% }
+-type activity_task() :: #{binary() => any()}.
+
+%% Example:
+%% history_event() :: #{
+%%   <<"startChildWorkflowExecutionFailedEventAttributes">> => start_child_workflow_execution_failed_event_attributes(),
+%%   <<"timerStartedEventAttributes">> => timer_started_event_attributes(),
+%%   <<"childWorkflowExecutionStartedEventAttributes">> => child_workflow_execution_started_event_attributes(),
+%%   <<"workflowExecutionFailedEventAttributes">> => workflow_execution_failed_event_attributes(),
+%%   <<"requestCancelActivityTaskFailedEventAttributes">> => request_cancel_activity_task_failed_event_attributes(),
+%%   <<"activityTaskStartedEventAttributes">> => activity_task_started_event_attributes(),
+%%   <<"externalWorkflowExecutionCancelRequestedEventAttributes">> => external_workflow_execution_cancel_requested_event_attributes(),
+%%   <<"activityTaskScheduledEventAttributes">> => activity_task_scheduled_event_attributes(),
+%%   <<"workflowExecutionCanceledEventAttributes">> => workflow_execution_canceled_event_attributes(),
+%%   <<"timerCanceledEventAttributes">> => timer_canceled_event_attributes(),
+%%   <<"decisionTaskTimedOutEventAttributes">> => decision_task_timed_out_event_attributes(),
+%%   <<"lambdaFunctionScheduledEventAttributes">> => lambda_function_scheduled_event_attributes(),
+%%   <<"childWorkflowExecutionFailedEventAttributes">> => child_workflow_execution_failed_event_attributes(),
+%%   <<"decisionTaskStartedEventAttributes">> => decision_task_started_event_attributes(),
+%%   <<"lambdaFunctionTimedOutEventAttributes">> => lambda_function_timed_out_event_attributes(),
+%%   <<"requestCancelExternalWorkflowExecutionFailedEventAttributes">> => request_cancel_external_workflow_execution_failed_event_attributes(),
+%%   <<"decisionTaskScheduledEventAttributes">> => decision_task_scheduled_event_attributes(),
+%%   <<"scheduleActivityTaskFailedEventAttributes">> => schedule_activity_task_failed_event_attributes(),
+%%   <<"cancelTimerFailedEventAttributes">> => cancel_timer_failed_event_attributes(),
+%%   <<"workflowExecutionCancelRequestedEventAttributes">> => workflow_execution_cancel_requested_event_attributes(),
+%%   <<"eventTimestamp">> => non_neg_integer(),
+%%   <<"markerRecordedEventAttributes">> => marker_recorded_event_attributes(),
+%%   <<"signalExternalWorkflowExecutionInitiatedEventAttributes">> => signal_external_workflow_execution_initiated_event_attributes(),
+%%   <<"childWorkflowExecutionTimedOutEventAttributes">> => child_workflow_execution_timed_out_event_attributes(),
+%%   <<"scheduleLambdaFunctionFailedEventAttributes">> => schedule_lambda_function_failed_event_attributes(),
+%%   <<"lambdaFunctionCompletedEventAttributes">> => lambda_function_completed_event_attributes(),
+%%   <<"childWorkflowExecutionTerminatedEventAttributes">> => child_workflow_execution_terminated_event_attributes(),
+%%   <<"continueAsNewWorkflowExecutionFailedEventAttributes">> => continue_as_new_workflow_execution_failed_event_attributes(),
+%%   <<"activityTaskTimedOutEventAttributes">> => activity_task_timed_out_event_attributes(),
+%%   <<"lambdaFunctionStartedEventAttributes">> => lambda_function_started_event_attributes(),
+%%   <<"externalWorkflowExecutionSignaledEventAttributes">> => external_workflow_execution_signaled_event_attributes(),
+%%   <<"workflowExecutionTerminatedEventAttributes">> => workflow_execution_terminated_event_attributes(),
+%%   <<"workflowExecutionSignaledEventAttributes">> => workflow_execution_signaled_event_attributes(),
+%%   <<"workflowExecutionContinuedAsNewEventAttributes">> => workflow_execution_continued_as_new_event_attributes(),
+%%   <<"decisionTaskCompletedEventAttributes">> => decision_task_completed_event_attributes(),
+%%   <<"activityTaskCompletedEventAttributes">> => activity_task_completed_event_attributes(),
+%%   <<"startChildWorkflowExecutionInitiatedEventAttributes">> => start_child_workflow_execution_initiated_event_attributes(),
+%%   <<"requestCancelExternalWorkflowExecutionInitiatedEventAttributes">> => request_cancel_external_workflow_execution_initiated_event_attributes(),
+%%   <<"timerFiredEventAttributes">> => timer_fired_event_attributes(),
+%%   <<"eventType">> => list(any()),
+%%   <<"failWorkflowExecutionFailedEventAttributes">> => fail_workflow_execution_failed_event_attributes(),
+%%   <<"recordMarkerFailedEventAttributes">> => record_marker_failed_event_attributes(),
+%%   <<"activityTaskFailedEventAttributes">> => activity_task_failed_event_attributes(),
+%%   <<"activityTaskCancelRequestedEventAttributes">> => activity_task_cancel_requested_event_attributes(),
+%%   <<"signalExternalWorkflowExecutionFailedEventAttributes">> => signal_external_workflow_execution_failed_event_attributes(),
+%%   <<"childWorkflowExecutionCompletedEventAttributes">> => child_workflow_execution_completed_event_attributes(),
+%%   <<"childWorkflowExecutionCanceledEventAttributes">> => child_workflow_execution_canceled_event_attributes(),
+%%   <<"workflowExecutionCompletedEventAttributes">> => workflow_execution_completed_event_attributes(),
+%%   <<"workflowExecutionTimedOutEventAttributes">> => workflow_execution_timed_out_event_attributes(),
+%%   <<"cancelWorkflowExecutionFailedEventAttributes">> => cancel_workflow_execution_failed_event_attributes(),
+%%   <<"eventId">> => float(),
+%%   <<"completeWorkflowExecutionFailedEventAttributes">> => complete_workflow_execution_failed_event_attributes(),
+%%   <<"activityTaskCanceledEventAttributes">> => activity_task_canceled_event_attributes(),
+%%   <<"lambdaFunctionFailedEventAttributes">> => lambda_function_failed_event_attributes(),
+%%   <<"startLambdaFunctionFailedEventAttributes">> => start_lambda_function_failed_event_attributes(),
+%%   <<"startTimerFailedEventAttributes">> => start_timer_failed_event_attributes(),
+%%   <<"workflowExecutionStartedEventAttributes">> => workflow_execution_started_event_attributes()
+%% }
+-type history_event() :: #{binary() => any()}.
+
+%% Example:
+%% domain_configuration() :: #{
+%%   <<"workflowExecutionRetentionPeriodInDays">> => string()
+%% }
+-type domain_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% schedule_lambda_function_decision_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"id">> => string(),
+%%   <<"input">> => string(),
+%%   <<"name">> => string(),
+%%   <<"startToCloseTimeout">> => string()
+%% }
+-type schedule_lambda_function_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_workflow_execution_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> := string()
+%% }
+-type request_cancel_workflow_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_timer_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"timerId">> => string()
+%% }
+-type start_timer_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% domain_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type domain_info() :: #{binary() => any()}.
+
+%% Example:
+%% timer_fired_event_attributes() :: #{
+%%   <<"startedEventId">> => float(),
+%%   <<"timerId">> => string()
+%% }
+-type timer_fired_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% respond_activity_task_canceled_input() :: #{
+%%   <<"details">> => string(),
+%%   <<"taskToken">> := string()
+%% }
+-type respond_activity_task_canceled_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_activity_types_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"registrationStatus">> := list(any()),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type list_activity_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% domain_detail() :: #{
+%%   <<"configuration">> => domain_configuration(),
+%%   <<"domainInfo">> => domain_info()
+%% }
+-type domain_detail() :: #{binary() => any()}.
+
+%% Example:
+%% unknown_resource_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type unknown_resource_fault() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+%% Example:
+%% activity_type() :: #{
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
+%% }
+-type activity_type() :: #{binary() => any()}.
+
+%% Example:
+%% activity_type_infos() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"typeInfos">> => list(activity_type_info()())
+%% }
+-type activity_type_infos() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_fault() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_failed_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
+%% }
+-type lambda_function_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% domain_infos() :: #{
+%%   <<"domainInfos">> => list(domain_info()()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type domain_infos() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_filter() :: #{
+%%   <<"workflowId">> => string()
+%% }
+-type workflow_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_completed_event_attributes() :: #{
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"result">> => string()
+%% }
+-type workflow_execution_completed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% signal_workflow_execution_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"input">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"signalName">> := string(),
+%%   <<"workflowId">> := string()
+%% }
+-type signal_workflow_execution_input() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_external_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"initiatedEventId">> => float(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type request_cancel_external_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_permitted_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_not_permitted_fault() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type describe_domain_input() :: #{binary() => any()}.
+
+%% Example:
+%% activity_type_info() :: #{
+%%   <<"activityType">> => activity_type(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"deprecationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type activity_type_info() :: #{binary() => any()}.
+
+%% Example:
+%% request_cancel_external_workflow_execution_initiated_event_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"runId">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type request_cancel_external_workflow_execution_initiated_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% external_workflow_execution_cancel_requested_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution()
+%% }
+-type external_workflow_execution_cancel_requested_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% child_workflow_execution_terminated_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"startedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type child_workflow_execution_terminated_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% domain_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type domain_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_completed_event_attributes() :: #{
+%%   <<"result">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
+%% }
+-type activity_task_completed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% decision_task_scheduled_event_attributes() :: #{
+%%   <<"scheduleToStartTimeout">> => string(),
+%%   <<"startToCloseTimeout">> => string(),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string()
+%% }
+-type decision_task_scheduled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% count_pending_decision_tasks_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"taskList">> := task_list()
+%% }
+-type count_pending_decision_tasks_input() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_started_event_attributes() :: #{
+%%   <<"identity">> => string(),
+%%   <<"scheduledEventId">> => float()
+%% }
+-type activity_task_started_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_child_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"initiatedEventId">> => float(),
+%%   <<"workflowId">> => string(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type start_child_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% count_pending_activity_tasks_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"taskList">> := task_list()
+%% }
+-type count_pending_activity_tasks_input() :: #{binary() => any()}.
+
+%% Example:
+%% undeprecate_activity_type_input() :: #{
+%%   <<"activityType">> := activity_type(),
+%%   <<"domain">> := string()
+%% }
+-type undeprecate_activity_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% timer_started_event_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"startToFireTimeout">> => string(),
+%%   <<"timerId">> => string()
+%% }
+-type timer_started_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_cancel_requested_event_attributes() :: #{
+%%   <<"activityId">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type activity_task_cancel_requested_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_open_counts() :: #{
+%%   <<"openActivityTasks">> => integer(),
+%%   <<"openChildWorkflowExecutions">> => integer(),
+%%   <<"openDecisionTasks">> => integer(),
+%%   <<"openLambdaFunctions">> => integer(),
+%%   <<"openTimers">> => integer()
+%% }
+-type workflow_execution_open_counts() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activity_type_input() :: #{
+%%   <<"activityType">> := activity_type(),
+%%   <<"domain">> := string()
+%% }
+-type describe_activity_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_continued_as_new_event_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"newExecutionRunId">> => string(),
+%%   <<"tagList">> => list(string()()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type workflow_execution_continued_as_new_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% marker_recorded_event_attributes() :: #{
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"details">> => string(),
+%%   <<"markerName">> => string()
+%% }
+-type marker_recorded_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% record_marker_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"markerName">> => string()
+%% }
+-type record_marker_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% start_lambda_function_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"message">> => string(),
+%%   <<"scheduledEventId">> => float()
+%% }
+-type start_lambda_function_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% history() :: #{
+%%   <<"events">> => list(history_event()()),
+%%   <<"nextPageToken">> => string()
+%% }
+-type history() :: #{binary() => any()}.
+
+%% Example:
+%% activity_type_detail() :: #{
+%%   <<"configuration">> => activity_type_configuration(),
+%%   <<"typeInfo">> => activity_type_info()
+%% }
+-type activity_type_detail() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_workflow_type_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"workflowType">> := workflow_type()
+%% }
+-type deprecate_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_child_workflow_execution_initiated_event_attributes() :: #{
+%%   <<"childPolicy">> => list(any()),
+%%   <<"control">> => string(),
+%%   <<"decisionTaskCompletedEventId">> => float(),
+%%   <<"executionStartToCloseTimeout">> => string(),
+%%   <<"input">> => string(),
+%%   <<"lambdaRole">> => string(),
+%%   <<"tagList">> => list(string()()),
+%%   <<"taskList">> => task_list(),
+%%   <<"taskPriority">> => string(),
+%%   <<"taskStartToCloseTimeout">> => string(),
+%%   <<"workflowId">> => string(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type start_child_workflow_execution_initiated_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% type_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type type_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tag_filter() :: #{
+%%   <<"tag">> => string()
+%% }
+-type tag_filter() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_workflow_execution_failed_event_attributes() :: #{
+%%   <<"cause">> => list(any()),
+%%   <<"decisionTaskCompletedEventId">> => float()
+%% }
+-type cancel_workflow_execution_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_execution_history_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"execution">> := workflow_execution(),
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type get_workflow_execution_history_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_input() :: #{
+%%   <<"maximumPageSize">> => integer(),
+%%   <<"nextPageToken">> => string(),
+%%   <<"registrationStatus">> := list(any()),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type list_domains_input() :: #{binary() => any()}.
+
+%% Example:
+%% signal_external_workflow_execution_decision_attributes() :: #{
+%%   <<"control">> => string(),
+%%   <<"input">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"signalName">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type signal_external_workflow_execution_decision_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% workflow_execution_signaled_event_attributes() :: #{
+%%   <<"externalInitiatedEventId">> => float(),
+%%   <<"externalWorkflowExecution">> => workflow_execution(),
+%%   <<"input">> => string(),
+%%   <<"signalName">> => string()
+%% }
+-type workflow_execution_signaled_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% domain_deprecated_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type domain_deprecated_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workflow_type_input() :: #{
+%%   <<"domain">> := string(),
+%%   <<"workflowType">> := workflow_type()
+%% }
+-type describe_workflow_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% default_undefined_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type default_undefined_fault() :: #{binary() => any()}.
+
+%% Example:
+%% activity_task_failed_event_attributes() :: #{
+%%   <<"details">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"scheduledEventId">> => float(),
+%%   <<"startedEventId">> => float()
+%% }
+-type activity_task_failed_event_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% run() :: #{
+%%   <<"runId">> => string()
+%% }
+-type run() :: #{binary() => any()}.
+
+%% Example:
+%% child_workflow_execution_started_event_attributes() :: #{
+%%   <<"initiatedEventId">> => float(),
+%%   <<"workflowExecution">> => workflow_execution(),
+%%   <<"workflowType">> => workflow_type()
+%% }
+-type child_workflow_execution_started_event_attributes() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -152,9 +1517,20 @@
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec count_closed_workflow_executions(map(), count_closed_workflow_executions_input()) ->
+    {ok, workflow_execution_count(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 count_closed_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_closed_workflow_executions(Client, Input, []).
+
+-spec count_closed_workflow_executions(map(), count_closed_workflow_executions_input(), proplists:proplist()) ->
+    {ok, workflow_execution_count(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 count_closed_workflow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CountClosedWorkflowExecutions">>, Input, Options).
@@ -202,9 +1578,20 @@ count_closed_workflow_executions(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec count_open_workflow_executions(map(), count_open_workflow_executions_input()) ->
+    {ok, workflow_execution_count(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 count_open_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_open_workflow_executions(Client, Input, []).
+
+-spec count_open_workflow_executions(map(), count_open_workflow_executions_input(), proplists:proplist()) ->
+    {ok, workflow_execution_count(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 count_open_workflow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CountOpenWorkflowExecutions">>, Input, Options).
@@ -244,9 +1631,20 @@ count_open_workflow_executions(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec count_pending_activity_tasks(map(), count_pending_activity_tasks_input()) ->
+    {ok, pending_task_count(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 count_pending_activity_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_pending_activity_tasks(Client, Input, []).
+
+-spec count_pending_activity_tasks(map(), count_pending_activity_tasks_input(), proplists:proplist()) ->
+    {ok, pending_task_count(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 count_pending_activity_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CountPendingActivityTasks">>, Input, Options).
@@ -286,9 +1684,20 @@ count_pending_activity_tasks(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec count_pending_decision_tasks(map(), count_pending_decision_tasks_input()) ->
+    {ok, pending_task_count(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 count_pending_decision_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     count_pending_decision_tasks(Client, Input, []).
+
+-spec count_pending_decision_tasks(map(), count_pending_decision_tasks_input(), proplists:proplist()) ->
+    {ok, pending_task_count(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 count_pending_decision_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CountPendingDecisionTasks">>, Input, Options).
@@ -336,9 +1745,22 @@ count_pending_decision_tasks(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec deprecate_activity_type(map(), deprecate_activity_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_deprecated_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 deprecate_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_activity_type(Client, Input, []).
+
+-spec deprecate_activity_type(map(), deprecate_activity_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_deprecated_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 deprecate_activity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprecateActivityType">>, Input, Options).
@@ -383,9 +1805,22 @@ deprecate_activity_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec deprecate_domain(map(), deprecate_domain_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, domain_deprecated_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 deprecate_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_domain(Client, Input, []).
+
+-spec deprecate_domain(map(), deprecate_domain_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, domain_deprecated_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 deprecate_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprecateDomain">>, Input, Options).
@@ -435,9 +1870,22 @@ deprecate_domain(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec deprecate_workflow_type(map(), deprecate_workflow_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_deprecated_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 deprecate_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprecate_workflow_type(Client, Input, []).
+
+-spec deprecate_workflow_type(map(), deprecate_workflow_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_deprecated_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 deprecate_workflow_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprecateWorkflowType">>, Input, Options).
@@ -481,9 +1929,20 @@ deprecate_workflow_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec describe_activity_type(map(), describe_activity_type_input()) ->
+    {ok, activity_type_detail(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 describe_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activity_type(Client, Input, []).
+
+-spec describe_activity_type(map(), describe_activity_type_input(), proplists:proplist()) ->
+    {ok, activity_type_detail(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 describe_activity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActivityType">>, Input, Options).
@@ -517,9 +1976,20 @@ describe_activity_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec describe_domain(map(), describe_domain_input()) ->
+    {ok, domain_detail(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 describe_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_domain(Client, Input, []).
+
+-spec describe_domain(map(), describe_domain_input(), proplists:proplist()) ->
+    {ok, domain_detail(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 describe_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomain">>, Input, Options).
@@ -557,9 +2027,20 @@ describe_domain(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec describe_workflow_execution(map(), describe_workflow_execution_input()) ->
+    {ok, workflow_execution_detail(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 describe_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workflow_execution(Client, Input, []).
+
+-spec describe_workflow_execution(map(), describe_workflow_execution_input(), proplists:proplist()) ->
+    {ok, workflow_execution_detail(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 describe_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkflowExecution">>, Input, Options).
@@ -603,9 +2084,20 @@ describe_workflow_execution(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec describe_workflow_type(map(), describe_workflow_type_input()) ->
+    {ok, workflow_type_detail(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 describe_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workflow_type(Client, Input, []).
+
+-spec describe_workflow_type(map(), describe_workflow_type_input(), proplists:proplist()) ->
+    {ok, workflow_type_detail(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 describe_workflow_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkflowType">>, Input, Options).
@@ -646,9 +2138,20 @@ describe_workflow_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec get_workflow_execution_history(map(), get_workflow_execution_history_input()) ->
+    {ok, history(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 get_workflow_execution_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workflow_execution_history(Client, Input, []).
+
+-spec get_workflow_execution_history(map(), get_workflow_execution_history_input(), proplists:proplist()) ->
+    {ok, history(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 get_workflow_execution_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkflowExecutionHistory">>, Input, Options).
@@ -689,9 +2192,20 @@ get_workflow_execution_history(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec list_activity_types(map(), list_activity_types_input()) ->
+    {ok, activity_type_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_activity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_activity_types(Client, Input, []).
+
+-spec list_activity_types(map(), list_activity_types_input(), proplists:proplist()) ->
+    {ok, activity_type_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_activity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActivityTypes">>, Input, Options).
@@ -743,9 +2257,20 @@ list_activity_types(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec list_closed_workflow_executions(map(), list_closed_workflow_executions_input()) ->
+    {ok, workflow_execution_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_closed_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_closed_workflow_executions(Client, Input, []).
+
+-spec list_closed_workflow_executions(map(), list_closed_workflow_executions_input(), proplists:proplist()) ->
+    {ok, workflow_execution_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_closed_workflow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClosedWorkflowExecutions">>, Input, Options).
@@ -788,9 +2313,18 @@ list_closed_workflow_executions(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec list_domains(map(), list_domains_input()) ->
+    {ok, domain_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()}.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
+
+-spec list_domains(map(), list_domains_input(), proplists:proplist()) ->
+    {ok, domain_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()}.
 list_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDomains">>, Input, Options).
@@ -842,17 +2376,41 @@ list_domains(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec list_open_workflow_executions(map(), list_open_workflow_executions_input()) ->
+    {ok, workflow_execution_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_open_workflow_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_workflow_executions(Client, Input, []).
+
+-spec list_open_workflow_executions(map(), list_open_workflow_executions_input(), proplists:proplist()) ->
+    {ok, workflow_execution_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_open_workflow_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpenWorkflowExecutions">>, Input, Options).
 
 %% @doc List tags for a given domain.
+-spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -888,9 +2446,20 @@ list_tags_for_resource(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec list_workflow_types(map(), list_workflow_types_input()) ->
+    {ok, workflow_type_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_workflow_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workflow_types(Client, Input, []).
+
+-spec list_workflow_types(map(), list_workflow_types_input(), proplists:proplist()) ->
+    {ok, workflow_type_infos(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 list_workflow_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkflowTypes">>, Input, Options).
@@ -942,9 +2511,22 @@ list_workflow_types(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec poll_for_activity_task(map(), poll_for_activity_task_input()) ->
+    {ok, activity_task(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 poll_for_activity_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_activity_task(Client, Input, []).
+
+-spec poll_for_activity_task(map(), poll_for_activity_task_input(), proplists:proplist()) ->
+    {ok, activity_task(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 poll_for_activity_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForActivityTask">>, Input, Options).
@@ -1012,9 +2594,22 @@ poll_for_activity_task(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec poll_for_decision_task(map(), poll_for_decision_task_input()) ->
+    {ok, decision_task(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 poll_for_decision_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_decision_task(Client, Input, []).
+
+-spec poll_for_decision_task(map(), poll_for_decision_task_input(), proplists:proplist()) ->
+    {ok, decision_task(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 poll_for_decision_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForDecisionTask">>, Input, Options).
@@ -1086,9 +2681,20 @@ poll_for_decision_task(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec record_activity_task_heartbeat(map(), record_activity_task_heartbeat_input()) ->
+    {ok, activity_task_status(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 record_activity_task_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_activity_task_heartbeat(Client, Input, []).
+
+-spec record_activity_task_heartbeat(map(), record_activity_task_heartbeat_input(), proplists:proplist()) ->
+    {ok, activity_task_status(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 record_activity_task_heartbeat(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RecordActivityTaskHeartbeat">>, Input, Options).
@@ -1136,9 +2742,24 @@ record_activity_task_heartbeat(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec register_activity_type(map(), register_activity_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_already_exists_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 register_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_activity_type(Client, Input, []).
+
+-spec register_activity_type(map(), register_activity_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_already_exists_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 register_activity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterActivityType">>, Input, Options).
@@ -1171,9 +2792,24 @@ register_activity_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec register_domain(map(), register_domain_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, domain_already_exists_fault(), tuple()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, too_many_tags_fault(), tuple()}.
 register_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_domain(Client, Input, []).
+
+-spec register_domain(map(), register_domain_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, domain_already_exists_fault(), tuple()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, too_many_tags_fault(), tuple()}.
 register_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDomain">>, Input, Options).
@@ -1224,9 +2860,24 @@ register_domain(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec register_workflow_type(map(), register_workflow_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_already_exists_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 register_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_workflow_type(Client, Input, []).
+
+-spec register_workflow_type(map(), register_workflow_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_already_exists_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 register_workflow_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterWorkflowType">>, Input, Options).
@@ -1277,9 +2928,20 @@ register_workflow_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec request_cancel_workflow_execution(map(), request_cancel_workflow_execution_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 request_cancel_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_cancel_workflow_execution(Client, Input, []).
+
+-spec request_cancel_workflow_execution(map(), request_cancel_workflow_execution_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 request_cancel_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestCancelWorkflowExecution">>, Input, Options).
@@ -1334,9 +2996,20 @@ request_cancel_workflow_execution(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec respond_activity_task_canceled(map(), respond_activity_task_canceled_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 respond_activity_task_canceled(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_canceled(Client, Input, []).
+
+-spec respond_activity_task_canceled(map(), respond_activity_task_canceled_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 respond_activity_task_canceled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondActivityTaskCanceled">>, Input, Options).
@@ -1392,9 +3065,20 @@ respond_activity_task_canceled(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec respond_activity_task_completed(map(), respond_activity_task_completed_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 respond_activity_task_completed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_completed(Client, Input, []).
+
+-spec respond_activity_task_completed(map(), respond_activity_task_completed_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 respond_activity_task_completed(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondActivityTaskCompleted">>, Input, Options).
@@ -1442,9 +3126,20 @@ respond_activity_task_completed(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec respond_activity_task_failed(map(), respond_activity_task_failed_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 respond_activity_task_failed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_activity_task_failed(Client, Input, []).
+
+-spec respond_activity_task_failed(map(), respond_activity_task_failed_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 respond_activity_task_failed(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondActivityTaskFailed">>, Input, Options).
@@ -1478,9 +3173,20 @@ respond_activity_task_failed(Client, Input, Options)
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the
 %% Amazon SWF Developer Guide.
+-spec respond_decision_task_completed(map(), respond_decision_task_completed_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 respond_decision_task_completed(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_decision_task_completed(Client, Input, []).
+
+-spec respond_decision_task_completed(map(), respond_decision_task_completed_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 respond_decision_task_completed(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondDecisionTaskCompleted">>, Input, Options).
@@ -1528,9 +3234,20 @@ respond_decision_task_completed(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec signal_workflow_execution(map(), signal_workflow_execution_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 signal_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     signal_workflow_execution(Client, Input, []).
+
+-spec signal_workflow_execution(map(), signal_workflow_execution_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 signal_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SignalWorkflowExecution">>, Input, Options).
@@ -1586,9 +3303,28 @@ signal_workflow_execution(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec start_workflow_execution(map(), start_workflow_execution_input()) ->
+    {ok, run(), tuple()} |
+    {error, any()} |
+    {error, default_undefined_fault(), tuple()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_deprecated_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()} |
+    {error, workflow_execution_already_started_fault(), tuple()}.
 start_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_workflow_execution(Client, Input, []).
+
+-spec start_workflow_execution(map(), start_workflow_execution_input(), proplists:proplist()) ->
+    {ok, run(), tuple()} |
+    {error, any()} |
+    {error, default_undefined_fault(), tuple()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_deprecated_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()} |
+    {error, workflow_execution_already_started_fault(), tuple()}.
 start_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartWorkflowExecution">>, Input, Options).
@@ -1596,9 +3332,24 @@ start_workflow_execution(Client, Input, Options)
 %% @doc Add a tag to a Amazon SWF domain.
 %%
 %% Amazon SWF supports a maximum of 50 tags per resource.
+-spec tag_resource(map(), tag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, too_many_tags_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, too_many_tags_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1650,9 +3401,20 @@ tag_resource(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec terminate_workflow_execution(map(), terminate_workflow_execution_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 terminate_workflow_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_workflow_execution(Client, Input, []).
+
+-spec terminate_workflow_execution(map(), terminate_workflow_execution_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 terminate_workflow_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkflowExecution">>, Input, Options).
@@ -1698,9 +3460,22 @@ terminate_workflow_execution(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec undeprecate_activity_type(map(), undeprecate_activity_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_already_exists_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 undeprecate_activity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_activity_type(Client, Input, []).
+
+-spec undeprecate_activity_type(map(), undeprecate_activity_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_already_exists_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 undeprecate_activity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UndeprecateActivityType">>, Input, Options).
@@ -1739,9 +3514,22 @@ undeprecate_activity_type(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec undeprecate_domain(map(), undeprecate_domain_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, domain_already_exists_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 undeprecate_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_domain(Client, Input, []).
+
+-spec undeprecate_domain(map(), undeprecate_domain_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, domain_already_exists_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 undeprecate_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UndeprecateDomain">>, Input, Options).
@@ -1787,17 +3575,43 @@ undeprecate_domain(Client, Input, Options)
 %% Workflows:
 %% https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html
 %% in the Amazon SWF Developer Guide.
+-spec undeprecate_workflow_type(map(), undeprecate_workflow_type_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_already_exists_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 undeprecate_workflow_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     undeprecate_workflow_type(Client, Input, []).
+
+-spec undeprecate_workflow_type(map(), undeprecate_workflow_type_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, type_already_exists_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 undeprecate_workflow_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UndeprecateWorkflowType">>, Input, Options).
 
 %% @doc Remove a tag from a Amazon SWF domain.
+-spec untag_resource(map(), untag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_fault(), tuple()} |
+    {error, operation_not_permitted_fault(), tuple()} |
+    {error, unknown_resource_fault(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

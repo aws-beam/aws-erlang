@@ -393,15 +393,5151 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% restore_db_cluster_from_snapshot_message() :: #{
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineMode">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"ScalingConfiguration">> => scaling_configuration(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"SnapshotIdentifier">> := string(),
+%%   <<"StorageType">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcSecurityGroupIds">> => list(string()())
+%% }
+-type restore_db_cluster_from_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type reboot_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string()
+%% }
+-type start_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_details() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Parameters">> => list(parameter()())
+%% }
+-type db_parameter_group_details() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscriptions_message() :: #{
+%%   <<"EventSubscriptionsList">> => list(event_subscription()()),
+%%   <<"Marker">> => string()
+%% }
+-type event_subscriptions_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target_already_registered_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_target_already_registered_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_attribute() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValues">> => list(string()())
+%% }
+-type db_snapshot_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_snapshot_message() :: #{
+%%   <<"DBSnapshotIdentifier">> := string()
+%% }
+-type delete_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_snapshot_result() :: #{
+%%   <<"DBClusterSnapshot">> => db_cluster_snapshot()
+%% }
+-type delete_db_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action() :: #{
+%%   <<"ActionId">> => string(),
+%%   <<"ApplyModes">> => list(string()()),
+%%   <<"ContextAttributes">> => list(context_attribute()()),
+%%   <<"Description">> => string(),
+%%   <<"IssueDetails">> => issue_details(),
+%%   <<"Operation">> => string(),
+%%   <<"Parameters">> => list(recommended_action_parameter()()),
+%%   <<"Status">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type recommended_action() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_resource_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_membership() :: #{
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type option_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% pending_maintenance_action() :: #{
+%%   <<"Action">> => string(),
+%%   <<"AutoAppliedAfterDate">> => non_neg_integer(),
+%%   <<"CurrentApplyDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ForcedApplyDate">> => non_neg_integer(),
+%%   <<"OptInStatus">> => string()
+%% }
+-type pending_maintenance_action() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_parameter_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% target_health() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type target_health() :: #{binary() => any()}.
+
+%% Example:
+%% account_quota() :: #{
+%%   <<"AccountQuotaName">> => string(),
+%%   <<"Max">> => float(),
+%%   <<"Used">> => float()
+%% }
+-type account_quota() :: #{binary() => any()}.
+
+%% Example:
+%% apply_pending_maintenance_action_message() :: #{
+%%   <<"ApplyAction">> := string(),
+%%   <<"OptInType">> := string(),
+%%   <<"ResourceIdentifier">> := string()
+%% }
+-type apply_pending_maintenance_action_message() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_already_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_already_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_proxy_endpoint_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_proxy_endpoint_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_snapshot() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"ClusterCreateTime">> => non_neg_integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DBClusterSnapshotArn">> => string(),
+%%   <<"DBClusterSnapshotIdentifier">> => string(),
+%%   <<"DBSystemId">> => string(),
+%%   <<"DbClusterResourceId">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineMode">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"PercentProgress">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"SnapshotCreateTime">> => non_neg_integer(),
+%%   <<"SnapshotType">> => string(),
+%%   <<"SourceDBClusterSnapshotArn">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TagList">> => list(tag()()),
+%%   <<"VpcId">> => string()
+%% }
+-type db_cluster_snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type delete_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_capacity_info() :: #{
+%%   <<"CurrentCapacity">> => integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"PendingCapacity">> => integer(),
+%%   <<"SecondsBeforeTimeout">> => integer(),
+%%   <<"TimeoutAction">> => string()
+%% }
+-type db_cluster_capacity_info() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_subnet_group_message() :: #{
+%%   <<"DBSubnetGroupDescription">> => string(),
+%%   <<"DBSubnetGroupName">> := string(),
+%%   <<"SubnetIds">> := list(string()())
+%% }
+-type modify_db_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_message() :: #{
+%%   <<"DBSubnetGroups">> => list(db_subnet_group()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_endpoint() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DBProxyEndpointArn">> => string(),
+%%   <<"DBProxyEndpointName">> => string(),
+%%   <<"DBProxyName">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetRole">> => list(any()),
+%%   <<"VpcId">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"VpcSubnetIds">> => list(string()())
+%% }
+-type db_proxy_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_parameters_message() :: #{
+%%   <<"DBClusterParameterGroupName">> := string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"Source">> => string()
+%% }
+-type describe_db_cluster_parameters_message() :: #{binary() => any()}.
+
+%% Example:
+%% resource_pending_maintenance_actions() :: #{
+%%   <<"PendingMaintenanceActionDetails">> => list(pending_maintenance_action()()),
+%%   <<"ResourceIdentifier">> => string()
+%% }
+-type resource_pending_maintenance_actions() :: #{binary() => any()}.
+
+%% Example:
+%% stop_activity_stream_request() :: #{
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type stop_activity_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% event_categories_map() :: #{
+%%   <<"EventCategories">> => list(string()()),
+%%   <<"SourceType">> => string()
+%% }
+-type event_categories_map() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_proxy_request() :: #{
+%%   <<"Auth">> := list(user_auth_config()()),
+%%   <<"DBProxyName">> := string(),
+%%   <<"DebugLogging">> => boolean(),
+%%   <<"EngineFamily">> := list(any()),
+%%   <<"IdleClientTimeout">> => integer(),
+%%   <<"RequireTLS">> => boolean(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"VpcSubnetIds">> := list(string()())
+%% }
+-type create_db_proxy_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_target_group_request() :: #{
+%%   <<"ConnectionPoolConfig">> => connection_pool_configuration(),
+%%   <<"DBProxyName">> := string(),
+%%   <<"NewName">> => string(),
+%%   <<"TargetGroupName">> := string()
+%% }
+-type modify_db_proxy_target_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% range() :: #{
+%%   <<"From">> => integer(),
+%%   <<"Step">> => integer(),
+%%   <<"To">> => integer()
+%% }
+-type range() :: #{binary() => any()}.
+
+%% Example:
+%% connection_pool_configuration_info() :: #{
+%%   <<"ConnectionBorrowTimeout">> => integer(),
+%%   <<"InitQuery">> => string(),
+%%   <<"MaxConnectionsPercent">> => integer(),
+%%   <<"MaxIdleConnectionsPercent">> => integer(),
+%%   <<"SessionPinningFilters">> => list(string()())
+%% }
+-type connection_pool_configuration_info() :: #{binary() => any()}.
+
+%% Example:
+%% delete_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type delete_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% iam_role_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type iam_role_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_tenant_database_message() :: #{
+%%   <<"CharacterSetName">> => string(),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"MasterUserPassword">> := string(),
+%%   <<"MasterUsername">> := string(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TenantDBName">> := string()
+%% }
+-type create_tenant_database_message() :: #{binary() => any()}.
+
+%% Example:
+%% performance_insights_metric_dimension_group() :: #{
+%%   <<"Dimensions">> => list(string()()),
+%%   <<"Group">> => string(),
+%%   <<"Limit">> => integer()
+%% }
+-type performance_insights_metric_dimension_group() :: #{binary() => any()}.
+
+%% Example:
+%% max_db_shard_group_limit_reached() :: #{
+%%   <<"message">> => string()
+%% }
+-type max_db_shard_group_limit_reached() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_group_name_message() :: #{
+%%   <<"DBClusterParameterGroupName">> => string()
+%% }
+-type db_cluster_parameter_group_name_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backup_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_automated_backup_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_snapshot_attributes_result() :: #{
+%%   <<"DBSnapshotAttributesResult">> => db_snapshot_attributes_result()
+%% }
+-type describe_db_snapshot_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type stop_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone() :: #{
+%%   <<"Name">> => string()
+%% }
+-type availability_zone() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instance_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReservedDBInstances">> => list(reserved_db_instance()())
+%% }
+-type reserved_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_read_replica_message() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"UpgradeStorageConfig">> => boolean(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"SourceDBInstanceIdentifier">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"SourceDBClusterIdentifier">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DomainDnsIps">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ReplicaMode">> => list(any()),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()()),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type create_db_instance_read_replica_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string()
+%% }
+-type start_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_snapshot_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_instances_message() :: #{
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_instances_message() :: #{binary() => any()}.
+
+%% Example:
+%% shared_snapshot_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type shared_snapshot_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_recommendation_message() :: #{
+%%   <<"DBRecommendation">> => db_recommendation()
+%% }
+-type db_recommendation_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_request() :: #{
+%%   <<"Auth">> => list(user_auth_config()()),
+%%   <<"DBProxyName">> := string(),
+%%   <<"DebugLogging">> => boolean(),
+%%   <<"IdleClientTimeout">> => integer(),
+%%   <<"NewDBProxyName">> => string(),
+%%   <<"RequireTLS">> => boolean(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SecurityGroups">> => list(string()())
+%% }
+-type modify_db_proxy_request() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_security_group_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_parameter_group_message() :: #{
+%%   <<"DBParameterGroupFamily">> := string(),
+%%   <<"DBParameterGroupName">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_deployment() :: #{
+%%   <<"BlueGreenDeploymentIdentifier">> => string(),
+%%   <<"BlueGreenDeploymentName">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DeleteTime">> => non_neg_integer(),
+%%   <<"Source">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StatusDetails">> => string(),
+%%   <<"SwitchoverDetails">> => list(switchover_detail()()),
+%%   <<"TagList">> => list(tag()()),
+%%   <<"Target">> => string(),
+%%   <<"Tasks">> => list(blue_green_deployment_task()())
+%% }
+-type blue_green_deployment() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_deployment_task() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type blue_green_deployment_task() :: #{binary() => any()}.
+
+%% Example:
+%% performance_issue_details() :: #{
+%%   <<"Analysis">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Metrics">> => list(metric()()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type performance_issue_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_automated_backup_message() :: #{
+%%   <<"DBInstanceAutomatedBackupsArn">> => string(),
+%%   <<"DbiResourceId">> => string()
+%% }
+-type delete_db_instance_automated_backup_message() :: #{binary() => any()}.
+
+%% Example:
+%% integration() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Errors">> => list(integration_error()()),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationName">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetArn">> => string()
+%% }
+-type integration() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database() :: #{
+%%   <<"CharacterSetName">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"PendingModifiedValues">> => tenant_database_pending_modified_values(),
+%%   <<"Status">> => string(),
+%%   <<"TagList">> => list(tag()()),
+%%   <<"TenantDBName">> => string(),
+%%   <<"TenantDatabaseARN">> => string(),
+%%   <<"TenantDatabaseCreateTime">> => non_neg_integer(),
+%%   <<"TenantDatabaseResourceId">> => string()
+%% }
+-type tenant_database() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string()
+%% }
+-type reboot_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_parameter_group_message() :: #{
+%%   <<"DBClusterParameterGroupName">> := string(),
+%%   <<"DBParameterGroupFamily">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_db_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% connection_pool_configuration() :: #{
+%%   <<"ConnectionBorrowTimeout">> => integer(),
+%%   <<"InitQuery">> => string(),
+%%   <<"MaxConnectionsPercent">> => integer(),
+%%   <<"MaxIdleConnectionsPercent">> => integer(),
+%%   <<"SessionPinningFilters">> => list(string()())
+%% }
+-type connection_pool_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_cluster_parameter_group_result() :: #{
+%%   <<"DBClusterParameterGroup">> => db_cluster_parameter_group()
+%% }
+-type copy_db_cluster_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBSnapshotIdentifier">> => string()
+%% }
+-type stop_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_event_subscription_message() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategories">> => list(string()()),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"SubscriptionName">> := string()
+%% }
+-type modify_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_cluster_parameter_group_message() :: #{
+%%   <<"SourceDBClusterParameterGroupIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetDBClusterParameterGroupDescription">> := string(),
+%%   <<"TargetDBClusterParameterGroupIdentifier">> := string()
+%% }
+-type copy_db_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% processor_feature() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type processor_feature() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pending_maintenance_actions_message() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ResourceIdentifier">> => string()
+%% }
+-type describe_pending_maintenance_actions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_orderable_db_instance_options_message() :: #{
+%%   <<"AvailabilityZoneGroup">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"LicenseModel">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"Vpc">> => boolean()
+%% }
+-type describe_orderable_db_instance_options_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_activity_stream_response() :: #{
+%%   <<"EngineNativeAuditFieldsIncluded">> => boolean(),
+%%   <<"KinesisStreamName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"PolicyStatus">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type modify_activity_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% pending_cloudwatch_logs_exports() :: #{
+%%   <<"LogTypesToDisable">> => list(string()()),
+%%   <<"LogTypesToEnable">> => list(string()())
+%% }
+-type pending_cloudwatch_logs_exports() :: #{binary() => any()}.
+
+%% Example:
+%% metric() :: #{
+%%   <<"MetricQuery">> => metric_query(),
+%%   <<"Name">> => string(),
+%%   <<"References">> => list(metric_reference()()),
+%%   <<"StatisticsDetails">> => string()
+%% }
+-type metric() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_from_s3_message() :: #{
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"S3IngestionRoleArn">> := string(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"SourceEngineVersion">> := string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBSecurityGroups">> => list(string()()),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"DBName">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"Engine">> := string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"LicenseModel">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"DBInstanceClass">> := string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()()),
+%%   <<"SourceEngine">> := string(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type restore_db_instance_from_s3_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_export_task_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_export_task_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_targets_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Targets">> => list(db_proxy_target()())
+%% }
+-type describe_db_proxy_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% double_range() :: #{
+%%   <<"From">> => float(),
+%%   <<"To">> => float()
+%% }
+-type double_range() :: #{binary() => any()}.
+
+%% Example:
+%% engine_defaults() :: #{
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"Parameters">> => list(parameter()())
+%% }
+-type engine_defaults() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_reserved_db_instances_offering_message() :: #{
+%%   <<"DBInstanceCount">> => integer(),
+%%   <<"ReservedDBInstanceId">> => string(),
+%%   <<"ReservedDBInstancesOfferingId">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type purchase_reserved_db_instances_offering_message() :: #{binary() => any()}.
+
+%% Example:
+%% backtrack_db_cluster_message() :: #{
+%%   <<"BacktrackTo">> := non_neg_integer(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"Force">> => boolean(),
+%%   <<"UseEarliestTimeOnPointInTimeUnavailable">> => boolean()
+%% }
+-type backtrack_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_backtrack_message() :: #{
+%%   <<"DBClusterBacktracks">> => list(db_cluster_backtrack()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_backtrack_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_attributes_result() :: #{
+%%   <<"DBSnapshotAttributes">> => list(db_snapshot_attribute()()),
+%%   <<"DBSnapshotIdentifier">> => string()
+%% }
+-type db_snapshot_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_subnet_group_result() :: #{
+%%   <<"DBSubnetGroup">> => db_subnet_group()
+%% }
+-type create_db_subnet_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% reference_details() :: #{
+%%   <<"ScalarReferenceDetails">> => scalar_reference_details()
+%% }
+-type reference_details() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type switchover_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% cloudwatch_logs_export_configuration() :: #{
+%%   <<"DisableLogTypes">> => list(string()()),
+%%   <<"EnableLogTypes">> => list(string()())
+%% }
+-type cloudwatch_logs_export_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tenant_database_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"FinalDBSnapshotIdentifier">> => string(),
+%%   <<"SkipFinalSnapshot">> => boolean(),
+%%   <<"TenantDBName">> := string()
+%% }
+-type delete_tenant_database_message() :: #{binary() => any()}.
+
+%% Example:
+%% disable_http_endpoint_response() :: #{
+%%   <<"HttpEndpointEnabled">> => boolean(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type disable_http_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_db_instance_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_db_instance_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_role() :: #{
+%%   <<"FeatureName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_cluster_role() :: #{binary() => any()}.
+
+%% Example:
+%% promote_read_replica_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type promote_read_replica_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_snapshots_message() :: #{
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"IncludePublic">> => boolean(),
+%%   <<"IncludeShared">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SnapshotType">> => string()
+%% }
+-type describe_db_snapshots_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_target_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type modify_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscription() :: #{
+%%   <<"CustSubscriptionId">> => string(),
+%%   <<"CustomerAwsId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategoriesList">> => list(string()()),
+%%   <<"EventSubscriptionArn">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SourceIdsList">> => list(string()()),
+%%   <<"SourceType">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SubscriptionCreationTime">> => string()
+%% }
+-type event_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% describe_blue_green_deployments_request() :: #{
+%%   <<"BlueGreenDeploymentIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_blue_green_deployments_request() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_security_group() :: #{
+%%   <<"EC2SecurityGroupId">> => string(),
+%%   <<"EC2SecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroupOwnerId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type ec2_security_group() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster_member() :: #{
+%%   <<"DBClusterArn">> => string(),
+%%   <<"GlobalWriteForwardingStatus">> => list(any()),
+%%   <<"IsWriter">> => boolean(),
+%%   <<"Readers">> => list(string()()),
+%%   <<"SynchronizationStatus">> => list(any())
+%% }
+-type global_cluster_member() :: #{binary() => any()}.
+
+%% Example:
+%% recurring_charge() :: #{
+%%   <<"RecurringChargeAmount">> => float(),
+%%   <<"RecurringChargeFrequency">> => string()
+%% }
+-type recurring_charge() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_shard_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_shard_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_cluster_snapshot_attribute_message() :: #{
+%%   <<"AttributeName">> := string(),
+%%   <<"DBClusterSnapshotIdentifier">> := string(),
+%%   <<"ValuesToAdd">> => list(string()()),
+%%   <<"ValuesToRemove">> => list(string()())
+%% }
+-type modify_db_cluster_snapshot_attribute_message() :: #{binary() => any()}.
+
+%% Example:
+%% add_source_identifier_to_subscription_message() :: #{
+%%   <<"SourceIdentifier">> := string(),
+%%   <<"SubscriptionName">> := string()
+%% }
+-type add_source_identifier_to_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_restore_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_restore_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_subnet_group_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_subnet_group_fault() :: #{binary() => any()}.
+
+%% Example:
+%% custom_db_engine_version_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_db_engine_version_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_blue_green_deployments_response() :: #{
+%%   <<"BlueGreenDeployments">> => list(blue_green_deployment()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_blue_green_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_backtrack_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_backtrack_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificates_message() :: #{
+%%   <<"CertificateIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_certificates_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_activity_stream_request() :: #{
+%%   <<"AuditPolicyState">> => list(any()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type modify_activity_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_to_point_in_time_message() :: #{
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EngineMode">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"RestoreToTime">> => non_neg_integer(),
+%%   <<"RestoreType">> => string(),
+%%   <<"ScalingConfiguration">> => scaling_configuration(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"SourceDBClusterIdentifier">> => string(),
+%%   <<"SourceDbClusterResourceId">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UseLatestRestorableTime">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string()())
+%% }
+-type restore_db_cluster_to_point_in_time_message() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_configuration_info() :: #{
+%%   <<"AutoPause">> => boolean(),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"SecondsBeforeTimeout">> => integer(),
+%%   <<"SecondsUntilAutoPause">> => integer(),
+%%   <<"TimeoutAction">> => string()
+%% }
+-type scaling_configuration_info() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_subnet_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_subnet_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type integration_error() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_security_group_message() :: #{
+%%   <<"DBSecurityGroupDescription">> := string(),
+%%   <<"DBSecurityGroupName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_db_security_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet() :: #{
+%%   <<"SubnetAvailabilityZone">> => availability_zone(),
+%%   <<"SubnetIdentifier">> => string(),
+%%   <<"SubnetOutpost">> => outpost(),
+%%   <<"SubnetStatus">> => string()
+%% }
+-type subnet() :: #{binary() => any()}.
+
+%% Example:
+%% remove_source_identifier_from_subscription_message() :: #{
+%%   <<"SourceIdentifier">> := string(),
+%%   <<"SubscriptionName">> := string()
+%% }
+-type remove_source_identifier_from_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_snapshot_message() :: #{
+%%   <<"DBClusterSnapshots">> => list(db_cluster_snapshot()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_subnet() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_message() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"ResourceName">> := string()
+%% }
+-type list_tags_for_resource_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_snapshots_message() :: #{
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DBClusterSnapshotIdentifier">> => string(),
+%%   <<"DbClusterResourceId">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"IncludePublic">> => boolean(),
+%%   <<"IncludeShared">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SnapshotType">> => string()
+%% }
+-type describe_db_cluster_snapshots_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_shard_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_shard_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_db_engine_version_message() :: #{
+%%   <<"DatabaseInstallationFilesS3BucketName">> => string(),
+%%   <<"DatabaseInstallationFilesS3Prefix">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineVersion">> := string(),
+%%   <<"ImageId">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"Manifest">> => string(),
+%%   <<"SourceCustomDbEngineVersionIdentifier">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UseAwsProvidedLatestImage">> => boolean()
+%% }
+-type create_custom_db_engine_version_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_security_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_message() :: #{
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"Timezone">> => string(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"PromotionTier">> => integer(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBSecurityGroups">> => list(string()()),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"DBName">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"Engine">> := string(),
+%%   <<"TdeCredentialPassword">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DomainDnsIps">> => list(string()()),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"LicenseModel">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"DBInstanceClass">> := string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"DBSystemId">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type create_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type create_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_to_point_in_time_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type restore_db_cluster_to_point_in_time_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_proxy_response() :: #{
+%%   <<"DBProxy">> => db_proxy()
+%% }
+-type delete_db_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% metric_reference() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ReferenceDetails">> => reference_details()
+%% }
+-type metric_reference() :: #{binary() => any()}.
+
+%% Example:
+%% describe_option_group_options_message() :: #{
+%%   <<"EngineName">> := string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_option_group_options_message() :: #{binary() => any()}.
+
+%% Example:
+%% custom_db_engine_version_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_db_engine_version_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% storage_type_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type storage_type_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_snapshot_attributes_result() :: #{
+%%   <<"DBClusterSnapshotAttributesResult">> => db_cluster_snapshot_attributes_result()
+%% }
+-type describe_db_cluster_snapshot_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_security_group_message() :: #{
+%%   <<"DBSecurityGroupName">> := string()
+%% }
+-type delete_db_security_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance() :: #{
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"Timezone">> => string(),
+%%   <<"ResumeFullAutomationModeTime">> => non_neg_integer(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"PromotionTier">> => integer(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"ActivityStreamMode">> => list(any()),
+%%   <<"MasterUserSecret">> => master_user_secret(),
+%%   <<"ActivityStreamPolicyStatus">> => list(any()),
+%%   <<"DBParameterGroups">> => list(db_parameter_group_status()()),
+%%   <<"AutomaticRestartTime">> => non_neg_integer(),
+%%   <<"ListenerEndpoint">> => endpoint(),
+%%   <<"Iops">> => integer(),
+%%   <<"ActivityStreamKmsKeyId">> => string(),
+%%   <<"StatusInfos">> => list(db_instance_status_info()()),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"DBInstanceArn">> => string(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"DomainMemberships">> => list(domain_membership()()),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"PendingModifiedValues">> => pending_modified_values(),
+%%   <<"ActivityStreamStatus">> => list(any()),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"SecondaryAvailabilityZone">> => string(),
+%%   <<"CustomerOwnedIpEnabled">> => boolean(),
+%%   <<"DBSubnetGroup">> => db_subnet_group(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"PerformanceInsightsEnabled">> => boolean(),
+%%   <<"DBSecurityGroups">> => list(db_security_group_membership()()),
+%%   <<"ActivityStreamKinesisStreamName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"EnabledCloudwatchLogsExports">> => list(string()()),
+%%   <<"DBName">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"IsStorageConfigUpgradeAvailable">> => boolean(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"LatestRestorableTime">> => non_neg_integer(),
+%%   <<"EnhancedMonitoringResourceArn">> => string(),
+%%   <<"AutomationMode">> => list(any()),
+%%   <<"DBInstanceStatus">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"OptionGroupMemberships">> => list(option_group_membership()()),
+%%   <<"AssociatedRoles">> => list(db_instance_role()()),
+%%   <<"TagList">> => list(tag()()),
+%%   <<"DbInstancePort">> => integer(),
+%%   <<"ReadReplicaSourceDBInstanceIdentifier">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"ReplicaMode">> => list(any()),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"PercentProgress">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ReadReplicaDBClusterIdentifiers">> => list(string()()),
+%%   <<"InstanceCreateTime">> => non_neg_integer(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()()),
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"ReadReplicaDBInstanceIdentifiers">> => list(string()()),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"CertificateDetails">> => certificate_details(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"ReadReplicaSourceDBClusterIdentifier">> => string(),
+%%   <<"ActivityStreamEngineNativeAuditFieldsIncluded">> => boolean(),
+%%   <<"DBInstanceAutomatedBackupsReplications">> => list(db_instance_automated_backups_replication()()),
+%%   <<"DBSystemId">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type db_instance() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_endpoint_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_endpoint_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% add_role_to_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"FeatureName">> => string(),
+%%   <<"RoleArn">> := string()
+%% }
+-type add_role_to_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_automated_backup_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_automated_backup_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_default_cluster_parameters_result() :: #{
+%%   <<"EngineDefaults">> => engine_defaults()
+%% }
+-type describe_engine_default_cluster_parameters_result() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"RdsResourceId">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"TargetArn">> => string(),
+%%   <<"TargetHealth">> => target_health(),
+%%   <<"TrackedClusterId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type db_proxy_target() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_cluster_snapshot_result() :: #{
+%%   <<"DBClusterSnapshot">> => db_cluster_snapshot()
+%% }
+-type copy_db_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_already_exist_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_already_exist_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_parameter_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type recommended_action_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% delete_blue_green_deployment_response() :: #{
+%%   <<"BlueGreenDeployment">> => blue_green_deployment()
+%% }
+-type delete_blue_green_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_message() :: #{
+%%   <<"DBClusters">> => list(db_cluster()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_snapshot_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBSnapshotIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% minimum_engine_version_per_allowed_value() :: #{
+%%   <<"AllowedValue">> => string(),
+%%   <<"MinimumEngineVersion">> => string()
+%% }
+-type minimum_engine_version_per_allowed_value() :: #{binary() => any()}.
+
+%% Example:
+%% describe_valid_db_instance_modifications_result() :: #{
+%%   <<"ValidDBInstanceModificationsMessage">> => valid_db_instance_modifications_message()
+%% }
+-type describe_valid_db_instance_modifications_result() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_image_properties_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type ec2_image_properties_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% copy_option_group_message() :: #{
+%%   <<"SourceOptionGroupIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetOptionGroupDescription">> := string(),
+%%   <<"TargetOptionGroupIdentifier">> := string()
+%% }
+-type copy_option_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_default_parameters_message() :: #{
+%%   <<"DBParameterGroupFamily">> := string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_engine_default_parameters_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_valid_db_instance_modifications_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string()
+%% }
+-type describe_valid_db_instance_modifications_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tenant_database_result() :: #{
+%%   <<"TenantDatabase">> => tenant_database()
+%% }
+-type delete_tenant_database_result() :: #{binary() => any()}.
+
+%% Example:
+%% failover_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type failover_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_global_cluster_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_global_cluster_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_instance_automated_backup_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_instance_automated_backup_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_cluster_endpoint_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_cluster_endpoint_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_engine_versions_message() :: #{
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"DefaultOnly">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"IncludeAll">> => boolean(),
+%%   <<"ListSupportedCharacterSets">> => boolean(),
+%%   <<"ListSupportedTimezones">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_engine_versions_message() :: #{binary() => any()}.
+
+%% Example:
+%% promote_read_replica_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string()
+%% }
+-type promote_read_replica_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_blue_green_deployment_request() :: #{
+%%   <<"BlueGreenDeploymentName">> := string(),
+%%   <<"Source">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetDBClusterParameterGroupName">> => string(),
+%%   <<"TargetDBInstanceClass">> => string(),
+%%   <<"TargetDBParameterGroupName">> => string(),
+%%   <<"TargetEngineVersion">> => string(),
+%%   <<"UpgradeTargetStorageConfig">> => boolean()
+%% }
+-type create_blue_green_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% domain_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type domain_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_read_replica_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type create_db_instance_read_replica_result() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_from_s3_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type restore_db_cluster_from_s3_result() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint_message() :: #{
+%%   <<"DBClusterEndpoints">> => list(db_cluster_endpoint()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% download_db_log_file_portion_details() :: #{
+%%   <<"AdditionalDataPending">> => boolean(),
+%%   <<"LogFileData">> => string(),
+%%   <<"Marker">> => string()
+%% }
+-type download_db_log_file_portion_details() :: #{binary() => any()}.
+
+%% Example:
+%% modify_certificates_message() :: #{
+%%   <<"CertificateIdentifier">> => string(),
+%%   <<"RemoveCustomerOverride">> => boolean()
+%% }
+-type modify_certificates_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_security_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% character_set() :: #{
+%%   <<"CharacterSetDescription">> => string(),
+%%   <<"CharacterSetName">> => string()
+%% }
+-type character_set() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DeleteAutomatedBackups">> => boolean(),
+%%   <<"FinalDBSnapshotIdentifier">> => string(),
+%%   <<"SkipFinalSnapshot">> => boolean()
+%% }
+-type delete_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type reboot_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_blue_green_deployment_request() :: #{
+%%   <<"BlueGreenDeploymentIdentifier">> := string(),
+%%   <<"SwitchoverTimeout">> => integer()
+%% }
+-type switchover_blue_green_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backup_message() :: #{
+%%   <<"DBInstanceAutomatedBackups">> => list(db_instance_automated_backup()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_instance_automated_backup_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group() :: #{
+%%   <<"DBSecurityGroupArn">> => string(),
+%%   <<"DBSecurityGroupDescription">> => string(),
+%%   <<"DBSecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroups">> => list(ec2_security_group()()),
+%%   <<"IPRanges">> => list(ip_range()()),
+%%   <<"OwnerId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type db_security_group() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_endpoints_response() :: #{
+%%   <<"DBProxyEndpoints">> => list(db_proxy_endpoint()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_db_proxy_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_export_source_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_export_source_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% export_task_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type export_task_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% add_source_identifier_to_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type add_source_identifier_to_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% db_shard_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_shard_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_attributes_message() :: #{
+
+%% }
+-type describe_account_attributes_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group() :: #{
+%%   <<"DBParameterGroupArn">> => string(),
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type db_parameter_group() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_db_instances_offerings_message() :: #{
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"Duration">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"OfferingType">> => string(),
+%%   <<"ProductDescription">> => string(),
+%%   <<"ReservedDBInstancesOfferingId">> => string()
+%% }
+-type describe_reserved_db_instances_offerings_message() :: #{binary() => any()}.
+
+%% Example:
+%% custom_db_engine_version_a_m_i() :: #{
+%%   <<"ImageId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type custom_db_engine_version_a_m_i() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_parameter_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DeleteAutomatedBackups">> => boolean(),
+%%   <<"FinalDBSnapshotIdentifier">> => string(),
+%%   <<"SkipFinalSnapshot">> => boolean()
+%% }
+-type delete_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_instance_automated_backups_replication_result() :: #{
+%%   <<"DBInstanceAutomatedBackup">> => db_instance_automated_backup()
+%% }
+-type stop_db_instance_automated_backups_replication_result() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_vpc_network_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_vpc_network_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type option_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% source_region() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"RegionName">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SupportsDBInstanceAutomatedBackupsReplication">> => boolean()
+%% }
+-type source_region() :: #{binary() => any()}.
+
+%% Example:
+%% iam_role_missing_permissions_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type iam_role_missing_permissions_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reset_db_parameter_group_message() :: #{
+%%   <<"DBParameterGroupName">> := string(),
+%%   <<"Parameters">> => list(parameter()()),
+%%   <<"ResetAllParameters">> => boolean()
+%% }
+-type reset_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_subscription_message() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategories">> => list(string()()),
+%%   <<"SnsTopicArn">> := string(),
+%%   <<"SourceIds">> => list(string()()),
+%%   <<"SourceType">> => string(),
+%%   <<"SubscriptionName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_read_replica_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string()
+%% }
+-type switchover_read_replica_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_security_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxies_request() :: #{
+%%   <<"DBProxyName">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_proxies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_endpoints_message() :: #{
+%%   <<"DBClusterEndpointIdentifier">> => string(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_cluster_endpoints_message() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tenant_database_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type modify_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% orderable_db_instance_options_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"OrderableDBInstanceOptions">> => list(orderable_db_instance_option()())
+%% }
+-type orderable_db_instance_options_message() :: #{binary() => any()}.
+
+%% Example:
+%% promote_read_replica_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type promote_read_replica_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% authorize_db_security_group_ingress_message() :: #{
+%%   <<"CIDRIP">> => string(),
+%%   <<"DBSecurityGroupName">> := string(),
+%%   <<"EC2SecurityGroupId">> => string(),
+%%   <<"EC2SecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroupOwnerId">> => string()
+%% }
+-type authorize_db_security_group_ingress_message() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_detail() :: #{
+%%   <<"SourceMember">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TargetMember">> => string()
+%% }
+-type switchover_detail() :: #{binary() => any()}.
+
+%% Example:
+%% integration_conflict_operation_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_conflict_operation_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_recommendations_message() :: #{
+%%   <<"DBRecommendations">> => list(db_recommendation()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_recommendations_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_subscriptions_message() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SubscriptionName">> => string()
+%% }
+-type describe_event_subscriptions_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_shard_group_message() :: #{
+%%   <<"ComputeRedundancy">> => integer(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBShardGroupIdentifier">> := string(),
+%%   <<"MaxACU">> := float(),
+%%   <<"PubliclyAccessible">> => boolean()
+%% }
+-type create_db_shard_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_instance_automated_backups_message() :: #{
+%%   <<"DBInstanceAutomatedBackupsArn">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_instance_automated_backups_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_custom_db_engine_version_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_custom_db_engine_version_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_snapshot_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_snapshot_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_endpoint_message() :: #{
+%%   <<"DBClusterEndpointIdentifier">> := string(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"EndpointType">> := string(),
+%%   <<"ExcludedMembers">> => list(string()()),
+%%   <<"StaticMembers">> => list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_db_cluster_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_cluster_snapshot_attribute_result() :: #{
+%%   <<"DBClusterSnapshotAttributesResult">> => db_cluster_snapshot_attributes_result()
+%% }
+-type modify_db_cluster_snapshot_attribute_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_message() :: #{
+%%   <<"IntegrationIdentifier">> := string()
+%% }
+-type delete_integration_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_snapshot_attribute() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValues">> => list(string()())
+%% }
+-type db_cluster_snapshot_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% start_activity_stream_request() :: #{
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"EngineNativeAuditFieldsIncluded">> => boolean(),
+%%   <<"KmsKeyId">> := string(),
+%%   <<"Mode">> := list(any()),
+%%   <<"ResourceArn">> := string()
+%% }
+-type start_activity_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_does_not_cover_enough_a_zs() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_does_not_cover_enough_a_zs() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_security_groups_message() :: #{
+%%   <<"DBSecurityGroupName">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_security_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% pending_modified_values() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AutomationMode">> => list(any()),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"PendingCloudwatchLogsExports">> => pending_cloudwatch_logs_exports(),
+%%   <<"Port">> => integer(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()()),
+%%   <<"ResumeFullAutomationModeTime">> => non_neg_integer(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string()
+%% }
+-type pending_modified_values() :: #{binary() => any()}.
+
+%% Example:
+%% network_type_not_supported() :: #{
+%%   <<"message">> => string()
+%% }
+-type network_type_not_supported() :: #{binary() => any()}.
+
+%% Example:
+%% orderable_db_instance_option() :: #{
+%%   <<"SupportedEngineModes">> => list(string()()),
+%%   <<"AvailabilityZoneGroup">> => string(),
+%%   <<"SupportsIAMDatabaseAuthentication">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"SupportedActivityStreamModes">> => list(string()()),
+%%   <<"SupportsStorageEncryption">> => boolean(),
+%%   <<"SupportsStorageThroughput">> => boolean(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"MaxStorageThroughputPerIops">> => float(),
+%%   <<"ReadReplicaCapable">> => boolean(),
+%%   <<"SupportsClusters">> => boolean(),
+%%   <<"StorageType">> => string(),
+%%   <<"MaxIopsPerGib">> => float(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"MinIopsPerGib">> => float(),
+%%   <<"MinStorageThroughputPerDbInstance">> => integer(),
+%%   <<"SupportsDedicatedLogVolume">> => boolean(),
+%%   <<"SupportsStorageAutoscaling">> => boolean(),
+%%   <<"MinStorageThroughputPerIops">> => float(),
+%%   <<"MinIopsPerDbInstance">> => integer(),
+%%   <<"MinStorageSize">> => integer(),
+%%   <<"AvailableProcessorFeatures">> => list(available_processor_feature()()),
+%%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"MaxStorageThroughputPerDbInstance">> => integer(),
+%%   <<"SupportsEnhancedMonitoring">> => boolean(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"MaxIopsPerDbInstance">> => integer(),
+%%   <<"SupportsKerberosAuthentication">> => boolean(),
+%%   <<"SupportedNetworkTypes">> => list(string()()),
+%%   <<"SupportsGlobalDatabases">> => boolean(),
+%%   <<"MultiAZCapable">> => boolean(),
+%%   <<"SupportsPerformanceInsights">> => boolean(),
+%%   <<"Vpc">> => boolean(),
+%%   <<"OutpostCapable">> => boolean(),
+%%   <<"MaxStorageSize">> => integer(),
+%%   <<"SupportsIops">> => boolean()
+%% }
+-type orderable_db_instance_option() :: #{binary() => any()}.
+
+%% Example:
+%% backup_policy_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type backup_policy_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_parameter_group_message() :: #{
+%%   <<"DBParameterGroupName">> := string()
+%% }
+-type delete_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_option_setting() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"ApplyType">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"IsModifiable">> => boolean(),
+%%   <<"IsRequired">> => boolean(),
+%%   <<"MinimumEngineVersionPerAllowedValue">> => list(minimum_engine_version_per_allowed_value()()),
+%%   <<"SettingDescription">> => string(),
+%%   <<"SettingName">> => string()
+%% }
+-type option_group_option_setting() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_groups_message() :: #{
+%%   <<"DBClusterParameterGroups">> => list(db_cluster_parameter_group()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_parameter_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backup_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_automated_backup_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_from_db_snapshot_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type restore_db_instance_from_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_parameter_groups_message() :: #{
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_cluster_parameter_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type authorization_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_message() :: #{
+%%   <<"DBSecurityGroups">> => list(db_security_group()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_security_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% integration_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% available_processor_feature() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type available_processor_feature() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_recommendations_message() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"LastUpdatedAfter">> => non_neg_integer(),
+%%   <<"LastUpdatedBefore">> => non_neg_integer(),
+%%   <<"Locale">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_recommendations_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_role_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_role_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_cluster_snapshot_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_cluster_snapshot_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_cluster_snapshot_message() :: #{
+%%   <<"CopyTags">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"SourceDBClusterSnapshotIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetDBClusterSnapshotIdentifier">> := string()
+%% }
+-type copy_db_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_role_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_role_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_db_security_group_ingress_result() :: #{
+%%   <<"DBSecurityGroup">> => db_security_group()
+%% }
+-type revoke_db_security_group_ingress_result() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"FailoverState">> => failover_state(),
+%%   <<"GlobalClusterArn">> => string(),
+%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"GlobalClusterMembers">> => list(global_cluster_member()()),
+%%   <<"GlobalClusterResourceId">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StorageEncrypted">> => boolean()
+%% }
+-type global_cluster() :: #{binary() => any()}.
+
+%% Example:
+%% enable_http_endpoint_response() :: #{
+%%   <<"HttpEndpointEnabled">> => boolean(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type enable_http_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backups_replication() :: #{
+%%   <<"DBInstanceAutomatedBackupsArn">> => string()
+%% }
+-type db_instance_automated_backups_replication() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxies_response() :: #{
+%%   <<"DBProxies">> => list(db_proxy()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_db_proxies_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% master_user_secret() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"SecretStatus">> => string()
+%% }
+-type master_user_secret() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type authorization_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_role_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_instance_role_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type create_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_message() :: #{
+%%   <<"Certificates">> => list(certificate()()),
+%%   <<"DefaultCertificateForNewLaunches">> => string(),
+%%   <<"Marker">> => string()
+%% }
+-type certificate_message() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_db_proxy_targets_request() :: #{
+%%   <<"DBClusterIdentifiers">> => list(string()()),
+%%   <<"DBInstanceIdentifiers">> => list(string()()),
+%%   <<"DBProxyName">> := string(),
+%%   <<"TargetGroupName">> => string()
+%% }
+-type deregister_db_proxy_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% db_upgrade_dependency_failure_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_upgrade_dependency_failure_fault() :: #{binary() => any()}.
+
+%% Example:
+%% global_clusters_message() :: #{
+%%   <<"GlobalClusters">> => list(global_cluster()()),
+%%   <<"Marker">> => string()
+%% }
+-type global_clusters_message() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_db_proxy_targets_response() :: #{
+
+%% }
+-type deregister_db_proxy_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type certificate_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% authorize_db_security_group_ingress_result() :: #{
+%%   <<"DBSecurityGroup">> => db_security_group()
+%% }
+-type authorize_db_security_group_ingress_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type modify_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% remove_from_global_cluster_message() :: #{
+%%   <<"DbClusterIdentifier">> => string(),
+%%   <<"GlobalClusterIdentifier">> => string()
+%% }
+-type remove_from_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% ip_range() :: #{
+%%   <<"CIDRIP">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type ip_range() :: #{binary() => any()}.
+
+%% Example:
+%% failover_state() :: #{
+%%   <<"FromDbClusterArn">> => string(),
+%%   <<"IsDataLossAllowed">> => boolean(),
+%%   <<"Status">> => list(any()),
+%%   <<"ToDbClusterArn">> => string()
+%% }
+-type failover_state() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_role() :: #{
+%%   <<"FeatureName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_instance_role() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_tenant_databases_message() :: #{
+%%   <<"DBSnapshotTenantDatabases">> => list(db_snapshot_tenant_database()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_snapshot_tenant_databases_message() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"ForceFailover">> => boolean()
+%% }
+-type reboot_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_parameters_message() :: #{
+%%   <<"DBParameterGroupName">> := string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"Source">> => string()
+%% }
+-type describe_db_parameters_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_target_groups_request() :: #{
+%%   <<"DBProxyName">> := string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TargetGroupName">> => string()
+%% }
+-type describe_db_proxy_target_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_role_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_role_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% source_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_engine_version_message() :: #{
+%%   <<"DBEngineVersions">> => list(db_engine_version()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_engine_version_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_endpoint_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_read_replica_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type switchover_read_replica_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_global_cluster_message() :: #{
+%%   <<"AllowMajorVersionUpgrade">> => boolean(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"NewGlobalClusterIdentifier">> => string()
+%% }
+-type modify_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_engine_version() :: #{
+%%   <<"SupportedEngineModes">> => list(string()()),
+%%   <<"SupportsBabelfish">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"SupportedCACertificateIdentifiers">> => list(string()()),
+%%   <<"DatabaseInstallationFilesS3BucketName">> => string(),
+%%   <<"SupportsLogExportsToCloudwatchLogs">> => boolean(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"DefaultCharacterSet">> => character_set(),
+%%   <<"SupportsCertificateRotationWithoutRestart">> => boolean(),
+%%   <<"Image">> => custom_db_engine_version_a_m_i(),
+%%   <<"DBEngineMediaType">> => string(),
+%%   <<"DBEngineVersionDescription">> => string(),
+%%   <<"ValidUpgradeTarget">> => list(upgrade_target()()),
+%%   <<"SupportsLocalWriteForwarding">> => boolean(),
+%%   <<"DBEngineVersionArn">> => string(),
+%%   <<"SupportsReadReplica">> => boolean(),
+%%   <<"SupportedFeatureNames">> => list(string()()),
+%%   <<"EngineVersion">> => string(),
+%%   <<"DatabaseInstallationFilesS3Prefix">> => string(),
+%%   <<"SupportedTimezones">> => list(timezone()()),
+%%   <<"CustomDBEngineVersionManifest">> => string(),
+%%   <<"SupportedNcharCharacterSets">> => list(character_set()()),
+%%   <<"SupportedCharacterSets">> => list(character_set()()),
+%%   <<"TagList">> => list(tag()()),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"SupportsGlobalDatabases">> => boolean(),
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"SupportsIntegrations">> => boolean(),
+%%   <<"Status">> => string(),
+%%   <<"ExportableLogTypes">> => list(string()()),
+%%   <<"DBEngineDescription">> => string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"SupportsParallelQuery">> => boolean()
+%% }
+-type db_engine_version() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_endpoint_request() :: #{
+%%   <<"DBProxyEndpointName">> := string(),
+%%   <<"NewDBProxyEndpointName">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string()())
+%% }
+-type modify_db_proxy_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_tenant_database_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"NewTenantDBName">> => string(),
+%%   <<"TenantDBName">> := string()
+%% }
+-type modify_tenant_database_message() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_export_task_message() :: #{
+%%   <<"ExportTaskIdentifier">> := string()
+%% }
+-type cancel_export_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% parameter() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"ApplyMethod">> => list(any()),
+%%   <<"ApplyType">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsModifiable">> => boolean(),
+%%   <<"MinimumEngineVersion">> => string(),
+%%   <<"ParameterName">> => string(),
+%%   <<"ParameterValue">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"SupportedEngineModes">> => list(string()())
+%% }
+-type parameter() :: #{binary() => any()}.
+
+%% Example:
+%% promote_read_replica_message() :: #{
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"PreferredBackupWindow">> => string()
+%% }
+-type promote_read_replica_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_shard_groups_message() :: #{
+%%   <<"DBShardGroupIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_shard_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% add_role_to_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"FeatureName">> := string(),
+%%   <<"RoleArn">> := string()
+%% }
+-type add_role_to_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_snapshot_attributes_message() :: #{
+%%   <<"DBSnapshotIdentifier">> := string()
+%% }
+-type describe_db_snapshot_attributes_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_event_subscription_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_event_subscription_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_restore_not_enabled_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type point_in_time_restore_not_enabled_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_source_regions_message() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"RegionName">> => string()
+%% }
+-type describe_source_regions_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_snapshot_message() :: #{
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"DBClusterSnapshotIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_db_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_shard_group() :: #{
+%%   <<"ComputeRedundancy">> => integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DBShardGroupIdentifier">> => string(),
+%%   <<"DBShardGroupResourceId">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"MaxACU">> => float(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"Status">> => string()
+%% }
+-type db_shard_group() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot() :: #{
+%%   <<"Encrypted">> => boolean(),
+%%   <<"Port">> => integer(),
+%%   <<"Timezone">> => string(),
+%%   <<"SourceRegion">> => string(),
+%%   <<"DBSnapshotArn">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"SnapshotDatabaseTime">> => non_neg_integer(),
+%%   <<"Iops">> => integer(),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"SnapshotType">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"SourceDBSnapshotIdentifier">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"SnapshotCreateTime">> => non_neg_integer(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"OriginalSnapshotCreateTime">> => non_neg_integer(),
+%%   <<"VpcId">> => string(),
+%%   <<"SnapshotTarget">> => string(),
+%%   <<"TagList">> => list(tag()()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PercentProgress">> => integer(),
+%%   <<"InstanceCreateTime">> => non_neg_integer(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"Status">> => string(),
+%%   <<"DBSystemId">> => string()
+%% }
+-type db_snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% db_security_group_membership() :: #{
+%%   <<"DBSecurityGroupName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_security_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_db_engine_version_message() :: #{
+%%   <<"Engine">> := string(),
+%%   <<"EngineVersion">> := string()
+%% }
+-type delete_custom_db_engine_version_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_parameter_group_message() :: #{
+%%   <<"DBClusterParameterGroupName">> := string()
+%% }
+-type delete_db_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_snapshot_message() :: #{
+%%   <<"DBSnapshotIdentifier">> := string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"OptionGroupName">> => string()
+%% }
+-type modify_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_clusters_message() :: #{
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"IncludeShared">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_clusters_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_export_only_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_export_only_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group_not_allowed_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_subnet_group_not_allowed_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_pending_modified_values() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"CertificateDetails">> => certificate_details(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"PendingCloudwatchLogsExports">> => pending_cloudwatch_logs_exports(),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"StorageType">> => string()
+%% }
+-type cluster_pending_modified_values() :: #{binary() => any()}.
+
+%% Example:
+%% modify_certificates_result() :: #{
+%%   <<"Certificate">> => certificate()
+%% }
+-type modify_certificates_result() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint() :: #{
+%%   <<"CustomEndpointType">> => string(),
+%%   <<"DBClusterEndpointArn">> => string(),
+%%   <<"DBClusterEndpointIdentifier">> => string(),
+%%   <<"DBClusterEndpointResourceIdentifier">> => string(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"ExcludedMembers">> => list(string()()),
+%%   <<"StaticMembers">> => list(string()()),
+%%   <<"Status">> => string()
+%% }
+-type db_cluster_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_endpoint_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_log_files_response() :: #{
+%%   <<"DescribeDBLogFiles">> => list(describe_db_log_files_details()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_db_log_files_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_export_task_message() :: #{
+%%   <<"ExportOnly">> => list(string()()),
+%%   <<"ExportTaskIdentifier">> := string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"KmsKeyId">> := string(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"SourceArn">> := string()
+%% }
+-type start_export_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_parameter_groups_message() :: #{
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_parameter_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_option_group_result() :: #{
+%%   <<"OptionGroup">> => option_group()
+%% }
+-type modify_option_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_parameter_group_message() :: #{
+%%   <<"DBParameterGroupName">> := string(),
+%%   <<"Parameters">> := list(parameter()())
+%% }
+-type modify_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_snapshot_result() :: #{
+%%   <<"DBSnapshot">> => db_snapshot()
+%% }
+-type create_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_global_cluster_message() :: #{
+%%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"TargetDbClusterIdentifier">> := string()
+%% }
+-type switchover_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_to_point_in_time_message() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"Engine">> => string(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"SourceDbiResourceId">> => string(),
+%%   <<"SourceDBInstanceIdentifier">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"TargetDBInstanceIdentifier">> := string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"RestoreTime">> => non_neg_integer(),
+%%   <<"DBName">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"TdeCredentialPassword">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DomainDnsIps">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"LicenseModel">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"SourceDBInstanceAutomatedBackupsArn">> => string(),
+%%   <<"UseLatestRestorableTime">> => boolean(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type restore_db_instance_to_point_in_time_message() :: #{binary() => any()}.
+
+%% Example:
+%% export_tasks_message() :: #{
+%%   <<"ExportTasks">> => list(export_task()()),
+%%   <<"Marker">> => string()
+%% }
+-type export_tasks_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_option_groups_message() :: #{
+%%   <<"EngineName">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"OptionGroupName">> => string()
+%% }
+-type describe_option_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% disable_http_endpoint_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type disable_http_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_cluster_parameter_group_message() :: #{
+%%   <<"DBClusterParameterGroupName">> := string(),
+%%   <<"Parameters">> := list(parameter()())
+%% }
+-type modify_db_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% domain_membership() :: #{
+%%   <<"AuthSecretArn">> => string(),
+%%   <<"DnsIps">> => list(string()()),
+%%   <<"Domain">> => string(),
+%%   <<"FQDN">> => string(),
+%%   <<"IAMRoleName">> => string(),
+%%   <<"OU">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type domain_membership() :: #{binary() => any()}.
+
+%% Example:
+%% source_region_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"SourceRegions">> => list(source_region()())
+%% }
+-type source_region_message() :: #{binary() => any()}.
+
+%% Example:
+%% enable_http_endpoint_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type enable_http_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% source_database_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_database_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_endpoint_message() :: #{
+%%   <<"DBClusterEndpointIdentifier">> := string()
+%% }
+-type delete_db_cluster_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_option_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_option_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_message() :: #{
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"ScalingConfiguration">> => scaling_configuration(),
+%%   <<"EnableHttpEndpoint">> => boolean(),
+%%   <<"ReplicationSourceIdentifier">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"EngineMode">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"Engine">> := string(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"EnableLocalWriteForwarding">> => boolean(),
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"EnableLimitlessDatabase">> => boolean(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"EnableGlobalWriteForwarding">> => boolean(),
+%%   <<"DBSystemId">> => string(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type create_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% valid_storage_options() :: #{
+%%   <<"IopsToStorageRatio">> => list(double_range()()),
+%%   <<"ProvisionedIops">> => list(range()()),
+%%   <<"ProvisionedStorageThroughput">> => list(range()()),
+%%   <<"StorageSize">> => list(range()()),
+%%   <<"StorageThroughputToIopsRatio">> => list(double_range()()),
+%%   <<"StorageType">> => string(),
+%%   <<"SupportsStorageAutoscaling">> => boolean()
+%% }
+-type valid_storage_options() :: #{binary() => any()}.
+
+%% Example:
+%% doc_link() :: #{
+%%   <<"Text">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type doc_link() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_instance_automated_backups_replication_message() :: #{
+%%   <<"SourceDBInstanceArn">> := string()
+%% }
+-type stop_db_instance_automated_backups_replication_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_groups_message() :: #{
+%%   <<"DBParameterGroups">> => list(db_parameter_group()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_parameter_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instances_offering_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReservedDBInstancesOfferings">> => list(reserved_db_instances_offering()())
+%% }
+-type reserved_db_instances_offering_message() :: #{binary() => any()}.
+
+%% Example:
+%% instance_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type instance_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_recommendation_message() :: #{
+%%   <<"Locale">> => string(),
+%%   <<"RecommendationId">> := string(),
+%%   <<"RecommendedActionUpdates">> => list(recommended_action_update()()),
+%%   <<"Status">> => string()
+%% }
+-type modify_db_recommendation_message() :: #{binary() => any()}.
+
+%% Example:
+%% valid_db_instance_modifications_message() :: #{
+%%   <<"Storage">> => list(valid_storage_options()()),
+%%   <<"SupportsDedicatedLogVolume">> => boolean(),
+%%   <<"ValidProcessorFeatures">> => list(available_processor_feature()())
+%% }
+-type valid_db_instance_modifications_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_endpoint_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_endpoint_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_shard_groups_response() :: #{
+%%   <<"DBShardGroups">> => list(db_shard_group()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_db_shard_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_cluster_message() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"DeletionProtection">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"SourceDBClusterIdentifier">> => string(),
+%%   <<"StorageEncrypted">> => boolean()
+%% }
+-type create_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_option_group_result() :: #{
+%%   <<"OptionGroup">> => option_group()
+%% }
+-type create_option_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_endpoint_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_endpoint_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_tenant_database_result() :: #{
+%%   <<"TenantDatabase">> => tenant_database()
+%% }
+-type modify_tenant_database_result() :: #{binary() => any()}.
+
+%% Example:
+%% option_version() :: #{
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Version">> => string()
+%% }
+-type option_version() :: #{binary() => any()}.
+
+%% Example:
+%% storage_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type storage_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_snapshot_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_snapshot_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% user_auth_config() :: #{
+%%   <<"AuthScheme">> => list(any()),
+%%   <<"ClientPasswordAuthType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"IAMAuth">> => list(any()),
+%%   <<"SecretArn">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type user_auth_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_snapshot_result() :: #{
+%%   <<"DBClusterSnapshot">> => db_cluster_snapshot()
+%% }
+-type create_db_cluster_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% integration_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type integration_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% option_configuration() :: #{
+%%   <<"DBSecurityGroupMemberships">> => list(string()()),
+%%   <<"OptionName">> => string(),
+%%   <<"OptionSettings">> => list(option_setting()()),
+%%   <<"OptionVersion">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"VpcSecurityGroupMemberships">> => list(string()())
+%% }
+-type option_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_parameter_group_result() :: #{
+%%   <<"DBParameterGroup">> => db_parameter_group()
+%% }
+-type create_db_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% metric_query() :: #{
+%%   <<"PerformanceInsightsMetricQuery">> => performance_insights_metric_query()
+%% }
+-type metric_query() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_db_instances_message() :: #{
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"Duration">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"LeaseId">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"OfferingType">> => string(),
+%%   <<"ProductDescription">> => string(),
+%%   <<"ReservedDBInstanceId">> => string(),
+%%   <<"ReservedDBInstancesOfferingId">> => string()
+%% }
+-type describe_reserved_db_instances_message() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% events_message() :: #{
+%%   <<"Events">> => list(event()()),
+%%   <<"Marker">> => string()
+%% }
+-type events_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_snapshot_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_parameter_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reset_db_cluster_parameter_group_message() :: #{
+%%   <<"DBClusterParameterGroupName">> := string(),
+%%   <<"Parameters">> => list(parameter()()),
+%%   <<"ResetAllParameters">> => boolean()
+%% }
+-type reset_db_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% export_task() :: #{
+%%   <<"ExportOnly">> => list(string()()),
+%%   <<"ExportTaskIdentifier">> => string(),
+%%   <<"FailureCause">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PercentProgress">> => integer(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"SnapshotTime">> => non_neg_integer(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"Status">> => string(),
+%%   <<"TaskEndTime">> => non_neg_integer(),
+%%   <<"TaskStartTime">> => non_neg_integer(),
+%%   <<"TotalExtractedDataInGB">> => integer(),
+%%   <<"WarningMessage">> => string()
+%% }
+-type export_task() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_automated_backup_result() :: #{
+%%   <<"DBClusterAutomatedBackup">> => db_cluster_automated_backup()
+%% }
+-type delete_db_cluster_automated_backup_result() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tenant_database_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_from_s3_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type restore_db_instance_from_s3_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_global_cluster_message() :: #{
+%%   <<"GlobalClusterIdentifier">> := string()
+%% }
+-type delete_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% option_group() :: #{
+%%   <<"AllowsVpcAndNonVpcInstanceMemberships">> => boolean(),
+%%   <<"CopyTimestamp">> => non_neg_integer(),
+%%   <<"EngineName">> => string(),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"OptionGroupArn">> => string(),
+%%   <<"OptionGroupDescription">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Options">> => list(option()()),
+%%   <<"SourceAccountId">> => string(),
+%%   <<"SourceOptionGroup">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type option_group() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_subscription_message() :: #{
+%%   <<"SubscriptionName">> := string()
+%% }
+-type delete_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_target_groups_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TargetGroups">> => list(db_proxy_target_group()())
+%% }
+-type describe_db_proxy_target_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_target_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_category_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subscription_category_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% register_db_proxy_targets_request() :: #{
+%%   <<"DBClusterIdentifiers">> => list(string()()),
+%%   <<"DBInstanceIdentifiers">> => list(string()()),
+%%   <<"DBProxyName">> := string(),
+%%   <<"TargetGroupName">> => string()
+%% }
+-type register_db_proxy_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% certificate() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateIdentifier">> => string(),
+%%   <<"CertificateType">> => string(),
+%%   <<"CustomerOverride">> => boolean(),
+%%   <<"CustomerOverrideValidTill">> => non_neg_integer(),
+%%   <<"Thumbprint">> => string(),
+%%   <<"ValidFrom">> => non_neg_integer(),
+%%   <<"ValidTill">> => non_neg_integer()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+%% Example:
+%% copy_option_group_result() :: #{
+%%   <<"OptionGroup">> => option_group()
+%% }
+-type copy_option_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% kms_key_not_accessible_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_key_not_accessible_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_parameter_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_parameter_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_invalid_topic_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s_n_s_invalid_topic_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_message() :: #{
+%%   <<"AdditionalEncryptionContext">> => map(),
+%%   <<"IntegrationName">> := string(),
+%%   <<"KMSKeyId">> => string(),
+%%   <<"SourceArn">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetArn">> := string()
+%% }
+-type create_integration_message() :: #{binary() => any()}.
+
+%% Example:
+%% remove_role_from_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"FeatureName">> => string(),
+%%   <<"RoleArn">> := string()
+%% }
+-type remove_role_from_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_default_parameters_result() :: #{
+%%   <<"EngineDefaults">> => engine_defaults()
+%% }
+-type describe_engine_default_parameters_result() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_proxy_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_proxy_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_cluster_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_cluster_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type option_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_db_shard_group_message() :: #{
+%%   <<"DBShardGroupIdentifier">> := string()
+%% }
+-type reboot_db_shard_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_db_engine_version_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_db_engine_version_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_cluster_parameter_group_result() :: #{
+%%   <<"DBClusterParameterGroup">> => db_cluster_parameter_group()
+%% }
+-type create_db_cluster_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"EventCategories">> => list(string()()),
+%%   <<"Message">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceIdentifier">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type create_event_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instances_offering() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"OfferingType">> => string(),
+%%   <<"ProductDescription">> => string(),
+%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"ReservedDBInstancesOfferingId">> => string(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type reserved_db_instances_offering() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_shard_group_message() :: #{
+%%   <<"DBShardGroupIdentifier">> := string(),
+%%   <<"MaxACU">> => float()
+%% }
+-type modify_db_shard_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_proxy_endpoint_response() :: #{
+%%   <<"DBProxyEndpoint">> => db_proxy_endpoint()
+%% }
+-type delete_db_proxy_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_snapshot_attribute_message() :: #{
+%%   <<"AttributeName">> := string(),
+%%   <<"DBSnapshotIdentifier">> := string(),
+%%   <<"ValuesToAdd">> => list(string()()),
+%%   <<"ValuesToRemove">> => list(string()())
+%% }
+-type modify_db_snapshot_attribute_message() :: #{binary() => any()}.
+
+%% Example:
+%% performance_insights_metric_query() :: #{
+%%   <<"GroupBy">> => performance_insights_metric_dimension_group(),
+%%   <<"Metric">> => string()
+%% }
+-type performance_insights_metric_query() :: #{binary() => any()}.
+
+%% Example:
+%% context_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type context_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_message() :: #{
+%%   <<"DBInstances">> => list(db_instance()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_default_cluster_parameters_message() :: #{
+%%   <<"DBParameterGroupFamily">> := string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_engine_default_cluster_parameters_message() :: #{binary() => any()}.
+
+%% Example:
+%% tag_list_message() :: #{
+%%   <<"TagList">> => list(tag()())
+%% }
+-type tag_list_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_targets_request() :: #{
+%%   <<"DBProxyName">> := string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TargetGroupName">> => string()
+%% }
+-type describe_db_proxy_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tenant_databases_message() :: #{
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"TenantDBName">> => string()
+%% }
+-type describe_tenant_databases_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_option_group_message() :: #{
+%%   <<"OptionGroupName">> := string()
+%% }
+-type delete_option_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_to_point_in_time_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type restore_db_instance_to_point_in_time_result() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_integration_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_integration_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster() :: #{
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"HttpEndpointEnabled">> => boolean(),
+%%   <<"Port">> => integer(),
+%%   <<"IOOptimizedNextAllowedModificationTime">> => non_neg_integer(),
+%%   <<"Engine">> => string(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration_info(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"ActivityStreamMode">> => list(any()),
+%%   <<"DBClusterMembers">> => list(db_cluster_member()()),
+%%   <<"ClusterCreateTime">> => non_neg_integer(),
+%%   <<"MasterUserSecret">> => master_user_secret(),
+%%   <<"AutomaticRestartTime">> => non_neg_integer(),
+%%   <<"Iops">> => integer(),
+%%   <<"DBClusterParameterGroup">> => string(),
+%%   <<"ActivityStreamKmsKeyId">> => string(),
+%%   <<"StatusInfos">> => list(db_cluster_status_info()()),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"DomainMemberships">> => list(domain_membership()()),
+%%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"PendingModifiedValues">> => cluster_pending_modified_values(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"ActivityStreamStatus">> => list(any()),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"LimitlessDatabase">> => limitless_database(),
+%%   <<"BacktrackConsumedChangeRecords">> => float(),
+%%   <<"DBSubnetGroup">> => string(),
+%%   <<"ReplicationSourceIdentifier">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"PerformanceInsightsEnabled">> => boolean(),
+%%   <<"ActivityStreamKinesisStreamName">> => string(),
+%%   <<"LocalWriteForwardingStatus">> => list(any()),
+%%   <<"EarliestRestorableTime">> => non_neg_integer(),
+%%   <<"ScalingConfigurationInfo">> => scaling_configuration_info(),
+%%   <<"StorageType">> => string(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"CrossAccountClone">> => boolean(),
+%%   <<"DBClusterOptionGroupMemberships">> => list(db_cluster_option_group_status()()),
+%%   <<"MasterUsername">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"EnabledCloudwatchLogsExports">> => list(string()()),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"EngineMode">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"GlobalWriteForwardingRequested">> => boolean(),
+%%   <<"GlobalWriteForwardingStatus">> => list(any()),
+%%   <<"LatestRestorableTime">> => non_neg_integer(),
+%%   <<"CloneGroupId">> => string(),
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"ReaderEndpoint">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"AssociatedRoles">> => list(db_cluster_role()()),
+%%   <<"DBClusterArn">> => string(),
+%%   <<"TagList">> => list(tag()()),
+%%   <<"CustomEndpoints">> => list(string()()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"DbClusterResourceId">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Endpoint">> => string(),
+%%   <<"PercentProgress">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()()),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"EarliestBacktrackTime">> => non_neg_integer(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"Capacity">> => integer(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"Status">> => string(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"CertificateDetails">> => certificate_details(),
+%%   <<"ReadReplicaIdentifiers">> => list(string()()),
+%%   <<"DBSystemId">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type db_cluster() :: #{binary() => any()}.
+
+%% Example:
+%% switchover_blue_green_deployment_response() :: #{
+%%   <<"BlueGreenDeployment">> => blue_green_deployment()
+%% }
+-type switchover_blue_green_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_topic_arn_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s_n_s_topic_arn_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_snapshot_result() :: #{
+%%   <<"DBSnapshot">> => db_snapshot()
+%% }
+-type delete_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_option_group_message() :: #{
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"OptionGroupName">> := string(),
+%%   <<"OptionsToInclude">> => list(option_configuration()()),
+%%   <<"OptionsToRemove">> => list(string()())
+%% }
+-type modify_option_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s3_bucket_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_s3_bucket_fault() :: #{binary() => any()}.
+
+%% Example:
+%% remove_source_identifier_from_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type remove_source_identifier_from_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_security_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_security_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% option_setting() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"ApplyType">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsCollection">> => boolean(),
+%%   <<"IsModifiable">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type option_setting() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_instance_automated_backups_replication_result() :: #{
+%%   <<"DBInstanceAutomatedBackup">> => db_instance_automated_backup()
+%% }
+-type start_db_instance_automated_backups_replication_result() :: #{binary() => any()}.
+
+%% Example:
+%% remove_role_from_db_instance_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"FeatureName">> := string(),
+%%   <<"RoleArn">> := string()
+%% }
+-type remove_role_from_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_security_group_result() :: #{
+%%   <<"DBSecurityGroup">> => db_security_group()
+%% }
+-type create_db_security_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type start_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_activity_stream_response() :: #{
+%%   <<"KinesisStreamName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type stop_activity_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_max_acu_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_max_acu_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_target_group_response() :: #{
+%%   <<"DBProxyTargetGroup">> => db_proxy_target_group()
+%% }
+-type modify_db_proxy_target_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_message() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type add_tags_to_resource_message() :: #{binary() => any()}.
+
+%% Example:
+%% register_db_proxy_targets_response() :: #{
+%%   <<"DBProxyTargets">> => list(db_proxy_target()())
+%% }
+-type register_db_proxy_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_snapshot_result() :: #{
+%%   <<"DBSnapshot">> => db_snapshot()
+%% }
+-type copy_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% event_categories_message() :: #{
+%%   <<"EventCategoriesMapList">> => list(event_categories_map()())
+%% }
+-type event_categories_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_configuration() :: #{
+%%   <<"AutoPause">> => boolean(),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"SecondsBeforeTimeout">> => integer(),
+%%   <<"SecondsUntilAutoPause">> => integer(),
+%%   <<"TimeoutAction">> => string()
+%% }
+-type scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type delete_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_current_db_cluster_capacity_message() :: #{
+%%   <<"Capacity">> => integer(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"SecondsBeforeTimeout">> => integer(),
+%%   <<"TimeoutAction">> => string()
+%% }
+-type modify_current_db_cluster_capacity_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_subnet_group_message() :: #{
+%%   <<"DBSubnetGroupDescription">> := string(),
+%%   <<"DBSubnetGroupName">> := string(),
+%%   <<"SubnetIds">> := list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_db_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_from_snapshot_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type restore_db_cluster_from_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_backtracks_message() :: #{
+%%   <<"BacktrackIdentifier">> => string(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_cluster_backtracks_message() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database_pending_modified_values() :: #{
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"TenantDBName">> => string()
+%% }
+-type tenant_database_pending_modified_values() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_instance_from_db_snapshot_message() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"Engine">> => string(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"DBClusterSnapshotIdentifier">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"DBName">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"TdeCredentialPassword">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"DomainDnsIps">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"LicenseModel">> => string(),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"CustomIamInstanceProfile">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type restore_db_instance_from_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_response() :: #{
+%%   <<"Integrations">> => list(integration()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_integrations_response() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_db_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_db_cluster_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_status_info() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Normal">> => boolean(),
+%%   <<"Status">> => string(),
+%%   <<"StatusType">> => string()
+%% }
+-type db_instance_status_info() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_log_files_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"FileLastWritten">> => float(),
+%%   <<"FileSize">> => float(),
+%%   <<"FilenameContains">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_log_files_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_global_clusters_message() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_global_clusters_message() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type global_cluster_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_message() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EventCategories">> => list(string()()),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SourceIdentifier">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_events_message() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_reserved_db_instances_offering_result() :: #{
+%%   <<"ReservedDBInstance">> => reserved_db_instance()
+%% }
+-type purchase_reserved_db_instances_offering_result() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action_update() :: #{
+%%   <<"ActionId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type recommended_action_update() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_snapshot_attributes_message() :: #{
+%%   <<"DBClusterSnapshotIdentifier">> := string()
+%% }
+-type describe_db_cluster_snapshot_attributes_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type start_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_snapshot_tenant_databases_message() :: #{
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SnapshotType">> => string()
+%% }
+-type describe_db_snapshot_tenant_databases_message() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_snapshot_message() :: #{
+%%   <<"CopyOptionGroup">> => boolean(),
+%%   <<"CopyTags">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"SourceDBSnapshotIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetCustomAvailabilityZone">> => string(),
+%%   <<"TargetDBSnapshotIdentifier">> := string()
+%% }
+-type copy_db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_backtrack() :: #{
+%%   <<"BacktrackIdentifier">> => string(),
+%%   <<"BacktrackRequestCreationTime">> => non_neg_integer(),
+%%   <<"BacktrackTo">> => non_neg_integer(),
+%%   <<"BacktrackedFrom">> => non_neg_integer(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_cluster_backtrack() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_proxy_request() :: #{
+%%   <<"DBProxyName">> := string()
+%% }
+-type delete_db_proxy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_proxy_endpoint_request() :: #{
+%%   <<"DBProxyEndpointName">> := string()
+%% }
+-type delete_db_proxy_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type option_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% option_groups() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"OptionGroupsList">> => list(option_group()())
+%% }
+-type option_groups() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_response() :: #{
+%%   <<"DBProxy">> => db_proxy()
+%% }
+-type modify_db_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% account_attributes_message() :: #{
+%%   <<"AccountQuotas">> => list(account_quota()())
+%% }
+-type account_attributes_message() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_deployment_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type blue_green_deployment_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type global_cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_snapshot_attributes_result() :: #{
+%%   <<"DBClusterSnapshotAttributes">> => list(db_cluster_snapshot_attribute()()),
+%%   <<"DBClusterSnapshotIdentifier">> => string()
+%% }
+-type db_cluster_snapshot_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% export_task_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type export_task_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% custom_db_engine_version_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_db_engine_version_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_event_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type modify_event_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_available_ips_in_subnet_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_available_ips_in_subnet_fault() :: #{binary() => any()}.
+
+%% Example:
+%% global_cluster_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type global_cluster_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_automated_backup_message() :: #{
+%%   <<"DBClusterAutomatedBackups">> => list(db_cluster_automated_backup()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_cluster_automated_backup_message() :: #{binary() => any()}.
+
+%% Example:
+%% apply_pending_maintenance_action_result() :: #{
+%%   <<"ResourcePendingMaintenanceActions">> => resource_pending_maintenance_actions()
+%% }
+-type apply_pending_maintenance_action_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_blue_green_deployment_response() :: #{
+%%   <<"BlueGreenDeployment">> => blue_green_deployment()
+%% }
+-type create_blue_green_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% source_cluster_not_supported_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_cluster_not_supported_fault() :: #{binary() => any()}.
+
+%% Example:
+%% upgrade_target() :: #{
+%%   <<"AutoUpgrade">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IsMajorVersionUpgrade">> => boolean(),
+%%   <<"SupportedEngineModes">> => list(string()()),
+%%   <<"SupportsBabelfish">> => boolean(),
+%%   <<"SupportsGlobalDatabases">> => boolean(),
+%%   <<"SupportsIntegrations">> => boolean(),
+%%   <<"SupportsLocalWriteForwarding">> => boolean(),
+%%   <<"SupportsParallelQuery">> => boolean()
+%% }
+-type upgrade_target() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instance_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_db_instance_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_parameter_group_result() :: #{
+%%   <<"DBParameterGroup">> => db_parameter_group()
+%% }
+-type copy_db_parameter_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_subscription_result() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type delete_event_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% limitless_database() :: #{
+%%   <<"MinRequiredACU">> => float(),
+%%   <<"Status">> => list(any())
+%% }
+-type limitless_database() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_option() :: #{
+%%   <<"CopyableCrossAccount">> => boolean(),
+%%   <<"DefaultPort">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EngineName">> => string(),
+%%   <<"MajorEngineVersion">> => string(),
+%%   <<"MinimumRequiredMinorEngineVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OptionGroupOptionSettings">> => list(option_group_option_setting()()),
+%%   <<"OptionGroupOptionVersions">> => list(option_version()()),
+%%   <<"OptionsConflictsWith">> => list(string()()),
+%%   <<"OptionsDependedOn">> => list(string()()),
+%%   <<"Permanent">> => boolean(),
+%%   <<"Persistent">> => boolean(),
+%%   <<"PortRequired">> => boolean(),
+%%   <<"RequiresAutoMinorEngineVersionUpgrade">> => boolean(),
+%%   <<"SupportsOptionVersionDowngrade">> => boolean(),
+%%   <<"VpcOnly">> => boolean()
+%% }
+-type option_group_option() :: #{binary() => any()}.
+
+%% Example:
+%% download_db_log_file_portion_message() :: #{
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"LogFileName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"NumberOfLines">> => integer()
+%% }
+-type download_db_log_file_portion_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_instance_automated_backup() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"BackupTarget">> => string(),
+%%   <<"DBInstanceArn">> => string(),
+%%   <<"DBInstanceAutomatedBackupsArn">> => string(),
+%%   <<"DBInstanceAutomatedBackupsReplications">> => list(db_instance_automated_backups_replication()()),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"InstanceCreateTime">> => non_neg_integer(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"Region">> => string(),
+%%   <<"RestoreWindow">> => restore_window(),
+%%   <<"Status">> => string(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"Timezone">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type db_instance_automated_backup() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_status_info() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Normal">> => boolean(),
+%%   <<"Status">> => string(),
+%%   <<"StatusType">> => string()
+%% }
+-type db_cluster_status_info() :: #{binary() => any()}.
+
+%% Example:
+%% start_db_instance_automated_backups_replication_message() :: #{
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"SourceDBInstanceArn">> := string()
+%% }
+-type start_db_instance_automated_backups_replication_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_instance_automated_backup_result() :: #{
+%%   <<"DBInstanceAutomatedBackup">> => db_instance_automated_backup()
+%% }
+-type delete_db_instance_automated_backup_result() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_details() :: #{
+%%   <<"CAIdentifier">> => string(),
+%%   <<"ValidTill">> => non_neg_integer()
+%% }
+-type certificate_details() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_option_group_status() :: #{
+%%   <<"DBClusterOptionGroupName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type db_cluster_option_group_status() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_tasks_message() :: #{
+%%   <<"ExportTaskIdentifier">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type describe_export_tasks_message() :: #{binary() => any()}.
+
+%% Example:
+%% option() :: #{
+%%   <<"DBSecurityGroupMemberships">> => list(db_security_group_membership()()),
+%%   <<"OptionDescription">> => string(),
+%%   <<"OptionName">> => string(),
+%%   <<"OptionSettings">> => list(option_setting()()),
+%%   <<"OptionVersion">> => string(),
+%%   <<"Permanent">> => boolean(),
+%%   <<"Persistent">> => boolean(),
+%%   <<"Port">> => integer(),
+%%   <<"VpcSecurityGroupMemberships">> => list(vpc_security_group_membership()())
+%% }
+-type option() :: #{binary() => any()}.
+
+%% Example:
+%% delete_blue_green_deployment_request() :: #{
+%%   <<"BlueGreenDeploymentIdentifier">> := string(),
+%%   <<"DeleteTarget">> => boolean()
+%% }
+-type delete_blue_green_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_tenant_database_result() :: #{
+%%   <<"TenantDatabase">> => tenant_database()
+%% }
+-type create_tenant_database_result() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_iops_not_available_in_a_z_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type provisioned_iops_not_available_in_a_z_fault() :: #{binary() => any()}.
+
+%% Example:
+%% scalar_reference_details() :: #{
+%%   <<"Value">> => float()
+%% }
+-type scalar_reference_details() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_cluster_automated_backup_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_cluster_automated_backup_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_proxy_endpoints_request() :: #{
+%%   <<"DBProxyEndpointName">> => string(),
+%%   <<"DBProxyName">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_proxy_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_subnet_groups_message() :: #{
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_subnet_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% user_auth_config_info() :: #{
+%%   <<"AuthScheme">> => list(any()),
+%%   <<"ClientPasswordAuthType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"IAMAuth">> => list(any()),
+%%   <<"SecretArn">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type user_auth_config_info() :: #{binary() => any()}.
+
+%% Example:
+%% db_recommendation() :: #{
+%%   <<"AdditionalInfo">> => string(),
+%%   <<"Category">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Detection">> => string(),
+%%   <<"Impact">> => string(),
+%%   <<"IssueDetails">> => issue_details(),
+%%   <<"Links">> => list(doc_link()()),
+%%   <<"Reason">> => string(),
+%%   <<"Recommendation">> => string(),
+%%   <<"RecommendationId">> => string(),
+%%   <<"RecommendedActions">> => list(recommended_action()()),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Severity">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TypeDetection">> => string(),
+%%   <<"TypeId">> => string(),
+%%   <<"TypeRecommendation">> => string(),
+%%   <<"UpdatedTime">> => non_neg_integer()
+%% }
+-type db_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_subnet_group_result() :: #{
+%%   <<"DBSubnetGroup">> => db_subnet_group()
+%% }
+-type modify_db_subnet_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% option_group_options_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"OptionGroupOptions">> => list(option_group_option()())
+%% }
+-type option_group_options_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_log_files_details() :: #{
+%%   <<"LastWritten">> => float(),
+%%   <<"LogFileName">> => string(),
+%%   <<"Size">> => float()
+%% }
+-type describe_db_log_files_details() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_snapshot_result() :: #{
+%%   <<"DBSnapshot">> => db_snapshot()
+%% }
+-type modify_db_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instance_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_db_instance_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_tenant_database_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_snapshot_tenant_database_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_scaling_configuration_info() :: #{
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MinCapacity">> => float()
+%% }
+-type serverless_v2_scaling_configuration_info() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_proxy_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_integrations_message() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"IntegrationIdentifier">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_integrations_message() :: #{binary() => any()}.
+
+%% Example:
+%% restore_db_cluster_from_s3_message() :: #{
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"S3IngestionRoleArn">> := string(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"SourceEngineVersion">> := string(),
+%%   <<"CharacterSetName">> => string(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"MasterUsername">> := string(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"Engine">> := string(),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"SourceEngine">> := string(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"NetworkType">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type restore_db_cluster_from_s3_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_proxy_endpoint_response() :: #{
+%%   <<"DBProxyEndpoint">> => db_proxy_endpoint()
+%% }
+-type modify_db_proxy_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_automated_backup_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_automated_backup_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_message() :: #{
+%%   <<"DBSnapshots">> => list(db_snapshot()()),
+%%   <<"Marker">> => string()
+%% }
+-type db_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_subnet_group() :: #{
+%%   <<"DBSubnetGroupArn">> => string(),
+%%   <<"DBSubnetGroupDescription">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"SubnetGroupStatus">> => string(),
+%%   <<"Subnets">> => list(subnet()()),
+%%   <<"SupportedNetworkTypes">> => list(string()()),
+%%   <<"VpcId">> => string()
+%% }
+-type db_subnet_group() :: #{binary() => any()}.
+
+%% Example:
+%% db_snapshot_tenant_database() :: #{
+%%   <<"CharacterSetName">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"DBSnapshotIdentifier">> => string(),
+%%   <<"DBSnapshotTenantDatabaseARN">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"EngineName">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"NcharCharacterSetName">> => string(),
+%%   <<"SnapshotType">> => string(),
+%%   <<"TagList">> => list(tag()()),
+%%   <<"TenantDBName">> => string(),
+%%   <<"TenantDatabaseCreateTime">> => non_neg_integer(),
+%%   <<"TenantDatabaseResourceId">> => string()
+%% }
+-type db_snapshot_tenant_database() :: #{binary() => any()}.
+
+%% Example:
+%% modify_custom_db_engine_version_message() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Engine">> := string(),
+%%   <<"EngineVersion">> := string(),
+%%   <<"Status">> => list(any())
+%% }
+-type modify_custom_db_engine_version_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_subnet_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_subnet_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% failover_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"TargetDBInstanceIdentifier">> => string()
+%% }
+-type failover_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_subnet_group_message() :: #{
+%%   <<"DBSubnetGroupName">> := string()
+%% }
+-type delete_db_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% remove_from_global_cluster_result() :: #{
+%%   <<"GlobalCluster">> => global_cluster()
+%% }
+-type remove_from_global_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_database_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tenant_database_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_member() :: #{
+%%   <<"DBClusterParameterGroupStatus">> => string(),
+%%   <<"DBInstanceIdentifier">> => string(),
+%%   <<"IsClusterWriter">> => boolean(),
+%%   <<"PromotionTier">> => integer()
+%% }
+-type db_cluster_member() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_message() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type remove_tags_from_resource_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy() :: #{
+%%   <<"Auth">> => list(user_auth_config_info()()),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DBProxyArn">> => string(),
+%%   <<"DBProxyName">> => string(),
+%%   <<"DebugLogging">> => boolean(),
+%%   <<"Endpoint">> => string(),
+%%   <<"EngineFamily">> => string(),
+%%   <<"IdleClientTimeout">> => integer(),
+%%   <<"RequireTLS">> => boolean(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedDate">> => non_neg_integer(),
+%%   <<"VpcId">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"VpcSubnetIds">> => list(string()())
+%% }
+-type db_proxy() :: #{binary() => any()}.
+
+%% Example:
+%% storage_type_not_available_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type storage_type_not_available_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_cluster_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_snapshot_attribute_result() :: #{
+%%   <<"DBSnapshotAttributesResult">> => db_snapshot_attributes_result()
+%% }
+-type modify_db_snapshot_attribute_result() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type authorization_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscription_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type event_subscription_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_cluster_message() :: #{
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
+%%   <<"DBInstanceParameterGroupName">> => string(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBClusterInstanceClass">> => string(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"ScalingConfiguration">> => scaling_configuration(),
+%%   <<"EnableHttpEndpoint">> => boolean(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"EngineMode">> => string(),
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"DBClusterIdentifier">> := string(),
+%%   <<"RotateMasterUserPassword">> => boolean(),
+%%   <<"EnableLocalWriteForwarding">> => boolean(),
+%%   <<"EnableLimitlessDatabase">> => boolean(),
+%%   <<"AllowMajorVersionUpgrade">> => boolean(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"AllowEngineModeChange">> => boolean(),
+%%   <<"CloudwatchLogsExportConfiguration">> => cloudwatch_logs_export_configuration(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"NewDBClusterIdentifier">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"BacktrackWindow">> => float(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"EnableGlobalWriteForwarding">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type modify_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_log_file_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_log_file_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_categories_message() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"SourceType">> => string()
+%% }
+-type describe_event_categories_message() :: #{binary() => any()}.
+
+%% Example:
+%% rds_custom_cluster_configuration() :: #{
+%%   <<"InterconnectSubnetId">> => string(),
+%%   <<"ReplicaMode">> => list(any()),
+%%   <<"TransitGatewayMulticastDomainId">> => string()
+%% }
+-type rds_custom_cluster_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instances_offering_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_db_instances_offering_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_group() :: #{
+%%   <<"DBClusterParameterGroupArn">> => string(),
+%%   <<"DBClusterParameterGroupName">> => string(),
+%%   <<"DBParameterGroupFamily">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type db_cluster_parameter_group() :: #{binary() => any()}.
+
+%% Example:
+%% describe_db_cluster_automated_backups_message() :: #{
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DbClusterResourceId">> => string(),
+%%   <<"Filters">> => list(filter()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_db_cluster_automated_backups_message() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_cluster_message() :: #{
+%%   <<"DBClusterIdentifier">> := string()
+%% }
+-type stop_db_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_snapshot_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_snapshot_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_status() :: #{
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"ParameterApplyStatus">> => string()
+%% }
+-type db_parameter_group_status() :: #{binary() => any()}.
+
+%% Example:
+%% db_parameter_group_name_message() :: #{
+%%   <<"DBParameterGroupName">> => string()
+%% }
+-type db_parameter_group_name_message() :: #{binary() => any()}.
+
+%% Example:
+%% outpost() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type outpost() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_no_authorization_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s_n_s_no_authorization_fault() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_cluster_endpoint_message() :: #{
+%%   <<"DBClusterEndpointIdentifier">> := string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"ExcludedMembers">> => list(string()()),
+%%   <<"StaticMembers">> => list(string()())
+%% }
+-type modify_db_cluster_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_db_engine_version_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type create_custom_db_engine_version_fault() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_security_group_membership() :: #{
+%%   <<"Status">> => string(),
+%%   <<"VpcSecurityGroupId">> => string()
+%% }
+-type vpc_security_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% issue_details() :: #{
+%%   <<"PerformanceIssueDetails">> => performance_issue_details()
+%% }
+-type issue_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_shard_group_message() :: #{
+%%   <<"DBShardGroupIdentifier">> := string()
+%% }
+-type delete_db_shard_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% custom_availability_zone_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_availability_zone_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_proxy_target_group() :: #{
+%%   <<"ConnectionPoolConfig">> => connection_pool_configuration_info(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DBProxyName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Status">> => string(),
+%%   <<"TargetGroupArn">> => string(),
+%%   <<"TargetGroupName">> => string(),
+%%   <<"UpdatedDate">> => non_neg_integer()
+%% }
+-type db_proxy_target_group() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_proxy_response() :: #{
+%%   <<"DBProxy">> => db_proxy()
+%% }
+-type create_db_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_db_security_group_ingress_message() :: #{
+%%   <<"CIDRIP">> => string(),
+%%   <<"DBSecurityGroupName">> := string(),
+%%   <<"EC2SecurityGroupId">> => string(),
+%%   <<"EC2SecurityGroupName">> => string(),
+%%   <<"EC2SecurityGroupOwnerId">> => string()
+%% }
+-type revoke_db_security_group_ingress_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_snapshot_message() :: #{
+%%   <<"DBClusterSnapshotIdentifier">> := string()
+%% }
+-type delete_db_cluster_snapshot_message() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instance_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_db_instance_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_db_instance() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"DBInstanceCount">> => integer(),
+%%   <<"Duration">> => integer(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"LeaseId">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"OfferingType">> => string(),
+%%   <<"ProductDescription">> => string(),
+%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"ReservedDBInstanceArn">> => string(),
+%%   <<"ReservedDBInstanceId">> => string(),
+%%   <<"ReservedDBInstancesOfferingId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"UsagePrice">> => float()
+%% }
+-type reserved_db_instance() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_automated_backup() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"ClusterCreateTime">> => non_neg_integer(),
+%%   <<"DBClusterArn">> => string(),
+%%   <<"DBClusterAutomatedBackupsArn">> => string(),
+%%   <<"DBClusterIdentifier">> => string(),
+%%   <<"DbClusterResourceId">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineMode">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"MasterUsername">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"Region">> => string(),
+%%   <<"RestoreWindow">> => restore_window(),
+%%   <<"Status">> => string(),
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"StorageType">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type db_cluster_automated_backup() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_blue_green_deployment_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_blue_green_deployment_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% failover_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type failover_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% restore_window() :: #{
+%%   <<"EarliestTime">> => non_neg_integer(),
+%%   <<"LatestTime">> => non_neg_integer()
+%% }
+-type restore_window() :: #{binary() => any()}.
+
+%% Example:
+%% modify_db_instance_message() :: #{
+%%   <<"NewDBInstanceIdentifier">> => string(),
+%%   <<"PreferredBackupWindow">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"PromotionTier">> => integer(),
+%%   <<"StorageThroughput">> => integer(),
+%%   <<"DomainOu">> => string(),
+%%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"EnableCustomerOwnedIp">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"DBSubnetGroupName">> => string(),
+%%   <<"MultiTenant">> => boolean(),
+%%   <<"DBInstanceClass">> => string(),
+%%   <<"CertificateRotationRestart">> => boolean(),
+%%   <<"PerformanceInsightsKMSKeyId">> => string(),
+%%   <<"DBPortNumber">> => integer(),
+%%   <<"ResumeFullAutomationModeMinutes">> => integer(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
+%%   <<"DBSecurityGroups">> => list(string()()),
+%%   <<"OptionGroupName">> => string(),
+%%   <<"StorageType">> => string(),
+%%   <<"UseDefaultProcessorFeatures">> => boolean(),
+%%   <<"MonitoringRoleArn">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"DomainAuthSecretArn">> => string(),
+%%   <<"TdeCredentialPassword">> => string(),
+%%   <<"RotateMasterUserPassword">> => boolean(),
+%%   <<"DedicatedLogVolume">> => boolean(),
+%%   <<"AutomationMode">> => list(any()),
+%%   <<"DisableDomain">> => boolean(),
+%%   <<"DomainDnsIps">> => list(string()()),
+%%   <<"AllowMajorVersionUpgrade">> => boolean(),
+%%   <<"MasterUserPassword">> => string(),
+%%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"LicenseModel">> => string(),
+%%   <<"CloudwatchLogsExportConfiguration">> => cloudwatch_logs_export_configuration(),
+%%   <<"DBInstanceIdentifier">> := string(),
+%%   <<"ManageMasterUserPassword">> => boolean(),
+%%   <<"ReplicaMode">> => list(any()),
+%%   <<"DBParameterGroupName">> => string(),
+%%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ProcessorFeatures">> => list(processor_feature()()),
+%%   <<"TdeCredentialArn">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainIAMRoleName">> => string(),
+%%   <<"DomainFqdn">> => string(),
+%%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"MonitoringInterval">> => integer(),
+%%   <<"AwsBackupRecoveryPointArn">> => string(),
+%%   <<"CACertificateIdentifier">> => string(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"DeletionProtection">> => boolean()
+%% }
+-type modify_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% tenant_databases_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TenantDatabases">> => list(tenant_database()())
+%% }
+-type tenant_databases_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_endpoint_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_endpoint_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_scaling_configuration() :: #{
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MinCapacity">> => float()
+%% }
+-type serverless_v2_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_instance_result() :: #{
+%%   <<"DBInstance">> => db_instance()
+%% }
+-type create_db_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_proxy_endpoint_response() :: #{
+%%   <<"DBProxyEndpoint">> => db_proxy_endpoint()
+%% }
+-type create_db_proxy_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_deployment_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type blue_green_deployment_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% failover_global_cluster_message() :: #{
+%%   <<"AllowDataLoss">> => boolean(),
+%%   <<"GlobalClusterIdentifier">> := string(),
+%%   <<"Switchover">> => boolean(),
+%%   <<"TargetDbClusterIdentifier">> := string()
+%% }
+-type failover_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_role_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_role_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_parameter_group_details() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Parameters">> => list(parameter()())
+%% }
+-type db_cluster_parameter_group_details() :: #{binary() => any()}.
+
+%% Example:
+%% stop_db_cluster_result() :: #{
+%%   <<"DBCluster">> => db_cluster()
+%% }
+-type stop_db_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% pending_maintenance_actions_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"PendingMaintenanceActions">> => list(resource_pending_maintenance_actions()())
+%% }
+-type pending_maintenance_actions_message() :: #{binary() => any()}.
+
+%% Example:
+%% timezone() :: #{
+%%   <<"TimezoneName">> => string()
+%% }
+-type timezone() :: #{binary() => any()}.
+
+%% Example:
+%% create_option_group_message() :: #{
+%%   <<"EngineName">> := string(),
+%%   <<"MajorEngineVersion">> := string(),
+%%   <<"OptionGroupDescription">> := string(),
+%%   <<"OptionGroupName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_option_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_db_instance_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_db_instance_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% db_cluster_role_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type db_cluster_role_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_db_proxy_endpoint_request() :: #{
+%%   <<"DBProxyEndpointName">> := string(),
+%%   <<"DBProxyName">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetRole">> => list(any()),
+%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"VpcSubnetIds">> := list(string()())
+%% }
+-type create_db_proxy_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_db_parameter_group_message() :: #{
+%%   <<"SourceDBParameterGroupIdentifier">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetDBParameterGroupDescription">> := string(),
+%%   <<"TargetDBParameterGroupIdentifier">> := string()
+%% }
+-type copy_db_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_activity_stream_response() :: #{
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"EngineNativeAuditFieldsIncluded">> => boolean(),
+%%   <<"KinesisStreamName">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type start_activity_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_db_cluster_automated_backup_message() :: #{
+%%   <<"DbClusterResourceId">> := string()
+%% }
+-type delete_db_cluster_automated_backup_message() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_storage_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_storage_cluster_capacity_fault() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Associates an Identity and Access Management (IAM) role with a DB
 %% cluster.
+-spec add_role_to_db_cluster(map(), add_role_to_db_cluster_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_role_already_exists_fault(), tuple()} |
+    {error, db_cluster_role_quota_exceeded_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 add_role_to_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_db_cluster(Client, Input, []).
+
+-spec add_role_to_db_cluster(map(), add_role_to_db_cluster_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_role_already_exists_fault(), tuple()} |
+    {error, db_cluster_role_quota_exceeded_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 add_role_to_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddRoleToDBCluster">>, Input, Options).
@@ -413,18 +5549,44 @@ add_role_to_db_cluster(Client, Input, Options)
 %% `available'.
 %%
 %% This command doesn't apply to RDS Custom.
+-spec add_role_to_db_instance(map(), add_role_to_db_instance_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_instance_role_already_exists_fault(), tuple()} |
+    {error, db_instance_role_quota_exceeded_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 add_role_to_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_db_instance(Client, Input, []).
+
+-spec add_role_to_db_instance(map(), add_role_to_db_instance_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_instance_role_already_exists_fault(), tuple()} |
+    {error, db_instance_role_quota_exceeded_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 add_role_to_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddRoleToDBInstance">>, Input, Options).
 
 %% @doc Adds a source identifier to an existing RDS event notification
 %% subscription.
+-spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message()) ->
+    {ok, add_source_identifier_to_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, source_not_found_fault(), tuple()} |
+    {error, subscription_not_found_fault(), tuple()}.
 add_source_identifier_to_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_source_identifier_to_subscription(Client, Input, []).
+
+-spec add_source_identifier_to_subscription(map(), add_source_identifier_to_subscription_message(), proplists:proplist()) ->
+    {ok, add_source_identifier_to_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, source_not_found_fault(), tuple()} |
+    {error, subscription_not_found_fault(), tuple()}.
 add_source_identifier_to_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddSourceIdentifierToSubscription">>, Input, Options).
@@ -438,18 +5600,56 @@ add_source_identifier_to_subscription(Client, Input, Options)
 %% For an overview on tagging Amazon RDS resources,
 %% see Tagging Amazon RDS Resources:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html.
+-spec add_tags_to_resource(map(), add_tags_to_resource_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_tenant_database_not_found_fault(), tuple()} |
+    {error, integration_not_found_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
+
+-spec add_tags_to_resource(map(), add_tags_to_resource_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_tenant_database_not_found_fault(), tuple()} |
+    {error, integration_not_found_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
 
 %% @doc Applies a pending maintenance action to a resource (for example, to a
 %% DB instance).
+-spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message()) ->
+    {ok, apply_pending_maintenance_action_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 apply_pending_maintenance_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     apply_pending_maintenance_action(Client, Input, []).
+
+-spec apply_pending_maintenance_action(map(), apply_pending_maintenance_action_message(), proplists:proplist()) ->
+    {ok, apply_pending_maintenance_action_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 apply_pending_maintenance_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplyPendingMaintenanceAction">>, Input, Options).
@@ -488,9 +5688,24 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
+-spec authorize_db_security_group_ingress(map(), authorize_db_security_group_ingress_message()) ->
+    {ok, authorize_db_security_group_ingress_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_already_exists_fault(), tuple()} |
+    {error, authorization_quota_exceeded_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()}.
 authorize_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_db_security_group_ingress(Client, Input, []).
+
+-spec authorize_db_security_group_ingress(map(), authorize_db_security_group_ingress_message(), proplists:proplist()) ->
+    {ok, authorize_db_security_group_ingress_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_already_exists_fault(), tuple()} |
+    {error, authorization_quota_exceeded_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()}.
 authorize_db_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeDBSecurityGroupIngress">>, Input, Options).
@@ -506,9 +5721,20 @@ authorize_db_security_group_ingress(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action applies only to Aurora MySQL DB clusters.
+-spec backtrack_db_cluster(map(), backtrack_db_cluster_message()) ->
+    {ok, db_cluster_backtrack(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 backtrack_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     backtrack_db_cluster(Client, Input, []).
+
+-spec backtrack_db_cluster(map(), backtrack_db_cluster_message(), proplists:proplist()) ->
+    {ok, db_cluster_backtrack(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 backtrack_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BacktrackDBCluster">>, Input, Options).
@@ -517,9 +5743,20 @@ backtrack_db_cluster(Client, Input, Options)
 %% cluster to Amazon S3.
 %%
 %% Any data that has already been written to the S3 bucket isn't removed.
+-spec cancel_export_task(map(), cancel_export_task_message()) ->
+    {ok, export_task(), tuple()} |
+    {error, any()} |
+    {error, export_task_not_found_fault(), tuple()} |
+    {error, invalid_export_task_state_fault(), tuple()}.
 cancel_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_export_task(Client, Input, []).
+
+-spec cancel_export_task(map(), cancel_export_task_message(), proplists:proplist()) ->
+    {ok, export_task(), tuple()} |
+    {error, any()} |
+    {error, export_task_not_found_fault(), tuple()} |
+    {error, invalid_export_task_state_fault(), tuple()}.
 cancel_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelExportTask">>, Input, Options).
@@ -530,9 +5767,22 @@ cancel_export_task(Client, Input, Options)
 %% new custom DB cluster parameter group, which copies
 %% the default parameters and values for the specified DB cluster parameter
 %% group family.
+-spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message()) ->
+    {ok, copy_db_cluster_parameter_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
 copy_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_parameter_group(Client, Input, []).
+
+-spec copy_db_cluster_parameter_group(map(), copy_db_cluster_parameter_group_message(), proplists:proplist()) ->
+    {ok, copy_db_cluster_parameter_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
 copy_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBClusterParameterGroup">>, Input, Options).
@@ -591,9 +5841,28 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message()) ->
+    {ok, copy_db_cluster_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
+
+-spec copy_db_cluster_snapshot(map(), copy_db_cluster_snapshot_message(), proplists:proplist()) ->
+    {ok, copy_db_cluster_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 copy_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBClusterSnapshot">>, Input, Options).
@@ -603,9 +5872,22 @@ copy_db_cluster_snapshot(Client, Input, Options)
 %% You can't copy a default DB parameter group. Instead, create a new
 %% custom DB parameter group, which copies the default
 %% parameters and values for the specified DB parameter group family.
+-spec copy_db_parameter_group(map(), copy_db_parameter_group_message()) ->
+    {ok, copy_db_parameter_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
 copy_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_parameter_group(Client, Input, []).
+
+-spec copy_db_parameter_group(map(), copy_db_parameter_group_message(), proplists:proplist()) ->
+    {ok, copy_db_parameter_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
 copy_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBParameterGroup">>, Input, Options).
@@ -626,17 +5908,49 @@ copy_db_parameter_group(Client, Input, Options)
 %% Copying a DB Snapshot:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html#USER_CopyDBSnapshot
 %% in the Amazon RDS User Guide.
+-spec copy_db_snapshot(map(), copy_db_snapshot_message()) ->
+    {ok, copy_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, custom_availability_zone_not_found_fault(), tuple()} |
+    {error, db_snapshot_already_exists_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 copy_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_snapshot(Client, Input, []).
+
+-spec copy_db_snapshot(map(), copy_db_snapshot_message(), proplists:proplist()) ->
+    {ok, copy_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, custom_availability_zone_not_found_fault(), tuple()} |
+    {error, db_snapshot_already_exists_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 copy_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyDBSnapshot">>, Input, Options).
 
 %% @doc Copies the specified option group.
+-spec copy_option_group(map(), copy_option_group_message()) ->
+    {ok, copy_option_group_result(), tuple()} |
+    {error, any()} |
+    {error, option_group_already_exists_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, option_group_quota_exceeded_fault(), tuple()}.
 copy_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_option_group(Client, Input, []).
+
+-spec copy_option_group(map(), copy_option_group_message(), proplists:proplist()) ->
+    {ok, copy_option_group_result(), tuple()} |
+    {error, any()} |
+    {error, option_group_already_exists_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, option_group_quota_exceeded_fault(), tuple()}.
 copy_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyOptionGroup">>, Input, Options).
@@ -671,17 +5985,63 @@ copy_option_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
 %% in the Amazon Aurora
 %% User Guide.
+-spec create_blue_green_deployment(map(), create_blue_green_deployment_request()) ->
+    {ok, create_blue_green_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_already_exists_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, source_cluster_not_supported_fault(), tuple()} |
+    {error, source_database_not_supported_fault(), tuple()}.
 create_blue_green_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_blue_green_deployment(Client, Input, []).
+
+-spec create_blue_green_deployment(map(), create_blue_green_deployment_request(), proplists:proplist()) ->
+    {ok, create_blue_green_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_already_exists_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, source_cluster_not_supported_fault(), tuple()} |
+    {error, source_database_not_supported_fault(), tuple()}.
 create_blue_green_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBlueGreenDeployment">>, Input, Options).
 
 %% @doc Creates a custom DB engine version (CEV).
+-spec create_custom_db_engine_version(map(), create_custom_db_engine_version_message()) ->
+    {ok, db_engine_version(), tuple()} |
+    {error, any()} |
+    {error, create_custom_db_engine_version_fault(), tuple()} |
+    {error, custom_db_engine_version_already_exists_fault(), tuple()} |
+    {error, custom_db_engine_version_quota_exceeded_fault(), tuple()} |
+    {error, ec2_image_properties_not_supported_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()}.
 create_custom_db_engine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_db_engine_version(Client, Input, []).
+
+-spec create_custom_db_engine_version(map(), create_custom_db_engine_version_message(), proplists:proplist()) ->
+    {ok, db_engine_version(), tuple()} |
+    {error, any()} |
+    {error, create_custom_db_engine_version_fault(), tuple()} |
+    {error, custom_db_engine_version_already_exists_fault(), tuple()} |
+    {error, custom_db_engine_version_quota_exceeded_fault(), tuple()} |
+    {error, ec2_image_properties_not_supported_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()}.
 create_custom_db_engine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomDBEngineVersion">>, Input, Options).
@@ -717,9 +6077,58 @@ create_custom_db_engine_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec create_db_cluster(map(), create_db_cluster_message()) ->
+    {ok, create_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_subnet_group_fault(), tuple()} |
+    {error, invalid_db_subnet_group_state_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()}.
 create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
+
+-spec create_db_cluster(map(), create_db_cluster_message(), proplists:proplist()) ->
+    {ok, create_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_subnet_group_fault(), tuple()} |
+    {error, invalid_db_subnet_group_state_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()}.
 create_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBCluster">>, Input, Options).
@@ -728,9 +6137,28 @@ create_db_cluster(Client, Input, Options)
 %% DB cluster.
 %%
 %% This action applies only to Aurora DB clusters.
+-spec create_db_cluster_endpoint(map(), create_db_cluster_endpoint_message()) ->
+    {ok, db_cluster_endpoint(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_endpoint_already_exists_fault(), tuple()} |
+    {error, db_cluster_endpoint_quota_exceeded_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 create_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_endpoint(Client, Input, []).
+
+-spec create_db_cluster_endpoint(map(), create_db_cluster_endpoint_message(), proplists:proplist()) ->
+    {ok, db_cluster_endpoint(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_endpoint_already_exists_fault(), tuple()} |
+    {error, db_cluster_endpoint_quota_exceeded_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 create_db_cluster_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterEndpoint">>, Input, Options).
@@ -790,9 +6218,20 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message()) ->
+    {ok, create_db_cluster_parameter_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
 create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
+
+-spec create_db_cluster_parameter_group(map(), create_db_cluster_parameter_group_message(), proplists:proplist()) ->
+    {ok, create_db_cluster_parameter_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
 create_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterParameterGroup">>, Input, Options).
@@ -809,9 +6248,26 @@ create_db_cluster_parameter_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message()) ->
+    {ok, create_db_cluster_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_snapshot(Client, Input, []).
+
+-spec create_db_cluster_snapshot(map(), create_db_cluster_snapshot_message(), proplists:proplist()) ->
+    {ok, create_db_cluster_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 create_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBClusterSnapshot">>, Input, Options).
@@ -835,9 +6291,60 @@ create_db_cluster_snapshot(Client, Input, Options)
 %% Creating an Amazon Aurora DB cluster:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.CreateInstance.html
 %% in the Amazon Aurora User Guide.
+-spec create_db_instance(map(), create_db_instance_message()) ->
+    {ok, create_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, certificate_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 create_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance(Client, Input, []).
+
+-spec create_db_instance(map(), create_db_instance_message(), proplists:proplist()) ->
+    {ok, create_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, certificate_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 create_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBInstance">>, Input, Options).
@@ -869,9 +6376,62 @@ create_db_instance(Client, Input, Options)
 %% instance or cluster, except as specified.
 %%
 %% Your source DB instance or cluster must have backup retention enabled.
+-spec create_db_instance_read_replica(map(), create_db_instance_read_replica_message()) ->
+    {ok, create_db_instance_read_replica_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_allowed_fault(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_subnet_group_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 create_db_instance_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance_read_replica(Client, Input, []).
+
+-spec create_db_instance_read_replica(map(), create_db_instance_read_replica_message(), proplists:proplist()) ->
+    {ok, create_db_instance_read_replica_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_allowed_fault(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_subnet_group_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 create_db_instance_read_replica(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBInstanceReadReplica">>, Input, Options).
@@ -909,17 +6469,41 @@ create_db_instance_read_replica(Client, Input, Options)
 %% https://console.aws.amazon.com/rds/ or the
 %% DescribeDBParameters command to verify
 %% that your DB parameter group has been created or modified.
+-spec create_db_parameter_group(map(), create_db_parameter_group_message()) ->
+    {ok, create_db_parameter_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
 create_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_parameter_group(Client, Input, []).
+
+-spec create_db_parameter_group(map(), create_db_parameter_group_message(), proplists:proplist()) ->
+    {ok, create_db_parameter_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_quota_exceeded_fault(), tuple()}.
 create_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBParameterGroup">>, Input, Options).
 
 %% @doc Creates a new DB proxy.
+-spec create_db_proxy(map(), create_db_proxy_request()) ->
+    {ok, create_db_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_already_exists_fault(), tuple()} |
+    {error, db_proxy_quota_exceeded_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()}.
 create_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_proxy(Client, Input, []).
+
+-spec create_db_proxy(map(), create_db_proxy_request(), proplists:proplist()) ->
+    {ok, create_db_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_already_exists_fault(), tuple()} |
+    {error, db_proxy_quota_exceeded_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()}.
 create_db_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBProxy">>, Input, Options).
@@ -931,9 +6515,26 @@ create_db_proxy(Client, Input, Options)
 %% to the DB cluster. You can also use
 %% DB proxy endpoints to access a DB proxy through a different VPC than the
 %% proxy's default VPC.
+-spec create_db_proxy_endpoint(map(), create_db_proxy_endpoint_request()) ->
+    {ok, create_db_proxy_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_endpoint_already_exists_fault(), tuple()} |
+    {error, db_proxy_endpoint_quota_exceeded_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()}.
 create_db_proxy_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_proxy_endpoint(Client, Input, []).
+
+-spec create_db_proxy_endpoint(map(), create_db_proxy_endpoint_request(), proplists:proplist()) ->
+    {ok, create_db_proxy_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_endpoint_already_exists_fault(), tuple()} |
+    {error, db_proxy_endpoint_quota_exceeded_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()}.
 create_db_proxy_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBProxyEndpoint">>, Input, Options).
@@ -958,9 +6559,22 @@ create_db_proxy_endpoint(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
+-spec create_db_security_group(map(), create_db_security_group_message()) ->
+    {ok, create_db_security_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_security_group_already_exists_fault(), tuple()} |
+    {error, db_security_group_not_supported_fault(), tuple()} |
+    {error, db_security_group_quota_exceeded_fault(), tuple()}.
 create_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_security_group(Client, Input, []).
+
+-spec create_db_security_group(map(), create_db_security_group_message(), proplists:proplist()) ->
+    {ok, create_db_security_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_security_group_already_exists_fault(), tuple()} |
+    {error, db_security_group_not_supported_fault(), tuple()} |
+    {error, db_security_group_quota_exceeded_fault(), tuple()}.
 create_db_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSecurityGroup">>, Input, Options).
@@ -970,9 +6584,30 @@ create_db_security_group(Client, Input, Options)
 %% You must enable Aurora Limitless Database to create a DB shard group.
 %%
 %% Valid for: Aurora DB clusters only
+-spec create_db_shard_group(map(), create_db_shard_group_message()) ->
+    {ok, db_shard_group(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_shard_group_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_max_acu_fault(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, max_db_shard_group_limit_reached(), tuple()} |
+    {error, unsupported_db_engine_version_fault(), tuple()}.
 create_db_shard_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_shard_group(Client, Input, []).
+
+-spec create_db_shard_group(map(), create_db_shard_group_message(), proplists:proplist()) ->
+    {ok, db_shard_group(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_shard_group_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_max_acu_fault(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, max_db_shard_group_limit_reached(), tuple()} |
+    {error, unsupported_db_engine_version_fault(), tuple()}.
 create_db_shard_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBShardGroup">>, Input, Options).
@@ -981,9 +6616,24 @@ create_db_shard_group(Client, Input, Options)
 %%
 %% The source DB instance must be in the `available' or
 %% `storage-optimization' state.
+-spec create_db_snapshot(map(), create_db_snapshot_message()) ->
+    {ok, create_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 create_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_snapshot(Client, Input, []).
+
+-spec create_db_snapshot(map(), create_db_snapshot_message(), proplists:proplist()) ->
+    {ok, create_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 create_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSnapshot">>, Input, Options).
@@ -992,9 +6642,26 @@ create_db_snapshot(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
 %% the Amazon Web Services Region.
+-spec create_db_subnet_group(map(), create_db_subnet_group_message()) ->
+    {ok, create_db_subnet_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_subnet_group_already_exists_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_quota_exceeded_fault(), tuple()} |
+    {error, db_subnet_quota_exceeded_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()}.
 create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
+
+-spec create_db_subnet_group(map(), create_db_subnet_group_message(), proplists:proplist()) ->
+    {ok, create_db_subnet_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_subnet_group_already_exists_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_quota_exceeded_fault(), tuple()} |
+    {error, db_subnet_quota_exceeded_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()}.
 create_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSubnetGroup">>, Input, Options).
@@ -1043,9 +6710,30 @@ create_db_subnet_group(Client, Input, Options)
 %% Subscribing to Amazon RDS event notification:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Subscribing.html
 %% in the Amazon Aurora User Guide.
+-spec create_event_subscription(map(), create_event_subscription_message()) ->
+    {ok, create_event_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, event_subscription_quota_exceeded_fault(), tuple()} |
+    {error, s_n_s_invalid_topic_fault(), tuple()} |
+    {error, s_n_s_no_authorization_fault(), tuple()} |
+    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
+    {error, source_not_found_fault(), tuple()} |
+    {error, subscription_already_exist_fault(), tuple()} |
+    {error, subscription_category_not_found_fault(), tuple()}.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
+
+-spec create_event_subscription(map(), create_event_subscription_message(), proplists:proplist()) ->
+    {ok, create_event_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, event_subscription_quota_exceeded_fault(), tuple()} |
+    {error, s_n_s_invalid_topic_fault(), tuple()} |
+    {error, s_n_s_no_authorization_fault(), tuple()} |
+    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
+    {error, source_not_found_fault(), tuple()} |
+    {error, subscription_already_exist_fault(), tuple()} |
+    {error, subscription_category_not_found_fault(), tuple()}.
 create_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventSubscription">>, Input, Options).
@@ -1065,17 +6753,51 @@ create_event_subscription(Client, Input, Options)
 %% and this cluster becomes the primary cluster of the global database.
 %%
 %% This operation applies only to Aurora DB clusters.
+-spec create_global_cluster(map(), create_global_cluster_message()) ->
+    {ok, create_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, global_cluster_already_exists_fault(), tuple()} |
+    {error, global_cluster_quota_exceeded_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 create_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_global_cluster(Client, Input, []).
+
+-spec create_global_cluster(map(), create_global_cluster_message(), proplists:proplist()) ->
+    {ok, create_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, global_cluster_already_exists_fault(), tuple()} |
+    {error, global_cluster_quota_exceeded_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 create_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGlobalCluster">>, Input, Options).
 
 %% @doc Creates a zero-ETL integration with Amazon Redshift.
+-spec create_integration(map(), create_integration_message()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, integration_already_exists_fault(), tuple()} |
+    {error, integration_conflict_operation_fault(), tuple()} |
+    {error, integration_quota_exceeded_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()}.
 create_integration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_integration(Client, Input, []).
+
+-spec create_integration(map(), create_integration_message(), proplists:proplist()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, integration_already_exists_fault(), tuple()} |
+    {error, integration_conflict_operation_fault(), tuple()} |
+    {error, integration_quota_exceeded_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()}.
 create_integration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIntegration">>, Input, Options).
@@ -1085,9 +6807,20 @@ create_integration(Client, Input, Options)
 %% You can create up to 20 option groups.
 %%
 %% This command doesn't apply to RDS Custom.
+-spec create_option_group(map(), create_option_group_message()) ->
+    {ok, create_option_group_result(), tuple()} |
+    {error, any()} |
+    {error, option_group_already_exists_fault(), tuple()} |
+    {error, option_group_quota_exceeded_fault(), tuple()}.
 create_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_option_group(Client, Input, []).
+
+-spec create_option_group(map(), create_option_group_message(), proplists:proplist()) ->
+    {ok, create_option_group_result(), tuple()} |
+    {error, any()} |
+    {error, option_group_already_exists_fault(), tuple()} |
+    {error, option_group_quota_exceeded_fault(), tuple()}.
 create_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOptionGroup">>, Input, Options).
@@ -1096,9 +6829,24 @@ create_option_group(Client, Input, Options)
 %% configuration.
 %%
 %% Only RDS for Oracle container database (CDB) instances are supported.
+-spec create_tenant_database(map(), create_tenant_database_message()) ->
+    {ok, create_tenant_database_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, tenant_database_already_exists_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 create_tenant_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tenant_database(Client, Input, []).
+
+-spec create_tenant_database(map(), create_tenant_database_message(), proplists:proplist()) ->
+    {ok, create_tenant_database_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, tenant_database_already_exists_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 create_tenant_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTenantDatabase">>, Input, Options).
@@ -1114,9 +6862,20 @@ create_tenant_database(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
 %% in the Amazon Aurora
 %% User Guide.
+-spec delete_blue_green_deployment(map(), delete_blue_green_deployment_request()) ->
+    {ok, delete_blue_green_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, invalid_blue_green_deployment_state_fault(), tuple()}.
 delete_blue_green_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_blue_green_deployment(Client, Input, []).
+
+-spec delete_blue_green_deployment(map(), delete_blue_green_deployment_request(), proplists:proplist()) ->
+    {ok, delete_blue_green_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, invalid_blue_green_deployment_state_fault(), tuple()}.
 delete_blue_green_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBlueGreenDeployment">>, Input, Options).
@@ -1149,9 +6908,20 @@ delete_blue_green_deployment(Client, Input, Options)
 %% CEV:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.delete
 %% in the Amazon RDS User Guide.
+-spec delete_custom_db_engine_version(map(), delete_custom_db_engine_version_message()) ->
+    {ok, db_engine_version(), tuple()} |
+    {error, any()} |
+    {error, custom_db_engine_version_not_found_fault(), tuple()} |
+    {error, invalid_custom_db_engine_version_state_fault(), tuple()}.
 delete_custom_db_engine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_db_engine_version(Client, Input, []).
+
+-spec delete_custom_db_engine_version(map(), delete_custom_db_engine_version_message(), proplists:proplist()) ->
+    {ok, db_engine_version(), tuple()} |
+    {error, any()} |
+    {error, custom_db_engine_version_not_found_fault(), tuple()} |
+    {error, invalid_custom_db_engine_version_state_fault(), tuple()}.
 delete_custom_db_engine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomDBEngineVersion">>, Input, Options).
@@ -1178,9 +6948,28 @@ delete_custom_db_engine_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec delete_db_cluster(map(), delete_db_cluster_message()) ->
+    {ok, delete_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_automated_backup_quota_exceeded_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
+
+-spec delete_db_cluster(map(), delete_db_cluster_message(), proplists:proplist()) ->
+    {ok, delete_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_automated_backup_quota_exceeded_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 delete_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBCluster">>, Input, Options).
@@ -1188,9 +6977,20 @@ delete_db_cluster(Client, Input, Options)
 %% @doc Deletes automated backups using the `DbClusterResourceId' value
 %% of the source DB cluster or the Amazon
 %% Resource Name (ARN) of the automated backups.
+-spec delete_db_cluster_automated_backup(map(), delete_db_cluster_automated_backup_message()) ->
+    {ok, delete_db_cluster_automated_backup_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_automated_backup_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_automated_backup_state_fault(), tuple()}.
 delete_db_cluster_automated_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_automated_backup(Client, Input, []).
+
+-spec delete_db_cluster_automated_backup(map(), delete_db_cluster_automated_backup_message(), proplists:proplist()) ->
+    {ok, delete_db_cluster_automated_backup_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_automated_backup_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_automated_backup_state_fault(), tuple()}.
 delete_db_cluster_automated_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterAutomatedBackup">>, Input, Options).
@@ -1199,9 +6999,22 @@ delete_db_cluster_automated_backup(Client, Input, Options)
 %% cluster.
 %%
 %% This action only applies to Aurora DB clusters.
+-spec delete_db_cluster_endpoint(map(), delete_db_cluster_endpoint_message()) ->
+    {ok, db_cluster_endpoint(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_endpoint_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_endpoint_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 delete_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_endpoint(Client, Input, []).
+
+-spec delete_db_cluster_endpoint(map(), delete_db_cluster_endpoint_message(), proplists:proplist()) ->
+    {ok, db_cluster_endpoint(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_endpoint_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_endpoint_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 delete_db_cluster_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterEndpoint">>, Input, Options).
@@ -1222,9 +7035,20 @@ delete_db_cluster_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
+
+-spec delete_db_cluster_parameter_group(map(), delete_db_cluster_parameter_group_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 delete_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterParameterGroup">>, Input, Options).
@@ -1247,9 +7071,20 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message()) ->
+    {ok, delete_db_cluster_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()}.
 delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
+
+-spec delete_db_cluster_snapshot(map(), delete_db_cluster_snapshot_message(), proplists:proplist()) ->
+    {ok, delete_db_cluster_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()}.
 delete_db_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBClusterSnapshot">>, Input, Options).
@@ -1289,9 +7124,28 @@ delete_db_cluster_snapshot(Client, Input, Options)
 %% don't terminate or delete
 %% these resources before you delete the DB instance. Otherwise, deleting the
 %% DB instance and creation of the final snapshot might fail.
+-spec delete_db_instance(map(), delete_db_instance_message()) ->
+    {ok, delete_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_automated_backup_quota_exceeded_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance(Client, Input, []).
+
+-spec delete_db_instance(map(), delete_db_instance_message(), proplists:proplist()) ->
+    {ok, delete_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_automated_backup_quota_exceeded_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 delete_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBInstance">>, Input, Options).
@@ -1299,9 +7153,20 @@ delete_db_instance(Client, Input, Options)
 %% @doc Deletes automated backups using the `DbiResourceId' value of the
 %% source DB instance or the Amazon Resource Name (ARN) of the automated
 %% backups.
+-spec delete_db_instance_automated_backup(map(), delete_db_instance_automated_backup_message()) ->
+    {ok, delete_db_instance_automated_backup_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_automated_backup_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_automated_backup_state_fault(), tuple()}.
 delete_db_instance_automated_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance_automated_backup(Client, Input, []).
+
+-spec delete_db_instance_automated_backup(map(), delete_db_instance_automated_backup_message(), proplists:proplist()) ->
+    {ok, delete_db_instance_automated_backup_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_automated_backup_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_automated_backup_state_fault(), tuple()}.
 delete_db_instance_automated_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBInstanceAutomatedBackup">>, Input, Options).
@@ -1310,17 +7175,39 @@ delete_db_instance_automated_backup(Client, Input, Options)
 %%
 %% The DB parameter group to be deleted can't be associated with any DB
 %% instances.
+-spec delete_db_parameter_group(map(), delete_db_parameter_group_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 delete_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_parameter_group(Client, Input, []).
+
+-spec delete_db_parameter_group(map(), delete_db_parameter_group_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 delete_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBParameterGroup">>, Input, Options).
 
 %% @doc Deletes an existing DB proxy.
+-spec delete_db_proxy(map(), delete_db_proxy_request()) ->
+    {ok, delete_db_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 delete_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_proxy(Client, Input, []).
+
+-spec delete_db_proxy(map(), delete_db_proxy_request(), proplists:proplist()) ->
+    {ok, delete_db_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 delete_db_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBProxy">>, Input, Options).
@@ -1332,9 +7219,20 @@ delete_db_proxy(Client, Input, Options)
 %% provided capabilities such as read/write
 %% or read-only operations, or using a different VPC than the DB proxy's
 %% default VPC.
+-spec delete_db_proxy_endpoint(map(), delete_db_proxy_endpoint_request()) ->
+    {ok, delete_db_proxy_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_endpoint_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_endpoint_state_fault(), tuple()}.
 delete_db_proxy_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_proxy_endpoint(Client, Input, []).
+
+-spec delete_db_proxy_endpoint(map(), delete_db_proxy_endpoint_request(), proplists:proplist()) ->
+    {ok, delete_db_proxy_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_endpoint_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_endpoint_state_fault(), tuple()}.
 delete_db_proxy_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBProxyEndpoint">>, Input, Options).
@@ -1357,17 +7255,41 @@ delete_db_proxy_endpoint(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
+-spec delete_db_security_group(map(), delete_db_security_group_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()}.
 delete_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_security_group(Client, Input, []).
+
+-spec delete_db_security_group(map(), delete_db_security_group_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()}.
 delete_db_security_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSecurityGroup">>, Input, Options).
 
 %% @doc Deletes an Aurora Limitless Database DB shard group.
+-spec delete_db_shard_group(map(), delete_db_shard_group_message()) ->
+    {ok, db_shard_group(), tuple()} |
+    {error, any()} |
+    {error, db_shard_group_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_shard_group_state_fault(), tuple()}.
 delete_db_shard_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_shard_group(Client, Input, []).
+
+-spec delete_db_shard_group(map(), delete_db_shard_group_message(), proplists:proplist()) ->
+    {ok, db_shard_group(), tuple()} |
+    {error, any()} |
+    {error, db_shard_group_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_shard_group_state_fault(), tuple()}.
 delete_db_shard_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBShardGroup">>, Input, Options).
@@ -1378,9 +7300,20 @@ delete_db_shard_group(Client, Input, Options)
 %% terminated.
 %%
 %% The DB snapshot must be in the `available' state to be deleted.
+-spec delete_db_snapshot(map(), delete_db_snapshot_message()) ->
+    {ok, delete_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()}.
 delete_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_snapshot(Client, Input, []).
+
+-spec delete_db_snapshot(map(), delete_db_snapshot_message(), proplists:proplist()) ->
+    {ok, delete_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()}.
 delete_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSnapshot">>, Input, Options).
@@ -1389,17 +7322,41 @@ delete_db_snapshot(Client, Input, Options)
 %%
 %% The specified database subnet group must not be associated with any DB
 %% instances.
+-spec delete_db_subnet_group(map(), delete_db_subnet_group_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, invalid_db_subnet_group_state_fault(), tuple()} |
+    {error, invalid_db_subnet_state_fault(), tuple()}.
 delete_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_subnet_group(Client, Input, []).
+
+-spec delete_db_subnet_group(map(), delete_db_subnet_group_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, invalid_db_subnet_group_state_fault(), tuple()} |
+    {error, invalid_db_subnet_state_fault(), tuple()}.
 delete_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSubnetGroup">>, Input, Options).
 
 %% @doc Deletes an RDS event notification subscription.
+-spec delete_event_subscription(map(), delete_event_subscription_message()) ->
+    {ok, delete_event_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_event_subscription_state_fault(), tuple()} |
+    {error, subscription_not_found_fault(), tuple()}.
 delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_subscription(Client, Input, []).
+
+-spec delete_event_subscription(map(), delete_event_subscription_message(), proplists:proplist()) ->
+    {ok, delete_event_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_event_subscription_state_fault(), tuple()} |
+    {error, subscription_not_found_fault(), tuple()}.
 delete_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventSubscription">>, Input, Options).
@@ -1410,25 +7367,60 @@ delete_event_subscription(Client, Input, Options)
 %% destroyed first.
 %%
 %% This action only applies to Aurora DB clusters.
+-spec delete_global_cluster(map(), delete_global_cluster_message()) ->
+    {ok, delete_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 delete_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_global_cluster(Client, Input, []).
+
+-spec delete_global_cluster(map(), delete_global_cluster_message(), proplists:proplist()) ->
+    {ok, delete_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 delete_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGlobalCluster">>, Input, Options).
 
 %% @doc Deletes a zero-ETL integration with Amazon Redshift.
+-spec delete_integration(map(), delete_integration_message()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, integration_conflict_operation_fault(), tuple()} |
+    {error, integration_not_found_fault(), tuple()} |
+    {error, invalid_integration_state_fault(), tuple()}.
 delete_integration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_integration(Client, Input, []).
+
+-spec delete_integration(map(), delete_integration_message(), proplists:proplist()) ->
+    {ok, integration(), tuple()} |
+    {error, any()} |
+    {error, integration_conflict_operation_fault(), tuple()} |
+    {error, integration_not_found_fault(), tuple()} |
+    {error, invalid_integration_state_fault(), tuple()}.
 delete_integration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIntegration">>, Input, Options).
 
 %% @doc Deletes an existing option group.
+-spec delete_option_group(map(), delete_option_group_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_option_group_state_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()}.
 delete_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_option_group(Client, Input, []).
+
+-spec delete_option_group(map(), delete_option_group_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_option_group_state_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()}.
 delete_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOptionGroup">>, Input, Options).
@@ -1441,18 +7433,46 @@ delete_option_group(Client, Input, Options)
 %% You can't delete a tenant database when it is the only tenant in the
 %% DB
 %% instance.
+-spec delete_tenant_database(map(), delete_tenant_database_message()) ->
+    {ok, delete_tenant_database_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 delete_tenant_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tenant_database(Client, Input, []).
+
+-spec delete_tenant_database(map(), delete_tenant_database_message(), proplists:proplist()) ->
+    {ok, delete_tenant_database_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 delete_tenant_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTenantDatabase">>, Input, Options).
 
 %% @doc Remove the association between one or more `DBProxyTarget' data
 %% structures and a `DBProxyTargetGroup'.
+-spec deregister_db_proxy_targets(map(), deregister_db_proxy_targets_request()) ->
+    {ok, deregister_db_proxy_targets_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_proxy_target_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 deregister_db_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_db_proxy_targets(Client, Input, []).
+
+-spec deregister_db_proxy_targets(map(), deregister_db_proxy_targets_request(), proplists:proplist()) ->
+    {ok, deregister_db_proxy_targets_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_proxy_target_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 deregister_db_proxy_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterDBProxyTargets">>, Input, Options).
@@ -1465,9 +7485,16 @@ deregister_db_proxy_targets(Client, Input, Options)
 %% value.
 %%
 %% This command doesn't take any parameters.
+-spec describe_account_attributes(map(), describe_account_attributes_message()) ->
+    {ok, account_attributes_message(), tuple()} |
+    {error, any()}.
 describe_account_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_attributes(Client, Input, []).
+
+-spec describe_account_attributes(map(), describe_account_attributes_message(), proplists:proplist()) ->
+    {ok, account_attributes_message(), tuple()} |
+    {error, any()}.
 describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
@@ -1483,9 +7510,18 @@ describe_account_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
 %% in the Amazon Aurora
 %% User Guide.
+-spec describe_blue_green_deployments(map(), describe_blue_green_deployments_request()) ->
+    {ok, describe_blue_green_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()}.
 describe_blue_green_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_blue_green_deployments(Client, Input, []).
+
+-spec describe_blue_green_deployments(map(), describe_blue_green_deployments_request(), proplists:proplist()) ->
+    {ok, describe_blue_green_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()}.
 describe_blue_green_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBlueGreenDeployments">>, Input, Options).
@@ -1502,9 +7538,18 @@ describe_blue_green_deployments(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html
 %% in the Amazon Aurora
 %% User Guide.
+-spec describe_certificates(map(), describe_certificates_message()) ->
+    {ok, certificate_message(), tuple()} |
+    {error, any()} |
+    {error, certificate_not_found_fault(), tuple()}.
 describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
+
+-spec describe_certificates(map(), describe_certificates_message(), proplists:proplist()) ->
+    {ok, certificate_message(), tuple()} |
+    {error, any()} |
+    {error, certificate_not_found_fault(), tuple()}.
 describe_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificates">>, Input, Options).
@@ -1518,9 +7563,18 @@ describe_certificates(Client, Input, Options)
 %% operations.
 %%
 %% All parameters are optional.
+-spec describe_db_cluster_automated_backups(map(), describe_db_cluster_automated_backups_message()) ->
+    {ok, db_cluster_automated_backup_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_automated_backup_not_found_fault(), tuple()}.
 describe_db_cluster_automated_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_automated_backups(Client, Input, []).
+
+-spec describe_db_cluster_automated_backups(map(), describe_db_cluster_automated_backups_message(), proplists:proplist()) ->
+    {ok, db_cluster_automated_backup_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_automated_backup_not_found_fault(), tuple()}.
 describe_db_cluster_automated_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterAutomatedBackups">>, Input, Options).
@@ -1534,9 +7588,20 @@ describe_db_cluster_automated_backups(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora MySQL DB clusters.
+-spec describe_db_cluster_backtracks(map(), describe_db_cluster_backtracks_message()) ->
+    {ok, db_cluster_backtrack_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_backtrack_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()}.
 describe_db_cluster_backtracks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_backtracks(Client, Input, []).
+
+-spec describe_db_cluster_backtracks(map(), describe_db_cluster_backtracks_message(), proplists:proplist()) ->
+    {ok, db_cluster_backtrack_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_backtrack_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()}.
 describe_db_cluster_backtracks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterBacktracks">>, Input, Options).
@@ -1544,9 +7609,18 @@ describe_db_cluster_backtracks(Client, Input, Options)
 %% @doc Returns information about endpoints for an Amazon Aurora DB cluster.
 %%
 %% This action only applies to Aurora DB clusters.
+-spec describe_db_cluster_endpoints(map(), describe_db_cluster_endpoints_message()) ->
+    {ok, db_cluster_endpoint_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()}.
 describe_db_cluster_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_endpoints(Client, Input, []).
+
+-spec describe_db_cluster_endpoints(map(), describe_db_cluster_endpoints_message(), proplists:proplist()) ->
+    {ok, db_cluster_endpoint_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()}.
 describe_db_cluster_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterEndpoints">>, Input, Options).
@@ -1569,9 +7643,18 @@ describe_db_cluster_endpoints(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message()) ->
+    {ok, db_cluster_parameter_groups_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()}.
 describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
+
+-spec describe_db_cluster_parameter_groups(map(), describe_db_cluster_parameter_groups_message(), proplists:proplist()) ->
+    {ok, db_cluster_parameter_groups_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()}.
 describe_db_cluster_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterParameterGroups">>, Input, Options).
@@ -1590,9 +7673,18 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message()) ->
+    {ok, db_cluster_parameter_group_details(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()}.
 describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
+
+-spec describe_db_cluster_parameters(map(), describe_db_cluster_parameters_message(), proplists:proplist()) ->
+    {ok, db_cluster_parameter_group_details(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()}.
 describe_db_cluster_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterParameters">>, Input, Options).
@@ -1614,9 +7706,18 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% restore a manual DB cluster snapshot, or to make the
 %% manual DB cluster snapshot public or private, use the
 %% `ModifyDBClusterSnapshotAttribute' API action.
+-spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message()) ->
+    {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()}.
 describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
+
+-spec describe_db_cluster_snapshot_attributes(map(), describe_db_cluster_snapshot_attributes_message(), proplists:proplist()) ->
+    {ok, describe_db_cluster_snapshot_attributes_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()}.
 describe_db_cluster_snapshot_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshotAttributes">>, Input, Options).
@@ -1636,9 +7737,18 @@ describe_db_cluster_snapshot_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message()) ->
+    {ok, db_cluster_snapshot_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()}.
 describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshots(Client, Input, []).
+
+-spec describe_db_cluster_snapshots(map(), describe_db_cluster_snapshots_message(), proplists:proplist()) ->
+    {ok, db_cluster_snapshot_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()}.
 describe_db_cluster_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshots">>, Input, Options).
@@ -1662,17 +7772,33 @@ describe_db_cluster_snapshots(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
+-spec describe_db_clusters(map(), describe_db_clusters_message()) ->
+    {ok, db_cluster_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()}.
 describe_db_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_clusters(Client, Input, []).
+
+-spec describe_db_clusters(map(), describe_db_clusters_message(), proplists:proplist()) ->
+    {ok, db_cluster_message(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()}.
 describe_db_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusters">>, Input, Options).
 
 %% @doc Describes the properties of specific versions of DB engines.
+-spec describe_db_engine_versions(map(), describe_db_engine_versions_message()) ->
+    {ok, db_engine_version_message(), tuple()} |
+    {error, any()}.
 describe_db_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_engine_versions(Client, Input, []).
+
+-spec describe_db_engine_versions(map(), describe_db_engine_versions_message(), proplists:proplist()) ->
+    {ok, db_engine_version_message(), tuple()} |
+    {error, any()}.
 describe_db_engine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBEngineVersions">>, Input, Options).
@@ -1688,9 +7814,18 @@ describe_db_engine_versions(Client, Input, Options)
 %% `DescribeDBInstances' operations.
 %%
 %% All parameters are optional.
+-spec describe_db_instance_automated_backups(map(), describe_db_instance_automated_backups_message()) ->
+    {ok, db_instance_automated_backup_message(), tuple()} |
+    {error, any()} |
+    {error, db_instance_automated_backup_not_found_fault(), tuple()}.
 describe_db_instance_automated_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_instance_automated_backups(Client, Input, []).
+
+-spec describe_db_instance_automated_backups(map(), describe_db_instance_automated_backups_message(), proplists:proplist()) ->
+    {ok, db_instance_automated_backup_message(), tuple()} |
+    {error, any()} |
+    {error, db_instance_automated_backup_not_found_fault(), tuple()}.
 describe_db_instance_automated_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBInstanceAutomatedBackups">>, Input, Options).
@@ -1701,9 +7836,18 @@ describe_db_instance_automated_backups(Client, Input, Options)
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
+-spec describe_db_instances(map(), describe_db_instances_message()) ->
+    {ok, db_instance_message(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()}.
 describe_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_instances(Client, Input, []).
+
+-spec describe_db_instances(map(), describe_db_instances_message(), proplists:proplist()) ->
+    {ok, db_instance_message(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()}.
 describe_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBInstances">>, Input, Options).
@@ -1711,9 +7855,18 @@ describe_db_instances(Client, Input, Options)
 %% @doc Returns a list of DB log files for the DB instance.
 %%
 %% This command doesn't apply to RDS Custom.
+-spec describe_db_log_files(map(), describe_db_log_files_message()) ->
+    {ok, describe_db_log_files_response(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()}.
 describe_db_log_files(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_log_files(Client, Input, []).
+
+-spec describe_db_log_files(map(), describe_db_log_files_message(), proplists:proplist()) ->
+    {ok, describe_db_log_files_response(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()}.
 describe_db_log_files(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBLogFiles">>, Input, Options).
@@ -1723,43 +7876,94 @@ describe_db_log_files(Client, Input, Options)
 %% If a `DBParameterGroupName' is specified,
 %% the list will contain only the description of the specified DB parameter
 %% group.
+-spec describe_db_parameter_groups(map(), describe_db_parameter_groups_message()) ->
+    {ok, db_parameter_groups_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()}.
 describe_db_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_parameter_groups(Client, Input, []).
+
+-spec describe_db_parameter_groups(map(), describe_db_parameter_groups_message(), proplists:proplist()) ->
+    {ok, db_parameter_groups_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()}.
 describe_db_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBParameterGroups">>, Input, Options).
 
 %% @doc Returns the detailed parameter list for a particular DB parameter
 %% group.
+-spec describe_db_parameters(map(), describe_db_parameters_message()) ->
+    {ok, db_parameter_group_details(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()}.
 describe_db_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_parameters(Client, Input, []).
+
+-spec describe_db_parameters(map(), describe_db_parameters_message(), proplists:proplist()) ->
+    {ok, db_parameter_group_details(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()}.
 describe_db_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBParameters">>, Input, Options).
 
 %% @doc Returns information about DB proxies.
+-spec describe_db_proxies(map(), describe_db_proxies_request()) ->
+    {ok, describe_db_proxies_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()}.
 describe_db_proxies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_proxies(Client, Input, []).
+
+-spec describe_db_proxies(map(), describe_db_proxies_request(), proplists:proplist()) ->
+    {ok, describe_db_proxies_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()}.
 describe_db_proxies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxies">>, Input, Options).
 
 %% @doc Returns information about DB proxy endpoints.
+-spec describe_db_proxy_endpoints(map(), describe_db_proxy_endpoints_request()) ->
+    {ok, describe_db_proxy_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_endpoint_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()}.
 describe_db_proxy_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_proxy_endpoints(Client, Input, []).
+
+-spec describe_db_proxy_endpoints(map(), describe_db_proxy_endpoints_request(), proplists:proplist()) ->
+    {ok, describe_db_proxy_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_endpoint_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()}.
 describe_db_proxy_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxyEndpoints">>, Input, Options).
 
 %% @doc Returns information about DB proxy target groups, represented by
 %% `DBProxyTargetGroup' data structures.
+-spec describe_db_proxy_target_groups(map(), describe_db_proxy_target_groups_request()) ->
+    {ok, describe_db_proxy_target_groups_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 describe_db_proxy_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_proxy_target_groups(Client, Input, []).
+
+-spec describe_db_proxy_target_groups(map(), describe_db_proxy_target_groups_request(), proplists:proplist()) ->
+    {ok, describe_db_proxy_target_groups_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 describe_db_proxy_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxyTargetGroups">>, Input, Options).
@@ -1767,18 +7971,40 @@ describe_db_proxy_target_groups(Client, Input, Options)
 %% @doc Returns information about `DBProxyTarget' objects.
 %%
 %% This API supports pagination.
+-spec describe_db_proxy_targets(map(), describe_db_proxy_targets_request()) ->
+    {ok, describe_db_proxy_targets_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_proxy_target_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 describe_db_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_proxy_targets(Client, Input, []).
+
+-spec describe_db_proxy_targets(map(), describe_db_proxy_targets_request(), proplists:proplist()) ->
+    {ok, describe_db_proxy_targets_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_proxy_target_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 describe_db_proxy_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxyTargets">>, Input, Options).
 
 %% @doc Describes the recommendations to resolve the issues for your DB
 %% instances, DB clusters, and DB parameter groups.
+-spec describe_db_recommendations(map(), describe_db_recommendations_message()) ->
+    {ok, db_recommendations_message(), tuple()} |
+    {error, any()}.
 describe_db_recommendations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_recommendations(Client, Input, []).
+
+-spec describe_db_recommendations(map(), describe_db_recommendations_message(), proplists:proplist()) ->
+    {ok, db_recommendations_message(), tuple()} |
+    {error, any()}.
 describe_db_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBRecommendations">>, Input, Options).
@@ -1802,17 +8028,37 @@ describe_db_recommendations(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
+-spec describe_db_security_groups(map(), describe_db_security_groups_message()) ->
+    {ok, db_security_group_message(), tuple()} |
+    {error, any()} |
+    {error, db_security_group_not_found_fault(), tuple()}.
 describe_db_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_security_groups(Client, Input, []).
+
+-spec describe_db_security_groups(map(), describe_db_security_groups_message(), proplists:proplist()) ->
+    {ok, db_security_group_message(), tuple()} |
+    {error, any()} |
+    {error, db_security_group_not_found_fault(), tuple()}.
 describe_db_security_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSecurityGroups">>, Input, Options).
 
 %% @doc Describes existing Aurora Limitless Database DB shard groups.
+-spec describe_db_shard_groups(map(), describe_db_shard_groups_message()) ->
+    {ok, describe_db_shard_groups_response(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_shard_group_not_found_fault(), tuple()}.
 describe_db_shard_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_shard_groups(Client, Input, []).
+
+-spec describe_db_shard_groups(map(), describe_db_shard_groups_message(), proplists:proplist()) ->
+    {ok, describe_db_shard_groups_response(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_shard_group_not_found_fault(), tuple()}.
 describe_db_shard_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBShardGroups">>, Input, Options).
@@ -1834,9 +8080,18 @@ describe_db_shard_groups(Client, Input, Options)
 %% restore a manual DB snapshot, or to make the
 %% manual DB snapshot public or private, use the
 %% `ModifyDBSnapshotAttribute' API action.
+-spec describe_db_snapshot_attributes(map(), describe_db_snapshot_attributes_message()) ->
+    {ok, describe_db_snapshot_attributes_result(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()}.
 describe_db_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_snapshot_attributes(Client, Input, []).
+
+-spec describe_db_snapshot_attributes(map(), describe_db_snapshot_attributes_message(), proplists:proplist()) ->
+    {ok, describe_db_snapshot_attributes_result(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()}.
 describe_db_snapshot_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSnapshotAttributes">>, Input, Options).
@@ -1853,9 +8108,18 @@ describe_db_snapshot_attributes(Client, Input, Options)
 %% you restore a snapshot that was taken from DB instance using the
 %% multi-tenant
 %% configuration, you restore all its tenant databases.
+-spec describe_db_snapshot_tenant_databases(map(), describe_db_snapshot_tenant_databases_message()) ->
+    {ok, db_snapshot_tenant_databases_message(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()}.
 describe_db_snapshot_tenant_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_snapshot_tenant_databases(Client, Input, []).
+
+-spec describe_db_snapshot_tenant_databases(map(), describe_db_snapshot_tenant_databases_message(), proplists:proplist()) ->
+    {ok, db_snapshot_tenant_databases_message(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()}.
 describe_db_snapshot_tenant_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSnapshotTenantDatabases">>, Input, Options).
@@ -1863,9 +8127,18 @@ describe_db_snapshot_tenant_databases(Client, Input, Options)
 %% @doc Returns information about DB snapshots.
 %%
 %% This API action supports pagination.
+-spec describe_db_snapshots(map(), describe_db_snapshots_message()) ->
+    {ok, db_snapshot_message(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()}.
 describe_db_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_snapshots(Client, Input, []).
+
+-spec describe_db_snapshots(map(), describe_db_snapshots_message(), proplists:proplist()) ->
+    {ok, db_snapshot_message(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()}.
 describe_db_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSnapshots">>, Input, Options).
@@ -1878,9 +8151,18 @@ describe_db_snapshots(Client, Input, Options)
 %% For an overview of CIDR ranges, go to the
 %% Wikipedia Tutorial:
 %% http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing.
+-spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message()) ->
+    {ok, db_subnet_group_message(), tuple()} |
+    {error, any()} |
+    {error, db_subnet_group_not_found_fault(), tuple()}.
 describe_db_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_subnet_groups(Client, Input, []).
+
+-spec describe_db_subnet_groups(map(), describe_db_subnet_groups_message(), proplists:proplist()) ->
+    {ok, db_subnet_group_message(), tuple()} |
+    {error, any()} |
+    {error, db_subnet_group_not_found_fault(), tuple()}.
 describe_db_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBSubnetGroups">>, Input, Options).
@@ -1893,18 +8175,32 @@ describe_db_subnet_groups(Client, Input, Options)
 %% What is Amazon Aurora?:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
 %% in the Amazon Aurora User Guide.
+-spec describe_engine_default_cluster_parameters(map(), describe_engine_default_cluster_parameters_message()) ->
+    {ok, describe_engine_default_cluster_parameters_result(), tuple()} |
+    {error, any()}.
 describe_engine_default_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_cluster_parameters(Client, Input, []).
+
+-spec describe_engine_default_cluster_parameters(map(), describe_engine_default_cluster_parameters_message(), proplists:proplist()) ->
+    {ok, describe_engine_default_cluster_parameters_result(), tuple()} |
+    {error, any()}.
 describe_engine_default_cluster_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEngineDefaultClusterParameters">>, Input, Options).
 
 %% @doc Returns the default engine and system parameter information for the
 %% specified database engine.
+-spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message()) ->
+    {ok, describe_engine_default_parameters_result(), tuple()} |
+    {error, any()}.
 describe_engine_default_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_default_parameters(Client, Input, []).
+
+-spec describe_engine_default_parameters(map(), describe_engine_default_parameters_message(), proplists:proplist()) ->
+    {ok, describe_engine_default_parameters_result(), tuple()} |
+    {error, any()}.
 describe_engine_default_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEngineDefaultParameters">>, Input, Options).
@@ -1922,9 +8218,16 @@ describe_engine_default_parameters(Client, Input, Options)
 %% Amazon Aurora User Guide
 %% :
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html.
+-spec describe_event_categories(map(), describe_event_categories_message()) ->
+    {ok, event_categories_message(), tuple()} |
+    {error, any()}.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
+
+-spec describe_event_categories(map(), describe_event_categories_message(), proplists:proplist()) ->
+    {ok, event_categories_message(), tuple()} |
+    {error, any()}.
 describe_event_categories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventCategories">>, Input, Options).
@@ -1937,9 +8240,18 @@ describe_event_categories(Client, Input, Options)
 %%
 %% If you specify a `SubscriptionName', lists the description for that
 %% subscription.
+-spec describe_event_subscriptions(map(), describe_event_subscriptions_message()) ->
+    {ok, event_subscriptions_message(), tuple()} |
+    {error, any()} |
+    {error, subscription_not_found_fault(), tuple()}.
 describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_subscriptions(Client, Input, []).
+
+-spec describe_event_subscriptions(map(), describe_event_subscriptions_message(), proplists:proplist()) ->
+    {ok, event_subscriptions_message(), tuple()} |
+    {error, any()} |
+    {error, subscription_not_found_fault(), tuple()}.
 describe_event_subscriptions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventSubscriptions">>, Input, Options).
@@ -1962,9 +8274,16 @@ describe_event_subscriptions(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% By default, RDS returns events that were generated in the past hour.
+-spec describe_events(map(), describe_events_message()) ->
+    {ok, events_message(), tuple()} |
+    {error, any()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
+
+-spec describe_events(map(), describe_events_message(), proplists:proplist()) ->
+    {ok, events_message(), tuple()} |
+    {error, any()}.
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
@@ -1973,9 +8292,18 @@ describe_events(Client, Input, Options)
 %%
 %% This API operation supports
 %% pagination.
+-spec describe_export_tasks(map(), describe_export_tasks_message()) ->
+    {ok, export_tasks_message(), tuple()} |
+    {error, any()} |
+    {error, export_task_not_found_fault(), tuple()}.
 describe_export_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_tasks(Client, Input, []).
+
+-spec describe_export_tasks(map(), describe_export_tasks_message(), proplists:proplist()) ->
+    {ok, export_tasks_message(), tuple()} |
+    {error, any()} |
+    {error, export_task_not_found_fault(), tuple()}.
 describe_export_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExportTasks">>, Input, Options).
@@ -1990,68 +8318,136 @@ describe_export_tasks(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
+-spec describe_global_clusters(map(), describe_global_clusters_message()) ->
+    {ok, global_clusters_message(), tuple()} |
+    {error, any()} |
+    {error, global_cluster_not_found_fault(), tuple()}.
 describe_global_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_clusters(Client, Input, []).
+
+-spec describe_global_clusters(map(), describe_global_clusters_message(), proplists:proplist()) ->
+    {ok, global_clusters_message(), tuple()} |
+    {error, any()} |
+    {error, global_cluster_not_found_fault(), tuple()}.
 describe_global_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalClusters">>, Input, Options).
 
 %% @doc Describe one or more zero-ETL integrations with Amazon Redshift.
+-spec describe_integrations(map(), describe_integrations_message()) ->
+    {ok, describe_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, integration_not_found_fault(), tuple()}.
 describe_integrations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_integrations(Client, Input, []).
+
+-spec describe_integrations(map(), describe_integrations_message(), proplists:proplist()) ->
+    {ok, describe_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, integration_not_found_fault(), tuple()}.
 describe_integrations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIntegrations">>, Input, Options).
 
 %% @doc Describes all available options for the specified engine.
+-spec describe_option_group_options(map(), describe_option_group_options_message()) ->
+    {ok, option_group_options_message(), tuple()} |
+    {error, any()}.
 describe_option_group_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_option_group_options(Client, Input, []).
+
+-spec describe_option_group_options(map(), describe_option_group_options_message(), proplists:proplist()) ->
+    {ok, option_group_options_message(), tuple()} |
+    {error, any()}.
 describe_option_group_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOptionGroupOptions">>, Input, Options).
 
 %% @doc Describes the available option groups.
+-spec describe_option_groups(map(), describe_option_groups_message()) ->
+    {ok, option_groups(), tuple()} |
+    {error, any()} |
+    {error, option_group_not_found_fault(), tuple()}.
 describe_option_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_option_groups(Client, Input, []).
+
+-spec describe_option_groups(map(), describe_option_groups_message(), proplists:proplist()) ->
+    {ok, option_groups(), tuple()} |
+    {error, any()} |
+    {error, option_group_not_found_fault(), tuple()}.
 describe_option_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOptionGroups">>, Input, Options).
 
 %% @doc Describes the orderable DB instance options for a specified DB
 %% engine.
+-spec describe_orderable_db_instance_options(map(), describe_orderable_db_instance_options_message()) ->
+    {ok, orderable_db_instance_options_message(), tuple()} |
+    {error, any()}.
 describe_orderable_db_instance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_db_instance_options(Client, Input, []).
+
+-spec describe_orderable_db_instance_options(map(), describe_orderable_db_instance_options_message(), proplists:proplist()) ->
+    {ok, orderable_db_instance_options_message(), tuple()} |
+    {error, any()}.
 describe_orderable_db_instance_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrderableDBInstanceOptions">>, Input, Options).
 
 %% @doc Returns a list of resources (for example, DB instances) that have at
 %% least one pending maintenance action.
+-spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message()) ->
+    {ok, pending_maintenance_actions_message(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_fault(), tuple()}.
 describe_pending_maintenance_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pending_maintenance_actions(Client, Input, []).
+
+-spec describe_pending_maintenance_actions(map(), describe_pending_maintenance_actions_message(), proplists:proplist()) ->
+    {ok, pending_maintenance_actions_message(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_fault(), tuple()}.
 describe_pending_maintenance_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePendingMaintenanceActions">>, Input, Options).
 
 %% @doc Returns information about reserved DB instances for this account, or
 %% about a specified reserved DB instance.
+-spec describe_reserved_db_instances(map(), describe_reserved_db_instances_message()) ->
+    {ok, reserved_db_instance_message(), tuple()} |
+    {error, any()} |
+    {error, reserved_db_instance_not_found_fault(), tuple()}.
 describe_reserved_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_db_instances(Client, Input, []).
+
+-spec describe_reserved_db_instances(map(), describe_reserved_db_instances_message(), proplists:proplist()) ->
+    {ok, reserved_db_instance_message(), tuple()} |
+    {error, any()} |
+    {error, reserved_db_instance_not_found_fault(), tuple()}.
 describe_reserved_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedDBInstances">>, Input, Options).
 
 %% @doc Lists available reserved DB instance offerings.
+-spec describe_reserved_db_instances_offerings(map(), describe_reserved_db_instances_offerings_message()) ->
+    {ok, reserved_db_instances_offering_message(), tuple()} |
+    {error, any()} |
+    {error, reserved_db_instances_offering_not_found_fault(), tuple()}.
 describe_reserved_db_instances_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_db_instances_offerings(Client, Input, []).
+
+-spec describe_reserved_db_instances_offerings(map(), describe_reserved_db_instances_offerings_message(), proplists:proplist()) ->
+    {ok, reserved_db_instances_offering_message(), tuple()} |
+    {error, any()} |
+    {error, reserved_db_instances_offering_not_found_fault(), tuple()}.
 describe_reserved_db_instances_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedDBInstancesOfferings">>, Input, Options).
@@ -2071,9 +8467,16 @@ describe_reserved_db_instances_offerings(Client, Input, Options)
 %% DescribeRegions:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html
 %% in the Amazon EC2 API Reference.
+-spec describe_source_regions(map(), describe_source_regions_message()) ->
+    {ok, source_region_message(), tuple()} |
+    {error, any()}.
 describe_source_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_source_regions(Client, Input, []).
+
+-spec describe_source_regions(map(), describe_source_regions_message(), proplists:proplist()) ->
+    {ok, source_region_message(), tuple()} |
+    {error, any()}.
 describe_source_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSourceRegions">>, Input, Options).
@@ -2083,9 +8486,18 @@ describe_source_regions(Client, Input, Options)
 %% configuration.
 %%
 %% Only RDS for Oracle CDB instances are supported.
+-spec describe_tenant_databases(map(), describe_tenant_databases_message()) ->
+    {ok, tenant_databases_message(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()}.
 describe_tenant_databases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tenant_databases(Client, Input, []).
+
+-spec describe_tenant_databases(map(), describe_tenant_databases_message(), proplists:proplist()) ->
+    {ok, tenant_databases_message(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()}.
 describe_tenant_databases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTenantDatabases">>, Input, Options).
@@ -2097,9 +8509,20 @@ describe_tenant_databases(Client, Input, Options)
 %% You can use this information when you call `ModifyDBInstance'.
 %%
 %% This command doesn't apply to RDS Custom.
+-spec describe_valid_db_instance_modifications(map(), describe_valid_db_instance_modifications_message()) ->
+    {ok, describe_valid_db_instance_modifications_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 describe_valid_db_instance_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_valid_db_instance_modifications(Client, Input, []).
+
+-spec describe_valid_db_instance_modifications(map(), describe_valid_db_instance_modifications_message(), proplists:proplist()) ->
+    {ok, describe_valid_db_instance_modifications_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 describe_valid_db_instance_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeValidDBInstanceModifications">>, Input, Options).
@@ -2118,9 +8541,20 @@ describe_valid_db_instance_modifications(Client, Input, Options)
 %% Serverless v1 DB clusters,
 %% use the `EnableHttpEndpoint' parameter of the `ModifyDBCluster'
 %% operation.
+-spec disable_http_endpoint(map(), disable_http_endpoint_request()) ->
+    {ok, disable_http_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_resource_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 disable_http_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_http_endpoint(Client, Input, []).
+
+-spec disable_http_endpoint(map(), disable_http_endpoint_request(), proplists:proplist()) ->
+    {ok, disable_http_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_resource_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 disable_http_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableHttpEndpoint">>, Input, Options).
@@ -2129,9 +8563,20 @@ disable_http_endpoint(Client, Input, Options)
 %% size.
 %%
 %% This command doesn't apply to RDS Custom.
+-spec download_db_log_file_portion(map(), download_db_log_file_portion_message()) ->
+    {ok, download_db_log_file_portion_details(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_log_file_not_found_fault(), tuple()}.
 download_db_log_file_portion(Client, Input)
   when is_map(Client), is_map(Input) ->
     download_db_log_file_portion(Client, Input, []).
+
+-spec download_db_log_file_portion(map(), download_db_log_file_portion_message(), proplists:proplist()) ->
+    {ok, download_db_log_file_portion_details(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_log_file_not_found_fault(), tuple()}.
 download_db_log_file_portion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DownloadDBLogFilePortion">>, Input, Options).
@@ -2157,9 +8602,20 @@ download_db_log_file_portion(Client, Input, Options)
 %% v1 DB clusters,
 %% use the `EnableHttpEndpoint' parameter of the `ModifyDBCluster'
 %% operation.
+-spec enable_http_endpoint(map(), enable_http_endpoint_request()) ->
+    {ok, enable_http_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_resource_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 enable_http_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_http_endpoint(Client, Input, []).
+
+-spec enable_http_endpoint(map(), enable_http_endpoint_request(), proplists:proplist()) ->
+    {ok, enable_http_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_resource_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 enable_http_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableHttpEndpoint">>, Input, Options).
@@ -2201,9 +8657,22 @@ enable_http_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec failover_db_cluster(map(), failover_db_cluster_message()) ->
+    {ok, failover_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_db_cluster(Client, Input, []).
+
+-spec failover_db_cluster(map(), failover_db_cluster_message(), proplists:proplist()) ->
+    {ok, failover_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 failover_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverDBCluster">>, Input, Options).
@@ -2261,9 +8730,24 @@ failover_db_cluster(Client, Input, Options)
 %% Performing switchovers for Aurora global databases:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-disaster-recovery.html#aurora-global-database-disaster-recovery.managed-failover
 %% in the Amazon Aurora User Guide.
+-spec failover_global_cluster(map(), failover_global_cluster_message()) ->
+    {ok, failover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 failover_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_global_cluster(Client, Input, []).
+
+-spec failover_global_cluster(map(), failover_global_cluster_message(), proplists:proplist()) ->
+    {ok, failover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 failover_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverGlobalCluster">>, Input, Options).
@@ -2274,9 +8758,34 @@ failover_global_cluster(Client, Input, Options)
 %% see Tagging Amazon RDS Resources:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html
 %% in the Amazon RDS User Guide.
+-spec list_tags_for_resource(map(), list_tags_for_resource_message()) ->
+    {ok, tag_list_message(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_tenant_database_not_found_fault(), tuple()} |
+    {error, integration_not_found_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_message(), proplists:proplist()) ->
+    {ok, tag_list_message(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_tenant_database_not_found_fault(), tuple()} |
+    {error, integration_not_found_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2295,9 +8804,22 @@ list_tags_for_resource(Client, Input, Options)
 %% Amazon RDS User Guide.
 %%
 %% This operation is supported for RDS for Oracle and Microsoft SQL Server.
+-spec modify_activity_stream(map(), modify_activity_stream_request()) ->
+    {ok, modify_activity_stream_response(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 modify_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_activity_stream(Client, Input, []).
+
+-spec modify_activity_stream(map(), modify_activity_stream_request(), proplists:proplist()) ->
+    {ok, modify_activity_stream_response(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 modify_activity_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyActivityStream">>, Input, Options).
@@ -2343,9 +8865,18 @@ modify_activity_stream(Client, Input, Options)
 %% Rotating Your SSL/TLS Certificate:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html
 %% in the Amazon Aurora User Guide.
+-spec modify_certificates(map(), modify_certificates_message()) ->
+    {ok, modify_certificates_result(), tuple()} |
+    {error, any()} |
+    {error, certificate_not_found_fault(), tuple()}.
 modify_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_certificates(Client, Input, []).
+
+-spec modify_certificates(map(), modify_certificates_message(), proplists:proplist()) ->
+    {ok, modify_certificates_result(), tuple()} |
+    {error, any()} |
+    {error, certificate_not_found_fault(), tuple()}.
 modify_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCertificates">>, Input, Options).
@@ -2381,9 +8912,22 @@ modify_certificates(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora Serverless v1 DB clusters.
+-spec modify_current_db_cluster_capacity(map(), modify_current_db_cluster_capacity_message()) ->
+    {ok, db_cluster_capacity_info(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 modify_current_db_cluster_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_current_db_cluster_capacity(Client, Input, []).
+
+-spec modify_current_db_cluster_capacity(map(), modify_current_db_cluster_capacity_message(), proplists:proplist()) ->
+    {ok, db_cluster_capacity_info(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 modify_current_db_cluster_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCurrentDBClusterCapacity">>, Input, Options).
@@ -2406,9 +8950,20 @@ modify_current_db_cluster_capacity(Client, Input, Options)
 %% For more information, see Modifying CEV status:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.modify
 %% in the Amazon RDS User Guide.
+-spec modify_custom_db_engine_version(map(), modify_custom_db_engine_version_message()) ->
+    {ok, db_engine_version(), tuple()} |
+    {error, any()} |
+    {error, custom_db_engine_version_not_found_fault(), tuple()} |
+    {error, invalid_custom_db_engine_version_state_fault(), tuple()}.
 modify_custom_db_engine_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_custom_db_engine_version(Client, Input, []).
+
+-spec modify_custom_db_engine_version(map(), modify_custom_db_engine_version_message(), proplists:proplist()) ->
+    {ok, db_engine_version(), tuple()} |
+    {error, any()} |
+    {error, custom_db_engine_version_not_found_fault(), tuple()} |
+    {error, invalid_custom_db_engine_version_state_fault(), tuple()}.
 modify_custom_db_engine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCustomDBEngineVersion">>, Input, Options).
@@ -2431,9 +8986,46 @@ modify_custom_db_engine_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec modify_db_cluster(map(), modify_db_cluster_message()) ->
+    {ok, modify_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()} |
+    {error, invalid_db_subnet_group_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_available_fault(), tuple()}.
 modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
+
+-spec modify_db_cluster(map(), modify_db_cluster_message(), proplists:proplist()) ->
+    {ok, modify_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()} |
+    {error, invalid_db_subnet_group_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_available_fault(), tuple()}.
 modify_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBCluster">>, Input, Options).
@@ -2442,9 +9034,26 @@ modify_db_cluster(Client, Input, Options)
 %% cluster.
 %%
 %% This operation only applies to Aurora DB clusters.
+-spec modify_db_cluster_endpoint(map(), modify_db_cluster_endpoint_message()) ->
+    {ok, db_cluster_endpoint(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_endpoint_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_endpoint_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 modify_db_cluster_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_endpoint(Client, Input, []).
+
+-spec modify_db_cluster_endpoint(map(), modify_db_cluster_endpoint_message(), proplists:proplist()) ->
+    {ok, db_cluster_endpoint(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_endpoint_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_endpoint_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 modify_db_cluster_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterEndpoint">>, Input, Options).
@@ -2492,9 +9101,20 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message()) ->
+    {ok, db_cluster_parameter_group_name_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
+
+-spec modify_db_cluster_parameter_group(map(), modify_db_cluster_parameter_group_message(), proplists:proplist()) ->
+    {ok, db_cluster_parameter_group_name_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 modify_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterParameterGroup">>, Input, Options).
@@ -2532,9 +9152,22 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %% use the `DescribeDBClusterSnapshotAttributes' API operation. The
 %% accounts are
 %% returned as values for the `restore' attribute.
+-spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message()) ->
+    {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, shared_snapshot_quota_exceeded_fault(), tuple()}.
 modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_snapshot_attribute(Client, Input, []).
+
+-spec modify_db_cluster_snapshot_attribute(map(), modify_db_cluster_snapshot_attribute_message(), proplists:proplist()) ->
+    {ok, modify_db_cluster_snapshot_attribute_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, shared_snapshot_quota_exceeded_fault(), tuple()}.
 modify_db_cluster_snapshot_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBClusterSnapshotAttribute">>, Input, Options).
@@ -2546,9 +9179,58 @@ modify_db_cluster_snapshot_attribute(Client, Input, Options)
 %% To learn what modifications you can make to your DB instance,
 %% call `DescribeValidDBInstanceModifications'
 %% before you call `ModifyDBInstance'.
+-spec modify_db_instance(map(), modify_db_instance_message()) ->
+    {ok, modify_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, certificate_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_upgrade_dependency_failure_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 modify_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_instance(Client, Input, []).
+
+-spec modify_db_instance(map(), modify_db_instance_message(), proplists:proplist()) ->
+    {ok, modify_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, certificate_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_upgrade_dependency_failure_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 modify_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBInstance">>, Input, Options).
@@ -2576,42 +9258,101 @@ modify_db_instance(Client, Input, Options)
 %% https://console.aws.amazon.com/rds/ or the
 %% DescribeDBParameters command to verify
 %% that your DB parameter group has been created or modified.
+-spec modify_db_parameter_group(map(), modify_db_parameter_group_message()) ->
+    {ok, db_parameter_group_name_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 modify_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_parameter_group(Client, Input, []).
+
+-spec modify_db_parameter_group(map(), modify_db_parameter_group_message(), proplists:proplist()) ->
+    {ok, db_parameter_group_name_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 modify_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBParameterGroup">>, Input, Options).
 
 %% @doc Changes the settings for an existing DB proxy.
+-spec modify_db_proxy(map(), modify_db_proxy_request()) ->
+    {ok, modify_db_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_already_exists_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 modify_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_proxy(Client, Input, []).
+
+-spec modify_db_proxy(map(), modify_db_proxy_request(), proplists:proplist()) ->
+    {ok, modify_db_proxy_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_already_exists_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 modify_db_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBProxy">>, Input, Options).
 
 %% @doc Changes the settings for an existing DB proxy endpoint.
+-spec modify_db_proxy_endpoint(map(), modify_db_proxy_endpoint_request()) ->
+    {ok, modify_db_proxy_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_endpoint_already_exists_fault(), tuple()} |
+    {error, db_proxy_endpoint_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_endpoint_state_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 modify_db_proxy_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_proxy_endpoint(Client, Input, []).
+
+-spec modify_db_proxy_endpoint(map(), modify_db_proxy_endpoint_request(), proplists:proplist()) ->
+    {ok, modify_db_proxy_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_endpoint_already_exists_fault(), tuple()} |
+    {error, db_proxy_endpoint_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_endpoint_state_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 modify_db_proxy_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBProxyEndpoint">>, Input, Options).
 
 %% @doc Modifies the properties of a `DBProxyTargetGroup'.
+-spec modify_db_proxy_target_group(map(), modify_db_proxy_target_group_request()) ->
+    {ok, modify_db_proxy_target_group_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 modify_db_proxy_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_proxy_target_group(Client, Input, []).
+
+-spec modify_db_proxy_target_group(map(), modify_db_proxy_target_group_request(), proplists:proplist()) ->
+    {ok, modify_db_proxy_target_group_response(), tuple()} |
+    {error, any()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 modify_db_proxy_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBProxyTargetGroup">>, Input, Options).
 
 %% @doc Updates the recommendation status and recommended action status for
 %% the specified recommendation.
+-spec modify_db_recommendation(map(), modify_db_recommendation_message()) ->
+    {ok, db_recommendation_message(), tuple()} |
+    {error, any()}.
 modify_db_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_recommendation(Client, Input, []).
+
+-spec modify_db_recommendation(map(), modify_db_recommendation_message(), proplists:proplist()) ->
+    {ok, db_recommendation_message(), tuple()} |
+    {error, any()}.
 modify_db_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBRecommendation">>, Input, Options).
@@ -2620,9 +9361,24 @@ modify_db_recommendation(Client, Input, Options)
 %%
 %% You can change one or more settings by
 %% specifying these parameters and the new values in the request.
+-spec modify_db_shard_group(map(), modify_db_shard_group_message()) ->
+    {ok, db_shard_group(), tuple()} |
+    {error, any()} |
+    {error, db_shard_group_already_exists_fault(), tuple()} |
+    {error, db_shard_group_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_max_acu_fault(), tuple()}.
 modify_db_shard_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_shard_group(Client, Input, []).
+
+-spec modify_db_shard_group(map(), modify_db_shard_group_message(), proplists:proplist()) ->
+    {ok, db_shard_group(), tuple()} |
+    {error, any()} |
+    {error, db_shard_group_already_exists_fault(), tuple()} |
+    {error, db_shard_group_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_max_acu_fault(), tuple()}.
 modify_db_shard_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBShardGroup">>, Input, Options).
@@ -2635,9 +9391,18 @@ modify_db_shard_group(Client, Input, Options)
 %% Amazon RDS supports upgrading DB snapshots for MySQL, PostgreSQL, and
 %% Oracle. This operation
 %% doesn't apply to RDS Custom or RDS for Db2.
+-spec modify_db_snapshot(map(), modify_db_snapshot_message()) ->
+    {ok, modify_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()}.
 modify_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_snapshot(Client, Input, []).
+
+-spec modify_db_snapshot(map(), modify_db_snapshot_message(), proplists:proplist()) ->
+    {ok, modify_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()}.
 modify_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBSnapshot">>, Input, Options).
@@ -2671,9 +9436,22 @@ modify_db_snapshot(Client, Input, Options)
 %% `DescribeDBSnapshotAttributes' API operation. The accounts are
 %% returned as
 %% values for the `restore' attribute.
+-spec modify_db_snapshot_attribute(map(), modify_db_snapshot_attribute_message()) ->
+    {ok, modify_db_snapshot_attribute_result(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, shared_snapshot_quota_exceeded_fault(), tuple()}.
 modify_db_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_snapshot_attribute(Client, Input, []).
+
+-spec modify_db_snapshot_attribute(map(), modify_db_snapshot_attribute_message(), proplists:proplist()) ->
+    {ok, modify_db_snapshot_attribute_result(), tuple()} |
+    {error, any()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, shared_snapshot_quota_exceeded_fault(), tuple()}.
 modify_db_snapshot_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBSnapshotAttribute">>, Input, Options).
@@ -2682,9 +9460,26 @@ modify_db_snapshot_attribute(Client, Input, Options)
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
 %% the Amazon Web Services Region.
+-spec modify_db_subnet_group(map(), modify_db_subnet_group_message()) ->
+    {ok, modify_db_subnet_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, db_subnet_quota_exceeded_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, subnet_already_in_use(), tuple()}.
 modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_subnet_group(Client, Input, []).
+
+-spec modify_db_subnet_group(map(), modify_db_subnet_group_message(), proplists:proplist()) ->
+    {ok, modify_db_subnet_group_result(), tuple()} |
+    {error, any()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, db_subnet_quota_exceeded_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, subnet_already_in_use(), tuple()}.
 modify_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBSubnetGroup">>, Input, Options).
@@ -2702,9 +9497,28 @@ modify_db_subnet_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html in
 %% the Amazon RDS User Guide
 %% or by using the `DescribeEventCategories' operation.
+-spec modify_event_subscription(map(), modify_event_subscription_message()) ->
+    {ok, modify_event_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, event_subscription_quota_exceeded_fault(), tuple()} |
+    {error, s_n_s_invalid_topic_fault(), tuple()} |
+    {error, s_n_s_no_authorization_fault(), tuple()} |
+    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
+    {error, subscription_category_not_found_fault(), tuple()} |
+    {error, subscription_not_found_fault(), tuple()}.
 modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
+
+-spec modify_event_subscription(map(), modify_event_subscription_message(), proplists:proplist()) ->
+    {ok, modify_event_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, event_subscription_quota_exceeded_fault(), tuple()} |
+    {error, s_n_s_invalid_topic_fault(), tuple()} |
+    {error, s_n_s_no_authorization_fault(), tuple()} |
+    {error, s_n_s_topic_arn_not_found_fault(), tuple()} |
+    {error, subscription_category_not_found_fault(), tuple()} |
+    {error, subscription_not_found_fault(), tuple()}.
 modify_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEventSubscription">>, Input, Options).
@@ -2720,17 +9534,43 @@ modify_event_subscription(Client, Input, Options)
 %% Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora global database clusters.
+-spec modify_global_cluster(map(), modify_global_cluster_message()) ->
+    {ok, modify_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 modify_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_global_cluster(Client, Input, []).
+
+-spec modify_global_cluster(map(), modify_global_cluster_message(), proplists:proplist()) ->
+    {ok, modify_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 modify_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyGlobalCluster">>, Input, Options).
 
 %% @doc Modifies an existing option group.
+-spec modify_option_group(map(), modify_option_group_message()) ->
+    {ok, modify_option_group_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_option_group_state_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()}.
 modify_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_option_group(Client, Input, []).
+
+-spec modify_option_group(map(), modify_option_group_message(), proplists:proplist()) ->
+    {ok, modify_option_group_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_option_group_state_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()}.
 modify_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyOptionGroup">>, Input, Options).
@@ -2741,9 +9581,24 @@ modify_option_group(Client, Input, Options)
 %% database name or the master user password. This operation is supported
 %% only for RDS for
 %% Oracle CDB instances using the multi-tenant configuration.
+-spec modify_tenant_database(map(), modify_tenant_database_message()) ->
+    {ok, modify_tenant_database_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, tenant_database_already_exists_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 modify_tenant_database(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_tenant_database(Client, Input, []).
+
+-spec modify_tenant_database(map(), modify_tenant_database_message(), proplists:proplist()) ->
+    {ok, modify_tenant_database_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, tenant_database_already_exists_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 modify_tenant_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTenantDatabase">>, Input, Options).
@@ -2764,25 +9619,60 @@ modify_tenant_database(Client, Input, Options)
 %%
 %% This command doesn't apply to Aurora MySQL, Aurora PostgreSQL, or RDS
 %% Custom.
+-spec promote_read_replica(map(), promote_read_replica_message()) ->
+    {ok, promote_read_replica_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 promote_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     promote_read_replica(Client, Input, []).
+
+-spec promote_read_replica(map(), promote_read_replica_message(), proplists:proplist()) ->
+    {ok, promote_read_replica_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 promote_read_replica(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PromoteReadReplica">>, Input, Options).
 
 %% @doc Promotes a read replica DB cluster to a standalone DB cluster.
+-spec promote_read_replica_db_cluster(map(), promote_read_replica_db_cluster_message()) ->
+    {ok, promote_read_replica_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 promote_read_replica_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     promote_read_replica_db_cluster(Client, Input, []).
+
+-spec promote_read_replica_db_cluster(map(), promote_read_replica_db_cluster_message(), proplists:proplist()) ->
+    {ok, promote_read_replica_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 promote_read_replica_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PromoteReadReplicaDBCluster">>, Input, Options).
 
 %% @doc Purchases a reserved DB instance offering.
+-spec purchase_reserved_db_instances_offering(map(), purchase_reserved_db_instances_offering_message()) ->
+    {ok, purchase_reserved_db_instances_offering_result(), tuple()} |
+    {error, any()} |
+    {error, reserved_db_instance_already_exists_fault(), tuple()} |
+    {error, reserved_db_instance_quota_exceeded_fault(), tuple()} |
+    {error, reserved_db_instances_offering_not_found_fault(), tuple()}.
 purchase_reserved_db_instances_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_db_instances_offering(Client, Input, []).
+
+-spec purchase_reserved_db_instances_offering(map(), purchase_reserved_db_instances_offering_message(), proplists:proplist()) ->
+    {ok, purchase_reserved_db_instances_offering_result(), tuple()} |
+    {error, any()} |
+    {error, reserved_db_instance_already_exists_fault(), tuple()} |
+    {error, reserved_db_instance_quota_exceeded_fault(), tuple()} |
+    {error, reserved_db_instances_offering_not_found_fault(), tuple()}.
 purchase_reserved_db_instances_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseReservedDBInstancesOffering">>, Input, Options).
@@ -2807,9 +9697,22 @@ purchase_reserved_db_instances_offering(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec reboot_db_cluster(map(), reboot_db_cluster_message()) ->
+    {ok, reboot_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 reboot_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_cluster(Client, Input, []).
+
+-spec reboot_db_cluster(map(), reboot_db_cluster_message(), proplists:proplist()) ->
+    {ok, reboot_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 reboot_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDBCluster">>, Input, Options).
@@ -2833,9 +9736,20 @@ reboot_db_cluster(Client, Input, Options)
 %%
 %% If your DB instance is part of a Multi-AZ DB cluster, you can reboot the
 %% DB cluster with the `RebootDBCluster' operation.
+-spec reboot_db_instance(map(), reboot_db_instance_message()) ->
+    {ok, reboot_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 reboot_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_instance(Client, Input, []).
+
+-spec reboot_db_instance(map(), reboot_db_instance_message(), proplists:proplist()) ->
+    {ok, reboot_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 reboot_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDBInstance">>, Input, Options).
@@ -2847,18 +9761,54 @@ reboot_db_instance(Client, Input, Options)
 %% the DB shard group for the changes to take effect.
 %%
 %% This operation applies only to Aurora Limitless Database DBb shard groups.
+-spec reboot_db_shard_group(map(), reboot_db_shard_group_message()) ->
+    {ok, db_shard_group(), tuple()} |
+    {error, any()} |
+    {error, db_shard_group_not_found_fault(), tuple()} |
+    {error, invalid_db_shard_group_state_fault(), tuple()}.
 reboot_db_shard_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_shard_group(Client, Input, []).
+
+-spec reboot_db_shard_group(map(), reboot_db_shard_group_message(), proplists:proplist()) ->
+    {ok, db_shard_group(), tuple()} |
+    {error, any()} |
+    {error, db_shard_group_not_found_fault(), tuple()} |
+    {error, invalid_db_shard_group_state_fault(), tuple()}.
 reboot_db_shard_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDBShardGroup">>, Input, Options).
 
 %% @doc Associate one or more `DBProxyTarget' data structures with a
 %% `DBProxyTargetGroup'.
+-spec register_db_proxy_targets(map(), register_db_proxy_targets_request()) ->
+    {ok, register_db_proxy_targets_response(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_already_registered_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, insufficient_available_ips_in_subnet_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 register_db_proxy_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_db_proxy_targets(Client, Input, []).
+
+-spec register_db_proxy_targets(map(), register_db_proxy_targets_request(), proplists:proplist()) ->
+    {ok, register_db_proxy_targets_response(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_already_registered_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, insufficient_available_ips_in_subnet_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_proxy_state_fault(), tuple()}.
 register_db_proxy_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDBProxyTargets">>, Input, Options).
@@ -2872,9 +9822,22 @@ register_db_proxy_targets(Client, Input, Options)
 %% primary cluster in a different Region.
 %%
 %% This operation only applies to Aurora DB clusters.
+-spec remove_from_global_cluster(map(), remove_from_global_cluster_message()) ->
+    {ok, remove_from_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 remove_from_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_from_global_cluster(Client, Input, []).
+
+-spec remove_from_global_cluster(map(), remove_from_global_cluster_message(), proplists:proplist()) ->
+    {ok, remove_from_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 remove_from_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveFromGlobalCluster">>, Input, Options).
@@ -2894,27 +9857,64 @@ remove_from_global_cluster(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec remove_role_from_db_cluster(map(), remove_role_from_db_cluster_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_role_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 remove_role_from_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_cluster(Client, Input, []).
+
+-spec remove_role_from_db_cluster(map(), remove_role_from_db_cluster_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_role_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()}.
 remove_role_from_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRoleFromDBCluster">>, Input, Options).
 
 %% @doc Disassociates an Amazon Web Services Identity and Access Management
 %% (IAM) role from a DB instance.
+-spec remove_role_from_db_instance(map(), remove_role_from_db_instance_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_instance_role_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 remove_role_from_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_instance(Client, Input, []).
+
+-spec remove_role_from_db_instance(map(), remove_role_from_db_instance_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_instance_role_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 remove_role_from_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRoleFromDBInstance">>, Input, Options).
 
 %% @doc Removes a source identifier from an existing RDS event notification
 %% subscription.
+-spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message()) ->
+    {ok, remove_source_identifier_from_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, source_not_found_fault(), tuple()} |
+    {error, subscription_not_found_fault(), tuple()}.
 remove_source_identifier_from_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_source_identifier_from_subscription(Client, Input, []).
+
+-spec remove_source_identifier_from_subscription(map(), remove_source_identifier_from_subscription_message(), proplists:proplist()) ->
+    {ok, remove_source_identifier_from_subscription_result(), tuple()} |
+    {error, any()} |
+    {error, source_not_found_fault(), tuple()} |
+    {error, subscription_not_found_fault(), tuple()}.
 remove_source_identifier_from_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveSourceIdentifierFromSubscription">>, Input, Options).
@@ -2925,9 +9925,34 @@ remove_source_identifier_from_subscription(Client, Input, Options)
 %% see Tagging Amazon RDS Resources:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html
 %% in the Amazon RDS User Guide.
+-spec remove_tags_from_resource(map(), remove_tags_from_resource_message()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_tenant_database_not_found_fault(), tuple()} |
+    {error, integration_not_found_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
+
+-spec remove_tags_from_resource(map(), remove_tags_from_resource_message(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_proxy_not_found_fault(), tuple()} |
+    {error, db_proxy_target_group_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_tenant_database_not_found_fault(), tuple()} |
+    {error, integration_not_found_fault(), tuple()} |
+    {error, tenant_database_not_found_fault(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
@@ -2963,9 +9988,20 @@ remove_tags_from_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message()) ->
+    {ok, db_cluster_parameter_group_name_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
+
+-spec reset_db_cluster_parameter_group(map(), reset_db_cluster_parameter_group_message(), proplists:proplist()) ->
+    {ok, db_cluster_parameter_group_name_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 reset_db_cluster_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetDBClusterParameterGroup">>, Input, Options).
@@ -2981,9 +10017,20 @@ reset_db_cluster_parameter_group(Client, Input, Options)
 %% parameters are updated immediately and static parameters are set to
 %% `pending-reboot' to take effect on the next DB instance restart or
 %% `RebootDBInstance' request.
+-spec reset_db_parameter_group(map(), reset_db_parameter_group_message()) ->
+    {ok, db_parameter_group_name_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 reset_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_parameter_group(Client, Input, []).
+
+-spec reset_db_parameter_group(map(), reset_db_parameter_group_message(), proplists:proplist()) ->
+    {ok, db_parameter_group_name_message(), tuple()} |
+    {error, any()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, invalid_db_parameter_group_state_fault(), tuple()}.
 reset_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetDBParameterGroup">>, Input, Options).
@@ -3017,9 +10064,46 @@ reset_db_parameter_group(Client, Input, Options)
 %%
 %% This operation only applies to Aurora DB clusters. The source DB engine
 %% must be MySQL.
+-spec restore_db_cluster_from_s3(map(), restore_db_cluster_from_s3_message()) ->
+    {ok, restore_db_cluster_from_s3_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_subnet_group_state_fault(), tuple()} |
+    {error, invalid_s3_bucket_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()}.
 restore_db_cluster_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_s3(Client, Input, []).
+
+-spec restore_db_cluster_from_s3(map(), restore_db_cluster_from_s3_message(), proplists:proplist()) ->
+    {ok, restore_db_cluster_from_s3_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_subnet_group_state_fault(), tuple()} |
+    {error, invalid_s3_bucket_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()}.
 restore_db_cluster_from_s3(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterFromS3">>, Input, Options).
@@ -3052,9 +10136,56 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message()) ->
+    {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, insufficient_db_cluster_capacity_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, invalid_restore_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()}.
 restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_snapshot(Client, Input, []).
+
+-spec restore_db_cluster_from_snapshot(map(), restore_db_cluster_from_snapshot_message(), proplists:proplist()) ->
+    {ok, restore_db_cluster_from_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, insufficient_db_cluster_capacity_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, invalid_restore_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()}.
 restore_db_cluster_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterFromSnapshot">>, Input, Options).
@@ -3090,9 +10221,56 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html
 %% in the Amazon RDS User
 %% Guide.
+-spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message()) ->
+    {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_automated_backup_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, insufficient_db_cluster_capacity_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, invalid_restore_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()}.
 restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).
+
+-spec restore_db_cluster_to_point_in_time(map(), restore_db_cluster_to_point_in_time_message(), proplists:proplist()) ->
+    {ok, restore_db_cluster_to_point_in_time_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_already_exists_fault(), tuple()} |
+    {error, db_cluster_automated_backup_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_parameter_group_not_found_fault(), tuple()} |
+    {error, db_cluster_quota_exceeded_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, insufficient_db_cluster_capacity_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, insufficient_storage_cluster_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_snapshot_state_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, invalid_restore_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()}.
 restore_db_cluster_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterToPointInTime">>, Input, Options).
@@ -3125,9 +10303,62 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %%
 %% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
 %% Aurora, use `RestoreDBClusterFromSnapshot'.
+-spec restore_db_instance_from_db_snapshot(map(), restore_db_instance_from_db_snapshot_message()) ->
+    {ok, restore_db_instance_from_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, invalid_restore_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 restore_db_instance_from_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_instance_from_db_snapshot(Client, Input, []).
+
+-spec restore_db_instance_from_db_snapshot(map(), restore_db_instance_from_db_snapshot_message(), proplists:proplist()) ->
+    {ok, restore_db_instance_from_db_snapshot_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_snapshot_state_fault(), tuple()} |
+    {error, invalid_restore_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 restore_db_instance_from_db_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBInstanceFromDBSnapshot">>, Input, Options).
@@ -3145,9 +10376,52 @@ restore_db_instance_from_db_snapshot(Client, Input, Options)
 %% in the Amazon RDS User Guide.
 %%
 %% This operation doesn't apply to RDS Custom.
+-spec restore_db_instance_from_s3(map(), restore_db_instance_from_s3_message()) ->
+    {ok, restore_db_instance_from_s3_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_s3_bucket_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()}.
 restore_db_instance_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_instance_from_s3(Client, Input, []).
+
+-spec restore_db_instance_from_s3(map(), restore_db_instance_from_s3_message(), proplists:proplist()) ->
+    {ok, restore_db_instance_from_s3_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_s3_bucket_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()}.
 restore_db_instance_from_s3(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBInstanceFromS3">>, Input, Options).
@@ -3172,9 +10446,64 @@ restore_db_instance_from_s3(Client, Input, Options)
 %%
 %% This operation doesn't apply to Aurora MySQL and Aurora PostgreSQL.
 %% For Aurora, use `RestoreDBClusterToPointInTime'.
+-spec restore_db_instance_to_point_in_time(map(), restore_db_instance_to_point_in_time_message()) ->
+    {ok, restore_db_instance_to_point_in_time_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_instance_automated_backup_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_restore_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, point_in_time_restore_not_enabled_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 restore_db_instance_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_instance_to_point_in_time(Client, Input, []).
+
+-spec restore_db_instance_to_point_in_time(map(), restore_db_instance_to_point_in_time_message(), proplists:proplist()) ->
+    {ok, restore_db_instance_to_point_in_time_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, backup_policy_not_found_fault(), tuple()} |
+    {error, db_instance_already_exists_fault(), tuple()} |
+    {error, db_instance_automated_backup_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_parameter_group_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, domain_not_found_fault(), tuple()} |
+    {error, instance_quota_exceeded_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_restore_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, network_type_not_supported(), tuple()} |
+    {error, option_group_not_found_fault(), tuple()} |
+    {error, point_in_time_restore_not_enabled_fault(), tuple()} |
+    {error, provisioned_iops_not_available_in_a_z_fault(), tuple()} |
+    {error, storage_quota_exceeded_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()} |
+    {error, tenant_database_quota_exceeded_fault(), tuple()}.
 restore_db_instance_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBInstanceToPointInTime">>, Input, Options).
@@ -3200,9 +10529,22 @@ restore_db_instance_to_point_in_time(Client, Input, Options)
 %% into a VPC:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.Non-VPC2VPC.html
 %% in the Amazon RDS User Guide.
+-spec revoke_db_security_group_ingress(map(), revoke_db_security_group_ingress_message()) ->
+    {ok, revoke_db_security_group_ingress_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()}.
 revoke_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_db_security_group_ingress(Client, Input, []).
+
+-spec revoke_db_security_group_ingress(map(), revoke_db_security_group_ingress_message(), proplists:proplist()) ->
+    {ok, revoke_db_security_group_ingress_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, db_security_group_not_found_fault(), tuple()} |
+    {error, invalid_db_security_group_state_fault(), tuple()}.
 revoke_db_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeDBSecurityGroupIngress">>, Input, Options).
@@ -3219,9 +10561,28 @@ revoke_db_security_group_ingress(Client, Input, Options)
 %% Monitoring Amazon RDS with Database Activity Streams:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html
 %% in the Amazon RDS User Guide.
+-spec start_activity_stream(map(), start_activity_stream_request()) ->
+    {ok, start_activity_stream_response(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 start_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_activity_stream(Client, Input, []).
+
+-spec start_activity_stream(map(), start_activity_stream_request(), proplists:proplist()) ->
+    {ok, start_activity_stream_response(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 start_activity_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartActivityStream">>, Input, Options).
@@ -3237,9 +10598,22 @@ start_activity_stream(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora DB clusters.
+-spec start_db_cluster(map(), start_db_cluster_message()) ->
+    {ok, start_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_cluster(Client, Input, []).
+
+-spec start_db_cluster(map(), start_db_cluster_message(), proplists:proplist()) ->
+    {ok, start_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 start_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBCluster">>, Input, Options).
@@ -3258,9 +10632,38 @@ start_db_cluster(Client, Input, Options)
 %% This command doesn't apply to RDS Custom, Aurora MySQL, and Aurora
 %% PostgreSQL.
 %% For Aurora DB clusters, use `StartDBCluster' instead.
+-spec start_db_instance(map(), start_db_instance_message()) ->
+    {ok, start_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()}.
 start_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_instance(Client, Input, []).
+
+-spec start_db_instance(map(), start_db_instance_message(), proplists:proplist()) ->
+    {ok, start_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, authorization_not_found_fault(), tuple()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_subnet_group_does_not_cover_enough_a_zs(), tuple()} |
+    {error, db_subnet_group_not_found_fault(), tuple()} |
+    {error, insufficient_db_instance_capacity_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()}.
 start_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBInstance">>, Input, Options).
@@ -3274,9 +10677,26 @@ start_db_instance(Client, Input, Options)
 %% Replicating Automated Backups to Another Amazon Web Services Region:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html
 %% in the Amazon RDS User Guide.
+-spec start_db_instance_automated_backups_replication(map(), start_db_instance_automated_backups_replication_message()) ->
+    {ok, start_db_instance_automated_backups_replication_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_automated_backup_quota_exceeded_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()}.
 start_db_instance_automated_backups_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_instance_automated_backups_replication(Client, Input, []).
+
+-spec start_db_instance_automated_backups_replication(map(), start_db_instance_automated_backups_replication_message(), proplists:proplist()) ->
+    {ok, start_db_instance_automated_backups_replication_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_automated_backup_quota_exceeded_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()} |
+    {error, storage_type_not_supported_fault(), tuple()}.
 start_db_instance_automated_backups_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBInstanceAutomatedBackupsReplication">>, Input, Options).
@@ -3304,9 +10724,36 @@ start_db_instance_automated_backups_replication(Client, Input, Options)
 %% cluster data to Amazon S3:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/export-cluster-data.html
 %% in the Amazon Aurora User Guide.
+-spec start_export_task(map(), start_export_task_message()) ->
+    {ok, export_task(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, export_task_already_exists_fault(), tuple()} |
+    {error, iam_role_missing_permissions_fault(), tuple()} |
+    {error, iam_role_not_found_fault(), tuple()} |
+    {error, invalid_export_only_fault(), tuple()} |
+    {error, invalid_export_source_state_fault(), tuple()} |
+    {error, invalid_s3_bucket_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()}.
 start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).
+
+-spec start_export_task(map(), start_export_task_message(), proplists:proplist()) ->
+    {ok, export_task(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_cluster_snapshot_not_found_fault(), tuple()} |
+    {error, db_snapshot_not_found_fault(), tuple()} |
+    {error, export_task_already_exists_fault(), tuple()} |
+    {error, iam_role_missing_permissions_fault(), tuple()} |
+    {error, iam_role_not_found_fault(), tuple()} |
+    {error, invalid_export_only_fault(), tuple()} |
+    {error, invalid_export_source_state_fault(), tuple()} |
+    {error, invalid_s3_bucket_fault(), tuple()} |
+    {error, kms_key_not_accessible_fault(), tuple()}.
 start_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExportTask">>, Input, Options).
@@ -3325,9 +10772,26 @@ start_export_task(Client, Input, Options)
 %% Monitoring Amazon RDS with Database Activity Streams:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html
 %% in the Amazon RDS User Guide.
+-spec stop_activity_stream(map(), stop_activity_stream_request()) ->
+    {ok, stop_activity_stream_response(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 stop_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_activity_stream(Client, Input, []).
+
+-spec stop_activity_stream(map(), stop_activity_stream_request(), proplists:proplist()) ->
+    {ok, stop_activity_stream_response(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, resource_not_found_fault(), tuple()}.
 stop_activity_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopActivityStream">>, Input, Options).
@@ -3346,9 +10810,22 @@ stop_activity_stream(Client, Input, Options)
 %% in the Amazon Aurora User Guide.
 %%
 %% This operation only applies to Aurora DB clusters.
+-spec stop_db_cluster(map(), stop_db_cluster_message()) ->
+    {ok, stop_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 stop_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_cluster(Client, Input, []).
+
+-spec stop_db_cluster(map(), stop_db_cluster_message(), proplists:proplist()) ->
+    {ok, stop_db_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 stop_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBCluster">>, Input, Options).
@@ -3371,9 +10848,26 @@ stop_db_cluster(Client, Input, Options)
 %% This command doesn't apply to RDS Custom, Aurora MySQL, and Aurora
 %% PostgreSQL.
 %% For Aurora clusters, use `StopDBCluster' instead.
+-spec stop_db_instance(map(), stop_db_instance_message()) ->
+    {ok, stop_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 stop_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_instance(Client, Input, []).
+
+-spec stop_db_instance(map(), stop_db_instance_message(), proplists:proplist()) ->
+    {ok, stop_db_instance_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, db_snapshot_already_exists_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()}.
 stop_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBInstance">>, Input, Options).
@@ -3387,9 +10881,20 @@ stop_db_instance(Client, Input, Options)
 %% Replicating Automated Backups to Another Amazon Web Services Region:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html
 %% in the Amazon RDS User Guide.
+-spec stop_db_instance_automated_backups_replication(map(), stop_db_instance_automated_backups_replication_message()) ->
+    {ok, stop_db_instance_automated_backups_replication_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 stop_db_instance_automated_backups_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_instance_automated_backups_replication(Client, Input, []).
+
+-spec stop_db_instance_automated_backups_replication(map(), stop_db_instance_automated_backups_replication_message(), proplists:proplist()) ->
+    {ok, stop_db_instance_automated_backups_replication_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 stop_db_instance_automated_backups_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBInstanceAutomatedBackupsReplication">>, Input, Options).
@@ -3410,9 +10915,20 @@ stop_db_instance_automated_backups_replication(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/blue-green-deployments.html
 %% in the Amazon Aurora
 %% User Guide.
+-spec switchover_blue_green_deployment(map(), switchover_blue_green_deployment_request()) ->
+    {ok, switchover_blue_green_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, invalid_blue_green_deployment_state_fault(), tuple()}.
 switchover_blue_green_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     switchover_blue_green_deployment(Client, Input, []).
+
+-spec switchover_blue_green_deployment(map(), switchover_blue_green_deployment_request(), proplists:proplist()) ->
+    {ok, switchover_blue_green_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, blue_green_deployment_not_found_fault(), tuple()} |
+    {error, invalid_blue_green_deployment_state_fault(), tuple()}.
 switchover_blue_green_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SwitchoverBlueGreenDeployment">>, Input, Options).
@@ -3439,9 +10955,24 @@ switchover_blue_green_deployment(Client, Input, Options)
 %% This operation is intended for controlled environments, for operations
 %% such as &quot;regional rotation&quot; or to fall back to the original
 %% primary after a global database failover.
+-spec switchover_global_cluster(map(), switchover_global_cluster_message()) ->
+    {ok, switchover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 switchover_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     switchover_global_cluster(Client, Input, []).
+
+-spec switchover_global_cluster(map(), switchover_global_cluster_message(), proplists:proplist()) ->
+    {ok, switchover_global_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, db_cluster_not_found_fault(), tuple()} |
+    {error, global_cluster_not_found_fault(), tuple()} |
+    {error, invalid_db_cluster_state_fault(), tuple()} |
+    {error, invalid_global_cluster_state_fault(), tuple()}.
 switchover_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SwitchoverGlobalCluster">>, Input, Options).
@@ -3451,9 +10982,20 @@ switchover_global_cluster(Client, Input, Options)
 %% primary database.
 %%
 %% Issue this command in the Region that hosts the current standby database.
+-spec switchover_read_replica(map(), switchover_read_replica_message()) ->
+    {ok, switchover_read_replica_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 switchover_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     switchover_read_replica(Client, Input, []).
+
+-spec switchover_read_replica(map(), switchover_read_replica_message(), proplists:proplist()) ->
+    {ok, switchover_read_replica_result(), tuple()} |
+    {error, any()} |
+    {error, db_instance_not_found_fault(), tuple()} |
+    {error, invalid_db_instance_state_fault(), tuple()}.
 switchover_read_replica(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SwitchoverReadReplica">>, Input, Options).

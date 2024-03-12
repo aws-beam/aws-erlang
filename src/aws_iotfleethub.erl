@@ -31,6 +31,153 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% application_summary() :: #{
+%%   <<"applicationCreationDate">> => float(),
+%%   <<"applicationDescription">> => string(),
+%%   <<"applicationId">> => string(),
+%%   <<"applicationLastUpdateDate">> => float(),
+%%   <<"applicationName">> => string(),
+%%   <<"applicationState">> => list(any()),
+%%   <<"applicationUrl">> => string()
+%% }
+-type application_summary() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"applicationDescription">> => string(),
+%%   <<"applicationName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"applicationId">> => string()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_application_request() :: #{binary() => any()}.
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+%% Example:
+%% describe_application_request() :: #{}
+-type describe_application_request() :: #{}.
+
+%% Example:
+%% describe_application_response() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"applicationCreationDate">> => float(),
+%%   <<"applicationDescription">> => string(),
+%%   <<"applicationId">> => string(),
+%%   <<"applicationLastUpdateDate">> => float(),
+%%   <<"applicationName">> => string(),
+%%   <<"applicationState">> => list(any()),
+%%   <<"applicationUrl">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"ssoClientId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type describe_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"applicationSummaries">> => list(application_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"applicationDescription">> => string(),
+%%   <<"applicationName">> => string(),
+%%   <<"clientToken">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+%% Example:
+%% update_application_response() :: #{}
+-type update_application_response() :: #{}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -39,8 +186,23 @@
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
+-spec create_application(map(), create_application_request()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
+
+-spec create_application(map(), create_application_request(), proplists:proplist()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
@@ -67,8 +229,23 @@ create_application(Client, Input0, Options0) ->
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
+-spec delete_application(map(), binary() | list(), delete_application_request()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
+
+-spec delete_application(map(), binary() | list(), delete_application_request(), proplists:proplist()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -97,14 +274,35 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
+-spec describe_application(map(), binary() | list()) ->
+    {ok, describe_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_application(Client, ApplicationId)
   when is_map(Client) ->
     describe_application(Client, ApplicationId, #{}, #{}).
 
+-spec describe_application(map(), binary() | list(), map(), map()) ->
+    {ok, describe_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
+-spec describe_application(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -126,14 +324,32 @@ describe_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
+-spec list_applications(map()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
 
+-spec list_applications(map(), map(), map()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
+-spec list_applications(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_applications(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
@@ -158,14 +374,32 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -188,8 +422,21 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
+-spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -216,8 +463,21 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
+-spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -246,8 +506,25 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Fleet Hub for AWS IoT Device Management is in public preview and is
 %% subject to change.
+-spec update_application(map(), binary() | list(), update_application_request()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
+
+-spec update_application(map(), binary() | list(), update_application_request(), proplists:proplist()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_application(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
@@ -274,7 +551,7 @@ update_application(Client, ApplicationId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

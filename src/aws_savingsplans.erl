@@ -33,13 +33,319 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% describe_savings_plans_offerings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"searchResults">> => list(savings_plan_offering()())
+%% }
+-type describe_savings_plans_offerings_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_savings_plan_rates_request() :: #{
+%%   <<"filters">> => list(savings_plan_rate_filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"savingsPlanId">> := string()
+%% }
+-type describe_savings_plan_rates_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plan_rate_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string()())
+%% }
+-type savings_plan_rate_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_savings_plans_request() :: #{
+%%   <<"filters">> => list(savings_plan_filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"savingsPlanArns">> => list(string()()),
+%%   <<"savingsPlanIds">> => list(string()()),
+%%   <<"states">> => list(list(any())())
+%% }
+-type describe_savings_plans_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_savings_plan_response() :: #{
+%%   <<"savingsPlanId">> => string()
+%% }
+-type create_savings_plan_response() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% savings_plan_offering_rate() :: #{
+%%   <<"operation">> => string(),
+%%   <<"productType">> => list(any()),
+%%   <<"properties">> => list(savings_plan_offering_rate_property()()),
+%%   <<"rate">> => string(),
+%%   <<"savingsPlanOffering">> => parent_savings_plan_offering(),
+%%   <<"serviceCode">> => list(any()),
+%%   <<"unit">> => list(any()),
+%%   <<"usageType">> => string()
+%% }
+-type savings_plan_offering_rate() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plan_offering_rate_property() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type savings_plan_offering_rate_property() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plan_offering() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"durationSeconds">> => float(),
+%%   <<"offeringId">> => string(),
+%%   <<"operation">> => string(),
+%%   <<"paymentOption">> => list(any()),
+%%   <<"planType">> => list(any()),
+%%   <<"productTypes">> => list(list(any())()),
+%%   <<"properties">> => list(savings_plan_offering_property()()),
+%%   <<"serviceCode">> => string(),
+%%   <<"usageType">> => string()
+%% }
+-type savings_plan_offering() :: #{binary() => any()}.
+
+%% Example:
+%% describe_savings_plans_offering_rates_request() :: #{
+%%   <<"filters">> => list(savings_plan_offering_rate_filter_element()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"operations">> => list(string()()),
+%%   <<"products">> => list(list(any())()),
+%%   <<"savingsPlanOfferingIds">> => list(string()()),
+%%   <<"savingsPlanPaymentOptions">> => list(list(any())()),
+%%   <<"savingsPlanTypes">> => list(list(any())()),
+%%   <<"serviceCodes">> => list(list(any())()),
+%%   <<"usageTypes">> => list(string()())
+%% }
+-type describe_savings_plans_offering_rates_request() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plan_rate() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"operation">> => string(),
+%%   <<"productType">> => list(any()),
+%%   <<"properties">> => list(savings_plan_rate_property()()),
+%%   <<"rate">> => string(),
+%%   <<"serviceCode">> => list(any()),
+%%   <<"unit">> => list(any()),
+%%   <<"usageType">> => string()
+%% }
+-type savings_plan_rate() :: #{binary() => any()}.
+%% Example:
+%% delete_queued_savings_plan_response() :: #{}
+-type delete_queued_savings_plan_response() :: #{}.
+
+%% Example:
+%% savings_plan_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string()())
+%% }
+-type savings_plan_filter() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plan_offering_property() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type savings_plan_offering_property() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% parent_savings_plan_offering() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"durationSeconds">> => float(),
+%%   <<"offeringId">> => string(),
+%%   <<"paymentOption">> => list(any()),
+%%   <<"planDescription">> => string(),
+%%   <<"planType">> => list(any())
+%% }
+-type parent_savings_plan_offering() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plan() :: #{
+%%   <<"commitment">> => string(),
+%%   <<"currency">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"ec2InstanceFamily">> => string(),
+%%   <<"end">> => string(),
+%%   <<"offeringId">> => string(),
+%%   <<"paymentOption">> => list(any()),
+%%   <<"productTypes">> => list(list(any())()),
+%%   <<"recurringPaymentAmount">> => string(),
+%%   <<"region">> => string(),
+%%   <<"savingsPlanArn">> => string(),
+%%   <<"savingsPlanId">> => string(),
+%%   <<"savingsPlanType">> => list(any()),
+%%   <<"start">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"termDurationInSeconds">> => float(),
+%%   <<"upfrontPaymentAmount">> => string()
+%% }
+-type savings_plan() :: #{binary() => any()}.
+
+%% Example:
+%% create_savings_plan_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"commitment">> := string(),
+%%   <<"purchaseTime">> => non_neg_integer(),
+%%   <<"savingsPlanOfferingId">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"upfrontPaymentAmount">> => string()
+%% }
+-type create_savings_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_savings_plans_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"savingsPlans">> => list(savings_plan()())
+%% }
+-type describe_savings_plans_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_savings_plans_offering_rates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"searchResults">> => list(savings_plan_offering_rate()())
+%% }
+-type describe_savings_plans_offering_rates_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_savings_plan_rates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"savingsPlanId">> => string(),
+%%   <<"searchResults">> => list(savings_plan_rate()())
+%% }
+-type describe_savings_plan_rates_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_queued_savings_plan_request() :: #{
+%%   <<"savingsPlanId">> := string()
+%% }
+-type delete_queued_savings_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plan_rate_property() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type savings_plan_rate_property() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plan_offering_filter_element() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string()())
+%% }
+-type savings_plan_offering_filter_element() :: #{binary() => any()}.
+
+%% Example:
+%% describe_savings_plans_offerings_request() :: #{
+%%   <<"currencies">> => list(list(any())()),
+%%   <<"descriptions">> => list(string()()),
+%%   <<"durations">> => list(float()()),
+%%   <<"filters">> => list(savings_plan_offering_filter_element()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"offeringIds">> => list(string()()),
+%%   <<"operations">> => list(string()()),
+%%   <<"paymentOptions">> => list(list(any())()),
+%%   <<"planTypes">> => list(list(any())()),
+%%   <<"productType">> => list(any()),
+%%   <<"serviceCodes">> => list(string()()),
+%%   <<"usageTypes">> => list(string()())
+%% }
+-type describe_savings_plans_offerings_request() :: #{binary() => any()}.
+
+%% Example:
+%% savings_plan_offering_rate_filter_element() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string()())
+%% }
+-type savings_plan_offering_rate_filter_element() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Creates a Savings Plan.
+-spec create_savings_plan(map(), create_savings_plan_request()) ->
+    {ok, create_savings_plan_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_savings_plan(Client, Input) ->
     create_savings_plan(Client, Input, []).
+
+-spec create_savings_plan(map(), create_savings_plan_request(), proplists:proplist()) ->
+    {ok, create_savings_plan_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_savings_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateSavingsPlan"],
@@ -63,8 +369,23 @@ create_savings_plan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the queued purchase for the specified Savings Plan.
+-spec delete_queued_savings_plan(map(), delete_queued_savings_plan_request()) ->
+    {ok, delete_queued_savings_plan_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_queued_savings_plan(Client, Input) ->
     delete_queued_savings_plan(Client, Input, []).
+
+-spec delete_queued_savings_plan(map(), delete_queued_savings_plan_request(), proplists:proplist()) ->
+    {ok, delete_queued_savings_plan_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_queued_savings_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteQueuedSavingsPlan"],
@@ -88,8 +409,19 @@ delete_queued_savings_plan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specified Savings Plans rates.
+-spec describe_savings_plan_rates(map(), describe_savings_plan_rates_request()) ->
+    {ok, describe_savings_plan_rates_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_savings_plan_rates(Client, Input) ->
     describe_savings_plan_rates(Client, Input, []).
+
+-spec describe_savings_plan_rates(map(), describe_savings_plan_rates_request(), proplists:proplist()) ->
+    {ok, describe_savings_plan_rates_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_savings_plan_rates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlanRates"],
@@ -113,8 +445,19 @@ describe_savings_plan_rates(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specified Savings Plans.
+-spec describe_savings_plans(map(), describe_savings_plans_request()) ->
+    {ok, describe_savings_plans_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_savings_plans(Client, Input) ->
     describe_savings_plans(Client, Input, []).
+
+-spec describe_savings_plans(map(), describe_savings_plans_request(), proplists:proplist()) ->
+    {ok, describe_savings_plans_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_savings_plans(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlans"],
@@ -138,8 +481,19 @@ describe_savings_plans(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specified Savings Plans offering rates.
+-spec describe_savings_plans_offering_rates(map(), describe_savings_plans_offering_rates_request()) ->
+    {ok, describe_savings_plans_offering_rates_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_savings_plans_offering_rates(Client, Input) ->
     describe_savings_plans_offering_rates(Client, Input, []).
+
+-spec describe_savings_plans_offering_rates(map(), describe_savings_plans_offering_rates_request(), proplists:proplist()) ->
+    {ok, describe_savings_plans_offering_rates_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_savings_plans_offering_rates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlansOfferingRates"],
@@ -163,8 +517,19 @@ describe_savings_plans_offering_rates(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the specified Savings Plans offerings.
+-spec describe_savings_plans_offerings(map(), describe_savings_plans_offerings_request()) ->
+    {ok, describe_savings_plans_offerings_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_savings_plans_offerings(Client, Input) ->
     describe_savings_plans_offerings(Client, Input, []).
+
+-spec describe_savings_plans_offerings(map(), describe_savings_plans_offerings_request(), proplists:proplist()) ->
+    {ok, describe_savings_plans_offerings_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_savings_plans_offerings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlansOfferings"],
@@ -188,8 +553,21 @@ describe_savings_plans_offerings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the tags for the specified resource.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTagsForResource"],
@@ -213,8 +591,23 @@ list_tags_for_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tags to the specified resource.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TagResource"],
@@ -238,8 +631,21 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UntagResource"],
@@ -266,7 +672,7 @@ untag_resource(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -104,13 +104,1285 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% execute_query_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryStatement">> := string(),
+%%   <<"workspaceId">> := string()
+%% }
+-type execute_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_sync_job_request() :: #{
+%%   <<"workspaceId">> => string()
+%% }
+-type get_sync_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_scene_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer()
+%% }
+-type create_scene_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sync_job_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"status">> := sync_job_status(),
+%%   <<"syncRole">> := string(),
+%%   <<"syncSource">> := string(),
+%%   <<"updateDateTime">> := non_neg_integer(),
+%%   <<"workspaceId">> := string()
+%% }
+-type get_sync_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% component_update_request() :: #{
+%%   <<"componentTypeId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"propertyGroupUpdates">> => map(),
+%%   <<"propertyUpdates">> => map(),
+%%   <<"updateType">> => string()
+%% }
+-type component_update_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_metadata_transfer_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"metadataTransferJobId">> => string(),
+%%   <<"progress">> => metadata_transfer_job_progress(),
+%%   <<"status">> => metadata_transfer_job_status(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type cancel_metadata_transfer_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_request() :: #{
+%%   <<"filters">> => list(list()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% s3_source_configuration() :: #{
+%%   <<"location">> => string()
+%% }
+-type s3_source_configuration() :: #{binary() => any()}.
+%% Example:
+%% cancel_metadata_transfer_job_request() :: #{}
+-type cancel_metadata_transfer_job_request() :: #{}.
+
+%% Example:
+%% delete_entity_response() :: #{
+%%   <<"state">> := string()
+%% }
+-type delete_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% tabular_conditions() :: #{
+%%   <<"orderBy">> => list(order_by()()),
+%%   <<"propertyFilters">> => list(property_filter()())
+%% }
+-type tabular_conditions() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_scenes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_scenes_request() :: #{binary() => any()}.
+
+%% Example:
+%% connector_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type connector_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_properties_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"propertySummaries">> => list(property_summary()())
+%% }
+-type list_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% iot_twin_maker_source_configuration() :: #{
+%%   <<"filters">> => list(list()()),
+%%   <<"workspace">> => string()
+%% }
+-type iot_twin_maker_source_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% property_request() :: #{
+%%   <<"definition">> => property_definition_request(),
+%%   <<"updateType">> => string(),
+%%   <<"value">> => data_value()
+%% }
+-type property_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_property_value_request() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentPath">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"propertyGroupName">> => string(),
+%%   <<"selectedProperties">> := list(string()()),
+%%   <<"tabularConditions">> => tabular_conditions()
+%% }
+-type get_property_value_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_component_type_request() :: #{
+%%   <<"componentTypeName">> => string(),
+%%   <<"compositeComponentTypes">> => map(),
+%%   <<"description">> => string(),
+%%   <<"extendsFrom">> => list(string()()),
+%%   <<"functions">> => map(),
+%%   <<"isSingleton">> => boolean(),
+%%   <<"propertyDefinitions">> => map(),
+%%   <<"propertyGroups">> => map(),
+%%   <<"tags">> => map()
+%% }
+-type create_component_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% composite_component_type_response() :: #{
+%%   <<"componentTypeId">> => string(),
+%%   <<"isInherited">> => boolean()
+%% }
+-type composite_component_type_response() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% column_description() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type column_description() :: #{binary() => any()}.
+%% Example:
+%% get_pricing_plan_request() :: #{}
+-type get_pricing_plan_request() :: #{}.
+%% Example:
+%% get_entity_request() :: #{}
+-type get_entity_request() :: #{}.
+
+%% Example:
+%% pricing_plan() :: #{
+%%   <<"billableEntityCount">> => float(),
+%%   <<"bundleInformation">> => bundle_information(),
+%%   <<"effectiveDateTime">> => non_neg_integer(),
+%%   <<"pricingMode">> => string(),
+%%   <<"updateDateTime">> => non_neg_integer(),
+%%   <<"updateReason">> => string()
+%% }
+-type pricing_plan() :: #{binary() => any()}.
+
+%% Example:
+%% relationship() :: #{
+%%   <<"relationshipType">> => string(),
+%%   <<"targetComponentTypeId">> => string()
+%% }
+-type relationship() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function() :: #{
+%%   <<"arn">> => string()
+%% }
+-type lambda_function() :: #{binary() => any()}.
+
+%% Example:
+%% entity_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityName">> => string(),
+%%   <<"hasChildEntities">> => boolean(),
+%%   <<"parentEntityId">> => string(),
+%%   <<"status">> => status(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type entity_summary() :: #{binary() => any()}.
+
+%% Example:
+%% workspace_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"linkedServices">> => list(string()()),
+%%   <<"updateDateTime">> => non_neg_integer(),
+%%   <<"workspaceId">> => string()
+%% }
+-type workspace_summary() :: #{binary() => any()}.
+
+%% Example:
+%% component_property_group_response() :: #{
+%%   <<"groupType">> => string(),
+%%   <<"isInherited">> => boolean(),
+%%   <<"propertyNames">> => list(string()())
+%% }
+-type component_property_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% composite_component_update_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"propertyGroupUpdates">> => map(),
+%%   <<"propertyUpdates">> => map(),
+%%   <<"updateType">> => string()
+%% }
+-type composite_component_update_request() :: #{binary() => any()}.
+
+%% Example:
+%% sync_job_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"status">> => sync_job_status(),
+%%   <<"syncSource">> => string(),
+%%   <<"updateDateTime">> => non_neg_integer(),
+%%   <<"workspaceId">> => string()
+%% }
+-type sync_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% iot_twin_maker_destination_configuration() :: #{
+%%   <<"workspace">> => string()
+%% }
+-type iot_twin_maker_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_entity_request() :: #{
+%%   <<"componentUpdates">> => map(),
+%%   <<"compositeComponentUpdates">> => map(),
+%%   <<"description">> => string(),
+%%   <<"entityName">> => string(),
+%%   <<"parentEntityUpdate">> => parent_entity_update_request()
+%% }
+-type update_entity_request() :: #{binary() => any()}.
+
+%% Example:
+%% composite_component_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"properties">> => map(),
+%%   <<"propertyGroups">> => map()
+%% }
+-type composite_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_scene_response() :: #{
+%%   <<"updateDateTime">> := non_neg_integer()
+%% }
+-type update_scene_response() :: #{binary() => any()}.
+
+%% Example:
+%% scene_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"contentLocation">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"sceneId">> => string(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type scene_summary() :: #{binary() => any()}.
+
+%% Example:
+%% data_type() :: #{
+%%   <<"allowedValues">> => list(data_value()()),
+%%   <<"nestedType">> => data_type(),
+%%   <<"relationship">> => relationship(),
+%%   <<"type">> => string(),
+%%   <<"unitOfMeasure">> => string()
+%% }
+-type data_type() :: #{binary() => any()}.
+
+%% Example:
+%% create_component_type_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"state">> := string()
+%% }
+-type create_component_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_properties_request() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentPath">> => string(),
+%%   <<"entityId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% order_by() :: #{
+%%   <<"order">> => string(),
+%%   <<"propertyName">> => string()
+%% }
+-type order_by() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceARN">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% component_summary() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentPath">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"definedIn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"propertyGroups">> => map(),
+%%   <<"status">> => status(),
+%%   <<"syncSource">> => string()
+%% }
+-type component_summary() :: #{binary() => any()}.
+
+%% Example:
+%% property_latest_value() :: #{
+%%   <<"propertyReference">> => entity_property_reference(),
+%%   <<"propertyValue">> => data_value()
+%% }
+-type property_latest_value() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type delete_workspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sync_job_response() :: #{
+%%   <<"state">> := string()
+%% }
+-type delete_sync_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% property_value() :: #{
+%%   <<"time">> => string(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"value">> => data_value()
+%% }
+-type property_value() :: #{binary() => any()}.
+
+%% Example:
+%% update_component_type_request() :: #{
+%%   <<"componentTypeName">> => string(),
+%%   <<"compositeComponentTypes">> => map(),
+%%   <<"description">> => string(),
+%%   <<"extendsFrom">> => list(string()()),
+%%   <<"functions">> => map(),
+%%   <<"isSingleton">> => boolean(),
+%%   <<"propertyDefinitions">> => map(),
+%%   <<"propertyGroups">> => map()
+%% }
+-type update_component_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% property_group_request() :: #{
+%%   <<"groupType">> => string(),
+%%   <<"propertyNames">> => list(string()())
+%% }
+-type property_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% entity_property_reference() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentPath">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"externalIdProperty">> => map(),
+%%   <<"propertyName">> => string()
+%% }
+-type entity_property_reference() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_property_error() :: #{
+%%   <<"entry">> => property_value_entry(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_put_property_error() :: #{binary() => any()}.
+%% Example:
+%% get_metadata_transfer_job_request() :: #{}
+-type get_metadata_transfer_job_request() :: #{}.
+
+%% Example:
+%% property_value_entry() :: #{
+%%   <<"entityPropertyReference">> => entity_property_reference(),
+%%   <<"propertyValues">> => list(property_value()())
+%% }
+-type property_value_entry() :: #{binary() => any()}.
+
+%% Example:
+%% component_property_group_request() :: #{
+%%   <<"groupType">> => string(),
+%%   <<"propertyNames">> => list(string()()),
+%%   <<"updateType">> => string()
+%% }
+-type component_property_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_metadata_transfer_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"destination">> => destination_configuration(),
+%%   <<"metadataTransferJobId">> => string(),
+%%   <<"metadataTransferJobRole">> => string(),
+%%   <<"progress">> => metadata_transfer_job_progress(),
+%%   <<"reportUrl">> => string(),
+%%   <<"sources">> => list(source_configuration()()),
+%%   <<"status">> => metadata_transfer_job_status(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type get_metadata_transfer_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_property_value_history_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"propertyValues">> := list(property_value_history()())
+%% }
+-type get_property_value_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_property_values_request() :: #{
+%%   <<"entries">> := list(property_value_entry()())
+%% }
+-type batch_put_property_values_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_component_type_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"componentTypeId">> := string(),
+%%   <<"componentTypeName">> => string(),
+%%   <<"compositeComponentTypes">> => map(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"extendsFrom">> => list(string()()),
+%%   <<"functions">> => map(),
+%%   <<"isAbstract">> => boolean(),
+%%   <<"isSchemaInitialized">> => boolean(),
+%%   <<"isSingleton">> => boolean(),
+%%   <<"propertyDefinitions">> => map(),
+%%   <<"propertyGroups">> => map(),
+%%   <<"status">> => status(),
+%%   <<"syncSource">> => string(),
+%%   <<"updateDateTime">> := non_neg_integer(),
+%%   <<"workspaceId">> := string()
+%% }
+-type get_component_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% sync_resource_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => string()
+%% }
+-type sync_resource_status() :: #{binary() => any()}.
+
+%% Example:
+%% list_components_request() :: #{
+%%   <<"componentPath">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_components_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_sync_jobs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"syncJobSummaries">> => list(sync_job_summary()())
+%% }
+-type list_sync_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_entity_request() :: #{
+%%   <<"isRecursive">> => boolean()
+%% }
+-type delete_entity_request() :: #{binary() => any()}.
+%% Example:
+%% get_workspace_request() :: #{}
+-type get_workspace_request() :: #{}.
+
+%% Example:
+%% batch_put_property_values_response() :: #{
+%%   <<"errorEntries">> := list(batch_put_property_error_entry()())
+%% }
+-type batch_put_property_values_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_sync_job_request() :: #{
+%%   <<"syncRole">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_sync_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% row() :: #{
+%%   <<"rowData">> => list(any()())
+%% }
+-type row() :: #{binary() => any()}.
+
+%% Example:
+%% property_definition_request() :: #{
+%%   <<"configuration">> => map(),
+%%   <<"dataType">> => data_type(),
+%%   <<"defaultValue">> => data_value(),
+%%   <<"displayName">> => string(),
+%%   <<"isExternalId">> => boolean(),
+%%   <<"isRequiredInEntity">> => boolean(),
+%%   <<"isStoredExternally">> => boolean(),
+%%   <<"isTimeSeries">> => boolean()
+%% }
+-type property_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% composite_component_type_request() :: #{
+%%   <<"componentTypeId">> => string()
+%% }
+-type composite_component_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% sync_job_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => string()
+%% }
+-type sync_job_status() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination_configuration() :: #{
+%%   <<"location">> => string()
+%% }
+-type s3_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% scene_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type scene_error() :: #{binary() => any()}.
+%% Example:
+%% get_scene_request() :: #{}
+-type get_scene_request() :: #{}.
+
+%% Example:
+%% get_scene_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"capabilities">> => list(string()()),
+%%   <<"contentLocation">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"error">> => scene_error(),
+%%   <<"generatedSceneMetadata">> => map(),
+%%   <<"sceneId">> := string(),
+%%   <<"sceneMetadata">> => map(),
+%%   <<"updateDateTime">> := non_neg_integer(),
+%%   <<"workspaceId">> := string()
+%% }
+-type get_scene_response() :: #{binary() => any()}.
+
+%% Example:
+%% component_request() :: #{
+%%   <<"componentTypeId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"properties">> => map(),
+%%   <<"propertyGroups">> => map()
+%% }
+-type component_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_sync_job_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"state">> := string()
+%% }
+-type create_sync_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% error_details() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_pricing_plan_response() :: #{
+%%   <<"currentPricingPlan">> := pricing_plan(),
+%%   <<"pendingPricingPlan">> => pricing_plan()
+%% }
+-type update_pricing_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% source_configuration() :: #{
+%%   <<"iotSiteWiseConfiguration">> => iot_site_wise_source_configuration(),
+%%   <<"iotTwinMakerConfiguration">> => iot_twin_maker_source_configuration(),
+%%   <<"s3Configuration">> => s3_source_configuration(),
+%%   <<"type">> => string()
+%% }
+-type source_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_property_error_entry() :: #{
+%%   <<"errors">> => list(batch_put_property_error()())
+%% }
+-type batch_put_property_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_response() :: #{
+%%   <<"updateDateTime">> := non_neg_integer()
+%% }
+-type update_workspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% metadata_transfer_job_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"queuedPosition">> => integer(),
+%%   <<"state">> => string()
+%% }
+-type metadata_transfer_job_status() :: #{binary() => any()}.
+
+%% Example:
+%% parent_entity_update_request() :: #{
+%%   <<"parentEntityId">> => string(),
+%%   <<"updateType">> => string()
+%% }
+-type parent_entity_update_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_entity_response() :: #{
+%%   <<"state">> := string(),
+%%   <<"updateDateTime">> := non_neg_integer()
+%% }
+-type update_entity_response() :: #{binary() => any()}.
+%% Example:
+%% delete_workspace_request() :: #{}
+-type delete_workspace_request() :: #{}.
+
+%% Example:
+%% component_response() :: #{
+%%   <<"areAllCompositeComponentsReturned">> => boolean(),
+%%   <<"areAllPropertiesReturned">> => boolean(),
+%%   <<"componentName">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"compositeComponents">> => map(),
+%%   <<"definedIn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"properties">> => map(),
+%%   <<"propertyGroups">> => map(),
+%%   <<"status">> => status(),
+%%   <<"syncSource">> => string()
+%% }
+-type component_response() :: #{binary() => any()}.
+
+%% Example:
+%% component_type_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"componentTypeName">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"status">> => status(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type component_type_summary() :: #{binary() => any()}.
+
+%% Example:
+%% function_request() :: #{
+%%   <<"implementedBy">> => data_connector(),
+%%   <<"requiredProperties">> => list(string()()),
+%%   <<"scope">> => string()
+%% }
+-type function_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"role">> => string(),
+%%   <<"s3Location">> => string()
+%% }
+-type update_workspace_request() :: #{binary() => any()}.
+
+%% Example:
+%% property_group_response() :: #{
+%%   <<"groupType">> => string(),
+%%   <<"isInherited">> => boolean(),
+%%   <<"propertyNames">> => list(string()())
+%% }
+-type property_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter_by_asset() :: #{
+%%   <<"assetExternalId">> => string(),
+%%   <<"assetId">> => string(),
+%%   <<"includeAssetModel">> => boolean(),
+%%   <<"includeOffspring">> => boolean()
+%% }
+-type filter_by_asset() :: #{binary() => any()}.
+
+%% Example:
+%% metadata_transfer_job_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"metadataTransferJobId">> => string(),
+%%   <<"progress">> => metadata_transfer_job_progress(),
+%%   <<"status">> => metadata_transfer_job_status(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type metadata_transfer_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% data_connector() :: #{
+%%   <<"isNative">> => boolean(),
+%%   <<"lambda">> => lambda_function()
+%% }
+-type data_connector() :: #{binary() => any()}.
+
+%% Example:
+%% property_summary() :: #{
+%%   <<"areAllPropertyValuesReturned">> => boolean(),
+%%   <<"definition">> => property_definition_response(),
+%%   <<"propertyName">> => string(),
+%%   <<"value">> => data_value()
+%% }
+-type property_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_component_types_response() :: #{
+%%   <<"componentTypeSummaries">> := list(component_type_summary()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceId">> := string()
+%% }
+-type list_component_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% sync_resource_summary() :: #{
+%%   <<"externalId">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => sync_resource_status(),
+%%   <<"updateDateTime">> => non_neg_integer()
+%% }
+-type sync_resource_summary() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_workspace_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer()
+%% }
+-type create_workspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_sync_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"syncResources">> => list(sync_resource_summary()())
+%% }
+-type list_sync_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workspaces_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workspaceSummaries">> => list(workspace_summary()())
+%% }
+-type list_workspaces_response() :: #{binary() => any()}.
+%% Example:
+%% delete_sync_job_request() :: #{}
+-type delete_sync_job_request() :: #{}.
+
+%% Example:
+%% relationship_value() :: #{
+%%   <<"targetComponentName">> => string(),
+%%   <<"targetEntityId">> => string()
+%% }
+-type relationship_value() :: #{binary() => any()}.
+
+%% Example:
+%% list_metadata_transfer_jobs_request() :: #{
+%%   <<"destinationType">> := string(),
+%%   <<"filters">> => list(list()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceType">> := string()
+%% }
+-type list_metadata_transfer_jobs_request() :: #{binary() => any()}.
+%% Example:
+%% delete_scene_response() :: #{}
+-type delete_scene_response() :: #{}.
+
+%% Example:
+%% get_pricing_plan_response() :: #{
+%%   <<"currentPricingPlan">> := pricing_plan(),
+%%   <<"pendingPricingPlan">> => pricing_plan()
+%% }
+-type get_pricing_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_entity_request() :: #{
+%%   <<"components">> => map(),
+%%   <<"compositeComponents">> => map(),
+%%   <<"description">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"entityName">> := string(),
+%%   <<"parentEntityId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_entity_request() :: #{binary() => any()}.
+
+%% Example:
+%% property_filter() :: #{
+%%   <<"operator">> => string(),
+%%   <<"propertyName">> => string(),
+%%   <<"value">> => data_value()
+%% }
+-type property_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_sync_resources_request() :: #{
+%%   <<"filters">> => list(list()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sync_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% metadata_transfer_job_progress() :: #{
+%%   <<"failedCount">> => integer(),
+%%   <<"skippedCount">> => integer(),
+%%   <<"succeededCount">> => integer(),
+%%   <<"totalCount">> => integer()
+%% }
+-type metadata_transfer_job_progress() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+%% Example:
+%% delete_component_type_request() :: #{}
+-type delete_component_type_request() :: #{}.
+
+%% Example:
+%% property_response() :: #{
+%%   <<"areAllPropertyValuesReturned">> => boolean(),
+%%   <<"definition">> => property_definition_response(),
+%%   <<"value">> => data_value()
+%% }
+-type property_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter_by_component_type() :: #{
+%%   <<"componentTypeId">> => string()
+%% }
+-type filter_by_component_type() :: #{binary() => any()}.
+
+%% Example:
+%% get_entity_response() :: #{
+%%   <<"areAllComponentsReturned">> => boolean(),
+%%   <<"arn">> := string(),
+%%   <<"components">> => map(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"entityId">> := string(),
+%%   <<"entityName">> := string(),
+%%   <<"hasChildEntities">> := boolean(),
+%%   <<"parentEntityId">> := string(),
+%%   <<"status">> := status(),
+%%   <<"syncSource">> => string(),
+%%   <<"updateDateTime">> := non_neg_integer(),
+%%   <<"workspaceId">> := string()
+%% }
+-type get_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter_by_asset_model() :: #{
+%%   <<"assetModelExternalId">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"includeAssets">> => boolean(),
+%%   <<"includeOffspring">> => boolean()
+%% }
+-type filter_by_asset_model() :: #{binary() => any()}.
+
+%% Example:
+%% list_sync_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sync_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workspaces_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_pricing_plan_request() :: #{
+%%   <<"bundleNames">> => list(string()()),
+%%   <<"pricingMode">> := string()
+%% }
+-type update_pricing_plan_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_component_type_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"componentTypeId">> := string(),
+%%   <<"state">> := string(),
+%%   <<"workspaceId">> := string()
+%% }
+-type update_component_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% execute_query_response() :: #{
+%%   <<"columnDescriptions">> => list(column_description()()),
+%%   <<"nextToken">> => string(),
+%%   <<"rows">> => list(row()())
+%% }
+-type execute_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type query_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_component_type_response() :: #{
+%%   <<"state">> := string()
+%% }
+-type delete_component_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_property_value_history_request() :: #{
+%%   <<"componentName">> => string(),
+%%   <<"componentPath">> => string(),
+%%   <<"componentTypeId">> => string(),
+%%   <<"endDateTime">> => non_neg_integer(),
+%%   <<"endTime">> => string(),
+%%   <<"entityId">> => string(),
+%%   <<"interpolation">> => interpolation_parameters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"orderByTime">> => string(),
+%%   <<"propertyFilters">> => list(property_filter()()),
+%%   <<"selectedProperties">> := list(string()()),
+%%   <<"startDateTime">> => non_neg_integer(),
+%%   <<"startTime">> => string()
+%% }
+-type get_property_value_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_components_response() :: #{
+%%   <<"componentSummaries">> => list(component_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_components_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_entity_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"entityId">> := string(),
+%%   <<"state">> := string()
+%% }
+-type create_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_metadata_transfer_job_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"destination">> := destination_configuration(),
+%%   <<"metadataTransferJobId">> => string(),
+%%   <<"sources">> := list(source_configuration()())
+%% }
+-type create_metadata_transfer_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% bundle_information() :: #{
+%%   <<"bundleNames">> => list(string()()),
+%%   <<"pricingTier">> => string()
+%% }
+-type bundle_information() :: #{binary() => any()}.
+
+%% Example:
+%% connector_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type connector_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_scene_request() :: #{
+%%   <<"capabilities">> => list(string()()),
+%%   <<"contentLocation">> := string(),
+%%   <<"description">> => string(),
+%%   <<"sceneId">> := string(),
+%%   <<"sceneMetadata">> => map(),
+%%   <<"tags">> => map()
+%% }
+-type create_scene_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_metadata_transfer_jobs_response() :: #{
+%%   <<"metadataTransferJobSummaries">> => list(metadata_transfer_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metadata_transfer_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% property_definition_response() :: #{
+%%   <<"configuration">> => map(),
+%%   <<"dataType">> => data_type(),
+%%   <<"defaultValue">> => data_value(),
+%%   <<"displayName">> => string(),
+%%   <<"isExternalId">> => boolean(),
+%%   <<"isFinal">> => boolean(),
+%%   <<"isImported">> => boolean(),
+%%   <<"isInherited">> => boolean(),
+%%   <<"isRequiredInEntity">> => boolean(),
+%%   <<"isStoredExternally">> => boolean(),
+%%   <<"isTimeSeries">> => boolean()
+%% }
+-type property_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% property_value_history() :: #{
+%%   <<"entityPropertyReference">> => entity_property_reference(),
+%%   <<"values">> => list(property_value()())
+%% }
+-type property_value_history() :: #{binary() => any()}.
+%% Example:
+%% delete_scene_request() :: #{}
+-type delete_scene_request() :: #{}.
+
+%% Example:
+%% status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => string()
+%% }
+-type status() :: #{binary() => any()}.
+
+%% Example:
+%% function_response() :: #{
+%%   <<"implementedBy">> => data_connector(),
+%%   <<"isInherited">> => boolean(),
+%%   <<"requiredProperties">> => list(string()()),
+%%   <<"scope">> => string()
+%% }
+-type function_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_response() :: #{
+%%   <<"entitySummaries">> => list(entity_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter_by_entity() :: #{
+%%   <<"entityId">> => string()
+%% }
+-type filter_by_entity() :: #{binary() => any()}.
+
+%% Example:
+%% iot_site_wise_source_configuration() :: #{
+%%   <<"filters">> => list(list()())
+%% }
+-type iot_site_wise_source_configuration() :: #{binary() => any()}.
+%% Example:
+%% get_component_type_request() :: #{}
+-type get_component_type_request() :: #{}.
+
+%% Example:
+%% interpolation_parameters() :: #{
+%%   <<"interpolationType">> => string(),
+%%   <<"intervalInSeconds">> => float()
+%% }
+-type interpolation_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% list_component_types_request() :: #{
+%%   <<"filters">> => list(list()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_component_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_value() :: #{
+%%   <<"booleanValue">> => boolean(),
+%%   <<"doubleValue">> => float(),
+%%   <<"expression">> => string(),
+%%   <<"integerValue">> => integer(),
+%%   <<"listValue">> => list(data_value()()),
+%%   <<"longValue">> => float(),
+%%   <<"mapValue">> => map(),
+%%   <<"relationshipValue">> => relationship_value(),
+%%   <<"stringValue">> => string()
+%% }
+-type data_value() :: #{binary() => any()}.
+
+%% Example:
+%% create_metadata_transfer_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"metadataTransferJobId">> => string(),
+%%   <<"status">> => metadata_transfer_job_status()
+%% }
+-type create_metadata_transfer_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_workspace_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"creationDateTime">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"linkedServices">> => list(string()()),
+%%   <<"role">> => string(),
+%%   <<"s3Location">> => string(),
+%%   <<"updateDateTime">> := non_neg_integer(),
+%%   <<"workspaceId">> := string()
+%% }
+-type get_workspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_scenes_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sceneSummaries">> => list(scene_summary()())
+%% }
+-type list_scenes_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination_configuration() :: #{
+%%   <<"iotTwinMakerConfiguration">> => iot_twin_maker_destination_configuration(),
+%%   <<"s3Configuration">> => s3_destination_configuration(),
+%%   <<"type">> => string()
+%% }
+-type destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_workspace_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"role">> => string(),
+%%   <<"s3Location">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_workspace_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_property_value_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"propertyValues">> => map(),
+%%   <<"tabularPropertyValues">> => list(list(map()())())
+%% }
+-type get_property_value_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_scene_request() :: #{
+%%   <<"capabilities">> => list(string()()),
+%%   <<"contentLocation">> => string(),
+%%   <<"description">> => string(),
+%%   <<"sceneMetadata">> => map()
+%% }
+-type update_scene_request() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Sets values for multiple time series properties.
+-spec batch_put_property_values(map(), binary() | list(), batch_put_property_values_request()) ->
+    {ok, batch_put_property_values_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_put_property_values(Client, WorkspaceId, Input) ->
     batch_put_property_values(Client, WorkspaceId, Input, []).
+
+-spec batch_put_property_values(map(), binary() | list(), batch_put_property_values_request(), proplists:proplist()) ->
+    {ok, batch_put_property_values_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_put_property_values(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entity-properties"],
@@ -134,8 +1406,27 @@ batch_put_property_values(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the metadata transfer job.
+-spec cancel_metadata_transfer_job(map(), binary() | list(), cancel_metadata_transfer_job_request()) ->
+    {ok, cancel_metadata_transfer_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input) ->
     cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input, []).
+
+-spec cancel_metadata_transfer_job(map(), binary() | list(), cancel_metadata_transfer_job_request(), proplists:proplist()) ->
+    {ok, cancel_metadata_transfer_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input0, Options0) ->
     Method = put,
     Path = ["/metadata-transfer-jobs/", aws_util:encode_uri(MetadataTransferJobId), "/cancel"],
@@ -159,8 +1450,27 @@ cancel_metadata_transfer_job(Client, MetadataTransferJobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a component type.
+-spec create_component_type(map(), binary() | list(), binary() | list(), create_component_type_request()) ->
+    {ok, create_component_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_component_type(Client, ComponentTypeId, WorkspaceId, Input) ->
     create_component_type(Client, ComponentTypeId, WorkspaceId, Input, []).
+
+-spec create_component_type(map(), binary() | list(), binary() | list(), create_component_type_request(), proplists:proplist()) ->
+    {ok, create_component_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/component-types/", aws_util:encode_uri(ComponentTypeId), ""],
@@ -184,8 +1494,27 @@ create_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an entity.
+-spec create_entity(map(), binary() | list(), create_entity_request()) ->
+    {ok, create_entity_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_entity(Client, WorkspaceId, Input) ->
     create_entity(Client, WorkspaceId, Input, []).
+
+-spec create_entity(map(), binary() | list(), create_entity_request(), proplists:proplist()) ->
+    {ok, create_entity_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_entity(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities"],
@@ -209,8 +1538,29 @@ create_entity(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new metadata transfer job.
+-spec create_metadata_transfer_job(map(), create_metadata_transfer_job_request()) ->
+    {ok, create_metadata_transfer_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_metadata_transfer_job(Client, Input) ->
     create_metadata_transfer_job(Client, Input, []).
+
+-spec create_metadata_transfer_job(map(), create_metadata_transfer_job_request(), proplists:proplist()) ->
+    {ok, create_metadata_transfer_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_metadata_transfer_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/metadata-transfer-jobs"],
@@ -234,8 +1584,27 @@ create_metadata_transfer_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a scene.
+-spec create_scene(map(), binary() | list(), create_scene_request()) ->
+    {ok, create_scene_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_scene(Client, WorkspaceId, Input) ->
     create_scene(Client, WorkspaceId, Input, []).
+
+-spec create_scene(map(), binary() | list(), create_scene_request(), proplists:proplist()) ->
+    {ok, create_scene_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_scene(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/scenes"],
@@ -259,8 +1628,27 @@ create_scene(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This action creates a SyncJob.
+-spec create_sync_job(map(), binary() | list(), binary() | list(), create_sync_job_request()) ->
+    {ok, create_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_sync_job(Client, SyncSource, WorkspaceId, Input) ->
     create_sync_job(Client, SyncSource, WorkspaceId, Input, []).
+
+-spec create_sync_job(map(), binary() | list(), binary() | list(), create_sync_job_request(), proplists:proplist()) ->
+    {ok, create_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_sync_job(Client, SyncSource, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/sync-jobs/", aws_util:encode_uri(SyncSource), ""],
@@ -284,8 +1672,27 @@ create_sync_job(Client, SyncSource, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a workplace.
+-spec create_workspace(map(), binary() | list(), create_workspace_request()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_workspace(Client, WorkspaceId, Input) ->
     create_workspace(Client, WorkspaceId, Input, []).
+
+-spec create_workspace(map(), binary() | list(), create_workspace_request(), proplists:proplist()) ->
+    {ok, create_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -309,8 +1716,25 @@ create_workspace(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a component type.
+-spec delete_component_type(map(), binary() | list(), binary() | list(), delete_component_type_request()) ->
+    {ok, delete_component_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_component_type(Client, ComponentTypeId, WorkspaceId, Input) ->
     delete_component_type(Client, ComponentTypeId, WorkspaceId, Input, []).
+
+-spec delete_component_type(map(), binary() | list(), binary() | list(), delete_component_type_request(), proplists:proplist()) ->
+    {ok, delete_component_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/component-types/", aws_util:encode_uri(ComponentTypeId), ""],
@@ -334,8 +1758,25 @@ delete_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an entity.
+-spec delete_entity(map(), binary() | list(), binary() | list(), delete_entity_request()) ->
+    {ok, delete_entity_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_entity(Client, EntityId, WorkspaceId, Input) ->
     delete_entity(Client, EntityId, WorkspaceId, Input, []).
+
+-spec delete_entity(map(), binary() | list(), binary() | list(), delete_entity_request(), proplists:proplist()) ->
+    {ok, delete_entity_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_entity(Client, EntityId, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities/", aws_util:encode_uri(EntityId), ""],
@@ -360,8 +1801,25 @@ delete_entity(Client, EntityId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a scene.
+-spec delete_scene(map(), binary() | list(), binary() | list(), delete_scene_request()) ->
+    {ok, delete_scene_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_scene(Client, SceneId, WorkspaceId, Input) ->
     delete_scene(Client, SceneId, WorkspaceId, Input, []).
+
+-spec delete_scene(map(), binary() | list(), binary() | list(), delete_scene_request(), proplists:proplist()) ->
+    {ok, delete_scene_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_scene(Client, SceneId, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/scenes/", aws_util:encode_uri(SceneId), ""],
@@ -385,8 +1843,27 @@ delete_scene(Client, SceneId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete the SyncJob.
+-spec delete_sync_job(map(), binary() | list(), binary() | list(), delete_sync_job_request()) ->
+    {ok, delete_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_sync_job(Client, SyncSource, WorkspaceId, Input) ->
     delete_sync_job(Client, SyncSource, WorkspaceId, Input, []).
+
+-spec delete_sync_job(map(), binary() | list(), binary() | list(), delete_sync_job_request(), proplists:proplist()) ->
+    {ok, delete_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_sync_job(Client, SyncSource, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/sync-jobs/", aws_util:encode_uri(SyncSource), ""],
@@ -410,8 +1887,25 @@ delete_sync_job(Client, SyncSource, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a workspace.
+-spec delete_workspace(map(), binary() | list(), delete_workspace_request()) ->
+    {ok, delete_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
+
+-spec delete_workspace(map(), binary() | list(), delete_workspace_request(), proplists:proplist()) ->
+    {ok, delete_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -442,8 +1936,27 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html.
 %% ExecuteQuery will not work with any Amazon Web Services Java SDK version
 %% &lt; 2.x.
+-spec execute_query(map(), execute_query_request()) ->
+    {ok, execute_query_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, query_timeout_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 execute_query(Client, Input) ->
     execute_query(Client, Input, []).
+
+-spec execute_query(map(), execute_query_request(), proplists:proplist()) ->
+    {ok, execute_query_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, query_timeout_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 execute_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/queries/execution"],
@@ -467,14 +1980,38 @@ execute_query(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a component type.
+-spec get_component_type(map(), binary() | list(), binary() | list()) ->
+    {ok, get_component_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_component_type(Client, ComponentTypeId, WorkspaceId)
   when is_map(Client) ->
     get_component_type(Client, ComponentTypeId, WorkspaceId, #{}, #{}).
 
+-spec get_component_type(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_component_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_component_type(Client, ComponentTypeId, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component_type(Client, ComponentTypeId, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec get_component_type(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_component_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_component_type(Client, ComponentTypeId, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/component-types/", aws_util:encode_uri(ComponentTypeId), ""],
@@ -492,14 +2029,38 @@ get_component_type(Client, ComponentTypeId, WorkspaceId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an entity.
+-spec get_entity(map(), binary() | list(), binary() | list()) ->
+    {ok, get_entity_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_entity(Client, EntityId, WorkspaceId)
   when is_map(Client) ->
     get_entity(Client, EntityId, WorkspaceId, #{}, #{}).
 
+-spec get_entity(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_entity_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec get_entity(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_entity_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities/", aws_util:encode_uri(EntityId), ""],
@@ -517,14 +2078,38 @@ get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a nmetadata transfer job.
+-spec get_metadata_transfer_job(map(), binary() | list()) ->
+    {ok, get_metadata_transfer_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_metadata_transfer_job(Client, MetadataTransferJobId)
   when is_map(Client) ->
     get_metadata_transfer_job(Client, MetadataTransferJobId, #{}, #{}).
 
+-spec get_metadata_transfer_job(map(), binary() | list(), map(), map()) ->
+    {ok, get_metadata_transfer_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap, []).
 
+-spec get_metadata_transfer_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_metadata_transfer_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/metadata-transfer-jobs/", aws_util:encode_uri(MetadataTransferJobId), ""],
@@ -542,14 +2127,35 @@ get_metadata_transfer_job(Client, MetadataTransferJobId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the pricing plan.
+-spec get_pricing_plan(map()) ->
+    {ok, get_pricing_plan_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_pricing_plan(Client)
   when is_map(Client) ->
     get_pricing_plan(Client, #{}, #{}).
 
+-spec get_pricing_plan(map(), map(), map()) ->
+    {ok, get_pricing_plan_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_pricing_plan(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_pricing_plan(Client, QueryMap, HeadersMap, []).
 
+-spec get_pricing_plan(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_pricing_plan_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_pricing_plan(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/pricingplan"],
@@ -571,8 +2177,29 @@ get_pricing_plan(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You must specify a value for either `componentName',
 %% `componentTypeId', `entityId', or `workspaceId'.
+-spec get_property_value(map(), binary() | list(), get_property_value_request()) ->
+    {ok, get_property_value_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, connector_failure_exception(), tuple()} |
+    {error, connector_timeout_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_property_value(Client, WorkspaceId, Input) ->
     get_property_value(Client, WorkspaceId, Input, []).
+
+-spec get_property_value(map(), binary() | list(), get_property_value_request(), proplists:proplist()) ->
+    {ok, get_property_value_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, connector_failure_exception(), tuple()} |
+    {error, connector_timeout_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_property_value(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entity-properties/value"],
@@ -604,8 +2231,29 @@ get_property_value(Client, WorkspaceId, Input0, Options0) ->
 %% specify values for `componentName' and `entityId'. For
 %% cross-entity
 %% quries, specify a value for `componentTypeId'.
+-spec get_property_value_history(map(), binary() | list(), get_property_value_history_request()) ->
+    {ok, get_property_value_history_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, connector_failure_exception(), tuple()} |
+    {error, connector_timeout_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_property_value_history(Client, WorkspaceId, Input) ->
     get_property_value_history(Client, WorkspaceId, Input, []).
+
+-spec get_property_value_history(map(), binary() | list(), get_property_value_history_request(), proplists:proplist()) ->
+    {ok, get_property_value_history_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, connector_failure_exception(), tuple()} |
+    {error, connector_timeout_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_property_value_history(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entity-properties/history"],
@@ -629,14 +2277,38 @@ get_property_value_history(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a scene.
+-spec get_scene(map(), binary() | list(), binary() | list()) ->
+    {ok, get_scene_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_scene(Client, SceneId, WorkspaceId)
   when is_map(Client) ->
     get_scene(Client, SceneId, WorkspaceId, #{}, #{}).
 
+-spec get_scene(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_scene_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_scene(Client, SceneId, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_scene(Client, SceneId, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec get_scene(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_scene_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_scene(Client, SceneId, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/scenes/", aws_util:encode_uri(SceneId), ""],
@@ -654,14 +2326,41 @@ get_scene(Client, SceneId, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the SyncJob.
+-spec get_sync_job(map(), binary() | list()) ->
+    {ok, get_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_sync_job(Client, SyncSource)
   when is_map(Client) ->
     get_sync_job(Client, SyncSource, #{}, #{}).
 
+-spec get_sync_job(map(), binary() | list(), map(), map()) ->
+    {ok, get_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_sync_job(Client, SyncSource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sync_job(Client, SyncSource, QueryMap, HeadersMap, []).
 
+-spec get_sync_job(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_sync_job_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_sync_job(Client, SyncSource, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sync-jobs/", aws_util:encode_uri(SyncSource), ""],
@@ -683,14 +2382,38 @@ get_sync_job(Client, SyncSource, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a workspace.
+-spec get_workspace(map(), binary() | list()) ->
+    {ok, get_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_workspace(Client, WorkspaceId)
   when is_map(Client) ->
     get_workspace(Client, WorkspaceId, #{}, #{}).
 
+-spec get_workspace(map(), binary() | list(), map(), map()) ->
+    {ok, get_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workspace(Client, WorkspaceId, QueryMap, HeadersMap, []).
 
+-spec get_workspace(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -708,8 +2431,23 @@ get_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all component types in a workspace.
+-spec list_component_types(map(), binary() | list(), list_component_types_request()) ->
+    {ok, list_component_types_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_component_types(Client, WorkspaceId, Input) ->
     list_component_types(Client, WorkspaceId, Input, []).
+
+-spec list_component_types(map(), binary() | list(), list_component_types_request(), proplists:proplist()) ->
+    {ok, list_component_types_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_component_types(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/component-types-list"],
@@ -733,8 +2471,25 @@ list_component_types(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API lists the components of an entity.
+-spec list_components(map(), binary() | list(), binary() | list(), list_components_request()) ->
+    {ok, list_components_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_components(Client, EntityId, WorkspaceId, Input) ->
     list_components(Client, EntityId, WorkspaceId, Input, []).
+
+-spec list_components(map(), binary() | list(), binary() | list(), list_components_request(), proplists:proplist()) ->
+    {ok, list_components_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_components(Client, EntityId, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities/", aws_util:encode_uri(EntityId), "/components-list"],
@@ -758,8 +2513,23 @@ list_components(Client, EntityId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all entities in a workspace.
+-spec list_entities(map(), binary() | list(), list_entities_request()) ->
+    {ok, list_entities_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_entities(Client, WorkspaceId, Input) ->
     list_entities(Client, WorkspaceId, Input, []).
+
+-spec list_entities(map(), binary() | list(), list_entities_request(), proplists:proplist()) ->
+    {ok, list_entities_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_entities(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities-list"],
@@ -783,8 +2553,23 @@ list_entities(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the metadata transfer jobs.
+-spec list_metadata_transfer_jobs(map(), list_metadata_transfer_jobs_request()) ->
+    {ok, list_metadata_transfer_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_metadata_transfer_jobs(Client, Input) ->
     list_metadata_transfer_jobs(Client, Input, []).
+
+-spec list_metadata_transfer_jobs(map(), list_metadata_transfer_jobs_request(), proplists:proplist()) ->
+    {ok, list_metadata_transfer_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_metadata_transfer_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/metadata-transfer-jobs-list"],
@@ -808,8 +2593,25 @@ list_metadata_transfer_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API lists the properties of a component.
+-spec list_properties(map(), binary() | list(), list_properties_request()) ->
+    {ok, list_properties_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_properties(Client, WorkspaceId, Input) ->
     list_properties(Client, WorkspaceId, Input, []).
+
+-spec list_properties(map(), binary() | list(), list_properties_request(), proplists:proplist()) ->
+    {ok, list_properties_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_properties(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/properties-list"],
@@ -833,8 +2635,23 @@ list_properties(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all scenes in a workspace.
+-spec list_scenes(map(), binary() | list(), list_scenes_request()) ->
+    {ok, list_scenes_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_scenes(Client, WorkspaceId, Input) ->
     list_scenes(Client, WorkspaceId, Input, []).
+
+-spec list_scenes(map(), binary() | list(), list_scenes_request(), proplists:proplist()) ->
+    {ok, list_scenes_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_scenes(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/scenes-list"],
@@ -858,8 +2675,25 @@ list_scenes(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List all SyncJobs.
+-spec list_sync_jobs(map(), binary() | list(), list_sync_jobs_request()) ->
+    {ok, list_sync_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_sync_jobs(Client, WorkspaceId, Input) ->
     list_sync_jobs(Client, WorkspaceId, Input, []).
+
+-spec list_sync_jobs(map(), binary() | list(), list_sync_jobs_request(), proplists:proplist()) ->
+    {ok, list_sync_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_sync_jobs(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/sync-jobs-list"],
@@ -883,8 +2717,25 @@ list_sync_jobs(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the sync resources.
+-spec list_sync_resources(map(), binary() | list(), binary() | list(), list_sync_resources_request()) ->
+    {ok, list_sync_resources_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_sync_resources(Client, SyncSource, WorkspaceId, Input) ->
     list_sync_resources(Client, SyncSource, WorkspaceId, Input, []).
+
+-spec list_sync_resources(map(), binary() | list(), binary() | list(), list_sync_resources_request(), proplists:proplist()) ->
+    {ok, list_sync_resources_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_sync_resources(Client, SyncSource, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/sync-jobs/", aws_util:encode_uri(SyncSource), "/resources-list"],
@@ -908,8 +2759,19 @@ list_sync_resources(Client, SyncSource, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all tags associated with a resource.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags-list"],
@@ -933,8 +2795,23 @@ list_tags_for_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about workspaces in the current account.
+-spec list_workspaces(map(), list_workspaces_request()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_workspaces(Client, Input) ->
     list_workspaces(Client, Input, []).
+
+-spec list_workspaces(map(), list_workspaces_request(), proplists:proplist()) ->
+    {ok, list_workspaces_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_workspaces(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces-list"],
@@ -958,8 +2835,21 @@ list_workspaces(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to a resource.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
@@ -983,8 +2873,19 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
@@ -1010,8 +2911,27 @@ untag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information in a component type.
+-spec update_component_type(map(), binary() | list(), binary() | list(), update_component_type_request()) ->
+    {ok, update_component_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_component_type(Client, ComponentTypeId, WorkspaceId, Input) ->
     update_component_type(Client, ComponentTypeId, WorkspaceId, Input, []).
+
+-spec update_component_type(map(), binary() | list(), binary() | list(), update_component_type_request(), proplists:proplist()) ->
+    {ok, update_component_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/component-types/", aws_util:encode_uri(ComponentTypeId), ""],
@@ -1035,8 +2955,29 @@ update_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an entity.
+-spec update_entity(map(), binary() | list(), binary() | list(), update_entity_request()) ->
+    {ok, update_entity_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_entity(Client, EntityId, WorkspaceId, Input) ->
     update_entity(Client, EntityId, WorkspaceId, Input, []).
+
+-spec update_entity(map(), binary() | list(), binary() | list(), update_entity_request(), proplists:proplist()) ->
+    {ok, update_entity_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_entity(Client, EntityId, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities/", aws_util:encode_uri(EntityId), ""],
@@ -1060,8 +3001,23 @@ update_entity(Client, EntityId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update the pricing plan.
+-spec update_pricing_plan(map(), update_pricing_plan_request()) ->
+    {ok, update_pricing_plan_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_pricing_plan(Client, Input) ->
     update_pricing_plan(Client, Input, []).
+
+-spec update_pricing_plan(map(), update_pricing_plan_request(), proplists:proplist()) ->
+    {ok, update_pricing_plan_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_pricing_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/pricingplan"],
@@ -1085,8 +3041,25 @@ update_pricing_plan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a scene.
+-spec update_scene(map(), binary() | list(), binary() | list(), update_scene_request()) ->
+    {ok, update_scene_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_scene(Client, SceneId, WorkspaceId, Input) ->
     update_scene(Client, SceneId, WorkspaceId, Input, []).
+
+-spec update_scene(map(), binary() | list(), binary() | list(), update_scene_request(), proplists:proplist()) ->
+    {ok, update_scene_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_scene(Client, SceneId, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/scenes/", aws_util:encode_uri(SceneId), ""],
@@ -1110,8 +3083,27 @@ update_scene(Client, SceneId, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a workspace.
+-spec update_workspace(map(), binary() | list(), update_workspace_request()) ->
+    {ok, update_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_workspace(Client, WorkspaceId, Input) ->
     update_workspace(Client, WorkspaceId, Input, []).
+
+-spec update_workspace(map(), binary() | list(), update_workspace_request(), proplists:proplist()) ->
+    {ok, update_workspace_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
@@ -1138,7 +3130,7 @@ update_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -246,6 +246,1419 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% describe_operating_systems_response() :: #{
+%%   <<"OperatingSystems">> => list(operating_system()())
+%% }
+-type describe_operating_systems_response() :: #{binary() => any()}.
+
+%% Example:
+%% app() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"AppSource">> => source(),
+%%   <<"Attributes">> => map(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DataSources">> => list(data_source()()),
+%%   <<"Description">> => string(),
+%%   <<"Domains">> => list(string()()),
+%%   <<"EnableSsl">> => boolean(),
+%%   <<"Environment">> => list(environment_variable()()),
+%%   <<"Name">> => string(),
+%%   <<"Shortname">> => string(),
+%%   <<"SslConfiguration">> => ssl_configuration(),
+%%   <<"StackId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type app() :: #{binary() => any()}.
+
+%% Example:
+%% user_profile() :: #{
+%%   <<"AllowSelfManagement">> => boolean(),
+%%   <<"IamUserArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SshPublicKey">> => string(),
+%%   <<"SshUsername">> => string()
+%% }
+-type user_profile() :: #{binary() => any()}.
+
+%% Example:
+%% describe_apps_request() :: #{
+%%   <<"AppIds">> => list(string()()),
+%%   <<"StackId">> => string()
+%% }
+-type describe_apps_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_profile_request() :: #{
+%%   <<"AllowSelfManagement">> => boolean(),
+%%   <<"IamUserArn">> := string(),
+%%   <<"SshPublicKey">> => string(),
+%%   <<"SshUsername">> => string()
+%% }
+-type update_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_ecs_cluster_request() :: #{
+%%   <<"EcsClusterArn">> := string(),
+%%   <<"StackId">> := string()
+%% }
+-type register_ecs_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% elastic_ip() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Ip">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type elastic_ip() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_request() :: #{
+%%   <<"AppSource">> => source(),
+%%   <<"Attributes">> => map(),
+%%   <<"DataSources">> => list(data_source()()),
+%%   <<"Description">> => string(),
+%%   <<"Domains">> => list(string()()),
+%%   <<"EnableSsl">> => boolean(),
+%%   <<"Environment">> => list(environment_variable()()),
+%%   <<"Name">> := string(),
+%%   <<"Shortname">> => string(),
+%%   <<"SslConfiguration">> => ssl_configuration(),
+%%   <<"StackId">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_stack_request() :: #{
+%%   <<"StackId">> := string()
+%% }
+-type stop_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_elastic_ips_result() :: #{
+%%   <<"ElasticIps">> => list(elastic_ip()())
+%% }
+-type describe_elastic_ips_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rds_db_instances_request() :: #{
+%%   <<"RdsDbInstanceArns">> => list(string()()),
+%%   <<"StackId">> := string()
+%% }
+-type describe_rds_db_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% deployment() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"Command">> => deployment_command(),
+%%   <<"Comment">> => string(),
+%%   <<"CompletedAt">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"CustomJson">> => string(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"IamUserArn">> => string(),
+%%   <<"InstanceIds">> => list(string()()),
+%%   <<"StackId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type deployment() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_result() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_ecs_cluster_request() :: #{
+%%   <<"EcsClusterArn">> := string()
+%% }
+-type deregister_ecs_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% block_device_mapping() :: #{
+%%   <<"DeviceName">> => string(),
+%%   <<"Ebs">> => ebs_block_device(),
+%%   <<"NoDevice">> => string(),
+%%   <<"VirtualName">> => string()
+%% }
+-type block_device_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% create_stack_request() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"ChefConfiguration">> => chef_configuration(),
+%%   <<"ConfigurationManager">> => stack_configuration_manager(),
+%%   <<"CustomCookbooksSource">> => source(),
+%%   <<"CustomJson">> => string(),
+%%   <<"DefaultAvailabilityZone">> => string(),
+%%   <<"DefaultInstanceProfileArn">> := string(),
+%%   <<"DefaultOs">> => string(),
+%%   <<"DefaultRootDeviceType">> => list(any()),
+%%   <<"DefaultSshKeyName">> => string(),
+%%   <<"DefaultSubnetId">> => string(),
+%%   <<"HostnameTheme">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Region">> := string(),
+%%   <<"ServiceRoleArn">> := string(),
+%%   <<"UseCustomCookbooks">> => boolean(),
+%%   <<"UseOpsworksSecurityGroups">> => boolean(),
+%%   <<"VpcId">> => string()
+%% }
+-type create_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_stack_request() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"ChefConfiguration">> => chef_configuration(),
+%%   <<"ConfigurationManager">> => stack_configuration_manager(),
+%%   <<"CustomCookbooksSource">> => source(),
+%%   <<"CustomJson">> => string(),
+%%   <<"DefaultAvailabilityZone">> => string(),
+%%   <<"DefaultInstanceProfileArn">> => string(),
+%%   <<"DefaultOs">> => string(),
+%%   <<"DefaultRootDeviceType">> => list(any()),
+%%   <<"DefaultSshKeyName">> => string(),
+%%   <<"DefaultSubnetId">> => string(),
+%%   <<"HostnameTheme">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"StackId">> := string(),
+%%   <<"UseCustomCookbooks">> => boolean(),
+%%   <<"UseOpsworksSecurityGroups">> => boolean()
+%% }
+-type update_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_raid_arrays_result() :: #{
+%%   <<"RaidArrays">> => list(raid_array()())
+%% }
+-type describe_raid_arrays_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_instance_request() :: #{
+%%   <<"Force">> => boolean(),
+%%   <<"InstanceId">> := string()
+%% }
+-type stop_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_elastic_ips_request() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"Ips">> => list(string()()),
+%%   <<"StackId">> => string()
+%% }
+-type describe_elastic_ips_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_commands_result() :: #{
+%%   <<"Commands">> => list(command()())
+%% }
+-type describe_commands_result() :: #{binary() => any()}.
+
+%% Example:
+%% environment_variable() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Secure">> => boolean(),
+%%   <<"Value">> => string()
+%% }
+-type environment_variable() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_event_configuration() :: #{
+%%   <<"Shutdown">> => shutdown_event_configuration()
+%% }
+-type lifecycle_event_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_volumes_request() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"RaidArrayId">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"VolumeIds">> => list(string()())
+%% }
+-type describe_volumes_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_volume_request() :: #{
+%%   <<"MountPoint">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VolumeId">> := string()
+%% }
+-type update_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_stack_result() :: #{
+%%   <<"StackId">> => string()
+%% }
+-type create_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_request() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"Command">> := deployment_command(),
+%%   <<"Comment">> => string(),
+%%   <<"CustomJson">> => string(),
+%%   <<"InstanceIds">> => list(string()()),
+%%   <<"LayerIds">> => list(string()()),
+%%   <<"StackId">> := string()
+%% }
+-type create_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% temporary_credential() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string(),
+%%   <<"ValidForInMinutes">> => integer()
+%% }
+-type temporary_credential() :: #{binary() => any()}.
+
+%% Example:
+%% create_layer_result() :: #{
+%%   <<"LayerId">> => string()
+%% }
+-type create_layer_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_provisioning_parameters_result() :: #{
+%%   <<"AgentInstallerUrl">> => string(),
+%%   <<"Parameters">> => map()
+%% }
+-type describe_stack_provisioning_parameters_result() :: #{binary() => any()}.
+
+%% Example:
+%% shutdown_event_configuration() :: #{
+%%   <<"DelayUntilElbConnectionsDrained">> => boolean(),
+%%   <<"ExecutionTimeout">> => integer()
+%% }
+-type shutdown_event_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_my_user_profile_result() :: #{
+%%   <<"UserProfile">> => self_user_profile()
+%% }
+-type describe_my_user_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% register_rds_db_instance_request() :: #{
+%%   <<"DbPassword">> := string(),
+%%   <<"DbUser">> := string(),
+%%   <<"RdsDbInstanceArn">> := string(),
+%%   <<"StackId">> := string()
+%% }
+-type register_rds_db_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_permissions_request() :: #{
+%%   <<"IamUserArn">> => string(),
+%%   <<"StackId">> => string()
+%% }
+-type describe_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% operating_system() :: #{
+%%   <<"ConfigurationManagers">> => list(operating_system_configuration_manager()()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReportedName">> => string(),
+%%   <<"ReportedVersion">> => string(),
+%%   <<"Supported">> => boolean(),
+%%   <<"Type">> => string()
+%% }
+-type operating_system() :: #{binary() => any()}.
+
+%% Example:
+%% describe_permissions_result() :: #{
+%%   <<"Permissions">> => list(permission()())
+%% }
+-type describe_permissions_result() :: #{binary() => any()}.
+
+%% Example:
+%% register_volume_request() :: #{
+%%   <<"Ec2VolumeId">> => string(),
+%%   <<"StackId">> := string()
+%% }
+-type register_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_summary_result() :: #{
+%%   <<"StackSummary">> => stack_summary()
+%% }
+-type describe_stack_summary_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_commands_request() :: #{
+%%   <<"CommandIds">> => list(string()()),
+%%   <<"DeploymentId">> => string(),
+%%   <<"InstanceId">> => string()
+%% }
+-type describe_commands_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_instance_request() :: #{
+%%   <<"InstanceId">> := string()
+%% }
+-type deregister_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% instances_count() :: #{
+%%   <<"Assigning">> => integer(),
+%%   <<"Booting">> => integer(),
+%%   <<"ConnectionLost">> => integer(),
+%%   <<"Deregistering">> => integer(),
+%%   <<"Online">> => integer(),
+%%   <<"Pending">> => integer(),
+%%   <<"Rebooting">> => integer(),
+%%   <<"Registered">> => integer(),
+%%   <<"Registering">> => integer(),
+%%   <<"Requested">> => integer(),
+%%   <<"RunningSetup">> => integer(),
+%%   <<"SetupFailed">> => integer(),
+%%   <<"ShuttingDown">> => integer(),
+%%   <<"StartFailed">> => integer(),
+%%   <<"StopFailed">> => integer(),
+%%   <<"Stopped">> => integer(),
+%%   <<"Stopping">> => integer(),
+%%   <<"Terminated">> => integer(),
+%%   <<"Terminating">> => integer(),
+%%   <<"Unassigning">> => integer()
+%% }
+-type instances_count() :: #{binary() => any()}.
+
+%% Example:
+%% grant_access_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"ValidForInMinutes">> => integer()
+%% }
+-type grant_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_load_based_auto_scaling_request() :: #{
+%%   <<"DownScaling">> => auto_scaling_thresholds(),
+%%   <<"Enable">> => boolean(),
+%%   <<"LayerId">> := string(),
+%%   <<"UpScaling">> => auto_scaling_thresholds()
+%% }
+-type set_load_based_auto_scaling_request() :: #{binary() => any()}.
+
+%% Example:
+%% unassign_volume_request() :: #{
+%%   <<"VolumeId">> := string()
+%% }
+-type unassign_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_hostname_suggestion_request() :: #{
+%%   <<"LayerId">> := string()
+%% }
+-type get_hostname_suggestion_request() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogStreams">> => list(cloud_watch_logs_log_stream()())
+%% }
+-type cloud_watch_logs_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% set_permission_request() :: #{
+%%   <<"AllowSsh">> => boolean(),
+%%   <<"AllowSudo">> => boolean(),
+%%   <<"IamUserArn">> := string(),
+%%   <<"Level">> => string(),
+%%   <<"StackId">> := string()
+%% }
+-type set_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_agent_versions_request() :: #{
+%%   <<"ConfigurationManager">> => stack_configuration_manager(),
+%%   <<"StackId">> => string()
+%% }
+-type describe_agent_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% assign_volume_request() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"VolumeId">> := string()
+%% }
+-type assign_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_instance_request() :: #{
+%%   <<"InstanceId">> := string()
+%% }
+-type reboot_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stack_request() :: #{
+%%   <<"StackId">> := string()
+%% }
+-type delete_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% stack() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"ChefConfiguration">> => chef_configuration(),
+%%   <<"ConfigurationManager">> => stack_configuration_manager(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"CustomCookbooksSource">> => source(),
+%%   <<"CustomJson">> => string(),
+%%   <<"DefaultAvailabilityZone">> => string(),
+%%   <<"DefaultInstanceProfileArn">> => string(),
+%%   <<"DefaultOs">> => string(),
+%%   <<"DefaultRootDeviceType">> => list(any()),
+%%   <<"DefaultSshKeyName">> => string(),
+%%   <<"DefaultSubnetId">> => string(),
+%%   <<"HostnameTheme">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"UseCustomCookbooks">> => boolean(),
+%%   <<"UseOpsworksSecurityGroups">> => boolean(),
+%%   <<"VpcId">> => string()
+%% }
+-type stack() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rds_db_instances_result() :: #{
+%%   <<"RdsDbInstances">> => list(rds_db_instance()())
+%% }
+-type describe_rds_db_instances_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_elastic_load_balancers_request() :: #{
+%%   <<"LayerIds">> => list(string()()),
+%%   <<"StackId">> => string()
+%% }
+-type describe_elastic_load_balancers_request() :: #{binary() => any()}.
+
+%% Example:
+%% elastic_load_balancer() :: #{
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"DnsName">> => string(),
+%%   <<"Ec2InstanceIds">> => list(string()()),
+%%   <<"ElasticLoadBalancerName">> => string(),
+%%   <<"LayerId">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"VpcId">> => string()
+%% }
+-type elastic_load_balancer() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% recipes() :: #{
+%%   <<"Configure">> => list(string()()),
+%%   <<"Deploy">> => list(string()()),
+%%   <<"Setup">> => list(string()()),
+%%   <<"Shutdown">> => list(string()()),
+%%   <<"Undeploy">> => list(string()())
+%% }
+-type recipes() :: #{binary() => any()}.
+
+%% Example:
+%% associate_elastic_ip_request() :: #{
+%%   <<"ElasticIp">> := string(),
+%%   <<"InstanceId">> => string()
+%% }
+-type associate_elastic_ip_request() :: #{binary() => any()}.
+
+%% Example:
+%% stack_summary() :: #{
+%%   <<"AppsCount">> => integer(),
+%%   <<"Arn">> => string(),
+%%   <<"InstancesCount">> => instances_count(),
+%%   <<"LayersCount">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"StackId">> => string()
+%% }
+-type stack_summary() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_command() :: #{
+%%   <<"Args">> => map(),
+%%   <<"Name">> => list(any())
+%% }
+-type deployment_command() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stacks_request() :: #{
+%%   <<"StackIds">> => list(string()())
+%% }
+-type describe_stacks_request() :: #{binary() => any()}.
+
+%% Example:
+%% unassign_instance_request() :: #{
+%%   <<"InstanceId">> := string()
+%% }
+-type unassign_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% raid_array() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"Device">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"MountPoint">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfDisks">> => integer(),
+%%   <<"RaidArrayId">> => string(),
+%%   <<"RaidLevel">> => integer(),
+%%   <<"Size">> => integer(),
+%%   <<"StackId">> => string(),
+%%   <<"VolumeType">> => string()
+%% }
+-type raid_array() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_elastic_ip_request() :: #{
+%%   <<"ElasticIp">> := string()
+%% }
+-type disassociate_elastic_ip_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_profile_request() :: #{
+%%   <<"IamUserArn">> := string()
+%% }
+-type delete_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_result() :: #{
+%%   <<"DeploymentId">> => string()
+%% }
+-type create_deployment_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_profiles_result() :: #{
+%%   <<"UserProfiles">> => list(user_profile()())
+%% }
+-type describe_user_profiles_result() :: #{binary() => any()}.
+
+%% Example:
+%% weekly_auto_scaling_schedule() :: #{
+%%   <<"Friday">> => map(),
+%%   <<"Monday">> => map(),
+%%   <<"Saturday">> => map(),
+%%   <<"Sunday">> => map(),
+%%   <<"Thursday">> => map(),
+%%   <<"Tuesday">> => map(),
+%%   <<"Wednesday">> => map()
+%% }
+-type weekly_auto_scaling_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% assign_instance_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"LayerIds">> := list(string()())
+%% }
+-type assign_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_result() :: #{
+%%   <<"InstanceId">> => string()
+%% }
+-type create_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_based_auto_scaling_request() :: #{
+%%   <<"LayerIds">> := list(string()())
+%% }
+-type describe_load_based_auto_scaling_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_instance_request() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"AmiId">> => string(),
+%%   <<"Architecture">> => list(any()),
+%%   <<"AutoScalingType">> => list(any()),
+%%   <<"EbsOptimized">> => boolean(),
+%%   <<"Hostname">> => string(),
+%%   <<"InstallUpdatesOnBoot">> => boolean(),
+%%   <<"InstanceId">> := string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LayerIds">> => list(string()()),
+%%   <<"Os">> => string(),
+%%   <<"SshKeyName">> => string()
+%% }
+-type update_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% stack_configuration_manager() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type stack_configuration_manager() :: #{binary() => any()}.
+
+%% Example:
+%% describe_layers_result() :: #{
+%%   <<"Layers">> => list(layer()())
+%% }
+-type describe_layers_result() :: #{binary() => any()}.
+
+%% Example:
+%% layer() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"AutoAssignElasticIps">> => boolean(),
+%%   <<"AutoAssignPublicIps">> => boolean(),
+%%   <<"CloudWatchLogsConfiguration">> => cloud_watch_logs_configuration(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"CustomInstanceProfileArn">> => string(),
+%%   <<"CustomJson">> => string(),
+%%   <<"CustomRecipes">> => recipes(),
+%%   <<"CustomSecurityGroupIds">> => list(string()()),
+%%   <<"DefaultRecipes">> => recipes(),
+%%   <<"DefaultSecurityGroupNames">> => list(string()()),
+%%   <<"EnableAutoHealing">> => boolean(),
+%%   <<"InstallUpdatesOnBoot">> => boolean(),
+%%   <<"LayerId">> => string(),
+%%   <<"LifecycleEventConfiguration">> => lifecycle_event_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"Packages">> => list(string()()),
+%%   <<"Shortname">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"UseEbsOptimizedInstances">> => boolean(),
+%%   <<"VolumeConfigurations">> => list(volume_configuration()())
+%% }
+-type layer() :: #{binary() => any()}.
+
+%% Example:
+%% register_instance_request() :: #{
+%%   <<"Hostname">> => string(),
+%%   <<"InstanceIdentity">> => instance_identity(),
+%%   <<"PrivateIp">> => string(),
+%%   <<"PublicIp">> => string(),
+%%   <<"RsaPublicKey">> => string(),
+%%   <<"RsaPublicKeyFingerprint">> => string(),
+%%   <<"StackId">> := string()
+%% }
+-type register_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instances_request() :: #{
+%%   <<"InstanceIds">> => list(string()()),
+%%   <<"LayerId">> => string(),
+%%   <<"StackId">> => string()
+%% }
+-type describe_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% ssl_configuration() :: #{
+%%   <<"Certificate">> => string(),
+%%   <<"Chain">> => string(),
+%%   <<"PrivateKey">> => string()
+%% }
+-type ssl_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_profiles_request() :: #{
+%%   <<"IamUserArns">> => list(string()())
+%% }
+-type describe_user_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_elastic_load_balancers_result() :: #{
+%%   <<"ElasticLoadBalancers">> => list(elastic_load_balancer()())
+%% }
+-type describe_elastic_load_balancers_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_time_based_auto_scaling_request() :: #{
+%%   <<"InstanceIds">> := list(string()())
+%% }
+-type describe_time_based_auto_scaling_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_elastic_ip_request() :: #{
+%%   <<"ElasticIp">> := string(),
+%%   <<"Name">> => string()
+%% }
+-type update_elastic_ip_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ecs_clusters_request() :: #{
+%%   <<"EcsClusterArns">> => list(string()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackId">> => string()
+%% }
+-type describe_ecs_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_block_device() :: #{
+%%   <<"DeleteOnTermination">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"VolumeSize">> => integer(),
+%%   <<"VolumeType">> => list(any())
+%% }
+-type ebs_block_device() :: #{binary() => any()}.
+
+%% Example:
+%% register_elastic_ip_result() :: #{
+%%   <<"ElasticIp">> => string()
+%% }
+-type register_elastic_ip_result() :: #{binary() => any()}.
+
+%% Example:
+%% detach_elastic_load_balancer_request() :: #{
+%%   <<"ElasticLoadBalancerName">> := string(),
+%%   <<"LayerId">> := string()
+%% }
+-type detach_elastic_load_balancer_request() :: #{binary() => any()}.
+
+%% Example:
+%% agent_version() :: #{
+%%   <<"ConfigurationManager">> => stack_configuration_manager(),
+%%   <<"Version">> => string()
+%% }
+-type agent_version() :: #{binary() => any()}.
+
+%% Example:
+%% describe_deployments_result() :: #{
+%%   <<"Deployments">> => list(deployment()())
+%% }
+-type describe_deployments_result() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_thresholds() :: #{
+%%   <<"Alarms">> => list(string()()),
+%%   <<"CpuThreshold">> => float(),
+%%   <<"IgnoreMetricsTime">> => integer(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"LoadThreshold">> => float(),
+%%   <<"MemoryThreshold">> => float(),
+%%   <<"ThresholdsWaitTime">> => integer()
+%% }
+-type auto_scaling_thresholds() :: #{binary() => any()}.
+
+%% Example:
+%% get_hostname_suggestion_result() :: #{
+%%   <<"Hostname">> => string(),
+%%   <<"LayerId">> => string()
+%% }
+-type get_hostname_suggestion_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_apps_result() :: #{
+%%   <<"Apps">> => list(app()())
+%% }
+-type describe_apps_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_layer_request() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"AutoAssignElasticIps">> => boolean(),
+%%   <<"AutoAssignPublicIps">> => boolean(),
+%%   <<"CloudWatchLogsConfiguration">> => cloud_watch_logs_configuration(),
+%%   <<"CustomInstanceProfileArn">> => string(),
+%%   <<"CustomJson">> => string(),
+%%   <<"CustomRecipes">> => recipes(),
+%%   <<"CustomSecurityGroupIds">> => list(string()()),
+%%   <<"EnableAutoHealing">> => boolean(),
+%%   <<"InstallUpdatesOnBoot">> => boolean(),
+%%   <<"LayerId">> := string(),
+%%   <<"LifecycleEventConfiguration">> => lifecycle_event_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"Packages">> => list(string()()),
+%%   <<"Shortname">> => string(),
+%%   <<"UseEbsOptimizedInstances">> => boolean(),
+%%   <<"VolumeConfigurations">> => list(volume_configuration()())
+%% }
+-type update_layer_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_elastic_ip_request() :: #{
+%%   <<"ElasticIp">> := string()
+%% }
+-type deregister_elastic_ip_request() :: #{binary() => any()}.
+
+%% Example:
+%% source() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Revision">> => string(),
+%%   <<"SshKey">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Url">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type source() :: #{binary() => any()}.
+
+%% Example:
+%% attach_elastic_load_balancer_request() :: #{
+%%   <<"ElasticLoadBalancerName">> := string(),
+%%   <<"LayerId">> := string()
+%% }
+-type attach_elastic_load_balancer_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_errors_request() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"ServiceErrorIds">> => list(string()()),
+%%   <<"StackId">> => string()
+%% }
+-type describe_service_errors_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stacks_result() :: #{
+%%   <<"Stacks">> => list(stack()())
+%% }
+-type describe_stacks_result() :: #{binary() => any()}.
+
+%% Example:
+%% clone_stack_request() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"ChefConfiguration">> => chef_configuration(),
+%%   <<"CloneAppIds">> => list(string()()),
+%%   <<"ClonePermissions">> => boolean(),
+%%   <<"ConfigurationManager">> => stack_configuration_manager(),
+%%   <<"CustomCookbooksSource">> => source(),
+%%   <<"CustomJson">> => string(),
+%%   <<"DefaultAvailabilityZone">> => string(),
+%%   <<"DefaultInstanceProfileArn">> => string(),
+%%   <<"DefaultOs">> => string(),
+%%   <<"DefaultRootDeviceType">> => list(any()),
+%%   <<"DefaultSshKeyName">> => string(),
+%%   <<"DefaultSubnetId">> => string(),
+%%   <<"HostnameTheme">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ServiceRoleArn">> := string(),
+%%   <<"SourceStackId">> := string(),
+%%   <<"UseCustomCookbooks">> => boolean(),
+%%   <<"UseOpsworksSecurityGroups">> => boolean(),
+%%   <<"VpcId">> => string()
+%% }
+-type clone_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_request() :: #{
+%%   <<"AppId">> := string()
+%% }
+-type delete_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% load_based_auto_scaling_configuration() :: #{
+%%   <<"DownScaling">> => auto_scaling_thresholds(),
+%%   <<"Enable">> => boolean(),
+%%   <<"LayerId">> => string(),
+%%   <<"UpScaling">> => auto_scaling_thresholds()
+%% }
+-type load_based_auto_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_my_user_profile_request() :: #{
+%%   <<"SshPublicKey">> => string()
+%% }
+-type update_my_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_request() :: #{
+%%   <<"AgentVersion">> => string(),
+%%   <<"AmiId">> => string(),
+%%   <<"Architecture">> => list(any()),
+%%   <<"AutoScalingType">> => list(any()),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"EbsOptimized">> => boolean(),
+%%   <<"Hostname">> => string(),
+%%   <<"InstallUpdatesOnBoot">> => boolean(),
+%%   <<"InstanceType">> := string(),
+%%   <<"LayerIds">> := list(string()()),
+%%   <<"Os">> => string(),
+%%   <<"RootDeviceType">> => list(any()),
+%%   <<"SshKeyName">> => string(),
+%%   <<"StackId">> := string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"Tenancy">> => string(),
+%%   <<"VirtualizationType">> => string()
+%% }
+-type create_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_agent_versions_result() :: #{
+%%   <<"AgentVersions">> => list(agent_version()())
+%% }
+-type describe_agent_versions_result() :: #{binary() => any()}.
+
+%% Example:
+%% register_ecs_cluster_result() :: #{
+%%   <<"EcsClusterArn">> => string()
+%% }
+-type register_ecs_cluster_result() :: #{binary() => any()}.
+
+%% Example:
+%% instance() :: #{
+%%   <<"Tenancy">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"ElasticIp">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"AutoScalingType">> => list(any()),
+%%   <<"PublicIp">> => string(),
+%%   <<"Architecture">> => list(any()),
+%%   <<"EbsOptimized">> => boolean(),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"AgentVersion">> => string(),
+%%   <<"AmiId">> => string(),
+%%   <<"PrivateDns">> => string(),
+%%   <<"SshHostRsaKeyFingerprint">> => string(),
+%%   <<"RootDeviceVolumeId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"ReportedOs">> => reported_os(),
+%%   <<"InstanceType">> => string(),
+%%   <<"VirtualizationType">> => list(any()),
+%%   <<"RegisteredBy">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"EcsClusterArn">> => string(),
+%%   <<"Ec2InstanceId">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"InstallUpdatesOnBoot">> => boolean(),
+%%   <<"ReportedAgentVersion">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"PublicDns">> => string(),
+%%   <<"PrivateIp">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"LayerIds">> => list(string()()),
+%%   <<"RootDeviceType">> => list(any()),
+%%   <<"SshHostDsaKeyFingerprint">> => string(),
+%%   <<"EcsContainerInstanceArn">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"InfrastructureClass">> => string(),
+%%   <<"SshKeyName">> => string(),
+%%   <<"InstanceProfileArn">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"Os">> => string(),
+%%   <<"LastServiceErrorId">> => string(),
+%%   <<"Hostname">> => string()
+%% }
+-type instance() :: #{binary() => any()}.
+
+%% Example:
+%% volume() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Device">> => string(),
+%%   <<"Ec2VolumeId">> => string(),
+%%   <<"Encrypted">> => boolean(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"MountPoint">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RaidArrayId">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Size">> => integer(),
+%%   <<"Status">> => string(),
+%%   <<"VolumeId">> => string(),
+%%   <<"VolumeType">> => string()
+%% }
+-type volume() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_volume_request() :: #{
+%%   <<"VolumeId">> := string()
+%% }
+-type deregister_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% chef_configuration() :: #{
+%%   <<"BerkshelfVersion">> => string(),
+%%   <<"ManageBerkshelf">> => boolean()
+%% }
+-type chef_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_profile_request() :: #{
+%%   <<"AllowSelfManagement">> => boolean(),
+%%   <<"IamUserArn">> := string(),
+%%   <<"SshPublicKey">> => string(),
+%%   <<"SshUsername">> => string()
+%% }
+-type create_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% ecs_cluster() :: #{
+%%   <<"EcsClusterArn">> => string(),
+%%   <<"EcsClusterName">> => string(),
+%%   <<"RegisteredAt">> => string(),
+%%   <<"StackId">> => string()
+%% }
+-type ecs_cluster() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_profile_result() :: #{
+%%   <<"IamUserArn">> => string()
+%% }
+-type create_user_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_raid_arrays_request() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"RaidArrayIds">> => list(string()()),
+%%   <<"StackId">> => string()
+%% }
+-type describe_raid_arrays_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_layer_request() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"AutoAssignElasticIps">> => boolean(),
+%%   <<"AutoAssignPublicIps">> => boolean(),
+%%   <<"CloudWatchLogsConfiguration">> => cloud_watch_logs_configuration(),
+%%   <<"CustomInstanceProfileArn">> => string(),
+%%   <<"CustomJson">> => string(),
+%%   <<"CustomRecipes">> => recipes(),
+%%   <<"CustomSecurityGroupIds">> => list(string()()),
+%%   <<"EnableAutoHealing">> => boolean(),
+%%   <<"InstallUpdatesOnBoot">> => boolean(),
+%%   <<"LifecycleEventConfiguration">> => lifecycle_event_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"Packages">> => list(string()()),
+%%   <<"Shortname">> := string(),
+%%   <<"StackId">> := string(),
+%%   <<"Type">> := list(any()),
+%%   <<"UseEbsOptimizedInstances">> => boolean(),
+%%   <<"VolumeConfigurations">> => list(volume_configuration()())
+%% }
+-type create_layer_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ecs_clusters_result() :: #{
+%%   <<"EcsClusters">> => list(ecs_cluster()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ecs_clusters_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_layer_request() :: #{
+%%   <<"LayerId">> := string()
+%% }
+-type delete_layer_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_instance_result() :: #{
+%%   <<"InstanceId">> => string()
+%% }
+-type register_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_time_based_auto_scaling_result() :: #{
+%%   <<"TimeBasedAutoScalingConfigurations">> => list(time_based_auto_scaling_configuration()())
+%% }
+-type describe_time_based_auto_scaling_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_rds_db_instance_request() :: #{
+%%   <<"DbPassword">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"RdsDbInstanceArn">> := string()
+%% }
+-type update_rds_db_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_layers_request() :: #{
+%%   <<"LayerIds">> => list(string()()),
+%%   <<"StackId">> => string()
+%% }
+-type describe_layers_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_app_request() :: #{
+%%   <<"AppId">> := string(),
+%%   <<"AppSource">> => source(),
+%%   <<"Attributes">> => map(),
+%%   <<"DataSources">> => list(data_source()()),
+%%   <<"Description">> => string(),
+%%   <<"Domains">> => list(string()()),
+%%   <<"EnableSsl">> => boolean(),
+%%   <<"Environment">> => list(environment_variable()()),
+%%   <<"Name">> => string(),
+%%   <<"SslConfiguration">> => ssl_configuration(),
+%%   <<"Type">> => list(any())
+%% }
+-type update_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_request() :: #{
+%%   <<"DeleteElasticIp">> => boolean(),
+%%   <<"DeleteVolumes">> => boolean(),
+%%   <<"InstanceId">> := string()
+%% }
+-type delete_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_elastic_ip_request() :: #{
+%%   <<"ElasticIp">> := string(),
+%%   <<"StackId">> := string()
+%% }
+-type register_elastic_ip_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_volume_result() :: #{
+%%   <<"VolumeId">> => string()
+%% }
+-type register_volume_result() :: #{binary() => any()}.
+
+%% Example:
+%% grant_access_result() :: #{
+%%   <<"TemporaryCredential">> => temporary_credential()
+%% }
+-type grant_access_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_summary_request() :: #{
+%%   <<"StackId">> := string()
+%% }
+-type describe_stack_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instances_result() :: #{
+%%   <<"Instances">> => list(instance()())
+%% }
+-type describe_instances_result() :: #{binary() => any()}.
+
+%% Example:
+%% rds_db_instance() :: #{
+%%   <<"Address">> => string(),
+%%   <<"DbInstanceIdentifier">> => string(),
+%%   <<"DbPassword">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"MissingOnRds">> => boolean(),
+%%   <<"RdsDbInstanceArn">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"StackId">> => string()
+%% }
+-type rds_db_instance() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_based_auto_scaling_result() :: #{
+%%   <<"LoadBasedAutoScalingConfigurations">> => list(load_based_auto_scaling_configuration()())
+%% }
+-type describe_load_based_auto_scaling_result() :: #{binary() => any()}.
+
+%% Example:
+%% clone_stack_result() :: #{
+%%   <<"StackId">> => string()
+%% }
+-type clone_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% command() :: #{
+%%   <<"AcknowledgedAt">> => string(),
+%%   <<"CommandId">> => string(),
+%%   <<"CompletedAt">> => string(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"ExitCode">> => integer(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LogUrl">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type command() :: #{binary() => any()}.
+
+%% Example:
+%% volume_configuration() :: #{
+%%   <<"Encrypted">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"MountPoint">> => string(),
+%%   <<"NumberOfDisks">> => integer(),
+%%   <<"RaidLevel">> => integer(),
+%%   <<"Size">> => integer(),
+%%   <<"VolumeType">> => string()
+%% }
+-type volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_volumes_result() :: #{
+%%   <<"Volumes">> => list(volume()())
+%% }
+-type describe_volumes_result() :: #{binary() => any()}.
+
+%% Example:
+%% operating_system_configuration_manager() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type operating_system_configuration_manager() :: #{binary() => any()}.
+
+%% Example:
+%% service_error() :: #{
+%%   <<"CreatedAt">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ServiceErrorId">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type service_error() :: #{binary() => any()}.
+
+%% Example:
+%% data_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% start_instance_request() :: #{
+%%   <<"InstanceId">> := string()
+%% }
+-type start_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% self_user_profile() :: #{
+%%   <<"IamUserArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SshPublicKey">> => string(),
+%%   <<"SshUsername">> => string()
+%% }
+-type self_user_profile() :: #{binary() => any()}.
+
+%% Example:
+%% set_time_based_auto_scaling_request() :: #{
+%%   <<"AutoScalingSchedule">> => weekly_auto_scaling_schedule(),
+%%   <<"InstanceId">> := string()
+%% }
+-type set_time_based_auto_scaling_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_log_stream() :: #{
+%%   <<"BatchCount">> => integer(),
+%%   <<"BatchSize">> => integer(),
+%%   <<"BufferDuration">> => integer(),
+%%   <<"DatetimeFormat">> => string(),
+%%   <<"Encoding">> => list(any()),
+%%   <<"File">> => string(),
+%%   <<"FileFingerprintLines">> => string(),
+%%   <<"InitialPosition">> => list(any()),
+%%   <<"LogGroupName">> => string(),
+%%   <<"MultiLineStartPattern">> => string(),
+%%   <<"TimeZone">> => list(any())
+%% }
+-type cloud_watch_logs_log_stream() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_provisioning_parameters_request() :: #{
+%%   <<"StackId">> := string()
+%% }
+-type describe_stack_provisioning_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_identity() :: #{
+%%   <<"Document">> => string(),
+%%   <<"Signature">> => string()
+%% }
+-type instance_identity() :: #{binary() => any()}.
+
+%% Example:
+%% describe_deployments_request() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"DeploymentIds">> => list(string()()),
+%%   <<"StackId">> => string()
+%% }
+-type describe_deployments_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_result() :: #{
+%%   <<"AppId">> => string()
+%% }
+-type create_app_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_errors_result() :: #{
+%%   <<"ServiceErrors">> => list(service_error()())
+%% }
+-type describe_service_errors_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_stack_request() :: #{
+%%   <<"StackId">> := string()
+%% }
+-type start_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% time_based_auto_scaling_configuration() :: #{
+%%   <<"AutoScalingSchedule">> => weekly_auto_scaling_schedule(),
+%%   <<"InstanceId">> => string()
+%% }
+-type time_based_auto_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% permission() :: #{
+%%   <<"AllowSsh">> => boolean(),
+%%   <<"AllowSudo">> => boolean(),
+%%   <<"IamUserArn">> => string(),
+%%   <<"Level">> => string(),
+%%   <<"StackId">> => string()
+%% }
+-type permission() :: #{binary() => any()}.
+
+%% Example:
+%% reported_os() :: #{
+%%   <<"Family">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type reported_os() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_rds_db_instance_request() :: #{
+%%   <<"RdsDbInstanceArn">> := string()
+%% }
+-type deregister_rds_db_instance_request() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -267,9 +1680,20 @@
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec assign_instance(map(), assign_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 assign_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_instance(Client, Input, []).
+
+-spec assign_instance(map(), assign_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 assign_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignInstance">>, Input, Options).
@@ -292,9 +1716,20 @@ assign_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec assign_volume(map(), assign_volume_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 assign_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_volume(Client, Input, []).
+
+-spec assign_volume(map(), assign_volume_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 assign_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignVolume">>, Input, Options).
@@ -316,9 +1751,20 @@ assign_volume(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec associate_elastic_ip(map(), associate_elastic_ip_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_elastic_ip(Client, Input, []).
+
+-spec associate_elastic_ip(map(), associate_elastic_ip_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateElasticIp">>, Input, Options).
@@ -346,9 +1792,20 @@ associate_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec attach_elastic_load_balancer(map(), attach_elastic_load_balancer_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 attach_elastic_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_elastic_load_balancer(Client, Input, []).
+
+-spec attach_elastic_load_balancer(map(), attach_elastic_load_balancer_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 attach_elastic_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachElasticLoadBalancer">>, Input, Options).
@@ -366,9 +1823,20 @@ attach_elastic_load_balancer(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec clone_stack(map(), clone_stack_request()) ->
+    {ok, clone_stack_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 clone_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     clone_stack(Client, Input, []).
+
+-spec clone_stack(map(), clone_stack_request(), proplists:proplist()) ->
+    {ok, clone_stack_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 clone_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CloneStack">>, Input, Options).
@@ -386,9 +1854,20 @@ clone_stack(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec create_app(map(), create_app_request()) ->
+    {ok, create_app_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
+
+-spec create_app(map(), create_app_request(), proplists:proplist()) ->
+    {ok, create_app_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApp">>, Input, Options).
@@ -408,9 +1887,20 @@ create_app(Client, Input, Options)
 %% more information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec create_deployment(map(), create_deployment_request()) ->
+    {ok, create_deployment_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_deployment(Client, Input, []).
+
+-spec create_deployment(map(), create_deployment_request(), proplists:proplist()) ->
+    {ok, create_deployment_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDeployment">>, Input, Options).
@@ -428,9 +1918,20 @@ create_deployment(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec create_instance(map(), create_instance_request()) ->
+    {ok, create_instance_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance(Client, Input, []).
+
+-spec create_instance(map(), create_instance_request(), proplists:proplist()) ->
+    {ok, create_instance_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstance">>, Input, Options).
@@ -458,9 +1959,20 @@ create_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec create_layer(map(), create_layer_request()) ->
+    {ok, create_layer_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_layer(Client, Input, []).
+
+-spec create_layer(map(), create_layer_request(), proplists:proplist()) ->
+    {ok, create_layer_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_layer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLayer">>, Input, Options).
@@ -477,9 +1989,18 @@ create_layer(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec create_stack(map(), create_stack_request()) ->
+    {ok, create_stack_result(), tuple()} |
+    {error, any()} |
+    {error, validation_exception(), tuple()}.
 create_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stack(Client, Input, []).
+
+-spec create_stack(map(), create_stack_request(), proplists:proplist()) ->
+    {ok, create_stack_result(), tuple()} |
+    {error, any()} |
+    {error, validation_exception(), tuple()}.
 create_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStack">>, Input, Options).
@@ -492,9 +2013,18 @@ create_stack(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec create_user_profile(map(), create_user_profile_request()) ->
+    {ok, create_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, validation_exception(), tuple()}.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
+
+-spec create_user_profile(map(), create_user_profile_request(), proplists:proplist()) ->
+    {ok, create_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, validation_exception(), tuple()}.
 create_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserProfile">>, Input, Options).
@@ -508,9 +2038,20 @@ create_user_profile(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec delete_app(map(), delete_app_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
+
+-spec delete_app(map(), delete_app_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApp">>, Input, Options).
@@ -531,9 +2072,20 @@ delete_app(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec delete_instance(map(), delete_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance(Client, Input, []).
+
+-spec delete_instance(map(), delete_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstance">>, Input, Options).
@@ -552,9 +2104,20 @@ delete_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec delete_layer(map(), delete_layer_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_layer(Client, Input, []).
+
+-spec delete_layer(map(), delete_layer_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_layer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLayer">>, Input, Options).
@@ -573,9 +2136,20 @@ delete_layer(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec delete_stack(map(), delete_stack_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack(Client, Input, []).
+
+-spec delete_stack(map(), delete_stack_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStack">>, Input, Options).
@@ -588,9 +2162,20 @@ delete_stack(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec delete_user_profile(map(), delete_user_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
+
+-spec delete_user_profile(map(), delete_user_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserProfile">>, Input, Options).
@@ -608,9 +2193,20 @@ delete_user_profile(Client, Input, Options)
 %% permissions. For more
 %% information on user permissions, see
 %% [https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html].
+-spec deregister_ecs_cluster(map(), deregister_ecs_cluster_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_ecs_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_ecs_cluster(Client, Input, []).
+
+-spec deregister_ecs_cluster(map(), deregister_ecs_cluster_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_ecs_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterEcsCluster">>, Input, Options).
@@ -628,9 +2224,20 @@ deregister_ecs_cluster(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec deregister_elastic_ip(map(), deregister_elastic_ip_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_elastic_ip(Client, Input, []).
+
+-spec deregister_elastic_ip(map(), deregister_elastic_ip_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterElasticIp">>, Input, Options).
@@ -649,9 +2256,20 @@ deregister_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec deregister_instance(map(), deregister_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instance(Client, Input, []).
+
+-spec deregister_instance(map(), deregister_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterInstance">>, Input, Options).
@@ -665,9 +2283,20 @@ deregister_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec deregister_rds_db_instance(map(), deregister_rds_db_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_rds_db_instance(Client, Input, []).
+
+-spec deregister_rds_db_instance(map(), deregister_rds_db_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_rds_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterRdsDbInstance">>, Input, Options).
@@ -686,9 +2315,20 @@ deregister_rds_db_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec deregister_volume(map(), deregister_volume_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_volume(Client, Input, []).
+
+-spec deregister_volume(map(), deregister_volume_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 deregister_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterVolume">>, Input, Options).
@@ -699,9 +2339,20 @@ deregister_volume(Client, Input, Options)
 %% configuration manager. `DescribeAgentVersions' returns a list of
 %% available
 %% agent versions for the specified stack or configuration manager.
+-spec describe_agent_versions(map(), describe_agent_versions_request()) ->
+    {ok, describe_agent_versions_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_agent_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agent_versions(Client, Input, []).
+
+-spec describe_agent_versions(map(), describe_agent_versions_request(), proplists:proplist()) ->
+    {ok, describe_agent_versions_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_agent_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgentVersions">>, Input, Options).
@@ -718,9 +2369,20 @@ describe_agent_versions(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_apps(map(), describe_apps_request()) ->
+    {ok, describe_apps_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_apps(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_apps(Client, Input, []).
+
+-spec describe_apps(map(), describe_apps_request(), proplists:proplist()) ->
+    {ok, describe_apps_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_apps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApps">>, Input, Options).
@@ -737,9 +2399,20 @@ describe_apps(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_commands(map(), describe_commands_request()) ->
+    {ok, describe_commands_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_commands(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_commands(Client, Input, []).
+
+-spec describe_commands(map(), describe_commands_request(), proplists:proplist()) ->
+    {ok, describe_commands_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_commands(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCommands">>, Input, Options).
@@ -756,9 +2429,20 @@ describe_commands(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_deployments(map(), describe_deployments_request()) ->
+    {ok, describe_deployments_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_deployments(Client, Input, []).
+
+-spec describe_deployments(map(), describe_deployments_request(), proplists:proplist()) ->
+    {ok, describe_deployments_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_deployments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeployments">>, Input, Options).
@@ -781,9 +2465,20 @@ describe_deployments(Client, Input, Options)
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 %%
 %% This call accepts only one resource-identifying parameter.
+-spec describe_ecs_clusters(map(), describe_ecs_clusters_request()) ->
+    {ok, describe_ecs_clusters_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_ecs_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ecs_clusters(Client, Input, []).
+
+-spec describe_ecs_clusters(map(), describe_ecs_clusters_request(), proplists:proplist()) ->
+    {ok, describe_ecs_clusters_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_ecs_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEcsClusters">>, Input, Options).
@@ -801,9 +2496,20 @@ describe_ecs_clusters(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_elastic_ips(map(), describe_elastic_ips_request()) ->
+    {ok, describe_elastic_ips_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_elastic_ips(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_elastic_ips(Client, Input, []).
+
+-spec describe_elastic_ips(map(), describe_elastic_ips_request(), proplists:proplist()) ->
+    {ok, describe_elastic_ips_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_elastic_ips(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeElasticIps">>, Input, Options).
@@ -820,9 +2526,20 @@ describe_elastic_ips(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_elastic_load_balancers(map(), describe_elastic_load_balancers_request()) ->
+    {ok, describe_elastic_load_balancers_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_elastic_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_elastic_load_balancers(Client, Input, []).
+
+-spec describe_elastic_load_balancers(map(), describe_elastic_load_balancers_request(), proplists:proplist()) ->
+    {ok, describe_elastic_load_balancers_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_elastic_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeElasticLoadBalancers">>, Input, Options).
@@ -839,9 +2556,20 @@ describe_elastic_load_balancers(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_instances(map(), describe_instances_request()) ->
+    {ok, describe_instances_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instances(Client, Input, []).
+
+-spec describe_instances(map(), describe_instances_request(), proplists:proplist()) ->
+    {ok, describe_instances_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstances">>, Input, Options).
@@ -858,9 +2586,20 @@ describe_instances(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_layers(map(), describe_layers_request()) ->
+    {ok, describe_layers_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_layers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_layers(Client, Input, []).
+
+-spec describe_layers(map(), describe_layers_request(), proplists:proplist()) ->
+    {ok, describe_layers_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_layers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLayers">>, Input, Options).
@@ -878,9 +2617,20 @@ describe_layers(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_load_based_auto_scaling(map(), describe_load_based_auto_scaling_request()) ->
+    {ok, describe_load_based_auto_scaling_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_load_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_based_auto_scaling(Client, Input, []).
+
+-spec describe_load_based_auto_scaling(map(), describe_load_based_auto_scaling_request(), proplists:proplist()) ->
+    {ok, describe_load_based_auto_scaling_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_load_based_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBasedAutoScaling">>, Input, Options).
@@ -894,18 +2644,32 @@ describe_load_based_auto_scaling(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_my_user_profile(map(), #{}) ->
+    {ok, describe_my_user_profile_result(), tuple()} |
+    {error, any()}.
 describe_my_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_my_user_profile(Client, Input, []).
+
+-spec describe_my_user_profile(map(), #{}, proplists:proplist()) ->
+    {ok, describe_my_user_profile_result(), tuple()} |
+    {error, any()}.
 describe_my_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMyUserProfile">>, Input, Options).
 
 %% @doc Describes the operating systems that are supported by AWS OpsWorks
 %% Stacks.
+-spec describe_operating_systems(map(), #{}) ->
+    {ok, describe_operating_systems_response(), tuple()} |
+    {error, any()}.
 describe_operating_systems(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_operating_systems(Client, Input, []).
+
+-spec describe_operating_systems(map(), #{}, proplists:proplist()) ->
+    {ok, describe_operating_systems_response(), tuple()} |
+    {error, any()}.
 describe_operating_systems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOperatingSystems">>, Input, Options).
@@ -919,9 +2683,20 @@ describe_operating_systems(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_permissions(map(), describe_permissions_request()) ->
+    {ok, describe_permissions_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_permissions(Client, Input, []).
+
+-spec describe_permissions(map(), describe_permissions_request(), proplists:proplist()) ->
+    {ok, describe_permissions_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePermissions">>, Input, Options).
@@ -938,9 +2713,20 @@ describe_permissions(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_raid_arrays(map(), describe_raid_arrays_request()) ->
+    {ok, describe_raid_arrays_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_raid_arrays(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_raid_arrays(Client, Input, []).
+
+-spec describe_raid_arrays(map(), describe_raid_arrays_request(), proplists:proplist()) ->
+    {ok, describe_raid_arrays_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_raid_arrays(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRaidArrays">>, Input, Options).
@@ -957,9 +2743,20 @@ describe_raid_arrays(Client, Input, Options)
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 %%
 %% This call accepts only one resource-identifying parameter.
+-spec describe_rds_db_instances(map(), describe_rds_db_instances_request()) ->
+    {ok, describe_rds_db_instances_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_rds_db_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rds_db_instances(Client, Input, []).
+
+-spec describe_rds_db_instances(map(), describe_rds_db_instances_request(), proplists:proplist()) ->
+    {ok, describe_rds_db_instances_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_rds_db_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRdsDbInstances">>, Input, Options).
@@ -976,9 +2773,20 @@ describe_rds_db_instances(Client, Input, Options)
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
 %%
 %% This call accepts only one resource-identifying parameter.
+-spec describe_service_errors(map(), describe_service_errors_request()) ->
+    {ok, describe_service_errors_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_service_errors(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_errors(Client, Input, []).
+
+-spec describe_service_errors(map(), describe_service_errors_request(), proplists:proplist()) ->
+    {ok, describe_service_errors_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_service_errors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceErrors">>, Input, Options).
@@ -993,9 +2801,20 @@ describe_service_errors(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_stack_provisioning_parameters(map(), describe_stack_provisioning_parameters_request()) ->
+    {ok, describe_stack_provisioning_parameters_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_stack_provisioning_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_provisioning_parameters(Client, Input, []).
+
+-spec describe_stack_provisioning_parameters(map(), describe_stack_provisioning_parameters_request(), proplists:proplist()) ->
+    {ok, describe_stack_provisioning_parameters_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_stack_provisioning_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackProvisioningParameters">>, Input, Options).
@@ -1012,9 +2831,20 @@ describe_stack_provisioning_parameters(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_stack_summary(map(), describe_stack_summary_request()) ->
+    {ok, describe_stack_summary_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_stack_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_summary(Client, Input, []).
+
+-spec describe_stack_summary(map(), describe_stack_summary_request(), proplists:proplist()) ->
+    {ok, describe_stack_summary_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_stack_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackSummary">>, Input, Options).
@@ -1029,9 +2859,20 @@ describe_stack_summary(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_stacks(map(), describe_stacks_request()) ->
+    {ok, describe_stacks_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_stacks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stacks(Client, Input, []).
+
+-spec describe_stacks(map(), describe_stacks_request(), proplists:proplist()) ->
+    {ok, describe_stacks_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_stacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStacks">>, Input, Options).
@@ -1049,9 +2890,20 @@ describe_stacks(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_time_based_auto_scaling(map(), describe_time_based_auto_scaling_request()) ->
+    {ok, describe_time_based_auto_scaling_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_time_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_time_based_auto_scaling(Client, Input, []).
+
+-spec describe_time_based_auto_scaling(map(), describe_time_based_auto_scaling_request(), proplists:proplist()) ->
+    {ok, describe_time_based_auto_scaling_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_time_based_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTimeBasedAutoScaling">>, Input, Options).
@@ -1064,9 +2916,20 @@ describe_time_based_auto_scaling(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_user_profiles(map(), describe_user_profiles_request()) ->
+    {ok, describe_user_profiles_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_user_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_profiles(Client, Input, []).
+
+-spec describe_user_profiles(map(), describe_user_profiles_request(), proplists:proplist()) ->
+    {ok, describe_user_profiles_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_user_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserProfiles">>, Input, Options).
@@ -1083,9 +2946,20 @@ describe_user_profiles(Client, Input, Options)
 %% User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec describe_volumes(map(), describe_volumes_request()) ->
+    {ok, describe_volumes_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_volumes(Client, Input, []).
+
+-spec describe_volumes(map(), describe_volumes_request(), proplists:proplist()) ->
+    {ok, describe_volumes_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVolumes">>, Input, Options).
@@ -1099,9 +2973,18 @@ describe_volumes(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec detach_elastic_load_balancer(map(), detach_elastic_load_balancer_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()}.
 detach_elastic_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_elastic_load_balancer(Client, Input, []).
+
+-spec detach_elastic_load_balancer(map(), detach_elastic_load_balancer_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()}.
 detach_elastic_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachElasticLoadBalancer">>, Input, Options).
@@ -1119,9 +3002,20 @@ detach_elastic_load_balancer(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec disassociate_elastic_ip(map(), disassociate_elastic_ip_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_elastic_ip(Client, Input, []).
+
+-spec disassociate_elastic_ip(map(), disassociate_elastic_ip_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateElasticIp">>, Input, Options).
@@ -1136,9 +3030,20 @@ disassociate_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec get_hostname_suggestion(map(), get_hostname_suggestion_request()) ->
+    {ok, get_hostname_suggestion_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_hostname_suggestion(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_hostname_suggestion(Client, Input, []).
+
+-spec get_hostname_suggestion(map(), get_hostname_suggestion_request(), proplists:proplist()) ->
+    {ok, get_hostname_suggestion_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_hostname_suggestion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHostnameSuggestion">>, Input, Options).
@@ -1147,18 +3052,40 @@ get_hostname_suggestion(Client, Input, Options)
 %% This action can be used only with Windows stacks.
 %%
 %% Grants RDP access to a Windows instance for a specified time period.
+-spec grant_access(map(), grant_access_request()) ->
+    {ok, grant_access_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 grant_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     grant_access(Client, Input, []).
+
+-spec grant_access(map(), grant_access_request(), proplists:proplist()) ->
+    {ok, grant_access_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 grant_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GrantAccess">>, Input, Options).
 
 %% @doc Returns a list of tags that are applied to the specified stack or
 %% layer.
+-spec list_tags(map(), list_tags_request()) ->
+    {ok, list_tags_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
+
+-spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
+    {ok, list_tags_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -1176,9 +3103,20 @@ list_tags(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec reboot_instance(map(), reboot_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 reboot_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_instance(Client, Input, []).
+
+-spec reboot_instance(map(), reboot_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 reboot_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootInstance">>, Input, Options).
@@ -1200,9 +3138,20 @@ reboot_instance(Client, Input, Options)
 %%
 %% Managing User Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec register_ecs_cluster(map(), register_ecs_cluster_request()) ->
+    {ok, register_ecs_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_ecs_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_ecs_cluster(Client, Input, []).
+
+-spec register_ecs_cluster(map(), register_ecs_cluster_request(), proplists:proplist()) ->
+    {ok, register_ecs_cluster_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_ecs_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterEcsCluster">>, Input, Options).
@@ -1223,9 +3172,20 @@ register_ecs_cluster(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec register_elastic_ip(map(), register_elastic_ip_request()) ->
+    {ok, register_elastic_ip_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_elastic_ip(Client, Input, []).
+
+-spec register_elastic_ip(map(), register_elastic_ip_request(), proplists:proplist()) ->
+    {ok, register_elastic_ip_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterElasticIp">>, Input, Options).
@@ -1262,9 +3222,20 @@ register_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec register_instance(map(), register_instance_request()) ->
+    {ok, register_instance_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance(Client, Input, []).
+
+-spec register_instance(map(), register_instance_request(), proplists:proplist()) ->
+    {ok, register_instance_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterInstance">>, Input, Options).
@@ -1278,9 +3249,20 @@ register_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec register_rds_db_instance(map(), register_rds_db_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_rds_db_instance(Client, Input, []).
+
+-spec register_rds_db_instance(map(), register_rds_db_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_rds_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterRdsDbInstance">>, Input, Options).
@@ -1300,9 +3282,20 @@ register_rds_db_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec register_volume(map(), register_volume_request()) ->
+    {ok, register_volume_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_volume(Client, Input, []).
+
+-spec register_volume(map(), register_volume_request(), proplists:proplist()) ->
+    {ok, register_volume_result(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 register_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterVolume">>, Input, Options).
@@ -1327,9 +3320,20 @@ register_volume(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec set_load_based_auto_scaling(map(), set_load_based_auto_scaling_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 set_load_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_load_based_auto_scaling(Client, Input, []).
+
+-spec set_load_based_auto_scaling(map(), set_load_based_auto_scaling_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 set_load_based_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLoadBasedAutoScaling">>, Input, Options).
@@ -1347,9 +3351,20 @@ set_load_based_auto_scaling(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec set_permission(map(), set_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 set_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_permission(Client, Input, []).
+
+-spec set_permission(map(), set_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 set_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetPermission">>, Input, Options).
@@ -1369,9 +3384,20 @@ set_permission(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec set_time_based_auto_scaling(map(), set_time_based_auto_scaling_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 set_time_based_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_time_based_auto_scaling(Client, Input, []).
+
+-spec set_time_based_auto_scaling(map(), set_time_based_auto_scaling_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 set_time_based_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTimeBasedAutoScaling">>, Input, Options).
@@ -1389,9 +3415,20 @@ set_time_based_auto_scaling(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec start_instance(map(), start_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance(Client, Input, []).
+
+-spec start_instance(map(), start_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartInstance">>, Input, Options).
@@ -1405,9 +3442,20 @@ start_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec start_stack(map(), start_stack_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stack(Client, Input, []).
+
+-spec start_stack(map(), start_stack_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartStack">>, Input, Options).
@@ -1428,9 +3476,20 @@ start_stack(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec stop_instance(map(), stop_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_instance(Client, Input, []).
+
+-spec stop_instance(map(), stop_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopInstance">>, Input, Options).
@@ -1444,9 +3503,20 @@ stop_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec stop_stack(map(), stop_stack_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_stack(Client, Input, []).
+
+-spec stop_stack(map(), stop_stack_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopStack">>, Input, Options).
@@ -1457,9 +3527,20 @@ stop_stack(Client, Input, Options)
 %% For more information about how tagging works, see Tags:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html in the
 %% AWS OpsWorks User Guide.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1480,9 +3561,20 @@ tag_resource(Client, Input, Options)
 %% Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec unassign_instance(map(), unassign_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 unassign_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     unassign_instance(Client, Input, []).
+
+-spec unassign_instance(map(), unassign_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 unassign_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnassignInstance">>, Input, Options).
@@ -1501,17 +3593,39 @@ unassign_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec unassign_volume(map(), unassign_volume_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 unassign_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     unassign_volume(Client, Input, []).
+
+-spec unassign_volume(map(), unassign_volume_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 unassign_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnassignVolume">>, Input, Options).
 
 %% @doc Removes tags from a specified stack or layer.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1525,9 +3639,20 @@ untag_resource(Client, Input, Options)
 %% more information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec update_app(map(), update_app_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_app(Client, Input, []).
+
+-spec update_app(map(), update_app_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_app(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApp">>, Input, Options).
@@ -1544,9 +3669,20 @@ update_app(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec update_elastic_ip(map(), update_elastic_ip_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_elastic_ip(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_elastic_ip(Client, Input, []).
+
+-spec update_elastic_ip(map(), update_elastic_ip_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_elastic_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateElasticIp">>, Input, Options).
@@ -1560,9 +3696,20 @@ update_elastic_ip(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec update_instance(map(), update_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance(Client, Input, []).
+
+-spec update_instance(map(), update_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstance">>, Input, Options).
@@ -1576,9 +3723,20 @@ update_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec update_layer(map(), update_layer_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_layer(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_layer(Client, Input, []).
+
+-spec update_layer(map(), update_layer_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_layer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLayer">>, Input, Options).
@@ -1592,9 +3750,18 @@ update_layer(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec update_my_user_profile(map(), update_my_user_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, validation_exception(), tuple()}.
 update_my_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_my_user_profile(Client, Input, []).
+
+-spec update_my_user_profile(map(), update_my_user_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, validation_exception(), tuple()}.
 update_my_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMyUserProfile">>, Input, Options).
@@ -1608,9 +3775,20 @@ update_my_user_profile(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec update_rds_db_instance(map(), update_rds_db_instance_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_rds_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rds_db_instance(Client, Input, []).
+
+-spec update_rds_db_instance(map(), update_rds_db_instance_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_rds_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRdsDbInstance">>, Input, Options).
@@ -1624,9 +3802,20 @@ update_rds_db_instance(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec update_stack(map(), update_stack_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack(Client, Input, []).
+
+-spec update_stack(map(), update_stack_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStack">>, Input, Options).
@@ -1639,9 +3828,20 @@ update_stack(Client, Input, Options)
 %% permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec update_user_profile(map(), update_user_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
+
+-spec update_user_profile(map(), update_user_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserProfile">>, Input, Options).
@@ -1658,9 +3858,20 @@ update_user_profile(Client, Input, Options)
 %% information on user permissions, see Managing User
 %% Permissions:
 %% https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html.
+-spec update_volume(map(), update_volume_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_volume(Client, Input, []).
+
+-spec update_volume(map(), update_volume_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateVolume">>, Input, Options).

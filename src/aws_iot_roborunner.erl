@@ -56,13 +56,485 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_destinations_response() :: #{
+%%   <<"destinations">> => list(destination()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_destination_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"createdAt">> := non_neg_integer(),
+%%   <<"id">> := string(),
+%%   <<"state">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type create_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_destination_request() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"site">> := string(),
+%%   <<"state">> => string()
+%% }
+-type create_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_destination_response() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"arn">> := string(),
+%%   <<"createdAt">> := non_neg_integer(),
+%%   <<"id">> := string(),
+%%   <<"name">> := string(),
+%%   <<"site">> := string(),
+%%   <<"state">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type get_destination_response() :: #{binary() => any()}.
+%% Example:
+%% delete_worker_fleet_response() :: #{}
+-type delete_worker_fleet_response() :: #{}.
+
+%% Example:
+%% get_worker_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_worker_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_worker_request() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"additionalTransientProperties">> => string(),
+%%   <<"id">> := string(),
+%%   <<"name">> => string(),
+%%   <<"orientation">> => list(),
+%%   <<"position">> => list(),
+%%   <<"vendorProperties">> => vendor_properties()
+%% }
+-type update_worker_request() :: #{binary() => any()}.
+%% Example:
+%% delete_site_response() :: #{}
+-type delete_site_response() :: #{}.
+
+%% Example:
+%% list_workers_request() :: #{
+%%   <<"fleet">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"site">> := string()
+%% }
+-type list_workers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_worker_fleets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"site">> := string()
+%% }
+-type list_worker_fleets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_worker_fleets_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workerFleets">> => list(worker_fleet()())
+%% }
+-type list_worker_fleets_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_site_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"countryCode">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
+%% }
+-type create_site_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_worker_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type delete_worker_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_site_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"countryCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> := string(),
+%%   <<"name">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type update_site_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_worker_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"createdAt">> := non_neg_integer(),
+%%   <<"id">> := string(),
+%%   <<"site">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type create_worker_response() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_worker_response() :: #{}
+-type delete_worker_response() :: #{}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_worker_fleet_response() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"arn">> := string(),
+%%   <<"createdAt">> := non_neg_integer(),
+%%   <<"id">> := string(),
+%%   <<"name">> := string(),
+%%   <<"site">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type get_worker_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_destination_response() :: #{}
+-type delete_destination_response() :: #{}.
+
+%% Example:
+%% cartesian_coordinates() :: #{
+%%   <<"x">> => [float()],
+%%   <<"y">> => [float()],
+%%   <<"z">> => [float()]
+%% }
+-type cartesian_coordinates() :: #{binary() => any()}.
+
+%% Example:
+%% create_worker_fleet_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"createdAt">> := non_neg_integer(),
+%%   <<"id">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type create_worker_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_site_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type delete_site_request() :: #{binary() => any()}.
+
+%% Example:
+%% site() :: #{
+%%   <<"arn">> => string(),
+%%   <<"countryCode">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type site() :: #{binary() => any()}.
+
+%% Example:
+%% vendor_properties() :: #{
+%%   <<"vendorAdditionalFixedProperties">> => string(),
+%%   <<"vendorAdditionalTransientProperties">> => string(),
+%%   <<"vendorWorkerId">> => string(),
+%%   <<"vendorWorkerIpAddress">> => string()
+%% }
+-type vendor_properties() :: #{binary() => any()}.
+
+%% Example:
+%% list_destinations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"site">> := string(),
+%%   <<"state">> => string()
+%% }
+-type list_destinations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_site_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_site_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_worker_fleet_response() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"arn">> := string(),
+%%   <<"id">> := string(),
+%%   <<"name">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type update_worker_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_destination_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type delete_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_site_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"countryCode">> := string(),
+%%   <<"createdAt">> := non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> := string(),
+%%   <<"name">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type get_site_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_sites_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sites">> => list(site()())
+%% }
+-type list_sites_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_destination_request() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"id">> := string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string()
+%% }
+-type update_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_worker_response() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"additionalTransientProperties">> => string(),
+%%   <<"arn">> := string(),
+%%   <<"createdAt">> := non_neg_integer(),
+%%   <<"fleet">> := string(),
+%%   <<"id">> := string(),
+%%   <<"name">> := string(),
+%%   <<"orientation">> => list(),
+%%   <<"position">> => list(),
+%%   <<"site">> := string(),
+%%   <<"updatedAt">> := non_neg_integer(),
+%%   <<"vendorProperties">> => vendor_properties()
+%% }
+-type get_worker_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_site_request() :: #{
+%%   <<"countryCode">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> := string(),
+%%   <<"name">> => string()
+%% }
+-type update_site_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_worker_fleet_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_worker_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workers">> => list(worker()())
+%% }
+-type list_workers_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_worker_fleet_request() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"site">> := string()
+%% }
+-type create_worker_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_destination_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% destination() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"site">> => string(),
+%%   <<"state">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type destination() :: #{binary() => any()}.
+
+%% Example:
+%% update_destination_response() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"arn">> := string(),
+%%   <<"id">> := string(),
+%%   <<"name">> := string(),
+%%   <<"state">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type update_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% worker_fleet() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"site">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type worker_fleet() :: #{binary() => any()}.
+
+%% Example:
+%% worker() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"additionalTransientProperties">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"fleet">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"orientation">> => list(),
+%%   <<"position">> => list(),
+%%   <<"site">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"vendorProperties">> => vendor_properties()
+%% }
+-type worker() :: #{binary() => any()}.
+
+%% Example:
+%% update_worker_response() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"additionalTransientProperties">> => string(),
+%%   <<"arn">> := string(),
+%%   <<"fleet">> := string(),
+%%   <<"id">> := string(),
+%%   <<"name">> := string(),
+%%   <<"orientation">> => list(),
+%%   <<"position">> => list(),
+%%   <<"updatedAt">> := non_neg_integer(),
+%%   <<"vendorProperties">> => vendor_properties()
+%% }
+-type update_worker_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_worker_fleet_request() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"id">> := string(),
+%%   <<"name">> => string()
+%% }
+-type update_worker_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_worker_request() :: #{
+%%   <<"additionalFixedProperties">> => string(),
+%%   <<"additionalTransientProperties">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"fleet">> := string(),
+%%   <<"name">> := string(),
+%%   <<"orientation">> => list(),
+%%   <<"position">> => list(),
+%%   <<"vendorProperties">> => vendor_properties()
+%% }
+-type create_worker_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_site_response() :: #{
+%%   <<"arn">> := string(),
+%%   <<"createdAt">> := non_neg_integer(),
+%%   <<"id">> := string(),
+%%   <<"updatedAt">> := non_neg_integer()
+%% }
+-type create_site_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_worker_fleet_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type delete_worker_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_sites_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sites_request() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Grants permission to create a destination
+-spec create_destination(map(), create_destination_request()) ->
+    {ok, create_destination_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_destination(Client, Input) ->
     create_destination(Client, Input, []).
+
+-spec create_destination(map(), create_destination_request(), proplists:proplist()) ->
+    {ok, create_destination_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createDestination"],
@@ -86,8 +558,27 @@ create_destination(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to create a site
+-spec create_site(map(), create_site_request()) ->
+    {ok, create_site_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_site(Client, Input) ->
     create_site(Client, Input, []).
+
+-spec create_site(map(), create_site_request(), proplists:proplist()) ->
+    {ok, create_site_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSite"],
@@ -111,8 +602,29 @@ create_site(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to create a worker
+-spec create_worker(map(), create_worker_request()) ->
+    {ok, create_worker_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_worker(Client, Input) ->
     create_worker(Client, Input, []).
+
+-spec create_worker(map(), create_worker_request(), proplists:proplist()) ->
+    {ok, create_worker_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_worker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorker"],
@@ -136,8 +648,29 @@ create_worker(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to create a worker fleet
+-spec create_worker_fleet(map(), create_worker_fleet_request()) ->
+    {ok, create_worker_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_worker_fleet(Client, Input) ->
     create_worker_fleet(Client, Input, []).
+
+-spec create_worker_fleet(map(), create_worker_fleet_request(), proplists:proplist()) ->
+    {ok, create_worker_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_worker_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorkerFleet"],
@@ -161,8 +694,27 @@ create_worker_fleet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to delete a destination
+-spec delete_destination(map(), delete_destination_request()) ->
+    {ok, delete_destination_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_destination(Client, Input) ->
     delete_destination(Client, Input, []).
+
+-spec delete_destination(map(), delete_destination_request(), proplists:proplist()) ->
+    {ok, delete_destination_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteDestination"],
@@ -186,8 +738,27 @@ delete_destination(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to delete a site
+-spec delete_site(map(), delete_site_request()) ->
+    {ok, delete_site_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_site(Client, Input) ->
     delete_site(Client, Input, []).
+
+-spec delete_site(map(), delete_site_request(), proplists:proplist()) ->
+    {ok, delete_site_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteSite"],
@@ -211,8 +782,27 @@ delete_site(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to delete a worker
+-spec delete_worker(map(), delete_worker_request()) ->
+    {ok, delete_worker_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_worker(Client, Input) ->
     delete_worker(Client, Input, []).
+
+-spec delete_worker(map(), delete_worker_request(), proplists:proplist()) ->
+    {ok, delete_worker_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_worker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteWorker"],
@@ -236,8 +826,27 @@ delete_worker(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to delete a worker fleet
+-spec delete_worker_fleet(map(), delete_worker_fleet_request()) ->
+    {ok, delete_worker_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_worker_fleet(Client, Input) ->
     delete_worker_fleet(Client, Input, []).
+
+-spec delete_worker_fleet(map(), delete_worker_fleet_request(), proplists:proplist()) ->
+    {ok, delete_worker_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_worker_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteWorkerFleet"],
@@ -261,14 +870,38 @@ delete_worker_fleet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to get a destination
+-spec get_destination(map(), binary() | list()) ->
+    {ok, get_destination_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_destination(Client, Id)
   when is_map(Client) ->
     get_destination(Client, Id, #{}, #{}).
 
+-spec get_destination(map(), binary() | list(), map(), map()) ->
+    {ok, get_destination_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_destination(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_destination(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_destination(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_destination_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_destination(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getDestination"],
@@ -290,14 +923,38 @@ get_destination(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to get a site
+-spec get_site(map(), binary() | list()) ->
+    {ok, get_site_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_site(Client, Id)
   when is_map(Client) ->
     get_site(Client, Id, #{}, #{}).
 
+-spec get_site(map(), binary() | list(), map(), map()) ->
+    {ok, get_site_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_site(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_site(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_site(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_site_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_site(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getSite"],
@@ -319,14 +976,38 @@ get_site(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to get a worker
+-spec get_worker(map(), binary() | list()) ->
+    {ok, get_worker_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_worker(Client, Id)
   when is_map(Client) ->
     get_worker(Client, Id, #{}, #{}).
 
+-spec get_worker(map(), binary() | list(), map(), map()) ->
+    {ok, get_worker_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_worker(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_worker(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_worker(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_worker_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_worker(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getWorker"],
@@ -348,14 +1029,38 @@ get_worker(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to get a worker fleet
+-spec get_worker_fleet(map(), binary() | list()) ->
+    {ok, get_worker_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_worker_fleet(Client, Id)
   when is_map(Client) ->
     get_worker_fleet(Client, Id, #{}, #{}).
 
+-spec get_worker_fleet(map(), binary() | list(), map(), map()) ->
+    {ok, get_worker_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_worker_fleet(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_worker_fleet(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_worker_fleet(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_worker_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_worker_fleet(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/getWorkerFleet"],
@@ -377,14 +1082,38 @@ get_worker_fleet(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to list destinations
+-spec list_destinations(map(), binary() | list()) ->
+    {ok, list_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_destinations(Client, Site)
   when is_map(Client) ->
     list_destinations(Client, Site, #{}, #{}).
 
+-spec list_destinations(map(), binary() | list(), map(), map()) ->
+    {ok, list_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_destinations(Client, Site, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_destinations(Client, Site, QueryMap, HeadersMap, []).
 
+-spec list_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_destinations(Client, Site, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listDestinations"],
@@ -409,14 +1138,35 @@ list_destinations(Client, Site, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to list sites
+-spec list_sites(map()) ->
+    {ok, list_sites_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_sites(Client)
   when is_map(Client) ->
     list_sites(Client, #{}, #{}).
 
+-spec list_sites(map(), map(), map()) ->
+    {ok, list_sites_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_sites(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sites(Client, QueryMap, HeadersMap, []).
 
+-spec list_sites(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_sites_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_sites(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listSites"],
@@ -439,14 +1189,38 @@ list_sites(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to list worker fleets
+-spec list_worker_fleets(map(), binary() | list()) ->
+    {ok, list_worker_fleets_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_worker_fleets(Client, Site)
   when is_map(Client) ->
     list_worker_fleets(Client, Site, #{}, #{}).
 
+-spec list_worker_fleets(map(), binary() | list(), map(), map()) ->
+    {ok, list_worker_fleets_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_worker_fleets(Client, Site, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_worker_fleets(Client, Site, QueryMap, HeadersMap, []).
 
+-spec list_worker_fleets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_worker_fleets_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_worker_fleets(Client, Site, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listWorkerFleets"],
@@ -470,14 +1244,38 @@ list_worker_fleets(Client, Site, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to list workers
+-spec list_workers(map(), binary() | list()) ->
+    {ok, list_workers_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_workers(Client, Site)
   when is_map(Client) ->
     list_workers(Client, Site, #{}, #{}).
 
+-spec list_workers(map(), binary() | list(), map(), map()) ->
+    {ok, list_workers_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_workers(Client, Site, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workers(Client, Site, QueryMap, HeadersMap, []).
 
+-spec list_workers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_workers_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_workers(Client, Site, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/listWorkers"],
@@ -502,8 +1300,25 @@ list_workers(Client, Site, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Grants permission to update a destination
+-spec update_destination(map(), update_destination_request()) ->
+    {ok, update_destination_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_destination(Client, Input) ->
     update_destination(Client, Input, []).
+
+-spec update_destination(map(), update_destination_request(), proplists:proplist()) ->
+    {ok, update_destination_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateDestination"],
@@ -527,8 +1342,25 @@ update_destination(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to update a site
+-spec update_site(map(), update_site_request()) ->
+    {ok, update_site_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_site(Client, Input) ->
     update_site(Client, Input, []).
+
+-spec update_site(map(), update_site_request(), proplists:proplist()) ->
+    {ok, update_site_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_site(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateSite"],
@@ -552,8 +1384,25 @@ update_site(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to update a worker
+-spec update_worker(map(), update_worker_request()) ->
+    {ok, update_worker_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_worker(Client, Input) ->
     update_worker(Client, Input, []).
+
+-spec update_worker(map(), update_worker_request(), proplists:proplist()) ->
+    {ok, update_worker_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_worker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateWorker"],
@@ -577,8 +1426,25 @@ update_worker(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Grants permission to update a worker fleet
+-spec update_worker_fleet(map(), update_worker_fleet_request()) ->
+    {ok, update_worker_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_worker_fleet(Client, Input) ->
     update_worker_fleet(Client, Input, []).
+
+-spec update_worker_fleet(map(), update_worker_fleet_request(), proplists:proplist()) ->
+    {ok, update_worker_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_worker_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateWorkerFleet"],
@@ -605,7 +1471,7 @@ update_worker_fleet(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -133,6 +133,576 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% missing_parameter_value_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type missing_parameter_value_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_archive_input() :: #{}
+-type delete_archive_input() :: #{}.
+
+%% Example:
+%% initiate_job_output() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"jobOutputPath">> => string(),
+%%   <<"location">> => string()
+%% }
+-type initiate_job_output() :: #{binary() => any()}.
+%% Example:
+%% describe_job_input() :: #{}
+-type describe_job_input() :: #{}.
+
+%% Example:
+%% remove_tags_from_vault_input() :: #{
+%%   <<"TagKeys">> => list(string()())
+%% }
+-type remove_tags_from_vault_input() :: #{binary() => any()}.
+%% Example:
+%% abort_multipart_upload_input() :: #{}
+-type abort_multipart_upload_input() :: #{}.
+
+%% Example:
+%% get_vault_access_policy_output() :: #{
+%%   <<"policy">> => vault_access_policy()
+%% }
+-type get_vault_access_policy_output() :: #{binary() => any()}.
+%% Example:
+%% list_provisioned_capacity_input() :: #{}
+-type list_provisioned_capacity_input() :: #{}.
+%% Example:
+%% get_data_retrieval_policy_input() :: #{}
+-type get_data_retrieval_policy_input() :: #{}.
+%% Example:
+%% describe_vault_input() :: #{}
+-type describe_vault_input() :: #{}.
+
+%% Example:
+%% list_tags_for_vault_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_vault_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_vault_access_policy_input() :: #{
+%%   <<"policy">> => vault_access_policy()
+%% }
+-type set_vault_access_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% data_retrieval_rule() :: #{
+%%   <<"BytesPerHour">> => float(),
+%%   <<"Strategy">> => string()
+%% }
+-type data_retrieval_rule() :: #{binary() => any()}.
+
+%% Example:
+%% upload_archive_input() :: #{
+%%   <<"archiveDescription">> => string(),
+%%   <<"body">> => binary(),
+%%   <<"checksum">> => string()
+%% }
+-type upload_archive_input() :: #{binary() => any()}.
+
+%% Example:
+%% input_serialization() :: #{
+%%   <<"csv">> => csv_input()
+%% }
+-type input_serialization() :: #{binary() => any()}.
+
+%% Example:
+%% list_provisioned_capacity_output() :: #{
+%%   <<"ProvisionedCapacityList">> => list(provisioned_capacity_description()())
+%% }
+-type list_provisioned_capacity_output() :: #{binary() => any()}.
+
+%% Example:
+%% grantee() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"ID">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"URI">> => string()
+%% }
+-type grantee() :: #{binary() => any()}.
+%% Example:
+%% get_vault_notifications_input() :: #{}
+-type get_vault_notifications_input() :: #{}.
+
+%% Example:
+%% request_timeout_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type request_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% vault_access_policy() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type vault_access_policy() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_job_input() :: #{
+%%   <<"jobParameters">> => job_parameters()
+%% }
+-type initiate_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_retrieval_job_description() :: #{
+%%   <<"EndDate">> => string(),
+%%   <<"Format">> => string(),
+%%   <<"Limit">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"StartDate">> => string()
+%% }
+-type inventory_retrieval_job_description() :: #{binary() => any()}.
+
+%% Example:
+%% select_parameters() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"ExpressionType">> => list(any()),
+%%   <<"InputSerialization">> => input_serialization(),
+%%   <<"OutputSerialization">> => output_serialization()
+%% }
+-type select_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_capacity_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type insufficient_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_vault_output() :: #{
+%%   <<"location">> => string()
+%% }
+-type create_vault_output() :: #{binary() => any()}.
+
+%% Example:
+%% job_parameters() :: #{
+%%   <<"ArchiveId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Format">> => string(),
+%%   <<"InventoryRetrievalParameters">> => inventory_retrieval_job_input(),
+%%   <<"OutputLocation">> => output_location(),
+%%   <<"RetrievalByteRange">> => string(),
+%%   <<"SNSTopic">> => string(),
+%%   <<"SelectParameters">> => select_parameters(),
+%%   <<"Tier">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type job_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% complete_multipart_upload_input() :: #{
+%%   <<"archiveSize">> => string(),
+%%   <<"checksum">> => string()
+%% }
+-type complete_multipart_upload_input() :: #{binary() => any()}.
+%% Example:
+%% delete_vault_notifications_input() :: #{}
+-type delete_vault_notifications_input() :: #{}.
+
+%% Example:
+%% set_vault_notifications_input() :: #{
+%%   <<"vaultNotificationConfig">> => vault_notification_config()
+%% }
+-type set_vault_notifications_input() :: #{binary() => any()}.
+%% Example:
+%% get_vault_lock_input() :: #{}
+-type get_vault_lock_input() :: #{}.
+
+%% Example:
+%% data_retrieval_policy() :: #{
+%%   <<"Rules">> => list(data_retrieval_rule()())
+%% }
+-type data_retrieval_policy() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% provisioned_capacity_description() :: #{
+%%   <<"CapacityId">> => string(),
+%%   <<"ExpirationDate">> => string(),
+%%   <<"StartDate">> => string()
+%% }
+-type provisioned_capacity_description() :: #{binary() => any()}.
+
+%% Example:
+%% part_list_element() :: #{
+%%   <<"RangeInBytes">> => string(),
+%%   <<"SHA256TreeHash">> => string()
+%% }
+-type part_list_element() :: #{binary() => any()}.
+
+%% Example:
+%% grant() :: #{
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type grant() :: #{binary() => any()}.
+
+%% Example:
+%% get_vault_notifications_output() :: #{
+%%   <<"vaultNotificationConfig">> => vault_notification_config()
+%% }
+-type get_vault_notifications_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_vaults_input() :: #{
+%%   <<"limit">> => [integer()],
+%%   <<"marker">> => string()
+%% }
+-type list_vaults_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% csv_input() :: #{
+%%   <<"Comments">> => string(),
+%%   <<"FieldDelimiter">> => string(),
+%%   <<"FileHeaderInfo">> => list(any()),
+%%   <<"QuoteCharacter">> => string(),
+%%   <<"QuoteEscapeCharacter">> => string(),
+%%   <<"RecordDelimiter">> => string()
+%% }
+-type csv_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_output_input() :: #{
+%%   <<"range">> => string()
+%% }
+-type get_job_output_input() :: #{binary() => any()}.
+
+%% Example:
+%% archive_creation_output() :: #{
+%%   <<"archiveId">> => string(),
+%%   <<"checksum">> => string(),
+%%   <<"location">> => string()
+%% }
+-type archive_creation_output() :: #{binary() => any()}.
+
+%% Example:
+%% encryption() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"KMSContext">> => string(),
+%%   <<"KMSKeyId">> => string()
+%% }
+-type encryption() :: #{binary() => any()}.
+%% Example:
+%% delete_vault_access_policy_input() :: #{}
+-type delete_vault_access_policy_input() :: #{}.
+%% Example:
+%% purchase_provisioned_capacity_input() :: #{}
+-type purchase_provisioned_capacity_input() :: #{}.
+
+%% Example:
+%% output_location() :: #{
+%%   <<"S3">> => s3_location()
+%% }
+-type output_location() :: #{binary() => any()}.
+
+%% Example:
+%% upload_list_element() :: #{
+%%   <<"ArchiveDescription">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"MultipartUploadId">> => string(),
+%%   <<"PartSizeInBytes">> => float(),
+%%   <<"VaultARN">> => string()
+%% }
+-type upload_list_element() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% upload_multipart_part_input() :: #{
+%%   <<"body">> => binary(),
+%%   <<"checksum">> => string(),
+%%   <<"range">> => string()
+%% }
+-type upload_multipart_part_input() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"AccessControlList">> => list(grant()()),
+%%   <<"BucketName">> => string(),
+%%   <<"CannedACL">> => list(any()),
+%%   <<"Encryption">> => encryption(),
+%%   <<"Prefix">> => string(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Tagging">> => map(),
+%%   <<"UserMetadata">> => map()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_multipart_upload_input() :: #{
+%%   <<"archiveDescription">> => string(),
+%%   <<"partSize">> => string()
+%% }
+-type initiate_multipart_upload_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_data_retrieval_policy_input() :: #{
+%%   <<"Policy">> => data_retrieval_policy()
+%% }
+-type set_data_retrieval_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_vaults_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"VaultList">> => list(describe_vault_output()())
+%% }
+-type list_vaults_output() :: #{binary() => any()}.
+
+%% Example:
+%% vault_lock_policy() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type vault_lock_policy() :: #{binary() => any()}.
+%% Example:
+%% get_vault_access_policy_input() :: #{}
+-type get_vault_access_policy_input() :: #{}.
+
+%% Example:
+%% policy_enforced_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type policy_enforced_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_jobs_output() :: #{
+%%   <<"JobList">> => list(glacier_job_description()()),
+%%   <<"Marker">> => string()
+%% }
+-type list_jobs_output() :: #{binary() => any()}.
+%% Example:
+%% delete_vault_input() :: #{}
+-type delete_vault_input() :: #{}.
+
+%% Example:
+%% upload_multipart_part_output() :: #{
+%%   <<"checksum">> => string()
+%% }
+-type upload_multipart_part_output() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_vault_input() :: #{}
+-type list_tags_for_vault_input() :: #{}.
+
+%% Example:
+%% initiate_vault_lock_input() :: #{
+%%   <<"policy">> => vault_lock_policy()
+%% }
+-type initiate_vault_lock_input() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_provisioned_capacity_output() :: #{
+%%   <<"capacityId">> => string()
+%% }
+-type purchase_provisioned_capacity_output() :: #{binary() => any()}.
+
+%% Example:
+%% vault_notification_config() :: #{
+%%   <<"Events">> => list(string()()),
+%%   <<"SNSTopic">> => string()
+%% }
+-type vault_notification_config() :: #{binary() => any()}.
+
+%% Example:
+%% glacier_job_description() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ArchiveId">> => string(),
+%%   <<"ArchiveSHA256TreeHash">> => string(),
+%%   <<"ArchiveSizeInBytes">> => float(),
+%%   <<"Completed">> => boolean(),
+%%   <<"CompletionDate">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"InventoryRetrievalParameters">> => inventory_retrieval_job_description(),
+%%   <<"InventorySizeInBytes">> => float(),
+%%   <<"JobDescription">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"JobOutputPath">> => string(),
+%%   <<"OutputLocation">> => output_location(),
+%%   <<"RetrievalByteRange">> => string(),
+%%   <<"SHA256TreeHash">> => string(),
+%%   <<"SNSTopic">> => string(),
+%%   <<"SelectParameters">> => select_parameters(),
+%%   <<"StatusCode">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Tier">> => string(),
+%%   <<"VaultARN">> => string()
+%% }
+-type glacier_job_description() :: #{binary() => any()}.
+
+%% Example:
+%% list_jobs_input() :: #{
+%%   <<"completed">> => string(),
+%%   <<"limit">> => [integer()],
+%%   <<"marker">> => string(),
+%%   <<"statuscode">> => string()
+%% }
+-type list_jobs_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_multipart_uploads_output() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"UploadsList">> => list(upload_list_element()())
+%% }
+-type list_multipart_uploads_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_parts_input() :: #{
+%%   <<"limit">> => [integer()],
+%%   <<"marker">> => string()
+%% }
+-type list_parts_input() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_vault_lock_output() :: #{
+%%   <<"lockId">> => string()
+%% }
+-type initiate_vault_lock_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_parts_output() :: #{
+%%   <<"ArchiveDescription">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MultipartUploadId">> => string(),
+%%   <<"PartSizeInBytes">> => float(),
+%%   <<"Parts">> => list(part_list_element()()),
+%%   <<"VaultARN">> => string()
+%% }
+-type list_parts_output() :: #{binary() => any()}.
+
+%% Example:
+%% csv_output() :: #{
+%%   <<"FieldDelimiter">> => string(),
+%%   <<"QuoteCharacter">> => string(),
+%%   <<"QuoteEscapeCharacter">> => string(),
+%%   <<"QuoteFields">> => list(any()),
+%%   <<"RecordDelimiter">> => string()
+%% }
+-type csv_output() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_retrieval_job_input() :: #{
+%%   <<"EndDate">> => string(),
+%%   <<"Limit">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"StartDate">> => string()
+%% }
+-type inventory_retrieval_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"type">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_output_output() :: #{
+%%   <<"acceptRanges">> => string(),
+%%   <<"archiveDescription">> => string(),
+%%   <<"body">> => binary(),
+%%   <<"checksum">> => string(),
+%%   <<"contentRange">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"status">> => integer()
+%% }
+-type get_job_output_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vault_output() :: #{
+%%   <<"CreationDate">> => string(),
+%%   <<"LastInventoryDate">> => string(),
+%%   <<"NumberOfArchives">> => float(),
+%%   <<"SizeInBytes">> => float(),
+%%   <<"VaultARN">> => string(),
+%%   <<"VaultName">> => string()
+%% }
+-type describe_vault_output() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_multipart_upload_output() :: #{
+%%   <<"location">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type initiate_multipart_upload_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_vault_input() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type add_tags_to_vault_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_multipart_uploads_input() :: #{
+%%   <<"limit">> => [integer()],
+%%   <<"marker">> => string()
+%% }
+-type list_multipart_uploads_input() :: #{binary() => any()}.
+
+%% Example:
+%% output_serialization() :: #{
+%%   <<"csv">> => csv_output()
+%% }
+-type output_serialization() :: #{binary() => any()}.
+%% Example:
+%% create_vault_input() :: #{}
+-type create_vault_input() :: #{}.
+%% Example:
+%% abort_vault_lock_input() :: #{}
+-type abort_vault_lock_input() :: #{}.
+
+%% Example:
+%% get_vault_lock_output() :: #{
+%%   <<"CreationDate">> => string(),
+%%   <<"ExpirationDate">> => string(),
+%%   <<"Policy">> => string(),
+%%   <<"State">> => string()
+%% }
+-type get_vault_lock_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_retrieval_policy_output() :: #{
+%%   <<"Policy">> => data_retrieval_policy()
+%% }
+-type get_data_retrieval_policy_output() :: #{binary() => any()}.
+%% Example:
+%% complete_vault_lock_input() :: #{}
+-type complete_vault_lock_input() :: #{}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -168,8 +738,23 @@
 %% Upload:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-abort-upload.html
 %% in the Amazon Glacier Developer Guide.
+-spec abort_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), abort_multipart_upload_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
+
+-spec abort_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), abort_multipart_upload_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
@@ -220,8 +805,23 @@ abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0)
 %% times, if the vault lock is in the `InProgress' state or if there is
 %% no policy
 %% associated with the vault.
+-spec abort_vault_lock(map(), binary() | list(), binary() | list(), abort_vault_lock_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 abort_vault_lock(Client, AccountId, VaultName, Input) ->
     abort_vault_lock(Client, AccountId, VaultName, Input, []).
+
+-spec abort_vault_lock(map(), binary() | list(), binary() | list(), abort_vault_lock_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 abort_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
@@ -256,8 +856,25 @@ abort_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
 %% will be overwritten. For more information about tags, see Tagging Amazon
 %% S3 Glacier Resources:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html.
+-spec add_tags_to_vault(map(), binary() | list(), binary() | list(), add_tags_to_vault_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 add_tags_to_vault(Client, AccountId, VaultName, Input) ->
     add_tags_to_vault(Client, AccountId, VaultName, Input, []).
+
+-spec add_tags_to_vault(map(), binary() | list(), binary() | list(), add_tags_to_vault_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=add"],
@@ -351,8 +968,23 @@ add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% Upload:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html
 %% in the Amazon Glacier Developer Guide.
+-spec complete_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), complete_multipart_upload_input()) ->
+    {ok, archive_creation_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input) ->
     complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input, []).
+
+-spec complete_multipart_upload(map(), binary() | list(), binary() | list(), binary() | list(), complete_multipart_upload_input(), proplists:proplist()) ->
+    {ok, archive_creation_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
@@ -421,8 +1053,23 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
 %% is in the
 %% `InProgress' state, the operation throws an `InvalidParameter'
 %% error.
+-spec complete_vault_lock(map(), binary() | list(), binary() | list(), binary() | list(), complete_vault_lock_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 complete_vault_lock(Client, AccountId, LockId, VaultName, Input) ->
     complete_vault_lock(Client, AccountId, LockId, VaultName, Input, []).
+
+-spec complete_vault_lock(map(), binary() | list(), binary() | list(), binary() | list(), complete_vault_lock_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy/", aws_util:encode_uri(LockId), ""],
@@ -480,8 +1127,23 @@ complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-put.html in
 %% the
 %% Amazon Glacier Developer Guide.
+-spec create_vault(map(), binary() | list(), binary() | list(), create_vault_input()) ->
+    {ok, create_vault_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_vault(Client, AccountId, VaultName, Input) ->
     create_vault(Client, AccountId, VaultName, Input, []).
+
+-spec create_vault(map(), binary() | list(), binary() | list(), create_vault_input(), proplists:proplist()) ->
+    {ok, create_vault_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
@@ -561,8 +1223,23 @@ create_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html
 %% in the
 %% Amazon Glacier Developer Guide.
+-spec delete_archive(map(), binary() | list(), binary() | list(), binary() | list(), delete_archive_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_archive(Client, AccountId, ArchiveId, VaultName, Input) ->
     delete_archive(Client, AccountId, ArchiveId, VaultName, Input, []).
+
+-spec delete_archive(map(), binary() | list(), binary() | list(), binary() | list(), delete_archive_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives/", aws_util:encode_uri(ArchiveId), ""],
@@ -624,8 +1301,23 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-delete.html
 %% in the
 %% Amazon S3 Glacier Developer Guide.
+-spec delete_vault(map(), binary() | list(), binary() | list(), delete_vault_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_vault(Client, AccountId, VaultName, Input) ->
     delete_vault(Client, AccountId, VaultName, Input, []).
+
+-spec delete_vault(map(), binary() | list(), binary() | list(), delete_vault_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
@@ -664,8 +1356,23 @@ delete_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% access policies, see
 %% Amazon Glacier Access Control with Vault Access Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html.
+-spec delete_vault_access_policy(map(), binary() | list(), binary() | list(), delete_vault_access_policy_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_vault_access_policy(Client, AccountId, VaultName, Input) ->
     delete_vault_access_policy(Client, AccountId, VaultName, Input, []).
+
+-spec delete_vault_access_policy(map(), binary() | list(), binary() | list(), delete_vault_access_policy_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
@@ -715,8 +1422,23 @@ delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
 %% Notification Configuration :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html
 %% in the Amazon S3 Glacier Developer Guide.
+-spec delete_vault_notifications(map(), binary() | list(), binary() | list(), delete_vault_notifications_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_vault_notifications(Client, AccountId, VaultName, Input) ->
     delete_vault_notifications(Client, AccountId, VaultName, Input, []).
+
+-spec delete_vault_notifications(map(), binary() | list(), binary() | list(), delete_vault_notifications_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
@@ -772,14 +1494,35 @@ delete_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
 %% see the documentation for the underlying REST API Describe Job:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-describe-job-get.html
 %% in the Amazon Glacier Developer Guide.
+-spec describe_job(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, glacier_job_description(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_job(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
     describe_job(Client, AccountId, JobId, VaultName, #{}, #{}).
 
+-spec describe_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, glacier_job_description(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
 
+-spec describe_job(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, glacier_job_description(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), ""],
@@ -833,14 +1576,35 @@ describe_job(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-get.html in
 %% the
 %% Amazon Glacier Developer Guide.
+-spec describe_vault(map(), binary() | list(), binary() | list()) ->
+    {ok, describe_vault_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
     describe_vault(Client, AccountId, VaultName, #{}, #{}).
 
+-spec describe_vault(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_vault_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
+-spec describe_vault(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_vault_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
@@ -864,14 +1628,32 @@ describe_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 %% For more information about data retrieval policies, see
 %% Amazon Glacier Data Retrieval Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html.
+-spec get_data_retrieval_policy(map(), binary() | list()) ->
+    {ok, get_data_retrieval_policy_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_data_retrieval_policy(Client, AccountId)
   when is_map(Client) ->
     get_data_retrieval_policy(Client, AccountId, #{}, #{}).
 
+-spec get_data_retrieval_policy(map(), binary() | list(), map(), map()) ->
+    {ok, get_data_retrieval_policy_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec get_data_retrieval_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_data_retrieval_policy_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
@@ -955,14 +1737,35 @@ get_data_retrieval_policy(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive.html,
 %% and Get Job Output :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-job-output-get.html
+-spec get_job_output(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_job_output_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_job_output(Client, AccountId, JobId, VaultName)
   when is_map(Client) ->
     get_job_output(Client, AccountId, JobId, VaultName, #{}, #{}).
 
+-spec get_job_output(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_job_output_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, []).
 
+-spec get_job_output(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_job_output_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs/", aws_util:encode_uri(JobId), "/output"],
@@ -1016,14 +1819,35 @@ get_job_output(Client, AccountId, JobId, VaultName, QueryMap, HeadersMap, Option
 %% access policies, see Amazon Glacier Access Control
 %% with Vault Access Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html.
+-spec get_vault_access_policy(map(), binary() | list(), binary() | list()) ->
+    {ok, get_vault_access_policy_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_vault_access_policy(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_access_policy(Client, AccountId, VaultName, #{}, #{}).
 
+-spec get_vault_access_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_vault_access_policy_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
+-spec get_vault_access_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_vault_access_policy_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
@@ -1072,14 +1896,35 @@ get_vault_access_policy(Client, AccountId, VaultName, QueryMap, HeadersMap, Opti
 %% policies, Amazon
 %% Glacier Access Control with Vault Lock Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock-policy.html.
+-spec get_vault_lock(map(), binary() | list(), binary() | list()) ->
+    {ok, get_vault_lock_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_vault_lock(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_lock(Client, AccountId, VaultName, #{}, #{}).
 
+-spec get_vault_lock(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_vault_lock_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
+-spec get_vault_lock(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_vault_lock_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
@@ -1126,14 +1971,35 @@ get_vault_lock(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 %% Configuration :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-get.html
 %% in the Amazon Glacier Developer Guide.
+-spec get_vault_notifications(map(), binary() | list(), binary() | list()) ->
+    {ok, get_vault_notifications_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_vault_notifications(Client, AccountId, VaultName)
   when is_map(Client) ->
     get_vault_notifications(Client, AccountId, VaultName, #{}, #{}).
 
+-spec get_vault_notifications(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_vault_notifications_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
+-spec get_vault_notifications(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_vault_notifications_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
@@ -1158,8 +2024,27 @@ get_vault_notifications(Client, AccountId, VaultName, QueryMap, HeadersMap, Opti
 %% see the documentation for the underlying REST API Initiate
 %% a Job:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html.
+-spec initiate_job(map(), binary() | list(), binary() | list(), initiate_job_input()) ->
+    {ok, initiate_job_output(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, policy_enforced_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 initiate_job(Client, AccountId, VaultName, Input) ->
     initiate_job(Client, AccountId, VaultName, Input, []).
+
+-spec initiate_job(map(), binary() | list(), binary() | list(), initiate_job_input(), proplists:proplist()) ->
+    {ok, initiate_job_output(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, policy_enforced_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 initiate_job(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
@@ -1257,8 +2142,23 @@ initiate_job(Client, AccountId, VaultName, Input0, Options0) ->
 %% Upload:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-initiate-upload.html
 %% in the Amazon Glacier Developer Guide.
+-spec initiate_multipart_upload(map(), binary() | list(), binary() | list(), initiate_multipart_upload_input()) ->
+    {ok, initiate_multipart_upload_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 initiate_multipart_upload(Client, AccountId, VaultName, Input) ->
     initiate_multipart_upload(Client, AccountId, VaultName, Input, []).
+
+-spec initiate_multipart_upload(map(), binary() | list(), binary() | list(), initiate_multipart_upload_input(), proplists:proplist()) ->
+    {ok, initiate_multipart_upload_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
@@ -1344,8 +2244,23 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
 %% the vault
 %% lock is in the `InProgress' state you must call `AbortVaultLock'
 %% before you can initiate a new vault lock policy.
+-spec initiate_vault_lock(map(), binary() | list(), binary() | list(), initiate_vault_lock_input()) ->
+    {ok, initiate_vault_lock_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 initiate_vault_lock(Client, AccountId, VaultName, Input) ->
     initiate_vault_lock(Client, AccountId, VaultName, Input, []).
+
+-spec initiate_vault_lock(map(), binary() | list(), binary() | list(), initiate_vault_lock_input(), proplists:proplist()) ->
+    {ok, initiate_vault_lock_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 initiate_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
@@ -1440,14 +2355,35 @@ initiate_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
 %% For more information about using this operation,
 %% see the documentation for the underlying REST API List Jobs:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html.
+-spec list_jobs(map(), binary() | list(), binary() | list()) ->
+    {ok, list_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_jobs(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_jobs(Client, AccountId, VaultName, #{}, #{}).
 
+-spec list_jobs(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
+-spec list_jobs(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_jobs_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
@@ -1520,14 +2456,35 @@ list_jobs(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
 %% :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-uploads.html
 %% in the Amazon Glacier Developer Guide.
+-spec list_multipart_uploads(map(), binary() | list(), binary() | list()) ->
+    {ok, list_multipart_uploads_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_multipart_uploads(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_multipart_uploads(Client, AccountId, VaultName, #{}, #{}).
 
+-spec list_multipart_uploads(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_multipart_uploads_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
+-spec list_multipart_uploads(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_multipart_uploads_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
@@ -1589,14 +2546,35 @@ list_multipart_uploads(Client, AccountId, VaultName, QueryMap, HeadersMap, Optio
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-list-parts.html
 %% in the
 %% Amazon Glacier Developer Guide.
+-spec list_parts(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_parts_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_parts(Client, AccountId, UploadId, VaultName)
   when is_map(Client) ->
     list_parts(Client, AccountId, UploadId, VaultName, #{}, #{}).
 
+-spec list_parts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_parts_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, []).
 
+-spec list_parts(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_parts_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
@@ -1621,14 +2599,32 @@ list_parts(Client, AccountId, UploadId, VaultName, QueryMap, HeadersMap, Options
 %% @doc This operation lists the provisioned capacity units for the specified
 %% AWS
 %% account.
+-spec list_provisioned_capacity(map(), binary() | list()) ->
+    {ok, list_provisioned_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_provisioned_capacity(Client, AccountId)
   when is_map(Client) ->
     list_provisioned_capacity(Client, AccountId, #{}, #{}).
 
+-spec list_provisioned_capacity(map(), binary() | list(), map(), map()) ->
+    {ok, list_provisioned_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_provisioned_capacity(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_provisioned_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
@@ -1652,14 +2648,35 @@ list_provisioned_capacity(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% Amazon S3 Glacier
 %% Resources:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html.
+-spec list_tags_for_vault(map(), binary() | list(), binary() | list()) ->
+    {ok, list_tags_for_vault_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_tags_for_vault(Client, AccountId, VaultName)
   when is_map(Client) ->
     list_tags_for_vault(Client, AccountId, VaultName, #{}, #{}).
 
+-spec list_tags_for_vault(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_vault_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_vault(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_vault_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags"],
@@ -1714,14 +2731,35 @@ list_tags_for_vault(Client, AccountId, VaultName, QueryMap, HeadersMap, Options0
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vaults-get.html
 %% in the
 %% Amazon Glacier Developer Guide.
+-spec list_vaults(map(), binary() | list()) ->
+    {ok, list_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_vaults(Client, AccountId)
   when is_map(Client) ->
     list_vaults(Client, AccountId, #{}, #{}).
 
+-spec list_vaults(map(), binary() | list(), map(), map()) ->
+    {ok, list_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_vaults(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vaults(Client, AccountId, QueryMap, HeadersMap, []).
 
+-spec list_vaults(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_vaults(Client, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults"],
@@ -1745,8 +2783,23 @@ list_vaults(Client, AccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc This operation purchases a provisioned capacity unit for an AWS
 %% account.
+-spec purchase_provisioned_capacity(map(), binary() | list(), purchase_provisioned_capacity_input()) ->
+    {ok, purchase_provisioned_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 purchase_provisioned_capacity(Client, AccountId, Input) ->
     purchase_provisioned_capacity(Client, AccountId, Input, []).
+
+-spec purchase_provisioned_capacity(map(), binary() | list(), purchase_provisioned_capacity_input(), proplists:proplist()) ->
+    {ok, purchase_provisioned_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 purchase_provisioned_capacity(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
@@ -1794,8 +2847,23 @@ purchase_provisioned_capacity(Client, AccountId, Input0, Options0) ->
 %% This operation is idempotent. The operation will be successful, even if
 %% there are no tags
 %% attached to the vault.
+-spec remove_tags_from_vault(map(), binary() | list(), binary() | list(), remove_tags_from_vault_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 remove_tags_from_vault(Client, AccountId, VaultName, Input) ->
     remove_tags_from_vault(Client, AccountId, VaultName, Input, []).
+
+-spec remove_tags_from_vault(map(), binary() | list(), binary() | list(), remove_tags_from_vault_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=remove"],
@@ -1831,8 +2899,21 @@ remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options0) ->
 %% policies, see Amazon
 %% Glacier Data Retrieval Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html.
+-spec set_data_retrieval_policy(map(), binary() | list(), set_data_retrieval_policy_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 set_data_retrieval_policy(Client, AccountId, Input) ->
     set_data_retrieval_policy(Client, AccountId, Input, []).
+
+-spec set_data_retrieval_policy(map(), binary() | list(), set_data_retrieval_policy_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 set_data_retrieval_policy(Client, AccountId, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
@@ -1868,8 +2949,23 @@ set_data_retrieval_policy(Client, AccountId, Input0, Options0) ->
 %% access policies,
 %% see Amazon Glacier Access Control with Vault Access Policies:
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html.
+-spec set_vault_access_policy(map(), binary() | list(), binary() | list(), set_vault_access_policy_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 set_vault_access_policy(Client, AccountId, VaultName, Input) ->
     set_vault_access_policy(Client, AccountId, VaultName, Input, []).
+
+-spec set_vault_access_policy(map(), binary() | list(), binary() | list(), set_vault_access_policy_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 set_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
@@ -1944,8 +3040,23 @@ set_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
 %% Configuration :
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-put.html
 %% in the Amazon Glacier Developer Guide.
+-spec set_vault_notifications(map(), binary() | list(), binary() | list(), set_vault_notifications_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 set_vault_notifications(Client, AccountId, VaultName, Input) ->
     set_vault_notifications(Client, AccountId, VaultName, Input, []).
+
+-spec set_vault_notifications(map(), binary() | list(), binary() | list(), set_vault_notifications_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
@@ -2026,8 +3137,25 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html
 %% in the
 %% Amazon Glacier Developer Guide.
+-spec upload_archive(map(), binary() | list(), binary() | list(), upload_archive_input()) ->
+    {ok, archive_creation_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, request_timeout_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 upload_archive(Client, AccountId, VaultName, Input) ->
     upload_archive(Client, AccountId, VaultName, Input, []).
+
+-spec upload_archive(map(), binary() | list(), binary() | list(), upload_archive_input(), proplists:proplist()) ->
+    {ok, archive_creation_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, request_timeout_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives"],
@@ -2141,8 +3269,25 @@ upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/amazonglacier/latest/dev/api-upload-part.html
 %% in the
 %% Amazon Glacier Developer Guide.
+-spec upload_multipart_part(map(), binary() | list(), binary() | list(), binary() | list(), upload_multipart_part_input()) ->
+    {ok, upload_multipart_part_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, request_timeout_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 upload_multipart_part(Client, AccountId, UploadId, VaultName, Input) ->
     upload_multipart_part(Client, AccountId, UploadId, VaultName, Input, []).
+
+-spec upload_multipart_part(map(), binary() | list(), binary() | list(), binary() | list(), upload_multipart_part_input(), proplists:proplist()) ->
+    {ok, upload_multipart_part_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, missing_parameter_value_exception(), tuple()} |
+    {error, request_timeout_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
@@ -2188,7 +3333,7 @@ upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options0) 
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

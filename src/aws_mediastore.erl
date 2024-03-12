@@ -52,6 +52,347 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% put_cors_policy_output() :: #{
+
+%% }
+-type put_cors_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_container_input() :: #{binary() => any()}.
+
+%% Example:
+%% container() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"AccessLoggingEnabled">> => boolean(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Endpoint">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type container() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_policy_output() :: #{
+
+%% }
+-type delete_lifecycle_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_access_logging_output() :: #{
+
+%% }
+-type stop_access_logging_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_container_policy_input() :: #{
+%%   <<"ContainerName">> := string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_container_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_container_output() :: #{
+%%   <<"Container">> => container()
+%% }
+-type describe_container_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_access_logging_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type start_access_logging_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_policy_output() :: #{
+%%   <<"MetricPolicy">> => metric_policy()
+%% }
+-type get_metric_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_container_policy_output() :: #{
+
+%% }
+-type put_container_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_policy_output() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_container_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_output() :: #{
+
+%% }
+-type delete_container_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_cors_policy_input() :: #{
+%%   <<"ContainerName">> := string(),
+%%   <<"CorsPolicy">> := list(cors_rule()())
+%% }
+-type put_cors_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cors_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_cors_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_cors_policy_output() :: #{
+%%   <<"CorsPolicy">> => list(cors_rule()())
+%% }
+-type get_cors_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_container_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% cors_policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cors_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_cors_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type get_cors_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% describe_container_input() :: #{
+%%   <<"ContainerName">> => string()
+%% }
+-type describe_container_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_access_logging_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type stop_access_logging_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_containers_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_containers_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_containers_output() :: #{
+%%   <<"Containers">> => list(container()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_containers_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_lifecycle_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type get_lifecycle_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Resource">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_policy_output() :: #{
+
+%% }
+-type put_lifecycle_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% metric_policy_rule() :: #{
+%%   <<"ObjectGroup">> => string(),
+%%   <<"ObjectGroupName">> => string()
+%% }
+-type metric_policy_rule() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_policy_output() :: #{
+
+%% }
+-type delete_metric_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% cors_rule() :: #{
+%%   <<"AllowedHeaders">> => list(string()()),
+%%   <<"AllowedMethods">> => list(list(any())()),
+%%   <<"AllowedOrigins">> => list(string()()),
+%%   <<"ExposeHeaders">> => list(string()()),
+%%   <<"MaxAgeSeconds">> => integer()
+%% }
+-type cors_rule() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_policy_output() :: #{
+
+%% }
+-type delete_container_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_lifecycle_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_metric_policy_input() :: #{
+%%   <<"ContainerName">> := string(),
+%%   <<"MetricPolicy">> := metric_policy()
+%% }
+-type put_metric_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% container_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type container_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_output() :: #{
+%%   <<"Container">> => container()
+%% }
+-type create_container_output() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% put_metric_policy_output() :: #{
+
+%% }
+-type put_metric_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"Resource">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_metric_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% metric_policy() :: #{
+%%   <<"ContainerLevelMetrics">> => list(any()),
+%%   <<"MetricPolicyRules">> => list(metric_policy_rule()())
+%% }
+-type metric_policy() :: #{binary() => any()}.
+
+%% Example:
+%% container_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type container_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"Resource">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_access_logging_output() :: #{
+
+%% }
+-type start_access_logging_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cors_policy_output() :: #{
+
+%% }
+-type delete_cors_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type get_container_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_policy_input() :: #{
+%%   <<"ContainerName">> := string(),
+%%   <<"LifecyclePolicy">> := string()
+%% }
+-type put_lifecycle_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type get_metric_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_lifecycle_policy_output() :: #{
+%%   <<"LifecyclePolicy">> => string()
+%% }
+-type get_lifecycle_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_input() :: #{
+%%   <<"ContainerName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_container_input() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -60,9 +401,22 @@
 %%
 %% A container is similar to a bucket in
 %% the Amazon S3 service.
+-spec create_container(map(), create_container_input()) ->
+    {ok, create_container_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container(Client, Input, []).
+
+-spec create_container(map(), create_container_input(), proplists:proplist()) ->
+    {ok, create_container_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_container(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContainer">>, Input, Options).
@@ -73,18 +427,46 @@ create_container(Client, Input, Options)
 %% request, delete any objects in the container or in any folders in the
 %% container. You can
 %% delete only empty containers.
+-spec delete_container(map(), delete_container_input()) ->
+    {ok, delete_container_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 delete_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container(Client, Input, []).
+
+-spec delete_container(map(), delete_container_input(), proplists:proplist()) ->
+    {ok, delete_container_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 delete_container(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContainer">>, Input, Options).
 
 %% @doc Deletes the access policy that is associated with the specified
 %% container.
+-spec delete_container_policy(map(), delete_container_policy_input()) ->
+    {ok, delete_container_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 delete_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_container_policy(Client, Input, []).
+
+-spec delete_container_policy(map(), delete_container_policy_input(), proplists:proplist()) ->
+    {ok, delete_container_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 delete_container_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContainerPolicy">>, Input, Options).
@@ -97,9 +479,24 @@ delete_container_policy(Client, Input, Options)
 %% `MediaStore:DeleteCorsPolicy' action. The container owner has this
 %% permission
 %% by default and can grant this permission to others.
+-spec delete_cors_policy(map(), delete_cors_policy_input()) ->
+    {ok, delete_cors_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, cors_policy_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 delete_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cors_policy(Client, Input, []).
+
+-spec delete_cors_policy(map(), delete_cors_policy_input(), proplists:proplist()) ->
+    {ok, delete_cors_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, cors_policy_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 delete_cors_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCorsPolicy">>, Input, Options).
@@ -107,9 +504,24 @@ delete_cors_policy(Client, Input, Options)
 %% @doc Removes an object lifecycle policy from a container.
 %%
 %% It takes up to 20 minutes for the change to take effect.
+-spec delete_lifecycle_policy(map(), delete_lifecycle_policy_input()) ->
+    {ok, delete_lifecycle_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 delete_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_policy(Client, Input, []).
+
+-spec delete_lifecycle_policy(map(), delete_lifecycle_policy_input(), proplists:proplist()) ->
+    {ok, delete_lifecycle_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 delete_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLifecyclePolicy">>, Input, Options).
@@ -119,9 +531,24 @@ delete_lifecycle_policy(Client, Input, Options)
 %%
 %% If there is no metric policy associated with the container, MediaStore
 %% doesn't send metrics to CloudWatch.
+-spec delete_metric_policy(map(), delete_metric_policy_input()) ->
+    {ok, delete_metric_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 delete_metric_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_policy(Client, Input, []).
+
+-spec delete_metric_policy(map(), delete_metric_policy_input(), proplists:proplist()) ->
+    {ok, delete_metric_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 delete_metric_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMetricPolicy">>, Input, Options).
@@ -138,9 +565,20 @@ delete_metric_policy(Client, Input, Options)
 %% `Container' objects that are associated with a specified AWS account,
 %% use
 %% `ListContainers'.
+-spec describe_container(map(), describe_container_input()) ->
+    {ok, describe_container_output(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 describe_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_container(Client, Input, []).
+
+-spec describe_container(map(), describe_container_input(), proplists:proplist()) ->
+    {ok, describe_container_output(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 describe_container(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContainer">>, Input, Options).
@@ -151,9 +589,24 @@ describe_container(Client, Input, Options)
 %% data that is included in an access policy, see the AWS Identity and Access
 %% Management User
 %% Guide: https://aws.amazon.com/documentation/iam/.
+-spec get_container_policy(map(), get_container_policy_input()) ->
+    {ok, get_container_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 get_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_policy(Client, Input, []).
+
+-spec get_container_policy(map(), get_container_policy_input(), proplists:proplist()) ->
+    {ok, get_container_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 get_container_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerPolicy">>, Input, Options).
@@ -166,26 +619,71 @@ get_container_policy(Client, Input, Options)
 %% `MediaStore:GetCorsPolicy' action. By default, the container owner has
 %% this
 %% permission and can grant it to others.
+-spec get_cors_policy(map(), get_cors_policy_input()) ->
+    {ok, get_cors_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, cors_policy_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 get_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_cors_policy(Client, Input, []).
+
+-spec get_cors_policy(map(), get_cors_policy_input(), proplists:proplist()) ->
+    {ok, get_cors_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, cors_policy_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 get_cors_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCorsPolicy">>, Input, Options).
 
 %% @doc Retrieves the object lifecycle policy that is assigned to a
 %% container.
+-spec get_lifecycle_policy(map(), get_lifecycle_policy_input()) ->
+    {ok, get_lifecycle_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 get_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_lifecycle_policy(Client, Input, []).
+
+-spec get_lifecycle_policy(map(), get_lifecycle_policy_input(), proplists:proplist()) ->
+    {ok, get_lifecycle_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 get_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLifecyclePolicy">>, Input, Options).
 
 %% @doc Returns the metric policy for the specified container.
+-spec get_metric_policy(map(), get_metric_policy_input()) ->
+    {ok, get_metric_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 get_metric_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_policy(Client, Input, []).
+
+-spec get_metric_policy(map(), get_metric_policy_input(), proplists:proplist()) ->
+    {ok, get_metric_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, policy_not_found_exception(), tuple()}.
 get_metric_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMetricPolicy">>, Input, Options).
@@ -206,17 +704,39 @@ get_metric_policy(Client, Input, Options)
 %%
 %% See also `DescribeContainer', which gets the properties of one
 %% container.
+-spec list_containers(map(), list_containers_input()) ->
+    {ok, list_containers_output(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()}.
 list_containers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_containers(Client, Input, []).
+
+-spec list_containers(map(), list_containers_input(), proplists:proplist()) ->
+    {ok, list_containers_output(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()}.
 list_containers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContainers">>, Input, Options).
 
 %% @doc Returns a list of the tags assigned to the specified container.
+-spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -234,9 +754,22 @@ list_tags_for_resource(Client, Input, Options)
 %% you enter `PutContainerPolicy' twice, the second command modifies the
 %% existing
 %% policy.
+-spec put_container_policy(map(), put_container_policy_input()) ->
+    {ok, put_container_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_container_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_container_policy(Client, Input, []).
+
+-spec put_container_policy(map(), put_container_policy_input(), proplists:proplist()) ->
+    {ok, put_container_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_container_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutContainerPolicy">>, Input, Options).
@@ -265,9 +798,22 @@ put_container_policy(Client, Input, Options)
 %% To learn more about CORS, see Cross-Origin Resource Sharing (CORS) in AWS
 %% Elemental MediaStore:
 %% https://docs.aws.amazon.com/mediastore/latest/ug/cors-policy.html.
+-spec put_cors_policy(map(), put_cors_policy_input()) ->
+    {ok, put_cors_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_cors_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_cors_policy(Client, Input, []).
+
+-spec put_cors_policy(map(), put_cors_policy_input(), proplists:proplist()) ->
+    {ok, put_cors_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_cors_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutCorsPolicy">>, Input, Options).
@@ -281,9 +827,22 @@ put_cors_policy(Client, Input, Options)
 %% For information about how to construct an object lifecycle policy, see
 %% Components of an Object Lifecycle Policy:
 %% https://docs.aws.amazon.com/mediastore/latest/ug/policies-object-lifecycle-components.html.
+-spec put_lifecycle_policy(map(), put_lifecycle_policy_input()) ->
+    {ok, put_lifecycle_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_policy(Client, Input, []).
+
+-spec put_lifecycle_policy(map(), put_lifecycle_policy_input(), proplists:proplist()) ->
+    {ok, put_lifecycle_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLifecyclePolicy">>, Input, Options).
@@ -292,9 +851,22 @@ put_lifecycle_policy(Client, Input, Options)
 %%
 %% A metric policy allows AWS Elemental MediaStore to send metrics to Amazon
 %% CloudWatch. It takes up to 20 minutes for the new policy to take effect.
+-spec put_metric_policy(map(), put_metric_policy_input()) ->
+    {ok, put_metric_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_metric_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_policy(Client, Input, []).
+
+-spec put_metric_policy(map(), put_metric_policy_input(), proplists:proplist()) ->
+    {ok, put_metric_policy_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_metric_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricPolicy">>, Input, Options).
@@ -303,9 +875,22 @@ put_metric_policy(Client, Input, Options)
 %%
 %% When you enable access logging on a container, MediaStore delivers access
 %% logs for objects stored in that container to Amazon CloudWatch Logs.
+-spec start_access_logging(map(), start_access_logging_input()) ->
+    {ok, start_access_logging_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 start_access_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_access_logging(Client, Input, []).
+
+-spec start_access_logging(map(), start_access_logging_input(), proplists:proplist()) ->
+    {ok, start_access_logging_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 start_access_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAccessLogging">>, Input, Options).
@@ -315,9 +900,22 @@ start_access_logging(Client, Input, Options)
 %% When you stop access logging on a container, MediaStore stops sending
 %% access logs to Amazon CloudWatch Logs. These access logs are not saved and
 %% are not retrievable.
+-spec stop_access_logging(map(), stop_access_logging_input()) ->
+    {ok, stop_access_logging_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 stop_access_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_access_logging(Client, Input, []).
+
+-spec stop_access_logging(map(), stop_access_logging_input(), proplists:proplist()) ->
+    {ok, stop_access_logging_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 stop_access_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopAccessLogging">>, Input, Options).
@@ -332,9 +930,22 @@ stop_access_logging(Client, Input, Options)
 %% tags to each container. For more information about tagging, including
 %% naming and usage conventions, see Tagging Resources in MediaStore:
 %% https://docs.aws.amazon.com/mediastore/latest/ug/tagging.html.
+-spec tag_resource(map(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -342,9 +953,22 @@ tag_resource(Client, Input, Options)
 %% @doc Removes tags from the specified container.
 %%
 %% You can specify one or more tags to remove.
+-spec untag_resource(map(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, container_in_use_exception(), tuple()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).

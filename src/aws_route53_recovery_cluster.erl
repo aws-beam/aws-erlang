@@ -78,6 +78,149 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_temporarily_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type endpoint_temporarily_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_routing_control_state_request() :: #{
+%%   <<"RoutingControlArn">> := string()
+%% }
+-type get_routing_control_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_routing_control_state_response() :: #{
+%%   <<"RoutingControlArn">> => string(),
+%%   <<"RoutingControlName">> => string(),
+%%   <<"RoutingControlState">> => list(any())
+%% }
+-type get_routing_control_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_routing_controls_request() :: #{
+%%   <<"ControlPanelArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_routing_controls_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_routing_controls_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RoutingControls">> => list(routing_control()())
+%% }
+-type list_routing_controls_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% routing_control() :: #{
+%%   <<"ControlPanelArn">> => string(),
+%%   <<"ControlPanelName">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"RoutingControlArn">> => string(),
+%%   <<"RoutingControlName">> => string(),
+%%   <<"RoutingControlState">> => list(any())
+%% }
+-type routing_control() :: #{binary() => any()}.
+
+%% Example:
+%% service_limit_exceeded_exception() :: #{
+%%   <<"limitCode">> => string(),
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_routing_control_state_entry() :: #{
+%%   <<"RoutingControlArn">> => string(),
+%%   <<"RoutingControlState">> => list(any())
+%% }
+-type update_routing_control_state_entry() :: #{binary() => any()}.
+
+%% Example:
+%% update_routing_control_state_request() :: #{
+%%   <<"RoutingControlArn">> := string(),
+%%   <<"RoutingControlState">> := list(any()),
+%%   <<"SafetyRulesToOverride">> => list(string()())
+%% }
+-type update_routing_control_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_routing_control_state_response() :: #{
+
+%% }
+-type update_routing_control_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_routing_control_states_request() :: #{
+%%   <<"SafetyRulesToOverride">> => list(string()()),
+%%   <<"UpdateRoutingControlStateEntries">> := list(update_routing_control_state_entry()())
+%% }
+-type update_routing_control_states_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_routing_control_states_response() :: #{
+
+%% }
+-type update_routing_control_states_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -119,9 +262,28 @@
 %% Working with
 %% routing controls in Route 53 ARC:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.html
+-spec get_routing_control_state(map(), get_routing_control_state_request()) ->
+    {ok, get_routing_control_state_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_routing_control_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_routing_control_state(Client, Input, []).
+
+-spec get_routing_control_state(map(), get_routing_control_state_request(), proplists:proplist()) ->
+    {ok, get_routing_control_state_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_routing_control_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRoutingControlState">>, Input, Options).
@@ -164,9 +326,28 @@ get_routing_control_state(Client, Input, Options)
 %% Working with
 %% routing controls in Route 53 ARC:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.html
+-spec list_routing_controls(map(), list_routing_controls_request()) ->
+    {ok, list_routing_controls_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_routing_controls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_routing_controls(Client, Input, []).
+
+-spec list_routing_controls(map(), list_routing_controls_request(), proplists:proplist()) ->
+    {ok, list_routing_controls_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_routing_controls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoutingControls">>, Input, Options).
@@ -215,9 +396,30 @@ list_routing_controls(Client, Input, Options)
 %%
 %% Working with routing controls overall:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.html
+-spec update_routing_control_state(map(), update_routing_control_state_request()) ->
+    {ok, update_routing_control_state_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_routing_control_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_routing_control_state(Client, Input, []).
+
+-spec update_routing_control_state(map(), update_routing_control_state_request(), proplists:proplist()) ->
+    {ok, update_routing_control_state_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_routing_control_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRoutingControlState">>, Input, Options).
@@ -266,9 +468,32 @@ update_routing_control_state(Client, Input, Options)
 %%
 %% Working with routing controls overall:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.html
+-spec update_routing_control_states(map(), update_routing_control_states_request()) ->
+    {ok, update_routing_control_states_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_routing_control_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_routing_control_states(Client, Input, []).
+
+-spec update_routing_control_states(map(), update_routing_control_states_request(), proplists:proplist()) ->
+    {ok, update_routing_control_states_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, endpoint_temporarily_unavailable_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_routing_control_states(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRoutingControlStates">>, Input, Options).

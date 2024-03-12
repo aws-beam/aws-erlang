@@ -16,6 +16,37 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% batch_put_metrics_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"MetricIndex">> => integer()
+%% }
+-type batch_put_metrics_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_metrics_request() :: #{
+%%   <<"MetricData">> := list(raw_metric_data()()),
+%%   <<"TrialComponentName">> := string()
+%% }
+-type batch_put_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_metrics_response() :: #{
+%%   <<"Errors">> => list(batch_put_metrics_error()())
+%% }
+-type batch_put_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% raw_metric_data() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Step">> => integer(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Value">> => float()
+%% }
+-type raw_metric_data() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -24,8 +55,15 @@
 %%
 %% These metrics can be visualized in SageMaker Studio and
 %% retrieved with the `GetMetrics' API.
+-spec batch_put_metrics(map(), batch_put_metrics_request()) ->
+    {ok, batch_put_metrics_response(), tuple()} |
+    {error, any()}.
 batch_put_metrics(Client, Input) ->
     batch_put_metrics(Client, Input, []).
+
+-spec batch_put_metrics(map(), batch_put_metrics_request(), proplists:proplist()) ->
+    {ok, batch_put_metrics_response(), tuple()} |
+    {error, any()}.
 batch_put_metrics(Client, Input0, Options0) ->
     Method = put,
     Path = ["/BatchPutMetrics"],
@@ -52,7 +90,7 @@ batch_put_metrics(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

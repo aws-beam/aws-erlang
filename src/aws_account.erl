@@ -25,6 +25,181 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% alternate_contact() :: #{
+%%   <<"AlternateContactType">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type alternate_contact() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% contact_information() :: #{
+%%   <<"AddressLine1">> => string(),
+%%   <<"AddressLine2">> => string(),
+%%   <<"AddressLine3">> => string(),
+%%   <<"City">> => string(),
+%%   <<"CompanyName">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"DistrictOrCounty">> => string(),
+%%   <<"FullName">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"PostalCode">> => string(),
+%%   <<"StateOrRegion">> => string(),
+%%   <<"WebsiteUrl">> => string()
+%% }
+-type contact_information() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alternate_contact_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AlternateContactType">> := string()
+%% }
+-type delete_alternate_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_region_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"RegionName">> := string()
+%% }
+-type disable_region_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_region_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"RegionName">> := string()
+%% }
+-type enable_region_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_alternate_contact_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AlternateContactType">> := string()
+%% }
+-type get_alternate_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_alternate_contact_response() :: #{
+%%   <<"AlternateContact">> => alternate_contact()
+%% }
+-type get_alternate_contact_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_information_request() :: #{
+%%   <<"AccountId">> => string()
+%% }
+-type get_contact_information_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_information_response() :: #{
+%%   <<"ContactInformation">> => contact_information()
+%% }
+-type get_contact_information_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_region_opt_status_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"RegionName">> := string()
+%% }
+-type get_region_opt_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_region_opt_status_response() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"RegionOptStatus">> => string()
+%% }
+-type get_region_opt_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_regions_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"RegionOptStatusContains">> => list(string()())
+%% }
+-type list_regions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_regions_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Regions">> => list(region()())
+%% }
+-type list_regions_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_alternate_contact_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AlternateContactType">> := string(),
+%%   <<"EmailAddress">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"PhoneNumber">> := string(),
+%%   <<"Title">> := string()
+%% }
+-type put_alternate_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_contact_information_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ContactInformation">> := contact_information()
+%% }
+-type put_contact_information_request() :: #{binary() => any()}.
+
+%% Example:
+%% region() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"RegionOptStatus">> => string()
+%% }
+-type region() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -43,8 +218,25 @@
 %% and Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
+-spec delete_alternate_contact(map(), delete_alternate_contact_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_alternate_contact(Client, Input) ->
     delete_alternate_contact(Client, Input, []).
+
+-spec delete_alternate_contact(map(), delete_alternate_contact_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteAlternateContact"],
@@ -68,8 +260,25 @@ delete_alternate_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables (opts-out) a particular Region for an account.
+-spec disable_region(map(), disable_region_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disable_region(Client, Input) ->
     disable_region(Client, Input, []).
+
+-spec disable_region(map(), disable_region_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disable_region(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disableRegion"],
@@ -93,8 +302,25 @@ disable_region(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables (opts-in) a particular Region for an account.
+-spec enable_region(map(), enable_region_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 enable_region(Client, Input) ->
     enable_region(Client, Input, []).
+
+-spec enable_region(map(), enable_region_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 enable_region(Client, Input0, Options0) ->
     Method = post,
     Path = ["/enableRegion"],
@@ -131,8 +357,25 @@ enable_region(Client, Input0, Options0) ->
 %% and Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
+-spec get_alternate_contact(map(), get_alternate_contact_request()) ->
+    {ok, get_alternate_contact_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_alternate_contact(Client, Input) ->
     get_alternate_contact(Client, Input, []).
+
+-spec get_alternate_contact(map(), get_alternate_contact_request(), proplists:proplist()) ->
+    {ok, get_alternate_contact_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getAlternateContact"],
@@ -162,8 +405,25 @@ get_alternate_contact(Client, Input0, Options0) ->
 %% Update
 %% the primary and alternate contact information:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
+-spec get_contact_information(map(), get_contact_information_request()) ->
+    {ok, get_contact_information_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_contact_information(Client, Input) ->
     get_contact_information(Client, Input, []).
+
+-spec get_contact_information(map(), get_contact_information_request(), proplists:proplist()) ->
+    {ok, get_contact_information_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_contact_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getContactInformation"],
@@ -187,8 +447,23 @@ get_contact_information(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the opt-in status of a particular Region.
+-spec get_region_opt_status(map(), get_region_opt_status_request()) ->
+    {ok, get_region_opt_status_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_region_opt_status(Client, Input) ->
     get_region_opt_status(Client, Input, []).
+
+-spec get_region_opt_status(map(), get_region_opt_status_request(), proplists:proplist()) ->
+    {ok, get_region_opt_status_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_region_opt_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getRegionOptStatus"],
@@ -217,8 +492,23 @@ get_region_opt_status(Client, Input0, Options0) ->
 %% Optionally, this list can be filtered by the
 %% `region-opt-status-contains'
 %% parameter.
+-spec list_regions(map(), list_regions_request()) ->
+    {ok, list_regions_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_regions(Client, Input) ->
     list_regions(Client, Input, []).
+
+-spec list_regions(map(), list_regions_request(), proplists:proplist()) ->
+    {ok, list_regions_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_regions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listRegions"],
@@ -255,8 +545,23 @@ list_regions(Client, Input0, Options0) ->
 %% and Organizations. For more information, see Enabling trusted access for
 %% Amazon Web Services Account Management:
 %% https://docs.aws.amazon.com/accounts/latest/reference/using-orgs-trusted-access.html.
+-spec put_alternate_contact(map(), put_alternate_contact_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_alternate_contact(Client, Input) ->
     put_alternate_contact(Client, Input, []).
+
+-spec put_alternate_contact(map(), put_alternate_contact_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putAlternateContact"],
@@ -286,8 +591,23 @@ put_alternate_contact(Client, Input0, Options0) ->
 %% Update
 %% the primary and alternate contact information:
 %% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html.
+-spec put_contact_information(map(), put_contact_information_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_contact_information(Client, Input) ->
     put_contact_information(Client, Input, []).
+
+-spec put_contact_information(map(), put_contact_information_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_contact_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putContactInformation"],
@@ -314,7 +634,7 @@ put_contact_information(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

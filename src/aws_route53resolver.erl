@@ -190,15 +190,1390 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% get_resolver_query_log_config_association_request() :: #{
+%%   <<"ResolverQueryLogConfigAssociationId">> := string()
+%% }
+-type get_resolver_query_log_config_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_rule_group_association_response() :: #{
+%%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
+%% }
+-type update_firewall_rule_group_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_config() :: #{
+%%   <<"AutodefinedReverse">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type resolver_config() :: #{binary() => any()}.
+
+%% Example:
+%% ip_address_update() :: #{
+%%   <<"Ip">> => string(),
+%%   <<"IpId">> => string(),
+%%   <<"Ipv6">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type ip_address_update() :: #{binary() => any()}.
+
+%% Example:
+%% update_resolver_dnssec_config_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"Validation">> := list(any())
+%% }
+-type update_resolver_dnssec_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_firewall_rule_group_request() :: #{
+%%   <<"FirewallRuleGroupAssociationId">> := string()
+%% }
+-type disassociate_firewall_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_rule_group_response() :: #{
+%%   <<"FirewallRuleGroup">> => firewall_rule_group()
+%% }
+-type create_firewall_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_resolver_query_log_config_response() :: #{
+%%   <<"ResolverQueryLogConfigAssociation">> => resolver_query_log_config_association()
+%% }
+-type associate_resolver_query_log_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_resolver_query_log_config_response() :: #{
+%%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
+%% }
+-type create_resolver_query_log_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_association_response() :: #{
+%%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
+%% }
+-type get_firewall_rule_group_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_rule_request() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"BlockOverrideDnsType">> => list(any()),
+%%   <<"BlockOverrideDomain">> => string(),
+%%   <<"BlockOverrideTtl">> => integer(),
+%%   <<"BlockResponse">> => list(any()),
+%%   <<"FirewallDomainListId">> := string(),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Qtype">> => string()
+%% }
+-type update_firewall_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rules_request() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type list_firewall_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_dnssec_config_response() :: #{
+%%   <<"ResolverDNSSECConfig">> => resolver_dnssec_config()
+%% }
+-type get_resolver_dnssec_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_endpoint_request() :: #{
+%%   <<"ResolverEndpointId">> := string()
+%% }
+-type get_resolver_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rules_response() :: #{
+%%   <<"FirewallRules">> => list(firewall_rule()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resolver_query_log_config_response() :: #{
+%%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
+%% }
+-type delete_resolver_query_log_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_configs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_resolver_query_log_config_request() :: #{
+%%   <<"ResolverQueryLogConfigId">> := string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type associate_resolver_query_log_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_resolver_endpoint_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
+%% }
+-type update_resolver_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_domain_list_response() :: #{
+%%   <<"FirewallDomainList">> => firewall_domain_list()
+%% }
+-type get_firewall_domain_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_rule_group_association_request() :: #{
+%%   <<"FirewallRuleGroupAssociationId">> := string(),
+%%   <<"MutationProtection">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type update_firewall_rule_group_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_dnssec_configs_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_dnssec_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_query_log_configs_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_resolver_query_log_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_outpost_resolver_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"PreferredInstanceType">> => string()
+%% }
+-type update_outpost_resolver_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_unavailable_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_domain_lists_response() :: #{
+%%   <<"FirewallDomainLists">> => list(firewall_domain_list_metadata()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_domain_lists_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_rule_request() :: #{
+%%   <<"Action">> := list(any()),
+%%   <<"BlockOverrideDnsType">> => list(any()),
+%%   <<"BlockOverrideDomain">> => string(),
+%%   <<"BlockOverrideTtl">> => integer(),
+%%   <<"BlockResponse">> => list(any()),
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"FirewallDomainListId">> := string(),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Priority">> := integer(),
+%%   <<"Qtype">> => string()
+%% }
+-type create_firewall_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_domain_list() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DomainCount">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"ManagedOwnerName">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type firewall_domain_list() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_response() :: #{
+%%   <<"FirewallRuleGroup">> => firewall_rule_group()
+%% }
+-type get_firewall_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_domain_lists_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_domain_lists_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_rules_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_request() :: #{
+%%   <<"FirewallRuleGroupId">> := string()
+%% }
+-type get_firewall_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_config() :: #{
+%%   <<"FirewallFailOpen">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type firewall_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_resolver_rule_request() :: #{
+%%   <<"Config">> := resolver_rule_config(),
+%%   <<"ResolverRuleId">> := string()
+%% }
+-type update_resolver_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_domain_list_response() :: #{
+%%   <<"FirewallDomainList">> => firewall_domain_list()
+%% }
+-type delete_firewall_domain_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_domain_list_request() :: #{
+%%   <<"FirewallDomainListId">> := string()
+%% }
+-type delete_firewall_domain_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_domain_list_request() :: #{
+%%   <<"FirewallDomainListId">> := string()
+%% }
+-type get_firewall_domain_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_dnssec_config_request() :: #{
+%%   <<"ResourceId">> := string()
+%% }
+-type get_resolver_dnssec_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_query_log_config() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociationCount">> => integer(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ShareStatus">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type resolver_query_log_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_endpoints_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resolver_query_log_config_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"DestinationArn">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_resolver_query_log_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resolver_rule_policy_response() :: #{
+%%   <<"ReturnValue">> => boolean()
+%% }
+-type put_resolver_rule_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_domain_list_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_firewall_domain_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resolver_query_log_config_request() :: #{
+%%   <<"ResolverQueryLogConfigId">> := string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type disassociate_resolver_query_log_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_association_request() :: #{
+%%   <<"ResolverRuleAssociationId">> := string()
+%% }
+-type get_resolver_rule_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_association_response() :: #{
+%%   <<"ResolverQueryLogConfigAssociation">> => resolver_query_log_config_association()
+%% }
+-type get_resolver_query_log_config_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% ip_address_request() :: #{
+%%   <<"Ip">> => string(),
+%%   <<"Ipv6">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type ip_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resolver_query_log_config_request() :: #{
+%%   <<"ResolverQueryLogConfigId">> := string()
+%% }
+-type delete_resolver_query_log_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_domains_request() :: #{
+%%   <<"FirewallDomainListId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resolver_config_response() :: #{
+%%   <<"ResolverConfig">> => resolver_config()
+%% }
+-type update_resolver_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_rule_association() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResolverRuleId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VPCId">> => string()
+%% }
+-type resolver_rule_association() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_rule_response() :: #{
+%%   <<"FirewallRule">> => firewall_rule()
+%% }
+-type update_firewall_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_firewall_rule_group_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"MutationProtection">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"Priority">> := integer(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcId">> := string()
+%% }
+-type associate_firewall_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resolver_endpoint_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"Direction">> := list(any()),
+%%   <<"IpAddresses">> := list(ip_address_request()()),
+%%   <<"Name">> => string(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"PreferredInstanceType">> => string(),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"ResolverEndpointType">> => list(any()),
+%%   <<"SecurityGroupIds">> := list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_resolver_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_rule_response() :: #{
+%%   <<"FirewallRule">> => firewall_rule()
+%% }
+-type delete_firewall_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_outpost_resolver_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"OutpostArn">> := string(),
+%%   <<"PreferredInstanceType">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_outpost_resolver_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resolver_rule_request() :: #{
+%%   <<"ResolverRuleId">> := string()
+%% }
+-type delete_resolver_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resolver_query_log_config_response() :: #{
+%%   <<"ResolverQueryLogConfigAssociation">> => resolver_query_log_config_association()
+%% }
+-type disassociate_resolver_query_log_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_association_response() :: #{
+%%   <<"ResolverRuleAssociation">> => resolver_rule_association()
+%% }
+-type get_resolver_rule_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_endpoints_response() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverEndpoints">> => list(resolver_endpoint()())
+%% }
+-type list_resolver_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_group_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ShareStatus">> => list(any())
+%% }
+-type firewall_rule_group_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% put_resolver_rule_policy_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ResolverRulePolicy">> := string()
+%% }
+-type put_resolver_rule_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_config_response() :: #{
+%%   <<"FirewallConfig">> => firewall_config()
+%% }
+-type get_firewall_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_rule_group_request() :: #{
+%%   <<"FirewallRuleGroupId">> := string()
+%% }
+-type delete_firewall_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_config_request() :: #{
+%%   <<"ResourceId">> := string()
+%% }
+-type get_resolver_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_endpoint_ip_addresses_response() :: #{
+%%   <<"IpAddresses">> => list(ip_address_response()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_endpoint_ip_addresses_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resolver_endpoint_ip_address_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
+%% }
+-type disassociate_resolver_endpoint_ip_address_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_resolver_rule_response() :: #{
+%%   <<"ResolverRule">> => resolver_rule()
+%% }
+-type update_resolver_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_rule_group_response() :: #{
+%%   <<"FirewallRuleGroup">> => firewall_rule_group()
+%% }
+-type delete_firewall_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% associate_resolver_rule_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ResolverRuleId">> := string(),
+%%   <<"VPCId">> := string()
+%% }
+-type associate_resolver_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_outpost_resolvers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostArn">> => string()
+%% }
+-type list_outpost_resolvers_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_policy_response() :: #{
+%%   <<"ResolverRulePolicy">> => string()
+%% }
+-type get_resolver_rule_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_configs_response() :: #{
+%%   <<"FirewallConfigs">> => list(firewall_config()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_domain_list_response() :: #{
+%%   <<"FirewallDomainList">> => firewall_domain_list()
+%% }
+-type create_firewall_domain_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_rule() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ResolverEndpointId">> => string(),
+%%   <<"RuleType">> => list(any()),
+%%   <<"ShareStatus">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"TargetIps">> => list(target_address()())
+%% }
+-type resolver_rule() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_request() :: #{
+%%   <<"ResolverRuleId">> := string()
+%% }
+-type get_resolver_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_group_association() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ManagedOwnerName">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"MutationProtection">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type firewall_rule_group_association() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resolver_endpoint_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
+%% }
+-type delete_resolver_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_policy_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_firewall_rule_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resolver_query_log_config_policy_response() :: #{
+%%   <<"ReturnValue">> => boolean()
+%% }
+-type put_resolver_query_log_config_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_config_request() :: #{
+%%   <<"FirewallFailOpen">> := list(any()),
+%%   <<"ResourceId">> := string()
+%% }
+-type update_firewall_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_association_request() :: #{
+%%   <<"FirewallRuleGroupAssociationId">> := string()
+%% }
+-type get_firewall_rule_group_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_firewall_rule_group_policy_response() :: #{
+%%   <<"ReturnValue">> => boolean()
+%% }
+-type put_firewall_rule_group_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resolver_query_log_config_policy_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ResolverQueryLogConfigPolicy">> := string()
+%% }
+-type put_resolver_query_log_config_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_outpost_resolver_response() :: #{
+%%   <<"OutpostResolver">> => outpost_resolver()
+%% }
+-type get_outpost_resolver_response() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"BlockOverrideDnsType">> => list(any()),
+%%   <<"BlockOverrideDomain">> => string(),
+%%   <<"BlockOverrideTtl">> => integer(),
+%%   <<"BlockResponse">> => list(any()),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Qtype">> => string()
+%% }
+-type firewall_rule() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_firewall_rule_group_response() :: #{
+%%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
+%% }
+-type disassociate_firewall_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_endpoint() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Direction">> => list(any()),
+%%   <<"HostVPCId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IpAddressCount">> => integer(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"PreferredInstanceType">> => string(),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"ResolverEndpointType">> => list(any()),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type resolver_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_policy_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_resolver_rule_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_firewall_domains_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type import_firewall_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"RuleCount">> => integer(),
+%%   <<"ShareStatus">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type firewall_rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% put_firewall_rule_group_policy_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"FirewallRuleGroupPolicy">> := string()
+%% }
+-type put_firewall_rule_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverConfigs">> => list(resolver_config()())
+%% }
+-type list_resolver_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resolver_rule_request() :: #{
+%%   <<"ResolverRuleId">> := string(),
+%%   <<"VPCId">> := string()
+%% }
+-type disassociate_resolver_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_firewall_domains_request() :: #{
+%%   <<"DomainFileUrl">> := string(),
+%%   <<"FirewallDomainListId">> := string(),
+%%   <<"Operation">> := list(any())
+%% }
+-type import_firewall_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_dnssec_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverDnssecConfigs">> => list(resolver_dnssec_config()())
+%% }
+-type list_resolver_dnssec_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_rule_request() :: #{
+%%   <<"FirewallDomainListId">> := string(),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"Qtype">> => string()
+%% }
+-type delete_firewall_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resolver_rule_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"DomainName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResolverEndpointId">> => string(),
+%%   <<"RuleType">> := list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetIps">> => list(target_address()())
+%% }
+-type create_resolver_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resolver_rule_response() :: #{
+%%   <<"ResolverRule">> => resolver_rule()
+%% }
+-type create_resolver_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resolver_endpoint_request() :: #{
+%%   <<"ResolverEndpointId">> := string()
+%% }
+-type delete_resolver_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_query_log_config_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverQueryLogConfigAssociations">> => list(resolver_query_log_config_association()()),
+%%   <<"TotalCount">> => integer(),
+%%   <<"TotalFilteredCount">> => integer()
+%% }
+-type list_resolver_query_log_config_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_rule_group_request() :: #{
+%%   <<"CreatorRequestId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_firewall_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_firewall_rule_group_response() :: #{
+%%   <<"FirewallRuleGroupAssociation">> => firewall_rule_group_association()
+%% }
+-type associate_firewall_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_groups_response() :: #{
+%%   <<"FirewallRuleGroups">> => list(firewall_rule_group_metadata()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_domains_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type update_firewall_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_rules_response() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverRules">> => list(resolver_rule()())
+%% }
+-type list_resolver_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_resolver_config_request() :: #{
+%%   <<"AutodefinedReverseFlag">> := list(any()),
+%%   <<"ResourceId">> := string()
+%% }
+-type update_resolver_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_exists_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_dnssec_config() :: #{
+%%   <<"Id">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ValidationStatus">> => list(any())
+%% }
+-type resolver_dnssec_config() :: #{binary() => any()}.
+
+%% Example:
+%% unknown_resource_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unknown_resource_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_outpost_resolver_response() :: #{
+%%   <<"OutpostResolver">> => outpost_resolver()
+%% }
+-type delete_outpost_resolver_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"FieldName">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_ip_address() :: #{
+%%   <<"IpId">> => string(),
+%%   <<"Ipv6">> => string()
+%% }
+-type update_ip_address() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_response() :: #{
+%%   <<"ResolverQueryLogConfig">> => resolver_query_log_config()
+%% }
+-type get_resolver_query_log_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_outpost_resolver_response() :: #{
+%%   <<"OutpostResolver">> => outpost_resolver()
+%% }
+-type update_outpost_resolver_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_resolver_endpoint_ip_address_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
+%% }
+-type associate_resolver_endpoint_ip_address_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_outpost_resolver_response() :: #{
+%%   <<"OutpostResolver">> => outpost_resolver()
+%% }
+-type create_outpost_resolver_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_policy_response() :: #{
+%%   <<"ResolverQueryLogConfigPolicy">> => string()
+%% }
+-type get_resolver_query_log_config_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_group_associations_response() :: #{
+%%   <<"FirewallRuleGroupAssociations">> => list(firewall_rule_group_association()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rule_group_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_config_request() :: #{
+%%   <<"ResourceId">> := string()
+%% }
+-type get_firewall_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_rule_response() :: #{
+%%   <<"ResolverRule">> => resolver_rule()
+%% }
+-type get_resolver_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_resolver_endpoint_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"ResolverEndpointId">> := string(),
+%%   <<"ResolverEndpointType">> => list(any()),
+%%   <<"UpdateIpAddresses">> => list(update_ip_address()())
+%% }
+-type update_resolver_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_domains_request() :: #{
+%%   <<"Domains">> := list(string()()),
+%%   <<"FirewallDomainListId">> := string(),
+%%   <<"Operation">> := list(any())
+%% }
+-type update_firewall_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_resolver_endpoint_ip_address_request() :: #{
+%%   <<"IpAddress">> := ip_address_update(),
+%%   <<"ResolverEndpointId">> := string()
+%% }
+-type associate_resolver_endpoint_ip_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_resolver_endpoint_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
+%% }
+-type create_resolver_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resolver_endpoint_ip_address_request() :: #{
+%%   <<"IpAddress">> := ip_address_update(),
+%%   <<"ResolverEndpointId">> := string()
+%% }
+-type disassociate_resolver_endpoint_ip_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% target_address() :: #{
+%%   <<"Ip">> => string(),
+%%   <<"Ipv6">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any())
+%% }
+-type target_address() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_rule_response() :: #{
+%%   <<"FirewallRule">> => firewall_rule()
+%% }
+-type create_firewall_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_rule_config() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ResolverEndpointId">> => string(),
+%%   <<"TargetIps">> => list(target_address()())
+%% }
+-type resolver_rule_config() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_request() :: #{
+%%   <<"ResolverQueryLogConfigId">> := string()
+%% }
+-type get_resolver_query_log_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_config_response() :: #{
+%%   <<"FirewallConfig">> => firewall_config()
+%% }
+-type update_firewall_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_query_log_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverQueryLogConfigs">> => list(resolver_query_log_config()()),
+%%   <<"TotalCount">> => integer(),
+%%   <<"TotalFilteredCount">> => integer()
+%% }
+-type list_resolver_query_log_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_rule_associations_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_rule_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_domain_list_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ManagedOwnerName">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type firewall_domain_list_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_query_log_config_policy_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_resolver_query_log_config_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% outpost_resolver() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"PreferredInstanceType">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type outpost_resolver() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_query_log_config_associations_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_resolver_query_log_config_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_rule_associations_response() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverRuleAssociations">> => list(resolver_rule_association()())
+%% }
+-type list_resolver_rule_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_domains_response() :: #{
+%%   <<"Domains">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_firewall_rule_group_policy_response() :: #{
+%%   <<"FirewallRuleGroupPolicy">> => string()
+%% }
+-type get_firewall_rule_group_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_outpost_resolvers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OutpostResolvers">> => list(outpost_resolver()())
+%% }
+-type list_outpost_resolvers_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_outpost_resolver_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_outpost_resolver_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resolver_rule_response() :: #{
+%%   <<"ResolverRuleAssociation">> => resolver_rule_association()
+%% }
+-type disassociate_resolver_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_endpoint_response() :: #{
+%%   <<"ResolverEndpoint">> => resolver_endpoint()
+%% }
+-type get_resolver_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_policy_document() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_policy_document() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_endpoint_ip_addresses_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResolverEndpointId">> := string()
+%% }
+-type list_resolver_endpoint_ip_addresses_request() :: #{binary() => any()}.
+
+%% Example:
+%% ip_address_response() :: #{
+%%   <<"CreationTime">> => string(),
+%%   <<"Ip">> => string(),
+%%   <<"IpId">> => string(),
+%%   <<"Ipv6">> => string(),
+%%   <<"ModificationTime">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type ip_address_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_group_associations_request() :: #{
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type list_firewall_rule_group_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% resolver_query_log_config_association() :: #{
+%%   <<"CreationTime">> => string(),
+%%   <<"Error">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ResolverQueryLogConfigId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type resolver_query_log_config_association() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resolver_rule_response() :: #{
+%%   <<"ResolverRule">> => resolver_rule()
+%% }
+-type delete_resolver_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_outpost_resolver_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type delete_outpost_resolver_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resolver_dnssec_config_response() :: #{
+%%   <<"ResolverDNSSECConfig">> => resolver_dnssec_config()
+%% }
+-type update_resolver_dnssec_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_config_response() :: #{
+%%   <<"ResolverConfig">> => resolver_config()
+%% }
+-type get_resolver_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_resolver_rule_response() :: #{
+%%   <<"ResolverRuleAssociation">> => resolver_rule_association()
+%% }
+-type associate_resolver_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resolver_configs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resolver_configs_request() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Associates a `FirewallRuleGroup' with a VPC, to provide DNS
 %% filtering for the VPC.
+-spec associate_firewall_rule_group(map(), associate_firewall_rule_group_request()) ->
+    {ok, associate_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_firewall_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_firewall_rule_group(Client, Input, []).
+
+-spec associate_firewall_rule_group(map(), associate_firewall_rule_group_request(), proplists:proplist()) ->
+    {ok, associate_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_firewall_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateFirewallRuleGroup">>, Input, Options).
@@ -212,9 +1587,30 @@ associate_firewall_rule_group(Client, Input, Options)
 %% To remove an IP address from an endpoint, see
 %% DisassociateResolverEndpointIpAddress:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverEndpointIpAddress.html.
+-spec associate_resolver_endpoint_ip_address(map(), associate_resolver_endpoint_ip_address_request()) ->
+    {ok, associate_resolver_endpoint_ip_address_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_resolver_endpoint_ip_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_resolver_endpoint_ip_address(Client, Input, []).
+
+-spec associate_resolver_endpoint_ip_address(map(), associate_resolver_endpoint_ip_address_request(), proplists:proplist()) ->
+    {ok, associate_resolver_endpoint_ip_address_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_resolver_endpoint_ip_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateResolverEndpointIpAddress">>, Input, Options).
@@ -235,9 +1631,32 @@ associate_resolver_endpoint_ip_address(Client, Input, Options)
 %% To remove a VPC from a query logging configuration, see
 %% DisassociateResolverQueryLogConfig:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverQueryLogConfig.html.
+-spec associate_resolver_query_log_config(map(), associate_resolver_query_log_config_request()) ->
+    {ok, associate_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_resolver_query_log_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_resolver_query_log_config(Client, Input, []).
+
+-spec associate_resolver_query_log_config(map(), associate_resolver_query_log_config_request(), proplists:proplist()) ->
+    {ok, associate_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_resolver_query_log_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateResolverQueryLogConfig">>, Input, Options).
@@ -251,9 +1670,32 @@ associate_resolver_query_log_config(Client, Input, Options)
 %% more information about rules, see
 %% CreateResolverRule:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverRule.html.
+-spec associate_resolver_rule(map(), associate_resolver_rule_request()) ->
+    {ok, associate_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_resolver_rule(Client, Input, []).
+
+-spec associate_resolver_rule(map(), associate_resolver_rule_request(), proplists:proplist()) ->
+    {ok, associate_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateResolverRule">>, Input, Options).
@@ -263,18 +1705,54 @@ associate_resolver_rule(Client, Input, Options)
 %% You can populate the domains for the new list with a file, using
 %% `ImportFirewallDomains', or with domain strings, using
 %% `UpdateFirewallDomains'.
+-spec create_firewall_domain_list(map(), create_firewall_domain_list_request()) ->
+    {ok, create_firewall_domain_list_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_firewall_domain_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall_domain_list(Client, Input, []).
+
+-spec create_firewall_domain_list(map(), create_firewall_domain_list_request(), proplists:proplist()) ->
+    {ok, create_firewall_domain_list_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_firewall_domain_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewallDomainList">>, Input, Options).
 
 %% @doc Creates a single DNS Firewall rule in the specified rule group, using
 %% the specified domain list.
+-spec create_firewall_rule(map(), create_firewall_rule_request()) ->
+    {ok, create_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_firewall_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall_rule(Client, Input, []).
+
+-spec create_firewall_rule(map(), create_firewall_rule_request(), proplists:proplist()) ->
+    {ok, create_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_firewall_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewallRule">>, Input, Options).
@@ -284,17 +1762,53 @@ create_firewall_rule(Client, Input, Options)
 %%
 %% You can add rules to the new rule group
 %% by calling `CreateFirewallRule'.
+-spec create_firewall_rule_group(map(), create_firewall_rule_group_request()) ->
+    {ok, create_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_firewall_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall_rule_group(Client, Input, []).
+
+-spec create_firewall_rule_group(map(), create_firewall_rule_group_request(), proplists:proplist()) ->
+    {ok, create_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_firewall_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewallRuleGroup">>, Input, Options).
 
 %% @doc Creates a Route 53 Resolver on an Outpost.
+-spec create_outpost_resolver(map(), create_outpost_resolver_request()) ->
+    {ok, create_outpost_resolver_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_outpost_resolver(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_outpost_resolver(Client, Input, []).
+
+-spec create_outpost_resolver(map(), create_outpost_resolver_request(), proplists:proplist()) ->
+    {ok, create_outpost_resolver_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_outpost_resolver(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOutpostResolver">>, Input, Options).
@@ -310,9 +1824,32 @@ create_outpost_resolver(Client, Input, Options)
 %% An outbound Resolver endpoint forwards DNS queries from the DNS service
 %% for a VPC
 %% to your network.
+-spec create_resolver_endpoint(map(), create_resolver_endpoint_request()) ->
+    {ok, create_resolver_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_resolver_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resolver_endpoint(Client, Input, []).
+
+-spec create_resolver_endpoint(map(), create_resolver_endpoint_request(), proplists:proplist()) ->
+    {ok, create_resolver_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_resolver_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResolverEndpoint">>, Input, Options).
@@ -335,9 +1872,32 @@ create_resolver_endpoint(Client, Input, Options)
 %% Resolver creates for a configuration include all DNS queries that
 %% originate in all
 %% VPCs that are associated with the configuration.
+-spec create_resolver_query_log_config(map(), create_resolver_query_log_config_request()) ->
+    {ok, create_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_resolver_query_log_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resolver_query_log_config(Client, Input, []).
+
+-spec create_resolver_query_log_config(map(), create_resolver_query_log_config_request(), proplists:proplist()) ->
+    {ok, create_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_resolver_query_log_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResolverQueryLogConfig">>, Input, Options).
@@ -346,41 +1906,136 @@ create_resolver_query_log_config(Client, Input, Options)
 %% endpoint the queries pass through,
 %% one domain name that you want to forward to your network, and the IP
 %% addresses of the DNS resolvers in your network.
+-spec create_resolver_rule(map(), create_resolver_rule_request()) ->
+    {ok, create_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resolver_rule(Client, Input, []).
+
+-spec create_resolver_rule(map(), create_resolver_rule_request(), proplists:proplist()) ->
+    {ok, create_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResolverRule">>, Input, Options).
 
 %% @doc Deletes the specified domain list.
+-spec delete_firewall_domain_list(map(), delete_firewall_domain_list_request()) ->
+    {ok, delete_firewall_domain_list_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_firewall_domain_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall_domain_list(Client, Input, []).
+
+-spec delete_firewall_domain_list(map(), delete_firewall_domain_list_request(), proplists:proplist()) ->
+    {ok, delete_firewall_domain_list_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_firewall_domain_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallDomainList">>, Input, Options).
 
 %% @doc Deletes the specified firewall rule.
+-spec delete_firewall_rule(map(), delete_firewall_rule_request()) ->
+    {ok, delete_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_firewall_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall_rule(Client, Input, []).
+
+-spec delete_firewall_rule(map(), delete_firewall_rule_request(), proplists:proplist()) ->
+    {ok, delete_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_firewall_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallRule">>, Input, Options).
 
 %% @doc Deletes the specified firewall rule group.
+-spec delete_firewall_rule_group(map(), delete_firewall_rule_group_request()) ->
+    {ok, delete_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_firewall_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall_rule_group(Client, Input, []).
+
+-spec delete_firewall_rule_group(map(), delete_firewall_rule_group_request(), proplists:proplist()) ->
+    {ok, delete_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_firewall_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallRuleGroup">>, Input, Options).
 
 %% @doc Deletes a Resolver on the Outpost.
+-spec delete_outpost_resolver(map(), delete_outpost_resolver_request()) ->
+    {ok, delete_outpost_resolver_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_outpost_resolver(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_outpost_resolver(Client, Input, []).
+
+-spec delete_outpost_resolver(map(), delete_outpost_resolver_request(), proplists:proplist()) ->
+    {ok, delete_outpost_resolver_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_outpost_resolver(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOutpostResolver">>, Input, Options).
@@ -395,9 +2050,26 @@ delete_outpost_resolver(Client, Input, Options)
 %% to the DNS service for the specified VPC.
 %%
 %% Outbound: DNS queries from a VPC are no longer routed to your network.
+-spec delete_resolver_endpoint(map(), delete_resolver_endpoint_request()) ->
+    {ok, delete_resolver_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_resolver_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resolver_endpoint(Client, Input, []).
+
+-spec delete_resolver_endpoint(map(), delete_resolver_endpoint_request(), proplists:proplist()) ->
+    {ok, delete_resolver_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_resolver_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResolverEndpoint">>, Input, Options).
@@ -422,9 +2094,28 @@ delete_resolver_endpoint(Client, Input, Options)
 %% that they associated with the configuration, but that's not necessary.
 %% If you stop sharing the configuration, those VPCs are automatically
 %% disassociated from the configuration.
+-spec delete_resolver_query_log_config(map(), delete_resolver_query_log_config_request()) ->
+    {ok, delete_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_resolver_query_log_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resolver_query_log_config(Client, Input, []).
+
+-spec delete_resolver_query_log_config(map(), delete_resolver_query_log_config_request(), proplists:proplist()) ->
+    {ok, delete_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_resolver_query_log_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResolverQueryLogConfig">>, Input, Options).
@@ -436,18 +2127,54 @@ delete_resolver_query_log_config(Client, Input, Options)
 %% associated the Resolver rule with. For more information, see
 %% DisassociateResolverRule:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverRule.html.
+-spec delete_resolver_rule(map(), delete_resolver_rule_request()) ->
+    {ok, delete_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resolver_rule(Client, Input, []).
+
+-spec delete_resolver_rule(map(), delete_resolver_rule_request(), proplists:proplist()) ->
+    {ok, delete_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResolverRule">>, Input, Options).
 
 %% @doc Disassociates a `FirewallRuleGroup' from a VPC, to remove DNS
 %% filtering from the VPC.
+-spec disassociate_firewall_rule_group(map(), disassociate_firewall_rule_group_request()) ->
+    {ok, disassociate_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_firewall_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_firewall_rule_group(Client, Input, []).
+
+-spec disassociate_firewall_rule_group(map(), disassociate_firewall_rule_group_request(), proplists:proplist()) ->
+    {ok, disassociate_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_firewall_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFirewallRuleGroup">>, Input, Options).
@@ -462,9 +2189,28 @@ disassociate_firewall_rule_group(Client, Input, Options)
 %% To add an IP address to an endpoint, see
 %% AssociateResolverEndpointIpAddress:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverEndpointIpAddress.html.
+-spec disassociate_resolver_endpoint_ip_address(map(), disassociate_resolver_endpoint_ip_address_request()) ->
+    {ok, disassociate_resolver_endpoint_ip_address_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 disassociate_resolver_endpoint_ip_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_resolver_endpoint_ip_address(Client, Input, []).
+
+-spec disassociate_resolver_endpoint_ip_address(map(), disassociate_resolver_endpoint_ip_address_request(), proplists:proplist()) ->
+    {ok, disassociate_resolver_endpoint_ip_address_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 disassociate_resolver_endpoint_ip_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateResolverEndpointIpAddress">>, Input, Options).
@@ -483,9 +2229,28 @@ disassociate_resolver_endpoint_ip_address(Client, Input, Options)
 %% from the configuration.
 %%
 %% You can stop sharing the configuration.
+-spec disassociate_resolver_query_log_config(map(), disassociate_resolver_query_log_config_request()) ->
+    {ok, disassociate_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 disassociate_resolver_query_log_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_resolver_query_log_config(Client, Input, []).
+
+-spec disassociate_resolver_query_log_config(map(), disassociate_resolver_query_log_config_request(), proplists:proplist()) ->
+    {ok, disassociate_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 disassociate_resolver_query_log_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateResolverQueryLogConfig">>, Input, Options).
@@ -496,9 +2261,24 @@ disassociate_resolver_query_log_config(Client, Input, Options)
 %% If you disassociate a Resolver rule from a VPC, Resolver stops forwarding
 %% DNS queries for the
 %% domain name that you specified in the Resolver rule.
+-spec disassociate_resolver_rule(map(), disassociate_resolver_rule_request()) ->
+    {ok, disassociate_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 disassociate_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_resolver_rule(Client, Input, []).
+
+-spec disassociate_resolver_rule(map(), disassociate_resolver_rule_request(), proplists:proplist()) ->
+    {ok, disassociate_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 disassociate_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateResolverRule">>, Input, Options).
@@ -506,25 +2286,72 @@ disassociate_resolver_rule(Client, Input, Options)
 %% @doc Retrieves the configuration of the firewall behavior provided by DNS
 %% Firewall for a
 %% single VPC from Amazon Virtual Private Cloud (Amazon VPC).
+-spec get_firewall_config(map(), get_firewall_config_request()) ->
+    {ok, get_firewall_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_firewall_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_firewall_config(Client, Input, []).
+
+-spec get_firewall_config(map(), get_firewall_config_request(), proplists:proplist()) ->
+    {ok, get_firewall_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_firewall_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFirewallConfig">>, Input, Options).
 
 %% @doc Retrieves the specified firewall domain list.
+-spec get_firewall_domain_list(map(), get_firewall_domain_list_request()) ->
+    {ok, get_firewall_domain_list_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_firewall_domain_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_firewall_domain_list(Client, Input, []).
+
+-spec get_firewall_domain_list(map(), get_firewall_domain_list_request(), proplists:proplist()) ->
+    {ok, get_firewall_domain_list_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_firewall_domain_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFirewallDomainList">>, Input, Options).
 
 %% @doc Retrieves the specified firewall rule group.
+-spec get_firewall_rule_group(map(), get_firewall_rule_group_request()) ->
+    {ok, get_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_firewall_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_firewall_rule_group(Client, Input, []).
+
+-spec get_firewall_rule_group(map(), get_firewall_rule_group_request(), proplists:proplist()) ->
+    {ok, get_firewall_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_firewall_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFirewallRuleGroup">>, Input, Options).
@@ -534,9 +2361,24 @@ get_firewall_rule_group(Client, Input, Options)
 %%
 %% A VPC can have more than one firewall rule group association, and a rule
 %% group can be associated with more than one VPC.
+-spec get_firewall_rule_group_association(map(), get_firewall_rule_group_association_request()) ->
+    {ok, get_firewall_rule_group_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_firewall_rule_group_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_firewall_rule_group_association(Client, Input, []).
+
+-spec get_firewall_rule_group_association(map(), get_firewall_rule_group_association_request(), proplists:proplist()) ->
+    {ok, get_firewall_rule_group_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_firewall_rule_group_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFirewallRuleGroupAssociation">>, Input, Options).
@@ -547,9 +2389,26 @@ get_firewall_rule_group_association(Client, Input, Options)
 %%
 %% You can use the policy to share the rule group using Resource Access
 %% Manager (RAM).
+-spec get_firewall_rule_group_policy(map(), get_firewall_rule_group_policy_request()) ->
+    {ok, get_firewall_rule_group_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_firewall_rule_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_firewall_rule_group_policy(Client, Input, []).
+
+-spec get_firewall_rule_group_policy(map(), get_firewall_rule_group_policy_request(), proplists:proplist()) ->
+    {ok, get_firewall_rule_group_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_firewall_rule_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFirewallRuleGroupPolicy">>, Input, Options).
@@ -557,9 +2416,26 @@ get_firewall_rule_group_policy(Client, Input, Options)
 %% @doc Gets information about a specified Resolver on the Outpost, such as
 %% its instance count and
 %% type, name, and the current status of the Resolver.
+-spec get_outpost_resolver(map(), get_outpost_resolver_request()) ->
+    {ok, get_outpost_resolver_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_outpost_resolver(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_outpost_resolver(Client, Input, []).
+
+-spec get_outpost_resolver(map(), get_outpost_resolver_request(), proplists:proplist()) ->
+    {ok, get_outpost_resolver_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_outpost_resolver(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOutpostResolver">>, Input, Options).
@@ -567,17 +2443,55 @@ get_outpost_resolver(Client, Input, Options)
 %% @doc Retrieves the behavior configuration of Route 53 Resolver behavior
 %% for a single VPC from
 %% Amazon Virtual Private Cloud.
+-spec get_resolver_config(map(), get_resolver_config_request()) ->
+    {ok, get_resolver_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_resolver_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_config(Client, Input, []).
+
+-spec get_resolver_config(map(), get_resolver_config_request(), proplists:proplist()) ->
+    {ok, get_resolver_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_resolver_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverConfig">>, Input, Options).
 
 %% @doc Gets DNSSEC validation information for a specified resource.
+-spec get_resolver_dnssec_config(map(), get_resolver_dnssec_config_request()) ->
+    {ok, get_resolver_dnssec_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_dnssec_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_dnssec_config(Client, Input, []).
+
+-spec get_resolver_dnssec_config(map(), get_resolver_dnssec_config_request(), proplists:proplist()) ->
+    {ok, get_resolver_dnssec_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_dnssec_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverDnssecConfig">>, Input, Options).
@@ -585,9 +2499,24 @@ get_resolver_dnssec_config(Client, Input, Options)
 %% @doc Gets information about a specified Resolver endpoint, such as whether
 %% it's an inbound or an outbound Resolver endpoint, and the
 %% current status of the endpoint.
+-spec get_resolver_endpoint(map(), get_resolver_endpoint_request()) ->
+    {ok, get_resolver_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_endpoint(Client, Input, []).
+
+-spec get_resolver_endpoint(map(), get_resolver_endpoint_request(), proplists:proplist()) ->
+    {ok, get_resolver_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverEndpoint">>, Input, Options).
@@ -595,9 +2524,28 @@ get_resolver_endpoint(Client, Input, Options)
 %% @doc Gets information about a specified Resolver query logging
 %% configuration, such as the number of VPCs that the configuration
 %% is logging queries for and the location that logs are sent to.
+-spec get_resolver_query_log_config(map(), get_resolver_query_log_config_request()) ->
+    {ok, get_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_query_log_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_query_log_config(Client, Input, []).
+
+-spec get_resolver_query_log_config(map(), get_resolver_query_log_config_request(), proplists:proplist()) ->
+    {ok, get_resolver_query_log_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_query_log_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverQueryLogConfig">>, Input, Options).
@@ -608,9 +2556,28 @@ get_resolver_query_log_config(Client, Input, Options)
 %% When you associate a VPC
 %% with a query logging configuration, Resolver logs DNS queries that
 %% originate in that VPC.
+-spec get_resolver_query_log_config_association(map(), get_resolver_query_log_config_association_request()) ->
+    {ok, get_resolver_query_log_config_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_query_log_config_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_query_log_config_association(Client, Input, []).
+
+-spec get_resolver_query_log_config_association(map(), get_resolver_query_log_config_association_request(), proplists:proplist()) ->
+    {ok, get_resolver_query_log_config_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_query_log_config_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverQueryLogConfigAssociation">>, Input, Options).
@@ -620,9 +2587,26 @@ get_resolver_query_log_config_association(Client, Input, Options)
 %% A query logging policy specifies the Resolver query logging
 %% operations and resources that you want to allow another Amazon Web
 %% Services account to be able to use.
+-spec get_resolver_query_log_config_policy(map(), get_resolver_query_log_config_policy_request()) ->
+    {ok, get_resolver_query_log_config_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, unknown_resource_exception(), tuple()}.
 get_resolver_query_log_config_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_query_log_config_policy(Client, Input, []).
+
+-spec get_resolver_query_log_config_policy(map(), get_resolver_query_log_config_policy_request(), proplists:proplist()) ->
+    {ok, get_resolver_query_log_config_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, unknown_resource_exception(), tuple()}.
 get_resolver_query_log_config_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverQueryLogConfigPolicy">>, Input, Options).
@@ -630,9 +2614,24 @@ get_resolver_query_log_config_policy(Client, Input, Options)
 %% @doc Gets information about a specified Resolver rule, such as the domain
 %% name that the rule forwards DNS queries for and the ID of the
 %% outbound Resolver endpoint that the rule is associated with.
+-spec get_resolver_rule(map(), get_resolver_rule_request()) ->
+    {ok, get_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_rule(Client, Input, []).
+
+-spec get_resolver_rule(map(), get_resolver_rule_request(), proplists:proplist()) ->
+    {ok, get_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverRule">>, Input, Options).
@@ -643,9 +2642,24 @@ get_resolver_rule(Client, Input, Options)
 %% You associate a Resolver rule and a VPC using
 %% AssociateResolverRule:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverRule.html.
+-spec get_resolver_rule_association(map(), get_resolver_rule_association_request()) ->
+    {ok, get_resolver_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_rule_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_rule_association(Client, Input, []).
+
+-spec get_resolver_rule_association(map(), get_resolver_rule_association_request(), proplists:proplist()) ->
+    {ok, get_resolver_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_resolver_rule_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverRuleAssociation">>, Input, Options).
@@ -655,9 +2669,24 @@ get_resolver_rule_association(Client, Input, Options)
 %% A Resolver rule policy includes the rule that you want to share
 %% with another account, the account that you want to share the rule with,
 %% and the Resolver operations that you want to allow the account to use.
+-spec get_resolver_rule_policy(map(), get_resolver_rule_policy_request()) ->
+    {ok, get_resolver_rule_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, unknown_resource_exception(), tuple()}.
 get_resolver_rule_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_rule_policy(Client, Input, []).
+
+-spec get_resolver_rule_policy(map(), get_resolver_rule_policy_request(), proplists:proplist()) ->
+    {ok, get_resolver_rule_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, unknown_resource_exception(), tuple()}.
 get_resolver_rule_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverRulePolicy">>, Input, Options).
@@ -675,9 +2704,30 @@ get_resolver_rule_policy(Client, Input, Options)
 %% `0-9', `-' (hyphen).
 %%
 %% It must be from 1-255 characters in length.
+-spec import_firewall_domains(map(), import_firewall_domains_request()) ->
+    {ok, import_firewall_domains_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 import_firewall_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_firewall_domains(Client, Input, []).
+
+-spec import_firewall_domains(map(), import_firewall_domains_request(), proplists:proplist()) ->
+    {ok, import_firewall_domains_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 import_firewall_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportFirewallDomains">>, Input, Options).
@@ -689,9 +2739,24 @@ import_firewall_domains(Client, Input, Options)
 %%
 %% A single call might return only a partial list of the configurations. For
 %% information, see `MaxResults'.
+-spec list_firewall_configs(map(), list_firewall_configs_request()) ->
+    {ok, list_firewall_configs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewall_configs(Client, Input, []).
+
+-spec list_firewall_configs(map(), list_firewall_configs_request(), proplists:proplist()) ->
+    {ok, list_firewall_configs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallConfigs">>, Input, Options).
@@ -703,9 +2768,24 @@ list_firewall_configs(Client, Input, Options)
 %%
 %% A single call to this list operation might return only a partial list of
 %% the domain lists. For information, see `MaxResults'.
+-spec list_firewall_domain_lists(map(), list_firewall_domain_lists_request()) ->
+    {ok, list_firewall_domain_lists_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_domain_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewall_domain_lists(Client, Input, []).
+
+-spec list_firewall_domain_lists(map(), list_firewall_domain_lists_request(), proplists:proplist()) ->
+    {ok, list_firewall_domain_lists_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_domain_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallDomainLists">>, Input, Options).
@@ -715,9 +2795,26 @@ list_firewall_domain_lists(Client, Input, Options)
 %%
 %% A single call might return only a partial list of the domains. For
 %% information, see `MaxResults'.
+-spec list_firewall_domains(map(), list_firewall_domains_request()) ->
+    {ok, list_firewall_domains_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewall_domains(Client, Input, []).
+
+-spec list_firewall_domains(map(), list_firewall_domains_request(), proplists:proplist()) ->
+    {ok, list_firewall_domains_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallDomains">>, Input, Options).
@@ -728,9 +2825,24 @@ list_firewall_domains(Client, Input, Options)
 %%
 %% A single call might return only a partial list of the associations. For
 %% information, see `MaxResults'.
+-spec list_firewall_rule_group_associations(map(), list_firewall_rule_group_associations_request()) ->
+    {ok, list_firewall_rule_group_associations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_rule_group_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewall_rule_group_associations(Client, Input, []).
+
+-spec list_firewall_rule_group_associations(map(), list_firewall_rule_group_associations_request(), proplists:proplist()) ->
+    {ok, list_firewall_rule_group_associations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_rule_group_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallRuleGroupAssociations">>, Input, Options).
@@ -740,9 +2852,24 @@ list_firewall_rule_group_associations(Client, Input, Options)
 %%
 %% A single call might return only a partial list of the rule groups. For
 %% information, see `MaxResults'.
+-spec list_firewall_rule_groups(map(), list_firewall_rule_groups_request()) ->
+    {ok, list_firewall_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewall_rule_groups(Client, Input, []).
+
+-spec list_firewall_rule_groups(map(), list_firewall_rule_groups_request(), proplists:proplist()) ->
+    {ok, list_firewall_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallRuleGroups">>, Input, Options).
@@ -755,18 +2882,52 @@ list_firewall_rule_groups(Client, Input, Options)
 %%
 %% A single call might return only a partial list of the rules. For
 %% information, see `MaxResults'.
+-spec list_firewall_rules(map(), list_firewall_rules_request()) ->
+    {ok, list_firewall_rules_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewall_rules(Client, Input, []).
+
+-spec list_firewall_rules(map(), list_firewall_rules_request(), proplists:proplist()) ->
+    {ok, list_firewall_rules_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_firewall_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallRules">>, Input, Options).
 
 %% @doc Lists all the Resolvers on Outposts that were created using the
 %% current Amazon Web Services account.
+-spec list_outpost_resolvers(map(), list_outpost_resolvers_request()) ->
+    {ok, list_outpost_resolvers_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_outpost_resolvers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_outpost_resolvers(Client, Input, []).
+
+-spec list_outpost_resolvers(map(), list_outpost_resolvers_request(), proplists:proplist()) ->
+    {ok, list_outpost_resolvers_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_outpost_resolvers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOutpostResolvers">>, Input, Options).
@@ -775,44 +2936,137 @@ list_outpost_resolvers(Client, Input, Options)
 %%
 %% Route 53 Resolver uses the configurations to manage DNS resolution
 %% behavior for your VPCs.
+-spec list_resolver_configs(map(), list_resolver_configs_request()) ->
+    {ok, list_resolver_configs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_resolver_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_configs(Client, Input, []).
+
+-spec list_resolver_configs(map(), list_resolver_configs_request(), proplists:proplist()) ->
+    {ok, list_resolver_configs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_resolver_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResolverConfigs">>, Input, Options).
 
 %% @doc Lists the configurations for DNSSEC validation that are associated
 %% with the current Amazon Web Services account.
+-spec list_resolver_dnssec_configs(map(), list_resolver_dnssec_configs_request()) ->
+    {ok, list_resolver_dnssec_configs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_dnssec_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_dnssec_configs(Client, Input, []).
+
+-spec list_resolver_dnssec_configs(map(), list_resolver_dnssec_configs_request(), proplists:proplist()) ->
+    {ok, list_resolver_dnssec_configs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_dnssec_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResolverDnssecConfigs">>, Input, Options).
 
 %% @doc Gets the IP addresses for a specified Resolver endpoint.
+-spec list_resolver_endpoint_ip_addresses(map(), list_resolver_endpoint_ip_addresses_request()) ->
+    {ok, list_resolver_endpoint_ip_addresses_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_endpoint_ip_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_endpoint_ip_addresses(Client, Input, []).
+
+-spec list_resolver_endpoint_ip_addresses(map(), list_resolver_endpoint_ip_addresses_request(), proplists:proplist()) ->
+    {ok, list_resolver_endpoint_ip_addresses_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_endpoint_ip_addresses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResolverEndpointIpAddresses">>, Input, Options).
 
 %% @doc Lists all the Resolver endpoints that were created using the current
 %% Amazon Web Services account.
+-spec list_resolver_endpoints(map(), list_resolver_endpoints_request()) ->
+    {ok, list_resolver_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_endpoints(Client, Input, []).
+
+-spec list_resolver_endpoints(map(), list_resolver_endpoints_request(), proplists:proplist()) ->
+    {ok, list_resolver_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResolverEndpoints">>, Input, Options).
 
 %% @doc Lists information about associations between Amazon VPCs and query
 %% logging configurations.
+-spec list_resolver_query_log_config_associations(map(), list_resolver_query_log_config_associations_request()) ->
+    {ok, list_resolver_query_log_config_associations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_query_log_config_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_query_log_config_associations(Client, Input, []).
+
+-spec list_resolver_query_log_config_associations(map(), list_resolver_query_log_config_associations_request(), proplists:proplist()) ->
+    {ok, list_resolver_query_log_config_associations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_query_log_config_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResolverQueryLogConfigAssociations">>, Input, Options).
@@ -821,35 +3075,107 @@ list_resolver_query_log_config_associations(Client, Input, Options)
 %%
 %% Each configuration defines where you want Resolver to save
 %% DNS query logs and specifies the VPCs that you want to log queries for.
+-spec list_resolver_query_log_configs(map(), list_resolver_query_log_configs_request()) ->
+    {ok, list_resolver_query_log_configs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_query_log_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_query_log_configs(Client, Input, []).
+
+-spec list_resolver_query_log_configs(map(), list_resolver_query_log_configs_request(), proplists:proplist()) ->
+    {ok, list_resolver_query_log_configs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_query_log_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResolverQueryLogConfigs">>, Input, Options).
 
 %% @doc Lists the associations that were created between Resolver rules and
 %% VPCs using the current Amazon Web Services account.
+-spec list_resolver_rule_associations(map(), list_resolver_rule_associations_request()) ->
+    {ok, list_resolver_rule_associations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_rule_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_rule_associations(Client, Input, []).
+
+-spec list_resolver_rule_associations(map(), list_resolver_rule_associations_request(), proplists:proplist()) ->
+    {ok, list_resolver_rule_associations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_rule_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResolverRuleAssociations">>, Input, Options).
 
 %% @doc Lists the Resolver rules that were created using the current Amazon
 %% Web Services account.
+-spec list_resolver_rules(map(), list_resolver_rules_request()) ->
+    {ok, list_resolver_rules_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_rules(Client, Input, []).
+
+-spec list_resolver_rules(map(), list_resolver_rules_request(), proplists:proplist()) ->
+    {ok, list_resolver_rules_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_resolver_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResolverRules">>, Input, Options).
 
 %% @doc Lists the tags that you associated with the specified resource.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -861,9 +3187,26 @@ list_tags_for_resource(Client, Input, Options)
 %% You can use the policy to share the rule group using Resource Access
 %% Manager
 %% (RAM).
+-spec put_firewall_rule_group_policy(map(), put_firewall_rule_group_policy_request()) ->
+    {ok, put_firewall_rule_group_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_firewall_rule_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_firewall_rule_group_policy(Client, Input, []).
+
+-spec put_firewall_rule_group_policy(map(), put_firewall_rule_group_policy_request(), proplists:proplist()) ->
+    {ok, put_firewall_rule_group_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_firewall_rule_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutFirewallRuleGroupPolicy">>, Input, Options).
@@ -873,9 +3216,28 @@ put_firewall_rule_group_policy(Client, Input, Options)
 %% want to share,
 %% and the operations that you want the account to be able to perform on the
 %% configuration.
+-spec put_resolver_query_log_config_policy(map(), put_resolver_query_log_config_policy_request()) ->
+    {ok, put_resolver_query_log_config_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_policy_document(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, unknown_resource_exception(), tuple()}.
 put_resolver_query_log_config_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resolver_query_log_config_policy(Client, Input, []).
+
+-spec put_resolver_query_log_config_policy(map(), put_resolver_query_log_config_policy_request(), proplists:proplist()) ->
+    {ok, put_resolver_query_log_config_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_policy_document(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, unknown_resource_exception(), tuple()}.
 put_resolver_query_log_config_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResolverQueryLogConfigPolicy">>, Input, Options).
@@ -884,25 +3246,80 @@ put_resolver_query_log_config_policy(Client, Input, Options)
 %% another account, the account that you want to share the rule with,
 %% and the operations that you want the account to be able to perform on the
 %% rule.
+-spec put_resolver_rule_policy(map(), put_resolver_rule_policy_request()) ->
+    {ok, put_resolver_rule_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_policy_document(), tuple()} |
+    {error, unknown_resource_exception(), tuple()}.
 put_resolver_rule_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resolver_rule_policy(Client, Input, []).
+
+-spec put_resolver_rule_policy(map(), put_resolver_rule_policy_request(), proplists:proplist()) ->
+    {ok, put_resolver_rule_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_policy_document(), tuple()} |
+    {error, unknown_resource_exception(), tuple()}.
 put_resolver_rule_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResolverRulePolicy">>, Input, Options).
 
 %% @doc Adds one or more tags to a specified resource.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes one or more tags from a specified resource.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -910,26 +3327,83 @@ untag_resource(Client, Input, Options)
 %% @doc Updates the configuration of the firewall behavior provided by DNS
 %% Firewall for a single
 %% VPC from Amazon Virtual Private Cloud (Amazon VPC).
+-spec update_firewall_config(map(), update_firewall_config_request()) ->
+    {ok, update_firewall_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_firewall_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_config(Client, Input, []).
+
+-spec update_firewall_config(map(), update_firewall_config_request(), proplists:proplist()) ->
+    {ok, update_firewall_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_firewall_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallConfig">>, Input, Options).
 
 %% @doc Updates the firewall domain list from an array of domain
 %% specifications.
+-spec update_firewall_domains(map(), update_firewall_domains_request()) ->
+    {ok, update_firewall_domains_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_firewall_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_domains(Client, Input, []).
+
+-spec update_firewall_domains(map(), update_firewall_domains_request(), proplists:proplist()) ->
+    {ok, update_firewall_domains_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_firewall_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallDomains">>, Input, Options).
 
 %% @doc Updates the specified firewall rule.
+-spec update_firewall_rule(map(), update_firewall_rule_request()) ->
+    {ok, update_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_firewall_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_rule(Client, Input, []).
+
+-spec update_firewall_rule(map(), update_firewall_rule_request(), proplists:proplist()) ->
+    {ok, update_firewall_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_firewall_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallRule">>, Input, Options).
@@ -937,18 +3411,58 @@ update_firewall_rule(Client, Input, Options)
 %% @doc Changes the association of a `FirewallRuleGroup' with a VPC.
 %%
 %% The association enables DNS filtering for the VPC.
+-spec update_firewall_rule_group_association(map(), update_firewall_rule_group_association_request()) ->
+    {ok, update_firewall_rule_group_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_firewall_rule_group_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_rule_group_association(Client, Input, []).
+
+-spec update_firewall_rule_group_association(map(), update_firewall_rule_group_association_request(), proplists:proplist()) ->
+    {ok, update_firewall_rule_group_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_firewall_rule_group_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallRuleGroupAssociation">>, Input, Options).
 
 %% @doc You can use `UpdateOutpostResolver' to update the instance count,
 %% type, or name of a Resolver on an Outpost.
+-spec update_outpost_resolver(map(), update_outpost_resolver_request()) ->
+    {ok, update_outpost_resolver_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_outpost_resolver(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_outpost_resolver(Client, Input, []).
+
+-spec update_outpost_resolver(map(), update_outpost_resolver_request(), proplists:proplist()) ->
+    {ok, update_outpost_resolver_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_outpost_resolver(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOutpostResolver">>, Input, Options).
@@ -956,9 +3470,34 @@ update_outpost_resolver(Client, Input, Options)
 %% @doc Updates the behavior configuration of Route 53 Resolver behavior for
 %% a single VPC from
 %% Amazon Virtual Private Cloud.
+-spec update_resolver_config(map(), update_resolver_config_request()) ->
+    {ok, update_resolver_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_resolver_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resolver_config(Client, Input, []).
+
+-spec update_resolver_config(map(), update_resolver_config_request(), proplists:proplist()) ->
+    {ok, update_resolver_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_resolver_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResolverConfig">>, Input, Options).
@@ -966,9 +3505,28 @@ update_resolver_config(Client, Input, Options)
 %% @doc Updates an existing DNSSEC validation configuration.
 %%
 %% If there is no existing DNSSEC validation configuration, one is created.
+-spec update_resolver_dnssec_config(map(), update_resolver_dnssec_config_request()) ->
+    {ok, update_resolver_dnssec_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_resolver_dnssec_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resolver_dnssec_config(Client, Input, []).
+
+-spec update_resolver_dnssec_config(map(), update_resolver_dnssec_config_request(), proplists:proplist()) ->
+    {ok, update_resolver_dnssec_config_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_resolver_dnssec_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResolverDnssecConfig">>, Input, Options).
@@ -978,9 +3536,28 @@ update_resolver_dnssec_config(Client, Input, Options)
 %%
 %% You can only update between IPV4 and DUALSTACK, IPV6 endpoint type
 %% can't be updated to other type.
+-spec update_resolver_endpoint(map(), update_resolver_endpoint_request()) ->
+    {ok, update_resolver_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_resolver_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resolver_endpoint(Client, Input, []).
+
+-spec update_resolver_endpoint(map(), update_resolver_endpoint_request(), proplists:proplist()) ->
+    {ok, update_resolver_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_resolver_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResolverEndpoint">>, Input, Options).
@@ -989,9 +3566,32 @@ update_resolver_endpoint(Client, Input, Options)
 %%
 %% `ResolverRuleId' is required, and all other parameters are optional.
 %% If you don't specify a parameter, it retains its current value.
+-spec update_resolver_rule(map(), update_resolver_rule_request()) ->
+    {ok, update_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resolver_rule(Client, Input, []).
+
+-spec update_resolver_rule(map(), update_resolver_rule_request(), proplists:proplist()) ->
+    {ok, update_resolver_rule_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResolverRule">>, Input, Options).

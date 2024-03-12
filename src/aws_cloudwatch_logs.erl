@@ -201,6 +201,1376 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% invalid_sequence_token_exception() :: #{
+%%   <<"expectedSequenceToken">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_sequence_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_anomalies_response() :: #{
+%%   <<"anomalies">> => list(anomaly()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_anomalies_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policies_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_resource_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% delivery() :: #{
+%%   <<"arn">> => string(),
+%%   <<"deliveryDestinationArn">> => string(),
+%%   <<"deliveryDestinationType">> => list(any()),
+%%   <<"deliverySourceName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type delivery() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_groups_request() :: #{
+%%   <<"accountIdentifiers">> => list(string()()),
+%%   <<"includeLinkedAccounts">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupNamePattern">> => string(),
+%%   <<"logGroupNamePrefix">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_log_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_query_definition_request() :: #{
+%%   <<"queryDefinitionId">> := string()
+%% }
+-type delete_query_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_anomaly_detector_request() :: #{
+%%   <<"anomalyDetectorArn">> := string()
+%% }
+-type get_log_anomaly_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_delivery_destination_policy_request() :: #{
+%%   <<"deliveryDestinationName">> := string(),
+%%   <<"deliveryDestinationPolicy">> := string()
+%% }
+-type put_delivery_destination_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% account_policy() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"policyType">> => list(any()),
+%%   <<"scope">> => list(any()),
+%%   <<"selectionCriteria">> => string()
+%% }
+-type account_policy() :: #{binary() => any()}.
+
+%% Example:
+%% create_export_task_request() :: #{
+%%   <<"destination">> := string(),
+%%   <<"destinationPrefix">> => string(),
+%%   <<"from">> := float(),
+%%   <<"logGroupName">> := string(),
+%%   <<"logStreamNamePrefix">> => string(),
+%%   <<"taskName">> => string(),
+%%   <<"to">> := float()
+%% }
+-type create_export_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_log_group_request() :: #{
+%%   <<"logGroupName">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_definitions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryDefinitionNamePrefix">> => string()
+%% }
+-type describe_query_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_log_group_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_log_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_destination_response() :: #{
+%%   <<"destination">> => destination()
+%% }
+-type put_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter_log_events_response() :: #{
+%%   <<"events">> => list(filtered_log_event()()),
+%%   <<"nextToken">> => string(),
+%%   <<"searchedLogStreams">> => list(searched_log_stream()())
+%% }
+-type filter_log_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_destination_request() :: #{
+%%   <<"destinationName">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"targetArn">> := string()
+%% }
+-type put_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_response() :: #{
+%%   <<"encryptionKey">> => string(),
+%%   <<"results">> => list(list(result_field()())()),
+%%   <<"statistics">> => query_statistics(),
+%%   <<"status">> => list(any())
+%% }
+-type get_query_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_queries_request() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_queries_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_policy_response() :: #{
+%%   <<"accountPolicy">> => account_policy()
+%% }
+-type put_account_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_queries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queries">> => list(query_info()())
+%% }
+-type describe_queries_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_log_events_request() :: #{
+%%   <<"logEvents">> := list(input_log_event()()),
+%%   <<"logGroupName">> := string(),
+%%   <<"logStreamName">> := string(),
+%%   <<"sequenceToken">> => string()
+%% }
+-type put_log_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_policy_request() :: #{
+%%   <<"policyDocument">> := string(),
+%%   <<"policyName">> := string(),
+%%   <<"policyType">> := list(any()),
+%%   <<"scope">> => list(any()),
+%%   <<"selectionCriteria">> => string()
+%% }
+-type put_account_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_already_accepted_exception() :: #{
+%%   <<"expectedSequenceToken">> => string(),
+%%   <<"message">> => string()
+%% }
+-type data_already_accepted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% export_task_execution_info() :: #{
+%%   <<"completionTime">> => float(),
+%%   <<"creationTime">> => float()
+%% }
+-type export_task_execution_info() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_protection_policy_request() :: #{
+%%   <<"logGroupIdentifier">> := string(),
+%%   <<"policyDocument">> := string()
+%% }
+-type put_data_protection_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_request() :: #{
+%%   <<"queryId">> := string()
+%% }
+-type get_query_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_delivery_request() :: #{binary() => any()}.
+
+%% Example:
+%% live_tail_session_metadata() :: #{
+%%   <<"sampled">> => boolean()
+%% }
+-type live_tail_session_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% create_log_group_request() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_delivery_destination_request() :: #{
+%%   <<"deliveryDestinationConfiguration">> := delivery_destination_configuration(),
+%%   <<"name">> := string(),
+%%   <<"outputFormat">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type put_delivery_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_source_response() :: #{
+%%   <<"deliverySource">> => delivery_source()
+%% }
+-type get_delivery_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_filter() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"destinationArn">> => string(),
+%%   <<"distribution">> => list(any()),
+%%   <<"filterName">> => string(),
+%%   <<"filterPattern">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type subscription_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_tasks_response() :: #{
+%%   <<"exportTasks">> => list(export_task()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_export_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% live_tail_session_start() :: #{
+%%   <<"logEventFilterPattern">> => string(),
+%%   <<"logGroupIdentifiers">> => list(string()()),
+%%   <<"logStreamNamePrefixes">> => list(string()()),
+%%   <<"logStreamNames">> => list(string()()),
+%%   <<"requestId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type live_tail_session_start() :: #{binary() => any()}.
+
+%% Example:
+%% create_log_stream_request() :: #{
+%%   <<"logGroupName">> := string(),
+%%   <<"logStreamName">> := string()
+%% }
+-type create_log_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_record_response() :: #{
+%%   <<"logRecord">> => map()
+%% }
+-type get_log_record_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_delivery_response() :: #{
+%%   <<"delivery">> => delivery()
+%% }
+-type create_delivery_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_policies_response() :: #{
+%%   <<"accountPolicies">> => list(account_policy()())
+%% }
+-type describe_account_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_anomaly_request() :: #{
+%%   <<"anomalyDetectorArn">> := string(),
+%%   <<"anomalyId">> => string(),
+%%   <<"patternId">> => string(),
+%%   <<"suppressionPeriod">> => suppression_period(),
+%%   <<"suppressionType">> => list(any())
+%% }
+-type update_anomaly_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_retention_policy_request() :: #{
+%%   <<"logGroupName">> := string(),
+%%   <<"retentionInDays">> := integer()
+%% }
+-type put_retention_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_query_request() :: #{
+%%   <<"endTime">> := float(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupIdentifiers">> => list(string()()),
+%%   <<"logGroupName">> => string(),
+%%   <<"logGroupNames">> => list(string()()),
+%%   <<"queryString">> := string(),
+%%   <<"startTime">> := float()
+%% }
+-type start_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_deliveries_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_deliveries_request() :: #{binary() => any()}.
+
+%% Example:
+%% session_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type session_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_group_fields_response() :: #{
+%%   <<"logGroupFields">> => list(log_group_field()())
+%% }
+-type get_log_group_fields_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_log_anomaly_detector_request() :: #{
+%%   <<"anomalyDetectorArn">> := string(),
+%%   <<"anomalyVisibilityTime">> => float(),
+%%   <<"enabled">> := boolean(),
+%%   <<"evaluationFrequency">> => list(any()),
+%%   <<"filterPattern">> => string()
+%% }
+-type update_log_anomaly_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_filters_request() :: #{
+%%   <<"filterNamePrefix">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupName">> => string(),
+%%   <<"metricName">> => string(),
+%%   <<"metricNamespace">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_metric_filters_request() :: #{binary() => any()}.
+
+%% Example:
+%% session_streaming_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type session_streaming_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_data_protection_policy_response() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"policyDocument">> => string()
+%% }
+-type put_data_protection_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_destinations_response() :: #{
+%%   <<"destinations">> => list(destination()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% live_tail_session_update() :: #{
+%%   <<"sessionMetadata">> => live_tail_session_metadata(),
+%%   <<"sessionResults">> => list(live_tail_session_log_event()())
+%% }
+-type live_tail_session_update() :: #{binary() => any()}.
+
+%% Example:
+%% query_compile_error_location() :: #{
+%%   <<"endCharOffset">> => integer(),
+%%   <<"startCharOffset">> => integer()
+%% }
+-type query_compile_error_location() :: #{binary() => any()}.
+
+%% Example:
+%% operation_aborted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_aborted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_definitions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queryDefinitions">> => list(query_definition()())
+%% }
+-type describe_query_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_response() :: #{
+%%   <<"delivery">> => delivery()
+%% }
+-type get_delivery_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscription_filters_request() :: #{
+%%   <<"filterNamePrefix">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupName">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_subscription_filters_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_destination_policy_request() :: #{
+%%   <<"accessPolicy">> := string(),
+%%   <<"destinationName">> := string(),
+%%   <<"forceUpdate">> => boolean()
+%% }
+-type put_destination_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% input_log_event() :: #{
+%%   <<"message">> => string(),
+%%   <<"timestamp">> => float()
+%% }
+-type input_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% delete_retention_policy_request() :: #{
+%%   <<"logGroupName">> := string()
+%% }
+-type delete_retention_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_query_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"queryCompileError">> => query_compile_error()
+%% }
+-type malformed_query_exception() :: #{binary() => any()}.
+
+%% Example:
+%% live_tail_session_log_event() :: #{
+%%   <<"ingestionTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logStreamName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"timestamp">> => float()
+%% }
+-type live_tail_session_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_destination_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_delivery_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_anomaly_detector_request() :: #{
+%%   <<"anomalyDetectorArn">> := string()
+%% }
+-type delete_log_anomaly_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_kms_key_request() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"resourceIdentifier">> => string()
+%% }
+-type disassociate_kms_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_tasks_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"statusCode">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type describe_export_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_anomaly_detector_response() :: #{
+%%   <<"anomalyDetectorStatus">> => list(any()),
+%%   <<"anomalyVisibilityTime">> => float(),
+%%   <<"creationTimeStamp">> => float(),
+%%   <<"detectorName">> => string(),
+%%   <<"evaluationFrequency">> => list(any()),
+%%   <<"filterPattern">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastModifiedTimeStamp">> => float(),
+%%   <<"logGroupArnList">> => list(string()())
+%% }
+-type get_log_anomaly_detector_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_query_definition_response() :: #{
+%%   <<"success">> => boolean()
+%% }
+-type delete_query_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_streams_response() :: #{
+%%   <<"logStreams">> => list(log_stream()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_log_streams_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_delivery_destination_policy_response() :: #{
+%%   <<"policy">> => policy()
+%% }
+-type put_delivery_destination_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_task_status() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type export_task_status() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_destination_configuration() :: #{
+%%   <<"destinationResourceArn">> => string()
+%% }
+-type delivery_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% suppression_period() :: #{
+%%   <<"suppressionUnit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type suppression_period() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pattern_token() :: #{
+%%   <<"dynamicTokenPosition">> => integer(),
+%%   <<"enumerations">> => map(),
+%%   <<"isDynamic">> => boolean(),
+%%   <<"tokenString">> => string()
+%% }
+-type pattern_token() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_stream_request() :: #{
+%%   <<"logGroupName">> := string(),
+%%   <<"logStreamName">> := string()
+%% }
+-type delete_log_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_export_task_response() :: #{
+%%   <<"taskId">> => string()
+%% }
+-type create_export_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_delivery_destinations_response() :: #{
+%%   <<"deliveryDestinations">> => list(delivery_destination()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_delivery_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_kms_key_request() :: #{
+%%   <<"kmsKeyId">> := string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"resourceIdentifier">> => string()
+%% }
+-type associate_kms_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_record_request() :: #{
+%%   <<"logRecordPointer">> := string(),
+%%   <<"unmask">> => boolean()
+%% }
+-type get_log_record_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_destination_policy_request() :: #{
+%%   <<"deliveryDestinationName">> := string()
+%% }
+-type delete_delivery_destination_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% metric_filter_match_record() :: #{
+%%   <<"eventMessage">> => string(),
+%%   <<"eventNumber">> => float(),
+%%   <<"extractedValues">> => map()
+%% }
+-type metric_filter_match_record() :: #{binary() => any()}.
+
+%% Example:
+%% stop_query_request() :: #{
+%%   <<"queryId">> := string()
+%% }
+-type stop_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_query_response() :: #{
+%%   <<"success">> => boolean()
+%% }
+-type stop_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_log_anomaly_detector_response() :: #{
+%%   <<"anomalyDetectorArn">> => string()
+%% }
+-type create_log_anomaly_detector_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_delivery_source_request() :: #{
+%%   <<"logType">> := string(),
+%%   <<"name">> := string(),
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type put_delivery_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% log_group_field() :: #{
+%%   <<"name">> => string(),
+%%   <<"percent">> => integer()
+%% }
+-type log_group_field() :: #{binary() => any()}.
+
+%% Example:
+%% log_stream() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => float(),
+%%   <<"firstEventTimestamp">> => float(),
+%%   <<"lastEventTimestamp">> => float(),
+%%   <<"lastIngestionTime">> => float(),
+%%   <<"logStreamName">> => string(),
+%%   <<"storedBytes">> => float(),
+%%   <<"uploadSequenceToken">> => string()
+%% }
+-type log_stream() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_metric_filter_request() :: #{
+%%   <<"filterName">> := string(),
+%%   <<"filterPattern">> := string(),
+%%   <<"logGroupName">> := string(),
+%%   <<"metricTransformations">> := list(metric_transformation()())
+%% }
+-type put_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% filter_log_events_request() :: #{
+%%   <<"endTime">> => float(),
+%%   <<"filterPattern">> => string(),
+%%   <<"interleaved">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string(),
+%%   <<"logStreamNames">> => list(string()()),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => float(),
+%%   <<"unmask">> => boolean()
+%% }
+-type filter_log_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_deliveries_response() :: #{
+%%   <<"deliveries">> => list(delivery()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_deliveries_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_destination_request() :: #{
+%%   <<"destinationName">> := string()
+%% }
+-type delete_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_policy_request() :: #{
+%%   <<"policyName">> := string(),
+%%   <<"policyType">> := list(any())
+%% }
+-type delete_account_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_groups_response() :: #{
+%%   <<"logGroups">> => list(log_group()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_log_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_log_group_request() :: #{
+%%   <<"logGroupName">> := string(),
+%%   <<"tags">> := list(string()())
+%% }
+-type untag_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_subscription_filter_request() :: #{
+%%   <<"destinationArn">> := string(),
+%%   <<"distribution">> => list(any()),
+%%   <<"filterName">> := string(),
+%%   <<"filterPattern">> := string(),
+%%   <<"logGroupName">> := string(),
+%%   <<"roleArn">> => string()
+%% }
+-type put_subscription_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_delivery_sources_response() :: #{
+%%   <<"deliverySources">> => list(delivery_source()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_delivery_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_live_tail_response() :: #{
+%%   <<"responseStream">> => list()
+%% }
+-type start_live_tail_response() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_destination() :: #{
+%%   <<"arn">> => string(),
+%%   <<"deliveryDestinationConfiguration">> => delivery_destination_configuration(),
+%%   <<"deliveryDestinationType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"outputFormat">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type delivery_destination() :: #{binary() => any()}.
+
+%% Example:
+%% query_compile_error() :: #{
+%%   <<"location">> => query_compile_error_location(),
+%%   <<"message">> => string()
+%% }
+-type query_compile_error() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_destination_response() :: #{
+%%   <<"deliveryDestination">> => delivery_destination()
+%% }
+-type get_delivery_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_log_anomaly_detector_request() :: #{
+%%   <<"anomalyVisibilityTime">> => float(),
+%%   <<"detectorName">> => string(),
+%%   <<"evaluationFrequency">> => list(any()),
+%%   <<"filterPattern">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logGroupArnList">> := list(string()()),
+%%   <<"tags">> => map()
+%% }
+-type create_log_anomaly_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_destination_policy_response() :: #{
+%%   <<"policy">> => policy()
+%% }
+-type get_delivery_destination_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_group_fields_request() :: #{
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"time">> => float()
+%% }
+-type get_log_group_fields_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_query_definition_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"logGroupNames">> => list(string()()),
+%%   <<"name">> := string(),
+%%   <<"queryDefinitionId">> => string(),
+%%   <<"queryString">> := string()
+%% }
+-type put_query_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_task() :: #{
+%%   <<"destination">> => string(),
+%%   <<"destinationPrefix">> => string(),
+%%   <<"executionInfo">> => export_task_execution_info(),
+%%   <<"from">> => float(),
+%%   <<"logGroupName">> => string(),
+%%   <<"status">> => export_task_status(),
+%%   <<"taskId">> => string(),
+%%   <<"taskName">> => string(),
+%%   <<"to">> => float()
+%% }
+-type export_task() :: #{binary() => any()}.
+
+%% Example:
+%% metric_transformation() :: #{
+%%   <<"defaultValue">> => float(),
+%%   <<"dimensions">> => map(),
+%%   <<"metricName">> => string(),
+%%   <<"metricNamespace">> => string(),
+%%   <<"metricValue">> => string(),
+%%   <<"unit">> => list(any())
+%% }
+-type metric_transformation() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_log_group_request() :: #{
+%%   <<"logGroupName">> := string()
+%% }
+-type list_tags_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string()
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% anomaly() :: #{
+%%   <<"active">> => boolean(),
+%%   <<"anomalyDetectorArn">> => string(),
+%%   <<"anomalyId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"firstSeen">> => float(),
+%%   <<"histogram">> => map(),
+%%   <<"isPatternLevelSuppression">> => boolean(),
+%%   <<"lastSeen">> => float(),
+%%   <<"logGroupArnList">> => list(string()()),
+%%   <<"logSamples">> => list(string()()),
+%%   <<"patternId">> => string(),
+%%   <<"patternRegex">> => string(),
+%%   <<"patternString">> => string(),
+%%   <<"patternTokens">> => list(pattern_token()()),
+%%   <<"priority">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"suppressed">> => boolean(),
+%%   <<"suppressedDate">> => float(),
+%%   <<"suppressedUntil">> => float()
+%% }
+-type anomaly() :: #{binary() => any()}.
+
+%% Example:
+%% list_anomalies_request() :: #{
+%%   <<"anomalyDetectorArn">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"suppressionState">> => list(any())
+%% }
+-type list_anomalies_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_delivery_destination_response() :: #{
+%%   <<"deliveryDestination">> => delivery_destination()
+%% }
+-type put_delivery_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_delivery_sources_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_delivery_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_query_response() :: #{
+%%   <<"queryId">> => string()
+%% }
+-type start_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_live_tail_request() :: #{
+%%   <<"logEventFilterPattern">> => string(),
+%%   <<"logGroupIdentifiers">> := list(string()()),
+%%   <<"logStreamNamePrefixes">> => list(string()()),
+%%   <<"logStreamNames">> => list(string()())
+%% }
+-type start_live_tail_request() :: #{binary() => any()}.
+
+%% Example:
+%% filtered_log_event() :: #{
+%%   <<"eventId">> => string(),
+%%   <<"ingestionTime">> => float(),
+%%   <<"logStreamName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"timestamp">> => float()
+%% }
+-type filtered_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_protection_policy_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type delete_data_protection_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% policy() :: #{
+%%   <<"deliveryDestinationPolicy">> => string()
+%% }
+-type policy() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_source_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_delivery_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_events_request() :: #{
+%%   <<"endTime">> => float(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamName">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"startFromHead">> => boolean(),
+%%   <<"startTime">> => float(),
+%%   <<"unmask">> => boolean()
+%% }
+-type get_log_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% rejected_log_events_info() :: #{
+%%   <<"expiredLogEventEndIndex">> => integer(),
+%%   <<"tooNewLogEventStartIndex">> => integer(),
+%%   <<"tooOldLogEventEndIndex">> => integer()
+%% }
+-type rejected_log_events_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_protection_policy_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type get_data_protection_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_events_response() :: #{
+%%   <<"events">> => list(output_log_event()()),
+%%   <<"nextBackwardToken">> => string(),
+%%   <<"nextForwardToken">> => string()
+%% }
+-type get_log_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% output_log_event() :: #{
+%%   <<"ingestionTime">> => float(),
+%%   <<"message">> => string(),
+%%   <<"timestamp">> => float()
+%% }
+-type output_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% searched_log_stream() :: #{
+%%   <<"logStreamName">> => string(),
+%%   <<"searchedCompletely">> => boolean()
+%% }
+-type searched_log_stream() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_policies_request() :: #{
+%%   <<"accountIdentifiers">> => list(string()()),
+%%   <<"policyName">> => string(),
+%%   <<"policyType">> := list(any())
+%% }
+-type describe_account_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% metric_filter() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"filterName">> => string(),
+%%   <<"filterPattern">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"metricTransformations">> => list(metric_transformation()())
+%% }
+-type metric_filter() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% destination() :: #{
+%%   <<"accessPolicy">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => float(),
+%%   <<"destinationName">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"targetArn">> => string()
+%% }
+-type destination() :: #{binary() => any()}.
+
+%% Example:
+%% put_log_events_response() :: #{
+%%   <<"nextSequenceToken">> => string(),
+%%   <<"rejectedLogEventsInfo">> => rejected_log_events_info()
+%% }
+-type put_log_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_delivery_source_response() :: #{
+%%   <<"deliverySource">> => delivery_source()
+%% }
+-type put_delivery_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type delete_delivery_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% log_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => float(),
+%%   <<"dataProtectionStatus">> => list(any()),
+%%   <<"inheritedProperties">> => list(list(any())()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logGroupArn">> => string(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupName">> => string(),
+%%   <<"metricFilterCount">> => integer(),
+%%   <<"retentionInDays">> => integer(),
+%%   <<"storedBytes">> => float()
+%% }
+-type log_group() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_anomaly_detectors_request() :: #{
+%%   <<"filterLogGroupArn">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_anomaly_detectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_streams_request() :: #{
+%%   <<"descending">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"orderBy">> => list(any())
+%% }
+-type describe_log_streams_request() :: #{binary() => any()}.
+
+%% Example:
+%% result_field() :: #{
+%%   <<"field">> => string(),
+%%   <<"value">> => string()
+%% }
+-type result_field() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"resourcePolicy">> => resource_policy()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_source_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_delivery_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_filter_request() :: #{
+%%   <<"filterName">> := string(),
+%%   <<"logGroupName">> := string()
+%% }
+-type delete_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourcePolicies">> => list(resource_policy()())
+%% }
+-type describe_resource_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscription_filters_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscriptionFilters">> => list(subscription_filter()())
+%% }
+-type describe_subscription_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_statistics() :: #{
+%%   <<"bytesScanned">> => float(),
+%%   <<"recordsMatched">> => float(),
+%%   <<"recordsScanned">> => float()
+%% }
+-type query_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_protection_policy_response() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"policyDocument">> => string()
+%% }
+-type get_data_protection_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_source() :: #{
+%%   <<"arn">> => string(),
+%%   <<"logType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceArns">> => list(string()()),
+%%   <<"service">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type delivery_source() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"policyName">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% anomaly_detector() :: #{
+%%   <<"anomalyDetectorArn">> => string(),
+%%   <<"anomalyDetectorStatus">> => list(any()),
+%%   <<"anomalyVisibilityTime">> => float(),
+%%   <<"creationTimeStamp">> => float(),
+%%   <<"detectorName">> => string(),
+%%   <<"evaluationFrequency">> => list(any()),
+%%   <<"filterPattern">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastModifiedTimeStamp">> => float(),
+%%   <<"logGroupArnList">> => list(string()())
+%% }
+-type anomaly_detector() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_anomaly_detectors_response() :: #{
+%%   <<"anomalyDetectors">> => list(anomaly_detector()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_anomaly_detectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_destination_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_delivery_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_export_task_request() :: #{
+%%   <<"taskId">> := string()
+%% }
+-type cancel_export_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscription_filter_request() :: #{
+%%   <<"filterName">> := string(),
+%%   <<"logGroupName">> := string()
+%% }
+-type delete_subscription_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_destinations_request() :: #{
+%%   <<"DestinationNamePrefix">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_destinations_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_metric_filter_response() :: #{
+%%   <<"matches">> => list(metric_filter_match_record()())
+%% }
+-type test_metric_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_definition() :: #{
+%%   <<"lastModified">> => float(),
+%%   <<"logGroupNames">> => list(string()()),
+%%   <<"name">> => string(),
+%%   <<"queryDefinitionId">> => string(),
+%%   <<"queryString">> => string()
+%% }
+-type query_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_destination_policy_request() :: #{
+%%   <<"deliveryDestinationName">> := string()
+%% }
+-type get_delivery_destination_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_delivery_destinations_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_delivery_destinations_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_delivery_request() :: #{
+%%   <<"deliveryDestinationArn">> := string(),
+%%   <<"deliverySourceName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_delivery_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_group_request() :: #{
+%%   <<"logGroupName">> := string()
+%% }
+-type delete_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_metric_filter_request() :: #{
+%%   <<"filterPattern">> := string(),
+%%   <<"logEventMessages">> := list(string()())
+%% }
+-type test_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% query_info() :: #{
+%%   <<"createTime">> => float(),
+%%   <<"logGroupName">> => string(),
+%%   <<"queryId">> => string(),
+%%   <<"queryString">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type query_info() :: #{binary() => any()}.
+
+%% Example:
+%% unrecognized_client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unrecognized_client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_filters_response() :: #{
+%%   <<"metricFilters">> => list(metric_filter()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_metric_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_query_definition_response() :: #{
+%%   <<"queryDefinitionId">> => string()
+%% }
+-type put_query_definition_response() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -271,9 +1641,24 @@
 %% If you attempt to associate a KMS key with a log group but the KMS key
 %% does not exist or the KMS key is disabled, you receive an
 %% `InvalidParameterException' error.
+-spec associate_kms_key(map(), associate_kms_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 associate_kms_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_kms_key(Client, Input, []).
+
+-spec associate_kms_key(map(), associate_kms_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 associate_kms_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateKmsKey">>, Input, Options).
@@ -281,9 +1666,24 @@ associate_kms_key(Client, Input, Options)
 %% @doc Cancels the specified export task.
 %%
 %% The task must be in the `PENDING' or `RUNNING' state.
+-spec cancel_export_task(map(), cancel_export_task_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 cancel_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_export_task(Client, Input, []).
+
+-spec cancel_export_task(map(), cancel_export_task_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 cancel_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelExportTask">>, Input, Options).
@@ -335,9 +1735,30 @@ cancel_export_task(Client, Input, Options)
 %%
 %% You can't update an existing delivery. You can only create and delete
 %% deliveries.
+-spec create_delivery(map(), create_delivery_request()) ->
+    {ok, create_delivery_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_delivery(Client, Input, []).
+
+-spec create_delivery(map(), create_delivery_request(), proplists:proplist()) ->
+    {ok, create_delivery_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_delivery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDelivery">>, Input, Options).
@@ -379,9 +1800,28 @@ create_delivery(Client, Input, Options)
 %% Time-based sorting on chunks of log data inside an exported file is not
 %% guaranteed. You can
 %% sort the exported log field data by using Linux utilities.
+-spec create_export_task(map(), create_export_task_request()) ->
+    {ok, create_export_task_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export_task(Client, Input, []).
+
+-spec create_export_task(map(), create_export_task_request(), proplists:proplist()) ->
+    {ok, create_export_task_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExportTask">>, Input, Options).
@@ -429,9 +1869,26 @@ create_export_task(Client, Input, Options)
 %% Help protect sensitive log data with
 %% masking:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html.
+-spec create_log_anomaly_detector(map(), create_log_anomaly_detector_request()) ->
+    {ok, create_log_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_anomaly_detector(Client, Input, []).
+
+-spec create_log_anomaly_detector(map(), create_log_anomaly_detector_request(), proplists:proplist()) ->
+    {ok, create_log_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogAnomalyDetector">>, Input, Options).
@@ -475,9 +1932,26 @@ create_log_anomaly_detector(Client, Input, Options)
 %% asymmetric KMS key with your log group. For more information, see Using
 %% Symmetric and Asymmetric Keys:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html.
+-spec create_log_group(map(), create_log_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_group(Client, Input, []).
+
+-spec create_log_group(map(), create_log_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogGroup">>, Input, Options).
@@ -501,9 +1975,24 @@ create_log_group(Client, Input, Options)
 %% Log stream names can be between 1 and 512 characters long.
 %%
 %% Don't use ':' (colon) or '*' (asterisk) characters.
+-spec create_log_stream(map(), create_log_stream_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_log_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_stream(Client, Input, []).
+
+-spec create_log_stream(map(), create_log_stream_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 create_log_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogStream">>, Input, Options).
@@ -525,9 +2014,24 @@ create_log_stream(Client, Input, Options)
 %% To delete a subscription filter policy, you must have the
 %% `logs:DeleteSubscriptionFilter' and
 %% `logs:DeleteAccountPolicy' permissions.
+-spec delete_account_policy(map(), delete_account_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_account_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_policy(Client, Input, []).
+
+-spec delete_account_policy(map(), delete_account_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_account_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccountPolicy">>, Input, Options).
@@ -537,9 +2041,24 @@ delete_account_policy(Client, Input, Options)
 %% For more information about data protection policies, see
 %% PutDataProtectionPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDataProtectionPolicy.html.
+-spec delete_data_protection_policy(map(), delete_data_protection_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_protection_policy(Client, Input, []).
+
+-spec delete_data_protection_policy(map(), delete_data_protection_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataProtectionPolicy">>, Input, Options).
@@ -550,9 +2069,28 @@ delete_data_protection_policy(Client, Input, Options)
 %% delivery destination. Deleting a delivery only deletes the connection
 %% between the delivery source and delivery destination. It does
 %% not delete the delivery destination or the delivery source.
+-spec delete_delivery(map(), delete_delivery_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery(Client, Input, []).
+
+-spec delete_delivery(map(), delete_delivery_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_delivery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDelivery">>, Input, Options).
@@ -567,9 +2105,28 @@ delete_delivery(Client, Input, Options)
 %% this delivery destination, use the DescribeDeliveries:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html
 %% operation and check the `deliveryDestinationArn' field in the results.
+-spec delete_delivery_destination(map(), delete_delivery_destination_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_destination(Client, Input, []).
+
+-spec delete_delivery_destination(map(), delete_delivery_destination_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_delivery_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliveryDestination">>, Input, Options).
@@ -579,9 +2136,24 @@ delete_delivery_destination(Client, Input, Options)
 %% For more information about these policies,
 %% see PutDeliveryDestinationPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html.
+-spec delete_delivery_destination_policy(map(), delete_delivery_destination_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_destination_policy(Client, Input, []).
+
+-spec delete_delivery_destination_policy(map(), delete_delivery_destination_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_delivery_destination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliveryDestinationPolicy">>, Input, Options).
@@ -596,9 +2168,28 @@ delete_delivery_destination_policy(Client, Input, Options)
 %% this delivery source, use the DescribeDeliveries:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html
 %% operation and check the `deliverySourceName' field in the results.
+-spec delete_delivery_source(map(), delete_delivery_source_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_source(Client, Input, []).
+
+-spec delete_delivery_source(map(), delete_delivery_source_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_delivery_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDeliverySource">>, Input, Options).
@@ -608,17 +2199,47 @@ delete_delivery_source(Client, Input, Options)
 %%
 %% This operation does not delete the
 %% physical resource encapsulated by the destination.
+-spec delete_destination(map(), delete_destination_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_destination(Client, Input, []).
+
+-spec delete_destination(map(), delete_destination_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDestination">>, Input, Options).
 
 %% @doc Deletes the specified CloudWatch Logs anomaly detector.
+-spec delete_log_anomaly_detector(map(), delete_log_anomaly_detector_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_anomaly_detector(Client, Input, []).
+
+-spec delete_log_anomaly_detector(map(), delete_log_anomaly_detector_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLogAnomalyDetector">>, Input, Options).
@@ -626,9 +2247,24 @@ delete_log_anomaly_detector(Client, Input, Options)
 %% @doc Deletes the specified log group and permanently deletes all the
 %% archived
 %% log events associated with the log group.
+-spec delete_log_group(map(), delete_log_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_group(Client, Input, []).
+
+-spec delete_log_group(map(), delete_log_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLogGroup">>, Input, Options).
@@ -636,17 +2272,47 @@ delete_log_group(Client, Input, Options)
 %% @doc Deletes the specified log stream and permanently deletes all the
 %% archived log events associated
 %% with the log stream.
+-spec delete_log_stream(map(), delete_log_stream_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_log_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_stream(Client, Input, []).
+
+-spec delete_log_stream(map(), delete_log_stream_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_log_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLogStream">>, Input, Options).
 
 %% @doc Deletes the specified metric filter.
+-spec delete_metric_filter(map(), delete_metric_filter_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_filter(Client, Input, []).
+
+-spec delete_metric_filter(map(), delete_metric_filter_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMetricFilter">>, Input, Options).
@@ -662,9 +2328,22 @@ delete_metric_filter(Client, Input, Options)
 %% You must have the `logs:DeleteQueryDefinition' permission to be able
 %% to perform
 %% this operation.
+-spec delete_query_definition(map(), delete_query_definition_request()) ->
+    {ok, delete_query_definition_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_query_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_query_definition(Client, Input, []).
+
+-spec delete_query_definition(map(), delete_query_definition_request(), proplists:proplist()) ->
+    {ok, delete_query_definition_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_query_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteQueryDefinition">>, Input, Options).
@@ -674,9 +2353,22 @@ delete_query_definition(Client, Input, Options)
 %% This revokes
 %% the access of the identities in that policy to put log events to this
 %% account.
+-spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -685,26 +2377,71 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% Log events do not expire if they belong to log groups without a retention
 %% policy.
+-spec delete_retention_policy(map(), delete_retention_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_retention_policy(Client, Input, []).
+
+-spec delete_retention_policy(map(), delete_retention_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRetentionPolicy">>, Input, Options).
 
 %% @doc Deletes the specified subscription filter.
+-spec delete_subscription_filter(map(), delete_subscription_filter_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_subscription_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subscription_filter(Client, Input, []).
+
+-spec delete_subscription_filter(map(), delete_subscription_filter_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 delete_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubscriptionFilter">>, Input, Options).
 
 %% @doc Returns a list of all CloudWatch Logs account policies in the
 %% account.
+-spec describe_account_policies(map(), describe_account_policies_request()) ->
+    {ok, describe_account_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_account_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_policies(Client, Input, []).
+
+-spec describe_account_policies(map(), describe_account_policies_request(), proplists:proplist()) ->
+    {ok, describe_account_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_account_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountPolicies">>, Input, Options).
@@ -732,27 +2469,72 @@ describe_account_policies(Client, Input, Options)
 %% in Enable logging from Amazon Web Services
 %% services.:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
+-spec describe_deliveries(map(), describe_deliveries_request()) ->
+    {ok, describe_deliveries_response(), tuple()} |
+    {error, any()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_deliveries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_deliveries(Client, Input, []).
+
+-spec describe_deliveries(map(), describe_deliveries_request(), proplists:proplist()) ->
+    {ok, describe_deliveries_response(), tuple()} |
+    {error, any()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_deliveries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveries">>, Input, Options).
 
 %% @doc Retrieves a list of the delivery destinations that have been created
 %% in the account.
+-spec describe_delivery_destinations(map(), describe_delivery_destinations_request()) ->
+    {ok, describe_delivery_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_delivery_destinations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_destinations(Client, Input, []).
+
+-spec describe_delivery_destinations(map(), describe_delivery_destinations_request(), proplists:proplist()) ->
+    {ok, describe_delivery_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_delivery_destinations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryDestinations">>, Input, Options).
 
 %% @doc Retrieves a list of the delivery sources that have been created in
 %% the account.
+-spec describe_delivery_sources(map(), describe_delivery_sources_request()) ->
+    {ok, describe_delivery_sources_response(), tuple()} |
+    {error, any()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_delivery_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_delivery_sources(Client, Input, []).
+
+-spec describe_delivery_sources(map(), describe_delivery_sources_request(), proplists:proplist()) ->
+    {ok, describe_delivery_sources_response(), tuple()} |
+    {error, any()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_delivery_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliverySources">>, Input, Options).
@@ -760,9 +2542,20 @@ describe_delivery_sources(Client, Input, Options)
 %% @doc Lists all your destinations.
 %%
 %% The results are ASCII-sorted by destination name.
+-spec describe_destinations(map(), describe_destinations_request()) ->
+    {ok, describe_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_destinations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_destinations(Client, Input, []).
+
+-spec describe_destinations(map(), describe_destinations_request(), proplists:proplist()) ->
+    {ok, describe_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_destinations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDestinations">>, Input, Options).
@@ -771,9 +2564,20 @@ describe_destinations(Client, Input, Options)
 %%
 %% You can list all your export tasks or filter
 %% the results based on task ID or task status.
+-spec describe_export_tasks(map(), describe_export_tasks_request()) ->
+    {ok, describe_export_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_export_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_tasks(Client, Input, []).
+
+-spec describe_export_tasks(map(), describe_export_tasks_request(), proplists:proplist()) ->
+    {ok, describe_export_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_export_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExportTasks">>, Input, Options).
@@ -801,9 +2605,20 @@ describe_export_tasks(Client, Input, Options)
 %% view data from the linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
+-spec describe_log_groups(map(), describe_log_groups_request()) ->
+    {ok, describe_log_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_log_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_groups(Client, Input, []).
+
+-spec describe_log_groups(map(), describe_log_groups_request(), proplists:proplist()) ->
+    {ok, describe_log_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_log_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLogGroups">>, Input, Options).
@@ -826,9 +2641,22 @@ describe_log_groups(Client, Input, Options)
 %% view data from the linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
+-spec describe_log_streams(map(), describe_log_streams_request()) ->
+    {ok, describe_log_streams_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_log_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_streams(Client, Input, []).
+
+-spec describe_log_streams(map(), describe_log_streams_request(), proplists:proplist()) ->
+    {ok, describe_log_streams_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_log_streams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLogStreams">>, Input, Options).
@@ -839,9 +2667,22 @@ describe_log_streams(Client, Input, Options)
 %% the results by log name, prefix, metric name, or metric namespace. The
 %% results are
 %% ASCII-sorted by filter name.
+-spec describe_metric_filters(map(), describe_metric_filters_request()) ->
+    {ok, describe_metric_filters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_metric_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metric_filters(Client, Input, []).
+
+-spec describe_metric_filters(map(), describe_metric_filters_request(), proplists:proplist()) ->
+    {ok, describe_metric_filters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_metric_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetricFilters">>, Input, Options).
@@ -852,9 +2693,22 @@ describe_metric_filters(Client, Input, Options)
 %%
 %% You can request all queries or limit it to queries of a
 %% specific log group or queries with a certain status.
+-spec describe_queries(map(), describe_queries_request()) ->
+    {ok, describe_queries_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_queries(Client, Input, []).
+
+-spec describe_queries(map(), describe_queries_request(), proplists:proplist()) ->
+    {ok, describe_queries_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQueries">>, Input, Options).
@@ -869,17 +2723,39 @@ describe_queries(Client, Input, Options)
 %% You can use the `queryDefinitionNamePrefix' parameter to limit the
 %% results to only the
 %% query definitions that have names that start with a certain string.
+-spec describe_query_definitions(map(), describe_query_definitions_request()) ->
+    {ok, describe_query_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_query_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_definitions(Client, Input, []).
+
+-spec describe_query_definitions(map(), describe_query_definitions_request(), proplists:proplist()) ->
+    {ok, describe_query_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_query_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQueryDefinitions">>, Input, Options).
 
 %% @doc Lists the resource policies in this account.
+-spec describe_resource_policies(map(), describe_resource_policies_request()) ->
+    {ok, describe_resource_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policies(Client, Input, []).
+
+-spec describe_resource_policies(map(), describe_resource_policies_request(), proplists:proplist()) ->
+    {ok, describe_resource_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_resource_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicies">>, Input, Options).
@@ -888,9 +2764,22 @@ describe_resource_policies(Client, Input, Options)
 %%
 %% You can list all the subscription filters or filter the results by prefix.
 %% The results are ASCII-sorted by filter name.
+-spec describe_subscription_filters(map(), describe_subscription_filters_request()) ->
+    {ok, describe_subscription_filters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_subscription_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subscription_filters(Client, Input, []).
+
+-spec describe_subscription_filters(map(), describe_subscription_filters_request(), proplists:proplist()) ->
+    {ok, describe_subscription_filters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 describe_subscription_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubscriptionFilters">>, Input, Options).
@@ -926,9 +2815,24 @@ describe_subscription_filters(Client, Input, Options)
 %% permissions for the key whenever that data is accessed.
 %%
 %% It can take up to 5 minutes for this operation to take effect.
+-spec disassociate_kms_key(map(), disassociate_kms_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 disassociate_kms_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_kms_key(Client, Input, []).
+
+-spec disassociate_kms_key(map(), disassociate_kms_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 disassociate_kms_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateKmsKey">>, Input, Options).
@@ -965,17 +2869,45 @@ disassociate_kms_key(Client, Input, Options)
 %% view data from the linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
+-spec filter_log_events(map(), filter_log_events_request()) ->
+    {ok, filter_log_events_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 filter_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     filter_log_events(Client, Input, []).
+
+-spec filter_log_events(map(), filter_log_events_request(), proplists:proplist()) ->
+    {ok, filter_log_events_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 filter_log_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FilterLogEvents">>, Input, Options).
 
 %% @doc Returns information about a log group data protection policy.
+-spec get_data_protection_policy(map(), get_data_protection_policy_request()) ->
+    {ok, get_data_protection_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_data_protection_policy(Client, Input, []).
+
+-spec get_data_protection_policy(map(), get_data_protection_policy_request(), proplists:proplist()) ->
+    {ok, get_data_protection_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataProtectionPolicy">>, Input, Options).
@@ -1008,17 +2940,51 @@ get_data_protection_policy(Client, Input, Options)
 %% DescribeDeliveries:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeDeliveries.html
 %% operation.
+-spec get_delivery(map(), get_delivery_request()) ->
+    {ok, get_delivery_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_delivery(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery(Client, Input, []).
+
+-spec get_delivery(map(), get_delivery_request(), proplists:proplist()) ->
+    {ok, get_delivery_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_delivery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDelivery">>, Input, Options).
 
 %% @doc Retrieves complete information about one delivery destination.
+-spec get_delivery_destination(map(), get_delivery_destination_request()) ->
+    {ok, get_delivery_destination_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_destination(Client, Input, []).
+
+-spec get_delivery_destination(map(), get_delivery_destination_request(), proplists:proplist()) ->
+    {ok, get_delivery_destination_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_delivery_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeliveryDestination">>, Input, Options).
@@ -1029,26 +2995,71 @@ get_delivery_destination(Client, Input, Options)
 %% For more information about delivery destinations and their policies, see
 %% PutDeliveryDestinationPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDeliveryDestinationPolicy.html.
+-spec get_delivery_destination_policy(map(), get_delivery_destination_policy_request()) ->
+    {ok, get_delivery_destination_policy_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_destination_policy(Client, Input, []).
+
+-spec get_delivery_destination_policy(map(), get_delivery_destination_policy_request(), proplists:proplist()) ->
+    {ok, get_delivery_destination_policy_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_delivery_destination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeliveryDestinationPolicy">>, Input, Options).
 
 %% @doc Retrieves complete information about one delivery source.
+-spec get_delivery_source(map(), get_delivery_source_request()) ->
+    {ok, get_delivery_source_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_delivery_source(Client, Input, []).
+
+-spec get_delivery_source(map(), get_delivery_source_request(), proplists:proplist()) ->
+    {ok, get_delivery_source_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_delivery_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeliverySource">>, Input, Options).
 
 %% @doc Retrieves information about the log anomaly detector that you
 %% specify.
+-spec get_log_anomaly_detector(map(), get_log_anomaly_detector_request()) ->
+    {ok, get_log_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_anomaly_detector(Client, Input, []).
+
+-spec get_log_anomaly_detector(map(), get_log_anomaly_detector_request(), proplists:proplist()) ->
+    {ok, get_log_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogAnomalyDetector">>, Input, Options).
@@ -1075,9 +3086,22 @@ get_log_anomaly_detector(Client, Input, Options)
 %% `logGroupIdentifier' or `logGroupName'.
 %% You must include one of these two parameters, but you can't include
 %% both.
+-spec get_log_events(map(), get_log_events_request()) ->
+    {ok, get_log_events_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_events(Client, Input, []).
+
+-spec get_log_events(map(), get_log_events_request(), proplists:proplist()) ->
+    {ok, get_log_events_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_log_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogEvents">>, Input, Options).
@@ -1110,9 +3134,24 @@ get_log_events(Client, Input, Options)
 %% view data from the linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
+-spec get_log_group_fields(map(), get_log_group_fields_request()) ->
+    {ok, get_log_group_fields_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_log_group_fields(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_group_fields(Client, Input, []).
+
+-spec get_log_group_fields(map(), get_log_group_fields_request(), proplists:proplist()) ->
+    {ok, get_log_group_fields_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_log_group_fields(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogGroupFields">>, Input, Options).
@@ -1125,9 +3164,24 @@ get_log_group_fields(Client, Input, Options)
 %% subset of fields. Fields are returned as field name/field value pairs.
 %%
 %% The full unparsed log event is returned within `@message'.
+-spec get_log_record(map(), get_log_record_request()) ->
+    {ok, get_log_record_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_log_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_record(Client, Input, []).
+
+-spec get_log_record(map(), get_log_record_request(), proplists:proplist()) ->
+    {ok, get_log_record_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_log_record(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogRecord">>, Input, Options).
@@ -1160,9 +3214,22 @@ get_log_record(Client, Input, Options)
 %% queries in linked source accounts. For more information, see
 %% CloudWatch cross-account observability:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Unified-Cross-Account.html.
+-spec get_query_results(map(), get_query_results_request()) ->
+    {ok, get_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_query_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_results(Client, Input, []).
+
+-spec get_query_results(map(), get_query_results_request(), proplists:proplist()) ->
+    {ok, get_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
@@ -1171,17 +3238,47 @@ get_query_results(Client, Input, Options)
 %%
 %% For details about the structure format of
 %% each anomaly object that is returned, see the example in this section.
+-spec list_anomalies(map(), list_anomalies_request()) ->
+    {ok, list_anomalies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_anomalies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_anomalies(Client, Input, []).
+
+-spec list_anomalies(map(), list_anomalies_request(), proplists:proplist()) ->
+    {ok, list_anomalies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_anomalies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAnomalies">>, Input, Options).
 
 %% @doc Retrieves a list of the log anomaly detectors in the account.
+-spec list_log_anomaly_detectors(map(), list_log_anomaly_detectors_request()) ->
+    {ok, list_log_anomaly_detectors_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_log_anomaly_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_anomaly_detectors(Client, Input, []).
+
+-spec list_log_anomaly_detectors(map(), list_log_anomaly_detectors_request(), proplists:proplist()) ->
+    {ok, list_log_anomaly_detectors_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_log_anomaly_detectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogAnomalyDetectors">>, Input, Options).
@@ -1190,9 +3287,22 @@ list_log_anomaly_detectors(Client, Input, Options)
 %%
 %% Currently, log groups
 %% and destinations support tagging.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1206,9 +3316,20 @@ list_tags_for_resource(Client, Input, Options)
 %% instead.
 %%
 %% Lists the tags for the specified log group.
+-spec list_tags_log_group(map(), list_tags_log_group_request()) ->
+    {ok, list_tags_log_group_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_tags_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_log_group(Client, Input, []).
+
+-spec list_tags_log_group(map(), list_tags_log_group_request(), proplists:proplist()) ->
+    {ok, list_tags_log_group_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 list_tags_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsLogGroup">>, Input, Options).
@@ -1306,9 +3427,24 @@ list_tags_log_group(Client, Input, Options)
 %% To perform a `PutAccountPolicy' subscription filter operation for any
 %% destination except a Lambda
 %% function, you must also have the `iam:PassRole' permission.
+-spec put_account_policy(map(), put_account_policy_request()) ->
+    {ok, put_account_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_account_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_policy(Client, Input, []).
+
+-spec put_account_policy(map(), put_account_policy_request(), proplists:proplist()) ->
+    {ok, put_account_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_account_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountPolicy">>, Input, Options).
@@ -1355,9 +3491,26 @@ put_account_policy(Client, Input, Options)
 %% the account also has an account-level data protection policy, then the two
 %% policies are cumulative. Any sensitive term
 %% specified in either policy is masked.
+-spec put_data_protection_policy(map(), put_data_protection_policy_request()) ->
+    {ok, put_data_protection_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_data_protection_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_data_protection_policy(Client, Input, []).
+
+-spec put_data_protection_policy(map(), put_data_protection_policy_request(), proplists:proplist()) ->
+    {ok, put_data_protection_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_data_protection_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDataProtectionPolicy">>, Input, Options).
@@ -1409,9 +3562,28 @@ put_data_protection_policy(Client, Input, Options)
 %% If you use this operation to update an existing delivery destination, all
 %% the current delivery destination parameters are overwritten
 %% with the new parameter values that you specify.
+-spec put_delivery_destination(map(), put_delivery_destination_request()) ->
+    {ok, put_delivery_destination_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_delivery_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_destination(Client, Input, []).
+
+-spec put_delivery_destination(map(), put_delivery_destination_request(), proplists:proplist()) ->
+    {ok, put_delivery_destination_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_delivery_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDeliveryDestination">>, Input, Options).
@@ -1456,9 +3628,24 @@ put_delivery_destination(Client, Input, Options)
 %% enables general logs delivery, and the other
 %% allows delivery to the chosen destination. See the examples for the needed
 %% policies.
+-spec put_delivery_destination_policy(map(), put_delivery_destination_policy_request()) ->
+    {ok, put_delivery_destination_policy_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_delivery_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_destination_policy(Client, Input, []).
+
+-spec put_delivery_destination_policy(map(), put_delivery_destination_policy_request(), proplists:proplist()) ->
+    {ok, put_delivery_destination_policy_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_delivery_destination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDeliveryDestinationPolicy">>, Input, Options).
@@ -1510,9 +3697,28 @@ put_delivery_destination_policy(Client, Input, Options)
 %% If you use this operation to update an existing delivery source, all the
 %% current delivery source parameters are overwritten
 %% with the new parameter values that you specify.
+-spec put_delivery_source(map(), put_delivery_source_request()) ->
+    {ok, put_delivery_source_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_delivery_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_delivery_source(Client, Input, []).
+
+-spec put_delivery_source(map(), put_delivery_source_request(), proplists:proplist()) ->
+    {ok, put_delivery_source_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_delivery_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDeliverySource">>, Input, Options).
@@ -1542,9 +3748,22 @@ put_delivery_source(Client, Input, Options)
 %%
 %% To perform a `PutDestination' operation, you must also have the
 %% `iam:PassRole' permission.
+-spec put_destination(map(), put_destination_request()) ->
+    {ok, put_destination_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination(Client, Input, []).
+
+-spec put_destination(map(), put_destination_request(), proplists:proplist()) ->
+    {ok, put_destination_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDestination">>, Input, Options).
@@ -1557,9 +3776,22 @@ put_destination(Client, Input, Options)
 %% that is used
 %% to authorize claims to register a subscription filter against a given
 %% destination.
+-spec put_destination_policy(map(), put_destination_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination_policy(Client, Input, []).
+
+-spec put_destination_policy(map(), put_destination_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_destination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutDestinationPolicy">>, Input, Options).
@@ -1617,9 +3849,28 @@ put_destination_policy(Client, Input, Options)
 %% &quot;UnrecognizedClientException&quot; the most
 %% likely cause is a non-valid Amazon Web Services access key ID or secret
 %% key.
+-spec put_log_events(map(), put_log_events_request()) ->
+    {ok, put_log_events_response(), tuple()} |
+    {error, any()} |
+    {error, data_already_accepted_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sequence_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unrecognized_client_exception(), tuple()}.
 put_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_log_events(Client, Input, []).
+
+-spec put_log_events(map(), put_log_events_request(), proplists:proplist()) ->
+    {ok, put_log_events_response(), tuple()} |
+    {error, any()} |
+    {error, data_already_accepted_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sequence_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unrecognized_client_exception(), tuple()}.
 put_log_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLogEvents">>, Input, Options).
@@ -1660,9 +3911,26 @@ put_log_events(Client, Input, Options)
 %% Creating a Billing Alarm to Monitor Your Estimated Amazon Web Services
 %% Charges:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html.
+-spec put_metric_filter(map(), put_metric_filter_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_filter(Client, Input, []).
+
+-spec put_metric_filter(map(), put_metric_filter_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricFilter">>, Input, Options).
@@ -1689,9 +3957,24 @@ put_metric_filter(Client, Input, Options)
 %% You must have the `logs:PutQueryDefinition' permission to be able to
 %% perform
 %% this operation.
+-spec put_query_definition(map(), put_query_definition_request()) ->
+    {ok, put_query_definition_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_query_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_query_definition(Client, Input, []).
+
+-spec put_query_definition(map(), put_query_definition_request(), proplists:proplist()) ->
+    {ok, put_query_definition_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_query_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutQueryDefinition">>, Input, Options).
@@ -1702,9 +3985,22 @@ put_query_definition(Client, Input, Options)
 %%
 %% An account can have up to 10 resource policies per Amazon Web Services
 %% Region.
+-spec put_resource_policy(map(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -1744,9 +4040,24 @@ put_resource_policy(Client, Input, Options)
 %% deletion are also not
 %% included when you use an API to retrieve the `storedBytes' value to
 %% see how many bytes a log group is storing.
+-spec put_retention_policy(map(), put_retention_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_retention_policy(Client, Input, []).
+
+-spec put_retention_policy(map(), put_retention_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionPolicy">>, Input, Options).
@@ -1791,9 +4102,26 @@ put_retention_policy(Client, Input, Options)
 %% except a Lambda function,
 %% you must also have the
 %% `iam:PassRole' permission.
+-spec put_subscription_filter(map(), put_subscription_filter_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_subscription_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_subscription_filter(Client, Input, []).
+
+-spec put_subscription_filter(map(), put_subscription_filter_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 put_subscription_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSubscriptionFilter">>, Input, Options).
@@ -1854,9 +4182,26 @@ put_subscription_filter(Client, Input, Options)
 %%
 %% Start a Live Tail session using an Amazon Web Services SDK:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/example_cloudwatch-logs_StartLiveTail_section.html.
+-spec start_live_tail(map(), start_live_tail_request()) ->
+    {ok, start_live_tail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 start_live_tail(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_live_tail(Client, Input, []).
+
+-spec start_live_tail(map(), start_live_tail_request(), proplists:proplist()) ->
+    {ok, start_live_tail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 start_live_tail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLiveTail">>, Input, Options).
@@ -1904,9 +4249,26 @@ start_live_tail(Client, Input, Options)
 %% You can have up to 30 concurrent CloudWatch Logs insights queries,
 %% including queries
 %% that have been added to dashboards.
+-spec start_query(map(), start_query_request()) ->
+    {ok, start_query_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_query_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 start_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query(Client, Input, []).
+
+-spec start_query(map(), start_query_request(), proplists:proplist()) ->
+    {ok, start_query_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_query_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 start_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartQuery">>, Input, Options).
@@ -1915,9 +4277,22 @@ start_query(Client, Input, Options)
 %%
 %% If the query has already ended, the operation
 %% returns an error indicating that the specified query is not running.
+-spec stop_query(map(), stop_query_request()) ->
+    {ok, stop_query_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 stop_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_query(Client, Input, []).
+
+-spec stop_query(map(), stop_query_request(), proplists:proplist()) ->
+    {ok, stop_query_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 stop_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopQuery">>, Input, Options).
@@ -1950,9 +4325,20 @@ stop_query(Client, Input, Options)
 %% For more information about using tags to control access, see
 %% Controlling access to Amazon Web Services resources using tags:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html.
+-spec tag_log_group(map(), tag_log_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 tag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_log_group(Client, Input, []).
+
+-spec tag_log_group(map(), tag_log_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 tag_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagLogGroup">>, Input, Options).
@@ -1979,9 +4365,24 @@ tag_log_group(Client, Input, Options)
 %% the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a CloudWatch Logs resource.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1992,9 +4393,20 @@ tag_resource(Client, Input, Options)
 %% You
 %% can use this operation to validate the correctness of a metric filter
 %% pattern.
+-spec test_metric_filter(map(), test_metric_filter_request()) ->
+    {ok, test_metric_filter_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 test_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_metric_filter(Client, Input, []).
+
+-spec test_metric_filter(map(), test_metric_filter_request(), proplists:proplist()) ->
+    {ok, test_metric_filter_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 test_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestMetricFilter">>, Input, Options).
@@ -2019,17 +4431,39 @@ test_metric_filter(Client, Input, Options)
 %% log groups using the
 %% ```
 %% aws:Resource/key-name ''' or `aws:TagKeys' condition keys.
+-spec untag_log_group(map(), untag_log_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_log_group(Client, Input, []).
+
+-spec untag_log_group(map(), untag_log_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagLogGroup">>, Input, Options).
 
 %% @doc Removes one or more tags from the specified resource.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2054,17 +4488,47 @@ untag_resource(Client, Input, Options)
 %% specify the anomaly or pattern to
 %% stop suppressing, and omit the `suppressionType' and
 %% `suppressionPeriod' parameters.
+-spec update_anomaly(map(), update_anomaly_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 update_anomaly(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_anomaly(Client, Input, []).
+
+-spec update_anomaly(map(), update_anomaly_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 update_anomaly(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAnomaly">>, Input, Options).
 
 %% @doc Updates an existing log anomaly detector.
+-spec update_log_anomaly_detector(map(), update_log_anomaly_detector_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 update_log_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_log_anomaly_detector(Client, Input, []).
+
+-spec update_log_anomaly_detector(map(), update_log_anomaly_detector_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, operation_aborted_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()}.
 update_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLogAnomalyDetector">>, Input, Options).

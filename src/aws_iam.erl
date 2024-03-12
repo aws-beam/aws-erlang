@@ -337,6 +337,2450 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% put_user_policy_request() :: #{
+%%   <<"PolicyDocument">> := string(),
+%%   <<"PolicyName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type put_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_open_id_connect_provider_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string()
+%% }
+-type get_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_saml_providers_request() :: #{
+
+%% }
+-type list_saml_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% virtual_mfa_device() :: #{
+%%   <<"Base32StringSeed">> => binary(),
+%%   <<"EnableDate">> => non_neg_integer(),
+%%   <<"QRCodePNG">> => binary(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"User">> => user()
+%% }
+-type virtual_mfa_device() :: #{binary() => any()}.
+
+%% Example:
+%% entity_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type entity_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PolicyNames">> => list(string()())
+%% }
+-type list_group_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_instance_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_granting_service_access_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PoliciesGrantingServiceAccess">> => list(list_policies_granting_service_access_entry()())
+%% }
+-type list_policies_granting_service_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_saml_provider_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SAMLMetadataDocument">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_user_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type detach_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_mfa_device_response() :: #{
+%%   <<"Certifications">> => map(),
+%%   <<"EnableDate">> => non_neg_integer(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type get_mfa_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_linked_role_request() :: #{
+%%   <<"RoleName">> := string()
+%% }
+-type delete_service_linked_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_user_permissions_boundary_request() :: #{
+%%   <<"PermissionsBoundary">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type put_user_permissions_boundary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_organizations_access_report_response() :: #{
+%%   <<"AccessDetails">> => list(access_detail()()),
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"JobCompletionDate">> => non_neg_integer(),
+%%   <<"JobCreationDate">> => non_neg_integer(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"NumberOfServicesAccessible">> => integer(),
+%%   <<"NumberOfServicesNotAccessed">> => integer()
+%% }
+-type get_organizations_access_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_versions_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Versions">> => list(policy_version()())
+%% }
+-type list_policy_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_saml_providers_response() :: #{
+%%   <<"SAMLProviderList">> => list(saml_provider_list_entry()())
+%% }
+-type list_saml_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_user_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_user_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_default_policy_version_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"VersionId">> := string()
+%% }
+-type set_default_policy_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_version_response() :: #{
+%%   <<"PolicyVersion">> => policy_version()
+%% }
+-type get_policy_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% key_pair_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_pair_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> := string()
+%% }
+-type list_user_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_specific_result() :: #{
+%%   <<"EvalDecisionDetails">> => map(),
+%%   <<"EvalResourceDecision">> => list(any()),
+%%   <<"EvalResourceName">> => string(),
+%%   <<"MatchedStatements">> => list(statement()()),
+%%   <<"MissingContextValues">> => list(string()()),
+%%   <<"PermissionsBoundaryDecisionDetail">> => permissions_boundary_decision_detail()
+%% }
+-type resource_specific_result() :: #{binary() => any()}.
+
+%% Example:
+%% instance_profile() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"InstanceProfileId">> => string(),
+%%   <<"InstanceProfileName">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Roles">> => list(role()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type instance_profile() :: #{binary() => any()}.
+
+%% Example:
+%% attach_group_policy_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"PolicyArn">> := string()
+%% }
+-type attach_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_open_id_connect_provider_response() :: #{
+%%   <<"OpenIDConnectProviderArn">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_open_id_connect_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_policy_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_group_policies_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_attached_group_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_version_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"VersionId">> := string()
+%% }
+-type get_policy_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type delete_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% context_entry() :: #{
+%%   <<"ContextKeyName">> => string(),
+%%   <<"ContextKeyType">> => list(any()),
+%%   <<"ContextKeyValues">> => list(string()())
+%% }
+-type context_entry() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_certificates_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"ServerCertificateMetadataList">> => list(server_certificate_metadata()())
+%% }
+-type list_server_certificates_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_mfa_device_request() :: #{
+%%   <<"AuthenticationCode1">> := string(),
+%%   <<"AuthenticationCode2">> := string(),
+%%   <<"SerialNumber">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type enable_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_open_id_connect_provider_response() :: #{
+%%   <<"ClientIDList">> => list(string()()),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ThumbprintList">> => list(string()()),
+%%   <<"Url">> => string()
+%% }
+-type get_open_id_connect_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_last_accessed_details_response() :: #{
+%%   <<"Error">> => error_details(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"JobCompletionDate">> => non_neg_integer(),
+%%   <<"JobCreationDate">> => non_neg_integer(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"JobType">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"ServicesLastAccessed">> => list(service_last_accessed()())
+%% }
+-type get_service_last_accessed_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_context_keys_for_policy_response() :: #{
+%%   <<"ContextKeyNames">> => list(string()())
+%% }
+-type get_context_keys_for_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_role_policy_request() :: #{
+%%   <<"PolicyDocument">> := string(),
+%%   <<"PolicyName">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type put_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Policies">> => list(policy()())
+%% }
+-type list_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_specific_credential_response() :: #{
+%%   <<"ServiceSpecificCredential">> => service_specific_credential()
+%% }
+-type create_service_specific_credential_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_granting_service_access() :: #{
+%%   <<"EntityName">> => string(),
+%%   <<"EntityType">> => list(any()),
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyType">> => list(any())
+%% }
+-type policy_granting_service_access() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_attachable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type policy_not_attachable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_group() :: #{
+%%   <<"GroupId">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type policy_group() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_entity_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_certificate_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"ServerCertificateName">> := string()
+%% }
+-type list_server_certificate_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_for_policy_request() :: #{
+%%   <<"EntityFilter">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string(),
+%%   <<"PolicyArn">> := string(),
+%%   <<"PolicyUsageFilter">> => list(any())
+%% }
+-type list_entities_for_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_virtual_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string()
+%% }
+-type delete_virtual_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_for_user_response() :: #{
+%%   <<"Groups">> => list(group()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_groups_for_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"OnlyAttached">> => boolean(),
+%%   <<"PathPrefix">> => string(),
+%%   <<"PolicyUsageFilter">> => list(any()),
+%%   <<"Scope">> => list(any())
+%% }
+-type list_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{
+%%   <<"PolicyArn">> := string()
+%% }
+-type get_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% password_policy() :: #{
+%%   <<"AllowUsersToChangePassword">> => boolean(),
+%%   <<"ExpirePasswords">> => boolean(),
+%%   <<"HardExpiry">> => boolean(),
+%%   <<"MaxPasswordAge">> => integer(),
+%%   <<"MinimumPasswordLength">> => integer(),
+%%   <<"PasswordReusePrevention">> => integer(),
+%%   <<"RequireLowercaseCharacters">> => boolean(),
+%%   <<"RequireNumbers">> => boolean(),
+%%   <<"RequireSymbols">> => boolean(),
+%%   <<"RequireUppercaseCharacters">> => boolean()
+%% }
+-type password_policy() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_policy_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type delete_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_role_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string(),
+%%   <<"RoleName">> := string()
+%% }
+-type list_attached_role_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mfa_devices_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MFADevices">> => list(mfa_device()()),
+%%   <<"Marker">> => string()
+%% }
+-type list_mfa_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type delete_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% upload_ssh_public_key_response() :: #{
+%%   <<"SSHPublicKey">> => ssh_public_key()
+%% }
+-type upload_ssh_public_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_evaluation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type policy_evaluation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_saml_provider_request() :: #{
+%%   <<"SAMLProviderArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_role_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PolicyNames">> => list(string()())
+%% }
+-type list_role_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"PolicyDocument">> := string(),
+%%   <<"PolicyName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% entity_info() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type entity_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_profile_response() :: #{
+%%   <<"InstanceProfile">> => instance_profile()
+%% }
+-type create_instance_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% role() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssumeRolePolicyDocument">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"MaxSessionDuration">> => integer(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
+%%   <<"RoleId">> => string(),
+%%   <<"RoleLastUsed">> => role_last_used(),
+%%   <<"RoleName">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type role() :: #{binary() => any()}.
+
+%% Example:
+%% attach_user_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type attach_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_roles_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Roles">> => list(role()())
+%% }
+-type list_roles_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_linked_role_deletion_status_response() :: #{
+%%   <<"Reason">> => deletion_task_failure_reason_type(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_service_linked_role_deletion_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_open_id_connect_provider_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_specific_credentials_request() :: #{
+%%   <<"ServiceName">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type list_service_specific_credentials_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ssh_public_keys_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> => string()
+%% }
+-type list_ssh_public_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_saml_provider_response() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"SAMLMetadataDocument">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ValidUntil">> => non_neg_integer()
+%% }
+-type get_saml_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_for_policy_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PolicyGroups">> => list(policy_group()()),
+%%   <<"PolicyRoles">> => list(policy_role()()),
+%%   <<"PolicyUsers">> => list(policy_user()())
+%% }
+-type list_entities_for_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_version_response() :: #{
+%%   <<"PolicyVersion">> => policy_version()
+%% }
+-type create_policy_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% simulate_custom_policy_request() :: #{
+%%   <<"ActionNames">> := list(string()()),
+%%   <<"CallerArn">> => string(),
+%%   <<"ContextEntries">> => list(context_entry()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()()),
+%%   <<"PolicyInputList">> := list(string()()),
+%%   <<"ResourceArns">> => list(string()()),
+%%   <<"ResourceHandlingOption">> => string(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type simulate_custom_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% role_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssumeRolePolicyDocument">> => string(),
+%%   <<"AttachedManagedPolicies">> => list(attached_policy()()),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"InstanceProfileList">> => list(instance_profile()()),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
+%%   <<"RoleId">> => string(),
+%%   <<"RoleLastUsed">> => role_last_used(),
+%%   <<"RoleName">> => string(),
+%%   <<"RolePolicyList">> => list(policy_detail()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type role_detail() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_id_connect_providers_response() :: #{
+%%   <<"OpenIDConnectProviderList">> => list(open_id_connect_provider_list_entry()())
+%% }
+-type list_open_id_connect_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_detail() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type policy_detail() :: #{binary() => any()}.
+
+%% Example:
+%% statement() :: #{
+%%   <<"EndPosition">> => position(),
+%%   <<"SourcePolicyId">> => string(),
+%%   <<"SourcePolicyType">> => list(any()),
+%%   <<"StartPosition">> => position()
+%% }
+-type statement() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_permissions_boundary_request() :: #{
+%%   <<"UserName">> := string()
+%% }
+-type delete_user_permissions_boundary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_authorization_details_request() :: #{
+%%   <<"Filter">> => list(list(any())()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type get_account_authorization_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_user_request() :: #{
+%%   <<"TagKeys">> := list(string()()),
+%%   <<"UserName">> := string()
+%% }
+-type untag_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% unmodifiable_entity_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unmodifiable_entity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_login_profile_response() :: #{
+%%   <<"LoginProfile">> => login_profile()
+%% }
+-type get_login_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_response() :: #{
+%%   <<"InstanceProfiles">> => list(instance_profile()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_instance_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_ssh_public_key_request() :: #{
+%%   <<"SSHPublicKeyId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UserName">> := string()
+%% }
+-type update_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mfa_devices_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> => string()
+%% }
+-type list_mfa_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_assume_role_policy_request() :: #{
+%%   <<"PolicyDocument">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type update_assume_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% upload_signing_certificate_request() :: #{
+%%   <<"CertificateBody">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type upload_signing_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_specific_credentials_response() :: #{
+%%   <<"ServiceSpecificCredentials">> => list(service_specific_credential_metadata()())
+%% }
+-type list_service_specific_credentials_response() :: #{binary() => any()}.
+
+%% Example:
+%% position() :: #{
+%%   <<"Column">> => integer(),
+%%   <<"Line">> => integer()
+%% }
+-type position() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string()
+%% }
+-type delete_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% group_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AttachedManagedPolicies">> => list(attached_policy()()),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"GroupPolicyList">> => list(policy_detail()()),
+%%   <<"Path">> => string()
+%% }
+-type group_detail() :: #{binary() => any()}.
+
+%% Example:
+%% upload_server_certificate_request() :: #{
+%%   <<"CertificateBody">> := string(),
+%%   <<"CertificateChain">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"PrivateKey">> := string(),
+%%   <<"ServerCertificateName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type upload_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"NewGroupName">> => string(),
+%%   <<"NewPath">> => string()
+%% }
+-type update_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_last_used_response() :: #{
+%%   <<"AccessKeyLastUsed">> => access_key_last_used(),
+%%   <<"UserName">> => string()
+%% }
+-type get_access_key_last_used_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"Path">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% credential_report_not_ready_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type credential_report_not_ready_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_version() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Document">> => string(),
+%%   <<"IsDefaultVersion">> => boolean(),
+%%   <<"VersionId">> => string()
+%% }
+-type policy_version() :: #{binary() => any()}.
+
+%% Example:
+%% managed_policy_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AttachmentCount">> => integer(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"DefaultVersionId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsAttachable">> => boolean(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundaryUsageCount">> => integer(),
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyVersionList">> => list(policy_version()()),
+%%   <<"UpdateDate">> => non_neg_integer()
+%% }
+-type managed_policy_detail() :: #{binary() => any()}.
+
+%% Example:
+%% untag_server_certificate_request() :: #{
+%%   <<"ServerCertificateName">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_specific_credential_metadata() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceSpecificCredentialId">> => string(),
+%%   <<"ServiceUserName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type service_specific_credential_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_last_accessed_details_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type get_service_last_accessed_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% access_key_metadata() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type access_key_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_alias_request() :: #{
+%%   <<"AccountAlias">> := string()
+%% }
+-type create_account_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_group_policy_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"PolicyDocument">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type put_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% ssh_public_key_metadata() :: #{
+%%   <<"SSHPublicKeyId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UploadDate">> => non_neg_integer(),
+%%   <<"UserName">> => string()
+%% }
+-type ssh_public_key_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string()
+%% }
+-type get_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_policy_response() :: #{
+%%   <<"GroupName">> => string(),
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type get_group_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_specific_credential_request() :: #{
+%%   <<"ServiceSpecificCredentialId">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type delete_service_specific_credential_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_for_user_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> := string()
+%% }
+-type list_groups_for_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_role_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_role_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_version_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"VersionId">> := string()
+%% }
+-type delete_policy_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mfa_device_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_mfa_device_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type get_user_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% report_generation_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type report_generation_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% open_id_connect_provider_list_entry() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type open_id_connect_provider_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{
+%%   <<"UserName">> => string()
+%% }
+-type get_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_linked_role_request() :: #{
+%%   <<"AWSServiceName">> := string(),
+%%   <<"CustomSuffix">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type create_service_linked_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_version_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"PolicyDocument">> := string(),
+%%   <<"SetAsDefault">> => boolean()
+%% }
+-type create_policy_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_role_request() :: #{
+%%   <<"RoleName">> := string()
+%% }
+-type get_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_role_response() :: #{
+
+%% }
+-type update_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type deactivate_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_group_policy_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"PolicyArn">> := string()
+%% }
+-type detach_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% saml_provider_list_entry() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ValidUntil">> => non_neg_integer()
+%% }
+-type saml_provider_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% delete_server_certificate_request() :: #{
+%%   <<"ServerCertificateName">> := string()
+%% }
+-type delete_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_context_keys_for_custom_policy_request() :: #{
+%%   <<"PolicyInputList">> := list(string()())
+%% }
+-type get_context_keys_for_custom_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_user_policies_response() :: #{
+%%   <<"AttachedPolicies">> => list(attached_policy()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_attached_user_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_key() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type access_key() :: #{binary() => any()}.
+
+%% Example:
+%% update_server_certificate_request() :: #{
+%%   <<"NewPath">> => string(),
+%%   <<"NewServerCertificateName">> => string(),
+%%   <<"ServerCertificateName">> := string()
+%% }
+-type update_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_access_keys_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> => string()
+%% }
+-type list_access_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_role_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type delete_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Users">> => list(user()())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_password_policy_request() :: #{
+%%   <<"AllowUsersToChangePassword">> => boolean(),
+%%   <<"HardExpiry">> => boolean(),
+%%   <<"MaxPasswordAge">> => integer(),
+%%   <<"MinimumPasswordLength">> => integer(),
+%%   <<"PasswordReusePrevention">> => integer(),
+%%   <<"RequireLowercaseCharacters">> => boolean(),
+%%   <<"RequireNumbers">> => boolean(),
+%%   <<"RequireSymbols">> => boolean(),
+%%   <<"RequireUppercaseCharacters">> => boolean()
+%% }
+-type update_account_password_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ssh_public_key_request() :: #{
+%%   <<"Encoding">> := list(any()),
+%%   <<"SSHPublicKeyId">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type get_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profile_tags_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_instance_profile_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% role_last_used() :: #{
+%%   <<"LastUsedDate">> => non_neg_integer(),
+%%   <<"Region">> => string()
+%% }
+-type role_last_used() :: #{binary() => any()}.
+
+%% Example:
+%% delete_saml_provider_request() :: #{
+%%   <<"SAMLProviderArn">> := string()
+%% }
+-type delete_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_certificate_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_server_certificate_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profile_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_instance_profile_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_user_to_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type add_user_to_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% entity_temporarily_unmodifiable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type entity_temporarily_unmodifiable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_key_request() :: #{
+%%   <<"AccessKeyId">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type delete_access_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% password_policy_violation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type password_policy_violation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_certificate_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_certificate_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_granting_service_access_entry() :: #{
+%%   <<"Policies">> => list(policy_granting_service_access()()),
+%%   <<"ServiceNamespace">> => string()
+%% }
+-type list_policies_granting_service_access_entry() :: #{binary() => any()}.
+
+%% Example:
+%% untag_saml_provider_request() :: #{
+%%   <<"SAMLProviderArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% error_details() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_last_used_request() :: #{
+%%   <<"AccessKeyId">> := string()
+%% }
+-type get_access_key_last_used_request() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_certificate_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_certificate_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_login_profile_request() :: #{
+%%   <<"UserName">> := string()
+%% }
+-type delete_login_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_virtual_mfa_device_response() :: #{
+%%   <<"VirtualMFADevice">> => virtual_mfa_device()
+%% }
+-type create_virtual_mfa_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_role_description_response() :: #{
+%%   <<"Role">> => role()
+%% }
+-type update_role_description_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_security_token_service_preferences_request() :: #{
+%%   <<"GlobalEndpointTokenVersion">> := list(any())
+%% }
+-type set_security_token_service_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"Path">> => string()
+%% }
+-type create_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_role_from_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type remove_role_from_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_specific_credential() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServicePassword">> => string(),
+%%   <<"ServiceSpecificCredentialId">> => string(),
+%%   <<"ServiceUserName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type service_specific_credential() :: #{binary() => any()}.
+
+%% Example:
+%% tag_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_mfa_devices_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"VirtualMFADevices">> => list(virtual_mfa_device()())
+%% }
+-type list_virtual_mfa_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_open_id_connect_provider_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_organizations_access_report_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type generate_organizations_access_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_mfa_devices_request() :: #{
+%%   <<"AssignmentStatus">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_virtual_mfa_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_server_certificate_request() :: #{
+%%   <<"ServerCertificateName">> := string()
+%% }
+-type get_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% change_password_request() :: #{
+%%   <<"NewPassword">> := string(),
+%%   <<"OldPassword">> := string()
+%% }
+-type change_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_role_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"RoleName">> := string()
+%% }
+-type list_role_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"UserName">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_service_last_accessed_details_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type generate_service_last_accessed_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_linked_role_deletion_status_request() :: #{
+%%   <<"DeletionTaskId">> := string()
+%% }
+-type get_service_linked_role_deletion_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_alias_request() :: #{
+%%   <<"AccountAlias">> := string()
+%% }
+-type delete_account_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type create_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_organizations_access_report_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SortKey">> => list(any())
+%% }
+-type get_organizations_access_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_versions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PolicyArn">> := string()
+%% }
+-type list_policy_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_granting_service_access_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"ServiceNamespaces">> := list(string()())
+%% }
+-type list_policies_granting_service_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_password_policy_response() :: #{
+%%   <<"PasswordPolicy">> => password_policy()
+%% }
+-type get_account_password_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_specific_credential_request() :: #{
+%%   <<"ServiceSpecificCredentialId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type update_service_specific_credential_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_login_profile_response() :: #{
+%%   <<"LoginProfile">> => login_profile()
+%% }
+-type create_login_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% reset_service_specific_credential_request() :: #{
+%%   <<"ServiceSpecificCredentialId">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type reset_service_specific_credential_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_saml_provider_response() :: #{
+%%   <<"SAMLProviderArn">> => string()
+%% }
+-type update_saml_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_policy_response() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type get_user_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% credential_report_expired_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type credential_report_expired_exception() :: #{binary() => any()}.
+
+%% Example:
+%% mfa_device() :: #{
+%%   <<"EnableDate">> => non_neg_integer(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type mfa_device() :: #{binary() => any()}.
+
+%% Example:
+%% entity_details() :: #{
+%%   <<"EntityInfo">> => entity_info(),
+%%   <<"LastAuthenticated">> => non_neg_integer()
+%% }
+-type entity_details() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_for_role_response() :: #{
+%%   <<"InstanceProfiles">> => list(instance_profile()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_instance_profiles_for_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% signing_certificate() :: #{
+%%   <<"CertificateBody">> => string(),
+%%   <<"CertificateId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UploadDate">> => non_neg_integer(),
+%%   <<"UserName">> => string()
+%% }
+-type signing_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_request() :: #{
+%%   <<"PolicyArn">> := string()
+%% }
+-type delete_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_mfa_device_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SerialNumber">> := string()
+%% }
+-type list_mfa_device_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_authentication_code_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_authentication_code_exception() :: #{binary() => any()}.
+
+%% Example:
+%% generate_organizations_access_report_request() :: #{
+%%   <<"EntityPath">> := string(),
+%%   <<"OrganizationsPolicyId">> => string()
+%% }
+-type generate_organizations_access_report_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_role_to_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type add_role_to_instance_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_signing_certificates_response() :: #{
+%%   <<"Certificates">> => list(signing_certificate()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_signing_certificates_response() :: #{binary() => any()}.
+
+%% Example:
+%% simulate_principal_policy_request() :: #{
+%%   <<"ActionNames">> := list(string()()),
+%%   <<"CallerArn">> => string(),
+%%   <<"ContextEntries">> => list(context_entry()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()()),
+%%   <<"PolicyInputList">> => list(string()()),
+%%   <<"PolicySourceArn">> := string(),
+%%   <<"ResourceArns">> => list(string()()),
+%%   <<"ResourceHandlingOption">> => string(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type simulate_principal_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_authorization_details_response() :: #{
+%%   <<"GroupDetailList">> => list(group_detail()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Policies">> => list(managed_policy_detail()()),
+%%   <<"RoleDetailList">> => list(role_detail()()),
+%%   <<"UserDetailList">> => list(user_detail()())
+%% }
+-type get_account_authorization_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% resync_mfa_device_request() :: #{
+%%   <<"AuthenticationCode1">> := string(),
+%%   <<"AuthenticationCode2">> := string(),
+%%   <<"SerialNumber">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type resync_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_specific_credential_request() :: #{
+%%   <<"ServiceName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type create_service_specific_credential_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_role_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"MaxSessionDuration">> => integer(),
+%%   <<"RoleName">> := string()
+%% }
+-type update_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% policy_role() :: #{
+%%   <<"RoleId">> => string(),
+%%   <<"RoleName">> => string()
+%% }
+-type policy_role() :: #{binary() => any()}.
+
+%% Example:
+%% update_login_profile_request() :: #{
+%%   <<"Password">> => string(),
+%%   <<"PasswordResetRequired">> => boolean(),
+%%   <<"UserName">> := string()
+%% }
+-type update_login_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_user_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_id_connect_providers_request() :: #{
+
+%% }
+-type list_open_id_connect_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_saml_provider_response() :: #{
+%%   <<"SAMLProviderArn">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_saml_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AttachmentCount">> => integer(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"DefaultVersionId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsAttachable">> => boolean(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundaryUsageCount">> => integer(),
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UpdateDate">> => non_neg_integer()
+%% }
+-type policy() :: #{binary() => any()}.
+
+%% Example:
+%% upload_signing_certificate_response() :: #{
+%%   <<"Certificate">> => signing_certificate()
+%% }
+-type upload_signing_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_profile_response() :: #{
+%%   <<"InstanceProfile">> => instance_profile()
+%% }
+-type get_instance_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_role_response() :: #{
+%%   <<"Role">> => role()
+%% }
+-type create_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_saml_provider_request() :: #{
+%%   <<"SAMLMetadataDocument">> := string(),
+%%   <<"SAMLProviderArn">> := string()
+%% }
+-type update_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% ssh_public_key() :: #{
+%%   <<"Fingerprint">> => string(),
+%%   <<"SSHPublicKeyBody">> => string(),
+%%   <<"SSHPublicKeyId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UploadDate">> => non_neg_integer(),
+%%   <<"UserName">> => string()
+%% }
+-type ssh_public_key() :: #{binary() => any()}.
+
+%% Example:
+%% permissions_boundary_decision_detail() :: #{
+%%   <<"AllowedByPermissionsBoundary">> => boolean()
+%% }
+-type permissions_boundary_decision_detail() :: #{binary() => any()}.
+
+%% Example:
+%% get_role_policy_response() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"RoleName">> => string()
+%% }
+-type get_role_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_open_id_connect_provider_thumbprint_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string(),
+%%   <<"ThumbprintList">> := list(string()())
+%% }
+-type update_open_id_connect_provider_thumbprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ssh_public_key_response() :: #{
+%%   <<"SSHPublicKey">> => ssh_public_key()
+%% }
+-type get_ssh_public_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% user_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AttachedManagedPolicies">> => list(attached_policy()()),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"GroupList">> => list(string()()),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UserId">> => string(),
+%%   <<"UserName">> => string(),
+%%   <<"UserPolicyList">> => list(policy_detail()())
+%% }
+-type user_detail() :: #{binary() => any()}.
+
+%% Example:
+%% create_access_key_response() :: #{
+%%   <<"AccessKey">> => access_key()
+%% }
+-type create_access_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_last_accessed() :: #{
+%%   <<"LastAuthenticated">> => non_neg_integer(),
+%%   <<"LastAuthenticatedEntity">> => string(),
+%%   <<"LastAuthenticatedRegion">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceNamespace">> => string(),
+%%   <<"TotalAuthenticatedEntities">> => integer(),
+%%   <<"TrackedActionsLastAccessed">> => list(tracked_action_last_accessed()())
+%% }
+-type service_last_accessed() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_linked_role_response() :: #{
+%%   <<"Role">> => role()
+%% }
+-type create_service_linked_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_signing_certificate_request() :: #{
+%%   <<"CertificateId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type update_signing_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_login_profile_request() :: #{
+%%   <<"UserName">> := string()
+%% }
+-type get_login_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% role_usage_type() :: #{
+%%   <<"Region">> => string(),
+%%   <<"Resources">> => list(string()())
+%% }
+-type role_usage_type() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_saml_provider_request() :: #{
+%%   <<"SAMLProviderArn">> := string()
+%% }
+-type get_saml_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% unrecognized_public_key_encoding_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unrecognized_public_key_encoding_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_group_policies_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_group_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"NewPath">> => string(),
+%%   <<"NewUserName">> => string(),
+%%   <<"UserName">> := string()
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_signing_certificates_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> => string()
+%% }
+-type list_signing_certificates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_group_policies_response() :: #{
+%%   <<"AttachedPolicies">> => list(attached_policy()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_attached_group_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_server_certificates_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_server_certificates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"PolicyNames">> => list(string()())
+%% }
+-type list_user_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_aliases_response() :: #{
+%%   <<"AccountAliases">> => list(string()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_account_aliases_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_context_keys_for_principal_policy_request() :: #{
+%%   <<"PolicyInputList">> => list(string()()),
+%%   <<"PolicySourceArn">> := string()
+%% }
+-type get_context_keys_for_principal_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"UserName">> := string()
+%% }
+-type list_user_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ssh_public_keys_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"SSHPublicKeys">> => list(ssh_public_key_metadata()())
+%% }
+-type list_ssh_public_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% attached_permissions_boundary() :: #{
+%%   <<"PermissionsBoundaryArn">> => string(),
+%%   <<"PermissionsBoundaryType">> => list(any())
+%% }
+-type attached_permissions_boundary() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_last_accessed_details_with_entities_response() :: #{
+%%   <<"EntityDetailsList">> => list(entity_details()()),
+%%   <<"Error">> => error_details(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"JobCompletionDate">> => non_neg_integer(),
+%%   <<"JobCreationDate">> => non_neg_integer(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"Marker">> => string()
+%% }
+-type get_service_last_accessed_details_with_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% detach_role_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type detach_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_summary_response() :: #{
+%%   <<"SummaryMap">> => map()
+%% }
+-type get_account_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_access_keys_response() :: #{
+%%   <<"AccessKeyMetadata">> => list(access_key_metadata()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_access_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"GroupId">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"Path">> => string()
+%% }
+-type group() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"Path">> => string(),
+%%   <<"ServerCertificateId">> => string(),
+%%   <<"ServerCertificateName">> => string(),
+%%   <<"UploadDate">> => non_neg_integer()
+%% }
+-type server_certificate_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_response() :: #{
+%%   <<"Group">> => group(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Users">> => list(user()())
+%% }
+-type get_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"PasswordLastUsed">> => non_neg_integer(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UserId">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+%% Example:
+%% create_role_request() :: #{
+%%   <<"AssumeRolePolicyDocument">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"MaxSessionDuration">> => integer(),
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => string(),
+%%   <<"RoleName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% login_profile() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"PasswordResetRequired">> => boolean(),
+%%   <<"UserName">> => string()
+%% }
+-type login_profile() :: #{binary() => any()}.
+
+%% Example:
+%% reset_service_specific_credential_response() :: #{
+%%   <<"ServiceSpecificCredential">> => service_specific_credential()
+%% }
+-type reset_service_specific_credential_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_request() :: #{
+%%   <<"GroupName">> := string()
+%% }
+-type delete_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_last_accessed_details_with_entities_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"ServiceNamespace">> := string()
+%% }
+-type get_service_last_accessed_details_with_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policy_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PolicyArn">> := string()
+%% }
+-type list_policy_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_client_id_from_open_id_connect_provider_request() :: #{
+%%   <<"ClientID">> := string(),
+%%   <<"OpenIDConnectProviderArn">> := string()
+%% }
+-type remove_client_id_from_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_role_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type get_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% organizations_decision_detail() :: #{
+%%   <<"AllowedByOrganizations">> => boolean()
+%% }
+-type organizations_decision_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_key_request() :: #{
+%%   <<"AccessKeyId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UserName">> => string()
+%% }
+-type update_access_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_profiles_for_role_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"RoleName">> := string()
+%% }
+-type list_instance_profiles_for_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_role_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type attach_role_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_linked_role_response() :: #{
+%%   <<"DeletionTaskId">> => string()
+%% }
+-type delete_service_linked_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% upload_server_certificate_response() :: #{
+%%   <<"ServerCertificateMetadata">> => server_certificate_metadata(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type upload_server_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% credential_report_not_present_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type credential_report_not_present_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_saml_provider_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SAMLProviderArn">> := string()
+%% }
+-type list_saml_provider_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_policy_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type get_group_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_role_permissions_boundary_request() :: #{
+%%   <<"PermissionsBoundary">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type put_role_permissions_boundary_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_id_connect_provider_tags_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"OpenIDConnectProviderArn">> := string()
+%% }
+-type list_open_id_connect_provider_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_result() :: #{
+%%   <<"EvalActionName">> => string(),
+%%   <<"EvalDecision">> => list(any()),
+%%   <<"EvalDecisionDetails">> => map(),
+%%   <<"EvalResourceName">> => string(),
+%%   <<"MatchedStatements">> => list(statement()()),
+%%   <<"MissingContextValues">> => list(string()()),
+%%   <<"OrganizationsDecisionDetail">> => organizations_decision_detail(),
+%%   <<"PermissionsBoundaryDecisionDetail">> => permissions_boundary_decision_detail(),
+%%   <<"ResourceSpecificResults">> => list(resource_specific_result()())
+%% }
+-type evaluation_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_virtual_mfa_device_request() :: #{
+%%   <<"Path">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VirtualMFADeviceName">> := string()
+%% }
+-type create_virtual_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_role_response() :: #{
+%%   <<"Role">> => role()
+%% }
+-type get_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_server_certificate_request() :: #{
+%%   <<"ServerCertificateName">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_service_last_accessed_details_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Granularity">> => list(any())
+%% }
+-type generate_service_last_accessed_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_role_description_request() :: #{
+%%   <<"Description">> := string(),
+%%   <<"RoleName">> := string()
+%% }
+-type update_role_description_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_credential_report_response() :: #{
+%%   <<"Content">> => binary(),
+%%   <<"GeneratedTime">> => non_neg_integer(),
+%%   <<"ReportFormat">> => list(any())
+%% }
+-type get_credential_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_aliases_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_account_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_role_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"RoleName">> := string()
+%% }
+-type list_role_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_open_id_connect_provider_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_open_id_connect_provider_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"Groups">> => list(group()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type get_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_roles_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_roles_request() :: #{binary() => any()}.
+
+%% Example:
+%% attached_policy() :: #{
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type attached_policy() :: #{binary() => any()}.
+
+%% Example:
+%% access_detail() :: #{
+%%   <<"EntityPath">> => string(),
+%%   <<"LastAuthenticatedTime">> => non_neg_integer(),
+%%   <<"Region">> => string(),
+%%   <<"ServiceName">> => string(),
+%%   <<"ServiceNamespace">> => string(),
+%%   <<"TotalAuthenticatedEntities">> => integer()
+%% }
+-type access_detail() :: #{binary() => any()}.
+
+%% Example:
+%% access_key_last_used() :: #{
+%%   <<"LastUsedDate">> => non_neg_integer(),
+%%   <<"Region">> => string(),
+%%   <<"ServiceName">> => string()
+%% }
+-type access_key_last_used() :: #{binary() => any()}.
+
+%% Example:
+%% create_access_key_request() :: #{
+%%   <<"UserName">> => string()
+%% }
+-type create_access_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_certificate_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_certificate_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_public_key_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_public_key_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_saml_provider_tags_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_saml_provider_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_client_id_to_open_id_connect_provider_request() :: #{
+%%   <<"ClientID">> := string(),
+%%   <<"OpenIDConnectProviderArn">> := string()
+%% }
+-type add_client_id_to_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ssh_public_key_request() :: #{
+%%   <<"SSHPublicKeyId">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type delete_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% tracked_action_last_accessed() :: #{
+%%   <<"ActionName">> => string(),
+%%   <<"LastAccessedEntity">> => string(),
+%%   <<"LastAccessedRegion">> => string(),
+%%   <<"LastAccessedTime">> => non_neg_integer()
+%% }
+-type tracked_action_last_accessed() :: #{binary() => any()}.
+
+%% Example:
+%% untag_role_request() :: #{
+%%   <<"RoleName">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_login_profile_request() :: #{
+%%   <<"Password">> := string(),
+%%   <<"PasswordResetRequired">> => boolean(),
+%%   <<"UserName">> := string()
+%% }
+-type create_login_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_open_id_connect_provider_request() :: #{
+%%   <<"OpenIDConnectProviderArn">> := string()
+%% }
+-type delete_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% upload_ssh_public_key_request() :: #{
+%%   <<"SSHPublicKeyBody">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type upload_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_ssh_public_key_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_ssh_public_key_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_role_request() :: #{
+%%   <<"RoleName">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_user_policies_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"PathPrefix">> => string(),
+%%   <<"UserName">> := string()
+%% }
+-type list_attached_user_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_signing_certificate_request() :: #{
+%%   <<"CertificateId">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type delete_signing_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% generate_credential_report_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type generate_credential_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_role_request() :: #{
+%%   <<"RoleName">> := string()
+%% }
+-type delete_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_response() :: #{
+%%   <<"Group">> => group()
+%% }
+-type create_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% deletion_task_failure_reason_type() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"RoleUsageList">> => list(role_usage_type()())
+%% }
+-type deletion_task_failure_reason_type() :: #{binary() => any()}.
+
+%% Example:
+%% tag_user_request() :: #{
+%%   <<"Tags">> := list(tag()()),
+%%   <<"UserName">> := string()
+%% }
+-type tag_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% simulate_policy_response() :: #{
+%%   <<"EvaluationResults">> => list(evaluation_result()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type simulate_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_user_from_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type remove_user_from_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_mfa_device_request() :: #{
+%%   <<"SerialNumber">> := string(),
+%%   <<"UserName">> => string()
+%% }
+-type get_mfa_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_role_policies_response() :: #{
+%%   <<"AttachedPolicies">> => list(attached_policy()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string()
+%% }
+-type list_attached_role_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate() :: #{
+%%   <<"CertificateBody">> => string(),
+%%   <<"CertificateChain">> => string(),
+%%   <<"ServerCertificateMetadata">> => server_certificate_metadata(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type server_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% create_open_id_connect_provider_request() :: #{
+%%   <<"ClientIDList">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"ThumbprintList">> := list(string()()),
+%%   <<"Url">> := string()
+%% }
+-type create_open_id_connect_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_role_permissions_boundary_request() :: #{
+%%   <<"RoleName">> := string()
+%% }
+-type delete_role_permissions_boundary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_server_certificate_response() :: #{
+%%   <<"ServerCertificate">> => server_certificate()
+%% }
+-type get_server_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_user() :: #{
+%%   <<"UserId">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type policy_user() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"Path">> => string(),
+%%   <<"PermissionsBoundary">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UserName">> := string()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_instance_profile_request() :: #{
+%%   <<"InstanceProfileName">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_instance_profile_request() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -348,9 +2792,24 @@
 %% This operation is idempotent; it does not fail or return an error if you
 %% add an
 %% existing client ID to the provider.
+-spec add_client_id_to_open_id_connect_provider(map(), add_client_id_to_open_id_connect_provider_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 add_client_id_to_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_client_id_to_open_id_connect_provider(Client, Input, []).
+
+-spec add_client_id_to_open_id_connect_provider(map(), add_client_id_to_open_id_connect_provider_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 add_client_id_to_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddClientIDToOpenIDConnectProvider">>, Input, Options).
@@ -382,17 +2841,47 @@ add_client_id_to_open_id_connect_provider(Client, Input, Options)
 %% instance profiles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html
 %% in the IAM User Guide.
+-spec add_role_to_instance_profile(map(), add_role_to_instance_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 add_role_to_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_instance_profile(Client, Input, []).
+
+-spec add_role_to_instance_profile(map(), add_role_to_instance_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 add_role_to_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddRoleToInstanceProfile">>, Input, Options).
 
 %% @doc Adds the specified user to the specified group.
+-spec add_user_to_group(map(), add_user_to_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 add_user_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_user_to_group(Client, Input, []).
+
+-spec add_user_to_group(map(), add_user_to_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 add_user_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddUserToGroup">>, Input, Options).
@@ -415,9 +2904,26 @@ add_user_to_group(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec attach_group_policy(map(), attach_group_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 attach_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_group_policy(Client, Input, []).
+
+-spec attach_group_policy(map(), attach_group_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 attach_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachGroupPolicy">>, Input, Options).
@@ -455,9 +2961,28 @@ attach_group_policy(Client, Input, Options)
 %% To learn more, see Validating IAM policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_policy-validator.html
 %% in the IAM User Guide.
+-spec attach_role_policy(map(), attach_role_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 attach_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_role_policy(Client, Input, []).
+
+-spec attach_role_policy(map(), attach_role_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 attach_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachRolePolicy">>, Input, Options).
@@ -479,9 +3004,26 @@ attach_role_policy(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec attach_user_policy(map(), attach_user_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 attach_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_user_policy(Client, Input, []).
+
+-spec attach_user_policy(map(), attach_user_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 attach_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachUserPolicy">>, Input, Options).
@@ -502,9 +3044,28 @@ attach_user_policy(Client, Input, Options)
 %% passwords:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html
 %% in the IAM User Guide.
+-spec change_password(map(), change_password_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, invalid_user_type_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, password_policy_violation_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 change_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_password(Client, Input, []).
+
+-spec change_password(map(), change_password_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, invalid_user_type_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, password_policy_violation_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 change_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangePassword">>, Input, Options).
@@ -537,9 +3098,22 @@ change_password(Client, Input, Options)
 %% file) if you want to be able to access it again. If a secret key is lost,
 %% you can
 %% delete the access keys for the associated user and then create new keys.
+-spec create_access_key(map(), create_access_key_request()) ->
+    {ok, create_access_key_response(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access_key(Client, Input, []).
+
+-spec create_access_key(map(), create_access_key_request(), proplists:proplist()) ->
+    {ok, create_access_key_response(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_access_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccessKey">>, Input, Options).
@@ -552,9 +3126,24 @@ create_access_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/signin/latest/userguide/CreateAccountAlias.html
 %% in the Amazon Web Services Sign-In User
 %% Guide.
+-spec create_account_alias(map(), create_account_alias_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_account_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account_alias(Client, Input, []).
+
+-spec create_account_alias(map(), create_account_alias_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_account_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccountAlias">>, Input, Options).
@@ -565,9 +3154,24 @@ create_account_alias(Client, Input, Options)
 %% quotas:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the IAM User Guide.
+-spec create_group(map(), create_group_request()) ->
+    {ok, create_group_response(), tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
+
+-spec create_group(map(), create_group_request(), proplists:proplist()) ->
+    {ok, create_group_response(), tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
@@ -587,9 +3191,26 @@ create_group(Client, Input, Options)
 %% quotas:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the IAM User Guide.
+-spec create_instance_profile(map(), create_instance_profile_request()) ->
+    {ok, create_instance_profile_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_profile(Client, Input, []).
+
+-spec create_instance_profile(map(), create_instance_profile_request(), proplists:proplist()) ->
+    {ok, create_instance_profile_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstanceProfile">>, Input, Options).
@@ -609,9 +3230,26 @@ create_instance_profile(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html
 %% in the
 %% IAM User Guide.
+-spec create_login_profile(map(), create_login_profile_request()) ->
+    {ok, create_login_profile_response(), tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, password_policy_violation_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_login_profile(Client, Input, []).
+
+-spec create_login_profile(map(), create_login_profile_request(), proplists:proplist()) ->
+    {ok, create_login_profile_response(), tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, password_policy_violation_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_login_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoginProfile">>, Input, Options).
@@ -671,9 +3309,26 @@ create_login_profile(Client, Input, Options)
 %% operation creates. Therefore, it is best to limit access to the
 %% `CreateOpenIDConnectProvider' operation to highly privileged
 %% users.
+-spec create_open_id_connect_provider(map(), create_open_id_connect_provider_request()) ->
+    {ok, create_open_id_connect_provider_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_open_id_connect_provider(Client, Input, []).
+
+-spec create_open_id_connect_provider(map(), create_open_id_connect_provider_request(), proplists:proplist()) ->
+    {ok, create_open_id_connect_provider_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOpenIDConnectProvider">>, Input, Options).
@@ -699,9 +3354,28 @@ create_open_id_connect_provider(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
 %% IAM User Guide.
+-spec create_policy(map(), create_policy_request()) ->
+    {ok, create_policy_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
+
+-spec create_policy(map(), create_policy_request(), proplists:proplist()) ->
+    {ok, create_policy_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicy">>, Input, Options).
@@ -725,9 +3399,26 @@ create_policy(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html
 %% in the IAM User Guide.
+-spec create_policy_version(map(), create_policy_version_request()) ->
+    {ok, create_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy_version(Client, Input, []).
+
+-spec create_policy_version(map(), create_policy_version_request(), proplists:proplist()) ->
+    {ok, create_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_policy_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicyVersion">>, Input, Options).
@@ -741,9 +3432,28 @@ create_policy_version(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the
 %% IAM User Guide.
+-spec create_role(map(), create_role_request()) ->
+    {ok, create_role_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_role(Client, Input, []).
+
+-spec create_role(map(), create_role_request(), proplists:proplist()) ->
+    {ok, create_role_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRole">>, Input, Options).
@@ -782,9 +3492,26 @@ create_role(Client, Input, Options)
 %% federation:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
 %% in the IAM User Guide.
+-spec create_saml_provider(map(), create_saml_provider_request()) ->
+    {ok, create_saml_provider_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_saml_provider(Client, Input, []).
+
+-spec create_saml_provider(map(), create_saml_provider_request(), proplists:proplist()) ->
+    {ok, create_saml_provider_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSAMLProvider">>, Input, Options).
@@ -809,9 +3536,24 @@ create_saml_provider(Client, Input, Options)
 %% To attach a policy to this service-linked role, you must make the request
 %% using the
 %% Amazon Web Services service that depends on this role.
+-spec create_service_linked_role(map(), create_service_linked_role_request()) ->
+    {ok, create_service_linked_role_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_service_linked_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_linked_role(Client, Input, []).
+
+-spec create_service_linked_role(map(), create_service_linked_role_request(), proplists:proplist()) ->
+    {ok, create_service_linked_role_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_service_linked_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceLinkedRole">>, Input, Options).
@@ -840,9 +3582,22 @@ create_service_linked_role(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html
 %% in the
 %% IAM User Guide.
+-spec create_service_specific_credential(map(), create_service_specific_credential_request()) ->
+    {ok, create_service_specific_credential_response(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_not_supported_exception(), tuple()}.
 create_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_specific_credential(Client, Input, []).
+
+-spec create_service_specific_credential(map(), create_service_specific_credential_request(), proplists:proplist()) ->
+    {ok, create_service_specific_credential_response(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_not_supported_exception(), tuple()}.
 create_service_specific_credential(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceSpecificCredential">>, Input, Options).
@@ -854,9 +3609,28 @@ create_service_specific_credential(Client, Input, Options)
 %% quotas:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the IAM User Guide.
+-spec create_user(map(), create_user_request()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
+
+-spec create_user(map(), create_user_request(), proplists:proplist()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -886,9 +3660,26 @@ create_user(Client, Input, Options)
 %% provision your virtual device, you should ensure that the information is
 %% destroyed
 %% following secure procedures.
+-spec create_virtual_mfa_device(map(), create_virtual_mfa_device_request()) ->
+    {ok, create_virtual_mfa_device_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_virtual_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_virtual_mfa_device(Client, Input, []).
+
+-spec create_virtual_mfa_device(map(), create_virtual_mfa_device_request(), proplists:proplist()) ->
+    {ok, create_virtual_mfa_device_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 create_virtual_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVirtualMFADevice">>, Input, Options).
@@ -903,9 +3694,26 @@ create_virtual_mfa_device(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html in
 %% the
 %% IAM User Guide.
+-spec deactivate_mfa_device(map(), deactivate_mfa_device_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 deactivate_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_mfa_device(Client, Input, []).
+
+-spec deactivate_mfa_device(map(), deactivate_mfa_device_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 deactivate_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateMFADevice">>, Input, Options).
@@ -920,9 +3728,22 @@ deactivate_mfa_device(Client, Input, Options)
 %% to manage Amazon Web Services account root
 %% user credentials even if the Amazon Web Services account has no associated
 %% users.
+-spec delete_access_key(map(), delete_access_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_key(Client, Input, []).
+
+-spec delete_access_key(map(), delete_access_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_access_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccessKey">>, Input, Options).
@@ -935,9 +3756,24 @@ delete_access_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/signin/latest/userguide/CreateAccountAlias.html
 %% in the Amazon Web Services Sign-In User
 %% Guide.
+-spec delete_account_alias(map(), delete_account_alias_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_account_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_alias(Client, Input, []).
+
+-spec delete_account_alias(map(), delete_account_alias_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_account_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccountAlias">>, Input, Options).
@@ -945,9 +3781,22 @@ delete_account_alias(Client, Input, Options)
 %% @doc Deletes the password policy for the Amazon Web Services account.
 %%
 %% There are no parameters.
+-spec delete_account_password_policy(map(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_account_password_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_password_policy(Client, Input, []).
+
+-spec delete_account_password_policy(map(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_account_password_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccountPasswordPolicy">>, Input, Options).
@@ -956,9 +3805,24 @@ delete_account_password_policy(Client, Input, Options)
 %%
 %% The group must not contain any users or have any
 %% attached policies.
+-spec delete_group(map(), delete_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
+
+-spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroup">>, Input, Options).
@@ -974,9 +3838,22 @@ delete_group(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec delete_group_policy(map(), delete_group_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group_policy(Client, Input, []).
+
+-spec delete_group_policy(map(), delete_group_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroupPolicy">>, Input, Options).
@@ -998,9 +3875,24 @@ delete_group_policy(Client, Input, Options)
 %% instance profiles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html
 %% in the IAM User Guide.
+-spec delete_instance_profile(map(), delete_instance_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_profile(Client, Input, []).
+
+-spec delete_instance_profile(map(), delete_instance_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstanceProfile">>, Input, Options).
@@ -1024,9 +3916,24 @@ delete_instance_profile(Client, Input, Options)
 %% about
 %% making keys inactive or deleting them, see `UpdateAccessKey' and
 %% `DeleteAccessKey'.
+-spec delete_login_profile(map(), delete_login_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_login_profile(Client, Input, []).
+
+-spec delete_login_profile(map(), delete_login_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_login_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoginProfile">>, Input, Options).
@@ -1043,9 +3950,22 @@ delete_login_profile(Client, Input, Options)
 %% This operation is idempotent; it does not fail or return an error if you
 %% call the
 %% operation for a provider that does not exist.
+-spec delete_open_id_connect_provider(map(), delete_open_id_connect_provider_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_open_id_connect_provider(Client, Input, []).
+
+-spec delete_open_id_connect_provider(map(), delete_open_id_connect_provider_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOpenIDConnectProvider">>, Input, Options).
@@ -1081,9 +4001,26 @@ delete_open_id_connect_provider(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec delete_policy(map(), delete_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
+
+-spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -1102,9 +4039,26 @@ delete_policy(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html
 %% in the IAM User Guide.
+-spec delete_policy_version(map(), delete_policy_version_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy_version(Client, Input, []).
+
+-spec delete_policy_version(map(), delete_policy_version_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_policy_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicyVersion">>, Input, Options).
@@ -1133,9 +4087,28 @@ delete_policy_version(Client, Input, Options)
 %% are about to delete. Deleting a role or instance profile that is
 %% associated with a
 %% running instance will break any applications running on the instance.
+-spec delete_role(map(), delete_role_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 delete_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role(Client, Input, []).
+
+-spec delete_role(map(), delete_role_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 delete_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRole">>, Input, Options).
@@ -1149,9 +4122,22 @@ delete_role(Client, Input, Options)
 %% example, it might allow anyone who assumes the role to perform all the
 %% actions
 %% granted in its permissions policies.
+-spec delete_role_permissions_boundary(map(), delete_role_permissions_boundary_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 delete_role_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role_permissions_boundary(Client, Input, []).
+
+-spec delete_role_permissions_boundary(map(), delete_role_permissions_boundary_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 delete_role_permissions_boundary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRolePermissionsBoundary">>, Input, Options).
@@ -1167,9 +4153,24 @@ delete_role_permissions_boundary(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec delete_role_policy(map(), delete_role_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 delete_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role_policy(Client, Input, []).
+
+-spec delete_role_policy(map(), delete_role_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 delete_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRolePolicy">>, Input, Options).
@@ -1184,9 +4185,24 @@ delete_role_policy(Client, Input, Options)
 %%
 %% This operation requires Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
+-spec delete_saml_provider(map(), delete_saml_provider_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_saml_provider(Client, Input, []).
+
+-spec delete_saml_provider(map(), delete_saml_provider_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSAMLProvider">>, Input, Options).
@@ -1217,9 +4233,24 @@ delete_saml_provider(Client, Input, Options)
 %% https://docs.aws.amazon.com/ElasticLoadBalancing/latest/APIReference/API_DeleteLoadBalancerListeners.html
 %% in the Elastic Load Balancing API
 %% Reference.
+-spec delete_server_certificate(map(), delete_server_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_server_certificate(Client, Input, []).
+
+-spec delete_server_certificate(map(), delete_server_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServerCertificate">>, Input, Options).
@@ -1259,17 +4290,39 @@ delete_server_certificate(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role
 %% in the
 %% IAM User Guide.
+-spec delete_service_linked_role(map(), delete_service_linked_role_request()) ->
+    {ok, delete_service_linked_role_response(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_service_linked_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_linked_role(Client, Input, []).
+
+-spec delete_service_linked_role(map(), delete_service_linked_role_request(), proplists:proplist()) ->
+    {ok, delete_service_linked_role_response(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_service_linked_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceLinkedRole">>, Input, Options).
 
 %% @doc Deletes the specified service-specific credential.
+-spec delete_service_specific_credential(map(), delete_service_specific_credential_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 delete_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_specific_credential(Client, Input, []).
+
+-spec delete_service_specific_credential(map(), delete_service_specific_credential_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 delete_service_specific_credential(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceSpecificCredential">>, Input, Options).
@@ -1284,9 +4337,24 @@ delete_service_specific_credential(Client, Input, Options)
 %% to manage Amazon Web Services account root
 %% user credentials even if the Amazon Web Services account has no associated
 %% IAM users.
+-spec delete_signing_certificate(map(), delete_signing_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_signing_certificate(Client, Input, []).
+
+-spec delete_signing_certificate(map(), delete_signing_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSigningCertificate">>, Input, Options).
@@ -1301,9 +4369,18 @@ delete_signing_certificate(Client, Input, Options)
 %% SSH connections:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html
 %% in the CodeCommit User Guide.
+-spec delete_ssh_public_key(map(), delete_ssh_public_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 delete_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ssh_public_key(Client, Input, []).
+
+-spec delete_ssh_public_key(map(), delete_ssh_public_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 delete_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSSHPublicKey">>, Input, Options).
@@ -1336,9 +4413,26 @@ delete_ssh_public_key(Client, Input, Options)
 %% Attached managed policies (`DetachUserPolicy')
 %%
 %% Group memberships (`RemoveUserFromGroup')
+-spec delete_user(map(), delete_user_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
+
+-spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -1349,9 +4443,20 @@ delete_user(Client, Input, Options)
 %% permissions by
 %% allowing the user to perform all the actions granted in its permissions
 %% policies.
+-spec delete_user_permissions_boundary(map(), delete_user_permissions_boundary_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_user_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_permissions_boundary(Client, Input, []).
+
+-spec delete_user_permissions_boundary(map(), delete_user_permissions_boundary_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_user_permissions_boundary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPermissionsBoundary">>, Input, Options).
@@ -1367,9 +4472,22 @@ delete_user_permissions_boundary(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec delete_user_policy(map(), delete_user_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_policy(Client, Input, []).
+
+-spec delete_user_policy(map(), delete_user_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPolicy">>, Input, Options).
@@ -1379,9 +4497,26 @@ delete_user_policy(Client, Input, Options)
 %% You must deactivate a user's virtual MFA device before you can delete
 %% it. For
 %% information about deactivating MFA devices, see `DeactivateMFADevice'.
+-spec delete_virtual_mfa_device(map(), delete_virtual_mfa_device_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_virtual_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_virtual_mfa_device(Client, Input, []).
+
+-spec delete_virtual_mfa_device(map(), delete_virtual_mfa_device_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, delete_conflict_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 delete_virtual_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVirtualMFADevice">>, Input, Options).
@@ -1395,9 +4530,24 @@ delete_virtual_mfa_device(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
 %% IAM User Guide.
+-spec detach_group_policy(map(), detach_group_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 detach_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_group_policy(Client, Input, []).
+
+-spec detach_group_policy(map(), detach_group_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 detach_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachGroupPolicy">>, Input, Options).
@@ -1411,9 +4561,26 @@ detach_group_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
 %% IAM User Guide.
+-spec detach_role_policy(map(), detach_role_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 detach_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_role_policy(Client, Input, []).
+
+-spec detach_role_policy(map(), detach_role_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 detach_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachRolePolicy">>, Input, Options).
@@ -1427,9 +4594,24 @@ detach_role_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the
 %% IAM User Guide.
+-spec detach_user_policy(map(), detach_user_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 detach_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_user_policy(Client, Input, []).
+
+-spec detach_user_policy(map(), detach_user_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 detach_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachUserPolicy">>, Input, Options).
@@ -1441,9 +4623,30 @@ detach_user_policy(Client, Input, Options)
 %% enabled, the MFA device is required for every subsequent login by the IAM
 %% user
 %% associated with the device.
+-spec enable_mfa_device(map(), enable_mfa_device_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, invalid_authentication_code_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 enable_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_mfa_device(Client, Input, []).
+
+-spec enable_mfa_device(map(), enable_mfa_device_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, invalid_authentication_code_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 enable_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableMFADevice">>, Input, Options).
@@ -1455,9 +4658,20 @@ enable_mfa_device(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html
 %% in
 %% the IAM User Guide.
+-spec generate_credential_report(map(), #{}) ->
+    {ok, generate_credential_report_response(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 generate_credential_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_credential_report(Client, Input, []).
+
+-spec generate_credential_report(map(), #{}, proplists:proplist()) ->
+    {ok, generate_credential_report_response(), tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 generate_credential_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateCredentialReport">>, Input, Options).
@@ -1647,9 +4861,18 @@ generate_credential_report(Client, Input, Options)
 %% viewing user activity:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html
 %% in the IAM User Guide.
+-spec generate_organizations_access_report(map(), generate_organizations_access_report_request()) ->
+    {ok, generate_organizations_access_report_response(), tuple()} |
+    {error, any()} |
+    {error, report_generation_limit_exceeded_exception(), tuple()}.
 generate_organizations_access_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_organizations_access_report(Client, Input, []).
+
+-spec generate_organizations_access_report(map(), generate_organizations_access_report_request(), proplists:proplist()) ->
+    {ok, generate_organizations_access_report_response(), tuple()} |
+    {error, any()} |
+    {error, report_generation_limit_exceeded_exception(), tuple()}.
 generate_organizations_access_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateOrganizationsAccessReport">>, Input, Options).
@@ -1741,9 +4964,20 @@ generate_organizations_access_report(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html
 %% in the
 %% IAM User Guide.
+-spec generate_service_last_accessed_details(map(), generate_service_last_accessed_details_request()) ->
+    {ok, generate_service_last_accessed_details_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 generate_service_last_accessed_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_service_last_accessed_details(Client, Input, []).
+
+-spec generate_service_last_accessed_details(map(), generate_service_last_accessed_details_request(), proplists:proplist()) ->
+    {ok, generate_service_last_accessed_details_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 generate_service_last_accessed_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateServiceLastAccessedDetails">>, Input, Options).
@@ -1755,9 +4989,16 @@ generate_service_last_accessed_details(Client, Input, Options)
 %% information includes the date and time of last use, along with the Amazon
 %% Web Services service and
 %% Region that were specified in the last request made with that key.
+-spec get_access_key_last_used(map(), get_access_key_last_used_request()) ->
+    {ok, get_access_key_last_used_response(), tuple()} |
+    {error, any()}.
 get_access_key_last_used(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_key_last_used(Client, Input, []).
+
+-spec get_access_key_last_used(map(), get_access_key_last_used_request(), proplists:proplist()) ->
+    {ok, get_access_key_last_used_response(), tuple()} |
+    {error, any()}.
 get_access_key_last_used(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccessKeyLastUsed">>, Input, Options).
@@ -1783,9 +5024,18 @@ get_access_key_last_used(Client, Input, Options)
 %% You can
 %% paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec get_account_authorization_details(map(), get_account_authorization_details_request()) ->
+    {ok, get_account_authorization_details_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 get_account_authorization_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_authorization_details(Client, Input, []).
+
+-spec get_account_authorization_details(map(), get_account_authorization_details_request(), proplists:proplist()) ->
+    {ok, get_account_authorization_details_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 get_account_authorization_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountAuthorizationDetails">>, Input, Options).
@@ -1799,9 +5049,20 @@ get_account_authorization_details(Client, Input, Options)
 %% password
 %% policy:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html.
+-spec get_account_password_policy(map(), #{}) ->
+    {ok, get_account_password_policy_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_account_password_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_password_policy(Client, Input, []).
+
+-spec get_account_password_policy(map(), #{}, proplists:proplist()) ->
+    {ok, get_account_password_policy_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_account_password_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountPasswordPolicy">>, Input, Options).
@@ -1814,9 +5075,18 @@ get_account_password_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html
 %% in the
 %% IAM User Guide.
+-spec get_account_summary(map(), #{}) ->
+    {ok, get_account_summary_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 get_account_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_summary(Client, Input, []).
+
+-spec get_account_summary(map(), #{}, proplists:proplist()) ->
+    {ok, get_account_summary_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 get_account_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountSummary">>, Input, Options).
@@ -1841,9 +5111,18 @@ get_account_summary(Client, Input, Options)
 %% parameters are shown in unencoded form here for clarity but must be URL
 %% encoded to be
 %% included as a part of a real HTML request.
+-spec get_context_keys_for_custom_policy(map(), get_context_keys_for_custom_policy_request()) ->
+    {ok, get_context_keys_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()}.
 get_context_keys_for_custom_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_context_keys_for_custom_policy(Client, Input, []).
+
+-spec get_context_keys_for_custom_policy(map(), get_context_keys_for_custom_policy_request(), proplists:proplist()) ->
+    {ok, get_context_keys_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()}.
 get_context_keys_for_custom_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContextKeysForCustomPolicy">>, Input, Options).
@@ -1875,9 +5154,20 @@ get_context_keys_for_custom_policy(Client, Input, Options)
 %% against a value in an IAM policy. Use
 %% `GetContextKeysForPrincipalPolicy' to understand what key names and
 %% values you must supply when you call `SimulatePrincipalPolicy'.
+-spec get_context_keys_for_principal_policy(map(), get_context_keys_for_principal_policy_request()) ->
+    {ok, get_context_keys_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 get_context_keys_for_principal_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_context_keys_for_principal_policy(Client, Input, []).
+
+-spec get_context_keys_for_principal_policy(map(), get_context_keys_for_principal_policy_request(), proplists:proplist()) ->
+    {ok, get_context_keys_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 get_context_keys_for_principal_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContextKeysForPrincipalPolicy">>, Input, Options).
@@ -1889,9 +5179,24 @@ get_context_keys_for_principal_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html
 %% in
 %% the IAM User Guide.
+-spec get_credential_report(map(), #{}) ->
+    {ok, get_credential_report_response(), tuple()} |
+    {error, any()} |
+    {error, credential_report_expired_exception(), tuple()} |
+    {error, credential_report_not_present_exception(), tuple()} |
+    {error, credential_report_not_ready_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_credential_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credential_report(Client, Input, []).
+
+-spec get_credential_report(map(), #{}, proplists:proplist()) ->
+    {ok, get_credential_report_response(), tuple()} |
+    {error, any()} |
+    {error, credential_report_expired_exception(), tuple()} |
+    {error, credential_report_not_present_exception(), tuple()} |
+    {error, credential_report_not_ready_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_credential_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCredentialReport">>, Input, Options).
@@ -1900,9 +5205,20 @@ get_credential_report(Client, Input, Options)
 %%
 %% You can paginate
 %% the results using the `MaxItems' and `Marker' parameters.
+-spec get_group(map(), get_group_request()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group(Client, Input, []).
+
+-spec get_group(map(), get_group_request(), proplists:proplist()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroup">>, Input, Options).
@@ -1930,9 +5246,20 @@ get_group(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec get_group_policy(map(), get_group_policy_request()) ->
+    {ok, get_group_policy_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_policy(Client, Input, []).
+
+-spec get_group_policy(map(), get_group_policy_request(), proplists:proplist()) ->
+    {ok, get_group_policy_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroupPolicy">>, Input, Options).
@@ -1946,9 +5273,20 @@ get_group_policy(Client, Input, Options)
 %% instance profiles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html
 %% in the IAM User Guide.
+-spec get_instance_profile(map(), get_instance_profile_request()) ->
+    {ok, get_instance_profile_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_instance_profile(Client, Input, []).
+
+-spec get_instance_profile(map(), get_instance_profile_request(), proplists:proplist()) ->
+    {ok, get_instance_profile_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInstanceProfile">>, Input, Options).
@@ -1973,17 +5311,39 @@ get_instance_profile(Client, Input, Options)
 %% login profile
 %% unless you create a password for the user to access the Amazon Web
 %% Services Management Console.
+-spec get_login_profile(map(), get_login_profile_request()) ->
+    {ok, get_login_profile_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_login_profile(Client, Input, []).
+
+-spec get_login_profile(map(), get_login_profile_request(), proplists:proplist()) ->
+    {ok, get_login_profile_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_login_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoginProfile">>, Input, Options).
 
 %% @doc Retrieves information about an MFA device for a specified user.
+-spec get_mfa_device(map(), get_mfa_device_request()) ->
+    {ok, get_mfa_device_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mfa_device(Client, Input, []).
+
+-spec get_mfa_device(map(), get_mfa_device_request(), proplists:proplist()) ->
+    {ok, get_mfa_device_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMFADevice">>, Input, Options).
@@ -1991,9 +5351,22 @@ get_mfa_device(Client, Input, Options)
 %% @doc Returns information about the specified OpenID Connect (OIDC)
 %% provider resource object
 %% in IAM.
+-spec get_open_id_connect_provider(map(), get_open_id_connect_provider_request()) ->
+    {ok, get_open_id_connect_provider_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_open_id_connect_provider(Client, Input, []).
+
+-spec get_open_id_connect_provider(map(), get_open_id_connect_provider_request(), proplists:proplist()) ->
+    {ok, get_open_id_connect_provider_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpenIDConnectProvider">>, Input, Options).
@@ -2035,9 +5408,18 @@ get_open_id_connect_provider(Client, Input, Options)
 %% it failed.
 %%
 %% By default, the list is sorted by service namespace.
+-spec get_organizations_access_report(map(), get_organizations_access_report_request()) ->
+    {ok, get_organizations_access_report_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 get_organizations_access_report(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organizations_access_report(Client, Input, []).
+
+-spec get_organizations_access_report(map(), get_organizations_access_report_request(), proplists:proplist()) ->
+    {ok, get_organizations_access_report_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 get_organizations_access_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationsAccessReport">>, Input, Options).
@@ -2063,9 +5445,22 @@ get_organizations_access_report(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec get_policy(map(), get_policy_request()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
+
+-spec get_policy(map(), get_policy_request(), proplists:proplist()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicy">>, Input, Options).
@@ -2100,9 +5495,22 @@ get_policy(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html
 %% in the IAM User Guide.
+-spec get_policy_version(map(), get_policy_version_request()) ->
+    {ok, get_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy_version(Client, Input, []).
+
+-spec get_policy_version(map(), get_policy_version_request(), proplists:proplist()) ->
+    {ok, get_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_policy_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPolicyVersion">>, Input, Options).
@@ -2123,9 +5531,20 @@ get_policy_version(Client, Input, Options)
 %% can use the `decode' method of the `java.net.URLDecoder' utility
 %% class in
 %% the Java SDK. Other languages and SDKs provide similar functionality.
+-spec get_role(map(), get_role_request()) ->
+    {ok, get_role_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_role(Client, Input, []).
+
+-spec get_role(map(), get_role_request(), proplists:proplist()) ->
+    {ok, get_role_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRole">>, Input, Options).
@@ -2158,9 +5577,20 @@ get_role(Client, Input, Options)
 %% For more information about roles, see IAM roles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html in the
 %% IAM User Guide.
+-spec get_role_policy(map(), get_role_policy_request()) ->
+    {ok, get_role_policy_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_role_policy(Client, Input, []).
+
+-spec get_role_policy(map(), get_role_policy_request(), proplists:proplist()) ->
+    {ok, get_role_policy_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRolePolicy">>, Input, Options).
@@ -2171,9 +5601,22 @@ get_role_policy(Client, Input, Options)
 %%
 %% This operation requires Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
+-spec get_saml_provider(map(), get_saml_provider_request()) ->
+    {ok, get_saml_provider_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_saml_provider(Client, Input, []).
+
+-spec get_saml_provider(map(), get_saml_provider_request(), proplists:proplist()) ->
+    {ok, get_saml_provider_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSAMLProvider">>, Input, Options).
@@ -2188,9 +5631,20 @@ get_saml_provider(Client, Input, Options)
 %% topic includes a list of Amazon Web Services services that can use the
 %% server certificates that you
 %% manage with IAM.
+-spec get_server_certificate(map(), get_server_certificate_request()) ->
+    {ok, get_server_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_server_certificate(Client, Input, []).
+
+-spec get_server_certificate(map(), get_server_certificate_request(), proplists:proplist()) ->
+    {ok, get_server_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServerCertificate">>, Input, Options).
@@ -2264,9 +5718,20 @@ get_server_certificate(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html
 %% in the
 %% IAM User Guide.
+-spec get_service_last_accessed_details(map(), get_service_last_accessed_details_request()) ->
+    {ok, get_service_last_accessed_details_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 get_service_last_accessed_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_last_accessed_details(Client, Input, []).
+
+-spec get_service_last_accessed_details(map(), get_service_last_accessed_details_request(), proplists:proplist()) ->
+    {ok, get_service_last_accessed_details_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 get_service_last_accessed_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceLastAccessedDetails">>, Input, Options).
@@ -2302,9 +5767,20 @@ get_service_last_accessed_details(Client, Input, Options)
 %% By default, the list of associated entities is sorted by date, with the
 %% most recent
 %% access listed first.
+-spec get_service_last_accessed_details_with_entities(map(), get_service_last_accessed_details_with_entities_request()) ->
+    {ok, get_service_last_accessed_details_with_entities_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 get_service_last_accessed_details_with_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_last_accessed_details_with_entities(Client, Input, []).
+
+-spec get_service_last_accessed_details_with_entities(map(), get_service_last_accessed_details_with_entities_request(), proplists:proplist()) ->
+    {ok, get_service_last_accessed_details_with_entities_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 get_service_last_accessed_details_with_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceLastAccessedDetailsWithEntities">>, Input, Options).
@@ -2319,9 +5795,22 @@ get_service_last_accessed_details_with_entities(Client, Input, Options)
 %% If the deletion fails, this operation returns the reason that it failed,
 %% if that
 %% information is returned by the service.
+-spec get_service_linked_role_deletion_status(map(), get_service_linked_role_deletion_status_request()) ->
+    {ok, get_service_linked_role_deletion_status_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_service_linked_role_deletion_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_linked_role_deletion_status(Client, Input, []).
+
+-spec get_service_linked_role_deletion_status(map(), get_service_linked_role_deletion_status_request(), proplists:proplist()) ->
+    {ok, get_service_linked_role_deletion_status_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_service_linked_role_deletion_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceLinkedRoleDeletionStatus">>, Input, Options).
@@ -2337,9 +5826,20 @@ get_service_linked_role_deletion_status(Client, Input, Options)
 %% connections:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html
 %% in the CodeCommit User Guide.
+-spec get_ssh_public_key(map(), get_ssh_public_key_request()) ->
+    {ok, get_ssh_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, unrecognized_public_key_encoding_exception(), tuple()}.
 get_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ssh_public_key(Client, Input, []).
+
+-spec get_ssh_public_key(map(), get_ssh_public_key_request(), proplists:proplist()) ->
+    {ok, get_ssh_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, unrecognized_public_key_encoding_exception(), tuple()}.
 get_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSSHPublicKey">>, Input, Options).
@@ -2352,9 +5852,20 @@ get_ssh_public_key(Client, Input, Options)
 %% based on
 %% the Amazon Web Services access key ID used to sign the request to this
 %% operation.
+-spec get_user(map(), get_user_request()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user(Client, Input, []).
+
+-spec get_user(map(), get_user_request(), proplists:proplist()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUser">>, Input, Options).
@@ -2383,9 +5894,20 @@ get_user(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec get_user_policy(map(), get_user_policy_request()) ->
+    {ok, get_user_policy_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_policy(Client, Input, []).
+
+-spec get_user_policy(map(), get_user_policy_request(), proplists:proplist()) ->
+    {ok, get_user_policy_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 get_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserPolicy">>, Input, Options).
@@ -2416,9 +5938,20 @@ get_user_policy(Client, Input, Options)
 %% To ensure the security of your Amazon Web Services account, the secret
 %% access key is accessible
 %% only during key and user creation.
+-spec list_access_keys(map(), list_access_keys_request()) ->
+    {ok, list_access_keys_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_access_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_access_keys(Client, Input, []).
+
+-spec list_access_keys(map(), list_access_keys_request(), proplists:proplist()) ->
+    {ok, list_access_keys_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_access_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccessKeys">>, Input, Options).
@@ -2433,9 +5966,18 @@ list_access_keys(Client, Input, Options)
 %% https://docs.aws.amazon.com/signin/latest/userguide/CreateAccountAlias.html
 %% in the Amazon Web Services Sign-In
 %% User Guide.
+-spec list_account_aliases(map(), list_account_aliases_request()) ->
+    {ok, list_account_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_account_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_aliases(Client, Input, []).
+
+-spec list_account_aliases(map(), list_account_aliases_request(), proplists:proplist()) ->
+    {ok, list_account_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_account_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountAliases">>, Input, Options).
@@ -2459,9 +6001,22 @@ list_account_aliases(Client, Input, Options)
 %% attached to the specified group (or none that match the specified path
 %% prefix), the
 %% operation returns an empty list.
+-spec list_attached_group_policies(map(), list_attached_group_policies_request()) ->
+    {ok, list_attached_group_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_attached_group_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attached_group_policies(Client, Input, []).
+
+-spec list_attached_group_policies(map(), list_attached_group_policies_request(), proplists:proplist()) ->
+    {ok, list_attached_group_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_attached_group_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttachedGroupPolicies">>, Input, Options).
@@ -2485,9 +6040,22 @@ list_attached_group_policies(Client, Input, Options)
 %% attached to the specified role (or none that match the specified path
 %% prefix), the
 %% operation returns an empty list.
+-spec list_attached_role_policies(map(), list_attached_role_policies_request()) ->
+    {ok, list_attached_role_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_attached_role_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attached_role_policies(Client, Input, []).
+
+-spec list_attached_role_policies(map(), list_attached_role_policies_request(), proplists:proplist()) ->
+    {ok, list_attached_role_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_attached_role_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttachedRolePolicies">>, Input, Options).
@@ -2511,9 +6079,22 @@ list_attached_role_policies(Client, Input, Options)
 %% attached to the specified group (or none that match the specified path
 %% prefix), the
 %% operation returns an empty list.
+-spec list_attached_user_policies(map(), list_attached_user_policies_request()) ->
+    {ok, list_attached_user_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_attached_user_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attached_user_policies(Client, Input, []).
+
+-spec list_attached_user_policies(map(), list_attached_user_policies_request(), proplists:proplist()) ->
+    {ok, list_attached_user_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_attached_user_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttachedUserPolicies">>, Input, Options).
@@ -2531,9 +6112,22 @@ list_attached_user_policies(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec list_entities_for_policy(map(), list_entities_for_policy_request()) ->
+    {ok, list_entities_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_entities_for_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_entities_for_policy(Client, Input, []).
+
+-spec list_entities_for_policy(map(), list_entities_for_policy_request(), proplists:proplist()) ->
+    {ok, list_entities_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_entities_for_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntitiesForPolicy">>, Input, Options).
@@ -2555,9 +6149,20 @@ list_entities_for_policy(Client, Input, Options)
 %% parameters. If there are no inline policies embedded with the specified
 %% group, the
 %% operation returns an empty list.
+-spec list_group_policies(map(), list_group_policies_request()) ->
+    {ok, list_group_policies_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_group_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_group_policies(Client, Input, []).
+
+-spec list_group_policies(map(), list_group_policies_request(), proplists:proplist()) ->
+    {ok, list_group_policies_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_group_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupPolicies">>, Input, Options).
@@ -2566,9 +6171,18 @@ list_group_policies(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec list_groups(map(), list_groups_request()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
+
+-spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
@@ -2577,9 +6191,20 @@ list_groups(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec list_groups_for_user(map(), list_groups_for_user_request()) ->
+    {ok, list_groups_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_groups_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups_for_user(Client, Input, []).
+
+-spec list_groups_for_user(map(), list_groups_for_user_request(), proplists:proplist()) ->
+    {ok, list_groups_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_groups_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupsForUser">>, Input, Options).
@@ -2591,9 +6216,20 @@ list_groups_for_user(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec list_instance_profile_tags(map(), list_instance_profile_tags_request()) ->
+    {ok, list_instance_profile_tags_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_instance_profile_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profile_tags(Client, Input, []).
+
+-spec list_instance_profile_tags(map(), list_instance_profile_tags_request(), proplists:proplist()) ->
+    {ok, list_instance_profile_tags_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_instance_profile_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceProfileTags">>, Input, Options).
@@ -2616,9 +6252,18 @@ list_instance_profile_tags(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec list_instance_profiles(map(), list_instance_profiles_request()) ->
+    {ok, list_instance_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_instance_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles(Client, Input, []).
+
+-spec list_instance_profiles(map(), list_instance_profiles_request(), proplists:proplist()) ->
+    {ok, list_instance_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_instance_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceProfiles">>, Input, Options).
@@ -2636,9 +6281,20 @@ list_instance_profiles(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec list_instance_profiles_for_role(map(), list_instance_profiles_for_role_request()) ->
+    {ok, list_instance_profiles_for_role_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_instance_profiles_for_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instance_profiles_for_role(Client, Input, []).
+
+-spec list_instance_profiles_for_role(map(), list_instance_profiles_for_role_request(), proplists:proplist()) ->
+    {ok, list_instance_profiles_for_role_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_instance_profiles_for_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceProfilesForRole">>, Input, Options).
@@ -2651,9 +6307,22 @@ list_instance_profiles_for_role(Client, Input, Options)
 %% resources: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html
 %% in the
 %% IAM User Guide.
+-spec list_mfa_device_tags(map(), list_mfa_device_tags_request()) ->
+    {ok, list_mfa_device_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_mfa_device_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mfa_device_tags(Client, Input, []).
+
+-spec list_mfa_device_tags(map(), list_mfa_device_tags_request(), proplists:proplist()) ->
+    {ok, list_mfa_device_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_mfa_device_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMFADeviceTags">>, Input, Options).
@@ -2669,9 +6338,20 @@ list_mfa_device_tags(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec list_mfa_devices(map(), list_mfa_devices_request()) ->
+    {ok, list_mfa_devices_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_mfa_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mfa_devices(Client, Input, []).
+
+-spec list_mfa_devices(map(), list_mfa_devices_request(), proplists:proplist()) ->
+    {ok, list_mfa_devices_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_mfa_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMFADevices">>, Input, Options).
@@ -2688,9 +6368,22 @@ list_mfa_devices(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec list_open_id_connect_provider_tags(map(), list_open_id_connect_provider_tags_request()) ->
+    {ok, list_open_id_connect_provider_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_open_id_connect_provider_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_id_connect_provider_tags(Client, Input, []).
+
+-spec list_open_id_connect_provider_tags(map(), list_open_id_connect_provider_tags_request(), proplists:proplist()) ->
+    {ok, list_open_id_connect_provider_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_open_id_connect_provider_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpenIDConnectProviderTags">>, Input, Options).
@@ -2704,9 +6397,18 @@ list_open_id_connect_provider_tags(Client, Input, Options)
 %% tags, even though they are an attribute of the returned object. To view
 %% all of the information for an OIDC provider, see
 %% `GetOpenIDConnectProvider'.
+-spec list_open_id_connect_providers(map(), list_open_id_connect_providers_request()) ->
+    {ok, list_open_id_connect_providers_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_open_id_connect_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_open_id_connect_providers(Client, Input, []).
+
+-spec list_open_id_connect_providers(map(), list_open_id_connect_providers_request(), proplists:proplist()) ->
+    {ok, list_open_id_connect_providers_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_open_id_connect_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpenIDConnectProviders">>, Input, Options).
@@ -2738,9 +6440,18 @@ list_open_id_connect_providers(Client, Input, Options)
 %% tags, even though they are an attribute of the returned object. To view
 %% all of the information for a customer manged policy, see
 %% `GetPolicy'.
+-spec list_policies(map(), list_policies_request()) ->
+    {ok, list_policies_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
+
+-spec list_policies(map(), list_policies_request(), proplists:proplist()) ->
+    {ok, list_policies_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
@@ -2797,9 +6508,20 @@ list_policies(Client, Input, Options)
 %% permissions boundary
 %% for a user or role, use the `GetUser' or `GetRole'
 %% operations.
+-spec list_policies_granting_service_access(map(), list_policies_granting_service_access_request()) ->
+    {ok, list_policies_granting_service_access_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 list_policies_granting_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies_granting_service_access(Client, Input, []).
+
+-spec list_policies_granting_service_access(map(), list_policies_granting_service_access_request(), proplists:proplist()) ->
+    {ok, list_policies_granting_service_access_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()}.
 list_policies_granting_service_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPoliciesGrantingServiceAccess">>, Input, Options).
@@ -2811,9 +6533,22 @@ list_policies_granting_service_access(Client, Input, Options)
 %% tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec list_policy_tags(map(), list_policy_tags_request()) ->
+    {ok, list_policy_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_policy_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_tags(Client, Input, []).
+
+-spec list_policy_tags(map(), list_policy_tags_request(), proplists:proplist()) ->
+    {ok, list_policy_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_policy_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicyTags">>, Input, Options).
@@ -2827,9 +6562,22 @@ list_policy_tags(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec list_policy_versions(map(), list_policy_versions_request()) ->
+    {ok, list_policy_versions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_policy_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policy_versions(Client, Input, []).
+
+-spec list_policy_versions(map(), list_policy_versions_request(), proplists:proplist()) ->
+    {ok, list_policy_versions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_policy_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicyVersions">>, Input, Options).
@@ -2850,9 +6598,20 @@ list_policy_versions(Client, Input, Options)
 %% parameters. If there are no inline policies embedded with the specified
 %% role, the
 %% operation returns an empty list.
+-spec list_role_policies(map(), list_role_policies_request()) ->
+    {ok, list_role_policies_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_role_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_role_policies(Client, Input, []).
+
+-spec list_role_policies(map(), list_role_policies_request(), proplists:proplist()) ->
+    {ok, list_role_policies_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_role_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRolePolicies">>, Input, Options).
@@ -2864,9 +6623,20 @@ list_role_policies(Client, Input, Options)
 %% resources: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html
 %% in the
 %% IAM User Guide.
+-spec list_role_tags(map(), list_role_tags_request()) ->
+    {ok, list_role_tags_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_role_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_role_tags(Client, Input, []).
+
+-spec list_role_tags(map(), list_role_tags_request(), proplists:proplist()) ->
+    {ok, list_role_tags_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_role_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoleTags">>, Input, Options).
@@ -2893,9 +6663,18 @@ list_role_tags(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec list_roles(map(), list_roles_request()) ->
+    {ok, list_roles_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_roles(Client, Input, []).
+
+-spec list_roles(map(), list_roles_request(), proplists:proplist()) ->
+    {ok, list_roles_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_roles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoles">>, Input, Options).
@@ -2912,9 +6691,22 @@ list_roles(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec list_saml_provider_tags(map(), list_saml_provider_tags_request()) ->
+    {ok, list_saml_provider_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_saml_provider_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_saml_provider_tags(Client, Input, []).
+
+-spec list_saml_provider_tags(map(), list_saml_provider_tags_request(), proplists:proplist()) ->
+    {ok, list_saml_provider_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_saml_provider_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSAMLProviderTags">>, Input, Options).
@@ -2929,9 +6721,18 @@ list_saml_provider_tags(Client, Input, Options)
 %%
 %% This operation requires Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
+-spec list_saml_providers(map(), list_saml_providers_request()) ->
+    {ok, list_saml_providers_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_saml_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_saml_providers(Client, Input, []).
+
+-spec list_saml_providers(map(), list_saml_providers_request(), proplists:proplist()) ->
+    {ok, list_saml_providers_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_saml_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSAMLProviders">>, Input, Options).
@@ -2954,9 +6755,20 @@ list_saml_providers(Client, Input, Options)
 %% certificates:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html
 %% in the IAM User Guide.
+-spec list_server_certificate_tags(map(), list_server_certificate_tags_request()) ->
+    {ok, list_server_certificate_tags_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_server_certificate_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_server_certificate_tags(Client, Input, []).
+
+-spec list_server_certificate_tags(map(), list_server_certificate_tags_request(), proplists:proplist()) ->
+    {ok, list_server_certificate_tags_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_server_certificate_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServerCertificateTags">>, Input, Options).
@@ -2983,9 +6795,18 @@ list_server_certificate_tags(Client, Input, Options)
 %% tags, even though they are an attribute of the returned object. To view
 %% all of the information for a servercertificate, see
 %% `GetServerCertificate'.
+-spec list_server_certificates(map(), list_server_certificates_request()) ->
+    {ok, list_server_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_server_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_server_certificates(Client, Input, []).
+
+-spec list_server_certificates(map(), list_server_certificates_request(), proplists:proplist()) ->
+    {ok, list_server_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_server_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServerCertificates">>, Input, Options).
@@ -3003,9 +6824,20 @@ list_server_certificates(Client, Input, Options)
 %% service-specific credentials:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html
 %% in the CodeCommit User Guide.
+-spec list_service_specific_credentials(map(), list_service_specific_credentials_request()) ->
+    {ok, list_service_specific_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_not_supported_exception(), tuple()}.
 list_service_specific_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_specific_credentials(Client, Input, []).
+
+-spec list_service_specific_credentials(map(), list_service_specific_credentials_request(), proplists:proplist()) ->
+    {ok, list_service_specific_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_not_supported_exception(), tuple()}.
 list_service_specific_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceSpecificCredentials">>, Input, Options).
@@ -3029,9 +6861,20 @@ list_service_specific_credentials(Client, Input, Options)
 %% this operation to manage Amazon Web Services account root user credentials
 %% even if the Amazon Web Services account has no
 %% associated users.
+-spec list_signing_certificates(map(), list_signing_certificates_request()) ->
+    {ok, list_signing_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_signing_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_signing_certificates(Client, Input, []).
+
+-spec list_signing_certificates(map(), list_signing_certificates_request(), proplists:proplist()) ->
+    {ok, list_signing_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_signing_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSigningCertificates">>, Input, Options).
@@ -3054,9 +6897,18 @@ list_signing_certificates(Client, Input, Options)
 %% Although each user is limited to a small number of keys, you can still
 %% paginate the
 %% results using the `MaxItems' and `Marker' parameters.
+-spec list_ssh_public_keys(map(), list_ssh_public_keys_request()) ->
+    {ok, list_ssh_public_keys_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 list_ssh_public_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ssh_public_keys(Client, Input, []).
+
+-spec list_ssh_public_keys(map(), list_ssh_public_keys_request(), proplists:proplist()) ->
+    {ok, list_ssh_public_keys_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 list_ssh_public_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSSHPublicKeys">>, Input, Options).
@@ -3076,9 +6928,20 @@ list_ssh_public_keys(Client, Input, Options)
 %% parameters. If there are no inline policies embedded with the specified
 %% user, the
 %% operation returns an empty list.
+-spec list_user_policies(map(), list_user_policies_request()) ->
+    {ok, list_user_policies_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_user_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_policies(Client, Input, []).
+
+-spec list_user_policies(map(), list_user_policies_request(), proplists:proplist()) ->
+    {ok, list_user_policies_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_user_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPolicies">>, Input, Options).
@@ -3089,9 +6952,20 @@ list_user_policies(Client, Input, Options)
 %% tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec list_user_tags(map(), list_user_tags_request()) ->
+    {ok, list_user_tags_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_user_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_tags(Client, Input, []).
+
+-spec list_user_tags(map(), list_user_tags_request(), proplists:proplist()) ->
+    {ok, list_user_tags_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 list_user_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserTags">>, Input, Options).
@@ -3115,9 +6989,18 @@ list_user_tags(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec list_users(map(), list_users_request()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
+
+-spec list_users(map(), list_users_request(), proplists:proplist()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
@@ -3138,9 +7021,16 @@ list_users(Client, Input, Options)
 %%
 %% You can paginate the results using the `MaxItems' and `Marker'
 %% parameters.
+-spec list_virtual_mfa_devices(map(), list_virtual_mfa_devices_request()) ->
+    {ok, list_virtual_mfa_devices_response(), tuple()} |
+    {error, any()}.
 list_virtual_mfa_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_virtual_mfa_devices(Client, Input, []).
+
+-spec list_virtual_mfa_devices(map(), list_virtual_mfa_devices_request(), proplists:proplist()) ->
+    {ok, list_virtual_mfa_devices_response(), tuple()} |
+    {error, any()}.
 list_virtual_mfa_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVirtualMFADevices">>, Input, Options).
@@ -3180,9 +7070,24 @@ list_virtual_mfa_devices(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html in
 %% the
 %% IAM User Guide.
+-spec put_group_policy(map(), put_group_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 put_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_group_policy(Client, Input, []).
+
+-spec put_group_policy(map(), put_group_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 put_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutGroupPolicy">>, Input, Options).
@@ -3208,9 +7113,26 @@ put_group_policy(Client, Input, Options)
 %% evaluation logic:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html
 %% in the IAM User Guide.
+-spec put_role_permissions_boundary(map(), put_role_permissions_boundary_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 put_role_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_role_permissions_boundary(Client, Input, []).
+
+-spec put_role_permissions_boundary(map(), put_role_permissions_boundary_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 put_role_permissions_boundary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRolePermissionsBoundary">>, Input, Options).
@@ -3266,9 +7188,26 @@ put_role_permissions_boundary(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html in
 %% the
 %% IAM User Guide.
+-spec put_role_policy(map(), put_role_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 put_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_role_policy(Client, Input, []).
+
+-spec put_role_policy(map(), put_role_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 put_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRolePolicy">>, Input, Options).
@@ -3293,9 +7232,24 @@ put_role_policy(Client, Input, Options)
 %% evaluation logic:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html
 %% in the IAM User Guide.
+-spec put_user_permissions_boundary(map(), put_user_permissions_boundary_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 put_user_permissions_boundary(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_user_permissions_boundary(Client, Input, []).
+
+-spec put_user_permissions_boundary(map(), put_user_permissions_boundary_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_not_attachable_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 put_user_permissions_boundary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutUserPermissionsBoundary">>, Input, Options).
@@ -3334,9 +7288,24 @@ put_user_permissions_boundary(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html in
 %% the
 %% IAM User Guide.
+-spec put_user_policy(map(), put_user_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 put_user_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_user_policy(Client, Input, []).
+
+-spec put_user_policy(map(), put_user_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 put_user_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutUserPolicy">>, Input, Options).
@@ -3349,9 +7318,22 @@ put_user_policy(Client, Input, Options)
 %% This operation is idempotent; it does not fail or return an error if you
 %% try to remove
 %% a client ID that does not exist.
+-spec remove_client_id_from_open_id_connect_provider(map(), remove_client_id_from_open_id_connect_provider_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 remove_client_id_from_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_client_id_from_open_id_connect_provider(Client, Input, []).
+
+-spec remove_client_id_from_open_id_connect_provider(map(), remove_client_id_from_open_id_connect_provider_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 remove_client_id_from_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveClientIDFromOpenIDConnectProvider">>, Input, Options).
@@ -3374,17 +7356,45 @@ remove_client_id_from_open_id_connect_provider(Client, Input, Options)
 %% instance profiles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html
 %% in the IAM User Guide.
+-spec remove_role_from_instance_profile(map(), remove_role_from_instance_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 remove_role_from_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_instance_profile(Client, Input, []).
+
+-spec remove_role_from_instance_profile(map(), remove_role_from_instance_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 remove_role_from_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRoleFromInstanceProfile">>, Input, Options).
 
 %% @doc Removes the specified user from the specified group.
+-spec remove_user_from_group(map(), remove_user_from_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 remove_user_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_user_from_group(Client, Input, []).
+
+-spec remove_user_from_group(map(), remove_user_from_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 remove_user_from_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveUserFromGroup">>, Input, Options).
@@ -3397,9 +7407,18 @@ remove_user_from_group(Client, Input, Options)
 %% the password immediately invalidates the previous password associated with
 %% this
 %% user.
+-spec reset_service_specific_credential(map(), reset_service_specific_credential_request()) ->
+    {ok, reset_service_specific_credential_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 reset_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_service_specific_credential(Client, Input, []).
+
+-spec reset_service_specific_credential(map(), reset_service_specific_credential_request(), proplists:proplist()) ->
+    {ok, reset_service_specific_credential_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 reset_service_specific_credential(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetServiceSpecificCredential">>, Input, Options).
@@ -3413,9 +7432,26 @@ reset_service_specific_credential(Client, Input, Options)
 %% device:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html in
 %% the IAM User Guide.
+-spec resync_mfa_device(map(), resync_mfa_device_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_authentication_code_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 resync_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     resync_mfa_device(Client, Input, []).
+
+-spec resync_mfa_device(map(), resync_mfa_device_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_authentication_code_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 resync_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResyncMFADevice">>, Input, Options).
@@ -3433,9 +7469,24 @@ resync_mfa_device(Client, Input, Options)
 %% policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html
 %% in the IAM User Guide.
+-spec set_default_policy_version(map(), set_default_policy_version_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 set_default_policy_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_default_policy_version(Client, Input, []).
+
+-spec set_default_policy_version(map(), set_default_policy_version_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 set_default_policy_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetDefaultPolicyVersion">>, Input, Options).
@@ -3478,9 +7529,18 @@ set_default_policy_version(Client, Input, Options)
 %% To view the current session token version, see the
 %% `GlobalEndpointTokenVersion' entry in the response of the
 %% `GetAccountSummary' operation.
+-spec set_security_token_service_preferences(map(), set_security_token_service_preferences_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 set_security_token_service_preferences(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_token_service_preferences(Client, Input, []).
+
+-spec set_security_token_service_preferences(map(), set_security_token_service_preferences_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, service_failure_exception(), tuple()}.
 set_security_token_service_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSecurityTokenServicePreferences">>, Input, Options).
@@ -3528,9 +7588,20 @@ set_security_token_service_preferences(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.htmlin
 %% the
 %% IAM User Guide.
+-spec simulate_custom_policy(map(), simulate_custom_policy_request()) ->
+    {ok, simulate_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_evaluation_exception(), tuple()}.
 simulate_custom_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     simulate_custom_policy(Client, Input, []).
+
+-spec simulate_custom_policy(map(), simulate_custom_policy_request(), proplists:proplist()) ->
+    {ok, simulate_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_evaluation_exception(), tuple()}.
 simulate_custom_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SimulateCustomPolicy">>, Input, Options).
@@ -3593,9 +7664,22 @@ simulate_custom_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.htmlin
 %% the
 %% IAM User Guide.
+-spec simulate_principal_policy(map(), simulate_principal_policy_request()) ->
+    {ok, simulate_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_evaluation_exception(), tuple()}.
 simulate_principal_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     simulate_principal_policy(Client, Input, []).
+
+-spec simulate_principal_policy(map(), simulate_principal_policy_request(), proplists:proplist()) ->
+    {ok, simulate_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, policy_evaluation_exception(), tuple()}.
 simulate_principal_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SimulatePrincipalPolicy">>, Input, Options).
@@ -3637,9 +7721,26 @@ simulate_principal_policy(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
+-spec tag_instance_profile(map(), tag_instance_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_instance_profile(Client, Input, []).
+
+-spec tag_instance_profile(map(), tag_instance_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagInstanceProfile">>, Input, Options).
@@ -3684,9 +7785,26 @@ tag_instance_profile(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
+-spec tag_mfa_device(map(), tag_mfa_device_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_mfa_device(Client, Input, []).
+
+-spec tag_mfa_device(map(), tag_mfa_device_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagMFADevice">>, Input, Options).
@@ -3734,9 +7852,26 @@ tag_mfa_device(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
+-spec tag_open_id_connect_provider(map(), tag_open_id_connect_provider_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_open_id_connect_provider(Client, Input, []).
+
+-spec tag_open_id_connect_provider(map(), tag_open_id_connect_provider_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagOpenIDConnectProvider">>, Input, Options).
@@ -3778,9 +7913,26 @@ tag_open_id_connect_provider(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
+-spec tag_policy(map(), tag_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_policy(Client, Input, []).
+
+-spec tag_policy(map(), tag_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagPolicy">>, Input, Options).
@@ -3833,9 +7985,26 @@ tag_policy(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM identities:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec tag_role(map(), tag_role_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_role(Client, Input, []).
+
+-spec tag_role(map(), tag_role_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagRole">>, Input, Options).
@@ -3882,9 +8051,26 @@ tag_role(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
+-spec tag_saml_provider(map(), tag_saml_provider_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_saml_provider(Client, Input, []).
+
+-spec tag_saml_provider(map(), tag_saml_provider_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagSAMLProvider">>, Input, Options).
@@ -3939,9 +8125,26 @@ tag_saml_provider(Client, Input, Options)
 %% need to store an array, you can store comma-separated values in the
 %% string. However, you
 %% must interpret the value in your code.
+-spec tag_server_certificate(map(), tag_server_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_server_certificate(Client, Input, []).
+
+-spec tag_server_certificate(map(), tag_server_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagServerCertificate">>, Input, Options).
@@ -3992,9 +8195,26 @@ tag_server_certificate(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM identities:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec tag_user(map(), tag_user_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_user(Client, Input, []).
+
+-spec tag_user(map(), tag_user_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 tag_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagUser">>, Input, Options).
@@ -4004,9 +8224,24 @@ tag_user(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec untag_instance_profile(map(), untag_instance_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_instance_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_instance_profile(Client, Input, []).
+
+-spec untag_instance_profile(map(), untag_instance_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagInstanceProfile">>, Input, Options).
@@ -4018,9 +8253,24 @@ untag_instance_profile(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec untag_mfa_device(map(), untag_mfa_device_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_mfa_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_mfa_device(Client, Input, []).
+
+-spec untag_mfa_device(map(), untag_mfa_device_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_mfa_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagMFADevice">>, Input, Options).
@@ -4035,9 +8285,24 @@ untag_mfa_device(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec untag_open_id_connect_provider(map(), untag_open_id_connect_provider_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_open_id_connect_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_open_id_connect_provider(Client, Input, []).
+
+-spec untag_open_id_connect_provider(map(), untag_open_id_connect_provider_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_open_id_connect_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagOpenIDConnectProvider">>, Input, Options).
@@ -4047,9 +8312,24 @@ untag_open_id_connect_provider(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec untag_policy(map(), untag_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_policy(Client, Input, []).
+
+-spec untag_policy(map(), untag_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagPolicy">>, Input, Options).
@@ -4059,9 +8339,22 @@ untag_policy(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec untag_role(map(), untag_role_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_role(Client, Input, []).
+
+-spec untag_role(map(), untag_role_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagRole">>, Input, Options).
@@ -4076,9 +8369,24 @@ untag_role(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec untag_saml_provider(map(), untag_saml_provider_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_saml_provider(Client, Input, []).
+
+-spec untag_saml_provider(map(), untag_saml_provider_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagSAMLProvider">>, Input, Options).
@@ -4098,9 +8406,24 @@ untag_saml_provider(Client, Input, Options)
 %% certificates:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html
 %% in the IAM User Guide.
+-spec untag_server_certificate(map(), untag_server_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_server_certificate(Client, Input, []).
+
+-spec untag_server_certificate(map(), untag_server_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagServerCertificate">>, Input, Options).
@@ -4110,9 +8433,22 @@ untag_server_certificate(Client, Input, Options)
 %% For more information about tagging, see Tagging IAM resources:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html in the
 %% IAM User Guide.
+-spec untag_user(map(), untag_user_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_user(Client, Input, []).
+
+-spec untag_user(map(), untag_user_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 untag_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagUser">>, Input, Options).
@@ -4140,9 +8476,22 @@ untag_user(Client, Input, Options)
 %% For information about rotating keys, see Managing keys and certificates:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html
 %% in the IAM User Guide.
+-spec update_access_key(map(), update_access_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_access_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_access_key(Client, Input, []).
+
+-spec update_access_key(map(), update_access_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_access_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccessKey">>, Input, Options).
@@ -4166,9 +8515,24 @@ update_access_key(Client, Input, Options)
 %% policy:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html
 %% in the IAM User Guide.
+-spec update_account_password_policy(map(), update_account_password_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_account_password_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_password_policy(Client, Input, []).
+
+-spec update_account_password_policy(map(), update_account_password_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_account_password_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccountPasswordPolicy">>, Input, Options).
@@ -4182,9 +8546,26 @@ update_account_password_policy(Client, Input, Options)
 %% Using roles to
 %% delegate permissions and federate identities:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html.
+-spec update_assume_role_policy(map(), update_assume_role_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 update_assume_role_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_assume_role_policy(Client, Input, []).
+
+-spec update_assume_role_policy(map(), update_assume_role_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 update_assume_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAssumeRolePolicy">>, Input, Options).
@@ -4208,9 +8589,24 @@ update_assume_role_policy(Client, Input, Options)
 %% the `Managers' group, but not the `MGRs' group, then the
 %% update fails. For more information about permissions, see Access
 %% management: https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html.
+-spec update_group(map(), update_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
+
+-spec update_group(map(), update_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
@@ -4227,9 +8623,26 @@ update_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html
 %% in the
 %% IAM User Guide.
+-spec update_login_profile(map(), update_login_profile_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, password_policy_violation_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_login_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_login_profile(Client, Input, []).
+
+-spec update_login_profile(map(), update_login_profile_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, password_policy_violation_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_login_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLoginProfile">>, Input, Options).
@@ -4266,18 +8679,44 @@ update_login_profile(Client, Input, Options)
 %% validated by the thumbprint. Therefore, it is best to limit access to the
 %% `UpdateOpenIDConnectProviderThumbprint' operation to highly
 %% privileged users.
+-spec update_open_id_connect_provider_thumbprint(map(), update_open_id_connect_provider_thumbprint_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_open_id_connect_provider_thumbprint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_open_id_connect_provider_thumbprint(Client, Input, []).
+
+-spec update_open_id_connect_provider_thumbprint(map(), update_open_id_connect_provider_thumbprint_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_open_id_connect_provider_thumbprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOpenIDConnectProviderThumbprint">>, Input, Options).
 
 %% @doc Updates the description or maximum session duration setting of a
 %% role.
+-spec update_role(map(), update_role_request()) ->
+    {ok, update_role_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 update_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_role(Client, Input, []).
+
+-spec update_role(map(), update_role_request(), proplists:proplist()) ->
+    {ok, update_role_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 update_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRole">>, Input, Options).
@@ -4287,9 +8726,22 @@ update_role(Client, Input, Options)
 %% Modifies only the description of a role. This operation performs the same
 %% function as
 %% the `Description' parameter in the `UpdateRole' operation.
+-spec update_role_description(map(), update_role_description_request()) ->
+    {ok, update_role_description_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 update_role_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_role_description(Client, Input, []).
+
+-spec update_role_description(map(), update_role_description_request(), proplists:proplist()) ->
+    {ok, update_role_description_response(), tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()} |
+    {error, unmodifiable_entity_exception(), tuple()}.
 update_role_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRoleDescription">>, Input, Options).
@@ -4299,9 +8751,24 @@ update_role_description(Client, Input, Options)
 %%
 %% This operation requires Signature Version 4:
 %% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
+-spec update_saml_provider(map(), update_saml_provider_request()) ->
+    {ok, update_saml_provider_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_saml_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_saml_provider(Client, Input, []).
+
+-spec update_saml_provider(map(), update_saml_provider_request(), proplists:proplist()) ->
+    {ok, update_saml_provider_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_saml_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSAMLProvider">>, Input, Options).
@@ -4338,9 +8805,24 @@ update_saml_provider(Client, Input, Options)
 %% about permissions, see Access management:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html in the IAM
 %% User Guide.
+-spec update_server_certificate(map(), update_server_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server_certificate(Client, Input, []).
+
+-spec update_server_certificate(map(), update_server_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServerCertificate">>, Input, Options).
@@ -4352,9 +8834,18 @@ update_server_certificate(Client, Input, Options)
 %% for authentication to the service. This operation can be used to disable a
 %% user's
 %% service-specific credential as part of a credential rotation work flow.
+-spec update_service_specific_credential(map(), update_service_specific_credential_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 update_service_specific_credential(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_specific_credential(Client, Input, []).
+
+-spec update_service_specific_credential(map(), update_service_specific_credential_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 update_service_specific_credential(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceSpecificCredential">>, Input, Options).
@@ -4374,9 +8865,22 @@ update_service_specific_credential(Client, Input, Options)
 %% to manage Amazon Web Services account root user credentials even if the
 %% Amazon Web Services account has no associated
 %% users.
+-spec update_signing_certificate(map(), update_signing_certificate_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_signing_certificate(Client, Input, []).
+
+-spec update_signing_certificate(map(), update_signing_certificate_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSigningCertificate">>, Input, Options).
@@ -4397,9 +8901,18 @@ update_signing_certificate(Client, Input, Options)
 %% SSH connections:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html
 %% in the CodeCommit User Guide.
+-spec update_ssh_public_key(map(), update_ssh_public_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 update_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ssh_public_key(Client, Input, []).
+
+-spec update_ssh_public_key(map(), update_ssh_public_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, no_such_entity_exception(), tuple()}.
 update_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSSHPublicKey">>, Input, Options).
@@ -4425,9 +8938,28 @@ update_ssh_public_key(Client, Input, Options)
 %% permission on all (*). For more information about permissions, see
 %% Permissions and policies:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html.
+-spec update_user(map(), update_user_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
+
+-spec update_user(map(), update_user_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_temporarily_unmodifiable_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 update_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUser">>, Input, Options).
@@ -4479,9 +9011,30 @@ update_user(Client, Input, Options)
 %% requests:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html in the
 %% IAM User Guide.
+-spec upload_server_certificate(map(), upload_server_certificate_request()) ->
+    {ok, upload_server_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, key_pair_mismatch_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_certificate_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 upload_server_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_server_certificate(Client, Input, []).
+
+-spec upload_server_certificate(map(), upload_server_certificate_request(), proplists:proplist()) ->
+    {ok, upload_server_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, key_pair_mismatch_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_certificate_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 upload_server_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadServerCertificate">>, Input, Options).
@@ -4523,9 +9076,32 @@ upload_server_certificate(Client, Input, Options)
 %% requests:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html in
 %% the IAM User Guide.
+-spec upload_signing_certificate(map(), upload_signing_certificate_request()) ->
+    {ok, upload_signing_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, duplicate_certificate_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_certificate_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_certificate_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 upload_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_signing_certificate(Client, Input, []).
+
+-spec upload_signing_certificate(map(), upload_signing_certificate_request(), proplists:proplist()) ->
+    {ok, upload_signing_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, duplicate_certificate_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, invalid_certificate_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, malformed_certificate_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, service_failure_exception(), tuple()}.
 upload_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadSigningCertificate">>, Input, Options).
@@ -4541,9 +9117,26 @@ upload_signing_certificate(Client, Input, Options)
 %% SSH connections:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html
 %% in the CodeCommit User Guide.
+-spec upload_ssh_public_key(map(), upload_ssh_public_key_request()) ->
+    {ok, upload_ssh_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_ssh_public_key_exception(), tuple()} |
+    {error, invalid_public_key_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, unrecognized_public_key_encoding_exception(), tuple()}.
 upload_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_ssh_public_key(Client, Input, []).
+
+-spec upload_ssh_public_key(map(), upload_ssh_public_key_request(), proplists:proplist()) ->
+    {ok, upload_ssh_public_key_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_ssh_public_key_exception(), tuple()} |
+    {error, invalid_public_key_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, no_such_entity_exception(), tuple()} |
+    {error, unrecognized_public_key_encoding_exception(), tuple()}.
 upload_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadSSHPublicKey">>, Input, Options).

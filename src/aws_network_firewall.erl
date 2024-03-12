@@ -170,6 +170,1128 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% update_firewall_description_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_description_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_t_l_s_inspection_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_t_l_s_inspection_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate_configuration() :: #{
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"CheckCertificateRevocationStatus">> => check_certificate_revocation_status_actions(),
+%%   <<"Scopes">> => list(server_certificate_scope()()),
+%%   <<"ServerCertificates">> => list(server_certificate()())
+%% }
+-type server_certificate_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% t_c_p_flag_field() :: #{
+%%   <<"Flags">> => list(list(any())()),
+%%   <<"Masks">> => list(list(any())())
+%% }
+-type t_c_p_flag_field() :: #{binary() => any()}.
+
+%% Example:
+%% analysis_result() :: #{
+%%   <<"AnalysisDetail">> => string(),
+%%   <<"IdentifiedRuleIds">> => list(string()()),
+%%   <<"IdentifiedType">> => list(any())
+%% }
+-type analysis_result() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% rules_source() :: #{
+%%   <<"RulesSourceList">> => rules_source_list(),
+%%   <<"RulesString">> => string(),
+%%   <<"StatefulRules">> => list(stateful_rule()()),
+%%   <<"StatelessRulesAndCustomActions">> => stateless_rules_and_custom_actions()
+%% }
+-type rules_source() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_group_response() :: #{
+%%   <<"RuleGroupResponse">> => rule_group_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_rule_group_override() :: #{
+%%   <<"Action">> => list(any())
+%% }
+-type stateful_rule_group_override() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type rule_group_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleGroups">> => list(rule_group_metadata()())
+%% }
+-type list_rule_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_subnets_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetMappings">> => list(subnet_mapping()()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_subnets_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_policy_change_protection_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyChangeProtection">> := boolean(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_policy_change_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_engine_options() :: #{
+%%   <<"RuleOrder">> => list(any()),
+%%   <<"StreamExceptionPolicy">> => list(any())
+%% }
+-type stateful_engine_options() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% rule_definition() :: #{
+%%   <<"Actions">> => list(string()()),
+%%   <<"MatchAttributes">> => match_attributes()
+%% }
+-type rule_definition() :: #{binary() => any()}.
+
+%% Example:
+%% resource_owner_check_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_owner_check_exception() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_s_inspection_configuration_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type t_l_s_inspection_configuration_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% describe_t_l_s_inspection_configuration_request() :: #{
+%%   <<"TLSInspectionConfigurationArn">> => string(),
+%%   <<"TLSInspectionConfigurationName">> => string()
+%% }
+-type describe_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_metadata_request() :: #{
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_rule_group_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_request() :: #{
+%%   <<"AnalyzeRuleGroup">> => boolean(),
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group() :: #{
+%%   <<"ReferenceSets">> => reference_sets(),
+%%   <<"RuleVariables">> => rule_variables(),
+%%   <<"RulesSource">> => rules_source(),
+%%   <<"StatefulRuleOptions">> => stateful_rule_options()
+%% }
+-type rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% attachment() :: #{
+%%   <<"EndpointId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type attachment() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_s_inspection_configuration() :: #{
+%%   <<"ServerCertificateConfigurations">> => list(server_certificate_configuration()())
+%% }
+-type t_l_s_inspection_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_logging_configuration_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type update_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_mapping() :: #{
+%%   <<"IPAddressType">> => list(any()),
+%%   <<"SubnetId">> => string()
+%% }
+-type subnet_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_encryption_configuration_response() :: #{
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_encryption_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% publish_metric_action() :: #{
+%%   <<"Dimensions">> => list(dimension()())
+%% }
+-type publish_metric_action() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% header() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"DestinationPort">> => string(),
+%%   <<"Direction">> => list(any()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"Source">> => string(),
+%%   <<"SourcePort">> => string()
+%% }
+-type header() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_policy_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallPolicy">> := firewall_policy(),
+%%   <<"FirewallPolicyName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_firewall_policy_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyArn">> := string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"LogDestinationConfigs">> => list(log_destination_config()())
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% tls_certificate_data() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateSerial">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type tls_certificate_data() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_policy() :: #{
+%%   <<"PolicyVariables">> => policy_variables(),
+%%   <<"StatefulDefaultActions">> => list(string()()),
+%%   <<"StatefulEngineOptions">> => stateful_engine_options(),
+%%   <<"StatefulRuleGroupReferences">> => list(stateful_rule_group_reference()()),
+%%   <<"StatelessCustomActions">> => list(custom_action()()),
+%%   <<"StatelessDefaultActions">> => list(string()()),
+%%   <<"StatelessFragmentDefaultActions">> => list(string()()),
+%%   <<"StatelessRuleGroupReferences">> => list(stateless_rule_group_reference()()),
+%%   <<"TLSInspectionConfigurationArn">> => string()
+%% }
+-type firewall_policy() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_policy_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallPolicy">> := firewall_policy(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"FirewallPolicyName">> => string(),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_group_response() :: #{
+%%   <<"RuleGroupResponse">> => rule_group_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type create_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_group_request() :: #{
+%%   <<"AnalyzeRuleGroup">> => boolean(),
+%%   <<"Capacity">> := integer(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"RuleGroup">> => rule_group(),
+%%   <<"RuleGroupName">> := string(),
+%%   <<"Rules">> => string(),
+%%   <<"SourceMetadata">> => source_metadata(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_metadata() :: #{
+%%   <<"ResolvedCIDRCount">> => integer()
+%% }
+-type ip_set_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_capacity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_status() :: #{
+%%   <<"CapacityUsageSummary">> => capacity_usage_summary(),
+%%   <<"ConfigurationSyncStateSummary">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"SyncStates">> => map()
+%% }
+-type firewall_status() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_response() :: #{
+%%   <<"Firewall">> => firewall(),
+%%   <<"FirewallStatus">> => firewall_status()
+%% }
+-type delete_firewall_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_policy_response() :: #{
+%%   <<"FirewallPolicyResponse">> => firewall_policy_response()
+%% }
+-type delete_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_policy_response() :: #{
+%%   <<"FirewallPolicyResponse">> => firewall_policy_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type create_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate_scope() :: #{
+%%   <<"DestinationPorts">> => list(port_range()()),
+%%   <<"Destinations">> => list(address()()),
+%%   <<"Protocols">> => list(integer()()),
+%%   <<"SourcePorts">> => list(port_range()()),
+%%   <<"Sources">> => list(address()())
+%% }
+-type server_certificate_scope() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_logging_configuration_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string()
+%% }
+-type describe_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_subnets_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetMappings">> => list(subnet_mapping()()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type disassociate_subnets_response() :: #{binary() => any()}.
+
+%% Example:
+%% sync_state() :: #{
+%%   <<"Attachment">> => attachment(),
+%%   <<"Config">> => map()
+%% }
+-type sync_state() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_response() :: #{
+%%   <<"Firewall">> => firewall(),
+%%   <<"FirewallStatus">> => firewall_status()
+%% }
+-type create_firewall_response() :: #{binary() => any()}.
+
+%% Example:
+%% per_object_status() :: #{
+%%   <<"SyncStatus">> => list(any()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type per_object_status() :: #{binary() => any()}.
+
+%% Example:
+%% describe_firewall_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string()
+%% }
+-type describe_firewall_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_t_l_s_inspection_configuration_request() :: #{
+%%   <<"TLSInspectionConfigurationArn">> => string(),
+%%   <<"TLSInspectionConfigurationName">> => string()
+%% }
+-type delete_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% rule_group_response() :: #{
+%%   <<"AnalysisResults">> => list(analysis_result()()),
+%%   <<"Capacity">> => integer(),
+%%   <<"ConsumedCapacity">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NumberOfAssociations">> => integer(),
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupId">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"RuleGroupStatus">> => list(any()),
+%%   <<"SnsTopic">> => string(),
+%%   <<"SourceMetadata">> => source_metadata(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Type">> => list(any())
+%% }
+-type rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set() :: #{
+%%   <<"Definition">> => list(string()())
+%% }
+-type ip_set() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_rule() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Header">> => header(),
+%%   <<"RuleOptions">> => list(rule_option()())
+%% }
+-type stateful_rule() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_rule_group_reference() :: #{
+%%   <<"Override">> => stateful_rule_group_override(),
+%%   <<"Priority">> => integer(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type stateful_rule_group_reference() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewalls_response() :: #{
+%%   <<"Firewalls">> => list(firewall_metadata()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewalls_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_t_l_s_inspection_configuration_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"TLSInspectionConfiguration">> := t_l_s_inspection_configuration(),
+%%   <<"TLSInspectionConfigurationName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_policy_response() :: #{
+%%   <<"ConsumedStatefulRuleCapacity">> => integer(),
+%%   <<"ConsumedStatelessRuleCapacity">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"FirewallPolicyId">> => string(),
+%%   <<"FirewallPolicyName">> => string(),
+%%   <<"FirewallPolicyStatus">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NumberOfAssociations">> => integer(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_policy_change_protection_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyChangeProtection">> => boolean(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_policy_change_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% reference_sets() :: #{
+%%   <<"IPSetReferences">> => map()
+%% }
+-type reference_sets() :: #{binary() => any()}.
+
+%% Example:
+%% update_subnet_change_protection_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetChangeProtection">> := boolean(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_subnet_change_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% firewall() :: #{
+%%   <<"DeleteProtection">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallId">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"FirewallPolicyChangeProtection">> => boolean(),
+%%   <<"SubnetChangeProtection">> => boolean(),
+%%   <<"SubnetMappings">> => list(subnet_mapping()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcId">> => string()
+%% }
+-type firewall() :: #{binary() => any()}.
+
+%% Example:
+%% policy_variables() :: #{
+%%   <<"RuleVariables">> => map()
+%% }
+-type policy_variables() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_request() :: #{
+%%   <<"DeleteProtection">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallName">> := string(),
+%%   <<"FirewallPolicyArn">> := string(),
+%%   <<"FirewallPolicyChangeProtection">> => boolean(),
+%%   <<"SubnetChangeProtection">> => boolean(),
+%%   <<"SubnetMappings">> := list(subnet_mapping()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"VpcId">> := string()
+%% }
+-type create_firewall_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string()
+%% }
+-type delete_firewall_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_t_l_s_inspection_configurations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TLSInspectionConfigurations">> => list(t_l_s_inspection_configuration_metadata()())
+%% }
+-type list_t_l_s_inspection_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_s_inspection_configuration_response() :: #{
+%%   <<"CertificateAuthority">> => tls_certificate_data(),
+%%   <<"Certificates">> => list(tls_certificate_data()()),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NumberOfAssociations">> => integer(),
+%%   <<"TLSInspectionConfigurationArn">> => string(),
+%%   <<"TLSInspectionConfigurationId">> => string(),
+%%   <<"TLSInspectionConfigurationName">> => string(),
+%%   <<"TLSInspectionConfigurationStatus">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type t_l_s_inspection_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_t_l_s_inspection_configuration_response() :: #{
+%%   <<"TLSInspectionConfiguration">> => t_l_s_inspection_configuration(),
+%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_action() :: #{
+%%   <<"ActionDefinition">> => action_definition(),
+%%   <<"ActionName">> => string()
+%% }
+-type custom_action() :: #{binary() => any()}.
+
+%% Example:
+%% port_range() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"ToPort">> => integer()
+%% }
+-type port_range() :: #{binary() => any()}.
+
+%% Example:
+%% rules_source_list() :: #{
+%%   <<"GeneratedRulesType">> => list(any()),
+%%   <<"TargetTypes">> => list(list(any())()),
+%%   <<"Targets">> => list(string()())
+%% }
+-type rules_source_list() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_policies_response() :: #{
+%%   <<"FirewallPolicies">> => list(firewall_policy_metadata()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_delete_protection_response() :: #{
+%%   <<"DeleteProtection">> => boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_delete_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% port_set() :: #{
+%%   <<"Definition">> => list(string()())
+%% }
+-type port_set() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_usage_summary() :: #{
+%%   <<"CIDRs">> => c_id_r_summary()
+%% }
+-type capacity_usage_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_encryption_configuration_request() :: #{
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_encryption_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_t_l_s_inspection_configuration_response() :: #{
+%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response()
+%% }
+-type delete_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_group_request() :: #{
+%%   <<"AnalyzeRuleGroup">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"RuleGroup">> => rule_group(),
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Rules">> => string(),
+%%   <<"SourceMetadata">> => source_metadata(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_group_response() :: #{
+%%   <<"RuleGroupResponse">> => rule_group_response()
+%% }
+-type delete_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_t_l_s_inspection_configuration_response() :: #{
+%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type create_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_policy_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type firewall_policy_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_rule_options() :: #{
+%%   <<"RuleOrder">> => list(any())
+%% }
+-type stateful_rule_options() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewalls_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VpcIds">> => list(string()())
+%% }
+-type list_firewalls_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_firewall_policy_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% log_destination_config() :: #{
+%%   <<"LogDestination">> => map(),
+%%   <<"LogDestinationType">> => list(any()),
+%%   <<"LogType">> => list(any())
+%% }
+-type log_destination_config() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_resource_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_firewall_response() :: #{
+%%   <<"Firewall">> => firewall(),
+%%   <<"FirewallStatus">> => firewall_status(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_firewall_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_t_l_s_inspection_configuration_response() :: #{
+%%   <<"TLSInspectionConfigurationResponse">> => t_l_s_inspection_configuration_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_t_l_s_inspection_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% rule_variables() :: #{
+%%   <<"IPSets">> => map(),
+%%   <<"PortSets">> => map()
+%% }
+-type rule_variables() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_logging_configuration_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type describe_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type describe_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_subnets_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetIds">> := list(string()()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type disassociate_subnets_request() :: #{binary() => any()}.
+
+%% Example:
+%% log_destination_permission_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type log_destination_permission_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_policy_request() :: #{
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"FirewallPolicyName">> => string()
+%% }
+-type delete_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% dimension() :: #{
+%%   <<"Value">> => string()
+%% }
+-type dimension() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_t_l_s_inspection_configuration_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"TLSInspectionConfiguration">> := t_l_s_inspection_configuration(),
+%%   <<"TLSInspectionConfigurationArn">> => string(),
+%%   <<"TLSInspectionConfigurationName">> => string(),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_delete_protection_request() :: #{
+%%   <<"DeleteProtection">> := boolean(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_delete_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% source_metadata() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"SourceUpdateToken">> => string()
+%% }
+-type source_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_policy_response() :: #{
+%%   <<"FirewallPolicyResponse">> => firewall_policy_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_description_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_description_response() :: #{binary() => any()}.
+
+%% Example:
+%% match_attributes() :: #{
+%%   <<"DestinationPorts">> => list(port_range()()),
+%%   <<"Destinations">> => list(address()()),
+%%   <<"Protocols">> => list(integer()()),
+%%   <<"SourcePorts">> => list(port_range()()),
+%%   <<"Sources">> => list(address()()),
+%%   <<"TCPFlags">> => list(t_c_p_flag_field()())
+%% }
+-type match_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_metadata_response() :: #{
+%%   <<"Capacity">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"StatefulRuleOptions">> => stateful_rule_options(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_rule_group_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_subnets_request() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetMappings">> := list(subnet_mapping()()),
+%%   <<"UpdateToken">> => string()
+%% }
+-type associate_subnets_request() :: #{binary() => any()}.
+
+%% Example:
+%% address() :: #{
+%%   <<"AddressDefinition">> => string()
+%% }
+-type address() :: #{binary() => any()}.
+
+%% Example:
+%% update_logging_configuration_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type update_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_group_response() :: #{
+%%   <<"RuleGroup">> => rule_group(),
+%%   <<"RuleGroupResponse">> => rule_group_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_rule_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% stateless_rule() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"RuleDefinition">> => rule_definition()
+%% }
+-type stateless_rule() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_group_request() :: #{
+%%   <<"RuleGroupArn">> => string(),
+%%   <<"RuleGroupName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type delete_rule_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% stateless_rule_group_reference() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type stateless_rule_group_reference() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_metadata() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string()
+%% }
+-type firewall_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% c_id_r_summary() :: #{
+%%   <<"AvailableCIDRCount">> => integer(),
+%%   <<"IPSetReferences">> => map(),
+%%   <<"UtilizedCIDRCount">> => integer()
+%% }
+-type c_id_r_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_subnet_change_protection_response() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallName">> => string(),
+%%   <<"SubnetChangeProtection">> => boolean(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_subnet_change_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% stateless_rules_and_custom_actions() :: #{
+%%   <<"CustomActions">> => list(custom_action()()),
+%%   <<"StatelessRules">> => list(stateless_rule()())
+%% }
+-type stateless_rules_and_custom_actions() :: #{binary() => any()}.
+
+%% Example:
+%% rule_option() :: #{
+%%   <<"Keyword">> => string(),
+%%   <<"Settings">> => list(string()())
+%% }
+-type rule_option() :: #{binary() => any()}.
+
+%% Example:
+%% check_certificate_revocation_status_actions() :: #{
+%%   <<"RevokedStatusAction">> => list(any()),
+%%   <<"UnknownStatusAction">> => list(any())
+%% }
+-type check_certificate_revocation_status_actions() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set_reference() :: #{
+%%   <<"ReferenceArn">> => string()
+%% }
+-type ip_set_reference() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_groups_request() :: #{
+%%   <<"ManagedType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Scope">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type list_rule_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% action_definition() :: #{
+%%   <<"PublishMetricAction">> => publish_metric_action()
+%% }
+-type action_definition() :: #{binary() => any()}.
+
+%% Example:
+%% describe_firewall_policy_request() :: #{
+%%   <<"FirewallPolicyArn">> => string(),
+%%   <<"FirewallPolicyName">> => string()
+%% }
+-type describe_firewall_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% server_certificate() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type server_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type describe_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_firewall_policy_response() :: #{
+%%   <<"FirewallPolicy">> => firewall_policy(),
+%%   <<"FirewallPolicyResponse">> => firewall_policy_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_firewall_policy_response() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -183,9 +1305,28 @@
 %% firewall policy association, and you can use the same firewall policy for
 %% multiple
 %% firewalls.
+-spec associate_firewall_policy(map(), associate_firewall_policy_request()) ->
+    {ok, associate_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_firewall_policy(Client, Input, []).
+
+-spec associate_firewall_policy(map(), associate_firewall_policy_request(), proplists:proplist()) ->
+    {ok, associate_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateFirewallPolicy">>, Input, Options).
@@ -202,9 +1343,30 @@ associate_firewall_policy(Client, Input, Options)
 %% subnet's Availability Zone, to redirect the traffic that's coming
 %% into and going out of the
 %% zone through the firewall endpoint.
+-spec associate_subnets(map(), associate_subnets_request()) ->
+    {ok, associate_subnets_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_subnets(Client, Input, []).
+
+-spec associate_subnets(map(), associate_subnets_request(), proplists:proplist()) ->
+    {ok, associate_subnets_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 associate_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSubnets">>, Input, Options).
@@ -232,9 +1394,28 @@ associate_subnets(Client, Input, Options)
 %%
 %% To retrieve information about firewalls, use `ListFirewalls' and
 %% `DescribeFirewall'.
+-spec create_firewall(map(), create_firewall_request()) ->
+    {ok, create_firewall_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall(Client, Input, []).
+
+-spec create_firewall(map(), create_firewall_request(), proplists:proplist()) ->
+    {ok, create_firewall_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewall">>, Input, Options).
@@ -247,9 +1428,26 @@ create_firewall(Client, Input, Options)
 %% stateless and stateful rule groups and other settings. You can use one
 %% firewall policy for
 %% multiple firewalls.
+-spec create_firewall_policy(map(), create_firewall_policy_request()) ->
+    {ok, create_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall_policy(Client, Input, []).
+
+-spec create_firewall_policy(map(), create_firewall_policy_request(), proplists:proplist()) ->
+    {ok, create_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewallPolicy">>, Input, Options).
@@ -260,9 +1458,26 @@ create_firewall_policy(Client, Input, Options)
 %%
 %% You provide your rule group specification in your request using either
 %% `RuleGroup' or `Rules'.
+-spec create_rule_group(map(), create_rule_group_request()) ->
+    {ok, create_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule_group(Client, Input, []).
+
+-spec create_rule_group(map(), create_rule_group_request(), proplists:proplist()) ->
+    {ok, create_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRuleGroup">>, Input, Options).
@@ -292,9 +1507,26 @@ create_rule_group(Client, Input, Options)
 %% inspection configurations:
 %% https://docs.aws.amazon.com/network-firewall/latest/developerguide/tls-inspection.html
 %% in the Network Firewall Developer Guide.
+-spec create_t_l_s_inspection_configuration(map(), create_t_l_s_inspection_configuration_request()) ->
+    {ok, create_t_l_s_inspection_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_t_l_s_inspection_configuration(Client, Input, []).
+
+-spec create_t_l_s_inspection_configuration(map(), create_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
+    {ok, create_t_l_s_inspection_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTLSInspectionConfiguration">>, Input, Options).
@@ -319,83 +1551,249 @@ create_t_l_s_inspection_configuration(Client, Input, Options)
 %% To delete a firewall, remove the delete protection if you need to using
 %% `UpdateFirewallDeleteProtection',
 %% then delete the firewall by calling `DeleteFirewall'.
+-spec delete_firewall(map(), delete_firewall_request()) ->
+    {ok, delete_firewall_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unsupported_operation_exception(), tuple()}.
 delete_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall(Client, Input, []).
+
+-spec delete_firewall(map(), delete_firewall_request(), proplists:proplist()) ->
+    {ok, delete_firewall_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unsupported_operation_exception(), tuple()}.
 delete_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewall">>, Input, Options).
 
 %% @doc Deletes the specified `FirewallPolicy'.
+-spec delete_firewall_policy(map(), delete_firewall_policy_request()) ->
+    {ok, delete_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unsupported_operation_exception(), tuple()}.
 delete_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_firewall_policy(Client, Input, []).
+
+-spec delete_firewall_policy(map(), delete_firewall_policy_request(), proplists:proplist()) ->
+    {ok, delete_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unsupported_operation_exception(), tuple()}.
 delete_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallPolicy">>, Input, Options).
 
 %% @doc Deletes a resource policy that you created in a
 %% `PutResourcePolicy' request.
+-spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_resource_policy_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_resource_policy_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
 %% @doc Deletes the specified `RuleGroup'.
+-spec delete_rule_group(map(), delete_rule_group_request()) ->
+    {ok, delete_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unsupported_operation_exception(), tuple()}.
 delete_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule_group(Client, Input, []).
+
+-spec delete_rule_group(map(), delete_rule_group_request(), proplists:proplist()) ->
+    {ok, delete_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unsupported_operation_exception(), tuple()}.
 delete_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRuleGroup">>, Input, Options).
 
 %% @doc Deletes the specified `TLSInspectionConfiguration'.
+-spec delete_t_l_s_inspection_configuration(map(), delete_t_l_s_inspection_configuration_request()) ->
+    {ok, delete_t_l_s_inspection_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_t_l_s_inspection_configuration(Client, Input, []).
+
+-spec delete_t_l_s_inspection_configuration(map(), delete_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
+    {ok, delete_t_l_s_inspection_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTLSInspectionConfiguration">>, Input, Options).
 
 %% @doc Returns the data objects for the specified firewall.
+-spec describe_firewall(map(), describe_firewall_request()) ->
+    {ok, describe_firewall_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_firewall(Client, Input, []).
+
+-spec describe_firewall(map(), describe_firewall_request(), proplists:proplist()) ->
+    {ok, describe_firewall_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFirewall">>, Input, Options).
 
 %% @doc Returns the data objects for the specified firewall policy.
+-spec describe_firewall_policy(map(), describe_firewall_policy_request()) ->
+    {ok, describe_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_firewall_policy(Client, Input, []).
+
+-spec describe_firewall_policy(map(), describe_firewall_policy_request(), proplists:proplist()) ->
+    {ok, describe_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFirewallPolicy">>, Input, Options).
 
 %% @doc Returns the logging configuration for the specified firewall.
+-spec describe_logging_configuration(map(), describe_logging_configuration_request()) ->
+    {ok, describe_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_logging_configuration(Client, Input, []).
+
+-spec describe_logging_configuration(map(), describe_logging_configuration_request(), proplists:proplist()) ->
+    {ok, describe_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoggingConfiguration">>, Input, Options).
 
 %% @doc Retrieves a resource policy that you created in a
 %% `PutResourcePolicy' request.
+-spec describe_resource_policy(map(), describe_resource_policy_request()) ->
+    {ok, describe_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
+
+-spec describe_resource_policy(map(), describe_resource_policy_request(), proplists:proplist()) ->
+    {ok, describe_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
 
 %% @doc Returns the data objects for the specified rule group.
+-spec describe_rule_group(map(), describe_rule_group_request()) ->
+    {ok, describe_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule_group(Client, Input, []).
+
+-spec describe_rule_group(map(), describe_rule_group_request(), proplists:proplist()) ->
+    {ok, describe_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRuleGroup">>, Input, Options).
@@ -407,18 +1805,48 @@ describe_rule_group(Client, Input, Options)
 %% manage a rule group.
 %% You can retrieve all objects for a rule group by calling
 %% `DescribeRuleGroup'.
+-spec describe_rule_group_metadata(map(), describe_rule_group_metadata_request()) ->
+    {ok, describe_rule_group_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_rule_group_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule_group_metadata(Client, Input, []).
+
+-spec describe_rule_group_metadata(map(), describe_rule_group_metadata_request(), proplists:proplist()) ->
+    {ok, describe_rule_group_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_rule_group_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRuleGroupMetadata">>, Input, Options).
 
 %% @doc Returns the data objects for the specified TLS inspection
 %% configuration.
+-spec describe_t_l_s_inspection_configuration(map(), describe_t_l_s_inspection_configuration_request()) ->
+    {ok, describe_t_l_s_inspection_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_t_l_s_inspection_configuration(Client, Input, []).
+
+-spec describe_t_l_s_inspection_configuration(map(), describe_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
+    {ok, describe_t_l_s_inspection_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTLSInspectionConfiguration">>, Input, Options).
@@ -429,9 +1857,28 @@ describe_t_l_s_inspection_configuration(Client, Input, Options)
 %% firewall endpoints from the subnets and removes any network filtering
 %% protections that the endpoints
 %% were providing.
+-spec disassociate_subnets(map(), disassociate_subnets_request()) ->
+    {ok, disassociate_subnets_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 disassociate_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_subnets(Client, Input, []).
+
+-spec disassociate_subnets(map(), disassociate_subnets_request(), proplists:proplist()) ->
+    {ok, disassociate_subnets_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 disassociate_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateSubnets">>, Input, Options).
@@ -443,9 +1890,22 @@ disassociate_subnets(Client, Input, Options)
 %% your setting for max results and the number of firewall policies, a single
 %% call might not
 %% return the full list.
+-spec list_firewall_policies(map(), list_firewall_policies_request()) ->
+    {ok, list_firewall_policies_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_firewall_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewall_policies(Client, Input, []).
+
+-spec list_firewall_policies(map(), list_firewall_policies_request(), proplists:proplist()) ->
+    {ok, list_firewall_policies_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_firewall_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallPolicies">>, Input, Options).
@@ -459,9 +1919,22 @@ list_firewall_policies(Client, Input, Options)
 %% Depending on your setting for max results and the number of firewalls, a
 %% single call
 %% might not return the full list.
+-spec list_firewalls(map(), list_firewalls_request()) ->
+    {ok, list_firewalls_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_firewalls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_firewalls(Client, Input, []).
+
+-spec list_firewalls(map(), list_firewalls_request(), proplists:proplist()) ->
+    {ok, list_firewalls_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_firewalls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewalls">>, Input, Options).
@@ -472,9 +1945,22 @@ list_firewalls(Client, Input, Options)
 %% setting for max results and the number of rule groups, a single call might
 %% not return the
 %% full list.
+-spec list_rule_groups(map(), list_rule_groups_request()) ->
+    {ok, list_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
+
+-spec list_rule_groups(map(), list_rule_groups_request(), proplists:proplist()) ->
+    {ok, list_rule_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleGroups">>, Input, Options).
@@ -484,9 +1970,22 @@ list_rule_groups(Client, Input, Options)
 %%
 %% Depending on your setting for max results and the number of TLS inspection
 %% configurations, a single call might not return the full list.
+-spec list_t_l_s_inspection_configurations(map(), list_t_l_s_inspection_configurations_request()) ->
+    {ok, list_t_l_s_inspection_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_t_l_s_inspection_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_t_l_s_inspection_configurations(Client, Input, []).
+
+-spec list_t_l_s_inspection_configurations(map(), list_t_l_s_inspection_configurations_request(), proplists:proplist()) ->
+    {ok, list_t_l_s_inspection_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_t_l_s_inspection_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTLSInspectionConfigurations">>, Input, Options).
@@ -505,9 +2004,24 @@ list_t_l_s_inspection_configurations(Client, Input, Options)
 %% You can tag the Amazon Web Services resources that you manage through
 %% Network Firewall: firewalls, firewall
 %% policies, and rule groups.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -541,9 +2055,26 @@ list_tags_for_resource(Client, Input, Options)
 %% For additional information about resource sharing using RAM, see Resource
 %% Access Manager User Guide:
 %% https://docs.aws.amazon.com/ram/latest/userguide/what-is.html.
+-spec put_resource_policy(map(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_resource_policy_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_resource_policy_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -561,9 +2092,24 @@ put_resource_policy(Client, Input, Options)
 %% You can tag the Amazon Web Services resources that you manage through
 %% Network Firewall: firewalls, firewall
 %% policies, and rule groups.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -582,9 +2128,24 @@ tag_resource(Client, Input, Options)
 %% You can manage tags for the Amazon Web Services resources that you manage
 %% through Network Firewall:
 %% firewalls, firewall policies, and rule groups.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -597,9 +2158,28 @@ untag_resource(Client, Input, Options)
 %% against deletion. This setting helps protect against accidentally deleting
 %% a firewall
 %% that's in use.
+-spec update_firewall_delete_protection(map(), update_firewall_delete_protection_request()) ->
+    {ok, update_firewall_delete_protection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_owner_check_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_delete_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_delete_protection(Client, Input, []).
+
+-spec update_firewall_delete_protection(map(), update_firewall_delete_protection_request(), proplists:proplist()) ->
+    {ok, update_firewall_delete_protection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_owner_check_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_delete_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallDeleteProtection">>, Input, Options).
@@ -608,26 +2188,79 @@ update_firewall_delete_protection(Client, Input, Options)
 %%
 %% Use the description to help you
 %% identify the firewall when you're working with it.
+-spec update_firewall_description(map(), update_firewall_description_request()) ->
+    {ok, update_firewall_description_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_description(Client, Input, []).
+
+-spec update_firewall_description(map(), update_firewall_description_request(), proplists:proplist()) ->
+    {ok, update_firewall_description_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallDescription">>, Input, Options).
 
 %% @doc A complex type that contains settings for encryption of your firewall
 %% resources.
+-spec update_firewall_encryption_configuration(map(), update_firewall_encryption_configuration_request()) ->
+    {ok, update_firewall_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_owner_check_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_encryption_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_encryption_configuration(Client, Input, []).
+
+-spec update_firewall_encryption_configuration(map(), update_firewall_encryption_configuration_request(), proplists:proplist()) ->
+    {ok, update_firewall_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_owner_check_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_encryption_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallEncryptionConfiguration">>, Input, Options).
 
 %% @doc Updates the properties of the specified firewall policy.
+-spec update_firewall_policy(map(), update_firewall_policy_request()) ->
+    {ok, update_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_policy(Client, Input, []).
+
+-spec update_firewall_policy(map(), update_firewall_policy_request(), proplists:proplist()) ->
+    {ok, update_firewall_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallPolicy">>, Input, Options).
@@ -638,9 +2271,28 @@ update_firewall_policy(Client, Input, Options)
 %% If the flag is set to `TRUE', the firewall is protected
 %% from changes. This setting helps protect against accidentally changing a
 %% firewall that's in use.
+-spec update_firewall_policy_change_protection(map(), update_firewall_policy_change_protection_request()) ->
+    {ok, update_firewall_policy_change_protection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_owner_check_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_policy_change_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_policy_change_protection(Client, Input, []).
+
+-spec update_firewall_policy_change_protection(map(), update_firewall_policy_change_protection_request(), proplists:proplist()) ->
+    {ok, update_firewall_policy_change_protection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_owner_check_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_firewall_policy_change_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallPolicyChangeProtection">>, Input, Options).
@@ -674,9 +2326,28 @@ update_firewall_policy_change_protection(Client, Input, Options)
 %% `LogDestinationConfig' object and create a new one, using two separate
 %% calls
 %% to this update operation.
+-spec update_logging_configuration(map(), update_logging_configuration_request()) ->
+    {ok, update_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, log_destination_permission_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_logging_configuration(Client, Input, []).
+
+-spec update_logging_configuration(map(), update_logging_configuration_request(), proplists:proplist()) ->
+    {ok, update_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, log_destination_permission_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLoggingConfiguration">>, Input, Options).
@@ -692,17 +2363,53 @@ update_logging_configuration(Client, Input, Options)
 %% current `RuleGroup' object, update the object as needed, and then
 %% provide
 %% the updated object to this call.
+-spec update_rule_group(map(), update_rule_group_request()) ->
+    {ok, update_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
+
+-spec update_rule_group(map(), update_rule_group_request(), proplists:proplist()) ->
+    {ok, update_rule_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRuleGroup">>, Input, Options).
 
 %% @doc
+-spec update_subnet_change_protection(map(), update_subnet_change_protection_request()) ->
+    {ok, update_subnet_change_protection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_owner_check_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_subnet_change_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subnet_change_protection(Client, Input, []).
+
+-spec update_subnet_change_protection(map(), update_subnet_change_protection_request(), proplists:proplist()) ->
+    {ok, update_subnet_change_protection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_owner_check_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_subnet_change_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSubnetChangeProtection">>, Input, Options).
@@ -720,9 +2427,26 @@ update_subnet_change_protection(Client, Input, Options)
 %% current `TLSInspectionConfiguration' object, update the object as
 %% needed, and then provide
 %% the updated object to this call.
+-spec update_t_l_s_inspection_configuration(map(), update_t_l_s_inspection_configuration_request()) ->
+    {ok, update_t_l_s_inspection_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_t_l_s_inspection_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_t_l_s_inspection_configuration(Client, Input, []).
+
+-spec update_t_l_s_inspection_configuration(map(), update_t_l_s_inspection_configuration_request(), proplists:proplist()) ->
+    {ok, update_t_l_s_inspection_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_error(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_t_l_s_inspection_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTLSInspectionConfiguration">>, Input, Options).

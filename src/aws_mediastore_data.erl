@@ -24,13 +24,134 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% container_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type container_not_found_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_object_request() :: #{}
+-type delete_object_request() :: #{}.
+%% Example:
+%% delete_object_response() :: #{}
+-type delete_object_response() :: #{}.
+%% Example:
+%% describe_object_request() :: #{}
+-type describe_object_request() :: #{}.
+
+%% Example:
+%% describe_object_response() :: #{
+%%   <<"CacheControl">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentType">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer()
+%% }
+-type describe_object_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_object_request() :: #{
+%%   <<"Range">> => string()
+%% }
+-type get_object_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_object_response() :: #{
+%%   <<"Body">> => binary(),
+%%   <<"CacheControl">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentRange">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type get_object_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% item() :: #{
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentType">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type item() :: #{binary() => any()}.
+
+%% Example:
+%% list_items_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Path">> => string()
+%% }
+-type list_items_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_items_response() :: #{
+%%   <<"Items">> => list(item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_items_response() :: #{binary() => any()}.
+
+%% Example:
+%% object_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type object_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_object_request() :: #{
+%%   <<"Body">> := binary(),
+%%   <<"CacheControl">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"UploadAvailability">> => list(any())
+%% }
+-type put_object_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_object_response() :: #{
+%%   <<"ContentSHA256">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type put_object_response() :: #{binary() => any()}.
+
+%% Example:
+%% requested_range_not_satisfiable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type requested_range_not_satisfiable_exception() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Deletes an object at the specified path.
+-spec delete_object(map(), binary() | list(), delete_object_request()) ->
+    {ok, delete_object_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, object_not_found_exception(), tuple()}.
 delete_object(Client, Path, Input) ->
     delete_object(Client, Path, Input, []).
+
+-spec delete_object(map(), binary() | list(), delete_object_request(), proplists:proplist()) ->
+    {ok, delete_object_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, object_not_found_exception(), tuple()}.
 delete_object(Client, Path, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
@@ -54,8 +175,21 @@ delete_object(Client, Path, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the headers for an object at the specified path.
+-spec describe_object(map(), binary() | list(), describe_object_request()) ->
+    {ok, describe_object_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, object_not_found_exception(), tuple()}.
 describe_object(Client, Path, Input) ->
     describe_object(Client, Path, Input, []).
+
+-spec describe_object(map(), binary() | list(), describe_object_request(), proplists:proplist()) ->
+    {ok, describe_object_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, object_not_found_exception(), tuple()}.
 describe_object(Client, Path, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
@@ -104,14 +238,35 @@ describe_object(Client, Path, Input0, Options0) ->
 %% If the object’s upload availability is set to `streaming', AWS
 %% Elemental MediaStore downloads the object even if it’s still uploading the
 %% object.
+-spec get_object(map(), binary() | list()) ->
+    {ok, get_object_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, object_not_found_exception(), tuple()} |
+    {error, requested_range_not_satisfiable_exception(), tuple()}.
 get_object(Client, Path)
   when is_map(Client) ->
     get_object(Client, Path, #{}, #{}).
 
+-spec get_object(map(), binary() | list(), map(), map()) ->
+    {ok, get_object_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, object_not_found_exception(), tuple()} |
+    {error, requested_range_not_satisfiable_exception(), tuple()}.
 get_object(Client, Path, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_object(Client, Path, QueryMap, HeadersMap, []).
 
+-spec get_object(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_object_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()} |
+    {error, object_not_found_exception(), tuple()} |
+    {error, requested_range_not_satisfiable_exception(), tuple()}.
 get_object(Client, Path, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
@@ -156,14 +311,29 @@ get_object(Client, Path, QueryMap, HeadersMap, Options0)
 %% @doc Provides a list of metadata entries about folders and objects in the
 %% specified
 %% folder.
+-spec list_items(map()) ->
+    {ok, list_items_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 list_items(Client)
   when is_map(Client) ->
     list_items(Client, #{}, #{}).
 
+-spec list_items(map(), map(), map()) ->
+    {ok, list_items_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 list_items(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_items(Client, QueryMap, HeadersMap, []).
 
+-spec list_items(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_items_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 list_items(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/"],
@@ -190,8 +360,19 @@ list_items(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Object sizes are limited to 25 MB for standard upload availability and 10
 %% MB for streaming upload availability.
+-spec put_object(map(), binary() | list(), put_object_request()) ->
+    {ok, put_object_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_object(Client, Path, Input) ->
     put_object(Client, Path, Input, []).
+
+-spec put_object(map(), binary() | list(), put_object_request(), proplists:proplist()) ->
+    {ok, put_object_response(), tuple()} |
+    {error, any()} |
+    {error, container_not_found_exception(), tuple()} |
+    {error, internal_server_error(), tuple()}.
 put_object(Client, Path, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_multi_segment_uri(Path), ""],
@@ -223,7 +404,7 @@ put_object(Client, Path, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

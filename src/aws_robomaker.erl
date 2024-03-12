@@ -123,13 +123,1543 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_deployment_jobs_response() :: #{
+%%   <<"deploymentJobs">> => list(deployment_job()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_deployment_job_request() :: #{
+%%   <<"job">> := string()
+%% }
+-type describe_deployment_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_application_config() :: #{
+%%   <<"application">> => string(),
+%%   <<"applicationVersion">> => string(),
+%%   <<"launchConfig">> => deployment_launch_config()
+%% }
+-type deployment_application_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_deployment_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()()),
+%%   <<"deploymentConfig">> => deployment_config(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"fleet">> => string(),
+%%   <<"robotDeploymentSummary">> => list(robot_deployment()()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type describe_deployment_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_simulation_applications_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"simulationApplicationSummaries">> => list(simulation_application_summary()())
+%% }
+-type list_simulation_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_world_export_jobs_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_world_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_world_generation_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"template">> := string(),
+%%   <<"worldCount">> := world_count(),
+%%   <<"worldTags">> => map()
+%% }
+-type create_world_generation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% robot_software_suite() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"version">> => list(any())
+%% }
+-type robot_software_suite() :: #{binary() => any()}.
+
+%% Example:
+%% describe_simulation_job_batch_request() :: #{
+%%   <<"batch">> := string()
+%% }
+-type describe_simulation_job_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_request() :: #{
+%%   <<"fleet">> := string()
+%% }
+-type delete_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_simulation_application_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"imageDigest">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"renderingEngine">> => rendering_engine(),
+%%   <<"revisionId">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"simulationSoftwareSuite">> => simulation_software_suite(),
+%%   <<"sources">> => list(source()()),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string()
+%% }
+-type describe_simulation_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_simulation_job_batch_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"batchPolicy">> => batch_policy(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdRequests">> => list(simulation_job_summary()()),
+%%   <<"failedRequests">> => list(failed_create_simulation_job_request()()),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"pendingRequests">> => list(simulation_job_request()()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type start_simulation_job_batch_response() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% create_simulation_application_request() :: #{
+%%   <<"environment">> => environment(),
+%%   <<"name">> := string(),
+%%   <<"renderingEngine">> => rendering_engine(),
+%%   <<"robotSoftwareSuite">> := robot_software_suite(),
+%%   <<"simulationSoftwareSuite">> := simulation_software_suite(),
+%%   <<"sources">> => list(source_config()()),
+%%   <<"tags">> => map()
+%% }
+-type create_simulation_application_request() :: #{binary() => any()}.
+%% Example:
+%% delete_robot_response() :: #{}
+-type delete_robot_response() :: #{}.
+
+%% Example:
+%% robot() :: #{
+%%   <<"architecture">> => list(any()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"fleetArn">> => string(),
+%%   <<"greenGrassGroupId">> => string(),
+%%   <<"lastDeploymentJob">> => string(),
+%%   <<"lastDeploymentTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type robot() :: #{binary() => any()}.
+%% Example:
+%% cancel_deployment_job_response() :: #{}
+-type cancel_deployment_job_response() :: #{}.
+
+%% Example:
+%% world_generation_job_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"failedWorldCount">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"succeededWorldCount">> => integer(),
+%%   <<"template">> => string(),
+%%   <<"worldCount">> => world_count()
+%% }
+-type world_generation_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_request() :: #{
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% compute_response() :: #{
+%%   <<"computeType">> => list(any()),
+%%   <<"gpuUnitLimit">> => integer(),
+%%   <<"simulationUnitLimit">> => integer()
+%% }
+-type compute_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_world_request() :: #{
+%%   <<"world">> := string()
+%% }
+-type describe_world_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()()),
+%%   <<"deploymentConfig">> => deployment_config(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"fleet">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_deployment_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_world_template_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"template">> := string(),
+%%   <<"templateBody">> => string(),
+%%   <<"templateLocation">> => template_location()
+%% }
+-type update_world_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_config() :: #{
+%%   <<"concurrentDeploymentPercentage">> => integer(),
+%%   <<"downloadConditionFile">> => s3_object(),
+%%   <<"failureThresholdPercentage">> => integer(),
+%%   <<"robotDeploymentTimeoutInSeconds">> => float()
+%% }
+-type deployment_config() :: #{binary() => any()}.
+
+%% Example:
+%% compute() :: #{
+%%   <<"computeType">> => list(any()),
+%%   <<"gpuUnitLimit">> => integer(),
+%%   <<"simulationUnitLimit">> => integer()
+%% }
+-type compute() :: #{binary() => any()}.
+%% Example:
+%% delete_fleet_response() :: #{}
+-type delete_fleet_response() :: #{}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"networkInterfaceId">> => string(),
+%%   <<"privateIpAddress">> => string(),
+%%   <<"publicIpAddress">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% update_robot_application_request() :: #{
+%%   <<"application">> := string(),
+%%   <<"currentRevisionId">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"robotSoftwareSuite">> := robot_software_suite(),
+%%   <<"sources">> => list(source_config()())
+%% }
+-type update_robot_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% simulation_job_request() :: #{
+%%   <<"compute">> => compute(),
+%%   <<"dataSources">> => list(data_source_config()()),
+%%   <<"failureBehavior">> => list(any()),
+%%   <<"iamRole">> => string(),
+%%   <<"loggingConfig">> => logging_config(),
+%%   <<"maxJobDurationInSeconds">> => float(),
+%%   <<"outputLocation">> => output_location(),
+%%   <<"robotApplications">> => list(robot_application_config()()),
+%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"tags">> => map(),
+%%   <<"useDefaultApplications">> => boolean(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type simulation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleets_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_robot_response() :: #{
+%%   <<"architecture">> => list(any()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"greengrassGroupId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_robot_response() :: #{binary() => any()}.
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"etag">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
+%% Example:
+%% restart_simulation_job_response() :: #{}
+-type restart_simulation_job_response() :: #{}.
+
+%% Example:
+%% batch_policy() :: #{
+%%   <<"maxConcurrency">> => integer(),
+%%   <<"timeoutInSeconds">> => float()
+%% }
+-type batch_policy() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_robot_response() :: #{
+%%   <<"fleet">> => string(),
+%%   <<"robot">> => string()
+%% }
+-type deregister_robot_response() :: #{binary() => any()}.
+
+%% Example:
+%% simulation_job_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"computeType">> => list(any()),
+%%   <<"dataSourceNames">> => list(string()()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"robotApplicationNames">> => list(string()()),
+%%   <<"simulationApplicationNames">> => list(string()()),
+%%   <<"status">> => list(any())
+%% }
+-type simulation_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_response() :: #{
+%%   <<"fleetDetails">> => list(fleet()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleets_response() :: #{binary() => any()}.
+
+%% Example:
+%% logging_config() :: #{
+%%   <<"recordAllRosTopics">> => boolean()
+%% }
+-type logging_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_robot_application_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"sources">> => list(source()()),
+%%   <<"version">> => string()
+%% }
+-type update_robot_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_simulation_application_request() :: #{
+%%   <<"application">> := string(),
+%%   <<"currentRevisionId">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"renderingEngine">> => rendering_engine(),
+%%   <<"robotSoftwareSuite">> := robot_software_suite(),
+%%   <<"simulationSoftwareSuite">> := simulation_software_suite(),
+%%   <<"sources">> => list(source_config()())
+%% }
+-type update_simulation_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_robot_application_version_request() :: #{
+%%   <<"application">> := string(),
+%%   <<"currentRevisionId">> => string(),
+%%   <<"imageDigest">> => string(),
+%%   <<"s3Etags">> => list(string()())
+%% }
+-type create_robot_application_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_world_generation_job_request() :: #{
+%%   <<"job">> := string()
+%% }
+-type cancel_world_generation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_robot_request() :: #{
+%%   <<"architecture">> := list(any()),
+%%   <<"greengrassGroupId">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_robot_request() :: #{binary() => any()}.
+
+%% Example:
+%% simulation_job_batch_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdRequestCount">> => integer(),
+%%   <<"failedRequestCount">> => integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"pendingRequestCount">> => integer(),
+%%   <<"status">> => list(any())
+%% }
+-type simulation_job_batch_summary() :: #{binary() => any()}.
+
+%% Example:
+%% simulation_application_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"simulationSoftwareSuite">> => simulation_software_suite(),
+%%   <<"version">> => string()
+%% }
+-type simulation_application_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_robot_application_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"sources">> => list(source()()),
+%%   <<"version">> => string()
+%% }
+-type create_robot_application_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% world_config() :: #{
+%%   <<"world">> => string()
+%% }
+-type world_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_job_request() :: #{
+%%   <<"clientRequestToken">> := string(),
+%%   <<"deploymentApplicationConfigs">> := list(deployment_application_config()()),
+%%   <<"deploymentConfig">> => deployment_config(),
+%%   <<"fleet">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_deployment_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_world_template_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string()
+%% }
+-type describe_world_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_robot_response() :: #{
+%%   <<"fleet">> => string(),
+%%   <<"robot">> => string()
+%% }
+-type register_robot_response() :: #{binary() => any()}.
+
+%% Example:
+%% world_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"generationJob">> => string(),
+%%   <<"template">> => string()
+%% }
+-type world_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_world_export_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"iamRole">> => string(),
+%%   <<"outputLocation">> => output_location(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_world_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_world_generation_jobs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"worldGenerationJobSummaries">> => list(world_generation_job_summary()())
+%% }
+-type list_world_generation_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastDeploymentJob">> => string(),
+%%   <<"lastDeploymentStatus">> => list(any()),
+%%   <<"lastDeploymentTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"robots">> => list(robot()()),
+%%   <<"tags">> => map()
+%% }
+-type describe_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_simulation_application_version_request() :: #{
+%%   <<"application">> := string(),
+%%   <<"currentRevisionId">> => string(),
+%%   <<"imageDigest">> => string(),
+%%   <<"s3Etags">> => list(string()())
+%% }
+-type create_simulation_application_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% progress_detail() :: #{
+%%   <<"currentProgress">> => list(any()),
+%%   <<"estimatedTimeRemainingSeconds">> => integer(),
+%%   <<"percentDone">> => float(),
+%%   <<"targetResource">> => string()
+%% }
+-type progress_detail() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_deployment_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_deployment_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_deployment_job_request() :: #{
+%%   <<"job">> := string()
+%% }
+-type cancel_deployment_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% s3_key_output() :: #{
+%%   <<"etag">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type s3_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_simulation_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"compute">> => compute_response(),
+%%   <<"dataSources">> => list(data_source()()),
+%%   <<"failureBehavior">> => list(any()),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"iamRole">> => string(),
+%%   <<"lastStartedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"loggingConfig">> => logging_config(),
+%%   <<"maxJobDurationInSeconds">> => float(),
+%%   <<"name">> => string(),
+%%   <<"networkInterface">> => network_interface(),
+%%   <<"outputLocation">> => output_location(),
+%%   <<"robotApplications">> => list(robot_application_config()()),
+%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"simulationTimeMillis">> => float(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"vpcConfig">> => vpc_config_response()
+%% }
+-type describe_simulation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_world_template_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_world_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_world_template_request() :: #{
+%%   <<"template">> := string()
+%% }
+-type delete_world_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% upload_configuration() :: #{
+%%   <<"name">> => string(),
+%%   <<"path">> => string(),
+%%   <<"uploadBehavior">> => list(any())
+%% }
+-type upload_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_world_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templateSummaries">> => list(template_summary()())
+%% }
+-type list_world_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% environment() :: #{
+%%   <<"uri">> => string()
+%% }
+-type environment() :: #{binary() => any()}.
+
+%% Example:
+%% create_simulation_application_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"renderingEngine">> => rendering_engine(),
+%%   <<"revisionId">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"simulationSoftwareSuite">> => simulation_software_suite(),
+%%   <<"sources">> => list(source()()),
+%%   <<"version">> => string()
+%% }
+-type create_simulation_application_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% simulation_software_suite() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type simulation_software_suite() :: #{binary() => any()}.
+
+%% Example:
+%% sync_deployment_job_request() :: #{
+%%   <<"clientRequestToken">> := string(),
+%%   <<"fleet">> := string()
+%% }
+-type sync_deployment_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% launch_config() :: #{
+%%   <<"command">> => list(string()()),
+%%   <<"environmentVariables">> => map(),
+%%   <<"launchFile">> => string(),
+%%   <<"packageName">> => string(),
+%%   <<"portForwardingConfig">> => port_forwarding_config(),
+%%   <<"streamUI">> => boolean()
+%% }
+-type launch_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_world_generation_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"finishedWorldsSummary">> => finished_worlds_summary(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"template">> => string(),
+%%   <<"worldCount">> => world_count(),
+%%   <<"worldTags">> => map()
+%% }
+-type describe_world_generation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_simulation_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"compute">> => compute_response(),
+%%   <<"dataSources">> => list(data_source()()),
+%%   <<"failureBehavior">> => list(any()),
+%%   <<"failureCode">> => list(any()),
+%%   <<"iamRole">> => string(),
+%%   <<"lastStartedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"loggingConfig">> => logging_config(),
+%%   <<"maxJobDurationInSeconds">> => float(),
+%%   <<"outputLocation">> => output_location(),
+%%   <<"robotApplications">> => list(robot_application_config()()),
+%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"simulationTimeMillis">> => float(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"vpcConfig">> => vpc_config_response()
+%% }
+-type create_simulation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% port_forwarding_config() :: #{
+%%   <<"portMappings">> => list(port_mapping()())
+%% }
+-type port_forwarding_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_world_export_job_request() :: #{
+%%   <<"job">> := string()
+%% }
+-type describe_world_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_world_template_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"templateBody">> => string(),
+%%   <<"templateLocation">> => template_location()
+%% }
+-type create_world_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_config() :: #{
+%%   <<"destination">> => string(),
+%%   <<"name">> => string(),
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Keys">> => list(string()()),
+%%   <<"type">> => list(any())
+%% }
+-type data_source_config() :: #{binary() => any()}.
+
+%% Example:
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
+%% }
+-type template_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_world_generation_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"template">> => string(),
+%%   <<"worldCount">> => world_count(),
+%%   <<"worldTags">> => map()
+%% }
+-type create_world_generation_job_response() :: #{binary() => any()}.
+%% Example:
+%% cancel_simulation_job_response() :: #{}
+-type cancel_simulation_job_response() :: #{}.
+%% Example:
+%% delete_robot_application_response() :: #{}
+-type delete_robot_application_response() :: #{}.
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"assignPublicIp">> => boolean(),
+%%   <<"securityGroups">> => list(string()()),
+%%   <<"subnets">> => list(string()())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_world_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_world_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% world_export_job_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"outputLocation">> => output_location(),
+%%   <<"status">> => list(any()),
+%%   <<"worlds">> => list(string()())
+%% }
+-type world_export_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% simulation_job() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"compute">> => compute_response(),
+%%   <<"dataSources">> => list(data_source()()),
+%%   <<"failureBehavior">> => list(any()),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"iamRole">> => string(),
+%%   <<"lastStartedAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"loggingConfig">> => logging_config(),
+%%   <<"maxJobDurationInSeconds">> => float(),
+%%   <<"name">> => string(),
+%%   <<"networkInterface">> => network_interface(),
+%%   <<"outputLocation">> => output_location(),
+%%   <<"robotApplications">> => list(robot_application_config()()),
+%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"simulationTimeMillis">> => float(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"vpcConfig">> => vpc_config_response()
+%% }
+-type simulation_job() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_simulation_job_response() :: #{
+%%   <<"jobs">> => list(simulation_job()()),
+%%   <<"unprocessedJobs">> => list(string()())
+%% }
+-type batch_describe_simulation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_world_export_jobs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"worldExportJobSummaries">> => list(world_export_job_summary()())
+%% }
+-type list_world_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_robot_response() :: #{
+%%   <<"architecture">> => list(any()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"fleetArn">> => string(),
+%%   <<"greengrassGroupId">> => string(),
+%%   <<"lastDeploymentJob">> => string(),
+%%   <<"lastDeploymentTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type describe_robot_response() :: #{binary() => any()}.
+
+%% Example:
+%% robot_deployment() :: #{
+%%   <<"arn">> => string(),
+%%   <<"deploymentFinishTime">> => non_neg_integer(),
+%%   <<"deploymentStartTime">> => non_neg_integer(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"progressDetail">> => progress_detail(),
+%%   <<"status">> => list(any())
+%% }
+-type robot_deployment() :: #{binary() => any()}.
+
+%% Example:
+%% output_location() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Prefix">> => string()
+%% }
+-type output_location() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_launch_config() :: #{
+%%   <<"environmentVariables">> => map(),
+%%   <<"launchFile">> => string(),
+%%   <<"packageName">> => string(),
+%%   <<"postLaunchFile">> => string(),
+%%   <<"preLaunchFile">> => string()
+%% }
+-type deployment_launch_config() :: #{binary() => any()}.
+%% Example:
+%% delete_world_template_response() :: #{}
+-type delete_world_template_response() :: #{}.
+
+%% Example:
+%% describe_simulation_job_request() :: #{
+%%   <<"job">> := string()
+%% }
+-type describe_simulation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_worlds_request() :: #{
+%%   <<"worlds">> := list(string()())
+%% }
+-type batch_delete_worlds_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_robot_applications_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"robotApplicationSummaries">> => list(robot_application_summary()())
+%% }
+-type list_robot_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_world_template_body_response() :: #{
+%%   <<"templateBody">> => string()
+%% }
+-type get_world_template_body_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_world_generation_job_request() :: #{
+%%   <<"job">> := string()
+%% }
+-type describe_world_generation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_world_generation_jobs_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_world_generation_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_simulation_job_batches_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"simulationJobBatchSummaries">> => list(simulation_job_batch_summary()())
+%% }
+-type list_simulation_job_batches_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_simulation_application_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"renderingEngine">> => rendering_engine(),
+%%   <<"revisionId">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"simulationSoftwareSuite">> => simulation_software_suite(),
+%%   <<"sources">> => list(source()()),
+%%   <<"version">> => string()
+%% }
+-type update_simulation_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_robots_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"robots">> => list(robot()())
+%% }
+-type list_robots_response() :: #{binary() => any()}.
+
+%% Example:
+%% source() :: #{
+%%   <<"architecture">> => list(any()),
+%%   <<"etag">> => string(),
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type source() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_simulation_job_batch_request() :: #{
+%%   <<"batchPolicy">> => batch_policy(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createSimulationJobRequests">> := list(simulation_job_request()()),
+%%   <<"tags">> => map()
+%% }
+-type start_simulation_job_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% failure_summary() :: #{
+%%   <<"failures">> => list(world_failure()()),
+%%   <<"totalFailureCount">> => integer()
+%% }
+-type failure_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_simulation_jobs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"simulationJobSummaries">> => list(simulation_job_summary()())
+%% }
+-type list_simulation_jobs_response() :: #{binary() => any()}.
+%% Example:
+%% delete_simulation_application_response() :: #{}
+-type delete_simulation_application_response() :: #{}.
+
+%% Example:
+%% template_location() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type template_location() :: #{binary() => any()}.
+
+%% Example:
+%% list_worlds_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_worlds_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_simulation_job_request() :: #{
+%%   <<"job">> := string()
+%% }
+-type cancel_simulation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% rendering_engine() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type rendering_engine() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_robot_application_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"sources">> => list(source()()),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string()
+%% }
+-type create_robot_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_world_template_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type update_world_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_world_export_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"iamRole">> => string(),
+%%   <<"outputLocation">> => output_location(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"worlds">> => list(string()())
+%% }
+-type describe_world_export_job_response() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% delete_simulation_application_request() :: #{
+%%   <<"application">> := string(),
+%%   <<"applicationVersion">> => string()
+%% }
+-type delete_simulation_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% port_mapping() :: #{
+%%   <<"applicationPort">> => integer(),
+%%   <<"enableOnPublicIp">> => boolean(),
+%%   <<"jobPort">> => integer()
+%% }
+-type port_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% describe_robot_request() :: #{
+%%   <<"robot">> := string()
+%% }
+-type describe_robot_request() :: #{binary() => any()}.
+%% Example:
+%% cancel_simulation_job_batch_response() :: #{}
+-type cancel_simulation_job_batch_response() :: #{}.
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% list_simulation_jobs_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_simulation_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_robot_application_request() :: #{
+%%   <<"environment">> => environment(),
+%%   <<"name">> := string(),
+%%   <<"robotSoftwareSuite">> := robot_software_suite(),
+%%   <<"sources">> => list(source_config()()),
+%%   <<"tags">> => map()
+%% }
+-type create_robot_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_simulation_job_batch_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"batchPolicy">> => batch_policy(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdRequests">> => list(simulation_job_summary()()),
+%%   <<"failedRequests">> => list(failed_create_simulation_job_request()()),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"pendingRequests">> => list(simulation_job_request()()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type describe_simulation_job_batch_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_worlds_response() :: #{
+%%   <<"unprocessedWorlds">> => list(string()())
+%% }
+-type batch_delete_worlds_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_robot_applications_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"versionQualifier">> => string()
+%% }
+-type list_robot_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% failed_create_simulation_job_request() :: #{
+%%   <<"failedAt">> => non_neg_integer(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"request">> => simulation_job_request()
+%% }
+-type failed_create_simulation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_world_template_request() :: #{
+%%   <<"template">> := string()
+%% }
+-type describe_world_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_robot_application_request() :: #{
+%%   <<"application">> := string(),
+%%   <<"applicationVersion">> => string()
+%% }
+-type describe_robot_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_robot_request() :: #{
+%%   <<"fleet">> := string(),
+%%   <<"robot">> := string()
+%% }
+-type register_robot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_robot_application_request() :: #{
+%%   <<"application">> := string(),
+%%   <<"applicationVersion">> => string()
+%% }
+-type delete_robot_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_simulation_job_request() :: #{
+%%   <<"jobs">> := list(string()())
+%% }
+-type batch_describe_simulation_job_request() :: #{binary() => any()}.
+%% Example:
+%% cancel_world_generation_job_response() :: #{}
+-type cancel_world_generation_job_response() :: #{}.
+
+%% Example:
+%% finished_worlds_summary() :: #{
+%%   <<"failureSummary">> => failure_summary(),
+%%   <<"finishedCount">> => integer(),
+%%   <<"succeededWorlds">> => list(string()())
+%% }
+-type finished_worlds_summary() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_simulation_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"compute">> => compute(),
+%%   <<"dataSources">> => list(data_source_config()()),
+%%   <<"failureBehavior">> => list(any()),
+%%   <<"iamRole">> := string(),
+%%   <<"loggingConfig">> => logging_config(),
+%%   <<"maxJobDurationInSeconds">> := float(),
+%%   <<"outputLocation">> => output_location(),
+%%   <<"robotApplications">> => list(robot_application_config()()),
+%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"tags">> => map(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type create_simulation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% world_failure() :: #{
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureCount">> => integer(),
+%%   <<"sampleFailureReason">> => string()
+%% }
+-type world_failure() :: #{binary() => any()}.
+
+%% Example:
+%% source_config() :: #{
+%%   <<"architecture">> => list(any()),
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Key">> => string()
+%% }
+-type source_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_request() :: #{
+%%   <<"fleet">> := string()
+%% }
+-type describe_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_config_response() :: #{
+%%   <<"assignPublicIp">> => boolean(),
+%%   <<"securityGroups">> => list(string()()),
+%%   <<"subnets">> => list(string()()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% simulation_application_config() :: #{
+%%   <<"application">> => string(),
+%%   <<"applicationVersion">> => string(),
+%%   <<"launchConfig">> => launch_config(),
+%%   <<"tools">> => list(tool()()),
+%%   <<"uploadConfigurations">> => list(upload_configuration()()),
+%%   <<"useDefaultTools">> => boolean(),
+%%   <<"useDefaultUploadConfigurations">> => boolean(),
+%%   <<"worldConfigs">> => list(world_config()())
+%% }
+-type simulation_application_config() :: #{binary() => any()}.
+
+%% Example:
+%% robot_application_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"version">> => string()
+%% }
+-type robot_application_summary() :: #{binary() => any()}.
+
+%% Example:
+%% sync_deployment_job_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()()),
+%%   <<"deploymentConfig">> => deployment_config(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"fleet">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type sync_deployment_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_world_export_job_request() :: #{
+%%   <<"job">> := string()
+%% }
+-type cancel_world_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_robot_request() :: #{
+%%   <<"robot">> := string()
+%% }
+-type delete_robot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_simulation_application_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"renderingEngine">> => rendering_engine(),
+%%   <<"revisionId">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"simulationSoftwareSuite">> => simulation_software_suite(),
+%%   <<"sources">> => list(source()()),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string()
+%% }
+-type create_simulation_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_world_template_body_request() :: #{
+%%   <<"generationJob">> => string(),
+%%   <<"template">> => string()
+%% }
+-type get_world_template_body_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% data_source() :: #{
+%%   <<"destination">> => string(),
+%%   <<"name">> => string(),
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Keys">> => list(s3_key_output()()),
+%%   <<"type">> => list(any())
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% list_robots_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_robots_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_simulation_application_request() :: #{
+%%   <<"application">> := string(),
+%%   <<"applicationVersion">> => string()
+%% }
+-type describe_simulation_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_robot_application_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"environment">> => environment(),
+%%   <<"imageDigest">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"robotSoftwareSuite">> => robot_software_suite(),
+%%   <<"sources">> => list(source()()),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string()
+%% }
+-type describe_robot_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_simulation_job_batches_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_simulation_job_batches_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_worlds_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"worldSummaries">> => list(world_summary()())
+%% }
+-type list_worlds_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_robot_request() :: #{
+%%   <<"fleet">> := string(),
+%%   <<"robot">> := string()
+%% }
+-type deregister_robot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_world_export_job_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"iamRole">> := string(),
+%%   <<"outputLocation">> := output_location(),
+%%   <<"tags">> => map(),
+%%   <<"worlds">> := list(string()())
+%% }
+-type create_world_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% tool() :: #{
+%%   <<"command">> => string(),
+%%   <<"exitBehavior">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"streamOutputToCloudWatch">> => boolean(),
+%%   <<"streamUI">> => boolean()
+%% }
+-type tool() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_simulation_job_batch_request() :: #{
+%%   <<"batch">> := string()
+%% }
+-type cancel_simulation_job_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_simulation_applications_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"versionQualifier">> => string()
+%% }
+-type list_simulation_applications_request() :: #{binary() => any()}.
+%% Example:
+%% cancel_world_export_job_response() :: #{}
+-type cancel_world_export_job_response() :: #{}.
+
+%% Example:
+%% world_count() :: #{
+%%   <<"floorplanCount">> => integer(),
+%%   <<"interiorCountPerFloorplan">> => integer()
+%% }
+-type world_count() :: #{binary() => any()}.
+
+%% Example:
+%% fleet() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastDeploymentJob">> => string(),
+%%   <<"lastDeploymentStatus">> => list(any()),
+%%   <<"lastDeploymentTime">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type fleet() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_job() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()()),
+%%   <<"deploymentConfig">> => deployment_config(),
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"fleet">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type deployment_job() :: #{binary() => any()}.
+
+%% Example:
+%% robot_application_config() :: #{
+%%   <<"application">> => string(),
+%%   <<"applicationVersion">> => string(),
+%%   <<"launchConfig">> => launch_config(),
+%%   <<"tools">> => list(tool()()),
+%%   <<"uploadConfigurations">> => list(upload_configuration()()),
+%%   <<"useDefaultTools">> => boolean(),
+%%   <<"useDefaultUploadConfigurations">> => boolean()
+%% }
+-type robot_application_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployment_jobs_request() :: #{
+%%   <<"filters">> => list(filter()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_world_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"generationJob">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"template">> => string(),
+%%   <<"worldDescriptionBody">> => string()
+%% }
+-type describe_world_response() :: #{binary() => any()}.
+
+%% Example:
+%% restart_simulation_job_request() :: #{
+%%   <<"job">> := string()
+%% }
+-type restart_simulation_job_request() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Deletes one or more worlds in a batch operation.
+-spec batch_delete_worlds(map(), batch_delete_worlds_request()) ->
+    {ok, batch_delete_worlds_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 batch_delete_worlds(Client, Input) ->
     batch_delete_worlds(Client, Input, []).
+
+-spec batch_delete_worlds(map(), batch_delete_worlds_request(), proplists:proplist()) ->
+    {ok, batch_delete_worlds_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 batch_delete_worlds(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batchDeleteWorlds"],
@@ -153,8 +1683,23 @@ batch_delete_worlds(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more simulation jobs.
+-spec batch_describe_simulation_job(map(), batch_describe_simulation_job_request()) ->
+    {ok, batch_describe_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 batch_describe_simulation_job(Client, Input) ->
     batch_describe_simulation_job(Client, Input, []).
+
+-spec batch_describe_simulation_job(map(), batch_describe_simulation_job_request(), proplists:proplist()) ->
+    {ok, batch_describe_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 batch_describe_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/batchDescribeSimulationJob"],
@@ -181,8 +1726,23 @@ batch_describe_simulation_job(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec cancel_deployment_job(map(), cancel_deployment_job_request()) ->
+    {ok, cancel_deployment_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_deployment_job(Client, Input) ->
     cancel_deployment_job(Client, Input, []).
+
+-spec cancel_deployment_job(map(), cancel_deployment_job_request(), proplists:proplist()) ->
+    {ok, cancel_deployment_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_deployment_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelDeploymentJob"],
@@ -206,8 +1766,23 @@ cancel_deployment_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified simulation job.
+-spec cancel_simulation_job(map(), cancel_simulation_job_request()) ->
+    {ok, cancel_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_simulation_job(Client, Input) ->
     cancel_simulation_job(Client, Input, []).
+
+-spec cancel_simulation_job(map(), cancel_simulation_job_request(), proplists:proplist()) ->
+    {ok, cancel_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelSimulationJob"],
@@ -234,8 +1809,23 @@ cancel_simulation_job(Client, Input0, Options0) ->
 %%
 %% When you cancel a simulation job batch, you are also
 %% cancelling all of the active simulation jobs created as part of the batch.
+-spec cancel_simulation_job_batch(map(), cancel_simulation_job_batch_request()) ->
+    {ok, cancel_simulation_job_batch_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_simulation_job_batch(Client, Input) ->
     cancel_simulation_job_batch(Client, Input, []).
+
+-spec cancel_simulation_job_batch(map(), cancel_simulation_job_batch_request(), proplists:proplist()) ->
+    {ok, cancel_simulation_job_batch_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_simulation_job_batch(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelSimulationJobBatch"],
@@ -259,8 +1849,23 @@ cancel_simulation_job_batch(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified export job.
+-spec cancel_world_export_job(map(), cancel_world_export_job_request()) ->
+    {ok, cancel_world_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_world_export_job(Client, Input) ->
     cancel_world_export_job(Client, Input, []).
+
+-spec cancel_world_export_job(map(), cancel_world_export_job_request(), proplists:proplist()) ->
+    {ok, cancel_world_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_world_export_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelWorldExportJob"],
@@ -284,8 +1889,23 @@ cancel_world_export_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified world generator job.
+-spec cancel_world_generation_job(map(), cancel_world_generation_job_request()) ->
+    {ok, cancel_world_generation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_world_generation_job(Client, Input) ->
     cancel_world_generation_job(Client, Input, []).
+
+-spec cancel_world_generation_job(map(), cancel_world_generation_job_request(), proplists:proplist()) ->
+    {ok, cancel_world_generation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 cancel_world_generation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cancelWorldGenerationJob"],
@@ -322,8 +1942,29 @@ cancel_world_generation_job(Client, Input0, Options0) ->
 %% After 90 days, deployment jobs expire and will be deleted. They will no
 %% longer be
 %% accessible.
+-spec create_deployment_job(map(), create_deployment_job_request()) ->
+    {ok, create_deployment_job_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_deployment_exception(), tuple()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_deployment_job(Client, Input) ->
     create_deployment_job(Client, Input, []).
+
+-spec create_deployment_job(map(), create_deployment_job_request(), proplists:proplist()) ->
+    {ok, create_deployment_job_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_deployment_exception(), tuple()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_deployment_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createDeploymentJob"],
@@ -350,8 +1991,23 @@ create_deployment_job(Client, Input0, Options0) ->
 %% application.
 %%
 %% This API is no longer supported and will throw an error if used.
+-spec create_fleet(map(), create_fleet_request()) ->
+    {ok, create_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_fleet(Client, Input) ->
     create_fleet(Client, Input, []).
+
+-spec create_fleet(map(), create_fleet_request(), proplists:proplist()) ->
+    {ok, create_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createFleet"],
@@ -377,8 +2033,25 @@ create_fleet(Client, Input0, Options0) ->
 %% @doc Creates a robot.
 %%
 %% This API is no longer supported and will throw an error if used.
+-spec create_robot(map(), create_robot_request()) ->
+    {ok, create_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_robot(Client, Input) ->
     create_robot(Client, Input, []).
+
+-spec create_robot(map(), create_robot_request(), proplists:proplist()) ->
+    {ok, create_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createRobot"],
@@ -402,8 +2075,27 @@ create_robot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a robot application.
+-spec create_robot_application(map(), create_robot_application_request()) ->
+    {ok, create_robot_application_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_robot_application(Client, Input) ->
     create_robot_application(Client, Input, []).
+
+-spec create_robot_application(map(), create_robot_application_request(), proplists:proplist()) ->
+    {ok, create_robot_application_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_robot_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createRobotApplication"],
@@ -427,8 +2119,25 @@ create_robot_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a version of a robot application.
+-spec create_robot_application_version(map(), create_robot_application_version_request()) ->
+    {ok, create_robot_application_version_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_robot_application_version(Client, Input) ->
     create_robot_application_version(Client, Input, []).
+
+-spec create_robot_application_version(map(), create_robot_application_version_request(), proplists:proplist()) ->
+    {ok, create_robot_application_version_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_robot_application_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createRobotApplicationVersion"],
@@ -452,8 +2161,27 @@ create_robot_application_version(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a simulation application.
+-spec create_simulation_application(map(), create_simulation_application_request()) ->
+    {ok, create_simulation_application_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_simulation_application(Client, Input) ->
     create_simulation_application(Client, Input, []).
+
+-spec create_simulation_application(map(), create_simulation_application_request(), proplists:proplist()) ->
+    {ok, create_simulation_application_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_simulation_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSimulationApplication"],
@@ -477,8 +2205,25 @@ create_simulation_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a simulation application with a specific revision id.
+-spec create_simulation_application_version(map(), create_simulation_application_version_request()) ->
+    {ok, create_simulation_application_version_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_simulation_application_version(Client, Input) ->
     create_simulation_application_version(Client, Input, []).
+
+-spec create_simulation_application_version(map(), create_simulation_application_version_request(), proplists:proplist()) ->
+    {ok, create_simulation_application_version_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_simulation_application_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSimulationApplicationVersion"],
@@ -506,8 +2251,29 @@ create_simulation_application_version(Client, Input0, Options0) ->
 %% After 90 days, simulation jobs expire and will be deleted. They will no
 %% longer be
 %% accessible.
+-spec create_simulation_job(map(), create_simulation_job_request()) ->
+    {ok, create_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_simulation_job(Client, Input) ->
     create_simulation_job(Client, Input, []).
+
+-spec create_simulation_job(map(), create_simulation_job_request(), proplists:proplist()) ->
+    {ok, create_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createSimulationJob"],
@@ -531,8 +2297,27 @@ create_simulation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a world export job.
+-spec create_world_export_job(map(), create_world_export_job_request()) ->
+    {ok, create_world_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_world_export_job(Client, Input) ->
     create_world_export_job(Client, Input, []).
+
+-spec create_world_export_job(map(), create_world_export_job_request(), proplists:proplist()) ->
+    {ok, create_world_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_world_export_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorldExportJob"],
@@ -556,8 +2341,29 @@ create_world_export_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates worlds using the specified template.
+-spec create_world_generation_job(map(), create_world_generation_job_request()) ->
+    {ok, create_world_generation_job_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_world_generation_job(Client, Input) ->
     create_world_generation_job(Client, Input, []).
+
+-spec create_world_generation_job(map(), create_world_generation_job_request(), proplists:proplist()) ->
+    {ok, create_world_generation_job_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_world_generation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorldGenerationJob"],
@@ -581,8 +2387,27 @@ create_world_generation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a world template.
+-spec create_world_template(map(), create_world_template_request()) ->
+    {ok, create_world_template_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_world_template(Client, Input) ->
     create_world_template(Client, Input, []).
+
+-spec create_world_template(map(), create_world_template_request(), proplists:proplist()) ->
+    {ok, create_world_template_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_world_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createWorldTemplate"],
@@ -609,8 +2434,21 @@ create_world_template(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec delete_fleet(map(), delete_fleet_request()) ->
+    {ok, delete_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_fleet(Client, Input) ->
     delete_fleet(Client, Input, []).
+
+-spec delete_fleet(map(), delete_fleet_request(), proplists:proplist()) ->
+    {ok, delete_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteFleet"],
@@ -637,8 +2475,21 @@ delete_fleet(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec delete_robot(map(), delete_robot_request()) ->
+    {ok, delete_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_robot(Client, Input) ->
     delete_robot(Client, Input, []).
+
+-spec delete_robot(map(), delete_robot_request(), proplists:proplist()) ->
+    {ok, delete_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteRobot"],
@@ -662,8 +2513,21 @@ delete_robot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a robot application.
+-spec delete_robot_application(map(), delete_robot_application_request()) ->
+    {ok, delete_robot_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_robot_application(Client, Input) ->
     delete_robot_application(Client, Input, []).
+
+-spec delete_robot_application(map(), delete_robot_application_request(), proplists:proplist()) ->
+    {ok, delete_robot_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_robot_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteRobotApplication"],
@@ -687,8 +2551,21 @@ delete_robot_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a simulation application.
+-spec delete_simulation_application(map(), delete_simulation_application_request()) ->
+    {ok, delete_simulation_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_simulation_application(Client, Input) ->
     delete_simulation_application(Client, Input, []).
+
+-spec delete_simulation_application(map(), delete_simulation_application_request(), proplists:proplist()) ->
+    {ok, delete_simulation_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_simulation_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteSimulationApplication"],
@@ -712,8 +2589,23 @@ delete_simulation_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a world template.
+-spec delete_world_template(map(), delete_world_template_request()) ->
+    {ok, delete_world_template_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_world_template(Client, Input) ->
     delete_world_template(Client, Input, []).
+
+-spec delete_world_template(map(), delete_world_template_request(), proplists:proplist()) ->
+    {ok, delete_world_template_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_world_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteWorldTemplate"],
@@ -740,8 +2632,23 @@ delete_world_template(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec deregister_robot(map(), deregister_robot_request()) ->
+    {ok, deregister_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 deregister_robot(Client, Input) ->
     deregister_robot(Client, Input, []).
+
+-spec deregister_robot(map(), deregister_robot_request(), proplists:proplist()) ->
+    {ok, deregister_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 deregister_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deregisterRobot"],
@@ -768,8 +2675,23 @@ deregister_robot(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec describe_deployment_job(map(), describe_deployment_job_request()) ->
+    {ok, describe_deployment_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_deployment_job(Client, Input) ->
     describe_deployment_job(Client, Input, []).
+
+-spec describe_deployment_job(map(), describe_deployment_job_request(), proplists:proplist()) ->
+    {ok, describe_deployment_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_deployment_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeDeploymentJob"],
@@ -796,8 +2718,23 @@ describe_deployment_job(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec describe_fleet(map(), describe_fleet_request()) ->
+    {ok, describe_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_fleet(Client, Input) ->
     describe_fleet(Client, Input, []).
+
+-spec describe_fleet(map(), describe_fleet_request(), proplists:proplist()) ->
+    {ok, describe_fleet_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeFleet"],
@@ -824,8 +2761,23 @@ describe_fleet(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec describe_robot(map(), describe_robot_request()) ->
+    {ok, describe_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_robot(Client, Input) ->
     describe_robot(Client, Input, []).
+
+-spec describe_robot(map(), describe_robot_request(), proplists:proplist()) ->
+    {ok, describe_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeRobot"],
@@ -849,8 +2801,23 @@ describe_robot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a robot application.
+-spec describe_robot_application(map(), describe_robot_application_request()) ->
+    {ok, describe_robot_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_robot_application(Client, Input) ->
     describe_robot_application(Client, Input, []).
+
+-spec describe_robot_application(map(), describe_robot_application_request(), proplists:proplist()) ->
+    {ok, describe_robot_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_robot_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeRobotApplication"],
@@ -874,8 +2841,23 @@ describe_robot_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a simulation application.
+-spec describe_simulation_application(map(), describe_simulation_application_request()) ->
+    {ok, describe_simulation_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_simulation_application(Client, Input) ->
     describe_simulation_application(Client, Input, []).
+
+-spec describe_simulation_application(map(), describe_simulation_application_request(), proplists:proplist()) ->
+    {ok, describe_simulation_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_simulation_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeSimulationApplication"],
@@ -899,8 +2881,23 @@ describe_simulation_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a simulation job.
+-spec describe_simulation_job(map(), describe_simulation_job_request()) ->
+    {ok, describe_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_simulation_job(Client, Input) ->
     describe_simulation_job(Client, Input, []).
+
+-spec describe_simulation_job(map(), describe_simulation_job_request(), proplists:proplist()) ->
+    {ok, describe_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeSimulationJob"],
@@ -924,8 +2921,21 @@ describe_simulation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a simulation job batch.
+-spec describe_simulation_job_batch(map(), describe_simulation_job_batch_request()) ->
+    {ok, describe_simulation_job_batch_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_simulation_job_batch(Client, Input) ->
     describe_simulation_job_batch(Client, Input, []).
+
+-spec describe_simulation_job_batch(map(), describe_simulation_job_batch_request(), proplists:proplist()) ->
+    {ok, describe_simulation_job_batch_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_simulation_job_batch(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeSimulationJobBatch"],
@@ -949,8 +2959,23 @@ describe_simulation_job_batch(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world.
+-spec describe_world(map(), describe_world_request()) ->
+    {ok, describe_world_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_world(Client, Input) ->
     describe_world(Client, Input, []).
+
+-spec describe_world(map(), describe_world_request(), proplists:proplist()) ->
+    {ok, describe_world_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_world(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeWorld"],
@@ -974,8 +2999,23 @@ describe_world(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world export job.
+-spec describe_world_export_job(map(), describe_world_export_job_request()) ->
+    {ok, describe_world_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_world_export_job(Client, Input) ->
     describe_world_export_job(Client, Input, []).
+
+-spec describe_world_export_job(map(), describe_world_export_job_request(), proplists:proplist()) ->
+    {ok, describe_world_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_world_export_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeWorldExportJob"],
@@ -999,8 +3039,23 @@ describe_world_export_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world generation job.
+-spec describe_world_generation_job(map(), describe_world_generation_job_request()) ->
+    {ok, describe_world_generation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_world_generation_job(Client, Input) ->
     describe_world_generation_job(Client, Input, []).
+
+-spec describe_world_generation_job(map(), describe_world_generation_job_request(), proplists:proplist()) ->
+    {ok, describe_world_generation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_world_generation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeWorldGenerationJob"],
@@ -1024,8 +3079,23 @@ describe_world_generation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world template.
+-spec describe_world_template(map(), describe_world_template_request()) ->
+    {ok, describe_world_template_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_world_template(Client, Input) ->
     describe_world_template(Client, Input, []).
+
+-spec describe_world_template(map(), describe_world_template_request(), proplists:proplist()) ->
+    {ok, describe_world_template_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_world_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeWorldTemplate"],
@@ -1049,8 +3119,23 @@ describe_world_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the world template body.
+-spec get_world_template_body(map(), get_world_template_body_request()) ->
+    {ok, get_world_template_body_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_world_template_body(Client, Input) ->
     get_world_template_body(Client, Input, []).
+
+-spec get_world_template_body(map(), get_world_template_body_request(), proplists:proplist()) ->
+    {ok, get_world_template_body_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_world_template_body(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getWorldTemplateBody"],
@@ -1079,8 +3164,23 @@ get_world_template_body(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec list_deployment_jobs(map(), list_deployment_jobs_request()) ->
+    {ok, list_deployment_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_deployment_jobs(Client, Input) ->
     list_deployment_jobs(Client, Input, []).
+
+-spec list_deployment_jobs(map(), list_deployment_jobs_request(), proplists:proplist()) ->
+    {ok, list_deployment_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_deployment_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listDeploymentJobs"],
@@ -1109,8 +3209,23 @@ list_deployment_jobs(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec list_fleets(map(), list_fleets_request()) ->
+    {ok, list_fleets_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_fleets(Client, Input) ->
     list_fleets(Client, Input, []).
+
+-spec list_fleets(map(), list_fleets_request(), proplists:proplist()) ->
+    {ok, list_fleets_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_fleets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listFleets"],
@@ -1137,8 +3252,21 @@ list_fleets(Client, Input0, Options0) ->
 %%
 %% You can optionally provide filters to retrieve
 %% specific robot applications.
+-spec list_robot_applications(map(), list_robot_applications_request()) ->
+    {ok, list_robot_applications_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_robot_applications(Client, Input) ->
     list_robot_applications(Client, Input, []).
+
+-spec list_robot_applications(map(), list_robot_applications_request(), proplists:proplist()) ->
+    {ok, list_robot_applications_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_robot_applications(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listRobotApplications"],
@@ -1167,8 +3295,23 @@ list_robot_applications(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec list_robots(map(), list_robots_request()) ->
+    {ok, list_robots_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_robots(Client, Input) ->
     list_robots(Client, Input, []).
+
+-spec list_robots(map(), list_robots_request(), proplists:proplist()) ->
+    {ok, list_robots_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_robots(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listRobots"],
@@ -1195,8 +3338,21 @@ list_robots(Client, Input0, Options0) ->
 %%
 %% You can optionally provide filters to
 %% retrieve specific simulation applications.
+-spec list_simulation_applications(map(), list_simulation_applications_request()) ->
+    {ok, list_simulation_applications_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_simulation_applications(Client, Input) ->
     list_simulation_applications(Client, Input, []).
+
+-spec list_simulation_applications(map(), list_simulation_applications_request(), proplists:proplist()) ->
+    {ok, list_simulation_applications_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_simulation_applications(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listSimulationApplications"],
@@ -1223,8 +3379,19 @@ list_simulation_applications(Client, Input0, Options0) ->
 %%
 %% You can optionally provide filters to retrieve
 %% specific simulation batch jobs.
+-spec list_simulation_job_batches(map(), list_simulation_job_batches_request()) ->
+    {ok, list_simulation_job_batches_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()}.
 list_simulation_job_batches(Client, Input) ->
     list_simulation_job_batches(Client, Input, []).
+
+-spec list_simulation_job_batches(map(), list_simulation_job_batches_request(), proplists:proplist()) ->
+    {ok, list_simulation_job_batches_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()}.
 list_simulation_job_batches(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listSimulationJobBatches"],
@@ -1251,8 +3418,21 @@ list_simulation_job_batches(Client, Input0, Options0) ->
 %%
 %% You can optionally provide filters to retrieve
 %% specific simulation jobs.
+-spec list_simulation_jobs(map(), list_simulation_jobs_request()) ->
+    {ok, list_simulation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_simulation_jobs(Client, Input) ->
     list_simulation_jobs(Client, Input, []).
+
+-spec list_simulation_jobs(map(), list_simulation_jobs_request(), proplists:proplist()) ->
+    {ok, list_simulation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_simulation_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listSimulationJobs"],
@@ -1276,14 +3456,35 @@ list_simulation_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all tags on a AWS RoboMaker resource.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1301,8 +3502,21 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists world export jobs.
+-spec list_world_export_jobs(map(), list_world_export_jobs_request()) ->
+    {ok, list_world_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_world_export_jobs(Client, Input) ->
     list_world_export_jobs(Client, Input, []).
+
+-spec list_world_export_jobs(map(), list_world_export_jobs_request(), proplists:proplist()) ->
+    {ok, list_world_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_world_export_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWorldExportJobs"],
@@ -1326,8 +3540,21 @@ list_world_export_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists world generator jobs.
+-spec list_world_generation_jobs(map(), list_world_generation_jobs_request()) ->
+    {ok, list_world_generation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_world_generation_jobs(Client, Input) ->
     list_world_generation_jobs(Client, Input, []).
+
+-spec list_world_generation_jobs(map(), list_world_generation_jobs_request(), proplists:proplist()) ->
+    {ok, list_world_generation_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_world_generation_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWorldGenerationJobs"],
@@ -1351,8 +3578,21 @@ list_world_generation_jobs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists world templates.
+-spec list_world_templates(map(), list_world_templates_request()) ->
+    {ok, list_world_templates_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_world_templates(Client, Input) ->
     list_world_templates(Client, Input, []).
+
+-spec list_world_templates(map(), list_world_templates_request(), proplists:proplist()) ->
+    {ok, list_world_templates_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_world_templates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWorldTemplates"],
@@ -1376,8 +3616,21 @@ list_world_templates(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists worlds.
+-spec list_worlds(map(), list_worlds_request()) ->
+    {ok, list_worlds_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_worlds(Client, Input) ->
     list_worlds(Client, Input, []).
+
+-spec list_worlds(map(), list_worlds_request(), proplists:proplist()) ->
+    {ok, list_worlds_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_worlds(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWorlds"],
@@ -1403,8 +3656,25 @@ list_worlds(Client, Input0, Options0) ->
 %% @doc Registers a robot with a fleet.
 %%
 %% This API is no longer supported and will throw an error if used.
+-spec register_robot(map(), register_robot_request()) ->
+    {ok, register_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 register_robot(Client, Input) ->
     register_robot(Client, Input, []).
+
+-spec register_robot(map(), register_robot_request(), proplists:proplist()) ->
+    {ok, register_robot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 register_robot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/registerRobot"],
@@ -1428,8 +3698,25 @@ register_robot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restarts a running simulation job.
+-spec restart_simulation_job(map(), restart_simulation_job_request()) ->
+    {ok, restart_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 restart_simulation_job(Client, Input) ->
     restart_simulation_job(Client, Input, []).
+
+-spec restart_simulation_job(map(), restart_simulation_job_request(), proplists:proplist()) ->
+    {ok, restart_simulation_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 restart_simulation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/restartSimulationJob"],
@@ -1456,8 +3743,25 @@ restart_simulation_job(Client, Input0, Options0) ->
 %%
 %% The batch is defined using one or more
 %% `SimulationJobRequest' objects.
+-spec start_simulation_job_batch(map(), start_simulation_job_batch_request()) ->
+    {ok, start_simulation_job_batch_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 start_simulation_job_batch(Client, Input) ->
     start_simulation_job_batch(Client, Input, []).
+
+-spec start_simulation_job_batch(map(), start_simulation_job_batch_request(), proplists:proplist()) ->
+    {ok, start_simulation_job_batch_response(), tuple()} |
+    {error, any()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 start_simulation_job_batch(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startSimulationJobBatch"],
@@ -1486,8 +3790,29 @@ start_simulation_job_batch(Client, Input0, Options0) ->
 %%
 %% This API will no longer be supported as of May 2, 2022. Use it to remove
 %% resources that were created for Deployment Service.
+-spec sync_deployment_job(map(), sync_deployment_job_request()) ->
+    {ok, sync_deployment_job_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_deployment_exception(), tuple()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 sync_deployment_job(Client, Input) ->
     sync_deployment_job(Client, Input, []).
+
+-spec sync_deployment_job(map(), sync_deployment_job_request(), proplists:proplist()) ->
+    {ok, sync_deployment_job_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_deployment_exception(), tuple()} |
+    {error, idempotent_parameter_mismatch_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 sync_deployment_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/syncDeploymentJob"],
@@ -1521,8 +3846,23 @@ sync_deployment_job(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html
 %% in the AWS Billing and Cost Management
 %% User Guide.
+-spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1552,8 +3892,23 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% use
 %% `TagResource'
 %% : https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html.
+-spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1578,8 +3933,25 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a robot application.
+-spec update_robot_application(map(), update_robot_application_request()) ->
+    {ok, update_robot_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_robot_application(Client, Input) ->
     update_robot_application(Client, Input, []).
+
+-spec update_robot_application(map(), update_robot_application_request(), proplists:proplist()) ->
+    {ok, update_robot_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_robot_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateRobotApplication"],
@@ -1603,8 +3975,25 @@ update_robot_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a simulation application.
+-spec update_simulation_application(map(), update_simulation_application_request()) ->
+    {ok, update_simulation_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_simulation_application(Client, Input) ->
     update_simulation_application(Client, Input, []).
+
+-spec update_simulation_application(map(), update_simulation_application_request(), proplists:proplist()) ->
+    {ok, update_simulation_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_simulation_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateSimulationApplication"],
@@ -1628,8 +4017,23 @@ update_simulation_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a world template.
+-spec update_world_template(map(), update_world_template_request()) ->
+    {ok, update_world_template_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_world_template(Client, Input) ->
     update_world_template(Client, Input, []).
+
+-spec update_world_template(map(), update_world_template_request(), proplists:proplist()) ->
+    {ok, update_world_template_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_world_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateWorldTemplate"],
@@ -1656,7 +4060,7 @@ update_world_template(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

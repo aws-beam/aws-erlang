@@ -388,13 +388,764 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% update_playback_restriction_policy_request() :: #{
+%%   <<"allowedCountries">> => list(string()()),
+%%   <<"allowedOrigins">> => list(string()()),
+%%   <<"arn">> := string(),
+%%   <<"enableStrictOriginEnforcement">> => boolean(),
+%%   <<"name">> => string()
+%% }
+-type update_playback_restriction_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_stream_key_response() :: #{
+%%   <<"streamKey">> => stream_key()
+%% }
+-type create_stream_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% ingest_configuration() :: #{
+%%   <<"audio">> => audio_configuration(),
+%%   <<"video">> => video_configuration()
+%% }
+-type ingest_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% stream_session_summary() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"hasErrorEvent">> => boolean(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"streamId">> => string()
+%% }
+-type stream_session_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% recording_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"name">> => string(),
+%%   <<"recordingReconnectWindowSeconds">> => integer(),
+%%   <<"renditionConfiguration">> => rendition_configuration(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"thumbnailConfiguration">> => thumbnail_configuration()
+%% }
+-type recording_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"channel">> => channel(),
+%%   <<"streamKey">> => stream_key()
+%% }
+-type create_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_playback_key_pair_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"publicKeyMaterial">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type import_playback_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_response() :: #{
+%%   <<"stream">> => stream()
+%% }
+-type get_stream_response() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% get_stream_key_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_stream_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% playback_restriction_policy() :: #{
+%%   <<"allowedCountries">> => list(string()()),
+%%   <<"allowedOrigins">> => list(string()()),
+%%   <<"arn">> => string(),
+%%   <<"enableStrictOriginEnforcement">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type playback_restriction_policy() :: #{binary() => any()}.
+
+%% Example:
+%% delete_playback_restriction_policy_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_playback_restriction_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_stream_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"streamSessions">> := list(stream_session_summary()())
+%% }
+-type list_stream_sessions_response() :: #{binary() => any()}.
+
+%% Example:
+%% playback_key_pair_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type playback_key_pair_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_playback_key_pair_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_playback_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_playback_restriction_policy_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_playback_restriction_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_playback_key_pairs_response() :: #{
+%%   <<"keyPairs">> := list(playback_key_pair_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_playback_key_pairs_response() :: #{binary() => any()}.
+
+%% Example:
+%% recording_configuration_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type recording_configuration_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_playback_restriction_policy_response() :: #{
+%%   <<"playbackRestrictionPolicy">> => playback_restriction_policy()
+%% }
+-type update_playback_restriction_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_channel_response() :: #{
+%%   <<"channels">> => list(channel()()),
+%%   <<"errors">> => list(batch_error()())
+%% }
+-type batch_get_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_recording_configuration_response() :: #{
+%%   <<"recordingConfiguration">> => recording_configuration()
+%% }
+-type create_recording_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_playback_key_pair_response() :: #{
+%%   <<"keyPair">> => playback_key_pair()
+%% }
+-type import_playback_key_pair_response() :: #{binary() => any()}.
+%% Example:
+%% delete_playback_key_pair_response() :: #{}
+-type delete_playback_key_pair_response() :: #{}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_stream_keys_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"streamKeys">> := list(stream_key_summary()())
+%% }
+-type list_stream_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_streams_request() :: #{
+%%   <<"filterBy">> => stream_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_streams_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_session_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"streamId">> => string()
+%% }
+-type get_stream_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% stream_key() :: #{
+%%   <<"arn">> => string(),
+%%   <<"channelArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"value">> => string()
+%% }
+-type stream_key() :: #{binary() => any()}.
+
+%% Example:
+%% batch_start_viewer_session_revocation_request() :: #{
+%%   <<"viewerSessions">> := list(batch_start_viewer_session_revocation_viewer_session()())
+%% }
+-type batch_start_viewer_session_revocation_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_recording_configuration_request() :: #{
+%%   <<"destinationConfiguration">> := destination_configuration(),
+%%   <<"name">> => string(),
+%%   <<"recordingReconnectWindowSeconds">> => integer(),
+%%   <<"renditionConfiguration">> => rendition_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"thumbnailConfiguration">> => thumbnail_configuration()
+%% }
+-type create_recording_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_stream_key_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_stream_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% playback_key_pair() :: #{
+%%   <<"arn">> => string(),
+%%   <<"fingerprint">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type playback_key_pair() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_stream_key_request() :: #{
+%%   <<"arns">> := list(string()())
+%% }
+-type batch_get_stream_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% playback_restriction_policy_summary() :: #{
+%%   <<"allowedCountries">> => list(string()()),
+%%   <<"allowedOrigins">> => list(string()()),
+%%   <<"arn">> => string(),
+%%   <<"enableStrictOriginEnforcement">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type playback_restriction_policy_summary() :: #{binary() => any()}.
+
+%% Example:
+%% channel_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authorized">> => boolean(),
+%%   <<"insecureIngest">> => boolean(),
+%%   <<"latencyMode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"playbackRestrictionPolicyArn">> => string(),
+%%   <<"preset">> => list(any()),
+%%   <<"recordingConfigurationArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type channel_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recording_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_recording_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_streams_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"streams">> := list(stream_summary()())
+%% }
+-type list_streams_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recording_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_recording_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_recording_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recordingConfigurations">> := list(recording_configuration_summary()())
+%% }
+-type list_recording_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stream_session() :: #{
+%%   <<"channel">> => channel(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"ingestConfiguration">> => ingest_configuration(),
+%%   <<"recordingConfiguration">> => recording_configuration(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"streamId">> => string(),
+%%   <<"truncatedEvents">> => list(stream_event()())
+%% }
+-type stream_session() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_channel_request() :: #{
+%%   <<"arns">> := list(string()())
+%% }
+-type batch_get_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stream_key_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_stream_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination_configuration() :: #{
+%%   <<"bucketName">> => string()
+%% }
+-type s3_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_playback_restriction_policy_response() :: #{
+%%   <<"playbackRestrictionPolicy">> => playback_restriction_policy()
+%% }
+-type get_playback_restriction_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"authorized">> => boolean(),
+%%   <<"insecureIngest">> => boolean(),
+%%   <<"latencyMode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"playbackRestrictionPolicyArn">> => string(),
+%%   <<"preset">> => list(any()),
+%%   <<"recordingConfigurationArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type create_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% stream_event() :: #{
+%%   <<"eventTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type stream_event() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> := map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_channels_response() :: #{
+%%   <<"channels">> := list(channel_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_channels_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"authorized">> => boolean(),
+%%   <<"insecureIngest">> => boolean(),
+%%   <<"latencyMode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"playbackRestrictionPolicyArn">> => string(),
+%%   <<"preset">> => list(any()),
+%%   <<"recordingConfigurationArn">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+%% Example:
+%% stop_stream_response() :: #{}
+-type stop_stream_response() :: #{}.
+
+%% Example:
+%% stream_unavailable() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type stream_unavailable() :: #{binary() => any()}.
+
+%% Example:
+%% delete_playback_key_pair_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_playback_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_playback_restriction_policy_response() :: #{
+%%   <<"playbackRestrictionPolicy">> => playback_restriction_policy()
+%% }
+-type create_playback_restriction_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_stream_sessions_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_stream_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_playback_restriction_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_playback_restriction_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_recording_configuration_response() :: #{
+%%   <<"recordingConfiguration">> => recording_configuration()
+%% }
+-type get_recording_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_playback_key_pair_response() :: #{
+%%   <<"keyPair">> => playback_key_pair()
+%% }
+-type get_playback_key_pair_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_request() :: #{
+%%   <<"channelArn">> := string()
+%% }
+-type get_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_stream_keys_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_stream_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% audio_configuration() :: #{
+%%   <<"channels">> => float(),
+%%   <<"codec">> => string(),
+%%   <<"sampleRate">> => float(),
+%%   <<"targetBitrate">> => float()
+%% }
+-type audio_configuration() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% put_metadata_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"metadata">> := string()
+%% }
+-type put_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% thumbnail_configuration() :: #{
+%%   <<"recordingMode">> => string(),
+%%   <<"resolution">> => string(),
+%%   <<"storage">> => list(string()()),
+%%   <<"targetIntervalSeconds">> => float()
+%% }
+-type thumbnail_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% batch_start_viewer_session_revocation_viewer_session() :: #{
+%%   <<"channelArn">> => string(),
+%%   <<"viewerId">> => string(),
+%%   <<"viewerSessionVersionsLessThanOrEqualTo">> => integer()
+%% }
+-type batch_start_viewer_session_revocation_viewer_session() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% rendition_configuration() :: #{
+%%   <<"renditionSelection">> => string(),
+%%   <<"renditions">> => list(string()())
+%% }
+-type rendition_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_key_response() :: #{
+%%   <<"streamKey">> => stream_key()
+%% }
+-type get_stream_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_playback_restriction_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"playbackRestrictionPolicies">> => list(playback_restriction_policy_summary()())
+%% }
+-type list_playback_restriction_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% channel() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authorized">> => boolean(),
+%%   <<"ingestEndpoint">> => string(),
+%%   <<"insecureIngest">> => boolean(),
+%%   <<"latencyMode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"playbackRestrictionPolicyArn">> => string(),
+%%   <<"playbackUrl">> => string(),
+%%   <<"preset">> => list(any()),
+%%   <<"recordingConfigurationArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type channel() :: #{binary() => any()}.
+
+%% Example:
+%% stream_summary() :: #{
+%%   <<"channelArn">> => string(),
+%%   <<"health">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => string(),
+%%   <<"streamId">> => string(),
+%%   <<"viewerCount">> => float()
+%% }
+-type stream_summary() :: #{binary() => any()}.
+
+%% Example:
+%% batch_start_viewer_session_revocation_response() :: #{
+%%   <<"errors">> => list(batch_start_viewer_session_revocation_error()())
+%% }
+-type batch_start_viewer_session_revocation_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_start_viewer_session_revocation_error() :: #{
+%%   <<"channelArn">> => string(),
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"viewerId">> => string()
+%% }
+-type batch_start_viewer_session_revocation_error() :: #{binary() => any()}.
+
+%% Example:
+%% stop_stream_request() :: #{
+%%   <<"channelArn">> := string()
+%% }
+-type stop_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_response() :: #{
+%%   <<"channel">> => channel()
+%% }
+-type get_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% stream_filters() :: #{
+%%   <<"health">> => string()
+%% }
+-type stream_filters() :: #{binary() => any()}.
+
+%% Example:
+%% stream() :: #{
+%%   <<"channelArn">> => string(),
+%%   <<"health">> => string(),
+%%   <<"playbackUrl">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => string(),
+%%   <<"streamId">> => string(),
+%%   <<"viewerCount">> => float()
+%% }
+-type stream() :: #{binary() => any()}.
+
+%% Example:
+%% start_viewer_session_revocation_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"viewerId">> := string(),
+%%   <<"viewerSessionVersionsLessThanOrEqualTo">> => integer()
+%% }
+-type start_viewer_session_revocation_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"channel">> => channel()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_error() :: #{
+%%   <<"arn">> => string(),
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type batch_error() :: #{binary() => any()}.
+%% Example:
+%% start_viewer_session_revocation_response() :: #{}
+-type start_viewer_session_revocation_response() :: #{}.
+
+%% Example:
+%% video_configuration() :: #{
+%%   <<"avcLevel">> => string(),
+%%   <<"avcProfile">> => string(),
+%%   <<"codec">> => string(),
+%%   <<"encoder">> => string(),
+%%   <<"targetBitrate">> => float(),
+%%   <<"targetFramerate">> => float(),
+%%   <<"videoHeight">> => float(),
+%%   <<"videoWidth">> => float()
+%% }
+-type video_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_playback_key_pairs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_playback_key_pairs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"filterByName">> => string(),
+%%   <<"filterByPlaybackRestrictionPolicyArn">> => string(),
+%%   <<"filterByRecordingConfigurationArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_session_response() :: #{
+%%   <<"streamSession">> => stream_session()
+%% }
+-type get_stream_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% stream_key_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"channelArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type stream_key_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_playback_restriction_policy_request() :: #{
+%%   <<"allowedCountries">> => list(string()()),
+%%   <<"allowedOrigins">> => list(string()()),
+%%   <<"enableStrictOriginEnforcement">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_playback_restriction_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_recording_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_recording_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% pending_verification() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type pending_verification() :: #{binary() => any()}.
+
+%% Example:
+%% destination_configuration() :: #{
+%%   <<"s3">> => s3_destination_configuration()
+%% }
+-type destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_stream_key_response() :: #{
+%%   <<"errors">> => list(batch_error()()),
+%%   <<"streamKeys">> => list(stream_key()())
+%% }
+-type batch_get_stream_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% channel_not_broadcasting() :: #{
+%%   <<"exceptionMessage">> => string()
+%% }
+-type channel_not_broadcasting() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Performs `GetChannel' on multiple ARNs simultaneously.
+-spec batch_get_channel(map(), batch_get_channel_request()) ->
+    {ok, batch_get_channel_response(), tuple()} |
+    {error, any()}.
 batch_get_channel(Client, Input) ->
     batch_get_channel(Client, Input, []).
+
+-spec batch_get_channel(map(), batch_get_channel_request(), proplists:proplist()) ->
+    {ok, batch_get_channel_response(), tuple()} |
+    {error, any()}.
 batch_get_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetChannel"],
@@ -418,8 +1169,15 @@ batch_get_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Performs `GetStreamKey' on multiple ARNs simultaneously.
+-spec batch_get_stream_key(map(), batch_get_stream_key_request()) ->
+    {ok, batch_get_stream_key_response(), tuple()} |
+    {error, any()}.
 batch_get_stream_key(Client, Input) ->
     batch_get_stream_key(Client, Input, []).
+
+-spec batch_get_stream_key(map(), batch_get_stream_key_request(), proplists:proplist()) ->
+    {ok, batch_get_stream_key_response(), tuple()} |
+    {error, any()}.
 batch_get_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetStreamKey"],
@@ -445,8 +1203,23 @@ batch_get_stream_key(Client, Input0, Options0) ->
 %% @doc Performs `StartViewerSessionRevocation' on multiple channel ARN
 %% and viewer
 %% ID pairs simultaneously.
+-spec batch_start_viewer_session_revocation(map(), batch_start_viewer_session_revocation_request()) ->
+    {ok, batch_start_viewer_session_revocation_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_start_viewer_session_revocation(Client, Input) ->
     batch_start_viewer_session_revocation(Client, Input, []).
+
+-spec batch_start_viewer_session_revocation(map(), batch_start_viewer_session_revocation_request(), proplists:proplist()) ->
+    {ok, batch_start_viewer_session_revocation_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_start_viewer_session_revocation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchStartViewerSessionRevocation"],
@@ -471,8 +1244,25 @@ batch_start_viewer_session_revocation(Client, Input0, Options0) ->
 
 %% @doc Creates a new channel and an associated stream key to start
 %% streaming.
+-spec create_channel(map(), create_channel_request()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
+
+-spec create_channel(map(), create_channel_request(), proplists:proplist()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateChannel"],
@@ -498,8 +1288,25 @@ create_channel(Client, Input0, Options0) ->
 %% @doc Creates a new playback restriction policy, for constraining playback
 %% by countries and/or
 %% origins.
+-spec create_playback_restriction_policy(map(), create_playback_restriction_policy_request()) ->
+    {ok, create_playback_restriction_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_playback_restriction_policy(Client, Input) ->
     create_playback_restriction_policy(Client, Input, []).
+
+-spec create_playback_restriction_policy(map(), create_playback_restriction_policy_request(), proplists:proplist()) ->
+    {ok, create_playback_restriction_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_playback_restriction_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreatePlaybackRestrictionPolicy"],
@@ -540,8 +1347,27 @@ create_playback_restriction_policy(Client, Input0, Options0) ->
 %% region as your S3 bucket, delete that recording configuration and create a
 %% new one with an S3
 %% bucket from the correct region.
+-spec create_recording_configuration(map(), create_recording_configuration_request()) ->
+    {ok, create_recording_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_recording_configuration(Client, Input) ->
     create_recording_configuration(Client, Input, []).
+
+-spec create_recording_configuration(map(), create_recording_configuration_request(), proplists:proplist()) ->
+    {ok, create_recording_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_recording_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateRecordingConfiguration"],
@@ -573,8 +1399,25 @@ create_recording_configuration(Client, Input0, Options0) ->
 %% already exists and
 %% there is a limit of 1 stream key per channel. To reset the stream key on a
 %% channel, use `DeleteStreamKey' and then CreateStreamKey.
+-spec create_stream_key(map(), create_stream_key_request()) ->
+    {ok, create_stream_key_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_stream_key(Client, Input) ->
     create_stream_key(Client, Input, []).
+
+-spec create_stream_key(map(), create_stream_key_request(), proplists:proplist()) ->
+    {ok, create_stream_key_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateStreamKey"],
@@ -606,8 +1449,25 @@ create_stream_key(Client, Input0, Options0) ->
 %% state is no longer Live), then
 %% call DeleteChannel. (See Using EventBridge with Amazon IVS:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/eventbridge.html.)
+-spec delete_channel(map(), delete_channel_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_channel(Client, Input) ->
     delete_channel(Client, Input, []).
+
+-spec delete_channel(map(), delete_channel_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteChannel"],
@@ -638,8 +1498,23 @@ delete_channel(Client, Input0, Options0) ->
 %% Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
+-spec delete_playback_key_pair(map(), delete_playback_key_pair_request()) ->
+    {ok, delete_playback_key_pair_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_playback_key_pair(Client, Input) ->
     delete_playback_key_pair(Client, Input, []).
+
+-spec delete_playback_key_pair(map(), delete_playback_key_pair_request(), proplists:proplist()) ->
+    {ok, delete_playback_key_pair_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_playback_key_pair(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeletePlaybackKeyPair"],
@@ -663,8 +1538,25 @@ delete_playback_key_pair(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified playback restriction policy.
+-spec delete_playback_restriction_policy(map(), delete_playback_restriction_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_playback_restriction_policy(Client, Input) ->
     delete_playback_restriction_policy(Client, Input, []).
+
+-spec delete_playback_restriction_policy(map(), delete_playback_restriction_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_playback_restriction_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeletePlaybackRestrictionPolicy"],
@@ -696,8 +1588,25 @@ delete_playback_restriction_policy(Client, Input0, Options0) ->
 %% recording configuration, first use `UpdateChannel' to set the
 %% `recordingConfigurationArn' field to an empty string, then use
 %% DeleteRecordingConfiguration.
+-spec delete_recording_configuration(map(), delete_recording_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_recording_configuration(Client, Input) ->
     delete_recording_configuration(Client, Input, []).
+
+-spec delete_recording_configuration(map(), delete_recording_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_recording_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteRecordingConfiguration"],
@@ -723,8 +1632,23 @@ delete_recording_configuration(Client, Input0, Options0) ->
 %% @doc Deletes the stream key for the specified ARN, so it can no longer be
 %% used to
 %% stream.
+-spec delete_stream_key(map(), delete_stream_key_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_stream_key(Client, Input) ->
     delete_stream_key(Client, Input, []).
+
+-spec delete_stream_key(map(), delete_stream_key_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteStreamKey"],
@@ -750,8 +1674,21 @@ delete_stream_key(Client, Input0, Options0) ->
 %% @doc Gets the channel configuration for the specified channel ARN.
 %%
 %% See also `BatchGetChannel'.
+-spec get_channel(map(), get_channel_request()) ->
+    {ok, get_channel_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_channel(Client, Input) ->
     get_channel(Client, Input, []).
+
+-spec get_channel(map(), get_channel_request(), proplists:proplist()) ->
+    {ok, get_channel_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetChannel"],
@@ -785,8 +1722,21 @@ get_channel(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User
 %% Guide.
+-spec get_playback_key_pair(map(), get_playback_key_pair_request()) ->
+    {ok, get_playback_key_pair_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_playback_key_pair(Client, Input) ->
     get_playback_key_pair(Client, Input, []).
+
+-spec get_playback_key_pair(map(), get_playback_key_pair_request(), proplists:proplist()) ->
+    {ok, get_playback_key_pair_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_playback_key_pair(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetPlaybackKeyPair"],
@@ -810,8 +1760,23 @@ get_playback_key_pair(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified playback restriction policy.
+-spec get_playback_restriction_policy(map(), get_playback_restriction_policy_request()) ->
+    {ok, get_playback_restriction_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_playback_restriction_policy(Client, Input) ->
     get_playback_restriction_policy(Client, Input, []).
+
+-spec get_playback_restriction_policy(map(), get_playback_restriction_policy_request(), proplists:proplist()) ->
+    {ok, get_playback_restriction_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_playback_restriction_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetPlaybackRestrictionPolicy"],
@@ -835,8 +1800,23 @@ get_playback_restriction_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the recording configuration for the specified ARN.
+-spec get_recording_configuration(map(), get_recording_configuration_request()) ->
+    {ok, get_recording_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recording_configuration(Client, Input) ->
     get_recording_configuration(Client, Input, []).
+
+-spec get_recording_configuration(map(), get_recording_configuration_request(), proplists:proplist()) ->
+    {ok, get_recording_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recording_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetRecordingConfiguration"],
@@ -861,8 +1841,23 @@ get_recording_configuration(Client, Input0, Options0) ->
 
 %% @doc Gets information about the active (live) stream on a specified
 %% channel.
+-spec get_stream(map(), get_stream_request()) ->
+    {ok, get_stream_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, channel_not_broadcasting(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_stream(Client, Input) ->
     get_stream(Client, Input, []).
+
+-spec get_stream(map(), get_stream_request(), proplists:proplist()) ->
+    {ok, get_stream_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, channel_not_broadcasting(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStream"],
@@ -886,8 +1881,21 @@ get_stream(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets stream-key information for a specified ARN.
+-spec get_stream_key(map(), get_stream_key_request()) ->
+    {ok, get_stream_key_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_stream_key(Client, Input) ->
     get_stream_key(Client, Input, []).
+
+-spec get_stream_key(map(), get_stream_key_request(), proplists:proplist()) ->
+    {ok, get_stream_key_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_stream_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStreamKey"],
@@ -911,8 +1919,21 @@ get_stream_key(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets metadata on a specified stream.
+-spec get_stream_session(map(), get_stream_session_request()) ->
+    {ok, get_stream_session_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_stream_session(Client, Input) ->
     get_stream_session(Client, Input, []).
+
+-spec get_stream_session(map(), get_stream_session_request(), proplists:proplist()) ->
+    {ok, get_stream_session_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_stream_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStreamSession"],
@@ -946,8 +1967,25 @@ get_stream_session(Client, Input0, Options0) ->
 %% Private Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
+-spec import_playback_key_pair(map(), import_playback_key_pair_request()) ->
+    {ok, import_playback_key_pair_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 import_playback_key_pair(Client, Input) ->
     import_playback_key_pair(Client, Input, []).
+
+-spec import_playback_key_pair(map(), import_playback_key_pair_request(), proplists:proplist()) ->
+    {ok, import_playback_key_pair_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 import_playback_key_pair(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ImportPlaybackKeyPair"],
@@ -979,8 +2017,21 @@ import_playback_key_pair(Client, Input0, Options0) ->
 %% be used together. If
 %% you try to use both filters, you will get an error (409
 %% ConflictException).
+-spec list_channels(map(), list_channels_request()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_channels(Client, Input) ->
     list_channels(Client, Input, []).
+
+-spec list_channels(map(), list_channels_request(), proplists:proplist()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListChannels"],
@@ -1009,8 +2060,19 @@ list_channels(Client, Input0, Options0) ->
 %% Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html in
 %% the Amazon IVS User Guide.
+-spec list_playback_key_pairs(map(), list_playback_key_pairs_request()) ->
+    {ok, list_playback_key_pairs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_playback_key_pairs(Client, Input) ->
     list_playback_key_pairs(Client, Input, []).
+
+-spec list_playback_key_pairs(map(), list_playback_key_pairs_request(), proplists:proplist()) ->
+    {ok, list_playback_key_pairs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_playback_key_pairs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListPlaybackKeyPairs"],
@@ -1034,8 +2096,23 @@ list_playback_key_pairs(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about playback restriction policies.
+-spec list_playback_restriction_policies(map(), list_playback_restriction_policies_request()) ->
+    {ok, list_playback_restriction_policies_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_playback_restriction_policies(Client, Input) ->
     list_playback_restriction_policies(Client, Input, []).
+
+-spec list_playback_restriction_policies(map(), list_playback_restriction_policies_request(), proplists:proplist()) ->
+    {ok, list_playback_restriction_policies_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_playback_restriction_policies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListPlaybackRestrictionPolicies"],
@@ -1061,8 +2138,21 @@ list_playback_restriction_policies(Client, Input0, Options0) ->
 %% @doc Gets summary information about all recording configurations in your
 %% account, in the
 %% Amazon Web Services region where the API request is processed.
+-spec list_recording_configurations(map(), list_recording_configurations_request()) ->
+    {ok, list_recording_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_recording_configurations(Client, Input) ->
     list_recording_configurations(Client, Input, []).
+
+-spec list_recording_configurations(map(), list_recording_configurations_request(), proplists:proplist()) ->
+    {ok, list_recording_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_recording_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListRecordingConfigurations"],
@@ -1086,8 +2176,21 @@ list_recording_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about stream keys for the specified channel.
+-spec list_stream_keys(map(), list_stream_keys_request()) ->
+    {ok, list_stream_keys_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_stream_keys(Client, Input) ->
     list_stream_keys(Client, Input, []).
+
+-spec list_stream_keys(map(), list_stream_keys_request(), proplists:proplist()) ->
+    {ok, list_stream_keys_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_stream_keys(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStreamKeys"],
@@ -1113,8 +2216,21 @@ list_stream_keys(Client, Input0, Options0) ->
 %% @doc Gets a summary of current and previous streams for a specified
 %% channel in your account, in
 %% the AWS region where the API request is processed.
+-spec list_stream_sessions(map(), list_stream_sessions_request()) ->
+    {ok, list_stream_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_stream_sessions(Client, Input) ->
     list_stream_sessions(Client, Input, []).
+
+-spec list_stream_sessions(map(), list_stream_sessions_request(), proplists:proplist()) ->
+    {ok, list_stream_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_stream_sessions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStreamSessions"],
@@ -1140,8 +2256,19 @@ list_stream_sessions(Client, Input0, Options0) ->
 %% @doc Gets summary information about live streams in your account, in the
 %% Amazon Web Services
 %% region where the API request is processed.
+-spec list_streams(map(), list_streams_request()) ->
+    {ok, list_streams_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_streams(Client, Input) ->
     list_streams(Client, Input, []).
+
+-spec list_streams(map(), list_streams_request(), proplists:proplist()) ->
+    {ok, list_streams_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_streams(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListStreams"],
@@ -1166,14 +2293,32 @@ list_streams(Client, Input0, Options0) ->
 
 %% @doc Gets information about Amazon Web Services tags for the specified
 %% ARN.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1201,8 +2346,25 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% within a Video Stream:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/metadata.html in
 %% the Amazon IVS User Guide.
+-spec put_metadata(map(), put_metadata_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, channel_not_broadcasting(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_metadata(Client, Input) ->
     put_metadata(Client, Input, []).
+
+-spec put_metadata(map(), put_metadata_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, channel_not_broadcasting(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_metadata(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutMetadata"],
@@ -1236,8 +2398,27 @@ put_metadata(Client, Input0, Options0) ->
 %% Setting Up
 %% Private Channels:
 %% https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html.
+-spec start_viewer_session_revocation(map(), start_viewer_session_revocation_request()) ->
+    {ok, start_viewer_session_revocation_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_viewer_session_revocation(Client, Input) ->
     start_viewer_session_revocation(Client, Input, []).
+
+-spec start_viewer_session_revocation(map(), start_viewer_session_revocation_request(), proplists:proplist()) ->
+    {ok, start_viewer_session_revocation_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_viewer_session_revocation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartViewerSessionRevocation"],
@@ -1271,8 +2452,25 @@ start_viewer_session_revocation(Client, Input0, Options0) ->
 %% session, so to stop the stream permanently, you may want to first revoke
 %% the
 %% `streamKey' attached to the channel.
+-spec stop_stream(map(), stop_stream_request()) ->
+    {ok, stop_stream_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, channel_not_broadcasting(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, stream_unavailable(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_stream(Client, Input) ->
     stop_stream(Client, Input, []).
+
+-spec stop_stream(map(), stop_stream_request(), proplists:proplist()) ->
+    {ok, stop_stream_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, channel_not_broadcasting(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, stream_unavailable(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopStream"],
@@ -1297,8 +2495,21 @@ stop_stream(Client, Input0, Options0) ->
 
 %% @doc Adds or updates tags for the Amazon Web Services resource with the
 %% specified ARN.
+-spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1322,8 +2533,21 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from the resource with the specified ARN.
+-spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1353,8 +2577,25 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% ongoing stream, update the channel, and restart the stream for the changes
 %% to take
 %% effect.
+-spec update_channel(map(), update_channel_request()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_channel(Client, Input) ->
     update_channel(Client, Input, []).
+
+-spec update_channel(map(), update_channel_request(), proplists:proplist()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateChannel"],
@@ -1378,8 +2619,25 @@ update_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a specified playback restriction policy.
+-spec update_playback_restriction_policy(map(), update_playback_restriction_policy_request()) ->
+    {ok, update_playback_restriction_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_playback_restriction_policy(Client, Input) ->
     update_playback_restriction_policy(Client, Input, []).
+
+-spec update_playback_restriction_policy(map(), update_playback_restriction_policy_request(), proplists:proplist()) ->
+    {ok, update_playback_restriction_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_playback_restriction_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdatePlaybackRestrictionPolicy"],
@@ -1406,7 +2664,7 @@ update_playback_restriction_policy(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

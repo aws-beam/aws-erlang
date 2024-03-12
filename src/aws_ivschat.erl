@@ -249,6 +249,387 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_room_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type delete_room_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type delete_message_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rooms_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"rooms">> := list(room_summary()())
+%% }
+-type list_rooms_response() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+%% Example:
+%% disconnect_user_response() :: #{}
+-type disconnect_user_response() :: #{}.
+
+%% Example:
+%% create_chat_token_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"capabilities">> => list(string()()),
+%%   <<"roomIdentifier">> := string(),
+%%   <<"sessionDurationInMinutes">> => integer(),
+%%   <<"userId">> := string()
+%% }
+-type create_chat_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"reason">> => string(),
+%%   <<"roomIdentifier">> := string()
+%% }
+-type delete_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% disconnect_user_request() :: #{
+%%   <<"reason">> => string(),
+%%   <<"roomIdentifier">> := string(),
+%%   <<"userId">> := string()
+%% }
+-type disconnect_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_logging_configuration_request() :: #{
+%%   <<"destinationConfiguration">> => list(),
+%%   <<"identifier">> := string(),
+%%   <<"name">> => string()
+%% }
+-type update_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_room_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"maximumMessageLength">> => integer(),
+%%   <<"maximumMessageRatePerSecond">> => integer(),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type update_room_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_logging_configuration_request() :: #{
+%%   <<"destinationConfiguration">> := list(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_event_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"eventName">> := string(),
+%%   <<"roomIdentifier">> := string()
+%% }
+-type send_event_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_logging_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"destinationConfiguration">> => list(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type create_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% send_event_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type send_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_logging_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"destinationConfiguration">> => list(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type get_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination_configuration() :: #{
+%%   <<"bucketName">> => string()
+%% }
+-type s3_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> := map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_chat_token_response() :: #{
+%%   <<"sessionExpirationTime">> => non_neg_integer(),
+%%   <<"token">> => string(),
+%%   <<"tokenExpirationTime">> => non_neg_integer()
+%% }
+-type create_chat_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% get_logging_configuration_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_room_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_room_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_logging_configurations_response() :: #{
+%%   <<"loggingConfigurations">> := list(logging_configuration_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_logging_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_room_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"maximumMessageLength">> => integer(),
+%%   <<"maximumMessageRatePerSecond">> => integer(),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type get_room_response() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% create_room_request() :: #{
+%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"maximumMessageLength">> => integer(),
+%%   <<"maximumMessageRatePerSecond">> => integer(),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_room_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_rooms_request() :: #{
+%%   <<"loggingConfigurationIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"messageReviewHandlerUri">> => string(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_rooms_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_logging_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_logging_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_destination_configuration() :: #{
+%%   <<"logGroupName">> => string()
+%% }
+-type cloud_watch_logs_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% firehose_destination_configuration() :: #{
+%%   <<"deliveryStreamName">> => string()
+%% }
+-type firehose_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_logging_configuration_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type delete_logging_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% room_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type room_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_logging_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"destinationConfiguration">> => list(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type update_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% logging_configuration_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"destinationConfiguration">> => list(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type logging_configuration_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_room_request() :: #{
+%%   <<"identifier">> := string(),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"maximumMessageLength">> => integer(),
+%%   <<"maximumMessageRatePerSecond">> => integer(),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string()
+%% }
+-type update_room_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_room_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"maximumMessageLength">> => integer(),
+%%   <<"maximumMessageRatePerSecond">> => integer(),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type create_room_response() :: #{binary() => any()}.
+
+%% Example:
+%% pending_verification() :: #{
+%%   <<"message">> => string()
+%% }
+-type pending_verification() :: #{binary() => any()}.
+
+%% Example:
+%% message_review_handler() :: #{
+%%   <<"fallbackResult">> => string(),
+%%   <<"uri">> => string()
+%% }
+-type message_review_handler() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -276,8 +657,23 @@
 %% Encryption keys are owned by Amazon IVS Chat and never used directly by
 %% your
 %% application.
+-spec create_chat_token(map(), create_chat_token_request()) ->
+    {ok, create_chat_token_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_chat_token(Client, Input) ->
     create_chat_token(Client, Input, []).
+
+-spec create_chat_token(map(), create_chat_token_request(), proplists:proplist()) ->
+    {ok, create_chat_token_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_chat_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateChatToken"],
@@ -303,8 +699,27 @@ create_chat_token(Client, Input0, Options0) ->
 %% @doc Creates a logging configuration that allows clients to store and
 %% record sent
 %% messages.
+-spec create_logging_configuration(map(), create_logging_configuration_request()) ->
+    {ok, create_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_logging_configuration(Client, Input) ->
     create_logging_configuration(Client, Input, []).
+
+-spec create_logging_configuration(map(), create_logging_configuration_request(), proplists:proplist()) ->
+    {ok, create_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_logging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLoggingConfiguration"],
@@ -328,8 +743,27 @@ create_logging_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a room that allows clients to connect and pass messages.
+-spec create_room(map(), create_room_request()) ->
+    {ok, create_room_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_room(Client, Input) ->
     create_room(Client, Input, []).
+
+-spec create_room(map(), create_room_request(), proplists:proplist()) ->
+    {ok, create_room_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateRoom"],
@@ -353,8 +787,25 @@ create_room(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified logging configuration.
+-spec delete_logging_configuration(map(), delete_logging_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_logging_configuration(Client, Input) ->
     delete_logging_configuration(Client, Input, []).
+
+-spec delete_logging_configuration(map(), delete_logging_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_logging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLoggingConfiguration"],
@@ -387,8 +838,25 @@ delete_logging_configuration(Client, Input0, Options0) ->
 %% DeleteMessage:
 %% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html
 %% WebSocket operation in the Amazon IVS Chat Messaging API.
+-spec delete_message(map(), delete_message_request()) ->
+    {ok, delete_message_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_message(Client, Input) ->
     delete_message(Client, Input, []).
+
+-spec delete_message(map(), delete_message_request(), proplists:proplist()) ->
+    {ok, delete_message_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteMessage"],
@@ -412,8 +880,23 @@ delete_message(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified room.
+-spec delete_room(map(), delete_room_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_room(Client, Input) ->
     delete_room(Client, Input, []).
+
+-spec delete_room(map(), delete_room_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteRoom"],
@@ -443,8 +926,25 @@ delete_room(Client, Input0, Options0) ->
 %% DisconnectUser:
 %% https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html
 %% WebSocket operation in the Amazon IVS Chat Messaging API.
+-spec disconnect_user(map(), disconnect_user_request()) ->
+    {ok, disconnect_user_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disconnect_user(Client, Input) ->
     disconnect_user(Client, Input, []).
+
+-spec disconnect_user(map(), disconnect_user_request(), proplists:proplist()) ->
+    {ok, disconnect_user_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disconnect_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisconnectUser"],
@@ -468,8 +968,21 @@ disconnect_user(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified logging configuration.
+-spec get_logging_configuration(map(), get_logging_configuration_request()) ->
+    {ok, get_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_logging_configuration(Client, Input) ->
     get_logging_configuration(Client, Input, []).
+
+-spec get_logging_configuration(map(), get_logging_configuration_request(), proplists:proplist()) ->
+    {ok, get_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_logging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetLoggingConfiguration"],
@@ -493,8 +1006,21 @@ get_logging_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the specified room.
+-spec get_room(map(), get_room_request()) ->
+    {ok, get_room_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_room(Client, Input) ->
     get_room(Client, Input, []).
+
+-spec get_room(map(), get_room_request(), proplists:proplist()) ->
+    {ok, get_room_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetRoom"],
@@ -520,8 +1046,19 @@ get_room(Client, Input0, Options0) ->
 %% @doc Gets summary information about all your logging configurations in the
 %% AWS region where
 %% the API request is processed.
+-spec list_logging_configurations(map(), list_logging_configurations_request()) ->
+    {ok, list_logging_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_logging_configurations(Client, Input) ->
     list_logging_configurations(Client, Input, []).
+
+-spec list_logging_configurations(map(), list_logging_configurations_request(), proplists:proplist()) ->
+    {ok, list_logging_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_logging_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLoggingConfigurations"],
@@ -549,8 +1086,21 @@ list_logging_configurations(Client, Input0, Options0) ->
 %% processed.
 %%
 %% Results are sorted in descending order of `updateTime'.
+-spec list_rooms(map(), list_rooms_request()) ->
+    {ok, list_rooms_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_rooms(Client, Input) ->
     list_rooms(Client, Input, []).
+
+-spec list_rooms(map(), list_rooms_request(), proplists:proplist()) ->
+    {ok, list_rooms_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_rooms(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListRooms"],
@@ -574,14 +1124,32 @@ list_rooms(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about AWS tags for the specified ARN.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -604,8 +1172,25 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% events to clients of a room; e.g., to notify clients to change the way the
 %% chat UI is
 %% rendered.
+-spec send_event(map(), send_event_request()) ->
+    {ok, send_event_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 send_event(Client, Input) ->
     send_event(Client, Input, []).
+
+-spec send_event(map(), send_event_request(), proplists:proplist()) ->
+    {ok, send_event_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 send_event(Client, Input0, Options0) ->
     Method = post,
     Path = ["/SendEvent"],
@@ -629,8 +1214,21 @@ send_event(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates tags for the AWS resource with the specified ARN.
+-spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -654,8 +1252,21 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from the resource with the specified ARN.
+-spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -680,8 +1291,25 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a specified logging configuration.
+-spec update_logging_configuration(map(), update_logging_configuration_request()) ->
+    {ok, update_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_logging_configuration(Client, Input) ->
     update_logging_configuration(Client, Input, []).
+
+-spec update_logging_configuration(map(), update_logging_configuration_request(), proplists:proplist()) ->
+    {ok, update_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_logging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLoggingConfiguration"],
@@ -705,8 +1333,23 @@ update_logging_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a room’s configuration.
+-spec update_room(map(), update_room_request()) ->
+    {ok, update_room_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_room(Client, Input) ->
     update_room(Client, Input, []).
+
+-spec update_room(map(), update_room_request(), proplists:proplist()) ->
+    {ok, update_room_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, pending_verification(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateRoom"],
@@ -733,7 +1376,7 @@ update_room(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

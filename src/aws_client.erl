@@ -26,7 +26,7 @@
 -type proto() :: binary().
 -type service() :: binary().
 -type endpoint() :: binary().
--opaque aws_client() :: map().
+-type aws_client() :: map().
 
 -export_type([access_key_id/0, secret_access_key/0, region/0,
               token/0, aws_client/0]).

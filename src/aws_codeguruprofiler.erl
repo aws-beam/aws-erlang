@@ -91,13 +91,519 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% update_profiling_group_request() :: #{
+%%   <<"agentOrchestrationConfig">> => agent_orchestration_config()
+%% }
+-type update_profiling_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_findings_reports_response() :: #{
+%%   <<"findingsReportSummaries">> => list(findings_report_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_reports_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_profile_times_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"orderBy">> => string(),
+%%   <<"period">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type list_profile_times_request() :: #{binary() => any()}.
+
+%% Example:
+%% anomaly_instance() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"id">> => [string()],
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"userFeedback">> => user_feedback()
+%% }
+-type anomaly_instance() :: #{binary() => any()}.
+
+%% Example:
+%% timestamp_structure() :: #{
+%%   <<"value">> => non_neg_integer()
+%% }
+-type timestamp_structure() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% aggregated_profile_time() :: #{
+%%   <<"period">> => string(),
+%%   <<"start">> => non_neg_integer()
+%% }
+-type aggregated_profile_time() :: #{binary() => any()}.
+
+%% Example:
+%% metric() :: #{
+%%   <<"frameName">> => [string()],
+%%   <<"threadStates">> => list([string()]()),
+%%   <<"type">> => string()
+%% }
+-type metric() :: #{binary() => any()}.
+
+%% Example:
+%% profiling_status() :: #{
+%%   <<"latestAgentOrchestratedAt">> => non_neg_integer(),
+%%   <<"latestAgentProfileReportedAt">> => non_neg_integer(),
+%%   <<"latestAggregatedProfile">> => aggregated_profile_time()
+%% }
+-type profiling_status() :: #{binary() => any()}.
+%% Example:
+%% get_policy_request() :: #{}
+-type get_policy_request() :: #{}.
+%% Example:
+%% get_notification_configuration_request() :: #{}
+-type get_notification_configuration_request() :: #{}.
+%% Example:
+%% delete_profiling_group_response() :: #{}
+-type delete_profiling_group_response() :: #{}.
+
+%% Example:
+%% agent_orchestration_config() :: #{
+%%   <<"profilingEnabled">> => [boolean()]
+%% }
+-type agent_orchestration_config() :: #{binary() => any()}.
+
+%% Example:
+%% frame_metric() :: #{
+%%   <<"frameName">> => [string()],
+%%   <<"threadStates">> => list([string()]()),
+%%   <<"type">> => string()
+%% }
+-type frame_metric() :: #{binary() => any()}.
+
+%% Example:
+%% post_agent_profile_request() :: #{
+%%   <<"agentProfile">> => binary(),
+%%   <<"contentType">> => [string()],
+%%   <<"profileToken">> => string()
+%% }
+-type post_agent_profile_request() :: #{binary() => any()}.
+%% Example:
+%% remove_notification_channel_request() :: #{}
+-type remove_notification_channel_request() :: #{}.
+
+%% Example:
+%% list_profile_times_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"profileTimes">> => list(profile_time()())
+%% }
+-type list_profile_times_response() :: #{binary() => any()}.
+%% Example:
+%% describe_profiling_group_request() :: #{}
+-type describe_profiling_group_request() :: #{}.
+
+%% Example:
+%% get_recommendations_response() :: #{
+%%   <<"anomalies">> => list(anomaly()()),
+%%   <<"profileEndTime">> => non_neg_integer(),
+%%   <<"profileStartTime">> => non_neg_integer(),
+%%   <<"profilingGroupName">> => string(),
+%%   <<"recommendations">> => list(recommendation()())
+%% }
+-type get_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_notification_configuration_response() :: #{
+%%   <<"notificationConfiguration">> => notification_configuration()
+%% }
+-type get_notification_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_findings_report_account_summary_request() :: #{
+%%   <<"dailyReportsOnly">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_findings_report_account_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+%% Example:
+%% submit_feedback_response() :: #{}
+-type submit_feedback_response() :: #{}.
+
+%% Example:
+%% remove_notification_channel_response() :: #{
+%%   <<"notificationConfiguration">> => notification_configuration()
+%% }
+-type remove_notification_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_profiling_groups_request() :: #{
+%%   <<"includeDescription">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_profiling_groups_request() :: #{binary() => any()}.
+%% Example:
+%% post_agent_profile_response() :: #{}
+-type post_agent_profile_response() :: #{}.
+
+%% Example:
+%% pattern() :: #{
+%%   <<"countersToAggregate">> => list([string()]()),
+%%   <<"description">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"resolutionSteps">> => [string()],
+%%   <<"targetFrames">> => list(list([string()]())()),
+%%   <<"thresholdPercent">> => float()
+%% }
+-type pattern() :: #{binary() => any()}.
+
+%% Example:
+%% get_findings_report_account_summary_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reportSummaries">> => list(findings_report_summary()())
+%% }
+-type get_findings_report_account_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% configure_agent_request() :: #{
+%%   <<"fleetInstanceId">> => string(),
+%%   <<"metadata">> => map()
+%% }
+-type configure_agent_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_response() :: #{
+%%   <<"contentEncoding">> => [string()],
+%%   <<"contentType">> => [string()],
+%%   <<"profile">> => binary()
+%% }
+-type get_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"allMatchesCount">> => [integer()],
+%%   <<"allMatchesSum">> => [float()],
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"pattern">> => pattern(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"topMatches">> => list(match()())
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommendations_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"locale">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type get_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_permission_request() :: #{
+%%   <<"revisionId">> => string()
+%% }
+-type remove_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_findings_reports_request() :: #{
+%%   <<"dailyReportsOnly">> => [boolean()],
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type list_findings_reports_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_permission_request() :: #{
+%%   <<"principals">> => list(string()()),
+%%   <<"revisionId">> => string()
+%% }
+-type put_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_profiling_group_response() :: #{
+%%   <<"profilingGroup">> => profiling_group_description()
+%% }
+-type describe_profiling_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_permission_response() :: #{
+%%   <<"policy">> => [string()],
+%%   <<"revisionId">> => string()
+%% }
+-type put_permission_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_profiling_group_response() :: #{
+%%   <<"profilingGroup">> => profiling_group_description()
+%% }
+-type update_profiling_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% profile_time() :: #{
+%%   <<"start">> => non_neg_integer()
+%% }
+-type profile_time() :: #{binary() => any()}.
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"channels">> => list(channel()())
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"policy">> => [string()],
+%%   <<"revisionId">> => string()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+%% Example:
+%% delete_profiling_group_request() :: #{}
+-type delete_profiling_group_request() :: #{}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% profiling_group_description() :: #{
+%%   <<"agentOrchestrationConfig">> => agent_orchestration_config(),
+%%   <<"arn">> => string(),
+%%   <<"computePlatform">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"profilingStatus">> => profiling_status(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type profiling_group_description() :: #{binary() => any()}.
+
+%% Example:
+%% anomaly() :: #{
+%%   <<"instances">> => list(anomaly_instance()()),
+%%   <<"metric">> => metric(),
+%%   <<"reason">> => [string()]
+%% }
+-type anomaly() :: #{binary() => any()}.
+
+%% Example:
+%% create_profiling_group_response() :: #{
+%%   <<"profilingGroup">> => profiling_group_description()
+%% }
+-type create_profiling_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_profiling_group_request() :: #{
+%%   <<"agentOrchestrationConfig">> => agent_orchestration_config(),
+%%   <<"clientToken">> => string(),
+%%   <<"computePlatform">> => string(),
+%%   <<"profilingGroupName">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_profiling_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% agent_configuration() :: #{
+%%   <<"agentParameters">> => map(),
+%%   <<"periodInSeconds">> => [integer()],
+%%   <<"shouldProfile">> => [boolean()]
+%% }
+-type agent_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_profiling_groups_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"profilingGroupNames">> => list(string()()),
+%%   <<"profilingGroups">> => list(profiling_group_description()())
+%% }
+-type list_profiling_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_notification_channels_request() :: #{
+%%   <<"channels">> => list(channel()())
+%% }
+-type add_notification_channels_request() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% get_profile_request() :: #{
+%%   <<"accept">> => [string()],
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxDepth">> => integer(),
+%%   <<"period">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type get_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_frame_metric_data_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"frameMetrics">> => list(frame_metric()()),
+%%   <<"period">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"targetResolution">> => string()
+%% }
+-type batch_get_frame_metric_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% channel() :: #{
+%%   <<"eventPublishers">> => list(string()()),
+%%   <<"id">> => string(),
+%%   <<"uri">> => string()
+%% }
+-type channel() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_frame_metric_data_response() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"endTimes">> => list(timestamp_structure()()),
+%%   <<"frameMetricData">> => list(frame_metric_datum()()),
+%%   <<"resolution">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"unprocessedEndTimes">> => map()
+%% }
+-type batch_get_frame_metric_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% match() :: #{
+%%   <<"frameAddress">> => [string()],
+%%   <<"targetFramesIndex">> => [integer()],
+%%   <<"thresholdBreachValue">> => [float()]
+%% }
+-type match() :: #{binary() => any()}.
+
+%% Example:
+%% submit_feedback_request() :: #{
+%%   <<"comment">> => [string()],
+%%   <<"type">> => string()
+%% }
+-type submit_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% frame_metric_datum() :: #{
+%%   <<"frameMetric">> => frame_metric(),
+%%   <<"values">> => list(float()())
+%% }
+-type frame_metric_datum() :: #{binary() => any()}.
+
+%% Example:
+%% add_notification_channels_response() :: #{
+%%   <<"notificationConfiguration">> => notification_configuration()
+%% }
+-type add_notification_channels_response() :: #{binary() => any()}.
+
+%% Example:
+%% configure_agent_response() :: #{
+%%   <<"configuration">> => agent_configuration()
+%% }
+-type configure_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% findings_report_summary() :: #{
+%%   <<"id">> => string(),
+%%   <<"profileEndTime">> => non_neg_integer(),
+%%   <<"profileStartTime">> => non_neg_integer(),
+%%   <<"profilingGroupName">> => [string()],
+%%   <<"totalNumberOfFindings">> => [integer()]
+%% }
+-type findings_report_summary() :: #{binary() => any()}.
+
+%% Example:
+%% remove_permission_response() :: #{
+%%   <<"policy">> => [string()],
+%%   <<"revisionId">> => string()
+%% }
+-type remove_permission_response() :: #{binary() => any()}.
+
+%% Example:
+%% user_feedback() :: #{
+%%   <<"type">> => string()
+%% }
+-type user_feedback() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Add up to 2 anomaly notifications channels for a profiling group.
+-spec add_notification_channels(map(), binary() | list(), add_notification_channels_request()) ->
+    {ok, add_notification_channels_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 add_notification_channels(Client, ProfilingGroupName, Input) ->
     add_notification_channels(Client, ProfilingGroupName, Input, []).
+
+-spec add_notification_channels(map(), binary() | list(), add_notification_channels_request(), proplists:proplist()) ->
+    {ok, add_notification_channels_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 add_notification_channels(Client, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration"],
@@ -123,8 +629,23 @@ add_notification_channels(Client, ProfilingGroupName, Input0, Options0) ->
 %% @doc
 %% Returns the time series of values for a requested list
 %% of frame metrics from a time period.
+-spec batch_get_frame_metric_data(map(), binary() | list(), batch_get_frame_metric_data_request()) ->
+    {ok, batch_get_frame_metric_data_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_get_frame_metric_data(Client, ProfilingGroupName, Input) ->
     batch_get_frame_metric_data(Client, ProfilingGroupName, Input, []).
+
+-spec batch_get_frame_metric_data(map(), binary() | list(), batch_get_frame_metric_data_request(), proplists:proplist()) ->
+    {ok, batch_get_frame_metric_data_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/frames/-/metrics"],
@@ -159,8 +680,23 @@ batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options0) ->
 %% For example, `ConfigureAgent' can be used
 %% to tell an agent whether to profile or not and for how long to return
 %% profiling data.
+-spec configure_agent(map(), binary() | list(), configure_agent_request()) ->
+    {ok, configure_agent_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 configure_agent(Client, ProfilingGroupName, Input) ->
     configure_agent(Client, ProfilingGroupName, Input, []).
+
+-spec configure_agent(map(), binary() | list(), configure_agent_request(), proplists:proplist()) ->
+    {ok, configure_agent_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 configure_agent(Client, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/configureAgent"],
@@ -184,8 +720,25 @@ configure_agent(Client, ProfilingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a profiling group.
+-spec create_profiling_group(map(), create_profiling_group_request()) ->
+    {ok, create_profiling_group_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_profiling_group(Client, Input) ->
     create_profiling_group(Client, Input, []).
+
+-spec create_profiling_group(map(), create_profiling_group_request(), proplists:proplist()) ->
+    {ok, create_profiling_group_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_profiling_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups"],
@@ -210,8 +763,25 @@ create_profiling_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a profiling group.
+-spec delete_profiling_group(map(), binary() | list(), delete_profiling_group_request()) ->
+    {ok, delete_profiling_group_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_profiling_group(Client, ProfilingGroupName, Input) ->
     delete_profiling_group(Client, ProfilingGroupName, Input, []).
+
+-spec delete_profiling_group(map(), binary() | list(), delete_profiling_group_request(), proplists:proplist()) ->
+    {ok, delete_profiling_group_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
@@ -240,14 +810,35 @@ delete_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
 %% :
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html
 %% object that contains information about the requested profiling group.
+-spec describe_profiling_group(map(), binary() | list()) ->
+    {ok, describe_profiling_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_profiling_group(Client, ProfilingGroupName)
   when is_map(Client) ->
     describe_profiling_group(Client, ProfilingGroupName, #{}, #{}).
 
+-spec describe_profiling_group(map(), binary() | list(), map(), map()) ->
+    {ok, describe_profiling_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
+-spec describe_profiling_group(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_profiling_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
@@ -272,14 +863,32 @@ describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, Optio
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html
 %% objects that contain analysis results for all profiling groups in your AWS
 %% account.
+-spec get_findings_report_account_summary(map()) ->
+    {ok, get_findings_report_account_summary_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_findings_report_account_summary(Client)
   when is_map(Client) ->
     get_findings_report_account_summary(Client, #{}, #{}).
 
+-spec get_findings_report_account_summary(map(), map(), map()) ->
+    {ok, get_findings_report_account_summary_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_findings_report_account_summary(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_findings_report_account_summary(Client, QueryMap, HeadersMap, []).
 
+-spec get_findings_report_account_summary(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_findings_report_account_summary_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_findings_report_account_summary(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/internal/findingsReports"],
@@ -304,14 +913,35 @@ get_findings_report_account_summary(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Get the current configuration for anomaly notifications for a
 %% profiling group.
+-spec get_notification_configuration(map(), binary() | list()) ->
+    {ok, get_notification_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_notification_configuration(Client, ProfilingGroupName)
   when is_map(Client) ->
     get_notification_configuration(Client, ProfilingGroupName, #{}, #{}).
 
+-spec get_notification_configuration(map(), binary() | list(), map(), map()) ->
+    {ok, get_notification_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
+-spec get_notification_configuration(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_notification_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration"],
@@ -330,14 +960,32 @@ get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap,
 
 %% @doc
 %% Returns the JSON-formatted resource-based policy on a profiling group.
+-spec get_policy(map(), binary() | list()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_policy(Client, ProfilingGroupName)
   when is_map(Client) ->
     get_policy(Client, ProfilingGroupName, #{}, #{}).
 
+-spec get_policy(map(), binary() | list(), map(), map()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
+-spec get_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy"],
@@ -418,14 +1066,35 @@ get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
 %% profiles are
 %% from 00:15 and 00:25, then the aggregated profiles from 00:15 to 00:20 are
 %% returned.
+-spec get_profile(map(), binary() | list()) ->
+    {ok, get_profile_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_profile(Client, ProfilingGroupName)
   when is_map(Client) ->
     get_profile(Client, ProfilingGroupName, #{}, #{}).
 
+-spec get_profile(map(), binary() | list(), map(), map()) ->
+    {ok, get_profile_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
+-spec get_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_profile_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/profile"],
@@ -487,14 +1156,35 @@ get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
 %% objects that contains details about anomalies detected in the profiling
 %% group for the same time period is also
 %% returned.
+-spec get_recommendations(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recommendations(Client, ProfilingGroupName, EndTime, StartTime)
   when is_map(Client) ->
     get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, #{}, #{}).
 
+-spec get_recommendations(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, []).
 
+-spec get_recommendations(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/recommendations"],
@@ -519,14 +1209,35 @@ get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, He
 
 %% @doc List the available reports for a given profiling group and time
 %% range.
+-spec list_findings_reports(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_findings_reports_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime)
   when is_map(Client) ->
     list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, #{}, #{}).
 
+-spec list_findings_reports(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_findings_reports_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, []).
 
+-spec list_findings_reports(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_findings_reports_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/findingsReports"],
@@ -554,14 +1265,35 @@ list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, 
 %% @doc Lists the start times of the available aggregated profiles of a
 %% profiling group
 %% for an aggregation period within the specified time range.
+-spec list_profile_times(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_profile_times_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime)
   when is_map(Client) ->
     list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, #{}, #{}).
 
+-spec list_profile_times(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_profile_times_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap, []).
 
+-spec list_profile_times(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_profile_times_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/profileTimes"],
@@ -596,14 +1328,29 @@ list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, Query
 %% :
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html
 %% objects.
+-spec list_profiling_groups(map()) ->
+    {ok, list_profiling_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_profiling_groups(Client)
   when is_map(Client) ->
     list_profiling_groups(Client, #{}, #{}).
 
+-spec list_profiling_groups(map(), map(), map()) ->
+    {ok, list_profiling_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_profiling_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profiling_groups(Client, QueryMap, HeadersMap, []).
 
+-spec list_profiling_groups(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_profiling_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_profiling_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups"],
@@ -628,14 +1375,32 @@ list_profiling_groups(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Returns a list of the tags that are assigned to a specified resource.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -661,8 +1426,23 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% `GetProfile'
 %% :
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html.
+-spec post_agent_profile(map(), binary() | list(), post_agent_profile_request()) ->
+    {ok, post_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 post_agent_profile(Client, ProfilingGroupName, Input) ->
     post_agent_profile(Client, ProfilingGroupName, Input, []).
+
+-spec post_agent_profile(map(), binary() | list(), post_agent_profile_request(), proplists:proplist()) ->
+    {ok, post_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 post_agent_profile(Client, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/agentProfile"],
@@ -720,8 +1500,25 @@ post_agent_profile(Client, ProfilingGroupName, Input0, Options0) ->
 %%
 %% The response contains the profiling group's JSON-formatted resource
 %% policy.
+-spec put_permission(map(), binary() | list(), binary() | list(), put_permission_request()) ->
+    {ok, put_permission_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     put_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
+
+-spec put_permission(map(), binary() | list(), binary() | list(), put_permission_request(), proplists:proplist()) ->
+    {ok, put_permission_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy/", aws_util:encode_uri(ActionGroup), ""],
@@ -745,8 +1542,23 @@ put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove one anomaly notifications channel for a profiling group.
+-spec remove_notification_channel(map(), binary() | list(), binary() | list(), remove_notification_channel_request()) ->
+    {ok, remove_notification_channel_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input) ->
     remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input, []).
+
+-spec remove_notification_channel(map(), binary() | list(), binary() | list(), remove_notification_channel_request(), proplists:proplist()) ->
+    {ok, remove_notification_channel_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration/", aws_util:encode_uri(ChannelId), ""],
@@ -787,8 +1599,25 @@ remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Optio
 %% `PostAgentProfile'
 %% :
 %% https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_PostAgentProfile.html.
+-spec remove_permission(map(), binary() | list(), binary() | list(), remove_permission_request()) ->
+    {ok, remove_permission_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 remove_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     remove_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
+
+-spec remove_permission(map(), binary() | list(), binary() | list(), remove_permission_request(), proplists:proplist()) ->
+    {ok, remove_permission_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy/", aws_util:encode_uri(ActionGroup), ""],
@@ -815,8 +1644,23 @@ remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
 %% @doc Sends feedback to CodeGuru Profiler about whether the anomaly
 %% detected by the analysis is
 %% useful or not.
+-spec submit_feedback(map(), binary() | list(), binary() | list(), submit_feedback_request()) ->
+    {ok, submit_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input) ->
     submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input, []).
+
+-spec submit_feedback(map(), binary() | list(), binary() | list(), submit_feedback_request(), proplists:proplist()) ->
+    {ok, submit_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/anomalies/", aws_util:encode_uri(AnomalyInstanceId), "/feedback"],
@@ -841,8 +1685,21 @@ submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input0, Options0)
 
 %% @doc
 %% Use to assign one or more tags to a resource.
+-spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -867,8 +1724,21 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc
 %% Use to remove one or more tags from a resource.
+-spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -893,8 +1763,25 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a profiling group.
+-spec update_profiling_group(map(), binary() | list(), update_profiling_group_request()) ->
+    {ok, update_profiling_group_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_profiling_group(Client, ProfilingGroupName, Input) ->
     update_profiling_group(Client, ProfilingGroupName, Input, []).
+
+-spec update_profiling_group(map(), binary() | list(), update_profiling_group_request(), proplists:proplist()) ->
+    {ok, update_profiling_group_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
@@ -921,7 +1808,7 @@ update_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -315,6 +315,911 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_package_version_assets_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type list_package_version_assets_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_package_versions_status_result() :: #{
+%%   <<"failedVersions">> => map(),
+%%   <<"successfulVersions">> => map()
+%% }
+-type update_package_versions_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_package_version_assets_result() :: #{
+%%   <<"assets">> => list(asset_summary()()),
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> => string(),
+%%   <<"version">> => string(),
+%%   <<"versionRevision">> => string()
+%% }
+-type list_package_version_assets_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_package_version_dependencies_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type list_package_version_dependencies_request() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_result() :: #{}
+-type untag_resource_result() :: #{}.
+
+%% Example:
+%% dispose_package_versions_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"expectedStatus">> => list(any()),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string(),
+%%   <<"versionRevisions">> => map(),
+%%   <<"versions">> := list(string()())
+%% }
+-type dispose_package_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% package_origin_configuration() :: #{
+%%   <<"restrictions">> => package_origin_restrictions()
+%% }
+-type package_origin_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_repository_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type describe_repository_result() :: #{binary() => any()}.
+
+%% Example:
+%% package_version_origin() :: #{
+%%   <<"domainEntryPoint">> => domain_entry_point(),
+%%   <<"originType">> => list(any())
+%% }
+-type package_version_origin() :: #{binary() => any()}.
+
+%% Example:
+%% domain_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type domain_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_packages_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"packagePrefix">> => string(),
+%%   <<"publish">> => list(any()),
+%%   <<"repository">> := string(),
+%%   <<"upstream">> => list(any())
+%% }
+-type list_packages_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type delete_repository_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_package_version_asset_result() :: #{
+%%   <<"asset">> => binary(),
+%%   <<"assetName">> => string(),
+%%   <<"packageVersion">> => string(),
+%%   <<"packageVersionRevision">> => string()
+%% }
+-type get_package_version_asset_result() :: #{binary() => any()}.
+
+%% Example:
+%% publish_package_version_result() :: #{
+%%   <<"asset">> => asset_summary(),
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string(),
+%%   <<"versionRevision">> => string()
+%% }
+-type publish_package_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_result() :: #{
+%%   <<"domain">> => domain_description()
+%% }
+-type create_domain_result() :: #{binary() => any()}.
+
+%% Example:
+%% asset_summary() :: #{
+%%   <<"hashes">> => map(),
+%%   <<"name">> => string(),
+%%   <<"size">> => float()
+%% }
+-type asset_summary() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_repository_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"policyDocument">> := string(),
+%%   <<"policyRevision">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type put_repository_permissions_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% package_version_description() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"format">> => list(any()),
+%%   <<"homePage">> => string(),
+%%   <<"licenses">> => list(license_info()()),
+%%   <<"namespace">> => string(),
+%%   <<"origin">> => package_version_origin(),
+%%   <<"packageName">> => string(),
+%%   <<"publishedTime">> => non_neg_integer(),
+%%   <<"revision">> => string(),
+%%   <<"sourceCodeRepository">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => string(),
+%%   <<"version">> => string()
+%% }
+-type package_version_description() :: #{binary() => any()}.
+
+%% Example:
+%% get_package_version_readme_result() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> => string(),
+%%   <<"readme">> => string(),
+%%   <<"version">> => string(),
+%%   <<"versionRevision">> => string()
+%% }
+-type get_package_version_readme_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_package_version_dependencies_result() :: #{
+%%   <<"dependencies">> => list(package_dependency()()),
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> => string(),
+%%   <<"version">> => string(),
+%%   <<"versionRevision">> => string()
+%% }
+-type list_package_version_dependencies_result() :: #{binary() => any()}.
+
+%% Example:
+%% upstream_repository() :: #{
+%%   <<"repositoryName">> => string()
+%% }
+-type upstream_repository() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositories">> => list(repository_summary()())
+%% }
+-type list_repositories_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string()
+%% }
+-type delete_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% repository_summary() :: #{
+%%   <<"administratorAccount">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"name">> => string()
+%% }
+-type repository_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_package_versions_result() :: #{
+%%   <<"failedVersions">> => map(),
+%%   <<"successfulVersions">> => map()
+%% }
+-type delete_package_versions_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type delete_domain_permissions_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_in_domain_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositories">> => list(repository_summary()())
+%% }
+-type list_repositories_in_domain_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% domain_entry_point() :: #{
+%%   <<"externalConnectionName">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type domain_entry_point() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% delete_package_versions_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"expectedStatus">> => list(any()),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string(),
+%%   <<"versions">> := list(string()())
+%% }
+-type delete_package_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_endpoint_result() :: #{
+%%   <<"repositoryEndpoint">> => string()
+%% }
+-type get_repository_endpoint_result() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_result() :: #{
+%%   <<"domain">> => domain_description()
+%% }
+-type delete_domain_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_package_version_readme_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type get_package_version_readme_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type delete_repository_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_in_domain_request() :: #{
+%%   <<"administratorAccount">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryPrefix">> => string()
+%% }
+-type list_repositories_in_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_external_connection_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"externalConnection">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type associate_external_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_package_result() :: #{
+%%   <<"package">> => package_description()
+%% }
+-type describe_package_result() :: #{binary() => any()}.
+
+%% Example:
+%% dispose_package_versions_result() :: #{
+%%   <<"failedVersions">> => map(),
+%%   <<"successfulVersions">> => map()
+%% }
+-type dispose_package_versions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_result() :: #{
+%%   <<"domains">> => list(domain_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domains_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_packages_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"packages">> => list(package_summary()())
+%% }
+-type list_packages_result() :: #{binary() => any()}.
+
+%% Example:
+%% successful_package_version_info() :: #{
+%%   <<"revision">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type successful_package_version_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_authorization_token_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"durationSeconds">> => float()
+%% }
+-type get_authorization_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_package_versions_result() :: #{
+%%   <<"failedVersions">> => map(),
+%%   <<"successfulVersions">> => map()
+%% }
+-type copy_package_versions_result() :: #{binary() => any()}.
+
+%% Example:
+%% license_info() :: #{
+%%   <<"name">> => string(),
+%%   <<"url">> => string()
+%% }
+-type license_info() :: #{binary() => any()}.
+
+%% Example:
+%% publish_package_version_request() :: #{
+%%   <<"assetContent">> := binary(),
+%%   <<"assetName">> := string(),
+%%   <<"assetSHA256">> := string(),
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"repository">> := string(),
+%%   <<"unfinished">> => boolean()
+%% }
+-type publish_package_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type delete_repository_permissions_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% package_description() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"originConfiguration">> => package_origin_configuration()
+%% }
+-type package_description() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% package_summary() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"originConfiguration">> => package_origin_configuration(),
+%%   <<"package">> => string()
+%% }
+-type package_summary() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"document">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"revision">> => string()
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type get_domain_permissions_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_external_connection_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type disassociate_external_connection_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_repository_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"upstreams">> => list(upstream_repository()())
+%% }
+-type create_repository_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_external_connection_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"externalConnection">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type disassociate_external_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_domain_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type put_domain_permissions_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_package_version_result() :: #{
+%%   <<"packageVersion">> => package_version_description()
+%% }
+-type describe_package_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_package_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type delete_package_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_repository_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type put_repository_permissions_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string()
+%% }
+-type describe_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% upstream_repository_info() :: #{
+%%   <<"repositoryName">> => string()
+%% }
+-type upstream_repository_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_authorization_token_result() :: #{
+%%   <<"authorizationToken">> => string(),
+%%   <<"expiration">> => non_neg_integer()
+%% }
+-type get_authorization_token_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_package_origin_configuration_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string(),
+%%   <<"restrictions">> := package_origin_restrictions()
+%% }
+-type put_package_origin_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_endpoint_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"repository">> := string()
+%% }
+-type get_repository_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string()
+%% }
+-type get_domain_permissions_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type get_repository_permissions_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_domain_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"policyDocument">> := string(),
+%%   <<"policyRevision">> => string()
+%% }
+-type put_domain_permissions_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_package_versions_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"originType">> => list(any()),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_package_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_external_connection_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type associate_external_connection_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_package_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type describe_package_request() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% package_dependency() :: #{
+%%   <<"dependencyType">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"package">> => string(),
+%%   <<"versionRequirement">> => string()
+%% }
+-type package_dependency() :: #{binary() => any()}.
+
+%% Example:
+%% domain_description() :: #{
+%%   <<"arn">> => string(),
+%%   <<"assetSizeBytes">> => float(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"repositoryCount">> => integer(),
+%%   <<"s3BucketArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type domain_description() :: #{binary() => any()}.
+
+%% Example:
+%% list_package_versions_result() :: #{
+%%   <<"defaultDisplayVersion">> => string(),
+%%   <<"format">> => list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"package">> => string(),
+%%   <<"versions">> => list(package_version_summary()())
+%% }
+-type list_package_versions_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_package_result() :: #{
+%%   <<"deletedPackage">> => package_summary()
+%% }
+-type delete_package_result() :: #{binary() => any()}.
+
+%% Example:
+%% repository_external_connection_info() :: #{
+%%   <<"externalConnectionName">> => string(),
+%%   <<"packageFormat">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type repository_external_connection_info() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string(),
+%%   <<"upstreams">> => list(upstream_repository()())
+%% }
+-type update_repository_request() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_result() :: #{}
+-type tag_resource_result() :: #{}.
+
+%% Example:
+%% list_repositories_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryPrefix">> => string()
+%% }
+-type list_repositories_request() :: #{binary() => any()}.
+
+%% Example:
+%% package_version_summary() :: #{
+%%   <<"origin">> => package_version_origin(),
+%%   <<"revision">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type package_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_domain_result() :: #{
+%%   <<"domain">> => domain_description()
+%% }
+-type describe_domain_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_package_version_asset_request() :: #{
+%%   <<"asset">> := string(),
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"packageVersionRevision">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type get_package_version_asset_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_repository_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type create_repository_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_package_version_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"packageVersion">> := string(),
+%%   <<"repository">> := string()
+%% }
+-type describe_package_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% repository_description() :: #{
+%%   <<"administratorAccount">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"externalConnections">> => list(repository_external_connection_info()()),
+%%   <<"name">> => string(),
+%%   <<"upstreams">> => list(upstream_repository_info()())
+%% }
+-type repository_description() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_permissions_policy_result() :: #{
+%%   <<"policy">> => resource_policy()
+%% }
+-type get_repository_permissions_policy_result() :: #{binary() => any()}.
+
+%% Example:
+%% package_version_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type package_version_error() :: #{binary() => any()}.
+
+%% Example:
+%% put_package_origin_configuration_result() :: #{
+%%   <<"originConfiguration">> => package_origin_configuration()
+%% }
+-type put_package_origin_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"policyRevision">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type delete_repository_permissions_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% package_origin_restrictions() :: #{
+%%   <<"publish">> => list(any()),
+%%   <<"upstream">> => list(any())
+%% }
+-type package_origin_restrictions() :: #{binary() => any()}.
+
+%% Example:
+%% copy_package_versions_request() :: #{
+%%   <<"allowOverwrite">> => boolean(),
+%%   <<"destinationRepository">> := string(),
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"includeFromUpstream">> => boolean(),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"sourceRepository">> := string(),
+%%   <<"versionRevisions">> => map(),
+%%   <<"versions">> => list(string()())
+%% }
+-type copy_package_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_package_versions_status_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"expectedStatus">> => list(any()),
+%%   <<"format">> := list(any()),
+%%   <<"namespace">> => string(),
+%%   <<"package">> := string(),
+%%   <<"repository">> := string(),
+%%   <<"targetStatus">> := list(any()),
+%%   <<"versionRevisions">> => map(),
+%%   <<"versions">> := list(string()())
+%% }
+-type update_package_versions_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_result() :: #{
+%%   <<"repository">> => repository_description()
+%% }
+-type update_repository_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_permissions_policy_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"policyRevision">> => string()
+%% }
+-type delete_domain_permissions_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_repository_request() :: #{
+%%   <<"domain">> := string(),
+%%   <<"domainOwner">> => string(),
+%%   <<"repository">> := string()
+%% }
+-type describe_repository_request() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -326,8 +1231,29 @@
 %%
 %% A repository can have one or more upstream repositories, or an external
 %% connection.
+-spec associate_external_connection(map(), associate_external_connection_request()) ->
+    {ok, associate_external_connection_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_external_connection(Client, Input) ->
     associate_external_connection(Client, Input, []).
+
+-spec associate_external_connection(map(), associate_external_connection_request(), proplists:proplist()) ->
+    {ok, associate_external_connection_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_external_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/repository/external-connection"],
@@ -360,8 +1286,29 @@ associate_external_connection(Client, Input0, Options0) ->
 %%
 %% You must specify `versions' or `versionRevisions'. You cannot
 %% specify both.
+-spec copy_package_versions(map(), copy_package_versions_request()) ->
+    {ok, copy_package_versions_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 copy_package_versions(Client, Input) ->
     copy_package_versions(Client, Input, []).
+
+-spec copy_package_versions(map(), copy_package_versions_request(), proplists:proplist()) ->
+    {ok, copy_package_versions_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 copy_package_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions/copy"],
@@ -407,8 +1354,29 @@ copy_package_versions(Client, Input0, Options0) ->
 %% packages. You can use a second
 %% pre-production domain to test changes to the production domain
 %% configuration.
+-spec create_domain(map(), create_domain_request()) ->
+    {ok, create_domain_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
+
+-spec create_domain(map(), create_domain_request(), proplists:proplist()) ->
+    {ok, create_domain_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domain"],
@@ -434,8 +1402,29 @@ create_domain(Client, Input0, Options0) ->
 
 %% @doc
 %% Creates a repository.
+-spec create_repository(map(), create_repository_request()) ->
+    {ok, create_repository_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_repository(Client, Input) ->
     create_repository(Client, Input, []).
+
+-spec create_repository(map(), create_repository_request(), proplists:proplist()) ->
+    {ok, create_repository_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_repository(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/repository"],
@@ -467,8 +1456,25 @@ create_repository(Client, Input0, Options0) ->
 %% You cannot delete a domain that contains repositories. If you want to
 %% delete a domain
 %% with repositories, first delete its repositories.
+-spec delete_domain(map(), delete_domain_request()) ->
+    {ok, delete_domain_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_domain(Client, Input) ->
     delete_domain(Client, Input, []).
+
+-spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
+    {ok, delete_domain_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_domain(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domain"],
@@ -495,8 +1501,27 @@ delete_domain(Client, Input0, Options0) ->
 
 %% @doc
 %% Deletes the resource policy set on a domain.
+-spec delete_domain_permissions_policy(map(), delete_domain_permissions_policy_request()) ->
+    {ok, delete_domain_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_domain_permissions_policy(Client, Input) ->
     delete_domain_permissions_policy(Client, Input, []).
+
+-spec delete_domain_permissions_policy(map(), delete_domain_permissions_policy_request(), proplists:proplist()) ->
+    {ok, delete_domain_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_domain_permissions_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domain/permissions/policy"],
@@ -529,8 +1554,27 @@ delete_domain_permissions_policy(Client, Input0, Options0) ->
 %% DeletePackageVersions:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DeletePackageVersions.html
 %% API.
+-spec delete_package(map(), delete_package_request()) ->
+    {ok, delete_package_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_package(Client, Input) ->
     delete_package(Client, Input, []).
+
+-spec delete_package(map(), delete_package_request(), proplists:proplist()) ->
+    {ok, delete_package_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_package(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/package"],
@@ -572,8 +1616,27 @@ delete_package(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html),
 %% but you can restore them using UpdatePackageVersionsStatus:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageVersionsStatus.html.
+-spec delete_package_versions(map(), delete_package_versions_request()) ->
+    {ok, delete_package_versions_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_package_versions(Client, Input) ->
     delete_package_versions(Client, Input, []).
+
+-spec delete_package_versions(map(), delete_package_versions_request(), proplists:proplist()) ->
+    {ok, delete_package_versions_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_package_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions/delete"],
@@ -604,8 +1667,27 @@ delete_package_versions(Client, Input0, Options0) ->
 
 %% @doc
 %% Deletes a repository.
+-spec delete_repository(map(), delete_repository_request()) ->
+    {ok, delete_repository_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_repository(Client, Input) ->
     delete_repository(Client, Input, []).
+
+-spec delete_repository(map(), delete_repository_request(), proplists:proplist()) ->
+    {ok, delete_repository_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_repository(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/repository"],
@@ -642,8 +1724,27 @@ delete_repository(Client, Input0, Options0) ->
 %% is deleted, Amazon Web Services users, roles, and accounts lose
 %% permissions to perform
 %% the repository actions granted by the deleted policy.
+-spec delete_repository_permissions_policy(map(), delete_repository_permissions_policy_request()) ->
+    {ok, delete_repository_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_repository_permissions_policy(Client, Input) ->
     delete_repository_permissions_policy(Client, Input, []).
+
+-spec delete_repository_permissions_policy(map(), delete_repository_permissions_policy_request(), proplists:proplist()) ->
+    {ok, delete_repository_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_repository_permissions_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/repository/permissions/policies"],
@@ -675,14 +1776,38 @@ delete_repository_permissions_policy(Client, Input0, Options0) ->
 %% DomainDescription:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html
 %% object that contains information about the requested domain.
+-spec describe_domain(map(), binary() | list()) ->
+    {ok, describe_domain_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_domain(Client, Domain)
   when is_map(Client) ->
     describe_domain(Client, Domain, #{}, #{}).
 
+-spec describe_domain(map(), binary() | list(), map(), map()) ->
+    {ok, describe_domain_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_domain(Client, Domain, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_domain(Client, Domain, QueryMap, HeadersMap, []).
 
+-spec describe_domain(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_domain_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_domain(Client, Domain, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domain"],
@@ -708,14 +1833,38 @@ describe_domain(Client, Domain, QueryMap, HeadersMap, Options0)
 %% PackageDescription:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html
 %% object that contains information about the requested package.
+-spec describe_package(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_package_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_package(Client, Domain, Format, Package, Repository)
   when is_map(Client) ->
     describe_package(Client, Domain, Format, Package, Repository, #{}, #{}).
 
+-spec describe_package(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_package_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersMap, []).
 
+-spec describe_package(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_package_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/package"],
@@ -746,14 +1895,41 @@ describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersM
 %% PackageVersionDescription:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html
 %% object that contains information about the requested package version.
+-spec describe_package_version(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_package_version_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository)
   when is_map(Client) ->
     describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
 
+-spec describe_package_version(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_package_version_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
 
+-spec describe_package_version(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_package_version_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/package/version"],
@@ -784,14 +1960,38 @@ describe_package_version(Client, Domain, Format, Package, PackageVersion, Reposi
 %% Returns a `RepositoryDescription' object that contains detailed
 %% information
 %% about the requested repository.
+-spec describe_repository(map(), binary() | list(), binary() | list()) ->
+    {ok, describe_repository_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_repository(Client, Domain, Repository)
   when is_map(Client) ->
     describe_repository(Client, Domain, Repository, #{}, #{}).
 
+-spec describe_repository(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_repository_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_repository(Client, Domain, Repository, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, []).
 
+-spec describe_repository(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_repository_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/repository"],
@@ -816,8 +2016,29 @@ describe_repository(Client, Domain, Repository, QueryMap, HeadersMap, Options0)
 
 %% @doc
 %% Removes an existing external connection from a repository.
+-spec disassociate_external_connection(map(), disassociate_external_connection_request()) ->
+    {ok, disassociate_external_connection_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_external_connection(Client, Input) ->
     disassociate_external_connection(Client, Input, []).
+
+-spec disassociate_external_connection(map(), disassociate_external_connection_request(), proplists:proplist()) ->
+    {ok, disassociate_external_connection_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_external_connection(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/repository/external-connection"],
@@ -863,8 +2084,27 @@ disassociate_external_connection(Client, Input0, Options0) ->
 %% To view information about a disposed package version, use
 %% DescribePackageVersion:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html.
+-spec dispose_package_versions(map(), dispose_package_versions_request()) ->
+    {ok, dispose_package_versions_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 dispose_package_versions(Client, Input) ->
     dispose_package_versions(Client, Input, []).
+
+-spec dispose_package_versions(map(), dispose_package_versions_request(), proplists:proplist()) ->
+    {ok, dispose_package_versions_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 dispose_package_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions/dispose"],
@@ -925,8 +2165,25 @@ dispose_package_versions(Client, Input0, Options0) ->
 %% Using IAM Roles:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html
 %% for more information on controlling session duration.
+-spec get_authorization_token(map(), get_authorization_token_request()) ->
+    {ok, get_authorization_token_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_authorization_token(Client, Input) ->
     get_authorization_token(Client, Input, []).
+
+-spec get_authorization_token(map(), get_authorization_token_request(), proplists:proplist()) ->
+    {ok, get_authorization_token_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_authorization_token(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/authorization-token"],
@@ -961,14 +2218,38 @@ get_authorization_token(Client, Input0, Options0) ->
 %% and resource-based policies :
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html
 %% in the IAM User Guide.
+-spec get_domain_permissions_policy(map(), binary() | list()) ->
+    {ok, get_domain_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_domain_permissions_policy(Client, Domain)
   when is_map(Client) ->
     get_domain_permissions_policy(Client, Domain, #{}, #{}).
 
+-spec get_domain_permissions_policy(map(), binary() | list(), map(), map()) ->
+    {ok, get_domain_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, []).
 
+-spec get_domain_permissions_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_domain_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/domain/permissions/policy"],
@@ -997,14 +2278,41 @@ get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, Options0)
 %% `GetPackageVersionAsset' to download a `JAR' file, a `POM'
 %% file,
 %% or any other assets in the package version.
+-spec get_package_version_asset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_package_version_asset_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository)
   when is_map(Client) ->
     get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
 
+-spec get_package_version_asset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_package_version_asset_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
 
+-spec get_package_version_asset(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_package_version_asset_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/package/version/asset"],
@@ -1056,14 +2364,38 @@ get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion
 %%
 %% The returned text might contain formatting. For example, it might contain
 %% formatting for Markdown or reStructuredText.
+-spec get_package_version_readme(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_package_version_readme_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository)
   when is_map(Client) ->
     get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
 
+-spec get_package_version_readme(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_package_version_readme_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, []).
 
+-spec get_package_version_readme(map(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_package_version_readme_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/package/version/readme"],
@@ -1103,14 +2435,38 @@ get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repo
 %% `nuget'
 %%
 %% `pypi'
+-spec get_repository_endpoint(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_repository_endpoint_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_repository_endpoint(Client, Domain, Format, Repository)
   when is_map(Client) ->
     get_repository_endpoint(Client, Domain, Format, Repository, #{}, #{}).
 
+-spec get_repository_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_repository_endpoint_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap, []).
 
+-spec get_repository_endpoint(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_repository_endpoint_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/repository/endpoint"],
@@ -1136,14 +2492,38 @@ get_repository_endpoint(Client, Domain, Format, Repository, QueryMap, HeadersMap
 
 %% @doc
 %% Returns the resource policy that is set on a repository.
+-spec get_repository_permissions_policy(map(), binary() | list(), binary() | list()) ->
+    {ok, get_repository_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_repository_permissions_policy(Client, Domain, Repository)
   when is_map(Client) ->
     get_repository_permissions_policy(Client, Domain, Repository, #{}, #{}).
 
+-spec get_repository_permissions_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_repository_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap, []).
 
+-spec get_repository_permissions_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_repository_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/repository/permissions/policy"],
@@ -1174,8 +2554,23 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
 %%
 %% Each returned `DomainSummary' object contains information about a
 %% domain.
+-spec list_domains(map(), list_domains_request()) ->
+    {ok, list_domains_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_domains(Client, Input) ->
     list_domains(Client, Input, []).
+
+-spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
+    {ok, list_domains_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domains"],
@@ -1203,8 +2598,25 @@ list_domains(Client, Input0, Options0) ->
 %% AssetSummary:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html
 %% objects for assets in a package version.
+-spec list_package_version_assets(map(), list_package_version_assets_request()) ->
+    {ok, list_package_version_assets_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_package_version_assets(Client, Input) ->
     list_package_version_assets(Client, Input, []).
+
+-spec list_package_version_assets(map(), list_package_version_assets_request(), proplists:proplist()) ->
+    {ok, list_package_version_assets_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_package_version_assets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/version/assets"],
@@ -1248,8 +2660,25 @@ list_package_version_assets(Client, Input0, Options0) ->
 %% `pom.xml' file
 %% for Maven). Any package version dependencies that are not listed in the
 %% configuration file are not returned.
+-spec list_package_version_dependencies(map(), list_package_version_dependencies_request()) ->
+    {ok, list_package_version_dependencies_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_package_version_dependencies(Client, Input) ->
     list_package_version_dependencies(Client, Input, []).
+
+-spec list_package_version_dependencies(map(), list_package_version_dependencies_request(), proplists:proplist()) ->
+    {ok, list_package_version_dependencies_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_package_version_dependencies(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/version/dependencies"],
@@ -1289,8 +2718,25 @@ list_package_version_dependencies(Client, Input0, Options0) ->
 %%
 %% Package versions of all statuses will be returned by default when calling
 %% `list-package-versions' with no `--status' parameter.
+-spec list_package_versions(map(), list_package_versions_request()) ->
+    {ok, list_package_versions_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_package_versions(Client, Input) ->
     list_package_versions(Client, Input, []).
+
+-spec list_package_versions(map(), list_package_versions_request(), proplists:proplist()) ->
+    {ok, list_package_versions_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_package_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions"],
@@ -1329,8 +2775,25 @@ list_package_versions(Client, Input0, Options0) ->
 %% PackageSummary:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html
 %% objects for packages in a repository that match the request parameters.
+-spec list_packages(map(), list_packages_request()) ->
+    {ok, list_packages_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_packages(Client, Input) ->
     list_packages(Client, Input, []).
+
+-spec list_packages(map(), list_packages_request(), proplists:proplist()) ->
+    {ok, list_packages_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/packages"],
@@ -1372,8 +2835,23 @@ list_packages(Client, Input0, Options0) ->
 %% Each `RepositorySummary' contains information about a repository in
 %% the specified Amazon Web Services account and that matches the input
 %% parameters.
+-spec list_repositories(map(), list_repositories_request()) ->
+    {ok, list_repositories_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_repositories(Client, Input) ->
     list_repositories(Client, Input, []).
+
+-spec list_repositories(map(), list_repositories_request(), proplists:proplist()) ->
+    {ok, list_repositories_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_repositories(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/repositories"],
@@ -1408,8 +2886,25 @@ list_repositories(Client, Input0, Options0) ->
 %% Each `RepositorySummary' contains information about a repository in
 %% the specified domain and that matches the input
 %% parameters.
+-spec list_repositories_in_domain(map(), list_repositories_in_domain_request()) ->
+    {ok, list_repositories_in_domain_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_repositories_in_domain(Client, Input) ->
     list_repositories_in_domain(Client, Input, []).
+
+-spec list_repositories_in_domain(map(), list_repositories_in_domain_request(), proplists:proplist()) ->
+    {ok, list_repositories_in_domain_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_repositories_in_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domain/repositories"],
@@ -1440,8 +2935,23 @@ list_repositories_in_domain(Client, Input0, Options0) ->
 
 %% @doc Gets information about Amazon Web Services tags for a specified
 %% Amazon Resource Name (ARN) in CodeArtifact.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags"],
@@ -1486,8 +2996,29 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %% packages:
 %% https://docs.aws.amazon.com/codeartifact/latest/ug/using-generic.html in
 %% the CodeArtifact User Guide.
+-spec publish_package_version(map(), publish_package_version_request()) ->
+    {ok, publish_package_version_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 publish_package_version(Client, Input) ->
     publish_package_version(Client, Input, []).
+
+-spec publish_package_version(map(), publish_package_version_request(), proplists:proplist()) ->
+    {ok, publish_package_version_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 publish_package_version(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/version/publish"],
@@ -1530,8 +3061,29 @@ publish_package_version(Client, Input0, Options0) ->
 %% This ensures that the owner of a domain cannot lock themselves out of the
 %% domain, which would prevent them from being
 %% able to update the resource policy.
+-spec put_domain_permissions_policy(map(), put_domain_permissions_policy_request()) ->
+    {ok, put_domain_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_domain_permissions_policy(Client, Input) ->
     put_domain_permissions_policy(Client, Input, []).
+
+-spec put_domain_permissions_policy(map(), put_domain_permissions_policy_request(), proplists:proplist()) ->
+    {ok, put_domain_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_domain_permissions_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/domain/permissions/policy"],
@@ -1573,8 +3125,25 @@ put_domain_permissions_policy(Client, Input0, Options0) ->
 %% from external connections or upstream repositories, or to block
 %% publishing any versions of the package into the repository before
 %% connecting any package managers or publishers to the repository.
+-spec put_package_origin_configuration(map(), put_package_origin_configuration_request()) ->
+    {ok, put_package_origin_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_package_origin_configuration(Client, Input) ->
     put_package_origin_configuration(Client, Input, []).
+
+-spec put_package_origin_configuration(map(), put_package_origin_configuration_request(), proplists:proplist()) ->
+    {ok, put_package_origin_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_package_origin_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package"],
@@ -1612,8 +3181,29 @@ put_package_origin_configuration(Client, Input0, Options0) ->
 %% This ensures that the owner of a repository cannot lock themselves out of
 %% the repository, which would prevent them from being
 %% able to update the resource policy.
+-spec put_repository_permissions_policy(map(), put_repository_permissions_policy_request()) ->
+    {ok, put_repository_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_repository_permissions_policy(Client, Input) ->
     put_repository_permissions_policy(Client, Input, []).
+
+-spec put_repository_permissions_policy(map(), put_repository_permissions_policy_request(), proplists:proplist()) ->
+    {ok, put_repository_permissions_policy_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_repository_permissions_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/repository/permissions/policy"],
@@ -1640,8 +3230,25 @@ put_repository_permissions_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates tags for a resource in CodeArtifact.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tag"],
@@ -1666,8 +3273,23 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource in CodeArtifact.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/untag"],
@@ -1700,8 +3322,27 @@ untag_resource(Client, Input0, Options0) ->
 %% To set the status of a package version to `Disposed', use
 %% DisposePackageVersions:
 %% https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DisposePackageVersions.html.
+-spec update_package_versions_status(map(), update_package_versions_status_request()) ->
+    {ok, update_package_versions_status_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_package_versions_status(Client, Input) ->
     update_package_versions_status(Client, Input, []).
+
+-spec update_package_versions_status(map(), update_package_versions_status_request(), proplists:proplist()) ->
+    {ok, update_package_versions_status_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_package_versions_status(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/package/versions/update_status"],
@@ -1732,8 +3373,29 @@ update_package_versions_status(Client, Input0, Options0) ->
 
 %% @doc
 %% Update the properties of a repository.
+-spec update_repository(map(), update_repository_request()) ->
+    {ok, update_repository_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_repository(Client, Input) ->
     update_repository(Client, Input, []).
+
+-spec update_repository(map(), update_repository_request(), proplists:proplist()) ->
+    {ok, update_repository_result(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_repository(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/repository"],
@@ -1763,7 +3425,7 @@ update_repository(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

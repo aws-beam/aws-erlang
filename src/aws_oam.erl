@@ -61,6 +61,294 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% create_sink_input() :: #{
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_sink_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_link_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Label">> => [string()],
+%%   <<"LabelTemplate">> => [string()],
+%%   <<"ResourceTypes">> => list([string()]()),
+%%   <<"SinkArn">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type get_link_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_link_input() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type delete_link_input() :: #{binary() => any()}.
+
+%% Example:
+%% missing_required_parameter_exception() :: #{
+%%   <<"amznErrorType">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type missing_required_parameter_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_sink_output() :: #{}
+-type delete_sink_output() :: #{}.
+
+%% Example:
+%% list_links_output() :: #{
+%%   <<"Items">> => list(list_links_item()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_links_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_sink_policy_output() :: #{
+%%   <<"Policy">> => [string()],
+%%   <<"SinkArn">> => [string()],
+%%   <<"SinkId">> => [string()]
+%% }
+-type put_sink_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_links_output() :: #{
+%%   <<"Items">> => list(list_attached_links_item()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_attached_links_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sink_input() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type delete_sink_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_sink_policy_input() :: #{
+%%   <<"SinkIdentifier">> := string()
+%% }
+-type get_sink_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_sink_policy_output() :: #{
+%%   <<"Policy">> => [string()],
+%%   <<"SinkArn">> => [string()],
+%%   <<"SinkId">> => [string()]
+%% }
+-type get_sink_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_links_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SinkIdentifier">> := string()
+%% }
+-type list_attached_links_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_link_input() :: #{
+%%   <<"LabelTemplate">> := string(),
+%%   <<"ResourceTypes">> := list(list(any())()),
+%%   <<"SinkIdentifier">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_link_input() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_attached_links_item() :: #{
+%%   <<"Label">> => [string()],
+%%   <<"LinkArn">> => [string()],
+%%   <<"ResourceTypes">> => list([string()]())
+%% }
+-type list_attached_links_item() :: #{binary() => any()}.
+
+%% Example:
+%% list_links_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_links_input() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_link_input() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"ResourceTypes">> := list(list(any())())
+%% }
+-type update_link_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_sink_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type create_sink_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_sink_input() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type get_sink_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_link_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Label">> => [string()],
+%%   <<"LabelTemplate">> => [string()],
+%%   <<"ResourceTypes">> => list([string()]()),
+%%   <<"SinkArn">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type create_link_output() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+%% Example:
+%% list_links_item() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Label">> => [string()],
+%%   <<"ResourceTypes">> => list([string()]()),
+%%   <<"SinkArn">> => [string()]
+%% }
+-type list_links_item() :: #{binary() => any()}.
+
+%% Example:
+%% list_sinks_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sinks_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"amznErrorType">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_sinks_output() :: #{
+%%   <<"Items">> => list(list_sinks_item()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_sinks_output() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+%% Example:
+%% get_link_input() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type get_link_input() :: #{binary() => any()}.
+%% Example:
+%% delete_link_output() :: #{}
+-type delete_link_output() :: #{}.
+
+%% Example:
+%% internal_service_fault() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()]
+%% }
+-type internal_service_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_sinks_item() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Name">> => [string()]
+%% }
+-type list_sinks_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_sink_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type get_sink_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_link_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Label">> => [string()],
+%%   <<"LabelTemplate">> => string(),
+%%   <<"ResourceTypes">> => list([string()]()),
+%%   <<"SinkArn">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type update_link_output() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_sink_policy_input() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"SinkIdentifier">> := string()
+%% }
+-type put_sink_policy_input() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -87,8 +375,25 @@
 %% accounts.
 %%
 %% Each source account can be linked to as many as five monitoring accounts.
+-spec create_link(map(), create_link_input()) ->
+    {ok, create_link_output(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()}.
 create_link(Client, Input) ->
     create_link(Client, Input, []).
+
+-spec create_link(map(), create_link_input(), proplists:proplist()) ->
+    {ok, create_link_output(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()}.
 create_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLink"],
@@ -126,8 +431,25 @@ create_link(Client, Input0, Options0) ->
 %%
 %% Each account can contain one sink. If you delete a sink, you can then
 %% create a new one in that account.
+-spec create_sink(map(), create_sink_input()) ->
+    {ok, create_sink_output(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()}.
 create_sink(Client, Input) ->
     create_sink(Client, Input, []).
+
+-spec create_sink(map(), create_sink_input(), proplists:proplist()) ->
+    {ok, create_sink_output(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()}.
 create_sink(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateSink"],
@@ -155,8 +477,23 @@ create_sink(Client, Input0, Options0) ->
 %%
 %% You must run this operation
 %% in the source account.
+-spec delete_link(map(), delete_link_input()) ->
+    {ok, delete_link_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_link(Client, Input) ->
     delete_link(Client, Input, []).
+
+-spec delete_link(map(), delete_link_input(), proplists:proplist()) ->
+    {ok, delete_link_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteLink"],
@@ -182,8 +519,25 @@ delete_link(Client, Input0, Options0) ->
 %% @doc Deletes a sink.
 %%
 %% You must delete all links to a sink before you can delete that sink.
+-spec delete_sink(map(), delete_sink_input()) ->
+    {ok, delete_sink_output(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_sink(Client, Input) ->
     delete_sink(Client, Input, []).
+
+-spec delete_sink(map(), delete_sink_input(), proplists:proplist()) ->
+    {ok, delete_sink_output(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_sink(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteSink"],
@@ -211,8 +565,23 @@ delete_sink(Client, Input0, Options0) ->
 %% To use this operation, provide the link ARN. To retrieve a list of link
 %% ARNs, use ListLinks:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_ListLinks.html.
+-spec get_link(map(), get_link_input()) ->
+    {ok, get_link_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_link(Client, Input) ->
     get_link(Client, Input, []).
+
+-spec get_link(map(), get_link_input(), proplists:proplist()) ->
+    {ok, get_link_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetLink"],
@@ -240,8 +609,23 @@ get_link(Client, Input0, Options0) ->
 %% To use this operation, provide the sink ARN. To retrieve a list of sink
 %% ARNs, use ListSinks:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_ListSinks.html.
+-spec get_sink(map(), get_sink_input()) ->
+    {ok, get_sink_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_sink(Client, Input) ->
     get_sink(Client, Input, []).
+
+-spec get_sink(map(), get_sink_input(), proplists:proplist()) ->
+    {ok, get_sink_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_sink(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetSink"],
@@ -269,8 +653,23 @@ get_sink(Client, Input0, Options0) ->
 %% The sink policy specifies what
 %% accounts can attach to this sink as source accounts, and what types of
 %% data they can share.
+-spec get_sink_policy(map(), get_sink_policy_input()) ->
+    {ok, get_sink_policy_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_sink_policy(Client, Input) ->
     get_sink_policy(Client, Input, []).
+
+-spec get_sink_policy(map(), get_sink_policy_input(), proplists:proplist()) ->
+    {ok, get_sink_policy_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_sink_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetSinkPolicy"],
@@ -302,8 +701,23 @@ get_sink_policy(Client, Input0, Options0) ->
 %%
 %% To find a list of links for one source account, use ListLinks:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_ListLinks.html.
+-spec list_attached_links(map(), list_attached_links_input()) ->
+    {ok, list_attached_links_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_attached_links(Client, Input) ->
     list_attached_links(Client, Input, []).
+
+-spec list_attached_links(map(), list_attached_links_input(), proplists:proplist()) ->
+    {ok, list_attached_links_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_attached_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListAttachedLinks"],
@@ -334,8 +748,21 @@ list_attached_links(Client, Input0, Options0) ->
 %% ListAttachedLinks:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_ListAttachedLinks.html
 %% from within the monitoring account.
+-spec list_links(map(), list_links_input()) ->
+    {ok, list_links_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_links(Client, Input) ->
     list_links(Client, Input, []).
+
+-spec list_links(map(), list_links_input(), proplists:proplist()) ->
+    {ok, list_links_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_links(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListLinks"],
@@ -360,8 +787,21 @@ list_links(Client, Input0, Options0) ->
 
 %% @doc Use this operation in a monitoring account to return the list of
 %% sinks created in that account.
+-spec list_sinks(map(), list_sinks_input()) ->
+    {ok, list_sinks_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_sinks(Client, Input) ->
     list_sinks(Client, Input, []).
+
+-spec list_sinks(map(), list_sinks_input(), proplists:proplist()) ->
+    {ok, list_sinks_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_sinks(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListSinks"],
@@ -387,14 +827,29 @@ list_sinks(Client, Input0, Options0) ->
 %% @doc Displays the tags associated with a resource.
 %%
 %% Both sinks and links support tagging.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -434,8 +889,23 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% See the examples in this section to see how to specify permitted source
 %% accounts and data types.
+-spec put_sink_policy(map(), put_sink_policy_input()) ->
+    {ok, put_sink_policy_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 put_sink_policy(Client, Input) ->
     put_sink_policy(Client, Input, []).
+
+-spec put_sink_policy(map(), put_sink_policy_input(), proplists:proplist()) ->
+    {ok, put_sink_policy_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 put_sink_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutSinkPolicy"],
@@ -485,8 +955,21 @@ put_sink_policy(Client, Input0, Options0) ->
 %% `iam:ResourceTag' permission does not allow you to tag and untag links
 %% and
 %% sinks.
+-spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -517,8 +1000,19 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% `iam:TagResource' permission does not allow you to tag and untag links
 %% and
 %% sinks.
+-spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -552,8 +1046,23 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% To update the list of tags associated with the sink, use
 %% TagResource:
 %% https://docs.aws.amazon.com/OAM/latest/APIReference/API_TagResource.html.
+-spec update_link(map(), update_link_input()) ->
+    {ok, update_link_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_link(Client, Input) ->
     update_link(Client, Input, []).
+
+-spec update_link(map(), update_link_input(), proplists:proplist()) ->
+    {ok, update_link_output(), tuple()} |
+    {error, any()} |
+    {error, internal_service_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_required_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLink"],
@@ -580,7 +1089,7 @@ update_link(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

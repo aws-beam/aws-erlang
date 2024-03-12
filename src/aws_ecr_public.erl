@@ -68,6 +68,640 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% get_repository_policy_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_repository_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% upload_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type upload_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_repository_response() :: #{
+%%   <<"catalogData">> => repository_catalog_data(),
+%%   <<"repository">> => repository()
+%% }
+-type create_repository_response() :: #{binary() => any()}.
+
+%% Example:
+%% image_digest_does_not_match_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_digest_does_not_match_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% image_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% layer_failure() :: #{
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"layerDigest">> => string()
+%% }
+-type layer_failure() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% image_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% registry_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type registry_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_images_request() :: #{
+%%   <<"imageIds">> => list(image_identifier()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type describe_images_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_repository_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type set_repository_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_layer_upload_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type initiate_layer_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_registries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_registries_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_catalog_data_response() :: #{
+%%   <<"catalogData">> => repository_catalog_data()
+%% }
+-type get_repository_catalog_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_check_layer_availability_response() :: #{
+%%   <<"failures">> => list(layer_failure()()),
+%%   <<"layers">> => list(layer()())
+%% }
+-type batch_check_layer_availability_response() :: #{binary() => any()}.
+
+%% Example:
+%% layers_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layers_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_policy_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type delete_repository_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% repository_not_empty_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_not_empty_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_catalog_data_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_repository_catalog_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% repository_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% repository_policy_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type get_repository_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% layer_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layer_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_images_response() :: #{
+%%   <<"imageDetails">> => list(image_detail()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_images_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_repositories_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryNames">> => list(string()())
+%% }
+-type describe_repositories_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_request() :: #{
+%%   <<"imageDigest">> => string(),
+%%   <<"imageManifest">> := string(),
+%%   <<"imageManifestMediaType">> => string(),
+%%   <<"imageTag">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type put_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% complete_layer_upload_request() :: #{
+%%   <<"layerDigests">> := list(string()()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"uploadId">> := string()
+%% }
+-type complete_layer_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_repository_policy_request() :: #{
+%%   <<"force">> => boolean(),
+%%   <<"policyText">> := string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type set_repository_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% registry_alias() :: #{
+%%   <<"defaultRegistryAlias">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"primaryRegistryAlias">> => boolean(),
+%%   <<"status">> => list(any())
+%% }
+-type registry_alias() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_command_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_command_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_image_request() :: #{
+%%   <<"imageIds">> := list(image_identifier()()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type batch_delete_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% complete_layer_upload_response() :: #{
+%%   <<"layerDigest">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type complete_layer_upload_response() :: #{binary() => any()}.
+
+%% Example:
+%% image_failure() :: #{
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"imageId">> => image_identifier()
+%% }
+-type image_failure() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_layer_part_exception() :: #{
+%%   <<"lastValidByteReceived">> => float(),
+%%   <<"message">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type invalid_layer_part_exception() :: #{binary() => any()}.
+
+%% Example:
+%% image_tag_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_tag_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_response() :: #{
+%%   <<"image">> => image()
+%% }
+-type put_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% put_repository_catalog_data_response() :: #{
+%%   <<"catalogData">> => repository_catalog_data()
+%% }
+-type put_repository_catalog_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% repository() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryArn">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"repositoryUri">> => string()
+%% }
+-type repository() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_request() :: #{
+%%   <<"force">> => boolean(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type delete_repository_request() :: #{binary() => any()}.
+
+%% Example:
+%% layer() :: #{
+%%   <<"layerAvailability">> => list(any()),
+%%   <<"layerDigest">> => string(),
+%%   <<"layerSize">> => float(),
+%%   <<"mediaType">> => string()
+%% }
+-type layer() :: #{binary() => any()}.
+
+%% Example:
+%% layer_part_too_small_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layer_part_too_small_exception() :: #{binary() => any()}.
+
+%% Example:
+%% registry_catalog_data() :: #{
+%%   <<"displayName">> => string()
+%% }
+-type registry_catalog_data() :: #{binary() => any()}.
+
+%% Example:
+%% referenced_images_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type referenced_images_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_catalog_data() :: #{
+%%   <<"aboutText">> => string(),
+%%   <<"architectures">> => list(string()()),
+%%   <<"description">> => string(),
+%%   <<"logoUrl">> => string(),
+%%   <<"marketplaceCertified">> => boolean(),
+%%   <<"operatingSystems">> => list(string()()),
+%%   <<"usageText">> => string()
+%% }
+-type repository_catalog_data() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_tags_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type describe_image_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_authorization_token_response() :: #{
+%%   <<"authorizationData">> => authorization_data()
+%% }
+-type get_authorization_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_authorization_token_request() :: #{
+
+%% }
+-type get_authorization_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_registries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"registries">> => list(registry()())
+%% }
+-type describe_registries_response() :: #{binary() => any()}.
+
+%% Example:
+%% repository_catalog_data_input() :: #{
+%%   <<"aboutText">> => string(),
+%%   <<"architectures">> => list(string()()),
+%%   <<"description">> => string(),
+%%   <<"logoImageBlob">> => binary(),
+%%   <<"operatingSystems">> => list(string()()),
+%%   <<"usageText">> => string()
+%% }
+-type repository_catalog_data_input() :: #{binary() => any()}.
+
+%% Example:
+%% upload_layer_part_response() :: #{
+%%   <<"lastByteReceived">> => float(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type upload_layer_part_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_registry_catalog_data_request() :: #{
+%%   <<"displayName">> => string()
+%% }
+-type put_registry_catalog_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_repository_request() :: #{
+%%   <<"catalogData">> => repository_catalog_data_input(),
+%%   <<"repositoryName">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_repository_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_registry_catalog_data_request() :: #{
+
+%% }
+-type get_registry_catalog_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% image() :: #{
+%%   <<"imageId">> => image_identifier(),
+%%   <<"imageManifest">> => string(),
+%%   <<"imageManifestMediaType">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type image() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type delete_repository_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_registry_catalog_data_response() :: #{
+%%   <<"registryCatalogData">> => registry_catalog_data()
+%% }
+-type get_registry_catalog_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_image_response() :: #{
+%%   <<"failures">> => list(image_failure()()),
+%%   <<"imageIds">> => list(image_identifier()())
+%% }
+-type batch_delete_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_layer_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_layer_exception() :: #{binary() => any()}.
+
+%% Example:
+%% referenced_image_detail() :: #{
+%%   <<"artifactMediaType">> => string(),
+%%   <<"imageDigest">> => string(),
+%%   <<"imageManifestMediaType">> => string(),
+%%   <<"imagePushedAt">> => non_neg_integer(),
+%%   <<"imageSizeInBytes">> => float()
+%% }
+-type referenced_image_detail() :: #{binary() => any()}.
+
+%% Example:
+%% image_tag_detail() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"imageDetail">> => referenced_image_detail(),
+%%   <<"imageTag">> => string()
+%% }
+-type image_tag_detail() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_check_layer_availability_request() :: #{
+%%   <<"layerDigests">> := list(string()()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type batch_check_layer_availability_request() :: #{binary() => any()}.
+
+%% Example:
+%% repository_catalog_data_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_catalog_data_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% image_identifier() :: #{
+%%   <<"imageDigest">> => string(),
+%%   <<"imageTag">> => string()
+%% }
+-type image_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% repository_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% registry() :: #{
+%%   <<"aliases">> => list(registry_alias()()),
+%%   <<"registryArn">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"registryUri">> => string(),
+%%   <<"verified">> => boolean()
+%% }
+-type registry() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_response() :: #{
+%%   <<"repository">> => repository()
+%% }
+-type delete_repository_response() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_repositories_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositories">> => list(repository()())
+%% }
+-type describe_repositories_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_registry_catalog_data_response() :: #{
+%%   <<"registryCatalogData">> => registry_catalog_data()
+%% }
+-type put_registry_catalog_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_tags_response() :: #{
+%%   <<"imageTagDetails">> => list(image_tag_detail()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_image_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% authorization_data() :: #{
+%%   <<"authorizationToken">> => string(),
+%%   <<"expiresAt">> => non_neg_integer()
+%% }
+-type authorization_data() :: #{binary() => any()}.
+
+%% Example:
+%% image_detail() :: #{
+%%   <<"artifactMediaType">> => string(),
+%%   <<"imageDigest">> => string(),
+%%   <<"imageManifestMediaType">> => string(),
+%%   <<"imagePushedAt">> => non_neg_integer(),
+%%   <<"imageSizeInBytes">> => float(),
+%%   <<"imageTags">> => list(string()()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type image_detail() :: #{binary() => any()}.
+
+%% Example:
+%% empty_upload_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type empty_upload_exception() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_layer_upload_response() :: #{
+%%   <<"partSize">> => float(),
+%%   <<"uploadId">> => string()
+%% }
+-type initiate_layer_upload_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_repository_catalog_data_request() :: #{
+%%   <<"catalogData">> := repository_catalog_data_input(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type put_repository_catalog_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% upload_layer_part_request() :: #{
+%%   <<"layerPartBlob">> := binary(),
+%%   <<"partFirstByte">> := float(),
+%%   <<"partLastByte">> := float(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"uploadId">> := string()
+%% }
+-type upload_layer_part_request() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -84,9 +718,26 @@
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
+-spec batch_check_layer_availability(map(), batch_check_layer_availability_request()) ->
+    {ok, batch_check_layer_availability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 batch_check_layer_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_check_layer_availability(Client, Input, []).
+
+-spec batch_check_layer_availability(map(), batch_check_layer_availability_request(), proplists:proplist()) ->
+    {ok, batch_check_layer_availability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 batch_check_layer_availability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCheckLayerAvailability">>, Input, Options).
@@ -105,9 +756,24 @@ batch_check_layer_availability(Client, Input, Options)
 %% You can completely delete an image (and all of its tags) by specifying the
 %% digest of the
 %% image in your request.
+-spec batch_delete_image(map(), batch_delete_image_request()) ->
+    {ok, batch_delete_image_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 batch_delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_image(Client, Input, []).
+
+-spec batch_delete_image(map(), batch_delete_image_request(), proplists:proplist()) ->
+    {ok, batch_delete_image_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 batch_delete_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteImage">>, Input, Options).
@@ -126,9 +792,36 @@ batch_delete_image(Client, Input, Options)
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
+-spec complete_layer_upload(map(), complete_layer_upload_request()) ->
+    {ok, complete_layer_upload_response(), tuple()} |
+    {error, any()} |
+    {error, empty_upload_exception(), tuple()} |
+    {error, invalid_layer_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, layer_already_exists_exception(), tuple()} |
+    {error, layer_part_too_small_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()} |
+    {error, upload_not_found_exception(), tuple()}.
 complete_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     complete_layer_upload(Client, Input, []).
+
+-spec complete_layer_upload(map(), complete_layer_upload_request(), proplists:proplist()) ->
+    {ok, complete_layer_upload_response(), tuple()} |
+    {error, any()} |
+    {error, empty_upload_exception(), tuple()} |
+    {error, invalid_layer_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, layer_already_exists_exception(), tuple()} |
+    {error, layer_part_too_small_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()} |
+    {error, upload_not_found_exception(), tuple()}.
 complete_layer_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompleteLayerUpload">>, Input, Options).
@@ -139,9 +832,30 @@ complete_layer_upload(Client, Input, Options)
 %% repositories:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html
 %% in the Amazon Elastic Container Registry User Guide.
+-spec create_repository(map(), create_repository_request()) ->
+    {ok, create_repository_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, repository_already_exists_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
+
+-spec create_repository(map(), create_repository_request(), proplists:proplist()) ->
+    {ok, create_repository_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, repository_already_exists_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 create_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRepository">>, Input, Options).
@@ -153,26 +867,75 @@ create_repository(Client, Input, Options)
 %% option.
 %% This option deletes all images on your behalf before deleting the
 %% repository.
+-spec delete_repository(map(), delete_repository_request()) ->
+    {ok, delete_repository_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_empty_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
+
+-spec delete_repository(map(), delete_repository_request(), proplists:proplist()) ->
+    {ok, delete_repository_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_empty_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
 
 %% @doc Deletes the repository policy that's associated with the
 %% specified repository.
+-spec delete_repository_policy(map(), delete_repository_policy_request()) ->
+    {ok, delete_repository_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, repository_policy_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 delete_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository_policy(Client, Input, []).
+
+-spec delete_repository_policy(map(), delete_repository_policy_request(), proplists:proplist()) ->
+    {ok, delete_repository_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, repository_policy_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 delete_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepositoryPolicy">>, Input, Options).
 
 %% @doc Returns the image tag details for a repository in a public registry.
+-spec describe_image_tags(map(), describe_image_tags_request()) ->
+    {ok, describe_image_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 describe_image_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_image_tags(Client, Input, []).
+
+-spec describe_image_tags(map(), describe_image_tags_request(), proplists:proplist()) ->
+    {ok, describe_image_tags_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 describe_image_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageTags">>, Input, Options).
@@ -188,25 +951,70 @@ describe_image_tags(Client, Input, Options)
 %% command shows the uncompressed image size. Therefore, it might return a
 %% larger image
 %% size than the image sizes that are returned by `DescribeImages'.
+-spec describe_images(map(), describe_images_request()) ->
+    {ok, describe_images_response(), tuple()} |
+    {error, any()} |
+    {error, image_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
+
+-spec describe_images(map(), describe_images_request(), proplists:proplist()) ->
+    {ok, describe_images_response(), tuple()} |
+    {error, any()} |
+    {error, image_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 describe_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImages">>, Input, Options).
 
 %% @doc Returns details for a public registry.
+-spec describe_registries(map(), describe_registries_request()) ->
+    {ok, describe_registries_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 describe_registries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_registries(Client, Input, []).
+
+-spec describe_registries(map(), describe_registries_request(), proplists:proplist()) ->
+    {ok, describe_registries_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 describe_registries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRegistries">>, Input, Options).
 
 %% @doc Describes repositories that are in a public registry.
+-spec describe_repositories(map(), describe_repositories_request()) ->
+    {ok, describe_repositories_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 describe_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_repositories(Client, Input, []).
+
+-spec describe_repositories(map(), describe_repositories_request(), proplists:proplist()) ->
+    {ok, describe_repositories_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 describe_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRepositories">>, Input, Options).
@@ -220,17 +1028,41 @@ describe_repositories(Client, Input, Options)
 %% This API requires
 %% the `ecr-public:GetAuthorizationToken' and
 %% `sts:GetServiceBearerToken' permissions.
+-spec get_authorization_token(map(), get_authorization_token_request()) ->
+    {ok, get_authorization_token_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 get_authorization_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_authorization_token(Client, Input, []).
+
+-spec get_authorization_token(map(), get_authorization_token_request(), proplists:proplist()) ->
+    {ok, get_authorization_token_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 get_authorization_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAuthorizationToken">>, Input, Options).
 
 %% @doc Retrieves catalog metadata for a public registry.
+-spec get_registry_catalog_data(map(), get_registry_catalog_data_request()) ->
+    {ok, get_registry_catalog_data_response(), tuple()} |
+    {error, any()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 get_registry_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_registry_catalog_data(Client, Input, []).
+
+-spec get_registry_catalog_data(map(), get_registry_catalog_data_request(), proplists:proplist()) ->
+    {ok, get_registry_catalog_data_response(), tuple()} |
+    {error, any()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 get_registry_catalog_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegistryCatalogData">>, Input, Options).
@@ -239,17 +1071,51 @@ get_registry_catalog_data(Client, Input, Options)
 %%
 %% This metadata is
 %% displayed publicly in the Amazon ECR Public Gallery.
+-spec get_repository_catalog_data(map(), get_repository_catalog_data_request()) ->
+    {ok, get_repository_catalog_data_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_catalog_data_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 get_repository_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_catalog_data(Client, Input, []).
+
+-spec get_repository_catalog_data(map(), get_repository_catalog_data_request(), proplists:proplist()) ->
+    {ok, get_repository_catalog_data_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_catalog_data_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 get_repository_catalog_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryCatalogData">>, Input, Options).
 
 %% @doc Retrieves the repository policy for the specified repository.
+-spec get_repository_policy(map(), get_repository_policy_request()) ->
+    {ok, get_repository_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, repository_policy_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 get_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_policy(Client, Input, []).
+
+-spec get_repository_policy(map(), get_repository_policy_request(), proplists:proplist()) ->
+    {ok, get_repository_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, repository_policy_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 get_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryPolicy">>, Input, Options).
@@ -265,17 +1131,49 @@ get_repository_policy(Client, Input, Options)
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
+-spec initiate_layer_upload(map(), initiate_layer_upload_request()) ->
+    {ok, initiate_layer_upload_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 initiate_layer_upload(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_layer_upload(Client, Input, []).
+
+-spec initiate_layer_upload(map(), initiate_layer_upload_request(), proplists:proplist()) ->
+    {ok, initiate_layer_upload_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 initiate_layer_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiateLayerUpload">>, Input, Options).
 
 %% @doc List the tags for an Amazon ECR Public resource.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -292,26 +1190,83 @@ list_tags_for_resource(Client, Input, Options)
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
+-spec put_image(map(), put_image_request()) ->
+    {ok, put_image_response(), tuple()} |
+    {error, any()} |
+    {error, image_already_exists_exception(), tuple()} |
+    {error, image_digest_does_not_match_exception(), tuple()} |
+    {error, image_tag_already_exists_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, layers_not_found_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, referenced_images_not_found_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 put_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image(Client, Input, []).
+
+-spec put_image(map(), put_image_request(), proplists:proplist()) ->
+    {ok, put_image_response(), tuple()} |
+    {error, any()} |
+    {error, image_already_exists_exception(), tuple()} |
+    {error, image_digest_does_not_match_exception(), tuple()} |
+    {error, image_tag_already_exists_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, layers_not_found_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, referenced_images_not_found_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 put_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImage">>, Input, Options).
 
 %% @doc Create or update the catalog data for a public registry.
+-spec put_registry_catalog_data(map(), put_registry_catalog_data_request()) ->
+    {ok, put_registry_catalog_data_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 put_registry_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registry_catalog_data(Client, Input, []).
+
+-spec put_registry_catalog_data(map(), put_registry_catalog_data_request(), proplists:proplist()) ->
+    {ok, put_registry_catalog_data_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 put_registry_catalog_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRegistryCatalogData">>, Input, Options).
 
 %% @doc Creates or updates the catalog data for a repository in a public
 %% registry.
+-spec put_repository_catalog_data(map(), put_repository_catalog_data_request()) ->
+    {ok, put_repository_catalog_data_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 put_repository_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_repository_catalog_data(Client, Input, []).
+
+-spec put_repository_catalog_data(map(), put_repository_catalog_data_request(), proplists:proplist()) ->
+    {ok, put_repository_catalog_data_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 put_repository_catalog_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRepositoryCatalogData">>, Input, Options).
@@ -324,9 +1279,24 @@ put_repository_catalog_data(Client, Input, Options)
 %% Policies:
 %% https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html
 %% in the Amazon Elastic Container Registry User Guide.
+-spec set_repository_policy(map(), set_repository_policy_request()) ->
+    {ok, set_repository_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 set_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_repository_policy(Client, Input, []).
+
+-spec set_repository_policy(map(), set_repository_policy_request(), proplists:proplist()) ->
+    {ok, set_repository_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 set_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetRepositoryPolicy">>, Input, Options).
@@ -339,17 +1309,55 @@ set_repository_policy(Client, Input, Options)
 %% changed. When a resource is deleted, the tags associated with that
 %% resource are also
 %% deleted.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes specified tags from a resource.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_tag_parameter_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -365,9 +1373,32 @@ untag_resource(Client, Input, Options)
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
 %% the `docker' CLI to pull, tag, and push images.
+-spec upload_layer_part(map(), upload_layer_part_request()) ->
+    {ok, upload_layer_part_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_layer_part_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()} |
+    {error, upload_not_found_exception(), tuple()}.
 upload_layer_part(Client, Input)
   when is_map(Client), is_map(Input) ->
     upload_layer_part(Client, Input, []).
+
+-spec upload_layer_part(map(), upload_layer_part_request(), proplists:proplist()) ->
+    {ok, upload_layer_part_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_layer_part_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, registry_not_found_exception(), tuple()} |
+    {error, repository_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_command_exception(), tuple()} |
+    {error, upload_not_found_exception(), tuple()}.
 upload_layer_part(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UploadLayerPart">>, Input, Options).

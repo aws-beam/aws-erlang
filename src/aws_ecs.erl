@@ -146,6 +146,2087 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% service_registry() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"containerPort">> => integer(),
+%%   <<"port">> => integer(),
+%%   <<"registryArn">> => string()
+%% }
+-type service_registry() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_definition_response() :: #{
+%%   <<"tags">> => list(tag()()),
+%%   <<"taskDefinition">> => task_definition()
+%% }
+-type describe_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% container_instance_health_status() :: #{
+%%   <<"details">> => list(instance_health_check_result()()),
+%%   <<"overallStatus">> => list(any())
+%% }
+-type container_instance_health_status() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capacity_provider_response() :: #{
+%%   <<"capacityProvider">> => capacity_provider()
+%% }
+-type delete_capacity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_instances_state_response() :: #{
+%%   <<"containerInstances">> => list(container_instance()()),
+%%   <<"failures">> => list(failure()())
+%% }
+-type update_container_instances_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% task_set() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"clusterArn">> => string(),
+%%   <<"computedDesiredCount">> => integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"externalId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"loadBalancers">> => list(load_balancer()()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pendingCount">> => integer(),
+%%   <<"platformFamily">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"runningCount">> => integer(),
+%%   <<"scale">> => scale(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceRegistries">> => list(service_registry()()),
+%%   <<"stabilityStatus">> => list(any()),
+%%   <<"stabilityStatusAt">> => non_neg_integer(),
+%%   <<"startedBy">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"taskDefinition">> => string(),
+%%   <<"taskSetArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type task_set() :: #{binary() => any()}.
+
+%% Example:
+%% task() :: #{
+%%   <<"healthStatus">> => list(any()),
+%%   <<"containers">> => list(container()()),
+%%   <<"attachments">> => list(attachment()()),
+%%   <<"taskDefinitionArn">> => string(),
+%%   <<"stoppedReason">> => string(),
+%%   <<"pullStoppedAt">> => non_neg_integer(),
+%%   <<"clusterArn">> => string(),
+%%   <<"stoppingAt">> => non_neg_integer(),
+%%   <<"availabilityZone">> => string(),
+%%   <<"connectivity">> => list(any()),
+%%   <<"executionStoppedAt">> => non_neg_integer(),
+%%   <<"stoppedAt">> => non_neg_integer(),
+%%   <<"desiredStatus">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"platformFamily">> => string(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"overrides">> => task_override(),
+%%   <<"attributes">> => list(attribute()()),
+%%   <<"pullStartedAt">> => non_neg_integer(),
+%%   <<"stopCode">> => list(any()),
+%%   <<"version">> => float(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"launchType">> => list(any()),
+%%   <<"capacityProviderName">> => string(),
+%%   <<"cpu">> => string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"lastStatus">> => string(),
+%%   <<"taskArn">> => string(),
+%%   <<"connectivityAt">> => non_neg_integer(),
+%%   <<"memory">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"group">> => string(),
+%%   <<"startedBy">> => string(),
+%%   <<"inferenceAccelerators">> => list(inference_accelerator()()),
+%%   <<"startedAt">> => non_neg_integer()
+%% }
+-type task() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capacity_provider_request() :: #{
+%%   <<"capacityProvider">> := string()
+%% }
+-type delete_capacity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type update_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_task_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"task">> := string()
+%% }
+-type stop_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_container_instances_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstances">> := list(string()()),
+%%   <<"include">> => list(list(any())())
+%% }
+-type describe_container_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% system_control() :: #{
+%%   <<"namespace">> => string(),
+%%   <<"value">> => string()
+%% }
+-type system_control() :: #{binary() => any()}.
+
+%% Example:
+%% container() :: #{
+%%   <<"containerArn">> => string(),
+%%   <<"cpu">> => string(),
+%%   <<"exitCode">> => integer(),
+%%   <<"gpuIds">> => list(string()()),
+%%   <<"healthStatus">> => list(any()),
+%%   <<"image">> => string(),
+%%   <<"imageDigest">> => string(),
+%%   <<"lastStatus">> => string(),
+%%   <<"managedAgents">> => list(managed_agent()()),
+%%   <<"memory">> => string(),
+%%   <<"memoryReservation">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkBindings">> => list(network_binding()()),
+%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"reason">> => string(),
+%%   <<"runtimeId">> => string(),
+%%   <<"taskArn">> => string()
+%% }
+-type container() :: #{binary() => any()}.
+
+%% Example:
+%% inference_accelerator() :: #{
+%%   <<"deviceName">> => string(),
+%%   <<"deviceType">> => string()
+%% }
+-type inference_accelerator() :: #{binary() => any()}.
+
+%% Example:
+%% run_task_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"tasks">> => list(task()())
+%% }
+-type run_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_configuration() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"properties">> => list(key_value_pair()()),
+%%   <<"type">> => list(any())
+%% }
+-type proxy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type attribute_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% setting() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"principalArn">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type setting() :: #{binary() => any()}.
+
+%% Example:
+%% deployment() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"desiredCount">> => integer(),
+%%   <<"failedTasks">> => integer(),
+%%   <<"id">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pendingCount">> => integer(),
+%%   <<"platformFamily">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"rolloutState">> => list(any()),
+%%   <<"rolloutStateReason">> => string(),
+%%   <<"runningCount">> => integer(),
+%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
+%%   <<"serviceConnectResources">> => list(service_connect_service_resource()()),
+%%   <<"status">> => string(),
+%%   <<"taskDefinition">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"volumeConfigurations">> => list(service_volume_configuration()())
+%% }
+-type deployment() :: #{binary() => any()}.
+
+%% Example:
+%% service_event() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"message">> => string()
+%% }
+-type service_event() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"include">> => list(list(any())()),
+%%   <<"services">> := list(string()())
+%% }
+-type describe_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% task_override() :: #{
+%%   <<"containerOverrides">> => list(container_override()()),
+%%   <<"cpu">> => string(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"inferenceAcceleratorOverrides">> => list(inference_accelerator_override()()),
+%%   <<"memory">> => string(),
+%%   <<"taskRoleArn">> => string()
+%% }
+-type task_override() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_default_request() :: #{
+%%   <<"name">> := list(any()),
+%%   <<"value">> := string()
+%% }
+-type put_account_setting_default_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_container_instance_response() :: #{
+%%   <<"containerInstance">> => container_instance()
+%% }
+-type register_container_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_task_set_request() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"clientToken">> => string(),
+%%   <<"cluster">> := string(),
+%%   <<"externalId">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"loadBalancers">> => list(load_balancer()()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"platformVersion">> => string(),
+%%   <<"scale">> => scale(),
+%%   <<"service">> := string(),
+%%   <<"serviceRegistries">> => list(service_registry()()),
+%%   <<"tags">> => list(tag()()),
+%%   <<"taskDefinition">> := string()
+%% }
+-type create_task_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_task_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstances">> := list(string()()),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"group">> => string(),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"overrides">> => task_override(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"referenceId">> => string(),
+%%   <<"startedBy">> => string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"taskDefinition">> := string(),
+%%   <<"volumeConfigurations">> => list(task_volume_configuration()())
+%% }
+-type start_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_setting_response() :: #{
+%%   <<"setting">> => setting()
+%% }
+-type delete_account_setting_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_capacity_provider_request() :: #{
+%%   <<"autoScalingGroupProvider">> := auto_scaling_group_provider_update(),
+%%   <<"name">> := string()
+%% }
+-type update_capacity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_response() :: #{
+%%   <<"setting">> => setting()
+%% }
+-type put_account_setting_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_by_namespace_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_services_by_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_task_protection_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"protectedTasks">> => list(protected_task()())
+%% }
+-type get_task_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_service_resource() :: #{
+%%   <<"discoveryArn">> => string(),
+%%   <<"discoveryName">> => string()
+%% }
+-type service_connect_service_resource() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% host_volume_properties() :: #{
+%%   <<"sourcePath">> => string()
+%% }
+-type host_volume_properties() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"ipv6Address">> => string(),
+%%   <<"privateIpv4Address">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% update_task_set_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"scale">> := scale(),
+%%   <<"service">> := string(),
+%%   <<"taskSet">> := string()
+%% }
+-type update_task_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% execute_command_configuration() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logConfiguration">> => execute_command_log_configuration(),
+%%   <<"logging">> => list(any())
+%% }
+-type execute_command_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% attachment() :: #{
+%%   <<"details">> => list(key_value_pair()()),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type attachment() :: #{binary() => any()}.
+
+%% Example:
+%% target_not_connected_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type target_not_connected_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"clusterArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"deploymentConfiguration">> => deployment_configuration(),
+%%   <<"deploymentController">> => deployment_controller(),
+%%   <<"deployments">> => list(deployment()()),
+%%   <<"desiredCount">> => integer(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"events">> => list(service_event()()),
+%%   <<"healthCheckGracePeriodSeconds">> => integer(),
+%%   <<"launchType">> => list(any()),
+%%   <<"loadBalancers">> => list(load_balancer()()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"pendingCount">> => integer(),
+%%   <<"placementConstraints">> => list(placement_constraint()()),
+%%   <<"placementStrategy">> => list(placement_strategy()()),
+%%   <<"platformFamily">> => string(),
+%%   <<"platformVersion">> => string(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"roleArn">> => string(),
+%%   <<"runningCount">> => integer(),
+%%   <<"schedulingStrategy">> => list(any()),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"serviceRegistries">> => list(service_registry()()),
+%%   <<"status">> => string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"taskDefinition">> => string(),
+%%   <<"taskSets">> => list(task_set()())
+%% }
+-type service() :: #{binary() => any()}.
+
+%% Example:
+%% host_entry() :: #{
+%%   <<"hostname">> => string(),
+%%   <<"ipAddress">> => string()
+%% }
+-type host_entry() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_definitions_request() :: #{
+%%   <<"familyPrefix">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_task_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% task_volume_configuration() :: #{
+%%   <<"managedEBSVolume">> => task_managed_ebs_volume_configuration(),
+%%   <<"name">> => string()
+%% }
+-type task_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% managed_agent_state_change() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"managedAgentName">> => list(any()),
+%%   <<"reason">> => string(),
+%%   <<"status">> => string()
+%% }
+-type managed_agent_state_change() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_task_set_response() :: #{
+%%   <<"taskSet">> => task_set()
+%% }
+-type delete_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_instances_state_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstances">> := list(string()()),
+%%   <<"status">> := list(any())
+%% }
+-type update_container_instances_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% docker_volume_configuration() :: #{
+%%   <<"autoprovision">> => boolean(),
+%%   <<"driver">> => string(),
+%%   <<"driverOpts">> => map(),
+%%   <<"labels">> => map(),
+%%   <<"scope">> => list(any())
+%% }
+-type docker_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_task_protection_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"expiresInMinutes">> => integer(),
+%%   <<"protectionEnabled">> := boolean(),
+%%   <<"tasks">> := list(string()())
+%% }
+-type update_task_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"configuration">> => cluster_configuration(),
+%%   <<"serviceConnectDefaults">> => cluster_service_connect_defaults_request(),
+%%   <<"settings">> => list(cluster_setting()())
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_container_instance_request() :: #{
+%%   <<"attributes">> => list(attribute()()),
+%%   <<"cluster">> => string(),
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"instanceIdentityDocument">> => string(),
+%%   <<"instanceIdentityDocumentSignature">> => string(),
+%%   <<"platformDevices">> => list(platform_device()()),
+%%   <<"tags">> => list(tag()()),
+%%   <<"totalResources">> => list(resource()()),
+%%   <<"versionInfo">> => version_info()
+%% }
+-type register_container_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% mount_point() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"readOnly">> => boolean(),
+%%   <<"sourceVolume">> => string()
+%% }
+-type mount_point() :: #{binary() => any()}.
+
+%% Example:
+%% timeout_configuration() :: #{
+%%   <<"idleTimeoutSeconds">> => integer(),
+%%   <<"perRequestTimeoutSeconds">> => integer()
+%% }
+-type timeout_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% managed_agent() :: #{
+%%   <<"lastStartedAt">> => non_neg_integer(),
+%%   <<"lastStatus">> => string(),
+%%   <<"name">> => list(any()),
+%%   <<"reason">> => string()
+%% }
+-type managed_agent() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_configuration() :: #{
+%%   <<"executeCommandConfiguration">> => execute_command_configuration()
+%% }
+-type cluster_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_alarms() :: #{
+%%   <<"alarmNames">> => list(string()()),
+%%   <<"enable">> => boolean(),
+%%   <<"rollback">> => boolean()
+%% }
+-type deployment_alarms() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_request() :: #{
+%%   <<"name">> := list(any()),
+%%   <<"principalArn">> => string(),
+%%   <<"value">> := string()
+%% }
+-type put_account_setting_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"schedulingStrategy">> => list(any())
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% execute_command_response() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"containerArn">> => string(),
+%%   <<"containerName">> => string(),
+%%   <<"interactive">> => boolean(),
+%%   <<"session">> => session(),
+%%   <<"taskArn">> => string()
+%% }
+-type execute_command_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"services">> => list(service()())
+%% }
+-type describe_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% task_managed_ebs_volume_termination_policy() :: #{
+%%   <<"deleteOnTermination">> => boolean()
+%% }
+-type task_managed_ebs_volume_termination_policy() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_task_definition_response() :: #{
+%%   <<"taskDefinition">> => task_definition()
+%% }
+-type deregister_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type namespace_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_feature_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_feature_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_configuration() :: #{
+%%   <<"alarms">> => deployment_alarms(),
+%%   <<"deploymentCircuitBreaker">> => deployment_circuit_breaker(),
+%%   <<"maximumPercent">> => integer(),
+%%   <<"minimumHealthyPercent">> => integer()
+%% }
+-type deployment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_settings_request() :: #{
+%%   <<"effectiveSettings">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"principalArn">> => string(),
+%%   <<"value">> => string()
+%% }
+-type list_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_settings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"settings">> => list(setting()())
+%% }
+-type list_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"capacityProviders">> => list(string()()),
+%%   <<"clusterName">> => string(),
+%%   <<"configuration">> => cluster_configuration(),
+%%   <<"defaultCapacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"serviceConnectDefaults">> => cluster_service_connect_defaults_request(),
+%%   <<"settings">> => list(cluster_setting()()),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_configuration() :: #{
+%%   <<"enabled">> => boolean(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"namespace">> => string(),
+%%   <<"services">> => list(service_connect_service()())
+%% }
+-type service_connect_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_providers_request() :: #{
+%%   <<"capacityProviders">> => list(string()()),
+%%   <<"include">> => list(list(any())()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_capacity_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceIds">> => list(string()())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% container_definition() :: #{
+%%   <<"pseudoTerminal">> => boolean(),
+%%   <<"essential">> => boolean(),
+%%   <<"hostname">> => string(),
+%%   <<"links">> => list(string()()),
+%%   <<"secrets">> => list(secret()()),
+%%   <<"portMappings">> => list(port_mapping()()),
+%%   <<"entryPoint">> => list(string()()),
+%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"environmentFiles">> => list(environment_file()()),
+%%   <<"readonlyRootFilesystem">> => boolean(),
+%%   <<"resourceRequirements">> => list(resource_requirement()()),
+%%   <<"dockerSecurityOptions">> => list(string()()),
+%%   <<"dnsSearchDomains">> => list(string()()),
+%%   <<"volumesFrom">> => list(volume_from()()),
+%%   <<"interactive">> => boolean(),
+%%   <<"privileged">> => boolean(),
+%%   <<"stopTimeout">> => integer(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"dependsOn">> => list(container_dependency()()),
+%%   <<"ulimits">> => list(ulimit()()),
+%%   <<"cpu">> => integer(),
+%%   <<"mountPoints">> => list(mount_point()()),
+%%   <<"memoryReservation">> => integer(),
+%%   <<"dnsServers">> => list(string()()),
+%%   <<"extraHosts">> => list(host_entry()()),
+%%   <<"memory">> => integer(),
+%%   <<"command">> => list(string()()),
+%%   <<"linuxParameters">> => linux_parameters(),
+%%   <<"firelensConfiguration">> => firelens_configuration(),
+%%   <<"healthCheck">> => health_check(),
+%%   <<"systemControls">> => list(system_control()()),
+%%   <<"workingDirectory">> => string(),
+%%   <<"startTimeout">> => integer(),
+%%   <<"credentialSpecs">> => list(string()()),
+%%   <<"repositoryCredentials">> => repository_credentials(),
+%%   <<"dockerLabels">> => map(),
+%%   <<"image">> => string(),
+%%   <<"user">> => string(),
+%%   <<"disableNetworking">> => boolean(),
+%%   <<"name">> => string()
+%% }
+-type container_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_task_protection_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"tasks">> => list(string()())
+%% }
+-type get_task_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_contains_tasks_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_contains_tasks_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_definitions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taskDefinitionArns">> => list(string()())
+%% }
+-type list_task_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% container_override() :: #{
+%%   <<"command">> => list(string()()),
+%%   <<"cpu">> => integer(),
+%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"environmentFiles">> => list(environment_file()()),
+%%   <<"memory">> => integer(),
+%%   <<"memoryReservation">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"resourceRequirements">> => list(resource_requirement()())
+%% }
+-type container_override() :: #{binary() => any()}.
+
+%% Example:
+%% ulimit() :: #{
+%%   <<"hardLimit">> => integer(),
+%%   <<"name">> => list(any()),
+%%   <<"softLimit">> => integer()
+%% }
+-type ulimit() :: #{binary() => any()}.
+
+%% Example:
+%% execute_command_log_configuration() :: #{
+%%   <<"cloudWatchEncryptionEnabled">> => boolean(),
+%%   <<"cloudWatchLogGroupName">> => string(),
+%%   <<"s3BucketName">> => string(),
+%%   <<"s3EncryptionEnabled">> => boolean(),
+%%   <<"s3KeyPrefix">> => string()
+%% }
+-type execute_command_log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cluster() :: #{
+%%   <<"activeServicesCount">> => integer(),
+%%   <<"attachments">> => list(attachment()()),
+%%   <<"attachmentsStatus">> => string(),
+%%   <<"capacityProviders">> => list(string()()),
+%%   <<"clusterArn">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"configuration">> => cluster_configuration(),
+%%   <<"defaultCapacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"pendingTasksCount">> => integer(),
+%%   <<"registeredContainerInstancesCount">> => integer(),
+%%   <<"runningTasksCount">> => integer(),
+%%   <<"serviceConnectDefaults">> => cluster_service_connect_defaults(),
+%%   <<"settings">> => list(cluster_setting()()),
+%%   <<"statistics">> => list(key_value_pair()()),
+%%   <<"status">> => string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type cluster() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_state_change() :: #{
+%%   <<"attachmentArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type attachment_state_change() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArns">> => list(string()())
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_not_active_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_not_active_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_setting() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type cluster_setting() :: #{binary() => any()}.
+
+%% Example:
+%% delete_task_definitions_request() :: #{
+%%   <<"taskDefinitions">> := list(string()())
+%% }
+-type delete_task_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_sets_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"include">> => list(list(any())()),
+%%   <<"service">> := string(),
+%%   <<"taskSets">> => list(string()())
+%% }
+-type describe_task_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_container_state_change_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerName">> => string(),
+%%   <<"exitCode">> => integer(),
+%%   <<"networkBindings">> => list(network_binding()()),
+%%   <<"reason">> => string(),
+%%   <<"runtimeId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"task">> => string()
+%% }
+-type submit_container_state_change_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_request() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"clientToken">> => string(),
+%%   <<"cluster">> => string(),
+%%   <<"deploymentConfiguration">> => deployment_configuration(),
+%%   <<"deploymentController">> => deployment_controller(),
+%%   <<"desiredCount">> => integer(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"healthCheckGracePeriodSeconds">> => integer(),
+%%   <<"launchType">> => list(any()),
+%%   <<"loadBalancers">> => list(load_balancer()()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"placementConstraints">> => list(placement_constraint()()),
+%%   <<"placementStrategy">> => list(placement_strategy()()),
+%%   <<"platformVersion">> => string(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"role">> => string(),
+%%   <<"schedulingStrategy">> => list(any()),
+%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
+%%   <<"serviceName">> := string(),
+%%   <<"serviceRegistries">> => list(service_registry()()),
+%%   <<"tags">> => list(tag()()),
+%%   <<"taskDefinition">> => string(),
+%%   <<"volumeConfigurations">> => list(service_volume_configuration()())
+%% }
+-type create_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% task_definition_placement_constraint() :: #{
+%%   <<"expression">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type task_definition_placement_constraint() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_definition_families_response() :: #{
+%%   <<"families">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_task_definition_families_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_task_set_response() :: #{
+%%   <<"taskSet">> => task_set()
+%% }
+-type update_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attributes_response() :: #{
+%%   <<"attributes">> => list(attribute()())
+%% }
+-type delete_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tasks_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"tasks">> => list(task()())
+%% }
+-type describe_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_circuit_breaker() :: #{
+%%   <<"enable">> => boolean(),
+%%   <<"rollback">> => boolean()
+%% }
+-type deployment_circuit_breaker() :: #{binary() => any()}.
+
+%% Example:
+%% describe_container_instances_response() :: #{
+%%   <<"containerInstances">> => list(container_instance()()),
+%%   <<"failures">> => list(failure()())
+%% }
+-type describe_container_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% container_state_change() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"exitCode">> => integer(),
+%%   <<"imageDigest">> => string(),
+%%   <<"networkBindings">> => list(network_binding()()),
+%%   <<"reason">> => string(),
+%%   <<"runtimeId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type container_state_change() :: #{binary() => any()}.
+
+%% Example:
+%% secret() :: #{
+%%   <<"name">> => string(),
+%%   <<"valueFrom">> => string()
+%% }
+-type secret() :: #{binary() => any()}.
+
+%% Example:
+%% put_cluster_capacity_providers_request() :: #{
+%%   <<"capacityProviders">> := list(string()()),
+%%   <<"cluster">> := string(),
+%%   <<"defaultCapacityProviderStrategy">> := list(capacity_provider_strategy_item()())
+%% }
+-type put_cluster_capacity_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_provider_update() :: #{
+%%   <<"managedDraining">> => list(any()),
+%%   <<"managedScaling">> => managed_scaling(),
+%%   <<"managedTerminationProtection">> => list(any())
+%% }
+-type auto_scaling_group_provider_update() :: #{binary() => any()}.
+
+%% Example:
+%% instance_health_check_result() :: #{
+%%   <<"lastStatusChange">> => non_neg_integer(),
+%%   <<"lastUpdated">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type instance_health_check_result() :: #{binary() => any()}.
+
+%% Example:
+%% network_binding() :: #{
+%%   <<"bindIP">> => string(),
+%%   <<"containerPort">> => integer(),
+%%   <<"containerPortRange">> => string(),
+%%   <<"hostPort">> => integer(),
+%%   <<"hostPortRange">> => string(),
+%%   <<"protocol">> => list(any())
+%% }
+-type network_binding() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_sets_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"taskSets">> => list(task_set()())
+%% }
+-type describe_task_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_container_instance_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstance">> := string(),
+%%   <<"force">> => boolean()
+%% }
+-type deregister_container_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_container_instances_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"filter">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_container_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_task_state_change_request() :: #{
+%%   <<"attachments">> => list(attachment_state_change()()),
+%%   <<"cluster">> => string(),
+%%   <<"containers">> => list(container_state_change()()),
+%%   <<"executionStoppedAt">> => non_neg_integer(),
+%%   <<"managedAgents">> => list(managed_agent_state_change()()),
+%%   <<"pullStartedAt">> => non_neg_integer(),
+%%   <<"pullStoppedAt">> => non_neg_integer(),
+%%   <<"reason">> => string(),
+%%   <<"status">> => string(),
+%%   <<"task">> => string()
+%% }
+-type submit_task_state_change_request() :: #{binary() => any()}.
+
+%% Example:
+%% health_check() :: #{
+%%   <<"command">> => list(string()()),
+%%   <<"interval">> => integer(),
+%%   <<"retries">> => integer(),
+%%   <<"startPeriod">> => integer(),
+%%   <<"timeout">> => integer()
+%% }
+-type health_check() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_agent_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstance">> := string()
+%% }
+-type update_container_agent_request() :: #{binary() => any()}.
+
+%% Example:
+%% ephemeral_storage() :: #{
+%%   <<"sizeInGiB">> => integer()
+%% }
+-type ephemeral_storage() :: #{binary() => any()}.
+
+%% Example:
+%% submit_attachment_state_changes_response() :: #{
+%%   <<"acknowledgment">> => string()
+%% }
+-type submit_attachment_state_changes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_response() :: #{
+%%   <<"clusterArns">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% task_set_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type task_set_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% session() :: #{
+%%   <<"sessionId">> => string(),
+%%   <<"streamUrl">> => string(),
+%%   <<"tokenValue">> => string()
+%% }
+-type session() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_provider_response() :: #{
+%%   <<"capacityProvider">> => capacity_provider()
+%% }
+-type create_capacity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_container_agent_response() :: #{
+%%   <<"containerInstance">> => container_instance()
+%% }
+-type update_container_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_attributes_response() :: #{
+%%   <<"attributes">> => list(attribute()())
+%% }
+-type put_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% task_definition() :: #{
+%%   <<"compatibilities">> => list(list(any())()),
+%%   <<"containerDefinitions">> => list(container_definition()()),
+%%   <<"cpu">> => string(),
+%%   <<"deregisteredAt">> => non_neg_integer(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"family">> => string(),
+%%   <<"inferenceAccelerators">> => list(inference_accelerator()()),
+%%   <<"ipcMode">> => list(any()),
+%%   <<"memory">> => string(),
+%%   <<"networkMode">> => list(any()),
+%%   <<"pidMode">> => list(any()),
+%%   <<"placementConstraints">> => list(task_definition_placement_constraint()()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
+%%   <<"registeredAt">> => non_neg_integer(),
+%%   <<"registeredBy">> => string(),
+%%   <<"requiresAttributes">> => list(attribute()()),
+%%   <<"requiresCompatibilities">> => list(list(any())()),
+%%   <<"revision">> => integer(),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"status">> => list(any()),
+%%   <<"taskDefinitionArn">> => string(),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(volume()())
+%% }
+-type task_definition() :: #{binary() => any()}.
+
+%% Example:
+%% list_container_instances_response() :: #{
+%%   <<"containerInstanceArns">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_container_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_settings_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"settings">> := list(cluster_setting()())
+%% }
+-type update_cluster_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_request() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"cluster">> => string(),
+%%   <<"deploymentConfiguration">> => deployment_configuration(),
+%%   <<"desiredCount">> => integer(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"forceNewDeployment">> => boolean(),
+%%   <<"healthCheckGracePeriodSeconds">> => integer(),
+%%   <<"loadBalancers">> => list(load_balancer()()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"placementConstraints">> => list(placement_constraint()()),
+%%   <<"placementStrategy">> => list(placement_strategy()()),
+%%   <<"platformVersion">> => string(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"service">> := string(),
+%%   <<"serviceConnectConfiguration">> => service_connect_configuration(),
+%%   <<"serviceRegistries">> => list(service_registry()()),
+%%   <<"taskDefinition">> => string(),
+%%   <<"volumeConfigurations">> => list(service_volume_configuration()())
+%% }
+-type update_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_tag_specification() :: #{
+%%   <<"propagateTags">> => list(any()),
+%%   <<"resourceType">> => list(any()),
+%%   <<"tags">> => list(tag()())
+%% }
+-type ebs_tag_specification() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_controller() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type deployment_controller() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_default_response() :: #{
+%%   <<"setting">> => setting()
+%% }
+-type put_account_setting_default_response() :: #{binary() => any()}.
+
+%% Example:
+%% discover_poll_endpoint_response() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"serviceConnectEndpoint">> => string(),
+%%   <<"telemetryEndpoint">> => string()
+%% }
+-type discover_poll_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_definition_request() :: #{
+%%   <<"include">> => list(list(any())()),
+%%   <<"taskDefinition">> := string()
+%% }
+-type describe_task_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% f_sx_windows_file_server_authorization_config() :: #{
+%%   <<"credentialsParameter">> => string(),
+%%   <<"domain">> => string()
+%% }
+-type f_sx_windows_file_server_authorization_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_capacity_provider_response() :: #{
+%%   <<"capacityProvider">> => capacity_provider()
+%% }
+-type update_capacity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% platform_unknown_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type platform_unknown_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attributes_request() :: #{
+%%   <<"attributes">> := list(attribute()()),
+%%   <<"cluster">> => string()
+%% }
+-type delete_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% e_f_s_authorization_config() :: #{
+%%   <<"accessPointId">> => string(),
+%%   <<"iam">> => list(any())
+%% }
+-type e_f_s_authorization_config() :: #{binary() => any()}.
+
+%% Example:
+%% update_task_protection_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"protectedTasks">> => list(protected_task()())
+%% }
+-type update_task_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_task_set_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"force">> => boolean(),
+%%   <<"service">> := string(),
+%%   <<"taskSet">> := string()
+%% }
+-type delete_task_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_contains_container_instances_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_contains_container_instances_exception() :: #{binary() => any()}.
+
+%% Example:
+%% submit_container_state_change_response() :: #{
+%%   <<"acknowledgment">> => string()
+%% }
+-type submit_container_state_change_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_task_definition_families_request() :: #{
+%%   <<"familyPrefix">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_task_definition_families_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_request() :: #{
+%%   <<"cluster">> := string()
+%% }
+-type delete_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% e_f_s_volume_configuration() :: #{
+%%   <<"authorizationConfig">> => e_f_s_authorization_config(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"rootDirectory">> => string(),
+%%   <<"transitEncryption">> => list(any()),
+%%   <<"transitEncryptionPort">> => integer()
+%% }
+-type e_f_s_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_settings_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type update_cluster_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_provider_strategy_item() :: #{
+%%   <<"base">> => integer(),
+%%   <<"capacityProvider">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type capacity_provider_strategy_item() :: #{binary() => any()}.
+
+%% Example:
+%% no_update_available_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_update_available_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_task_definitions_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"taskDefinitions">> => list(task_definition()())
+%% }
+-type delete_task_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% placement_constraint() :: #{
+%%   <<"expression">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type placement_constraint() :: #{binary() => any()}.
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% managed_scaling() :: #{
+%%   <<"instanceWarmupPeriod">> => integer(),
+%%   <<"maximumScalingStepSize">> => integer(),
+%%   <<"minimumScalingStepSize">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"targetCapacity">> => integer()
+%% }
+-type managed_scaling() :: #{binary() => any()}.
+
+%% Example:
+%% volume() :: #{
+%%   <<"configuredAtLaunch">> => boolean(),
+%%   <<"dockerVolumeConfiguration">> => docker_volume_configuration(),
+%%   <<"efsVolumeConfiguration">> => e_f_s_volume_configuration(),
+%%   <<"fsxWindowsFileServerVolumeConfiguration">> => f_sx_windows_file_server_volume_configuration(),
+%%   <<"host">> => host_volume_properties(),
+%%   <<"name">> => string()
+%% }
+-type volume() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% missing_version_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type missing_version_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_task_definition_request() :: #{
+%%   <<"containerDefinitions">> := list(container_definition()()),
+%%   <<"cpu">> => string(),
+%%   <<"ephemeralStorage">> => ephemeral_storage(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"family">> := string(),
+%%   <<"inferenceAccelerators">> => list(inference_accelerator()()),
+%%   <<"ipcMode">> => list(any()),
+%%   <<"memory">> => string(),
+%%   <<"networkMode">> => list(any()),
+%%   <<"pidMode">> => list(any()),
+%%   <<"placementConstraints">> => list(task_definition_placement_constraint()()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
+%%   <<"requiresCompatibilities">> => list(list(any())()),
+%%   <<"runtimePlatform">> => runtime_platform(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"taskRoleArn">> => string(),
+%%   <<"volumes">> => list(volume()())
+%% }
+-type register_task_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tasks_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"include">> => list(list(any())()),
+%%   <<"tasks">> := list(string()())
+%% }
+-type describe_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% inference_accelerator_override() :: #{
+%%   <<"deviceName">> => string(),
+%%   <<"deviceType">> => string()
+%% }
+-type inference_accelerator_override() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_provider() :: #{
+%%   <<"autoScalingGroupArn">> => string(),
+%%   <<"managedDraining">> => list(any()),
+%%   <<"managedScaling">> => managed_scaling(),
+%%   <<"managedTerminationProtection">> => list(any())
+%% }
+-type auto_scaling_group_provider() :: #{binary() => any()}.
+
+%% Example:
+%% platform_task_definition_incompatibility_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type platform_task_definition_incompatibility_exception() :: #{binary() => any()}.
+
+%% Example:
+%% port_mapping() :: #{
+%%   <<"appProtocol">> => list(any()),
+%%   <<"containerPort">> => integer(),
+%%   <<"containerPortRange">> => string(),
+%%   <<"hostPort">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"protocol">> => list(any())
+%% }
+-type port_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_response() :: #{
+%%   <<"clusters">> => list(cluster()()),
+%%   <<"failures">> => list(failure()())
+%% }
+-type describe_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_task_response() :: #{
+%%   <<"failures">> => list(failure()()),
+%%   <<"tasks">> => list(task()())
+%% }
+-type start_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer() :: #{
+%%   <<"containerName">> => string(),
+%%   <<"containerPort">> => integer(),
+%%   <<"loadBalancerName">> => string(),
+%%   <<"targetGroupArn">> => string()
+%% }
+-type load_balancer() :: #{binary() => any()}.
+
+%% Example:
+%% key_value_pair() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type key_value_pair() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_service_connect_defaults() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type cluster_service_connect_defaults() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% kernel_capabilities() :: #{
+%%   <<"add">> => list(string()()),
+%%   <<"drop">> => list(string()())
+%% }
+-type kernel_capabilities() :: #{binary() => any()}.
+
+%% Example:
+%% execute_command_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"command">> := string(),
+%%   <<"container">> => string(),
+%%   <<"interactive">> := boolean(),
+%%   <<"task">> := string()
+%% }
+-type execute_command_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_primary_task_set_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"primaryTaskSet">> := string(),
+%%   <<"service">> := string()
+%% }
+-type update_service_primary_task_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% runtime_platform() :: #{
+%%   <<"cpuArchitecture">> => list(any()),
+%%   <<"operatingSystemFamily">> => list(any())
+%% }
+-type runtime_platform() :: #{binary() => any()}.
+
+%% Example:
+%% target_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type target_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"force">> => boolean(),
+%%   <<"service">> := string()
+%% }
+-type delete_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% linux_parameters() :: #{
+%%   <<"capabilities">> => kernel_capabilities(),
+%%   <<"devices">> => list(device()()),
+%%   <<"initProcessEnabled">> => boolean(),
+%%   <<"maxSwap">> => integer(),
+%%   <<"sharedMemorySize">> => integer(),
+%%   <<"swappiness">> => integer(),
+%%   <<"tmpfs">> => list(tmpfs()())
+%% }
+-type linux_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% submit_task_state_change_response() :: #{
+%%   <<"acknowledgment">> => string()
+%% }
+-type submit_task_state_change_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_service() :: #{
+%%   <<"clientAliases">> => list(service_connect_client_alias()()),
+%%   <<"discoveryName">> => string(),
+%%   <<"ingressPortOverride">> => integer(),
+%%   <<"portName">> => string(),
+%%   <<"timeout">> => timeout_configuration(),
+%%   <<"tls">> => service_connect_tls_configuration()
+%% }
+-type service_connect_service() :: #{binary() => any()}.
+
+%% Example:
+%% scale() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type scale() :: #{binary() => any()}.
+
+%% Example:
+%% server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% platform_device() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type platform_device() :: #{binary() => any()}.
+
+%% Example:
+%% discover_poll_endpoint_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstance">> => string()
+%% }
+-type discover_poll_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_contains_services_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_contains_services_exception() :: #{binary() => any()}.
+
+%% Example:
+%% blocked_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type blocked_exception() :: #{binary() => any()}.
+
+%% Example:
+%% attribute() :: #{
+%%   <<"name">> => string(),
+%%   <<"targetId">> => string(),
+%%   <<"targetType">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type attribute() :: #{binary() => any()}.
+
+%% Example:
+%% list_tasks_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"containerInstance">> => string(),
+%%   <<"desiredStatus">> => list(any()),
+%%   <<"family">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceName">> => string(),
+%%   <<"startedBy">> => string()
+%% }
+-type list_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_providers_response() :: #{
+%%   <<"capacityProviders">> => list(capacity_provider()()),
+%%   <<"failures">> => list(failure()()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_capacity_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% failure() :: #{
+%%   <<"arn">> => string(),
+%%   <<"detail">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type failure() :: #{binary() => any()}.
+
+%% Example:
+%% stop_task_response() :: #{
+%%   <<"task">> => task()
+%% }
+-type stop_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_by_namespace_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArns">> => list(string()())
+%% }
+-type list_services_by_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_client_alias() :: #{
+%%   <<"dnsName">> => string(),
+%%   <<"port">> => integer()
+%% }
+-type service_connect_client_alias() :: #{binary() => any()}.
+
+%% Example:
+%% aws_vpc_configuration() :: #{
+%%   <<"assignPublicIp">> => list(any()),
+%%   <<"securityGroups">> => list(string()()),
+%%   <<"subnets">> => list(string()())
+%% }
+-type aws_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_provider() :: #{
+%%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider(),
+%%   <<"capacityProviderArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => list(tag()()),
+%%   <<"updateStatus">> => list(any()),
+%%   <<"updateStatusReason">> => string()
+%% }
+-type capacity_provider() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_provider_request() :: #{
+%%   <<"autoScalingGroupProvider">> := auto_scaling_group_provider(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_capacity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_attributes_request() :: #{
+%%   <<"attributes">> := list(attribute()()),
+%%   <<"cluster">> => string()
+%% }
+-type put_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_cluster_capacity_providers_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type put_cluster_capacity_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% protected_task() :: #{
+%%   <<"expirationDate">> => non_neg_integer(),
+%%   <<"protectionEnabled">> => boolean(),
+%%   <<"taskArn">> => string()
+%% }
+-type protected_task() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_tls_configuration() :: #{
+%%   <<"issuerCertificateAuthority">> => service_connect_tls_certificate_authority(),
+%%   <<"kmsKey">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type service_connect_tls_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_attributes_request() :: #{
+%%   <<"attributeName">> => string(),
+%%   <<"attributeValue">> => string(),
+%%   <<"cluster">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetType">> := list(any())
+%% }
+-type list_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_response() :: #{
+%%   <<"service">> => service()
+%% }
+-type update_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% volume_from() :: #{
+%%   <<"readOnly">> => boolean(),
+%%   <<"sourceContainer">> => string()
+%% }
+-type volume_from() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_response() :: #{
+%%   <<"service">> => service()
+%% }
+-type delete_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% device() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"hostPath">> => string(),
+%%   <<"permissions">> => list(list(any())())
+%% }
+-type device() :: #{binary() => any()}.
+
+%% Example:
+%% submit_attachment_state_changes_request() :: #{
+%%   <<"attachments">> := list(attachment_state_change()()),
+%%   <<"cluster">> => string()
+%% }
+-type submit_attachment_state_changes_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_setting_request() :: #{
+%%   <<"name">> := list(any()),
+%%   <<"principalArn">> => string()
+%% }
+-type delete_account_setting_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_task_set_response() :: #{
+%%   <<"taskSet">> => task_set()
+%% }
+-type create_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_volume_configuration() :: #{
+%%   <<"managedEBSVolume">> => service_managed_ebs_volume_configuration(),
+%%   <<"name">> => string()
+%% }
+-type service_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_tasks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taskArns">> => list(string()())
+%% }
+-type list_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_response() :: #{
+%%   <<"service">> => service()
+%% }
+-type create_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% task_managed_ebs_volume_configuration() :: #{
+%%   <<"encrypted">> => boolean(),
+%%   <<"filesystemType">> => list(any()),
+%%   <<"iops">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"sizeInGiB">> => integer(),
+%%   <<"snapshotId">> => string(),
+%%   <<"tagSpecifications">> => list(ebs_tag_specification()()),
+%%   <<"terminationPolicy">> => task_managed_ebs_volume_termination_policy(),
+%%   <<"throughput">> => integer(),
+%%   <<"volumeType">> => string()
+%% }
+-type task_managed_ebs_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"logDriver">> => list(any()),
+%%   <<"options">> => map(),
+%%   <<"secretOptions">> => list(secret()())
+%% }
+-type log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% container_instance() :: #{
+%%   <<"agentConnected">> => boolean(),
+%%   <<"agentUpdateStatus">> => list(any()),
+%%   <<"attachments">> => list(attachment()()),
+%%   <<"attributes">> => list(attribute()()),
+%%   <<"capacityProviderName">> => string(),
+%%   <<"containerInstanceArn">> => string(),
+%%   <<"ec2InstanceId">> => string(),
+%%   <<"healthStatus">> => container_instance_health_status(),
+%%   <<"pendingTasksCount">> => integer(),
+%%   <<"registeredAt">> => non_neg_integer(),
+%%   <<"registeredResources">> => list(resource()()),
+%%   <<"remainingResources">> => list(resource()()),
+%%   <<"runningTasksCount">> => integer(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"version">> => float(),
+%%   <<"versionInfo">> => version_info()
+%% }
+-type container_instance() :: #{binary() => any()}.
+
+%% Example:
+%% service_connect_tls_certificate_authority() :: #{
+%%   <<"awsPcaAuthorityArn">> => string()
+%% }
+-type service_connect_tls_certificate_authority() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_task_definition_request() :: #{
+%%   <<"taskDefinition">> := string()
+%% }
+-type deregister_task_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_requirement() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type resource_requirement() :: #{binary() => any()}.
+
+%% Example:
+%% firelens_configuration() :: #{
+%%   <<"options">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type firelens_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% version_info() :: #{
+%%   <<"agentHash">> => string(),
+%%   <<"agentVersion">> => string(),
+%%   <<"dockerVersion">> => string()
+%% }
+-type version_info() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_primary_task_set_response() :: #{
+%%   <<"taskSet">> => task_set()
+%% }
+-type update_service_primary_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_managed_ebs_volume_configuration() :: #{
+%%   <<"encrypted">> => boolean(),
+%%   <<"filesystemType">> => list(any()),
+%%   <<"iops">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"sizeInGiB">> => integer(),
+%%   <<"snapshotId">> => string(),
+%%   <<"tagSpecifications">> => list(ebs_tag_specification()()),
+%%   <<"throughput">> => integer(),
+%%   <<"volumeType">> => string()
+%% }
+-type service_managed_ebs_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% register_task_definition_response() :: #{
+%%   <<"tags">> => list(tag()()),
+%%   <<"taskDefinition">> => task_definition()
+%% }
+-type register_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_request() :: #{
+%%   <<"clusters">> => list(string()()),
+%%   <<"include">> => list(list(any())())
+%% }
+-type describe_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% run_task_request() :: #{
+%%   <<"capacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"clientToken">> => string(),
+%%   <<"cluster">> => string(),
+%%   <<"count">> => integer(),
+%%   <<"enableECSManagedTags">> => boolean(),
+%%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"group">> => string(),
+%%   <<"launchType">> => list(any()),
+%%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"overrides">> => task_override(),
+%%   <<"placementConstraints">> => list(placement_constraint()()),
+%%   <<"placementStrategy">> => list(placement_strategy()()),
+%%   <<"platformVersion">> => string(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"referenceId">> => string(),
+%%   <<"startedBy">> => string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"taskDefinition">> := string(),
+%%   <<"volumeConfigurations">> => list(task_volume_configuration()())
+%% }
+-type run_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_container_instance_response() :: #{
+%%   <<"containerInstance">> => container_instance()
+%% }
+-type deregister_container_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_service_connect_defaults_request() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type cluster_service_connect_defaults_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_attributes_response() :: #{
+%%   <<"attributes">> => list(attribute()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% repository_credentials() :: #{
+%%   <<"credentialsParameter">> => string()
+%% }
+-type repository_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% f_sx_windows_file_server_volume_configuration() :: #{
+%%   <<"authorizationConfig">> => f_sx_windows_file_server_authorization_config(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"rootDirectory">> => string()
+%% }
+-type f_sx_windows_file_server_volume_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% tmpfs() :: #{
+%%   <<"containerPath">> => string(),
+%%   <<"mountOptions">> => list(string()()),
+%%   <<"size">> => integer()
+%% }
+-type tmpfs() :: #{binary() => any()}.
+
+%% Example:
+%% environment_file() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type environment_file() :: #{binary() => any()}.
+
+%% Example:
+%% placement_strategy() :: #{
+%%   <<"field">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type placement_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type update_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% container_dependency() :: #{
+%%   <<"condition">> => list(any()),
+%%   <<"containerName">> => string()
+%% }
+-type container_dependency() :: #{binary() => any()}.
+
+%% Example:
+%% resource() :: #{
+%%   <<"doubleValue">> => float(),
+%%   <<"integerValue">> => integer(),
+%%   <<"longValue">> => float(),
+%%   <<"name">> => string(),
+%%   <<"stringSetValue">> => list(string()()),
+%%   <<"type">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -163,9 +2244,26 @@
 %% These providers are available to all accounts in the Amazon Web Services
 %% Regions that Fargate
 %% supports.
+-spec create_capacity_provider(map(), create_capacity_provider_request()) ->
+    {ok, create_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, update_in_progress_exception(), tuple()}.
 create_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_provider(Client, Input, []).
+
+-spec create_capacity_provider(map(), create_capacity_provider_request(), proplists:proplist()) ->
+    {ok, create_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, update_in_progress_exception(), tuple()}.
 create_capacity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCapacityProvider">>, Input, Options).
@@ -189,9 +2287,24 @@ create_capacity_provider(Client, Input, Options)
 %% service-linked roles for Amazon ECS:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec create_cluster(map(), create_cluster_request()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
+
+-spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -355,9 +2468,34 @@ create_cluster(Client, Input, Options)
 %% task placement:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec create_service(map(), create_service_request()) ->
+    {ok, create_service_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, platform_task_definition_incompatibility_exception(), tuple()} |
+    {error, platform_unknown_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
+
+-spec create_service(map(), create_service_request(), proplists:proplist()) ->
+    {ok, create_service_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, platform_task_definition_incompatibility_exception(), tuple()} |
+    {error, platform_unknown_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 create_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateService">>, Input, Options).
@@ -377,9 +2515,38 @@ create_service(Client, Input, Options)
 %% service quotas:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec create_task_set(map(), create_task_set_request()) ->
+    {ok, create_task_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, platform_task_definition_incompatibility_exception(), tuple()} |
+    {error, platform_unknown_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 create_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task_set(Client, Input, []).
+
+-spec create_task_set(map(), create_task_set_request(), proplists:proplist()) ->
+    {ok, create_task_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, platform_task_definition_incompatibility_exception(), tuple()} |
+    {error, platform_unknown_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 create_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTaskSet">>, Input, Options).
@@ -387,17 +2554,43 @@ create_task_set(Client, Input, Options)
 %% @doc Disables an account setting for a specified user, role, or the root
 %% user for an
 %% account.
+-spec delete_account_setting(map(), delete_account_setting_request()) ->
+    {ok, delete_account_setting_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 delete_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_setting(Client, Input, []).
+
+-spec delete_account_setting(map(), delete_account_setting_request(), proplists:proplist()) ->
+    {ok, delete_account_setting_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 delete_account_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccountSetting">>, Input, Options).
 
 %% @doc Deletes one or more custom attributes from an Amazon ECS resource.
+-spec delete_attributes(map(), delete_attributes_request()) ->
+    {ok, delete_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()}.
 delete_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_attributes(Client, Input, []).
+
+-spec delete_attributes(map(), delete_attributes_request(), proplists:proplist()) ->
+    {ok, delete_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()}.
 delete_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAttributes">>, Input, Options).
@@ -425,9 +2618,22 @@ delete_attributes(Client, Input, Options)
 %% deleted. To remove
 %% a capacity provider from a cluster, you can either use
 %% `PutClusterCapacityProviders' or delete the cluster.
+-spec delete_capacity_provider(map(), delete_capacity_provider_request()) ->
+    {ok, delete_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 delete_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_capacity_provider(Client, Input, []).
+
+-spec delete_capacity_provider(map(), delete_capacity_provider_request(), proplists:proplist()) ->
+    {ok, delete_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 delete_capacity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCapacityProvider">>, Input, Options).
@@ -447,9 +2653,32 @@ delete_capacity_provider(Client, Input, Options)
 %% it. You can list the container instances in a cluster with
 %% `ListContainerInstances' and deregister them with
 %% `DeregisterContainerInstance'.
+-spec delete_cluster(map(), delete_cluster_request()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_contains_container_instances_exception(), tuple()} |
+    {error, cluster_contains_services_exception(), tuple()} |
+    {error, cluster_contains_tasks_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, update_in_progress_exception(), tuple()}.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
+
+-spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_contains_container_instances_exception(), tuple()} |
+    {error, cluster_contains_services_exception(), tuple()} |
+    {error, cluster_contains_tasks_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, update_in_progress_exception(), tuple()}.
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
@@ -482,9 +2711,26 @@ delete_cluster(Client, Input, Options)
 %% service
 %% in either `ACTIVE' or `DRAINING' status, you receive an
 %% error.
+-spec delete_service(map(), delete_service_request()) ->
+    {ok, delete_service_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()}.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
+
+-spec delete_service(map(), delete_service_request(), proplists:proplist()) ->
+    {ok, delete_service_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()}.
 delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
@@ -525,9 +2771,24 @@ delete_service(Client, Input, Options)
 %% name is retained by Amazon ECS and the revision is incremented the next
 %% time you create a
 %% task definition with that name.
+-spec delete_task_definitions(map(), delete_task_definitions_request()) ->
+    {ok, delete_task_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 delete_task_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task_definitions(Client, Input, []).
+
+-spec delete_task_definitions(map(), delete_task_definitions_request(), proplists:proplist()) ->
+    {ok, delete_task_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 delete_task_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTaskDefinitions">>, Input, Options).
@@ -539,9 +2800,34 @@ delete_task_definitions(Client, Input, Options)
 %% Amazon ECS deployment types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec delete_task_set(map(), delete_task_set_request()) ->
+    {ok, delete_task_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, task_set_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 delete_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task_set(Client, Input, []).
+
+-spec delete_task_set(map(), delete_task_set_request(), proplists:proplist()) ->
+    {ok, delete_task_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, task_set_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 delete_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTaskSet">>, Input, Options).
@@ -570,9 +2856,24 @@ delete_task_set(Client, Input, Options)
 %% instance from your cluster (stopped container instances or instances with
 %% disconnected agents aren't automatically deregistered when
 %% terminated).
+-spec deregister_container_instance(map(), deregister_container_instance_request()) ->
+    {ok, deregister_container_instance_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 deregister_container_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_container_instance(Client, Input, []).
+
+-spec deregister_container_instance(map(), deregister_container_instance_request(), proplists:proplist()) ->
+    {ok, deregister_container_instance_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 deregister_container_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterContainerInstance">>, Input, Options).
@@ -610,25 +2911,64 @@ deregister_container_instance(Client, Input, Options)
 %% more
 %% information, see DeleteTaskDefinitions:
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteTaskDefinitions.html.
+-spec deregister_task_definition(map(), deregister_task_definition_request()) ->
+    {ok, deregister_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 deregister_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_task_definition(Client, Input, []).
+
+-spec deregister_task_definition(map(), deregister_task_definition_request(), proplists:proplist()) ->
+    {ok, deregister_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 deregister_task_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterTaskDefinition">>, Input, Options).
 
 %% @doc Describes one or more of your capacity providers.
+-spec describe_capacity_providers(map(), describe_capacity_providers_request()) ->
+    {ok, describe_capacity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_capacity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_capacity_providers(Client, Input, []).
+
+-spec describe_capacity_providers(map(), describe_capacity_providers_request(), proplists:proplist()) ->
+    {ok, describe_capacity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_capacity_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCapacityProviders">>, Input, Options).
 
 %% @doc Describes one or more of your clusters.
+-spec describe_clusters(map(), describe_clusters_request()) ->
+    {ok, describe_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
+
+-spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
+    {ok, describe_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
@@ -637,17 +2977,47 @@ describe_clusters(Client, Input, Options)
 %%
 %% Returns metadata about each container
 %% instance requested.
+-spec describe_container_instances(map(), describe_container_instances_request()) ->
+    {ok, describe_container_instances_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_container_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_container_instances(Client, Input, []).
+
+-spec describe_container_instances(map(), describe_container_instances_request(), proplists:proplist()) ->
+    {ok, describe_container_instances_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContainerInstances">>, Input, Options).
 
 %% @doc Describes the specified services running in your cluster.
+-spec describe_services(map(), describe_services_request()) ->
+    {ok, describe_services_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_services(Client, Input, []).
+
+-spec describe_services(map(), describe_services_request(), proplists:proplist()) ->
+    {ok, describe_services_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServices">>, Input, Options).
@@ -663,9 +3033,22 @@ describe_services(Client, Input, Options)
 %%
 %% You can only describe `INACTIVE' task definitions while an active task
 %% or service references them.
+-spec describe_task_definition(map(), describe_task_definition_request()) ->
+    {ok, describe_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_definition(Client, Input, []).
+
+-spec describe_task_definition(map(), describe_task_definition_request(), proplists:proplist()) ->
+    {ok, describe_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_task_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTaskDefinition">>, Input, Options).
@@ -679,9 +3062,32 @@ describe_task_definition(Client, Input, Options)
 %% Types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec describe_task_sets(map(), describe_task_sets_request()) ->
+    {ok, describe_task_sets_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 describe_task_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_task_sets(Client, Input, []).
+
+-spec describe_task_sets(map(), describe_task_sets_request(), proplists:proplist()) ->
+    {ok, describe_task_sets_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 describe_task_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTaskSets">>, Input, Options).
@@ -696,9 +3102,24 @@ describe_task_sets(Client, Input, Options)
 %% returned in the response. If you create a new cluster with the same name
 %% as the deleted
 %% cluster, the tagged tasks are not included in the response.
+-spec describe_tasks(map(), describe_tasks_request()) ->
+    {ok, describe_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tasks(Client, Input, []).
+
+-spec describe_tasks(map(), describe_tasks_request(), proplists:proplist()) ->
+    {ok, describe_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 describe_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTasks">>, Input, Options).
@@ -708,9 +3129,20 @@ describe_tasks(Client, Input, Options)
 %% for use outside of the agent.
 %%
 %% Returns an endpoint for the Amazon ECS agent to poll for updates.
+-spec discover_poll_endpoint(map(), discover_poll_endpoint_request()) ->
+    {ok, discover_poll_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 discover_poll_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     discover_poll_endpoint(Client, Input, []).
+
+-spec discover_poll_endpoint(map(), discover_poll_endpoint_request(), proplists:proplist()) ->
+    {ok, discover_poll_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 discover_poll_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverPollEndpoint">>, Input, Options).
@@ -729,25 +3161,78 @@ discover_poll_endpoint(Client, Input, Options)
 %% Exec for debugging:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html
 %% in the Amazon ECS Developer Guide.
+-spec execute_command(map(), execute_command_request()) ->
+    {ok, execute_command_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, target_not_connected_exception(), tuple()}.
 execute_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_command(Client, Input, []).
+
+-spec execute_command(map(), execute_command_request(), proplists:proplist()) ->
+    {ok, execute_command_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, target_not_connected_exception(), tuple()}.
 execute_command(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteCommand">>, Input, Options).
 
 %% @doc Retrieves the protection status of tasks in an Amazon ECS service.
+-spec get_task_protection(map(), get_task_protection_request()) ->
+    {ok, get_task_protection_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 get_task_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_task_protection(Client, Input, []).
+
+-spec get_task_protection(map(), get_task_protection_request(), proplists:proplist()) ->
+    {ok, get_task_protection_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 get_task_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTaskProtection">>, Input, Options).
 
 %% @doc Lists the account settings for a specified principal.
+-spec list_account_settings(map(), list_account_settings_request()) ->
+    {ok, list_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_settings(Client, Input, []).
+
+-spec list_account_settings(map(), list_account_settings_request(), proplists:proplist()) ->
+    {ok, list_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountSettings">>, Input, Options).
@@ -765,17 +3250,41 @@ list_account_settings(Client, Input, Options)
 %% for example,
 %% to see which container instances in a cluster are running a Linux AMI
 %% (`ecs.os-type=linux').
+-spec list_attributes(map(), list_attributes_request()) ->
+    {ok, list_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()}.
 list_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attributes(Client, Input, []).
+
+-spec list_attributes(map(), list_attributes_request(), proplists:proplist()) ->
+    {ok, list_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()}.
 list_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttributes">>, Input, Options).
 
 %% @doc Returns a list of existing clusters.
+-spec list_clusters(map(), list_clusters_request()) ->
+    {ok, list_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
+
+-spec list_clusters(map(), list_clusters_request(), proplists:proplist()) ->
+    {ok, list_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusters">>, Input, Options).
@@ -789,9 +3298,24 @@ list_clusters(Client, Input, Options)
 %% Cluster Query Language:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec list_container_instances(map(), list_container_instances_request()) ->
+    {ok, list_container_instances_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_container_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_container_instances(Client, Input, []).
+
+-spec list_container_instances(map(), list_container_instances_request(), proplists:proplist()) ->
+    {ok, list_container_instances_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContainerInstances">>, Input, Options).
@@ -800,9 +3324,24 @@ list_container_instances(Client, Input, Options)
 %%
 %% You can filter the results by cluster, launch type, and
 %% scheduling strategy.
+-spec list_services(map(), list_services_request()) ->
+    {ok, list_services_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
+
+-spec list_services(map(), list_services_request(), proplists:proplist()) ->
+    {ok, list_services_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
@@ -818,17 +3357,47 @@ list_services(Client, Input, Options)
 %% `ListServices'. For more information, see Service Connect:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec list_services_by_namespace(map(), list_services_by_namespace_request()) ->
+    {ok, list_services_by_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_services_by_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services_by_namespace(Client, Input, []).
+
+-spec list_services_by_namespace(map(), list_services_by_namespace_request(), proplists:proplist()) ->
+    {ok, list_services_by_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_services_by_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServicesByNamespace">>, Input, Options).
 
 %% @doc List the tags for an Amazon ECS resource.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -846,9 +3415,22 @@ list_tags_for_resource(Client, Input, Options)
 %% task definition revisions by setting the `status' parameter to
 %% `ACTIVE'. You can also filter the results with the
 %% `familyPrefix' parameter.
+-spec list_task_definition_families(map(), list_task_definition_families_request()) ->
+    {ok, list_task_definition_families_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_task_definition_families(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_definition_families(Client, Input, []).
+
+-spec list_task_definition_families(map(), list_task_definition_families_request(), proplists:proplist()) ->
+    {ok, list_task_definition_families_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_task_definition_families(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTaskDefinitionFamilies">>, Input, Options).
@@ -860,9 +3442,22 @@ list_task_definition_families(Client, Input, Options)
 %% the results by family name with the `familyPrefix' parameter or by
 %% status
 %% with the `status' parameter.
+-spec list_task_definitions(map(), list_task_definitions_request()) ->
+    {ok, list_task_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_task_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_task_definitions(Client, Input, []).
+
+-spec list_task_definitions(map(), list_task_definitions_request(), proplists:proplist()) ->
+    {ok, list_task_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 list_task_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTaskDefinitions">>, Input, Options).
@@ -875,9 +3470,26 @@ list_task_definitions(Client, Input, Options)
 %% the desired status of the task.
 %%
 %% Recently stopped tasks might appear in the returned results.
+-spec list_tasks(map(), list_tasks_request()) ->
+    {ok, list_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()}.
 list_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tasks(Client, Input, []).
+
+-spec list_tasks(map(), list_tasks_request(), proplists:proplist()) ->
+    {ok, list_tasks_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()}.
 list_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTasks">>, Input, Options).
@@ -894,9 +3506,22 @@ list_tasks(Client, Input, Options)
 %% Settings:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec put_account_setting(map(), put_account_setting_request()) ->
+    {ok, put_account_setting_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 put_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting(Client, Input, []).
+
+-spec put_account_setting(map(), put_account_setting_request(), proplists:proplist()) ->
+    {ok, put_account_setting_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 put_account_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountSetting">>, Input, Options).
@@ -906,9 +3531,22 @@ put_account_setting(Client, Input, Options)
 %% setting has been specified.
 %%
 %% Account settings are set on a per-Region basis.
+-spec put_account_setting_default(map(), put_account_setting_default_request()) ->
+    {ok, put_account_setting_default_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 put_account_setting_default(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting_default(Client, Input, []).
+
+-spec put_account_setting_default(map(), put_account_setting_default_request(), proplists:proplist()) ->
+    {ok, put_account_setting_default_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 put_account_setting_default(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountSettingDefault">>, Input, Options).
@@ -922,9 +3560,24 @@ put_account_setting_default(Client, Input, Options)
 %% see Attributes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec put_attributes(map(), put_attributes_request()) ->
+    {ok, put_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, attribute_limit_exceeded_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()}.
 put_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_attributes(Client, Input, []).
+
+-spec put_attributes(map(), put_attributes_request(), proplists:proplist()) ->
+    {ok, put_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, attribute_limit_exceeded_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()}.
 put_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAttributes">>, Input, Options).
@@ -955,9 +3608,28 @@ put_attributes(Client, Input, Options)
 %% However, you must specify an empty array (`[]') to bypass defining a
 %% default
 %% strategy.
+-spec put_cluster_capacity_providers(map(), put_cluster_capacity_providers_request()) ->
+    {ok, put_cluster_capacity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, update_in_progress_exception(), tuple()}.
 put_cluster_capacity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_cluster_capacity_providers(Client, Input, []).
+
+-spec put_cluster_capacity_providers(map(), put_cluster_capacity_providers_request(), proplists:proplist()) ->
+    {ok, put_cluster_capacity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, update_in_progress_exception(), tuple()}.
 put_cluster_capacity_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutClusterCapacityProviders">>, Input, Options).
@@ -969,9 +3641,22 @@ put_cluster_capacity_providers(Client, Input, Options)
 %% Registers an EC2 instance into the specified cluster. This instance
 %% becomes available
 %% to place containers on.
+-spec register_container_instance(map(), register_container_instance_request()) ->
+    {ok, register_container_instance_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 register_container_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_container_instance(Client, Input, []).
+
+-spec register_container_instance(map(), register_container_instance_request(), proplists:proplist()) ->
+    {ok, register_container_instance_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 register_container_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterContainerInstance">>, Input, Options).
@@ -1011,9 +3696,22 @@ register_container_instance(Client, Input, Options)
 %% the task definition. For more information, see Task Networking:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec register_task_definition(map(), register_task_definition_request()) ->
+    {ok, register_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 register_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_task_definition(Client, Input, []).
+
+-spec register_task_definition(map(), register_task_definition_request(), proplists:proplist()) ->
+    {ok, register_task_definition_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 register_task_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterTaskDefinition">>, Input, Options).
@@ -1076,9 +3774,36 @@ register_task_definition(Client, Input, Options)
 %% with a couple of seconds of wait time, and increase gradually up to about
 %% five
 %% minutes of wait time.
+-spec run_task(map(), run_task_request()) ->
+    {ok, run_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, blocked_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, platform_task_definition_incompatibility_exception(), tuple()} |
+    {error, platform_unknown_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 run_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     run_task(Client, Input, []).
+
+-spec run_task(map(), run_task_request(), proplists:proplist()) ->
+    {ok, run_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, blocked_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, platform_task_definition_incompatibility_exception(), tuple()} |
+    {error, platform_unknown_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 run_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunTask">>, Input, Options).
@@ -1106,9 +3831,26 @@ run_task(Client, Input, Options)
 %% updating a service. For more infomation, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec start_task(map(), start_task_request()) ->
+    {ok, start_task_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 start_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task(Client, Input, []).
+
+-spec start_task(map(), start_task_request(), proplists:proplist()) ->
+    {ok, start_task_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 start_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTask">>, Input, Options).
@@ -1135,9 +3877,24 @@ start_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html
 %% in the
 %% Amazon Elastic Container Service Developer Guide.
+-spec stop_task(map(), stop_task_request()) ->
+    {ok, stop_task_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 stop_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_task(Client, Input, []).
+
+-spec stop_task(map(), stop_task_request(), proplists:proplist()) ->
+    {ok, stop_task_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 stop_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTask">>, Input, Options).
@@ -1147,9 +3904,24 @@ stop_task(Client, Input, Options)
 %% for use outside of the agent.
 %%
 %% Sent to acknowledge that an attachment changed states.
+-spec submit_attachment_state_changes(map(), submit_attachment_state_changes_request()) ->
+    {ok, submit_attachment_state_changes_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 submit_attachment_state_changes(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_attachment_state_changes(Client, Input, []).
+
+-spec submit_attachment_state_changes(map(), submit_attachment_state_changes_request(), proplists:proplist()) ->
+    {ok, submit_attachment_state_changes_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 submit_attachment_state_changes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitAttachmentStateChanges">>, Input, Options).
@@ -1159,9 +3931,22 @@ submit_attachment_state_changes(Client, Input, Options)
 %% for use outside of the agent.
 %%
 %% Sent to acknowledge that a container changed states.
+-spec submit_container_state_change(map(), submit_container_state_change_request()) ->
+    {ok, submit_container_state_change_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 submit_container_state_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_container_state_change(Client, Input, []).
+
+-spec submit_container_state_change(map(), submit_container_state_change_request(), proplists:proplist()) ->
+    {ok, submit_container_state_change_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 submit_container_state_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitContainerStateChange">>, Input, Options).
@@ -1171,9 +3956,24 @@ submit_container_state_change(Client, Input, Options)
 %% for use outside of the agent.
 %%
 %% Sent to acknowledge that a task changed states.
+-spec submit_task_state_change(map(), submit_task_state_change_request()) ->
+    {ok, submit_task_state_change_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 submit_task_state_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_task_state_change(Client, Input, []).
+
+-spec submit_task_state_change(map(), submit_task_state_change_request(), proplists:proplist()) ->
+    {ok, submit_task_state_change_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 submit_task_state_change(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SubmitTaskStateChange">>, Input, Options).
@@ -1185,41 +3985,120 @@ submit_task_state_change(Client, Input, Options)
 %% request parameters, they aren't changed. When a resource is deleted,
 %% the tags that are
 %% associated with that resource are deleted as well.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes specified tags from a resource.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Modifies the parameters for a capacity provider.
+-spec update_capacity_provider(map(), update_capacity_provider_request()) ->
+    {ok, update_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 update_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_capacity_provider(Client, Input, []).
+
+-spec update_capacity_provider(map(), update_capacity_provider_request(), proplists:proplist()) ->
+    {ok, update_capacity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 update_capacity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCapacityProvider">>, Input, Options).
 
 %% @doc Updates the cluster.
+-spec update_cluster(map(), update_cluster_request()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
+
+-spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
 
 %% @doc Modifies the settings to use for a cluster.
+-spec update_cluster_settings(map(), update_cluster_settings_request()) ->
+    {ok, update_cluster_settings_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 update_cluster_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster_settings(Client, Input, []).
+
+-spec update_cluster_settings(map(), update_cluster_settings_request(), proplists:proplist()) ->
+    {ok, update_cluster_settings_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 update_cluster_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateClusterSettings">>, Input, Options).
@@ -1258,9 +4137,30 @@ update_cluster_settings(Client, Input, Options)
 %% Manually updating the Amazon ECS container agent:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec update_container_agent(map(), update_container_agent_request()) ->
+    {ok, update_container_agent_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_version_exception(), tuple()} |
+    {error, no_update_available_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, update_in_progress_exception(), tuple()}.
 update_container_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_agent(Client, Input, []).
+
+-spec update_container_agent(map(), update_container_agent_request(), proplists:proplist()) ->
+    {ok, update_container_agent_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, missing_version_exception(), tuple()} |
+    {error, no_update_available_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, update_in_progress_exception(), tuple()}.
 update_container_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerAgent">>, Input, Options).
@@ -1335,9 +4235,24 @@ update_container_agent(Client, Input, Options)
 %% `ACTIVE' status and once it has reached that status the Amazon ECS
 %% scheduler
 %% can begin scheduling tasks on the instance again.
+-spec update_container_instances_state(map(), update_container_instances_state_request()) ->
+    {ok, update_container_instances_state_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 update_container_instances_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_instances_state(Client, Input, []).
+
+-spec update_container_instances_state(map(), update_container_instances_state_request(), proplists:proplist()) ->
+    {ok, update_container_instances_state_response(), tuple()} |
+    {error, any()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()}.
 update_container_instances_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerInstancesState">>, Input, Options).
@@ -1514,9 +4429,38 @@ update_container_instances_state(Client, Input, Options)
 %% `role'
 %% :
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html#ECS-CreateService-request-role.
+-spec update_service(map(), update_service_request()) ->
+    {ok, update_service_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, platform_task_definition_incompatibility_exception(), tuple()} |
+    {error, platform_unknown_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
+
+-spec update_service(map(), update_service_request(), proplists:proplist()) ->
+    {ok, update_service_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, namespace_not_found_exception(), tuple()} |
+    {error, platform_task_definition_incompatibility_exception(), tuple()} |
+    {error, platform_unknown_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 update_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateService">>, Input, Options).
@@ -1532,9 +4476,34 @@ update_service(Client, Input, Options)
 %% Types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec update_service_primary_task_set(map(), update_service_primary_task_set_request()) ->
+    {ok, update_service_primary_task_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, task_set_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 update_service_primary_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_primary_task_set(Client, Input, []).
+
+-spec update_service_primary_task_set(map(), update_service_primary_task_set_request(), proplists:proplist()) ->
+    {ok, update_service_primary_task_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, task_set_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 update_service_primary_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServicePrimaryTaskSet">>, Input, Options).
@@ -1584,9 +4553,30 @@ update_service_primary_task_set(Client, Input, Options)
 %% recommend using
 %% the Task scale-in protection endpoint:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-scale-in-protection-endpoint.html.
+-spec update_task_protection(map(), update_task_protection_request()) ->
+    {ok, update_task_protection_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 update_task_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_protection(Client, Input, []).
+
+-spec update_task_protection(map(), update_task_protection_request(), proplists:proplist()) ->
+    {ok, update_task_protection_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 update_task_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTaskProtection">>, Input, Options).
@@ -1599,9 +4589,34 @@ update_task_protection(Client, Input, Options)
 %% Types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
 %% in the Amazon Elastic Container Service Developer Guide.
+-spec update_task_set(map(), update_task_set_request()) ->
+    {ok, update_task_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, task_set_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 update_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_set(Client, Input, []).
+
+-spec update_task_set(map(), update_task_set_request(), proplists:proplist()) ->
+    {ok, update_task_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_exception(), tuple()} |
+    {error, cluster_not_found_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, server_exception(), tuple()} |
+    {error, service_not_active_exception(), tuple()} |
+    {error, service_not_found_exception(), tuple()} |
+    {error, task_set_not_found_exception(), tuple()} |
+    {error, unsupported_feature_exception(), tuple()}.
 update_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTaskSet">>, Input, Options).

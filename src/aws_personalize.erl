@@ -143,6 +143,1621 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% hyper_parameter_ranges() :: #{
+%%   <<"categoricalHyperParameterRanges">> => list(categorical_hyper_parameter_range()()),
+%%   <<"continuousHyperParameterRanges">> => list(continuous_hyper_parameter_range()()),
+%%   <<"integerHyperParameterRanges">> => list(integer_hyper_parameter_range()())
+%% }
+-type hyper_parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_tracker_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_event_tracker_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_tracker_request() :: #{
+%%   <<"eventTrackerArn">> := string()
+%% }
+-type describe_event_tracker_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_attribution_request() :: #{
+%%   <<"metricAttributionArn">> := string()
+%% }
+-type delete_metric_attribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_solution_response() :: #{
+%%   <<"solution">> => solution()
+%% }
+-type describe_solution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_attribution_request() :: #{
+%%   <<"metricAttributionArn">> := string()
+%% }
+-type describe_metric_attribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_segment_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"solutionVersionArn">> => string()
+%% }
+-type list_batch_segment_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_campaign_response() :: #{
+%%   <<"campaign">> => campaign()
+%% }
+-type describe_campaign_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_campaign_response() :: #{
+%%   <<"campaignArn">> => string()
+%% }
+-type update_campaign_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_inference_job_response() :: #{
+%%   <<"batchInferenceJob">> => batch_inference_job()
+%% }
+-type describe_batch_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_batch_inference_job_request() :: #{
+%%   <<"batchInferenceJobConfig">> => batch_inference_job_config(),
+%%   <<"batchInferenceJobMode">> => list(any()),
+%%   <<"filterArn">> => string(),
+%%   <<"jobInput">> := batch_inference_job_input(),
+%%   <<"jobName">> := string(),
+%%   <<"jobOutput">> := batch_inference_job_output(),
+%%   <<"numResults">> => integer(),
+%%   <<"roleArn">> := string(),
+%%   <<"solutionVersionArn">> := string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"themeGenerationConfig">> => theme_generation_config()
+%% }
+-type create_batch_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% filter_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"filterArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type filter_summary() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_inference_jobs_response() :: #{
+%%   <<"batchInferenceJobs">> => list(batch_inference_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_batch_inference_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_schema_request() :: #{
+%%   <<"domain">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"schema">> := string()
+%% }
+-type create_schema_request() :: #{binary() => any()}.
+
+%% Example:
+%% campaign() :: #{
+%%   <<"campaignArn">> => string(),
+%%   <<"campaignConfig">> => campaign_config(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"latestCampaignUpdate">> => campaign_update_summary(),
+%%   <<"minProvisionedTPS">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type campaign() :: #{binary() => any()}.
+
+%% Example:
+%% list_recipes_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recipes">> => list(recipe_summary()())
+%% }
+-type list_recipes_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommender_update_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"recommenderConfig">> => recommender_config(),
+%%   <<"status">> => string()
+%% }
+-type recommender_update_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_tracker_response() :: #{
+%%   <<"eventTrackerArn">> => string(),
+%%   <<"trackingId">> => string()
+%% }
+-type create_event_tracker_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_recommender_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"recipeArn">> := string(),
+%%   <<"recommenderConfig">> => recommender_config(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_recommender_request() :: #{binary() => any()}.
+
+%% Example:
+%% default_integer_hyper_parameter_range() :: #{
+%%   <<"isTunable">> => boolean(),
+%%   <<"maxValue">> => integer(),
+%%   <<"minValue">> => integer(),
+%%   <<"name">> => string()
+%% }
+-type default_integer_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% update_recommender_response() :: #{
+%%   <<"recommenderArn">> => string()
+%% }
+-type update_recommender_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_schema_request() :: #{
+%%   <<"schemaArn">> := string()
+%% }
+-type describe_schema_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_dataset_response() :: #{
+%%   <<"datasetArn">> => string()
+%% }
+-type update_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% default_categorical_hyper_parameter_range() :: #{
+%%   <<"isTunable">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type default_categorical_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% describe_solution_version_request() :: #{
+%%   <<"solutionVersionArn">> := string()
+%% }
+-type describe_solution_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_hyper_parameter_range() :: #{
+%%   <<"maxValue">> => float(),
+%%   <<"minValue">> => float(),
+%%   <<"name">> => string()
+%% }
+-type continuous_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% create_solution_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"eventType">> => string(),
+%%   <<"name">> := string(),
+%%   <<"performAutoML">> => boolean(),
+%%   <<"performHPO">> => boolean(),
+%%   <<"recipeArn">> => string(),
+%%   <<"solutionConfig">> => solution_config(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_solution_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_metric_attribution_response() :: #{
+%%   <<"metricAttributionArn">> => string()
+%% }
+-type create_metric_attribution_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_schema_request() :: #{
+%%   <<"schemaArn">> := string()
+%% }
+-type delete_schema_request() :: #{binary() => any()}.
+
+%% Example:
+%% metric_attribution_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"metricAttributionArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type metric_attribution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_segment_job_output() :: #{
+%%   <<"s3DataDestination">> => s3_data_config()
+%% }
+-type batch_segment_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_import_job_response() :: #{
+%%   <<"datasetImportJob">> => dataset_import_job()
+%% }
+-type describe_dataset_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% solution() :: #{
+%%   <<"autoMLResult">> => auto_ml_result(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"eventType">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"latestSolutionVersion">> => solution_version_summary(),
+%%   <<"name">> => string(),
+%%   <<"performAutoML">> => boolean(),
+%%   <<"performHPO">> => boolean(),
+%%   <<"recipeArn">> => string(),
+%%   <<"solutionArn">> => string(),
+%%   <<"solutionConfig">> => solution_config(),
+%%   <<"status">> => string()
+%% }
+-type solution() :: #{binary() => any()}.
+
+%% Example:
+%% create_batch_segment_job_response() :: #{
+%%   <<"batchSegmentJobArn">> => string()
+%% }
+-type create_batch_segment_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_recommender_response() :: #{
+%%   <<"recommenderArn">> => string()
+%% }
+-type start_recommender_response() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_schema() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"domain">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"schema">> => string(),
+%%   <<"schemaArn">> => string()
+%% }
+-type dataset_schema() :: #{binary() => any()}.
+
+%% Example:
+%% algorithm() :: #{
+%%   <<"algorithmArn">> => string(),
+%%   <<"algorithmImage">> => algorithm_image(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"defaultHyperParameterRanges">> => default_hyper_parameter_ranges(),
+%%   <<"defaultHyperParameters">> => map(),
+%%   <<"defaultResourceConfig">> => map(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"trainingInputMode">> => string()
+%% }
+-type algorithm() :: #{binary() => any()}.
+
+%% Example:
+%% recipe_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"domain">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"recipeArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type recipe_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_campaigns_response() :: #{
+%%   <<"campaigns">> => list(campaign_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_campaigns_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_filter_response() :: #{
+%%   <<"filterArn">> => string()
+%% }
+-type create_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% theme_generation_config() :: #{
+%%   <<"fieldsForThemeGeneration">> => fields_for_theme_generation()
+%% }
+-type theme_generation_config() :: #{binary() => any()}.
+
+%% Example:
+%% default_hyper_parameter_ranges() :: #{
+%%   <<"categoricalHyperParameterRanges">> => list(default_categorical_hyper_parameter_range()()),
+%%   <<"continuousHyperParameterRanges">> => list(default_continuous_hyper_parameter_range()()),
+%%   <<"integerHyperParameterRanges">> => list(default_integer_hyper_parameter_range()())
+%% }
+-type default_hyper_parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% describe_schema_response() :: #{
+%%   <<"schema">> => dataset_schema()
+%% }
+-type describe_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_campaign_request() :: #{
+%%   <<"campaignArn">> := string()
+%% }
+-type delete_campaign_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_campaign_request() :: #{
+%%   <<"campaignArn">> := string()
+%% }
+-type describe_campaign_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_attribution_metrics_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"metricAttributionArn">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metric_attribution_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_solutions_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_solutions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_algorithm_request() :: #{
+%%   <<"algorithmArn">> := string()
+%% }
+-type describe_algorithm_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_schema_response() :: #{
+%%   <<"schemaArn">> => string()
+%% }
+-type create_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job_input() :: #{
+%%   <<"s3DataSource">> => s3_data_config()
+%% }
+-type batch_inference_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job_config() :: #{
+%%   <<"itemExplorationConfig">> => map()
+%% }
+-type batch_inference_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_solution_metrics_request() :: #{
+%%   <<"solutionVersionArn">> := string()
+%% }
+-type get_solution_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% campaign_config() :: #{
+%%   <<"enableMetadataWithRecommendations">> => boolean(),
+%%   <<"itemExplorationConfig">> => map()
+%% }
+-type campaign_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_trackers_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_event_trackers_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_group_request() :: #{
+%%   <<"domain">> => list(any()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tag_keys_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tag_keys_exception() :: #{binary() => any()}.
+
+%% Example:
+%% solution_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"recipeArn">> => string(),
+%%   <<"solutionArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type solution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_schemas_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_schemas_request() :: #{binary() => any()}.
+
+%% Example:
+%% recommender_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"recipeArn">> => string(),
+%%   <<"recommenderArn">> => string(),
+%%   <<"recommenderConfig">> => recommender_config(),
+%%   <<"status">> => string()
+%% }
+-type recommender_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_solution_request() :: #{
+%%   <<"solutionArn">> := string()
+%% }
+-type describe_solution_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_recommender_request() :: #{
+%%   <<"recommenderArn">> := string(),
+%%   <<"recommenderConfig">> := recommender_config()
+%% }
+-type update_recommender_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_metric_attribution_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"metrics">> := list(metric_attribute()()),
+%%   <<"metricsOutputConfig">> := metric_attribution_output(),
+%%   <<"name">> := string()
+%% }
+-type create_metric_attribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job() :: #{
+%%   <<"batchInferenceJobArn">> => string(),
+%%   <<"batchInferenceJobConfig">> => batch_inference_job_config(),
+%%   <<"batchInferenceJobMode">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"filterArn">> => string(),
+%%   <<"jobInput">> => batch_inference_job_input(),
+%%   <<"jobName">> => string(),
+%%   <<"jobOutput">> => batch_inference_job_output(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"numResults">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"themeGenerationConfig">> => theme_generation_config()
+%% }
+-type batch_inference_job() :: #{binary() => any()}.
+
+%% Example:
+%% dataset() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"datasetType">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"latestDatasetUpdate">> => dataset_update_summary(),
+%%   <<"name">> => string(),
+%%   <<"schemaArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"trackingId">> => string()
+%% }
+-type dataset() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_export_job_response() :: #{
+%%   <<"datasetExportJob">> => dataset_export_job()
+%% }
+-type describe_dataset_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"datasetArn">> => string()
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_campaigns_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"solutionArn">> => string()
+%% }
+-type list_campaigns_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_segment_job_summary() :: #{
+%%   <<"batchSegmentJobArn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type batch_segment_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_segment_job_response() :: #{
+%%   <<"batchSegmentJob">> => batch_segment_job()
+%% }
+-type describe_batch_segment_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% campaign_update_summary() :: #{
+%%   <<"campaignConfig">> => campaign_config(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"minProvisionedTPS">> => integer(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type campaign_update_summary() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job_output() :: #{
+%%   <<"s3DataDestination">> => s3_data_config()
+%% }
+-type batch_inference_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_import_job() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"dataSource">> => data_source(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetImportJobArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"importMode">> => list(any()),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"publishAttributionMetricsToS3">> => boolean(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_import_job() :: #{binary() => any()}.
+
+%% Example:
+%% metric_attribute() :: #{
+%%   <<"eventType">> => string(),
+%%   <<"expression">> => string(),
+%%   <<"metricName">> => string()
+%% }
+-type metric_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% solution_version() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"eventType">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"performAutoML">> => boolean(),
+%%   <<"performHPO">> => boolean(),
+%%   <<"recipeArn">> => string(),
+%%   <<"solutionArn">> => string(),
+%%   <<"solutionConfig">> => solution_config(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"trainingHours">> => float(),
+%%   <<"trainingMode">> => list(any()),
+%%   <<"tunedHPOParams">> => tuned_h_p_o_params()
+%% }
+-type solution_version() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_export_job_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetExportJobArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type dataset_export_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% fields_for_theme_generation() :: #{
+%%   <<"itemName">> => string()
+%% }
+-type fields_for_theme_generation() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_import_jobs_request() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_import_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_tracker_request() :: #{
+%%   <<"eventTrackerArn">> := string()
+%% }
+-type delete_event_tracker_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_filter_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"filterExpression">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% recommender() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"latestRecommenderUpdate">> => recommender_update_summary(),
+%%   <<"modelMetrics">> => map(),
+%%   <<"name">> => string(),
+%%   <<"recipeArn">> => string(),
+%%   <<"recommenderArn">> => string(),
+%%   <<"recommenderConfig">> => recommender_config(),
+%%   <<"status">> => string()
+%% }
+-type recommender() :: #{binary() => any()}.
+
+%% Example:
+%% create_solution_version_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"solutionArn">> := string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"trainingMode">> => list(any())
+%% }
+-type create_solution_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% metric_attribution() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"metricAttributionArn">> => string(),
+%%   <<"metricsOutputConfig">> => metric_attribution_output(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type metric_attribution() :: #{binary() => any()}.
+
+%% Example:
+%% describe_solution_version_response() :: #{
+%%   <<"solutionVersion">> => solution_version()
+%% }
+-type describe_solution_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_segment_job_request() :: #{
+%%   <<"batchSegmentJobArn">> := string()
+%% }
+-type describe_batch_segment_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetType">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_summary() :: #{binary() => any()}.
+
+%% Example:
+%% tuned_h_p_o_params() :: #{
+%%   <<"algorithmHyperParameters">> => map()
+%% }
+-type tuned_h_p_o_params() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"tagKey">> => string(),
+%%   <<"tagValue">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% batch_segment_job_input() :: #{
+%%   <<"s3DataSource">> => s3_data_config()
+%% }
+-type batch_segment_job_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_solution_version_response() :: #{
+%%   <<"solutionVersionArn">> => string()
+%% }
+-type create_solution_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_batch_inference_job_response() :: #{
+%%   <<"batchInferenceJobArn">> => string()
+%% }
+-type create_batch_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% solution_version_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type solution_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommender_request() :: #{
+%%   <<"recommenderArn">> := string()
+%% }
+-type delete_recommender_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recipe_response() :: #{
+%%   <<"recipe">> => recipe()
+%% }
+-type describe_recipe_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_attributions_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metric_attributions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_groups_response() :: #{
+%%   <<"datasetGroups">> => list(dataset_group_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% recipe() :: #{
+%%   <<"algorithmArn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"featureTransformationArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"recipeArn">> => string(),
+%%   <<"recipeType">> => string(),
+%%   <<"status">> => string()
+%% }
+-type recipe() :: #{binary() => any()}.
+
+%% Example:
+%% batch_segment_job() :: #{
+%%   <<"batchSegmentJobArn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"filterArn">> => string(),
+%%   <<"jobInput">> => batch_segment_job_input(),
+%%   <<"jobName">> => string(),
+%%   <<"jobOutput">> => batch_segment_job_output(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"numResults">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type batch_segment_job() :: #{binary() => any()}.
+
+%% Example:
+%% optimization_objective() :: #{
+%%   <<"itemAttribute">> => string(),
+%%   <<"objectiveSensitivity">> => list(any())
+%% }
+-type optimization_objective() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_attribution_metrics_response() :: #{
+%%   <<"metrics">> => list(metric_attribute()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metric_attribution_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_recommender_request() :: #{
+%%   <<"recommenderArn">> := string()
+%% }
+-type start_recommender_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_recommender_response() :: #{
+%%   <<"recommenderArn">> => string()
+%% }
+-type stop_recommender_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% integer_hyper_parameter_range() :: #{
+%%   <<"maxValue">> => integer(),
+%%   <<"minValue">> => integer(),
+%%   <<"name">> => string()
+%% }
+-type integer_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% categorical_hyper_parameter_range() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type categorical_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommender_request() :: #{
+%%   <<"recommenderArn">> := string()
+%% }
+-type describe_recommender_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_segment_jobs_response() :: #{
+%%   <<"batchSegmentJobs">> => list(batch_segment_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_batch_segment_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_dataset_request() :: #{
+%%   <<"datasetArn">> := string(),
+%%   <<"schemaArn">> := string()
+%% }
+-type update_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_solutions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"solutions">> => list(solution_summary()())
+%% }
+-type list_solutions_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_solution_request() :: #{
+%%   <<"solutionArn">> := string()
+%% }
+-type delete_solution_request() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"filterArn">> => string(),
+%%   <<"filterExpression">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_feature_transformation_request() :: #{
+%%   <<"featureTransformationArn">> := string()
+%% }
+-type describe_feature_transformation_request() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_update_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"schemaArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_update_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_algorithm_response() :: #{
+%%   <<"algorithm">> => algorithm()
+%% }
+-type describe_algorithm_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recipe_request() :: #{
+%%   <<"recipeArn">> := string()
+%% }
+-type describe_recipe_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_filter_request() :: #{
+%%   <<"filterArn">> := string()
+%% }
+-type describe_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% h_p_o_objective() :: #{
+%%   <<"metricName">> => string(),
+%%   <<"metricRegex">> => string(),
+%%   <<"type">> => string()
+%% }
+-type h_p_o_objective() :: #{binary() => any()}.
+
+%% Example:
+%% create_recommender_response() :: #{
+%%   <<"recommenderArn">> => string()
+%% }
+-type create_recommender_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommender_response() :: #{
+%%   <<"recommender">> => recommender()
+%% }
+-type describe_recommender_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_batch_inference_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"solutionVersionArn">> => string()
+%% }
+-type list_batch_inference_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_export_job() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetExportJobArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"ingestionMode">> => list(any()),
+%%   <<"jobName">> => string(),
+%%   <<"jobOutput">> => dataset_export_job_output(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_export_job() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_config() :: #{
+%%   <<"metricName">> => string(),
+%%   <<"recipeList">> => list(string()())
+%% }
+-type auto_ml_config() :: #{binary() => any()}.
+
+%% Example:
+%% stop_recommender_request() :: #{
+%%   <<"recommenderArn">> := string()
+%% }
+-type stop_recommender_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_inference_job_request() :: #{
+%%   <<"batchInferenceJobArn">> := string()
+%% }
+-type describe_batch_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_import_job_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetImportJobArn">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"importMode">> => list(any()),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type dataset_import_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_batch_segment_job_request() :: #{
+%%   <<"filterArn">> => string(),
+%%   <<"jobInput">> := batch_segment_job_input(),
+%%   <<"jobName">> := string(),
+%%   <<"jobOutput">> := batch_segment_job_output(),
+%%   <<"numResults">> => integer(),
+%%   <<"roleArn">> := string(),
+%%   <<"solutionVersionArn">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_batch_segment_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_import_jobs_response() :: #{
+%%   <<"datasetImportJobs">> => list(dataset_import_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% h_p_o_resource_config() :: #{
+%%   <<"maxNumberOfTrainingJobs">> => string(),
+%%   <<"maxParallelTrainingJobs">> => string()
+%% }
+-type h_p_o_resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% event_tracker_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"eventTrackerArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type event_tracker_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_group_request() :: #{
+%%   <<"datasetGroupArn">> := string()
+%% }
+-type delete_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_campaign_request() :: #{
+%%   <<"campaignConfig">> => campaign_config(),
+%%   <<"minProvisionedTPS">> => integer(),
+%%   <<"name">> := string(),
+%%   <<"solutionVersionArn">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_campaign_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_export_jobs_response() :: #{
+%%   <<"datasetExportJobs">> => list(dataset_export_job_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% event_tracker() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"eventTrackerArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"trackingId">> => string()
+%% }
+-type event_tracker() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_group_response() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"domain">> => list(any())
+%% }
+-type create_dataset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_inference_job_summary() :: #{
+%%   <<"batchInferenceJobArn">> => string(),
+%%   <<"batchInferenceJobMode">> => list(any()),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"solutionVersionArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type batch_inference_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_feature_transformation_response() :: #{
+%%   <<"featureTransformation">> => feature_transformation()
+%% }
+-type describe_feature_transformation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_tracker_response() :: #{
+%%   <<"eventTracker">> => event_tracker()
+%% }
+-type describe_event_tracker_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommenders_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommenders">> => list(recommender_summary()())
+%% }
+-type list_recommenders_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_attribution_response() :: #{
+%%   <<"metricAttribution">> => metric_attribution()
+%% }
+-type describe_metric_attribution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"dataset">> => dataset()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommender_config() :: #{
+%%   <<"enableMetadataWithRecommendations">> => boolean(),
+%%   <<"itemExplorationConfig">> => map(),
+%%   <<"minRecommendationRequestsPerSecond">> => integer(),
+%%   <<"trainingDataConfig">> => training_data_config()
+%% }
+-type recommender_config() :: #{binary() => any()}.
+
+%% Example:
+%% auto_ml_result() :: #{
+%%   <<"bestRecipeArn">> => string()
+%% }
+-type auto_ml_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_solution_version_creation_request() :: #{
+%%   <<"solutionVersionArn">> := string()
+%% }
+-type stop_solution_version_creation_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"datasetGroupArn">> := string(),
+%%   <<"datasetType">> := string(),
+%%   <<"name">> := string(),
+%%   <<"schemaArn">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_group_request() :: #{
+%%   <<"datasetGroupArn">> := string()
+%% }
+-type describe_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_attributions_response() :: #{
+%%   <<"metricAttributions">> => list(metric_attribution_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metric_attributions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_trackers_response() :: #{
+%%   <<"eventTrackers">> => list(event_tracker_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_event_trackers_response() :: #{binary() => any()}.
+
+%% Example:
+%% feature_transformation() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"defaultParameters">> => map(),
+%%   <<"featureTransformationArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type feature_transformation() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_import_job_request() :: #{
+%%   <<"dataSource">> := data_source(),
+%%   <<"datasetArn">> := string(),
+%%   <<"importMode">> => list(any()),
+%%   <<"jobName">> := string(),
+%%   <<"publishAttributionMetricsToS3">> => boolean(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_dataset_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% solution_config() :: #{
+%%   <<"algorithmHyperParameters">> => map(),
+%%   <<"autoMLConfig">> => auto_ml_config(),
+%%   <<"eventValueThreshold">> => string(),
+%%   <<"featureTransformationParameters">> => map(),
+%%   <<"hpoConfig">> => h_p_o_config(),
+%%   <<"optimizationObjective">> => optimization_objective(),
+%%   <<"trainingDataConfig">> => training_data_config()
+%% }
+-type solution_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_solution_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"solutionVersions">> => list(solution_version_summary()())
+%% }
+-type list_solution_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_schema_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"domain">> => list(any()),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"schemaArn">> => string()
+%% }
+-type dataset_schema_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_import_job_request() :: #{
+%%   <<"datasetImportJobArn">> := string()
+%% }
+-type describe_dataset_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_metric_attribution_request() :: #{
+%%   <<"addMetrics">> => list(metric_attribute()()),
+%%   <<"metricAttributionArn">> => string(),
+%%   <<"metricsOutputConfig">> => metric_attribution_output(),
+%%   <<"removeMetrics">> => list(string()())
+%% }
+-type update_metric_attribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% s3_data_config() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"path">> => string()
+%% }
+-type s3_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_solution_response() :: #{
+%%   <<"solutionArn">> => string()
+%% }
+-type create_solution_response() :: #{binary() => any()}.
+
+%% Example:
+%% metric_attribution_output() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"s3DataDestination">> => s3_data_config()
+%% }
+-type metric_attribution_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_metric_attribution_response() :: #{
+%%   <<"metricAttributionArn">> => string()
+%% }
+-type update_metric_attribution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_group_response() :: #{
+%%   <<"datasetGroup">> => dataset_group()
+%% }
+-type describe_dataset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% default_continuous_hyper_parameter_range() :: #{
+%%   <<"isTunable">> => boolean(),
+%%   <<"maxValue">> => float(),
+%%   <<"minValue">> => float(),
+%%   <<"name">> => string()
+%% }
+-type default_continuous_hyper_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% get_solution_metrics_response() :: #{
+%%   <<"metrics">> => map(),
+%%   <<"solutionVersionArn">> => string()
+%% }
+-type get_solution_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_campaign_request() :: #{
+%%   <<"campaignArn">> := string(),
+%%   <<"campaignConfig">> => campaign_config(),
+%%   <<"minProvisionedTPS">> => integer(),
+%%   <<"solutionVersionArn">> => string()
+%% }
+-type update_campaign_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_request() :: #{
+%%   <<"datasetArn">> := string()
+%% }
+-type describe_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"datasetArn">> := string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"datasets">> => list(dataset_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+%% Example:
+%% algorithm_image() :: #{
+%%   <<"dockerURI">> => string(),
+%%   <<"name">> => string()
+%% }
+-type algorithm_image() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_export_jobs_request() :: #{
+%%   <<"datasetArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_dataset_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% h_p_o_config() :: #{
+%%   <<"algorithmHyperParameterRanges">> => hyper_parameter_ranges(),
+%%   <<"hpoObjective">> => h_p_o_objective(),
+%%   <<"hpoResourceConfig">> => h_p_o_resource_config()
+%% }
+-type h_p_o_config() :: #{binary() => any()}.
+
+%% Example:
+%% data_source() :: #{
+%%   <<"dataLocation">> => string()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_export_job_output() :: #{
+%%   <<"s3DataDestination">> => s3_data_config()
+%% }
+-type dataset_export_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_campaign_response() :: #{
+%%   <<"campaignArn">> => string()
+%% }
+-type create_campaign_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_schemas_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"schemas">> => list(dataset_schema_summary()())
+%% }
+-type list_schemas_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_export_job_response() :: #{
+%%   <<"datasetExportJobArn">> => string()
+%% }
+-type create_dataset_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_export_job_request() :: #{
+%%   <<"datasetArn">> := string(),
+%%   <<"ingestionMode">> => list(any()),
+%%   <<"jobName">> := string(),
+%%   <<"jobOutput">> := dataset_export_job_output(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_dataset_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% training_data_config() :: #{
+%%   <<"excludedDatasetColumns">> => map()
+%% }
+-type training_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_recipes_request() :: #{
+%%   <<"domain">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recipeProvider">> => list(any())
+%% }
+-type list_recipes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_solution_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"solutionArn">> => string()
+%% }
+-type list_solution_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_filters_response() :: #{
+%%   <<"Filters">> => list(filter_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_filter_response() :: #{
+%%   <<"filter">> => filter()
+%% }
+-type describe_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_group() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"domain">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_group() :: #{binary() => any()}.
+
+%% Example:
+%% campaign_summary() :: #{
+%%   <<"campaignArn">> => string(),
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type campaign_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_export_job_request() :: #{
+%%   <<"datasetExportJobArn">> := string()
+%% }
+-type describe_dataset_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_filter_request() :: #{
+%%   <<"filterArn">> := string()
+%% }
+-type delete_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommenders_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_recommenders_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_import_job_response() :: #{
+%%   <<"datasetImportJobArn">> => string()
+%% }
+-type create_dataset_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_filters_request() :: #{
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_filters_request() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_group_summary() :: #{
+%%   <<"creationDateTime">> => non_neg_integer(),
+%%   <<"datasetGroupArn">> => string(),
+%%   <<"domain">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"lastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type dataset_group_summary() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -177,9 +1792,28 @@
 %%
 %% You can't get batch recommendations with the Trending-Now or
 %% Next-Best-Action recipes.
+-spec create_batch_inference_job(map(), create_batch_inference_job_request()) ->
+    {ok, create_batch_inference_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_batch_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_inference_job(Client, Input, []).
+
+-spec create_batch_inference_job(map(), create_batch_inference_job_request(), proplists:proplist()) ->
+    {ok, create_batch_inference_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_batch_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBatchInferenceJob">>, Input, Options).
@@ -190,9 +1824,28 @@ create_batch_inference_job(Client, Input, Options)
 %% input file must be in JSON format. For more information, see
 %% Getting batch recommendations and user segments:
 %% https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html.
+-spec create_batch_segment_job(map(), create_batch_segment_job_request()) ->
+    {ok, create_batch_segment_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_batch_segment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_segment_job(Client, Input, []).
+
+-spec create_batch_segment_job(map(), create_batch_segment_job_request(), proplists:proplist()) ->
+    {ok, create_batch_segment_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_batch_segment_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBatchSegmentJob">>, Input, Options).
@@ -269,9 +1922,28 @@ create_batch_segment_job(Client, Input, Options)
 %%
 %% DeleteCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteCampaign.html
+-spec create_campaign(map(), create_campaign_request()) ->
+    {ok, create_campaign_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_campaign(Client, Input, []).
+
+-spec create_campaign(map(), create_campaign_request(), proplists:proplist()) ->
+    {ok, create_campaign_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCampaign">>, Input, Options).
@@ -322,9 +1994,28 @@ create_campaign(Client, Input, Options)
 %%
 %% DeleteDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteDataset.html
+-spec create_dataset(map(), create_dataset_request()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
+
+-spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataset">>, Input, Options).
@@ -354,9 +2045,28 @@ create_dataset(Client, Input, Options)
 %% status shows as ACTIVE. If the status shows as CREATE FAILED, the response
 %% includes a `failureReason' key, which describes why the job
 %% failed.
+-spec create_dataset_export_job(map(), create_dataset_export_job_request()) ->
+    {ok, create_dataset_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_dataset_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_export_job(Client, Input, []).
+
+-spec create_dataset_export_job(map(), create_dataset_export_job_request(), proplists:proplist()) ->
+    {ok, create_dataset_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_dataset_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatasetExportJob">>, Input, Options).
@@ -429,9 +2139,24 @@ create_dataset_export_job(Client, Input, Options)
 %%
 %% DeleteDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteDatasetGroup.html
+-spec create_dataset_group(map(), create_dataset_group_request()) ->
+    {ok, create_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_group(Client, Input, []).
+
+-spec create_dataset_group(map(), create_dataset_group_request(), proplists:proplist()) ->
+    {ok, create_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatasetGroup">>, Input, Options).
@@ -486,9 +2211,28 @@ create_dataset_group(Client, Input, Options)
 %%
 %% DescribeDatasetImportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeDatasetImportJob.html
+-spec create_dataset_import_job(map(), create_dataset_import_job_request()) ->
+    {ok, create_dataset_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_import_job(Client, Input, []).
+
+-spec create_dataset_import_job(map(), create_dataset_import_job_request(), proplists:proplist()) ->
+    {ok, create_dataset_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatasetImportJob">>, Input, Options).
@@ -537,9 +2281,28 @@ create_dataset_import_job(Client, Input, Options)
 %%
 %% DeleteEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteEventTracker.html
+-spec create_event_tracker(map(), create_event_tracker_request()) ->
+    {ok, create_event_tracker_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_tracker(Client, Input, []).
+
+-spec create_event_tracker(map(), create_event_tracker_request(), proplists:proplist()) ->
+    {ok, create_event_tracker_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_event_tracker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventTracker">>, Input, Options).
@@ -548,9 +2311,26 @@ create_event_tracker(Client, Input, Options)
 %%
 %% For more information, see Filtering recommendations and user segments:
 %% https://docs.aws.amazon.com/personalize/latest/dg/filter.html.
+-spec create_filter(map(), create_filter_request()) ->
+    {ok, create_filter_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_filter(Client, Input, []).
+
+-spec create_filter(map(), create_filter_request(), proplists:proplist()) ->
+    {ok, create_filter_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFilter">>, Input, Options).
@@ -562,9 +2342,26 @@ create_filter(Client, Input, Options)
 %% reports in Amazon CloudWatch or Amazon S3.
 %% For more information, see Measuring impact of recommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/measuring-recommendation-impact.html.
+-spec create_metric_attribution(map(), create_metric_attribution_request()) ->
+    {ok, create_metric_attribution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_metric_attribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_metric_attribution(Client, Input, []).
+
+-spec create_metric_attribution(map(), create_metric_attribution_request(), proplists:proplist()) ->
+    {ok, create_metric_attribution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_metric_attribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMetricAttribution">>, Input, Options).
@@ -648,9 +2445,28 @@ create_metric_attribution(Client, Input, Options)
 %%
 %% DeleteRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteRecommender.html
+-spec create_recommender(map(), create_recommender_request()) ->
+    {ok, create_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_recommender(Client, Input, []).
+
+-spec create_recommender(map(), create_recommender_request(), proplists:proplist()) ->
+    {ok, create_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_recommender(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRecommender">>, Input, Options).
@@ -679,9 +2495,22 @@ create_recommender(Client, Input, Options)
 %%
 %% DeleteSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteSchema.html
+-spec create_schema(map(), create_schema_request()) ->
+    {ok, create_schema_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()}.
 create_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_schema(Client, Input, []).
+
+-spec create_schema(map(), create_schema_request(), proplists:proplist()) ->
+    {ok, create_schema_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()}.
 create_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSchema">>, Input, Options).
@@ -752,9 +2581,28 @@ create_schema(Client, Input, Options)
 %%
 %% DescribeSolutionVersion:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeSolutionVersion.html
+-spec create_solution(map(), create_solution_request()) ->
+    {ok, create_solution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_solution(Client, Input, []).
+
+-spec create_solution(map(), create_solution_request(), proplists:proplist()) ->
+    {ok, create_solution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_solution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSolution">>, Input, Options).
@@ -812,9 +2660,28 @@ create_solution(Client, Input, Options)
 %%
 %% DeleteSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DeleteSolution.html
+-spec create_solution_version(map(), create_solution_version_request()) ->
+    {ok, create_solution_version_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_solution_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_solution_version(Client, Input, []).
+
+-spec create_solution_version(map(), create_solution_version_request(), proplists:proplist()) ->
+    {ok, create_solution_version_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_solution_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSolutionVersion">>, Input, Options).
@@ -830,9 +2697,22 @@ create_solution_version(Client, Input, Options)
 %% request.
 %% For information on creating campaigns, see CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
+-spec delete_campaign(map(), delete_campaign_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_campaign(Client, Input, []).
+
+-spec delete_campaign(map(), delete_campaign_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCampaign">>, Input, Options).
@@ -844,9 +2724,22 @@ delete_campaign(Client, Input, Options)
 %% CREATE PENDING or IN PROGRESS state. For more information on datasets, see
 %% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
+-spec delete_dataset(map(), delete_dataset_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
+
+-spec delete_dataset(map(), delete_dataset_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataset">>, Input, Options).
@@ -861,9 +2754,22 @@ delete_dataset(Client, Input, Options)
 %% All associated solutions.
 %%
 %% All datasets in the dataset group.
+-spec delete_dataset_group(map(), delete_dataset_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_group(Client, Input, []).
+
+-spec delete_dataset_group(map(), delete_dataset_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatasetGroup">>, Input, Options).
@@ -874,25 +2780,64 @@ delete_dataset_group(Client, Input, Options)
 %% the dataset group. For more
 %% information on event trackers, see CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html.
+-spec delete_event_tracker(map(), delete_event_tracker_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_tracker(Client, Input, []).
+
+-spec delete_event_tracker(map(), delete_event_tracker_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_event_tracker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventTracker">>, Input, Options).
 
 %% @doc Deletes a filter.
+-spec delete_filter(map(), delete_filter_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_filter(Client, Input, []).
+
+-spec delete_filter(map(), delete_filter_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFilter">>, Input, Options).
 
 %% @doc Deletes a metric attribution.
+-spec delete_metric_attribution(map(), delete_metric_attribution_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_metric_attribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_metric_attribution(Client, Input, []).
+
+-spec delete_metric_attribution(map(), delete_metric_attribution_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_metric_attribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMetricAttribution">>, Input, Options).
@@ -902,9 +2847,22 @@ delete_metric_attribution(Client, Input, Options)
 %% A deleted recommender can no longer be specified in a GetRecommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html
 %% request.
+-spec delete_recommender(map(), delete_recommender_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_recommender(Client, Input, []).
+
+-spec delete_recommender(map(), delete_recommender_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_recommender(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRecommender">>, Input, Options).
@@ -915,9 +2873,22 @@ delete_recommender(Client, Input, Options)
 %% datasets referencing the schema. For more information on schemas, see
 %% CreateSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSchema.html.
+-spec delete_schema(map(), delete_schema_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_schema(Client, Input, []).
+
+-spec delete_schema(map(), delete_schema_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSchema">>, Input, Options).
@@ -935,17 +2906,41 @@ delete_schema(Client, Input, Options)
 %% CREATE PENDING or IN PROGRESS state.
 %% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html.
+-spec delete_solution(map(), delete_solution_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_solution(Client, Input, []).
+
+-spec delete_solution(map(), delete_solution_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_solution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSolution">>, Input, Options).
 
 %% @doc Describes the given algorithm.
+-spec describe_algorithm(map(), describe_algorithm_request()) ->
+    {ok, describe_algorithm_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_algorithm(Client, Input, []).
+
+-spec describe_algorithm(map(), describe_algorithm_request(), proplists:proplist()) ->
+    {ok, describe_algorithm_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_algorithm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAlgorithm">>, Input, Options).
@@ -955,9 +2950,20 @@ describe_algorithm(Client, Input, Options)
 %% status, input and output configurations, and the ARN of the solution
 %% version used to generate
 %% the recommendations.
+-spec describe_batch_inference_job(map(), describe_batch_inference_job_request()) ->
+    {ok, describe_batch_inference_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_batch_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_inference_job(Client, Input, []).
+
+-spec describe_batch_inference_job(map(), describe_batch_inference_job_request(), proplists:proplist()) ->
+    {ok, describe_batch_inference_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_batch_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBatchInferenceJob">>, Input, Options).
@@ -967,9 +2973,20 @@ describe_batch_inference_job(Client, Input, Options)
 %% status, input and output configurations, and the ARN of the solution
 %% version used to generate
 %% segments.
+-spec describe_batch_segment_job(map(), describe_batch_segment_job_request()) ->
+    {ok, describe_batch_segment_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_batch_segment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_batch_segment_job(Client, Input, []).
+
+-spec describe_batch_segment_job(map(), describe_batch_segment_job_request(), proplists:proplist()) ->
+    {ok, describe_batch_segment_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_batch_segment_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBatchSegmentJob">>, Input, Options).
@@ -987,9 +3004,20 @@ describe_batch_segment_job(Client, Input, Options)
 %%
 %% For more information on campaigns, see CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
+-spec describe_campaign(map(), describe_campaign_request()) ->
+    {ok, describe_campaign_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_campaign(Client, Input, []).
+
+-spec describe_campaign(map(), describe_campaign_request(), proplists:proplist()) ->
+    {ok, describe_campaign_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCampaign">>, Input, Options).
@@ -999,9 +3027,20 @@ describe_campaign(Client, Input, Options)
 %% For more information on datasets, see
 %% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
+-spec describe_dataset(map(), describe_dataset_request()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
+
+-spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
@@ -1009,9 +3048,20 @@ describe_dataset(Client, Input, Options)
 %% @doc Describes the dataset export job created by CreateDatasetExportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetExportJob.html,
 %% including the export job status.
+-spec describe_dataset_export_job(map(), describe_dataset_export_job_request()) ->
+    {ok, describe_dataset_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_export_job(Client, Input, []).
+
+-spec describe_dataset_export_job(map(), describe_dataset_export_job_request(), proplists:proplist()) ->
+    {ok, describe_dataset_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatasetExportJob">>, Input, Options).
@@ -1021,9 +3071,20 @@ describe_dataset_export_job(Client, Input, Options)
 %% For more information on dataset
 %% groups, see CreateDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetGroup.html.
+-spec describe_dataset_group(map(), describe_dataset_group_request()) ->
+    {ok, describe_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_group(Client, Input, []).
+
+-spec describe_dataset_group(map(), describe_dataset_group_request(), proplists:proplist()) ->
+    {ok, describe_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatasetGroup">>, Input, Options).
@@ -1031,9 +3092,20 @@ describe_dataset_group(Client, Input, Options)
 %% @doc Describes the dataset import job created by CreateDatasetImportJob:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetImportJob.html,
 %% including the import job status.
+-spec describe_dataset_import_job(map(), describe_dataset_import_job_request()) ->
+    {ok, describe_dataset_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_import_job(Client, Input, []).
+
+-spec describe_dataset_import_job(map(), describe_dataset_import_job_request(), proplists:proplist()) ->
+    {ok, describe_dataset_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatasetImportJob">>, Input, Options).
@@ -1044,33 +3116,77 @@ describe_dataset_import_job(Client, Input, Options)
 %% `status' of the event tracker.
 %% For more information on event trackers, see CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html.
+-spec describe_event_tracker(map(), describe_event_tracker_request()) ->
+    {ok, describe_event_tracker_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_tracker(Client, Input, []).
+
+-spec describe_event_tracker(map(), describe_event_tracker_request(), proplists:proplist()) ->
+    {ok, describe_event_tracker_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_event_tracker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventTracker">>, Input, Options).
 
 %% @doc Describes the given feature transformation.
+-spec describe_feature_transformation(map(), describe_feature_transformation_request()) ->
+    {ok, describe_feature_transformation_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_feature_transformation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_feature_transformation(Client, Input, []).
+
+-spec describe_feature_transformation(map(), describe_feature_transformation_request(), proplists:proplist()) ->
+    {ok, describe_feature_transformation_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_feature_transformation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFeatureTransformation">>, Input, Options).
 
 %% @doc Describes a filter's properties.
+-spec describe_filter(map(), describe_filter_request()) ->
+    {ok, describe_filter_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_filter(Client, Input, []).
+
+-spec describe_filter(map(), describe_filter_request(), proplists:proplist()) ->
+    {ok, describe_filter_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFilter">>, Input, Options).
 
 %% @doc Describes a metric attribution.
+-spec describe_metric_attribution(map(), describe_metric_attribution_request()) ->
+    {ok, describe_metric_attribution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_metric_attribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_metric_attribution(Client, Input, []).
+
+-spec describe_metric_attribution(map(), describe_metric_attribution_request(), proplists:proplist()) ->
+    {ok, describe_metric_attribution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_metric_attribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetricAttribution">>, Input, Options).
@@ -1098,9 +3214,20 @@ describe_metric_attribution(Client, Input, Options)
 %% GetRecommendations:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetRecommendations.html
 %% API.
+-spec describe_recipe(map(), describe_recipe_request()) ->
+    {ok, describe_recipe_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_recipe(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recipe(Client, Input, []).
+
+-spec describe_recipe(map(), describe_recipe_request(), proplists:proplist()) ->
+    {ok, describe_recipe_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_recipe(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRecipe">>, Input, Options).
@@ -1124,9 +3251,20 @@ describe_recipe(Client, Input, Options)
 %%
 %% For more information on recommenders, see CreateRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateRecommender.html.
+-spec describe_recommender(map(), describe_recommender_request()) ->
+    {ok, describe_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommender(Client, Input, []).
+
+-spec describe_recommender(map(), describe_recommender_request(), proplists:proplist()) ->
+    {ok, describe_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_recommender(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRecommender">>, Input, Options).
@@ -1136,9 +3274,20 @@ describe_recommender(Client, Input, Options)
 %% For more information on schemas, see
 %% CreateSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSchema.html.
+-spec describe_schema(map(), describe_schema_request()) ->
+    {ok, describe_schema_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_schema(Client, Input, []).
+
+-spec describe_schema(map(), describe_schema_request(), proplists:proplist()) ->
+    {ok, describe_schema_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSchema">>, Input, Options).
@@ -1147,9 +3296,20 @@ describe_schema(Client, Input, Options)
 %%
 %% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html.
+-spec describe_solution(map(), describe_solution_request()) ->
+    {ok, describe_solution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_solution(Client, Input, []).
+
+-spec describe_solution(map(), describe_solution_request(), proplists:proplist()) ->
+    {ok, describe_solution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_solution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSolution">>, Input, Options).
@@ -1158,17 +3318,41 @@ describe_solution(Client, Input, Options)
 %%
 %% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html
+-spec describe_solution_version(map(), describe_solution_version_request()) ->
+    {ok, describe_solution_version_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_solution_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_solution_version(Client, Input, []).
+
+-spec describe_solution_version(map(), describe_solution_version_request(), proplists:proplist()) ->
+    {ok, describe_solution_version_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_solution_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSolutionVersion">>, Input, Options).
 
 %% @doc Gets the metrics for the specified solution version.
+-spec get_solution_metrics(map(), get_solution_metrics_request()) ->
+    {ok, get_solution_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_solution_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_solution_metrics(Client, Input, []).
+
+-spec get_solution_metrics(map(), get_solution_metrics_request(), proplists:proplist()) ->
+    {ok, get_solution_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_solution_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSolutionMetrics">>, Input, Options).
@@ -1176,9 +3360,20 @@ get_solution_metrics(Client, Input, Options)
 %% @doc Gets a list of the batch inference jobs that have been performed off
 %% of a solution
 %% version.
+-spec list_batch_inference_jobs(map(), list_batch_inference_jobs_request()) ->
+    {ok, list_batch_inference_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_batch_inference_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_inference_jobs(Client, Input, []).
+
+-spec list_batch_inference_jobs(map(), list_batch_inference_jobs_request(), proplists:proplist()) ->
+    {ok, list_batch_inference_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_batch_inference_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBatchInferenceJobs">>, Input, Options).
@@ -1186,9 +3381,20 @@ list_batch_inference_jobs(Client, Input, Options)
 %% @doc Gets a list of the batch segment jobs that have been performed off of
 %% a solution
 %% version that you specify.
+-spec list_batch_segment_jobs(map(), list_batch_segment_jobs_request()) ->
+    {ok, list_batch_segment_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_batch_segment_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_batch_segment_jobs(Client, Input, []).
+
+-spec list_batch_segment_jobs(map(), list_batch_segment_jobs_request(), proplists:proplist()) ->
+    {ok, list_batch_segment_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_batch_segment_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBatchSegmentJobs">>, Input, Options).
@@ -1201,9 +3407,20 @@ list_batch_segment_jobs(Client, Input, Options)
 %% Amazon Resource Name (ARN).
 %% For more information on campaigns, see CreateCampaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateCampaign.html.
+-spec list_campaigns(map(), list_campaigns_request()) ->
+    {ok, list_campaigns_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_campaigns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_campaigns(Client, Input, []).
+
+-spec list_campaigns(map(), list_campaigns_request(), proplists:proplist()) ->
+    {ok, list_campaigns_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_campaigns(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCampaigns">>, Input, Options).
@@ -1219,9 +3436,20 @@ list_campaigns(Client, Input, Options)
 %% For more information on datasets, see
 %% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
+-spec list_dataset_export_jobs(map(), list_dataset_export_jobs_request()) ->
+    {ok, list_dataset_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_export_jobs(Client, Input, []).
+
+-spec list_dataset_export_jobs(map(), list_dataset_export_jobs_request(), proplists:proplist()) ->
+    {ok, list_dataset_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetExportJobs">>, Input, Options).
@@ -1232,9 +3460,18 @@ list_dataset_export_jobs(Client, Input, Options)
 %% for each dataset group, including the Amazon Resource Name (ARN). For more
 %% information on dataset groups, see CreateDatasetGroup:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDatasetGroup.html.
+-spec list_dataset_groups(map(), list_dataset_groups_request()) ->
+    {ok, list_dataset_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_groups(Client, Input, []).
+
+-spec list_dataset_groups(map(), list_dataset_groups_request(), proplists:proplist()) ->
+    {ok, list_dataset_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetGroups">>, Input, Options).
@@ -1250,9 +3487,20 @@ list_dataset_groups(Client, Input, Options)
 %% For more information on datasets, see
 %% CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
+-spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request()) ->
+    {ok, list_dataset_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_import_jobs(Client, Input, []).
+
+-spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request(), proplists:proplist()) ->
+    {ok, list_dataset_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetImportJobs">>, Input, Options).
@@ -1263,9 +3511,20 @@ list_dataset_import_jobs(Client, Input, Options)
 %% response provides the properties for each dataset, including the Amazon
 %% Resource Name (ARN). For more information on datasets, see CreateDataset:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateDataset.html.
+-spec list_datasets(map(), list_datasets_request()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
+
+-spec list_datasets(map(), list_datasets_request(), proplists:proplist()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_datasets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasets">>, Input, Options).
@@ -1277,33 +3536,77 @@ list_datasets(Client, Input, Options)
 %% Name (ARN) and tracking ID. For more
 %% information on event trackers, see CreateEventTracker:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html.
+-spec list_event_trackers(map(), list_event_trackers_request()) ->
+    {ok, list_event_trackers_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_event_trackers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_trackers(Client, Input, []).
+
+-spec list_event_trackers(map(), list_event_trackers_request(), proplists:proplist()) ->
+    {ok, list_event_trackers_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_event_trackers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventTrackers">>, Input, Options).
 
 %% @doc Lists all filters that belong to a given dataset group.
+-spec list_filters(map(), list_filters_request()) ->
+    {ok, list_filters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_filters(Client, Input, []).
+
+-spec list_filters(map(), list_filters_request(), proplists:proplist()) ->
+    {ok, list_filters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFilters">>, Input, Options).
 
 %% @doc Lists the metrics for the metric attribution.
+-spec list_metric_attribution_metrics(map(), list_metric_attribution_metrics_request()) ->
+    {ok, list_metric_attribution_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_metric_attribution_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metric_attribution_metrics(Client, Input, []).
+
+-spec list_metric_attribution_metrics(map(), list_metric_attribution_metrics_request(), proplists:proplist()) ->
+    {ok, list_metric_attribution_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_metric_attribution_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMetricAttributionMetrics">>, Input, Options).
 
 %% @doc Lists metric attributions.
+-spec list_metric_attributions(map(), list_metric_attributions_request()) ->
+    {ok, list_metric_attributions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_metric_attributions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metric_attributions(Client, Input, []).
+
+-spec list_metric_attributions(map(), list_metric_attributions_request(), proplists:proplist()) ->
+    {ok, list_metric_attributions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_metric_attributions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMetricAttributions">>, Input, Options).
@@ -1312,9 +3615,20 @@ list_metric_attributions(Client, Input, Options)
 %%
 %% The response provides the properties
 %% for each recipe, including the recipe's Amazon Resource Name (ARN).
+-spec list_recipes(map(), list_recipes_request()) ->
+    {ok, list_recipes_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_recipes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recipes(Client, Input, []).
+
+-spec list_recipes(map(), list_recipes_request(), proplists:proplist()) ->
+    {ok, list_recipes_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_recipes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecipes">>, Input, Options).
@@ -1327,9 +3641,20 @@ list_recipes(Client, Input, Options)
 %% Amazon Resource Name (ARN).
 %% For more information on recommenders, see CreateRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateRecommender.html.
+-spec list_recommenders(map(), list_recommenders_request()) ->
+    {ok, list_recommenders_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_recommenders(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recommenders(Client, Input, []).
+
+-spec list_recommenders(map(), list_recommenders_request(), proplists:proplist()) ->
+    {ok, list_recommenders_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_recommenders(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecommenders">>, Input, Options).
@@ -1340,9 +3665,18 @@ list_recommenders(Client, Input, Options)
 %% properties for each schema, including the Amazon Resource Name (ARN).
 %% For more information on schemas, see CreateSchema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSchema.html.
+-spec list_schemas(map(), list_schemas_request()) ->
+    {ok, list_schemas_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
+
+-spec list_schemas(map(), list_schemas_request(), proplists:proplist()) ->
+    {ok, list_schemas_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSchemas">>, Input, Options).
@@ -1354,9 +3688,22 @@ list_schemas(Client, Input, Options)
 %% listed. The response
 %% provides the properties for each solution version, including the Amazon
 %% Resource Name (ARN).
+-spec list_solution_versions(map(), list_solution_versions_request()) ->
+    {ok, list_solution_versions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_solution_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_solution_versions(Client, Input, []).
+
+-spec list_solution_versions(map(), list_solution_versions_request(), proplists:proplist()) ->
+    {ok, list_solution_versions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_solution_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSolutionVersions">>, Input, Options).
@@ -1369,9 +3716,20 @@ list_solution_versions(Client, Input, Options)
 %% Amazon Resource Name (ARN).
 %% For more information on solutions, see CreateSolution:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_CreateSolution.html.
+-spec list_solutions(map(), list_solutions_request()) ->
+    {ok, list_solutions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_solutions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_solutions(Client, Input, []).
+
+-spec list_solutions(map(), list_solutions_request(), proplists:proplist()) ->
+    {ok, list_solutions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_solutions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSolutions">>, Input, Options).
@@ -1379,9 +3737,22 @@ list_solutions(Client, Input, Options)
 %% @doc Get a list of tags:
 %% https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html
 %% attached to a resource.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1391,9 +3762,22 @@ list_tags_for_resource(Client, Input, Options)
 %% Starting a recommender does not
 %% create any new models, but resumes billing and automatic retraining for
 %% the recommender.
+-spec start_recommender(map(), start_recommender_request()) ->
+    {ok, start_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 start_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_recommender(Client, Input, []).
+
+-spec start_recommender(map(), start_recommender_request(), proplists:proplist()) ->
+    {ok, start_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 start_recommender(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRecommender">>, Input, Options).
@@ -1402,9 +3786,22 @@ start_recommender(Client, Input, Options)
 %%
 %% Stopping a recommender halts billing and automatic retraining for the
 %% recommender.
+-spec stop_recommender(map(), stop_recommender_request()) ->
+    {ok, stop_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 stop_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_recommender(Client, Input, []).
+
+-spec stop_recommender(map(), stop_recommender_request(), proplists:proplist()) ->
+    {ok, stop_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 stop_recommender(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRecommender">>, Input, Options).
@@ -1424,17 +3821,47 @@ stop_recommender(Client, Input, Options)
 %% You are billed for all of the training completed up
 %% until you stop the solution version creation. You cannot resume creating a
 %% solution version once it has been stopped.
+-spec stop_solution_version_creation(map(), stop_solution_version_creation_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 stop_solution_version_creation(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_solution_version_creation(Client, Input, []).
+
+-spec stop_solution_version_creation(map(), stop_solution_version_creation_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 stop_solution_version_creation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopSolutionVersionCreation">>, Input, Options).
 
 %% @doc Add a list of tags to a resource.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1442,9 +3869,24 @@ tag_resource(Client, Input, Options)
 %% @doc Remove tags:
 %% https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html
 %% that are attached to a resource.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tag_keys_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tag_keys_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1471,9 +3913,22 @@ untag_resource(Client, Input, Options)
 %% https://docs.aws.amazon.com/personalize/latest/dg/update-campaigns.html.
 %% For more information about campaigns, see Creating a campaign:
 %% https://docs.aws.amazon.com/personalize/latest/dg/campaigns.html.
+-spec update_campaign(map(), update_campaign_request()) ->
+    {ok, update_campaign_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_campaign(Client, Input, []).
+
+-spec update_campaign(map(), update_campaign_request(), proplists:proplist()) ->
+    {ok, update_campaign_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCampaign">>, Input, Options).
@@ -1482,17 +3937,45 @@ update_campaign(Client, Input, Options)
 %%
 %% For more information, see Replacing a dataset's schema:
 %% https://docs.aws.amazon.com/personalize/latest/dg/updating-dataset-schema.html.
+-spec update_dataset(map(), update_dataset_request()) ->
+    {ok, update_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_dataset(Client, Input, []).
+
+-spec update_dataset(map(), update_dataset_request(), proplists:proplist()) ->
+    {ok, update_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataset">>, Input, Options).
 
 %% @doc Updates a metric attribution.
+-spec update_metric_attribution(map(), update_metric_attribution_request()) ->
+    {ok, update_metric_attribution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_metric_attribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_metric_attribution(Client, Input, []).
+
+-spec update_metric_attribution(map(), update_metric_attribution_request(), proplists:proplist()) ->
+    {ok, update_metric_attribution_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_metric_attribution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMetricAttribution">>, Input, Options).
@@ -1508,9 +3991,22 @@ update_metric_attribution(Client, Input, Options)
 %% use the `latestRecommenderUpdate' returned in the DescribeRecommender:
 %% https://docs.aws.amazon.com/personalize/latest/dg/API_DescribeRecommender.html
 %% operation.
+-spec update_recommender(map(), update_recommender_request()) ->
+    {ok, update_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_recommender(Client, Input, []).
+
+-spec update_recommender(map(), update_recommender_request(), proplists:proplist()) ->
+    {ok, update_recommender_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_recommender(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRecommender">>, Input, Options).

@@ -180,6 +180,1455 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% list_receipt_rule_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleSets">> => list(receipt_rule_set_metadata()())
+%% }
+-type list_receipt_rule_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_receipt_rule_sets_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_receipt_rule_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_set_request() :: #{
+%%   <<"ConfigurationSetAttributeNames">> => list(list(any())()),
+%%   <<"ConfigurationSetName">> := string()
+%% }
+-type describe_configuration_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_policy_response() :: #{
+
+%% }
+-type delete_identity_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% tracking_options() :: #{
+%%   <<"CustomRedirectDomain">> => string()
+%% }
+-type tracking_options() :: #{binary() => any()}.
+
+%% Example:
+%% delete_verified_email_address_request() :: #{
+%%   <<"EmailAddress">> := string()
+%% }
+-type delete_verified_email_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_feedback_forwarding_enabled_request() :: #{
+%%   <<"ForwardingEnabled">> := boolean(),
+%%   <<"Identity">> := string()
+%% }
+-type set_identity_feedback_forwarding_enabled_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_response() :: #{
+
+%% }
+-type delete_configuration_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% identity_notification_attributes() :: #{
+%%   <<"BounceTopic">> => string(),
+%%   <<"ComplaintTopic">> => string(),
+%%   <<"DeliveryTopic">> => string(),
+%%   <<"ForwardingEnabled">> => boolean(),
+%%   <<"HeadersInBounceNotificationsEnabled">> => boolean(),
+%%   <<"HeadersInComplaintNotificationsEnabled">> => boolean(),
+%%   <<"HeadersInDeliveryNotificationsEnabled">> => boolean()
+%% }
+-type identity_notification_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% set_receipt_rule_position_response() :: #{
+
+%% }
+-type set_receipt_rule_position_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_identity_policy_request() :: #{
+%%   <<"Identity">> := string(),
+%%   <<"Policy">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type put_identity_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_domain_identity_request() :: #{
+%%   <<"Domain">> := string()
+%% }
+-type verify_domain_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_request() :: #{
+%%   <<"Identity">> := string()
+%% }
+-type delete_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_tracking_options_response() :: #{
+
+%% }
+-type create_configuration_set_tracking_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_rule_set_response() :: #{
+
+%% }
+-type create_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_receipt_rule_set_request() :: #{
+%%   <<"RuleSetName">> := string()
+%% }
+-type describe_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% custom_verification_email_invalid_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type custom_verification_email_invalid_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_templates_request() :: #{
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% rule_set_does_not_exist_exception() :: #{
+%%   <<"Name">> => string(),
+%%   <<"message">> => string()
+%% }
+-type rule_set_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_identities_request() :: #{
+%%   <<"IdentityType">> => list(any()),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identities_request() :: #{binary() => any()}.
+
+%% Example:
+%% identity_dkim_attributes() :: #{
+%%   <<"DkimEnabled">> => boolean(),
+%%   <<"DkimTokens">> => list(string()()),
+%%   <<"DkimVerificationStatus">> => list(any())
+%% }
+-type identity_dkim_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% describe_receipt_rule_request() :: #{
+%%   <<"RuleName">> := string(),
+%%   <<"RuleSetName">> := string()
+%% }
+-type describe_receipt_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_domain_dkim_response() :: #{
+%%   <<"DkimTokens">> => list(string()())
+%% }
+-type verify_domain_dkim_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_verification_email_template_does_not_exist_exception() :: #{
+%%   <<"CustomVerificationEmailTemplateName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type custom_verification_email_template_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_action() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"ObjectKeyPrefix">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type s3_action() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_firehose_destination() :: #{
+%%   <<"DeliveryStreamARN">> => string(),
+%%   <<"IAMRoleARN">> => string()
+%% }
+-type kinesis_firehose_destination() :: #{binary() => any()}.
+
+%% Example:
+%% already_exists_exception() :: #{
+%%   <<"Name">> => string(),
+%%   <<"message">> => string()
+%% }
+-type already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cloud_watch_destination_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"EventDestinationName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_cloud_watch_destination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_receipt_rule_set_response() :: #{
+%%   <<"Metadata">> => receipt_rule_set_metadata(),
+%%   <<"Rules">> => list(receipt_rule()())
+%% }
+-type describe_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_receipt_filters_response() :: #{
+%%   <<"Filters">> => list(receipt_filter()())
+%% }
+-type list_receipt_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_verification_email_template_response() :: #{
+%%   <<"FailureRedirectionURL">> => string(),
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"SuccessRedirectionURL">> => string(),
+%%   <<"TemplateContent">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateSubject">> => string()
+%% }
+-type get_custom_verification_email_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_raw_email_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Destinations">> => list(string()()),
+%%   <<"FromArn">> => string(),
+%%   <<"RawMessage">> := raw_message(),
+%%   <<"ReturnPathArn">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Tags">> => list(message_tag()())
+%% }
+-type send_raw_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_lambda_function_exception() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_lambda_function_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_mail_from_domain_attributes_request() :: #{
+%%   <<"Identities">> := list(string()())
+%% }
+-type get_identity_mail_from_domain_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% custom_verification_email_template_already_exists_exception() :: #{
+%%   <<"CustomVerificationEmailTemplateName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type custom_verification_email_template_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% verify_domain_identity_response() :: #{
+%%   <<"VerificationToken">> => string()
+%% }
+-type verify_domain_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_template_request() :: #{
+%%   <<"Template">> := template()
+%% }
+-type create_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_render_template_response() :: #{
+%%   <<"RenderedTemplate">> => string()
+%% }
+-type test_render_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_set_response() :: #{
+%%   <<"ConfigurationSet">> => configuration_set(),
+%%   <<"DeliveryOptions">> => delivery_options(),
+%%   <<"EventDestinations">> => list(event_destination()()),
+%%   <<"ReputationOptions">> => reputation_options(),
+%%   <<"TrackingOptions">> => tracking_options()
+%% }
+-type describe_configuration_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_active_receipt_rule_set_response() :: #{
+%%   <<"Metadata">> => receipt_rule_set_metadata(),
+%%   <<"Rules">> => list(receipt_rule()())
+%% }
+-type describe_active_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_response() :: #{
+%%   <<"Template">> => template()
+%% }
+-type get_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_verification_attributes_request() :: #{
+%%   <<"Identities">> := list(string()())
+%% }
+-type get_identity_verification_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% template_metadata() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type template_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_verification_email_template_request() :: #{
+%%   <<"TemplateName">> := string()
+%% }
+-type get_custom_verification_email_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sns_topic_exception() :: #{
+%%   <<"Topic">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_sns_topic_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_configuration_set_delivery_options_response() :: #{
+
+%% }
+-type put_configuration_set_delivery_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_event_destination_response() :: #{
+
+%% }
+-type delete_configuration_set_event_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_dimension_configuration() :: #{
+%%   <<"DefaultDimensionValue">> => string(),
+%%   <<"DimensionName">> => string(),
+%%   <<"DimensionValueSource">> => list(any())
+%% }
+-type cloud_watch_dimension_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_filter_request() :: #{
+%%   <<"FilterName">> := string()
+%% }
+-type delete_receipt_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_mail_from_domain_request() :: #{
+%%   <<"BehaviorOnMXFailure">> => list(any()),
+%%   <<"Identity">> := string(),
+%%   <<"MailFromDomain">> => string()
+%% }
+-type set_identity_mail_from_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_receipt_rule_request() :: #{
+%%   <<"Rule">> := receipt_rule(),
+%%   <<"RuleSetName">> := string()
+%% }
+-type update_receipt_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_template_request() :: #{
+%%   <<"Template">> := template()
+%% }
+-type update_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% reorder_receipt_rule_set_request() :: #{
+%%   <<"RuleNames">> := list(string()()),
+%%   <<"RuleSetName">> := string()
+%% }
+-type reorder_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_set() :: #{
+%%   <<"Name">> => string()
+%% }
+-type configuration_set() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_email_destination_status() :: #{
+%%   <<"Error">> => string(),
+%%   <<"MessageId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type bulk_email_destination_status() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_request() :: #{
+%%   <<"ConfigurationSetName">> := string()
+%% }
+-type delete_configuration_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_mail_from_domain_response() :: #{
+
+%% }
+-type set_identity_mail_from_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_notification_attributes_response() :: #{
+%%   <<"NotificationAttributes">> => map()
+%% }
+-type get_identity_notification_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_email_response() :: #{
+%%   <<"MessageId">> => string()
+%% }
+-type send_email_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_raw_email_response() :: #{
+%%   <<"MessageId">> => string()
+%% }
+-type send_raw_email_response() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_set_sending_paused_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type configuration_set_sending_paused_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_destination() :: #{
+%%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration()())
+%% }
+-type cloud_watch_destination() :: #{binary() => any()}.
+
+%% Example:
+%% mail_from_domain_not_verified_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type mail_from_domain_not_verified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s3_configuration_exception() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_s3_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% verify_domain_dkim_request() :: #{
+%%   <<"Domain">> := string()
+%% }
+-type verify_domain_dkim_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_notification_attributes_request() :: #{
+%%   <<"Identities">> := list(string()())
+%% }
+-type get_identity_notification_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_filter_response() :: #{
+
+%% }
+-type delete_receipt_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_dkim_attributes_response() :: #{
+%%   <<"DkimAttributes">> => map()
+%% }
+-type get_identity_dkim_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_set_tracking_options_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"TrackingOptions">> := tracking_options()
+%% }
+-type update_configuration_set_tracking_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_headers_in_notifications_enabled_response() :: #{
+
+%% }
+-type set_identity_headers_in_notifications_enabled_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_response() :: #{
+
+%% }
+-type create_configuration_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% message_dsn() :: #{
+%%   <<"ArrivalDate">> => non_neg_integer(),
+%%   <<"ExtensionFields">> => list(extension_field()()),
+%%   <<"ReportingMta">> => string()
+%% }
+-type message_dsn() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_verification_email_templates_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_verification_email_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_policy_request() :: #{
+%%   <<"Identity">> := string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type delete_identity_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% reputation_options() :: #{
+%%   <<"LastFreshStart">> => non_neg_integer(),
+%%   <<"ReputationMetricsEnabled">> => boolean(),
+%%   <<"SendingEnabled">> => boolean()
+%% }
+-type reputation_options() :: #{binary() => any()}.
+
+%% Example:
+%% test_render_template_request() :: #{
+%%   <<"TemplateData">> := string(),
+%%   <<"TemplateName">> := string()
+%% }
+-type test_render_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% identity_verification_attributes() :: #{
+%%   <<"VerificationStatus">> => list(any()),
+%%   <<"VerificationToken">> => string()
+%% }
+-type identity_verification_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% set_active_receipt_rule_set_response() :: #{
+
+%% }
+-type set_active_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_template_request() :: #{
+%%   <<"TemplateName">> := string()
+%% }
+-type delete_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_set_sending_enabled_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"Enabled">> := boolean()
+%% }
+-type update_configuration_set_sending_enabled_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_rule_set_request() :: #{
+%%   <<"RuleSetName">> := string()
+%% }
+-type create_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% from_email_address_not_verified_exception() :: #{
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"message">> => string()
+%% }
+-type from_email_address_not_verified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% verify_email_identity_response() :: #{
+
+%% }
+-type verify_email_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_action() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"InvocationType">> => list(any()),
+%%   <<"TopicArn">> => string()
+%% }
+-type lambda_action() :: #{binary() => any()}.
+
+%% Example:
+%% reorder_receipt_rule_set_response() :: #{
+
+%% }
+-type reorder_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_receipt_rule_response() :: #{
+%%   <<"Rule">> => receipt_rule()
+%% }
+-type describe_receipt_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% event_destination() :: #{
+%%   <<"CloudWatchDestination">> => cloud_watch_destination(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
+%%   <<"MatchingEventTypes">> => list(list(any())()),
+%%   <<"Name">> => string(),
+%%   <<"SNSDestination">> => s_n_s_destination()
+%% }
+-type event_destination() :: #{binary() => any()}.
+
+%% Example:
+%% verify_email_address_request() :: #{
+%%   <<"EmailAddress">> := string()
+%% }
+-type verify_email_address_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_set_event_destination_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"EventDestination">> := event_destination()
+%% }
+-type update_configuration_set_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_policies_request() :: #{
+%%   <<"Identity">> := string(),
+%%   <<"PolicyNames">> := list(string()())
+%% }
+-type get_identity_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_filter_request() :: #{
+%%   <<"Filter">> := receipt_filter()
+%% }
+-type create_receipt_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% message_tag() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type message_tag() :: #{binary() => any()}.
+
+%% Example:
+%% cannot_delete_exception() :: #{
+%%   <<"Name">> => string(),
+%%   <<"message">> => string()
+%% }
+-type cannot_delete_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_notification_topic_response() :: #{
+
+%% }
+-type set_identity_notification_topic_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_s_n_s_destination_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"EventDestinationName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_s_n_s_destination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_response() :: #{
+
+%% }
+-type delete_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_headers_in_notifications_enabled_request() :: #{
+%%   <<"Enabled">> := boolean(),
+%%   <<"Identity">> := string(),
+%%   <<"NotificationType">> := list(any())
+%% }
+-type set_identity_headers_in_notifications_enabled_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_identity_policy_response() :: #{
+
+%% }
+-type put_identity_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_rule_request() :: #{
+%%   <<"RuleName">> := string(),
+%%   <<"RuleSetName">> := string()
+%% }
+-type delete_receipt_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% clone_receipt_rule_set_response() :: #{
+
+%% }
+-type clone_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_custom_verification_email_response() :: #{
+%%   <<"MessageId">> => string()
+%% }
+-type send_custom_verification_email_response() :: #{binary() => any()}.
+
+%% Example:
+%% receipt_action() :: #{
+%%   <<"AddHeaderAction">> => add_header_action(),
+%%   <<"BounceAction">> => bounce_action(),
+%%   <<"LambdaAction">> => lambda_action(),
+%%   <<"S3Action">> => s3_action(),
+%%   <<"SNSAction">> => s_n_s_action(),
+%%   <<"StopAction">> => stop_action(),
+%%   <<"WorkmailAction">> => workmail_action()
+%% }
+-type receipt_action() :: #{binary() => any()}.
+
+%% Example:
+%% production_access_not_granted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type production_access_not_granted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_verification_email_template_request() :: #{
+%%   <<"FailureRedirectionURL">> := string(),
+%%   <<"FromEmailAddress">> := string(),
+%%   <<"SuccessRedirectionURL">> := string(),
+%%   <<"TemplateContent">> := string(),
+%%   <<"TemplateName">> := string(),
+%%   <<"TemplateSubject">> := string()
+%% }
+-type create_custom_verification_email_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_receipt_filters_request() :: #{
+
+%% }
+-type list_receipt_filters_request() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_destination() :: #{
+%%   <<"TopicARN">> => string()
+%% }
+-type s_n_s_destination() :: #{binary() => any()}.
+
+%% Example:
+%% event_destination_already_exists_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"EventDestinationName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type event_destination_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_configuration_sets_response() :: #{
+%%   <<"ConfigurationSets">> => list(configuration_set()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_mail_from_domain_attributes_response() :: #{
+%%   <<"MailFromDomainAttributes">> => map()
+%% }
+-type get_identity_mail_from_domain_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_verification_email_template_request() :: #{
+%%   <<"FailureRedirectionURL">> => string(),
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"SuccessRedirectionURL">> => string(),
+%%   <<"TemplateContent">> => string(),
+%%   <<"TemplateName">> := string(),
+%%   <<"TemplateSubject">> => string()
+%% }
+-type update_custom_verification_email_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_rule_request() :: #{
+%%   <<"After">> => string(),
+%%   <<"Rule">> := receipt_rule(),
+%%   <<"RuleSetName">> := string()
+%% }
+-type create_receipt_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% receipt_ip_filter() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Policy">> => list(any())
+%% }
+-type receipt_ip_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_configuration_sets_request() :: #{
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_receipt_rule_response() :: #{
+
+%% }
+-type update_receipt_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_tracking_options_request() :: #{
+%%   <<"ConfigurationSetName">> := string()
+%% }
+-type delete_configuration_set_tracking_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% raw_message() :: #{
+%%   <<"Data">> => binary()
+%% }
+-type raw_message() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_verification_email_templates_response() :: #{
+%%   <<"CustomVerificationEmailTemplates">> => list(custom_verification_email_template()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_verification_email_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_bulk_templated_email_response() :: #{
+%%   <<"Status">> => list(bulk_email_destination_status()())
+%% }
+-type send_bulk_templated_email_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_feedback_forwarding_enabled_response() :: #{
+
+%% }
+-type set_identity_feedback_forwarding_enabled_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_verification_email_template_request() :: #{
+%%   <<"TemplateName">> := string()
+%% }
+-type delete_custom_verification_email_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_bounce_response() :: #{
+%%   <<"MessageId">> => string()
+%% }
+-type send_bounce_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_rule_set_request() :: #{
+%%   <<"RuleSetName">> := string()
+%% }
+-type delete_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_rule_response() :: #{
+
+%% }
+-type create_receipt_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tracking_options_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tracking_options_exception() :: #{binary() => any()}.
+
+%% Example:
+%% send_custom_verification_email_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"EmailAddress">> := string(),
+%%   <<"TemplateName">> := string()
+%% }
+-type send_custom_verification_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_active_receipt_rule_set_request() :: #{
+%%   <<"RuleSetName">> => string()
+%% }
+-type set_active_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_bulk_templated_email_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"DefaultTags">> => list(message_tag()()),
+%%   <<"DefaultTemplateData">> => string(),
+%%   <<"Destinations">> := list(bulk_email_destination()()),
+%%   <<"ReplyToAddresses">> => list(string()()),
+%%   <<"ReturnPath">> => string(),
+%%   <<"ReturnPathArn">> => string(),
+%%   <<"Source">> := string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Template">> := string(),
+%%   <<"TemplateArn">> => string()
+%% }
+-type send_bulk_templated_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_set_does_not_exist_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type configuration_set_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% send_templated_email_response() :: #{
+%%   <<"MessageId">> => string()
+%% }
+-type send_templated_email_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_template_response() :: #{
+
+%% }
+-type update_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_policies_request() :: #{
+%%   <<"Identity">> := string()
+%% }
+-type list_identity_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% receipt_filter() :: #{
+%%   <<"IpFilter">> => receipt_ip_filter(),
+%%   <<"Name">> => string()
+%% }
+-type receipt_filter() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_event_destination_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"EventDestinationName">> := string()
+%% }
+-type delete_configuration_set_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% receipt_rule_set_metadata() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type receipt_rule_set_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_event_destination_response() :: #{
+
+%% }
+-type create_configuration_set_event_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_templated_email_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Destination">> := destination(),
+%%   <<"ReplyToAddresses">> => list(string()()),
+%%   <<"ReturnPath">> => string(),
+%%   <<"ReturnPathArn">> => string(),
+%%   <<"Source">> := string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Tags">> => list(message_tag()()),
+%%   <<"Template">> := string(),
+%%   <<"TemplateArn">> => string(),
+%%   <<"TemplateData">> := string()
+%% }
+-type send_templated_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_action() :: #{
+%%   <<"Scope">> => list(any()),
+%%   <<"TopicArn">> => string()
+%% }
+-type stop_action() :: #{binary() => any()}.
+
+%% Example:
+%% put_configuration_set_delivery_options_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"DeliveryOptions">> => delivery_options()
+%% }
+-type put_configuration_set_delivery_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% receipt_rule() :: #{
+%%   <<"Actions">> => list(receipt_action()()),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Recipients">> => list(string()()),
+%%   <<"ScanEnabled">> => boolean(),
+%%   <<"TlsPolicy">> => list(any())
+%% }
+-type receipt_rule() :: #{binary() => any()}.
+
+%% Example:
+%% account_sending_paused_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type account_sending_paused_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_configuration_set_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_configuration_set_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_tracking_options_response() :: #{
+
+%% }
+-type delete_configuration_set_tracking_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% verify_email_identity_request() :: #{
+%%   <<"EmailAddress">> := string()
+%% }
+-type verify_email_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% rule_does_not_exist_exception() :: #{
+%%   <<"Name">> => string(),
+%%   <<"message">> => string()
+%% }
+-type rule_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_action() :: #{
+%%   <<"Encoding">> => list(any()),
+%%   <<"TopicArn">> => string()
+%% }
+-type s_n_s_action() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_notification_topic_request() :: #{
+%%   <<"Identity">> := string(),
+%%   <<"NotificationType">> := list(any()),
+%%   <<"SnsTopic">> => string()
+%% }
+-type set_identity_notification_topic_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_verification_attributes_response() :: #{
+%%   <<"VerificationAttributes">> => map()
+%% }
+-type get_identity_verification_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% bounced_recipient_info() :: #{
+%%   <<"BounceType">> => list(any()),
+%%   <<"Recipient">> => string(),
+%%   <<"RecipientArn">> => string(),
+%%   <<"RecipientDsnFields">> => recipient_dsn_fields()
+%% }
+-type bounced_recipient_info() :: #{binary() => any()}.
+
+%% Example:
+%% list_templates_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TemplatesMetadata">> => list(template_metadata()())
+%% }
+-type list_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_template_exception() :: #{
+%%   <<"TemplateName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_template_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_request() :: #{
+%%   <<"TemplateName">> := string()
+%% }
+-type get_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_tracking_options_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"TrackingOptions">> := tracking_options()
+%% }
+-type create_configuration_set_tracking_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_rendering_parameter_exception() :: #{
+%%   <<"TemplateName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_rendering_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_active_receipt_rule_set_request() :: #{
+
+%% }
+-type describe_active_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_sending_enabled_request() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type update_account_sending_enabled_request() :: #{binary() => any()}.
+
+%% Example:
+%% missing_rendering_attribute_exception() :: #{
+%%   <<"TemplateName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type missing_rendering_attribute_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_verification_email_template() :: #{
+%%   <<"FailureRedirectionURL">> => string(),
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"SuccessRedirectionURL">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateSubject">> => string()
+%% }
+-type custom_verification_email_template() :: #{binary() => any()}.
+
+%% Example:
+%% event_destination_does_not_exist_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"EventDestinationName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type event_destination_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% destination() :: #{
+%%   <<"BccAddresses">> => list(string()()),
+%%   <<"CcAddresses">> => list(string()()),
+%%   <<"ToAddresses">> => list(string()())
+%% }
+-type destination() :: #{binary() => any()}.
+
+%% Example:
+%% body() :: #{
+%%   <<"Html">> => content(),
+%%   <<"Text">> => content()
+%% }
+-type body() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_rule_response() :: #{
+
+%% }
+-type delete_receipt_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% message_rejected() :: #{
+%%   <<"message">> => string()
+%% }
+-type message_rejected() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_dkim_enabled_request() :: #{
+%%   <<"DkimEnabled">> := boolean(),
+%%   <<"Identity">> := string()
+%% }
+-type set_identity_dkim_enabled_request() :: #{binary() => any()}.
+
+%% Example:
+%% template_does_not_exist_exception() :: #{
+%%   <<"TemplateName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type template_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_policies_response() :: #{
+%%   <<"Policies">> => map()
+%% }
+-type get_identity_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_event_destination_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"EventDestination">> := event_destination()
+%% }
+-type create_configuration_set_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_bounce_request() :: #{
+%%   <<"BounceSender">> := string(),
+%%   <<"BounceSenderArn">> => string(),
+%%   <<"BouncedRecipientInfoList">> := list(bounced_recipient_info()()),
+%%   <<"Explanation">> => string(),
+%%   <<"MessageDsn">> => message_dsn(),
+%%   <<"OriginalMessageId">> := string()
+%% }
+-type send_bounce_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_identities_response() :: #{
+%%   <<"Identities">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identities_response() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% recipient_dsn_fields() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"DiagnosticCode">> => string(),
+%%   <<"ExtensionFields">> => list(extension_field()()),
+%%   <<"FinalRecipient">> => string(),
+%%   <<"LastAttemptDate">> => non_neg_integer(),
+%%   <<"RemoteMta">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type recipient_dsn_fields() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_options() :: #{
+%%   <<"TlsPolicy">> => list(any())
+%% }
+-type delivery_options() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_set_event_destination_response() :: #{
+
+%% }
+-type update_configuration_set_event_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% workmail_action() :: #{
+%%   <<"OrganizationArn">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type workmail_action() :: #{binary() => any()}.
+
+%% Example:
+%% set_receipt_rule_position_request() :: #{
+%%   <<"After">> => string(),
+%%   <<"RuleName">> := string(),
+%%   <<"RuleSetName">> := string()
+%% }
+-type set_receipt_rule_position_request() :: #{binary() => any()}.
+
+%% Example:
+%% tracking_options_already_exists_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type tracking_options_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_email_destination() :: #{
+%%   <<"Destination">> => destination(),
+%%   <<"ReplacementTags">> => list(message_tag()()),
+%%   <<"ReplacementTemplateData">> => string()
+%% }
+-type bulk_email_destination() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_policies_response() :: #{
+%%   <<"PolicyNames">> => list(string()())
+%% }
+-type list_identity_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% content() :: #{
+%%   <<"Charset">> => string(),
+%%   <<"Data">> => string()
+%% }
+-type content() :: #{binary() => any()}.
+
+%% Example:
+%% create_template_response() :: #{
+
+%% }
+-type create_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_template_response() :: #{
+
+%% }
+-type delete_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% extension_field() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type extension_field() :: #{binary() => any()}.
+
+%% Example:
+%% template() :: #{
+%%   <<"HtmlPart">> => string(),
+%%   <<"SubjectPart">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TextPart">> => string()
+%% }
+-type template() :: #{binary() => any()}.
+
+%% Example:
+%% send_email_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Destination">> := destination(),
+%%   <<"Message">> := message(),
+%%   <<"ReplyToAddresses">> => list(string()()),
+%%   <<"ReturnPath">> => string(),
+%%   <<"ReturnPathArn">> => string(),
+%%   <<"Source">> := string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"Tags">> => list(message_tag()())
+%% }
+-type send_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_sending_enabled_response() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type get_account_sending_enabled_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_verified_email_addresses_response() :: #{
+%%   <<"VerifiedEmailAddresses">> => list(string()())
+%% }
+-type list_verified_email_addresses_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_send_statistics_response() :: #{
+%%   <<"SendDataPoints">> => list(send_data_point()())
+%% }
+-type get_send_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_delivery_options_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_delivery_options_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_receipt_rule_set_response() :: #{
+
+%% }
+-type delete_receipt_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_data_point() :: #{
+%%   <<"Bounces">> => float(),
+%%   <<"Complaints">> => float(),
+%%   <<"DeliveryAttempts">> => float(),
+%%   <<"Rejects">> => float(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type send_data_point() :: #{binary() => any()}.
+
+%% Example:
+%% create_receipt_filter_response() :: #{
+
+%% }
+-type create_receipt_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_send_quota_response() :: #{
+%%   <<"Max24HourSend">> => float(),
+%%   <<"MaxSendRate">> => float(),
+%%   <<"SentLast24Hours">> => float()
+%% }
+-type get_send_quota_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_set_tracking_options_response() :: #{
+
+%% }
+-type update_configuration_set_tracking_options_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_identity_dkim_enabled_response() :: #{
+
+%% }
+-type set_identity_dkim_enabled_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_request() :: #{
+%%   <<"ConfigurationSet">> := configuration_set()
+%% }
+-type create_configuration_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% tracking_options_does_not_exist_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type tracking_options_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_firehose_destination_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"EventDestinationName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_firehose_destination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% bounce_action() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Sender">> => string(),
+%%   <<"SmtpReplyCode">> => string(),
+%%   <<"StatusCode">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type bounce_action() :: #{binary() => any()}.
+
+%% Example:
+%% clone_receipt_rule_set_request() :: #{
+%%   <<"OriginalRuleSetName">> := string(),
+%%   <<"RuleSetName">> := string()
+%% }
+-type clone_receipt_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_set_reputation_metrics_enabled_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"Enabled">> := boolean()
+%% }
+-type update_configuration_set_reputation_metrics_enabled_request() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_set_already_exists_exception() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"message">> => string()
+%% }
+-type configuration_set_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_header_action() :: #{
+%%   <<"HeaderName">> => string(),
+%%   <<"HeaderValue">> => string()
+%% }
+-type add_header_action() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_dkim_attributes_request() :: #{
+%%   <<"Identities">> := list(string()())
+%% }
+-type get_identity_dkim_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% message() :: #{
+%%   <<"Body">> => body(),
+%%   <<"Subject">> => content()
+%% }
+-type message() :: #{binary() => any()}.
+
+%% Example:
+%% identity_mail_from_domain_attributes() :: #{
+%%   <<"BehaviorOnMXFailure">> => list(any()),
+%%   <<"MailFromDomain">> => string(),
+%%   <<"MailFromDomainStatus">> => list(any())
+%% }
+-type identity_mail_from_domain_attributes() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -196,9 +1645,22 @@
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules.
 %%
 %% You can execute this operation no more than once per second.
+-spec clone_receipt_rule_set(map(), clone_receipt_rule_set_request()) ->
+    {ok, clone_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 clone_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     clone_receipt_rule_set(Client, Input, []).
+
+-spec clone_receipt_rule_set(map(), clone_receipt_rule_set_request(), proplists:proplist()) ->
+    {ok, clone_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 clone_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CloneReceiptRuleSet">>, Input, Options).
@@ -212,9 +1674,22 @@ clone_receipt_rule_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec create_configuration_set(map(), create_configuration_set_request()) ->
+    {ok, create_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_already_exists_exception(), tuple()} |
+    {error, invalid_configuration_set_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set(Client, Input, []).
+
+-spec create_configuration_set(map(), create_configuration_set_request(), proplists:proplist()) ->
+    {ok, create_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_already_exists_exception(), tuple()} |
+    {error, invalid_configuration_set_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_configuration_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConfigurationSet">>, Input, Options).
@@ -235,9 +1710,28 @@ create_configuration_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec create_configuration_set_event_destination(map(), create_configuration_set_event_destination_request()) ->
+    {ok, create_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, event_destination_already_exists_exception(), tuple()} |
+    {error, invalid_cloud_watch_destination_exception(), tuple()} |
+    {error, invalid_firehose_destination_exception(), tuple()} |
+    {error, invalid_s_n_s_destination_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_configuration_set_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set_event_destination(Client, Input, []).
+
+-spec create_configuration_set_event_destination(map(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
+    {ok, create_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, event_destination_already_exists_exception(), tuple()} |
+    {error, invalid_cloud_watch_destination_exception(), tuple()} |
+    {error, invalid_firehose_destination_exception(), tuple()} |
+    {error, invalid_s_n_s_destination_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_configuration_set_event_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConfigurationSetEventDestination">>, Input, Options).
@@ -253,9 +1747,22 @@ create_configuration_set_event_destination(Client, Input, Options)
 %% events. For information about using custom domains, see the Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html.
+-spec create_configuration_set_tracking_options(map(), create_configuration_set_tracking_options_request()) ->
+    {ok, create_configuration_set_tracking_options_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, invalid_tracking_options_exception(), tuple()} |
+    {error, tracking_options_already_exists_exception(), tuple()}.
 create_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_configuration_set_tracking_options(Client, Input, []).
+
+-spec create_configuration_set_tracking_options(map(), create_configuration_set_tracking_options_request(), proplists:proplist()) ->
+    {ok, create_configuration_set_tracking_options_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, invalid_tracking_options_exception(), tuple()} |
+    {error, tracking_options_already_exists_exception(), tuple()}.
 create_configuration_set_tracking_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConfigurationSetTrackingOptions">>, Input, Options).
@@ -269,9 +1776,24 @@ create_configuration_set_tracking_options(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
+-spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, custom_verification_email_invalid_content_exception(), tuple()} |
+    {error, custom_verification_email_template_already_exists_exception(), tuple()} |
+    {error, from_email_address_not_verified_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_verification_email_template(Client, Input, []).
+
+-spec create_custom_verification_email_template(map(), create_custom_verification_email_template_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, custom_verification_email_invalid_content_exception(), tuple()} |
+    {error, custom_verification_email_template_already_exists_exception(), tuple()} |
+    {error, from_email_address_not_verified_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_custom_verification_email_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomVerificationEmailTemplate">>, Input, Options).
@@ -283,9 +1805,20 @@ create_custom_verification_email_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec create_receipt_filter(map(), create_receipt_filter_request()) ->
+    {ok, create_receipt_filter_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_receipt_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_receipt_filter(Client, Input, []).
+
+-spec create_receipt_filter(map(), create_receipt_filter_request(), proplists:proplist()) ->
+    {ok, create_receipt_filter_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_receipt_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReceiptFilter">>, Input, Options).
@@ -297,9 +1830,30 @@ create_receipt_filter(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec create_receipt_rule(map(), create_receipt_rule_request()) ->
+    {ok, create_receipt_rule_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, invalid_lambda_function_exception(), tuple()} |
+    {error, invalid_s3_configuration_exception(), tuple()} |
+    {error, invalid_sns_topic_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 create_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_receipt_rule(Client, Input, []).
+
+-spec create_receipt_rule(map(), create_receipt_rule_request(), proplists:proplist()) ->
+    {ok, create_receipt_rule_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, invalid_lambda_function_exception(), tuple()} |
+    {error, invalid_s3_configuration_exception(), tuple()} |
+    {error, invalid_sns_topic_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 create_receipt_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReceiptRule">>, Input, Options).
@@ -311,9 +1865,20 @@ create_receipt_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules.
 %%
 %% You can execute this operation no more than once per second.
+-spec create_receipt_rule_set(map(), create_receipt_rule_set_request()) ->
+    {ok, create_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_receipt_rule_set(Client, Input, []).
+
+-spec create_receipt_rule_set(map(), create_receipt_rule_set_request(), proplists:proplist()) ->
+    {ok, create_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReceiptRuleSet">>, Input, Options).
@@ -327,9 +1892,22 @@ create_receipt_rule_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec create_template(map(), create_template_request()) ->
+    {ok, create_template_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, invalid_template_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_template(Client, Input, []).
+
+-spec create_template(map(), create_template_request(), proplists:proplist()) ->
+    {ok, create_template_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, invalid_template_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTemplate">>, Input, Options).
@@ -342,9 +1920,18 @@ create_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec delete_configuration_set(map(), delete_configuration_set_request()) ->
+    {ok, delete_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()}.
 delete_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set(Client, Input, []).
+
+-spec delete_configuration_set(map(), delete_configuration_set_request(), proplists:proplist()) ->
+    {ok, delete_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()}.
 delete_configuration_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationSet">>, Input, Options).
@@ -359,9 +1946,20 @@ delete_configuration_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec delete_configuration_set_event_destination(map(), delete_configuration_set_event_destination_request()) ->
+    {ok, delete_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, event_destination_does_not_exist_exception(), tuple()}.
 delete_configuration_set_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set_event_destination(Client, Input, []).
+
+-spec delete_configuration_set_event_destination(map(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
+    {ok, delete_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, event_destination_does_not_exist_exception(), tuple()}.
 delete_configuration_set_event_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationSetEventDestination">>, Input, Options).
@@ -382,9 +1980,20 @@ delete_configuration_set_event_destination(Client, Input, Options)
 %% specified
 %% configuration set to capture open and click events using the standard,
 %% Amazon SES-operated domains.
+-spec delete_configuration_set_tracking_options(map(), delete_configuration_set_tracking_options_request()) ->
+    {ok, delete_configuration_set_tracking_options_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, tracking_options_does_not_exist_exception(), tuple()}.
 delete_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_set_tracking_options(Client, Input, []).
+
+-spec delete_configuration_set_tracking_options(map(), delete_configuration_set_tracking_options_request(), proplists:proplist()) ->
+    {ok, delete_configuration_set_tracking_options_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, tracking_options_does_not_exist_exception(), tuple()}.
 delete_configuration_set_tracking_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConfigurationSetTrackingOptions">>, Input, Options).
@@ -398,9 +2007,16 @@ delete_configuration_set_tracking_options(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
+-spec delete_custom_verification_email_template(map(), delete_custom_verification_email_template_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_verification_email_template(Client, Input, []).
+
+-spec delete_custom_verification_email_template(map(), delete_custom_verification_email_template_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_custom_verification_email_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomVerificationEmailTemplate">>, Input, Options).
@@ -410,9 +2026,16 @@ delete_custom_verification_email_template(Client, Input, Options)
 %% verified identities.
 %%
 %% You can execute this operation no more than once per second.
+-spec delete_identity(map(), delete_identity_request()) ->
+    {ok, delete_identity_response(), tuple()} |
+    {error, any()}.
 delete_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity(Client, Input, []).
+
+-spec delete_identity(map(), delete_identity_request(), proplists:proplist()) ->
+    {ok, delete_identity_response(), tuple()} |
+    {error, any()}.
 delete_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentity">>, Input, Options).
@@ -437,9 +2060,16 @@ delete_identity(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec delete_identity_policy(map(), delete_identity_policy_request()) ->
+    {ok, delete_identity_policy_response(), tuple()} |
+    {error, any()}.
 delete_identity_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_policy(Client, Input, []).
+
+-spec delete_identity_policy(map(), delete_identity_policy_request(), proplists:proplist()) ->
+    {ok, delete_identity_policy_response(), tuple()} |
+    {error, any()}.
 delete_identity_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentityPolicy">>, Input, Options).
@@ -451,9 +2081,16 @@ delete_identity_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec delete_receipt_filter(map(), delete_receipt_filter_request()) ->
+    {ok, delete_receipt_filter_response(), tuple()} |
+    {error, any()}.
 delete_receipt_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_receipt_filter(Client, Input, []).
+
+-spec delete_receipt_filter(map(), delete_receipt_filter_request(), proplists:proplist()) ->
+    {ok, delete_receipt_filter_response(), tuple()} |
+    {error, any()}.
 delete_receipt_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReceiptFilter">>, Input, Options).
@@ -465,9 +2102,18 @@ delete_receipt_filter(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec delete_receipt_rule(map(), delete_receipt_rule_request()) ->
+    {ok, delete_receipt_rule_response(), tuple()} |
+    {error, any()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 delete_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_receipt_rule(Client, Input, []).
+
+-spec delete_receipt_rule(map(), delete_receipt_rule_request(), proplists:proplist()) ->
+    {ok, delete_receipt_rule_response(), tuple()} |
+    {error, any()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 delete_receipt_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReceiptRule">>, Input, Options).
@@ -483,9 +2129,18 @@ delete_receipt_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec delete_receipt_rule_set(map(), delete_receipt_rule_set_request()) ->
+    {ok, delete_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, cannot_delete_exception(), tuple()}.
 delete_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_receipt_rule_set(Client, Input, []).
+
+-spec delete_receipt_rule_set(map(), delete_receipt_rule_set_request(), proplists:proplist()) ->
+    {ok, delete_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, cannot_delete_exception(), tuple()}.
 delete_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReceiptRuleSet">>, Input, Options).
@@ -493,9 +2148,16 @@ delete_receipt_rule_set(Client, Input, Options)
 %% @doc Deletes an email template.
 %%
 %% You can execute this operation no more than once per second.
+-spec delete_template(map(), delete_template_request()) ->
+    {ok, delete_template_response(), tuple()} |
+    {error, any()}.
 delete_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_template(Client, Input, []).
+
+-spec delete_template(map(), delete_template_request(), proplists:proplist()) ->
+    {ok, delete_template_response(), tuple()} |
+    {error, any()}.
 delete_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTemplate">>, Input, Options).
@@ -504,9 +2166,16 @@ delete_template(Client, Input, Options)
 %%
 %% Use the `DeleteIdentity' operation to delete email addresses
 %% and domains.
+-spec delete_verified_email_address(map(), delete_verified_email_address_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_verified_email_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_verified_email_address(Client, Input, []).
+
+-spec delete_verified_email_address(map(), delete_verified_email_address_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 delete_verified_email_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVerifiedEmailAddress">>, Input, Options).
@@ -520,9 +2189,16 @@ delete_verified_email_address(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules.
 %%
 %% You can execute this operation no more than once per second.
+-spec describe_active_receipt_rule_set(map(), describe_active_receipt_rule_set_request()) ->
+    {ok, describe_active_receipt_rule_set_response(), tuple()} |
+    {error, any()}.
 describe_active_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_active_receipt_rule_set(Client, Input, []).
+
+-spec describe_active_receipt_rule_set(map(), describe_active_receipt_rule_set_request(), proplists:proplist()) ->
+    {ok, describe_active_receipt_rule_set_response(), tuple()} |
+    {error, any()}.
 describe_active_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActiveReceiptRuleSet">>, Input, Options).
@@ -535,9 +2211,18 @@ describe_active_receipt_rule_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec describe_configuration_set(map(), describe_configuration_set_request()) ->
+    {ok, describe_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()}.
 describe_configuration_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_set(Client, Input, []).
+
+-spec describe_configuration_set(map(), describe_configuration_set_request(), proplists:proplist()) ->
+    {ok, describe_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()}.
 describe_configuration_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationSet">>, Input, Options).
@@ -549,9 +2234,20 @@ describe_configuration_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec describe_receipt_rule(map(), describe_receipt_rule_request()) ->
+    {ok, describe_receipt_rule_response(), tuple()} |
+    {error, any()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 describe_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_receipt_rule(Client, Input, []).
+
+-spec describe_receipt_rule(map(), describe_receipt_rule_request(), proplists:proplist()) ->
+    {ok, describe_receipt_rule_response(), tuple()} |
+    {error, any()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 describe_receipt_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReceiptRule">>, Input, Options).
@@ -563,9 +2259,18 @@ describe_receipt_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec describe_receipt_rule_set(map(), describe_receipt_rule_set_request()) ->
+    {ok, describe_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 describe_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_receipt_rule_set(Client, Input, []).
+
+-spec describe_receipt_rule_set(map(), describe_receipt_rule_set_request(), proplists:proplist()) ->
+    {ok, describe_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 describe_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReceiptRuleSet">>, Input, Options).
@@ -574,9 +2279,16 @@ describe_receipt_rule_set(Client, Input, Options)
 %% current Region.
 %%
 %% You can execute this operation no more than once per second.
+-spec get_account_sending_enabled(map(), #{}) ->
+    {ok, get_account_sending_enabled_response(), tuple()} |
+    {error, any()}.
 get_account_sending_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_sending_enabled(Client, Input, []).
+
+-spec get_account_sending_enabled(map(), #{}, proplists:proplist()) ->
+    {ok, get_account_sending_enabled_response(), tuple()} |
+    {error, any()}.
 get_account_sending_enabled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountSendingEnabled">>, Input, Options).
@@ -592,9 +2304,18 @@ get_account_sending_enabled(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
+-spec get_custom_verification_email_template(map(), get_custom_verification_email_template_request()) ->
+    {ok, get_custom_verification_email_template_response(), tuple()} |
+    {error, any()} |
+    {error, custom_verification_email_template_does_not_exist_exception(), tuple()}.
 get_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_verification_email_template(Client, Input, []).
+
+-spec get_custom_verification_email_template(map(), get_custom_verification_email_template_request(), proplists:proplist()) ->
+    {ok, get_custom_verification_email_template_response(), tuple()} |
+    {error, any()} |
+    {error, custom_verification_email_template_does_not_exist_exception(), tuple()}.
 get_custom_verification_email_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCustomVerificationEmailTemplate">>, Input, Options).
@@ -632,9 +2353,16 @@ get_custom_verification_email_template(Client, Input, Options)
 %% the Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy-managing.html.
+-spec get_identity_dkim_attributes(map(), get_identity_dkim_attributes_request()) ->
+    {ok, get_identity_dkim_attributes_response(), tuple()} |
+    {error, any()}.
 get_identity_dkim_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_dkim_attributes(Client, Input, []).
+
+-spec get_identity_dkim_attributes(map(), get_identity_dkim_attributes_request(), proplists:proplist()) ->
+    {ok, get_identity_dkim_attributes_response(), tuple()} |
+    {error, any()}.
 get_identity_dkim_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityDkimAttributes">>, Input, Options).
@@ -646,9 +2374,16 @@ get_identity_dkim_attributes(Client, Input, Options)
 %% This operation is throttled at one request per second and can only get
 %% custom MAIL
 %% FROM attributes for up to 100 identities at a time.
+-spec get_identity_mail_from_domain_attributes(map(), get_identity_mail_from_domain_attributes_request()) ->
+    {ok, get_identity_mail_from_domain_attributes_response(), tuple()} |
+    {error, any()}.
 get_identity_mail_from_domain_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_mail_from_domain_attributes(Client, Input, []).
+
+-spec get_identity_mail_from_domain_attributes(map(), get_identity_mail_from_domain_attributes_request(), proplists:proplist()) ->
+    {ok, get_identity_mail_from_domain_attributes_response(), tuple()} |
+    {error, any()}.
 get_identity_mail_from_domain_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityMailFromDomainAttributes">>, Input, Options).
@@ -665,9 +2400,16 @@ get_identity_mail_from_domain_attributes(Client, Input, Options)
 %% Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
+-spec get_identity_notification_attributes(map(), get_identity_notification_attributes_request()) ->
+    {ok, get_identity_notification_attributes_response(), tuple()} |
+    {error, any()}.
 get_identity_notification_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_notification_attributes(Client, Input, []).
+
+-spec get_identity_notification_attributes(map(), get_identity_notification_attributes_request(), proplists:proplist()) ->
+    {ok, get_identity_notification_attributes_response(), tuple()} |
+    {error, any()}.
 get_identity_notification_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityNotificationAttributes">>, Input, Options).
@@ -692,9 +2434,16 @@ get_identity_notification_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec get_identity_policies(map(), get_identity_policies_request()) ->
+    {ok, get_identity_policies_response(), tuple()} |
+    {error, any()}.
 get_identity_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_policies(Client, Input, []).
+
+-spec get_identity_policies(map(), get_identity_policies_request(), proplists:proplist()) ->
+    {ok, get_identity_policies_response(), tuple()} |
+    {error, any()}.
 get_identity_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityPolicies">>, Input, Options).
@@ -731,9 +2480,16 @@ get_identity_policies(Client, Input, Options)
 %% This operation is throttled at one request per second and can only get
 %% verification
 %% attributes for up to 100 identities at a time.
+-spec get_identity_verification_attributes(map(), get_identity_verification_attributes_request()) ->
+    {ok, get_identity_verification_attributes_response(), tuple()} |
+    {error, any()}.
 get_identity_verification_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_verification_attributes(Client, Input, []).
+
+-spec get_identity_verification_attributes(map(), get_identity_verification_attributes_request(), proplists:proplist()) ->
+    {ok, get_identity_verification_attributes_response(), tuple()} |
+    {error, any()}.
 get_identity_verification_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityVerificationAttributes">>, Input, Options).
@@ -741,9 +2497,16 @@ get_identity_verification_attributes(Client, Input, Options)
 %% @doc Provides the sending limits for the Amazon SES account.
 %%
 %% You can execute this operation no more than once per second.
+-spec get_send_quota(map(), #{}) ->
+    {ok, get_send_quota_response(), tuple()} |
+    {error, any()}.
 get_send_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_send_quota(Client, Input, []).
+
+-spec get_send_quota(map(), #{}, proplists:proplist()) ->
+    {ok, get_send_quota_response(), tuple()} |
+    {error, any()}.
 get_send_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSendQuota">>, Input, Options).
@@ -757,9 +2520,16 @@ get_send_quota(Client, Input, Options)
 %% contains statistics for a 15-minute period of time.
 %%
 %% You can execute this operation no more than once per second.
+-spec get_send_statistics(map(), #{}) ->
+    {ok, get_send_statistics_response(), tuple()} |
+    {error, any()}.
 get_send_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_send_statistics(Client, Input, []).
+
+-spec get_send_statistics(map(), #{}, proplists:proplist()) ->
+    {ok, get_send_statistics_response(), tuple()} |
+    {error, any()}.
 get_send_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSendStatistics">>, Input, Options).
@@ -769,9 +2539,18 @@ get_send_statistics(Client, Input, Options)
 %% part) for the template you specify.
 %%
 %% You can execute this operation no more than once per second.
+-spec get_template(map(), get_template_request()) ->
+    {ok, get_template_response(), tuple()} |
+    {error, any()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 get_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template(Client, Input, []).
+
+-spec get_template(map(), get_template_request(), proplists:proplist()) ->
+    {ok, get_template_response(), tuple()} |
+    {error, any()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 get_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTemplate">>, Input, Options).
@@ -796,9 +2575,16 @@ get_template(Client, Input, Options)
 %% `NextToken' parameter and the value of the NextToken element to
 %% retrieve
 %% additional results.
+-spec list_configuration_sets(map(), list_configuration_sets_request()) ->
+    {ok, list_configuration_sets_response(), tuple()} |
+    {error, any()}.
 list_configuration_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_configuration_sets(Client, Input, []).
+
+-spec list_configuration_sets(map(), list_configuration_sets_request(), proplists:proplist()) ->
+    {ok, list_configuration_sets_response(), tuple()} |
+    {error, any()}.
 list_configuration_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConfigurationSets">>, Input, Options).
@@ -814,9 +2600,16 @@ list_configuration_sets(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
+-spec list_custom_verification_email_templates(map(), list_custom_verification_email_templates_request()) ->
+    {ok, list_custom_verification_email_templates_response(), tuple()} |
+    {error, any()}.
 list_custom_verification_email_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_verification_email_templates(Client, Input, []).
+
+-spec list_custom_verification_email_templates(map(), list_custom_verification_email_templates_request(), proplists:proplist()) ->
+    {ok, list_custom_verification_email_templates_response(), tuple()} |
+    {error, any()}.
 list_custom_verification_email_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomVerificationEmailTemplates">>, Input, Options).
@@ -840,9 +2633,16 @@ list_custom_verification_email_templates(Client, Input, Options)
 %% original call, then continue to not provide it for successive pagination
 %% calls.
 %% Using this protocol will ensure consistent results.
+-spec list_identities(map(), list_identities_request()) ->
+    {ok, list_identities_response(), tuple()} |
+    {error, any()}.
 list_identities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identities(Client, Input, []).
+
+-spec list_identities(map(), list_identities_request(), proplists:proplist()) ->
+    {ok, list_identities_response(), tuple()} |
+    {error, any()}.
 list_identities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentities">>, Input, Options).
@@ -867,9 +2667,16 @@ list_identities(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec list_identity_policies(map(), list_identity_policies_request()) ->
+    {ok, list_identity_policies_response(), tuple()} |
+    {error, any()}.
 list_identity_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_policies(Client, Input, []).
+
+-spec list_identity_policies(map(), list_identity_policies_request(), proplists:proplist()) ->
+    {ok, list_identity_policies_response(), tuple()} |
+    {error, any()}.
 list_identity_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentityPolicies">>, Input, Options).
@@ -883,9 +2690,16 @@ list_identity_policies(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-ip-filtering-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec list_receipt_filters(map(), list_receipt_filters_request()) ->
+    {ok, list_receipt_filters_response(), tuple()} |
+    {error, any()}.
 list_receipt_filters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_receipt_filters(Client, Input, []).
+
+-spec list_receipt_filters(map(), list_receipt_filters_request(), proplists:proplist()) ->
+    {ok, list_receipt_filters_response(), tuple()} |
+    {error, any()}.
 list_receipt_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReceiptFilters">>, Input, Options).
@@ -903,9 +2717,16 @@ list_receipt_filters(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec list_receipt_rule_sets(map(), list_receipt_rule_sets_request()) ->
+    {ok, list_receipt_rule_sets_response(), tuple()} |
+    {error, any()}.
 list_receipt_rule_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_receipt_rule_sets(Client, Input, []).
+
+-spec list_receipt_rule_sets(map(), list_receipt_rule_sets_request(), proplists:proplist()) ->
+    {ok, list_receipt_rule_sets_response(), tuple()} |
+    {error, any()}.
 list_receipt_rule_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReceiptRuleSets">>, Input, Options).
@@ -915,9 +2736,16 @@ list_receipt_rule_sets(Client, Input, Options)
 %% Amazon Web Services Region.
 %%
 %% You can execute this operation no more than once per second.
+-spec list_templates(map(), list_templates_request()) ->
+    {ok, list_templates_response(), tuple()} |
+    {error, any()}.
 list_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_templates(Client, Input, []).
+
+-spec list_templates(map(), list_templates_request(), proplists:proplist()) ->
+    {ok, list_templates_response(), tuple()} |
+    {error, any()}.
 list_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTemplates">>, Input, Options).
@@ -926,17 +2754,35 @@ list_templates(Client, Input, Options)
 %%
 %% Use the `ListIdentities' operation to list the email addresses
 %% and domains associated with your account.
+-spec list_verified_email_addresses(map(), #{}) ->
+    {ok, list_verified_email_addresses_response(), tuple()} |
+    {error, any()}.
 list_verified_email_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_verified_email_addresses(Client, Input, []).
+
+-spec list_verified_email_addresses(map(), #{}, proplists:proplist()) ->
+    {ok, list_verified_email_addresses_response(), tuple()} |
+    {error, any()}.
 list_verified_email_addresses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVerifiedEmailAddresses">>, Input, Options).
 
 %% @doc Adds or updates the delivery options for a configuration set.
+-spec put_configuration_set_delivery_options(map(), put_configuration_set_delivery_options_request()) ->
+    {ok, put_configuration_set_delivery_options_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, invalid_delivery_options_exception(), tuple()}.
 put_configuration_set_delivery_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_configuration_set_delivery_options(Client, Input, []).
+
+-spec put_configuration_set_delivery_options(map(), put_configuration_set_delivery_options_request(), proplists:proplist()) ->
+    {ok, put_configuration_set_delivery_options_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, invalid_delivery_options_exception(), tuple()}.
 put_configuration_set_delivery_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConfigurationSetDeliveryOptions">>, Input, Options).
@@ -958,9 +2804,18 @@ put_configuration_set_delivery_options(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec put_identity_policy(map(), put_identity_policy_request()) ->
+    {ok, put_identity_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_policy_exception(), tuple()}.
 put_identity_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_identity_policy(Client, Input, []).
+
+-spec put_identity_policy(map(), put_identity_policy_request(), proplists:proplist()) ->
+    {ok, put_identity_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_policy_exception(), tuple()}.
 put_identity_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutIdentityPolicy">>, Input, Options).
@@ -977,9 +2832,20 @@ put_identity_policy(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec reorder_receipt_rule_set(map(), reorder_receipt_rule_set_request()) ->
+    {ok, reorder_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 reorder_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     reorder_receipt_rule_set(Client, Input, []).
+
+-spec reorder_receipt_rule_set(map(), reorder_receipt_rule_set_request(), proplists:proplist()) ->
+    {ok, reorder_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 reorder_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReorderReceiptRuleSet">>, Input, Options).
@@ -1001,9 +2867,18 @@ reorder_receipt_rule_set(Client, Input, Options)
 %% Guide: https://docs.aws.amazon.com/ses/latest/dg/receiving-email.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec send_bounce(map(), send_bounce_request()) ->
+    {ok, send_bounce_response(), tuple()} |
+    {error, any()} |
+    {error, message_rejected(), tuple()}.
 send_bounce(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_bounce(Client, Input, []).
+
+-spec send_bounce(map(), send_bounce_request(), proplists:proplist()) ->
+    {ok, send_bounce_response(), tuple()} |
+    {error, any()} |
+    {error, message_rejected(), tuple()}.
 send_bounce(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendBounce">>, Input, Options).
@@ -1054,9 +2929,28 @@ send_bounce(Client, Input, Options)
 %% The number of destinations you can contact in a single call can be limited
 %% by
 %% your account's maximum sending rate.
+-spec send_bulk_templated_email(map(), send_bulk_templated_email_request()) ->
+    {ok, send_bulk_templated_email_response(), tuple()} |
+    {error, any()} |
+    {error, account_sending_paused_exception(), tuple()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, configuration_set_sending_paused_exception(), tuple()} |
+    {error, mail_from_domain_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 send_bulk_templated_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_bulk_templated_email(Client, Input, []).
+
+-spec send_bulk_templated_email(map(), send_bulk_templated_email_request(), proplists:proplist()) ->
+    {ok, send_bulk_templated_email_response(), tuple()} |
+    {error, any()} |
+    {error, account_sending_paused_exception(), tuple()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, configuration_set_sending_paused_exception(), tuple()} |
+    {error, mail_from_domain_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 send_bulk_templated_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendBulkTemplatedEmail">>, Input, Options).
@@ -1079,9 +2973,26 @@ send_bulk_templated_email(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
+-spec send_custom_verification_email(map(), send_custom_verification_email_request()) ->
+    {ok, send_custom_verification_email_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, custom_verification_email_template_does_not_exist_exception(), tuple()} |
+    {error, from_email_address_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()} |
+    {error, production_access_not_granted_exception(), tuple()}.
 send_custom_verification_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_custom_verification_email(Client, Input, []).
+
+-spec send_custom_verification_email(map(), send_custom_verification_email_request(), proplists:proplist()) ->
+    {ok, send_custom_verification_email_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, custom_verification_email_template_does_not_exist_exception(), tuple()} |
+    {error, from_email_address_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()} |
+    {error, production_access_not_granted_exception(), tuple()}.
 send_custom_verification_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendCustomVerificationEmail">>, Input, Options).
@@ -1136,9 +3047,26 @@ send_custom_verification_email(Client, Input, Options)
 %% Limits:
 %% https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas.html in
 %% the Amazon SES Developer Guide.
+-spec send_email(map(), send_email_request()) ->
+    {ok, send_email_response(), tuple()} |
+    {error, any()} |
+    {error, account_sending_paused_exception(), tuple()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, configuration_set_sending_paused_exception(), tuple()} |
+    {error, mail_from_domain_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()}.
 send_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_email(Client, Input, []).
+
+-spec send_email(map(), send_email_request(), proplists:proplist()) ->
+    {ok, send_email_response(), tuple()} |
+    {error, any()} |
+    {error, account_sending_paused_exception(), tuple()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, configuration_set_sending_paused_exception(), tuple()} |
+    {error, mail_from_domain_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()}.
 send_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendEmail">>, Input, Options).
@@ -1250,9 +3178,26 @@ send_email(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas.html in
 %% the Amazon SES Developer
 %% Guide.
+-spec send_raw_email(map(), send_raw_email_request()) ->
+    {ok, send_raw_email_response(), tuple()} |
+    {error, any()} |
+    {error, account_sending_paused_exception(), tuple()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, configuration_set_sending_paused_exception(), tuple()} |
+    {error, mail_from_domain_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()}.
 send_raw_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_raw_email(Client, Input, []).
+
+-spec send_raw_email(map(), send_raw_email_request(), proplists:proplist()) ->
+    {ok, send_raw_email_response(), tuple()} |
+    {error, any()} |
+    {error, account_sending_paused_exception(), tuple()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, configuration_set_sending_paused_exception(), tuple()} |
+    {error, mail_from_domain_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()}.
 send_raw_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendRawEmail">>, Input, Options).
@@ -1313,9 +3258,28 @@ send_raw_email(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html
 %% in the
 %% Amazon Simple Email Service Developer Guide.
+-spec send_templated_email(map(), send_templated_email_request()) ->
+    {ok, send_templated_email_response(), tuple()} |
+    {error, any()} |
+    {error, account_sending_paused_exception(), tuple()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, configuration_set_sending_paused_exception(), tuple()} |
+    {error, mail_from_domain_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 send_templated_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_templated_email(Client, Input, []).
+
+-spec send_templated_email(map(), send_templated_email_request(), proplists:proplist()) ->
+    {ok, send_templated_email_response(), tuple()} |
+    {error, any()} |
+    {error, account_sending_paused_exception(), tuple()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, configuration_set_sending_paused_exception(), tuple()} |
+    {error, mail_from_domain_not_verified_exception(), tuple()} |
+    {error, message_rejected(), tuple()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 send_templated_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendTemplatedEmail">>, Input, Options).
@@ -1331,9 +3295,18 @@ send_templated_email(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec set_active_receipt_rule_set(map(), set_active_receipt_rule_set_request()) ->
+    {ok, set_active_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 set_active_receipt_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_active_receipt_rule_set(Client, Input, []).
+
+-spec set_active_receipt_rule_set(map(), set_active_receipt_rule_set_request(), proplists:proplist()) ->
+    {ok, set_active_receipt_rule_set_response(), tuple()} |
+    {error, any()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 set_active_receipt_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetActiveReceiptRuleSet">>, Input, Options).
@@ -1362,9 +3335,16 @@ set_active_receipt_rule_set(Client, Input, Options)
 %% Developer
 %% Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html.
+-spec set_identity_dkim_enabled(map(), set_identity_dkim_enabled_request()) ->
+    {ok, set_identity_dkim_enabled_response(), tuple()} |
+    {error, any()}.
 set_identity_dkim_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_dkim_enabled(Client, Input, []).
+
+-spec set_identity_dkim_enabled(map(), set_identity_dkim_enabled_request(), proplists:proplist()) ->
+    {ok, set_identity_dkim_enabled_response(), tuple()} |
+    {error, any()}.
 set_identity_dkim_enabled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIdentityDkimEnabled">>, Input, Options).
@@ -1387,9 +3367,16 @@ set_identity_dkim_enabled(Client, Input, Options)
 %% Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
+-spec set_identity_feedback_forwarding_enabled(map(), set_identity_feedback_forwarding_enabled_request()) ->
+    {ok, set_identity_feedback_forwarding_enabled_response(), tuple()} |
+    {error, any()}.
 set_identity_feedback_forwarding_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_feedback_forwarding_enabled(Client, Input, []).
+
+-spec set_identity_feedback_forwarding_enabled(map(), set_identity_feedback_forwarding_enabled_request(), proplists:proplist()) ->
+    {ok, set_identity_feedback_forwarding_enabled_response(), tuple()} |
+    {error, any()}.
 set_identity_feedback_forwarding_enabled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIdentityFeedbackForwardingEnabled">>, Input, Options).
@@ -1406,9 +3393,16 @@ set_identity_feedback_forwarding_enabled(Client, Input, Options)
 %% Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
+-spec set_identity_headers_in_notifications_enabled(map(), set_identity_headers_in_notifications_enabled_request()) ->
+    {ok, set_identity_headers_in_notifications_enabled_response(), tuple()} |
+    {error, any()}.
 set_identity_headers_in_notifications_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_headers_in_notifications_enabled(Client, Input, []).
+
+-spec set_identity_headers_in_notifications_enabled(map(), set_identity_headers_in_notifications_enabled_request(), proplists:proplist()) ->
+    {ok, set_identity_headers_in_notifications_enabled_response(), tuple()} |
+    {error, any()}.
 set_identity_headers_in_notifications_enabled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIdentityHeadersInNotificationsEnabled">>, Input, Options).
@@ -1427,9 +3421,16 @@ set_identity_headers_in_notifications_enabled(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/mail-from.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec set_identity_mail_from_domain(map(), set_identity_mail_from_domain_request()) ->
+    {ok, set_identity_mail_from_domain_response(), tuple()} |
+    {error, any()}.
 set_identity_mail_from_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_mail_from_domain(Client, Input, []).
+
+-spec set_identity_mail_from_domain(map(), set_identity_mail_from_domain_request(), proplists:proplist()) ->
+    {ok, set_identity_mail_from_domain_response(), tuple()} |
+    {error, any()}.
 set_identity_mail_from_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIdentityMailFromDomain">>, Input, Options).
@@ -1453,9 +3454,16 @@ set_identity_mail_from_domain(Client, Input, Options)
 %% For more information about feedback notification, see the Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity-using-notifications.html.
+-spec set_identity_notification_topic(map(), set_identity_notification_topic_request()) ->
+    {ok, set_identity_notification_topic_response(), tuple()} |
+    {error, any()}.
 set_identity_notification_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_identity_notification_topic(Client, Input, []).
+
+-spec set_identity_notification_topic(map(), set_identity_notification_topic_request(), proplists:proplist()) ->
+    {ok, set_identity_notification_topic_response(), tuple()} |
+    {error, any()}.
 set_identity_notification_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIdentityNotificationTopic">>, Input, Options).
@@ -1468,9 +3476,20 @@ set_identity_notification_topic(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec set_receipt_rule_position(map(), set_receipt_rule_position_request()) ->
+    {ok, set_receipt_rule_position_response(), tuple()} |
+    {error, any()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 set_receipt_rule_position(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_receipt_rule_position(Client, Input, []).
+
+-spec set_receipt_rule_position(map(), set_receipt_rule_position_request(), proplists:proplist()) ->
+    {ok, set_receipt_rule_position_response(), tuple()} |
+    {error, any()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 set_receipt_rule_position(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetReceiptRulePosition">>, Input, Options).
@@ -1480,9 +3499,22 @@ set_receipt_rule_position(Client, Input, Options)
 %% set of replacement data.
 %%
 %% You can execute this operation no more than once per second.
+-spec test_render_template(map(), test_render_template_request()) ->
+    {ok, test_render_template_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_rendering_parameter_exception(), tuple()} |
+    {error, missing_rendering_attribute_exception(), tuple()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 test_render_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_render_template(Client, Input, []).
+
+-spec test_render_template(map(), test_render_template_request(), proplists:proplist()) ->
+    {ok, test_render_template_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_rendering_parameter_exception(), tuple()} |
+    {error, missing_rendering_attribute_exception(), tuple()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 test_render_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestRenderTemplate">>, Input, Options).
@@ -1498,9 +3530,16 @@ test_render_template(Client, Input, Options)
 %% thresholds.
 %%
 %% You can execute this operation no more than once per second.
+-spec update_account_sending_enabled(map(), update_account_sending_enabled_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 update_account_sending_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_sending_enabled(Client, Input, []).
+
+-spec update_account_sending_enabled(map(), update_account_sending_enabled_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 update_account_sending_enabled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccountSendingEnabled">>, Input, Options).
@@ -1524,9 +3563,26 @@ update_account_sending_enabled(Client, Input, Options)
 %% (Amazon SNS).
 %%
 %% You can execute this operation no more than once per second.
+-spec update_configuration_set_event_destination(map(), update_configuration_set_event_destination_request()) ->
+    {ok, update_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, event_destination_does_not_exist_exception(), tuple()} |
+    {error, invalid_cloud_watch_destination_exception(), tuple()} |
+    {error, invalid_firehose_destination_exception(), tuple()} |
+    {error, invalid_s_n_s_destination_exception(), tuple()}.
 update_configuration_set_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_event_destination(Client, Input, []).
+
+-spec update_configuration_set_event_destination(map(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
+    {ok, update_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, event_destination_does_not_exist_exception(), tuple()} |
+    {error, invalid_cloud_watch_destination_exception(), tuple()} |
+    {error, invalid_firehose_destination_exception(), tuple()} |
+    {error, invalid_s_n_s_destination_exception(), tuple()}.
 update_configuration_set_event_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConfigurationSetEventDestination">>, Input, Options).
@@ -1541,9 +3597,18 @@ update_configuration_set_event_destination(Client, Input, Options)
 %% create alarms when bounce or complaint rates exceed certain thresholds.
 %%
 %% You can execute this operation no more than once per second.
+-spec update_configuration_set_reputation_metrics_enabled(map(), update_configuration_set_reputation_metrics_enabled_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()}.
 update_configuration_set_reputation_metrics_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_reputation_metrics_enabled(Client, Input, []).
+
+-spec update_configuration_set_reputation_metrics_enabled(map(), update_configuration_set_reputation_metrics_enabled_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()}.
 update_configuration_set_reputation_metrics_enabled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConfigurationSetReputationMetricsEnabled">>, Input, Options).
@@ -1560,9 +3625,18 @@ update_configuration_set_reputation_metrics_enabled(Client, Input, Options)
 %% thresholds.
 %%
 %% You can execute this operation no more than once per second.
+-spec update_configuration_set_sending_enabled(map(), update_configuration_set_sending_enabled_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()}.
 update_configuration_set_sending_enabled(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_sending_enabled(Client, Input, []).
+
+-spec update_configuration_set_sending_enabled(map(), update_configuration_set_sending_enabled_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()}.
 update_configuration_set_sending_enabled(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConfigurationSetSendingEnabled">>, Input, Options).
@@ -1578,9 +3652,22 @@ update_configuration_set_sending_enabled(Client, Input, Options)
 %% events. For information about using custom domains, see the Amazon SES
 %% Developer Guide:
 %% https://docs.aws.amazon.com/ses/latest/dg/configure-custom-open-click-domains.html.
+-spec update_configuration_set_tracking_options(map(), update_configuration_set_tracking_options_request()) ->
+    {ok, update_configuration_set_tracking_options_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, invalid_tracking_options_exception(), tuple()} |
+    {error, tracking_options_does_not_exist_exception(), tuple()}.
 update_configuration_set_tracking_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_configuration_set_tracking_options(Client, Input, []).
+
+-spec update_configuration_set_tracking_options(map(), update_configuration_set_tracking_options_request(), proplists:proplist()) ->
+    {ok, update_configuration_set_tracking_options_response(), tuple()} |
+    {error, any()} |
+    {error, configuration_set_does_not_exist_exception(), tuple()} |
+    {error, invalid_tracking_options_exception(), tuple()} |
+    {error, tracking_options_does_not_exist_exception(), tuple()}.
 update_configuration_set_tracking_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConfigurationSetTrackingOptions">>, Input, Options).
@@ -1594,9 +3681,22 @@ update_configuration_set_tracking_options(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
+-spec update_custom_verification_email_template(map(), update_custom_verification_email_template_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, custom_verification_email_invalid_content_exception(), tuple()} |
+    {error, custom_verification_email_template_does_not_exist_exception(), tuple()} |
+    {error, from_email_address_not_verified_exception(), tuple()}.
 update_custom_verification_email_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_verification_email_template(Client, Input, []).
+
+-spec update_custom_verification_email_template(map(), update_custom_verification_email_template_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, custom_verification_email_invalid_content_exception(), tuple()} |
+    {error, custom_verification_email_template_does_not_exist_exception(), tuple()} |
+    {error, from_email_address_not_verified_exception(), tuple()}.
 update_custom_verification_email_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomVerificationEmailTemplate">>, Input, Options).
@@ -1608,9 +3708,28 @@ update_custom_verification_email_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/receiving-email-receipt-rules-console-walkthrough.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec update_receipt_rule(map(), update_receipt_rule_request()) ->
+    {ok, update_receipt_rule_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_lambda_function_exception(), tuple()} |
+    {error, invalid_s3_configuration_exception(), tuple()} |
+    {error, invalid_sns_topic_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 update_receipt_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_receipt_rule(Client, Input, []).
+
+-spec update_receipt_rule(map(), update_receipt_rule_request(), proplists:proplist()) ->
+    {ok, update_receipt_rule_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_lambda_function_exception(), tuple()} |
+    {error, invalid_s3_configuration_exception(), tuple()} |
+    {error, invalid_sns_topic_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, rule_does_not_exist_exception(), tuple()} |
+    {error, rule_set_does_not_exist_exception(), tuple()}.
 update_receipt_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateReceiptRule">>, Input, Options).
@@ -1624,9 +3743,20 @@ update_receipt_rule(Client, Input, Options)
 %% https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html.
 %%
 %% You can execute this operation no more than once per second.
+-spec update_template(map(), update_template_request()) ->
+    {ok, update_template_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_template_exception(), tuple()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 update_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_template(Client, Input, []).
+
+-spec update_template(map(), update_template_request(), proplists:proplist()) ->
+    {ok, update_template_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_template_exception(), tuple()} |
+    {error, template_does_not_exist_exception(), tuple()}.
 update_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTemplate">>, Input, Options).
@@ -1676,9 +3806,16 @@ update_template(Client, Input, Options)
 %% token that's generated by this operation.
 %%
 %% You can execute this operation no more than once per second.
+-spec verify_domain_dkim(map(), verify_domain_dkim_request()) ->
+    {ok, verify_domain_dkim_response(), tuple()} |
+    {error, any()}.
 verify_domain_dkim(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_domain_dkim(Client, Input, []).
+
+-spec verify_domain_dkim(map(), verify_domain_dkim_request(), proplists:proplist()) ->
+    {ok, verify_domain_dkim_response(), tuple()} |
+    {error, any()}.
 verify_domain_dkim(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifyDomainDkim">>, Input, Options).
@@ -1694,9 +3831,16 @@ verify_domain_dkim(Client, Input, Options)
 %% Guide.
 %%
 %% You can execute this operation no more than once per second.
+-spec verify_domain_identity(map(), verify_domain_identity_request()) ->
+    {ok, verify_domain_identity_response(), tuple()} |
+    {error, any()}.
 verify_domain_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_domain_identity(Client, Input, []).
+
+-spec verify_domain_identity(map(), verify_domain_identity_request(), proplists:proplist()) ->
+    {ok, verify_domain_identity_response(), tuple()} |
+    {error, any()}.
 verify_domain_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifyDomainIdentity">>, Input, Options).
@@ -1705,9 +3849,16 @@ verify_domain_identity(Client, Input, Options)
 %%
 %% Use the `VerifyEmailIdentity' operation to verify a new email
 %% address.
+-spec verify_email_address(map(), verify_email_address_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 verify_email_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_email_address(Client, Input, []).
+
+-spec verify_email_address(map(), verify_email_address_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
 verify_email_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifyEmailAddress">>, Input, Options).
@@ -1720,9 +3871,16 @@ verify_email_address(Client, Input, Options)
 %% verification email is sent to the specified address.
 %%
 %% You can execute this operation no more than once per second.
+-spec verify_email_identity(map(), verify_email_identity_request()) ->
+    {ok, verify_email_identity_response(), tuple()} |
+    {error, any()}.
 verify_email_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_email_identity(Client, Input, []).
+
+-spec verify_email_identity(map(), verify_email_identity_request(), proplists:proplist()) ->
+    {ok, verify_email_identity_response(), tuple()} |
+    {error, any()}.
 verify_email_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifyEmailIdentity">>, Input, Options).

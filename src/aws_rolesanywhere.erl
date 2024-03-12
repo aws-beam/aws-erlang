@@ -97,6 +97,346 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% subject_detail() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"credentials">> => list(credential_summary()()),
+%%   <<"enabled">> => [boolean()],
+%%   <<"instanceProperties">> => list(instance_property()()),
+%%   <<"lastSeenAt">> => [non_neg_integer()],
+%%   <<"subjectArn">> => [string()],
+%%   <<"subjectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"x509Subject">> => [string()]
+%% }
+-type subject_detail() :: #{binary() => any()}.
+
+%% Example:
+%% credential_summary() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"failed">> => [boolean()],
+%%   <<"issuer">> => [string()],
+%%   <<"seenAt">> => [non_neg_integer()],
+%%   <<"serialNumber">> => [string()],
+%%   <<"x509CertificateData">> => [string()]
+%% }
+-type credential_summary() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% profile_detail_response() :: #{
+%%   <<"profile">> => profile_detail()
+%% }
+-type profile_detail_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_notification_settings_request() :: #{
+%%   <<"notificationSettings">> := list(notification_setting()()),
+%%   <<"trustAnchorId">> := string()
+%% }
+-type put_notification_settings_request() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+%% Example:
+%% scalar_profile_request() :: #{}
+-type scalar_profile_request() :: #{}.
+%% Example:
+%% scalar_crl_request() :: #{}
+-type scalar_crl_request() :: #{}.
+
+%% Example:
+%% notification_setting_key() :: #{
+%%   <<"channel">> => string(),
+%%   <<"event">> => string()
+%% }
+-type notification_setting_key() :: #{binary() => any()}.
+
+%% Example:
+%% subject_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"lastSeenAt">> => [non_neg_integer()],
+%%   <<"subjectArn">> => [string()],
+%%   <<"subjectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"x509Subject">> => [string()]
+%% }
+-type subject_summary() :: #{binary() => any()}.
+
+%% Example:
+%% subject_detail_response() :: #{
+%%   <<"subject">> => subject_detail()
+%% }
+-type subject_detail_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_crl_request() :: #{
+%%   <<"crlData">> => [binary()],
+%%   <<"name">> => string()
+%% }
+-type update_crl_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_subjects_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"subjects">> => list(subject_summary()())
+%% }
+-type list_subjects_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_crls_response() :: #{
+%%   <<"crls">> => list(crl_detail()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_crls_response() :: #{binary() => any()}.
+
+%% Example:
+%% crl_detail() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"crlArn">> => [string()],
+%%   <<"crlData">> => [binary()],
+%%   <<"crlId">> => string(),
+%%   <<"enabled">> => [boolean()],
+%%   <<"name">> => [string()],
+%%   <<"trustAnchorArn">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type crl_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_trust_anchor_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"source">> => source()
+%% }
+-type update_trust_anchor_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_profile_request() :: #{
+%%   <<"durationSeconds">> => [integer()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"managedPolicyArns">> => list([string()]()),
+%%   <<"name">> := string(),
+%%   <<"requireInstanceProperties">> => [boolean()],
+%%   <<"roleArns">> := list(string()()),
+%%   <<"sessionPolicy">> => [string()],
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trust_anchor_detail() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"notificationSettings">> => list(notification_setting_detail()()),
+%%   <<"source">> => source(),
+%%   <<"trustAnchorArn">> => [string()],
+%%   <<"trustAnchorId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type trust_anchor_detail() :: #{binary() => any()}.
+
+%% Example:
+%% update_profile_request() :: #{
+%%   <<"durationSeconds">> => [integer()],
+%%   <<"managedPolicyArns">> => list([string()]()),
+%%   <<"name">> => string(),
+%%   <<"roleArns">> => list(string()()),
+%%   <<"sessionPolicy">> => [string()]
+%% }
+-type update_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% profile_detail() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"durationSeconds">> => [integer()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"managedPolicyArns">> => list([string()]()),
+%%   <<"name">> => string(),
+%%   <<"profileArn">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"requireInstanceProperties">> => [boolean()],
+%%   <<"roleArns">> => list(string()()),
+%%   <<"sessionPolicy">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type profile_detail() :: #{binary() => any()}.
+%% Example:
+%% scalar_subject_request() :: #{}
+-type scalar_subject_request() :: #{}.
+
+%% Example:
+%% source() :: #{
+%%   <<"sourceData">> => list(),
+%%   <<"sourceType">> => string()
+%% }
+-type source() :: #{binary() => any()}.
+
+%% Example:
+%% instance_property() :: #{
+%%   <<"failed">> => [boolean()],
+%%   <<"properties">> => map(),
+%%   <<"seenAt">> => [non_neg_integer()]
+%% }
+-type instance_property() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% list_profiles_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"profiles">> => list(profile_detail()())
+%% }
+-type list_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_notification_settings_response() :: #{
+%%   <<"trustAnchor">> => trust_anchor_detail()
+%% }
+-type put_notification_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% reset_notification_settings_response() :: #{
+%%   <<"trustAnchor">> => trust_anchor_detail()
+%% }
+-type reset_notification_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% trust_anchor_detail_response() :: #{
+%%   <<"trustAnchor">> := trust_anchor_detail()
+%% }
+-type trust_anchor_detail_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_crl_request() :: #{
+%%   <<"crlData">> := [binary()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()()),
+%%   <<"trustAnchorArn">> := string()
+%% }
+-type import_crl_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_request() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"pageSize">> => [integer()]
+%% }
+-type list_request() :: #{binary() => any()}.
+%% Example:
+%% scalar_trust_anchor_request() :: #{}
+-type scalar_trust_anchor_request() :: #{}.
+
+%% Example:
+%% list_trust_anchors_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"trustAnchors">> => list(trust_anchor_detail()())
+%% }
+-type list_trust_anchors_response() :: #{binary() => any()}.
+
+%% Example:
+%% notification_setting() :: #{
+%%   <<"channel">> => string(),
+%%   <<"enabled">> => [boolean()],
+%%   <<"event">> => string(),
+%%   <<"threshold">> => [integer()]
+%% }
+-type notification_setting() :: #{binary() => any()}.
+
+%% Example:
+%% reset_notification_settings_request() :: #{
+%%   <<"notificationSettingKeys">> := list(notification_setting_key()()),
+%%   <<"trustAnchorId">> := string()
+%% }
+-type reset_notification_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_trust_anchor_request() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"name">> := string(),
+%%   <<"notificationSettings">> => list(notification_setting()()),
+%%   <<"source">> := source(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_trust_anchor_request() :: #{binary() => any()}.
+
+%% Example:
+%% crl_detail_response() :: #{
+%%   <<"crl">> := crl_detail()
+%% }
+-type crl_detail_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% notification_setting_detail() :: #{
+%%   <<"channel">> => string(),
+%%   <<"configuredBy">> => [string()],
+%%   <<"enabled">> => [boolean()],
+%%   <<"event">> => string(),
+%%   <<"threshold">> => [integer()]
+%% }
+-type notification_setting_detail() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -108,8 +448,19 @@
 %%
 %% Required permissions:
 %% `rolesanywhere:CreateProfile'.
+-spec create_profile(map(), create_profile_request()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_profile(Client, Input) ->
     create_profile(Client, Input, []).
+
+-spec create_profile(map(), create_profile_request(), proplists:proplist()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/profiles"],
@@ -144,8 +495,19 @@ create_profile(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:CreateTrustAnchor'.
+-spec create_trust_anchor(map(), create_trust_anchor_request()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_trust_anchor(Client, Input) ->
     create_trust_anchor(Client, Input, []).
+
+-spec create_trust_anchor(map(), create_trust_anchor_request(), proplists:proplist()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_trust_anchor(Client, Input0, Options0) ->
     Method = post,
     Path = ["/trustanchors"],
@@ -172,8 +534,19 @@ create_trust_anchor(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DeleteCrl'.
+-spec delete_crl(map(), binary() | list(), scalar_crl_request()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_crl(Client, CrlId, Input) ->
     delete_crl(Client, CrlId, Input, []).
+
+-spec delete_crl(map(), binary() | list(), scalar_crl_request(), proplists:proplist()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_crl(Client, CrlId, Input0, Options0) ->
     Method = delete,
     Path = ["/crl/", aws_util:encode_uri(CrlId), ""],
@@ -200,8 +573,19 @@ delete_crl(Client, CrlId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DeleteProfile'.
+-spec delete_profile(map(), binary() | list(), scalar_profile_request()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_profile(Client, ProfileId, Input) ->
     delete_profile(Client, ProfileId, Input, []).
+
+-spec delete_profile(map(), binary() | list(), scalar_profile_request(), proplists:proplist()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_profile(Client, ProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/profile/", aws_util:encode_uri(ProfileId), ""],
@@ -228,8 +612,19 @@ delete_profile(Client, ProfileId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DeleteTrustAnchor'.
+-spec delete_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_trust_anchor(Client, TrustAnchorId, Input) ->
     delete_trust_anchor(Client, TrustAnchorId, Input, []).
+
+-spec delete_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request(), proplists:proplist()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
     Method = delete,
     Path = ["/trustanchor/", aws_util:encode_uri(TrustAnchorId), ""],
@@ -256,8 +651,19 @@ delete_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DisableCrl'.
+-spec disable_crl(map(), binary() | list(), scalar_crl_request()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 disable_crl(Client, CrlId, Input) ->
     disable_crl(Client, CrlId, Input, []).
+
+-spec disable_crl(map(), binary() | list(), scalar_crl_request(), proplists:proplist()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 disable_crl(Client, CrlId, Input0, Options0) ->
     Method = post,
     Path = ["/crl/", aws_util:encode_uri(CrlId), "/disable"],
@@ -286,8 +692,19 @@ disable_crl(Client, CrlId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DisableProfile'.
+-spec disable_profile(map(), binary() | list(), scalar_profile_request()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 disable_profile(Client, ProfileId, Input) ->
     disable_profile(Client, ProfileId, Input, []).
+
+-spec disable_profile(map(), binary() | list(), scalar_profile_request(), proplists:proplist()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 disable_profile(Client, ProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/profile/", aws_util:encode_uri(ProfileId), "/disable"],
@@ -317,8 +734,19 @@ disable_profile(Client, ProfileId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:DisableTrustAnchor'.
+-spec disable_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 disable_trust_anchor(Client, TrustAnchorId, Input) ->
     disable_trust_anchor(Client, TrustAnchorId, Input, []).
+
+-spec disable_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request(), proplists:proplist()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 disable_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
     Method = post,
     Path = ["/trustanchor/", aws_util:encode_uri(TrustAnchorId), "/disable"],
@@ -348,8 +776,19 @@ disable_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:EnableCrl'.
+-spec enable_crl(map(), binary() | list(), scalar_crl_request()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 enable_crl(Client, CrlId, Input) ->
     enable_crl(Client, CrlId, Input, []).
+
+-spec enable_crl(map(), binary() | list(), scalar_crl_request(), proplists:proplist()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 enable_crl(Client, CrlId, Input0, Options0) ->
     Method = post,
     Path = ["/crl/", aws_util:encode_uri(CrlId), "/enable"],
@@ -376,8 +815,19 @@ enable_crl(Client, CrlId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:EnableProfile'.
+-spec enable_profile(map(), binary() | list(), scalar_profile_request()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 enable_profile(Client, ProfileId, Input) ->
     enable_profile(Client, ProfileId, Input, []).
+
+-spec enable_profile(map(), binary() | list(), scalar_profile_request(), proplists:proplist()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 enable_profile(Client, ProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/profile/", aws_util:encode_uri(ProfileId), "/enable"],
@@ -407,8 +857,19 @@ enable_profile(Client, ProfileId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:EnableTrustAnchor'.
+-spec enable_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 enable_trust_anchor(Client, TrustAnchorId, Input) ->
     enable_trust_anchor(Client, TrustAnchorId, Input, []).
+
+-spec enable_trust_anchor(map(), binary() | list(), scalar_trust_anchor_request(), proplists:proplist()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 enable_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
     Method = post,
     Path = ["/trustanchor/", aws_util:encode_uri(TrustAnchorId), "/enable"],
@@ -435,14 +896,26 @@ enable_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:GetCrl'.
+-spec get_crl(map(), binary() | list()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_crl(Client, CrlId)
   when is_map(Client) ->
     get_crl(Client, CrlId, #{}, #{}).
 
+-spec get_crl(map(), binary() | list(), map(), map()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_crl(Client, CrlId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_crl(Client, CrlId, QueryMap, HeadersMap, []).
 
+-spec get_crl(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_crl(Client, CrlId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/crl/", aws_util:encode_uri(CrlId), ""],
@@ -463,14 +936,29 @@ get_crl(Client, CrlId, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:GetProfile'.
+-spec get_profile(map(), binary() | list()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_profile(Client, ProfileId)
   when is_map(Client) ->
     get_profile(Client, ProfileId, #{}, #{}).
 
+-spec get_profile(map(), binary() | list(), map(), map()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_profile(Client, ProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile(Client, ProfileId, QueryMap, HeadersMap, []).
 
+-spec get_profile(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_profile(Client, ProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profile/", aws_util:encode_uri(ProfileId), ""],
@@ -497,14 +985,29 @@ get_profile(Client, ProfileId, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:GetSubject'.
+-spec get_subject(map(), binary() | list()) ->
+    {ok, subject_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_subject(Client, SubjectId)
   when is_map(Client) ->
     get_subject(Client, SubjectId, #{}, #{}).
 
+-spec get_subject(map(), binary() | list(), map(), map()) ->
+    {ok, subject_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_subject(Client, SubjectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subject(Client, SubjectId, QueryMap, HeadersMap, []).
 
+-spec get_subject(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, subject_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_subject(Client, SubjectId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/subject/", aws_util:encode_uri(SubjectId), ""],
@@ -525,14 +1028,32 @@ get_subject(Client, SubjectId, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:GetTrustAnchor'.
+-spec get_trust_anchor(map(), binary() | list()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_trust_anchor(Client, TrustAnchorId)
   when is_map(Client) ->
     get_trust_anchor(Client, TrustAnchorId, #{}, #{}).
 
+-spec get_trust_anchor(map(), binary() | list(), map(), map()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_trust_anchor(Client, TrustAnchorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_trust_anchor(Client, TrustAnchorId, QueryMap, HeadersMap, []).
 
+-spec get_trust_anchor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_trust_anchor(Client, TrustAnchorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/trustanchor/", aws_util:encode_uri(TrustAnchorId), ""],
@@ -557,8 +1078,19 @@ get_trust_anchor(Client, TrustAnchorId, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ImportCrl'.
+-spec import_crl(map(), import_crl_request()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 import_crl(Client, Input) ->
     import_crl(Client, Input, []).
+
+-spec import_crl(map(), import_crl_request(), proplists:proplist()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 import_crl(Client, Input0, Options0) ->
     Method = post,
     Path = ["/crls"],
@@ -586,14 +1118,29 @@ import_crl(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:ListCrls'.
+-spec list_crls(map()) ->
+    {ok, list_crls_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_crls(Client)
   when is_map(Client) ->
     list_crls(Client, #{}, #{}).
 
+-spec list_crls(map(), map(), map()) ->
+    {ok, list_crls_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_crls(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_crls(Client, QueryMap, HeadersMap, []).
 
+-spec list_crls(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_crls_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_crls(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/crls"],
@@ -620,14 +1167,29 @@ list_crls(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ListProfiles'.
+-spec list_profiles(map()) ->
+    {ok, list_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_profiles(Client)
   when is_map(Client) ->
     list_profiles(Client, #{}, #{}).
 
+-spec list_profiles(map(), map(), map()) ->
+    {ok, list_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profiles(Client, QueryMap, HeadersMap, []).
 
+-spec list_profiles(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_profiles(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profiles"],
@@ -654,14 +1216,29 @@ list_profiles(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ListSubjects'.
+-spec list_subjects(map()) ->
+    {ok, list_subjects_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_subjects(Client)
   when is_map(Client) ->
     list_subjects(Client, #{}, #{}).
 
+-spec list_subjects(map(), map(), map()) ->
+    {ok, list_subjects_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_subjects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subjects(Client, QueryMap, HeadersMap, []).
 
+-spec list_subjects(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_subjects_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_subjects(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/subjects"],
@@ -687,14 +1264,32 @@ list_subjects(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ListTagsForResource'.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ListTagsForResource"],
@@ -720,14 +1315,29 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:ListTrustAnchors'.
+-spec list_trust_anchors(map()) ->
+    {ok, list_trust_anchors_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_trust_anchors(Client)
   when is_map(Client) ->
     list_trust_anchors(Client, #{}, #{}).
 
+-spec list_trust_anchors(map(), map(), map()) ->
+    {ok, list_trust_anchors_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_trust_anchors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_trust_anchors(Client, QueryMap, HeadersMap, []).
 
+-spec list_trust_anchors(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_trust_anchors_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_trust_anchors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/trustanchors"],
@@ -757,8 +1367,21 @@ list_trust_anchors(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Required permissions:
 %% `rolesanywhere:PutNotificationSettings'.
+-spec put_notification_settings(map(), put_notification_settings_request()) ->
+    {ok, put_notification_settings_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_notification_settings(Client, Input) ->
     put_notification_settings(Client, Input, []).
+
+-spec put_notification_settings(map(), put_notification_settings_request(), proplists:proplist()) ->
+    {ok, put_notification_settings_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_notification_settings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/put-notifications-settings"],
@@ -786,8 +1409,21 @@ put_notification_settings(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:ResetNotificationSettings'.
+-spec reset_notification_settings(map(), reset_notification_settings_request()) ->
+    {ok, reset_notification_settings_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 reset_notification_settings(Client, Input) ->
     reset_notification_settings(Client, Input, []).
+
+-spec reset_notification_settings(map(), reset_notification_settings_request(), proplists:proplist()) ->
+    {ok, reset_notification_settings_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 reset_notification_settings(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/reset-notifications-settings"],
@@ -814,8 +1450,23 @@ reset_notification_settings(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:TagResource'.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TagResource"],
@@ -842,8 +1493,21 @@ tag_resource(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:UntagResource'.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UntagResource"],
@@ -874,8 +1538,21 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:UpdateCrl'.
+-spec update_crl(map(), binary() | list(), update_crl_request()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_crl(Client, CrlId, Input) ->
     update_crl(Client, CrlId, Input, []).
+
+-spec update_crl(map(), binary() | list(), update_crl_request(), proplists:proplist()) ->
+    {ok, crl_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_crl(Client, CrlId, Input0, Options0) ->
     Method = patch,
     Path = ["/crl/", aws_util:encode_uri(CrlId), ""],
@@ -906,8 +1583,21 @@ update_crl(Client, CrlId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:UpdateProfile'.
+-spec update_profile(map(), binary() | list(), update_profile_request()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_profile(Client, ProfileId, Input) ->
     update_profile(Client, ProfileId, Input, []).
+
+-spec update_profile(map(), binary() | list(), update_profile_request(), proplists:proplist()) ->
+    {ok, profile_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_profile(Client, ProfileId, Input0, Options0) ->
     Method = patch,
     Path = ["/profile/", aws_util:encode_uri(ProfileId), ""],
@@ -945,8 +1635,21 @@ update_profile(Client, ProfileId, Input0, Options0) ->
 %%
 %% Required permissions:
 %% `rolesanywhere:UpdateTrustAnchor'.
+-spec update_trust_anchor(map(), binary() | list(), update_trust_anchor_request()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_trust_anchor(Client, TrustAnchorId, Input) ->
     update_trust_anchor(Client, TrustAnchorId, Input, []).
+
+-spec update_trust_anchor(map(), binary() | list(), update_trust_anchor_request(), proplists:proplist()) ->
+    {ok, trust_anchor_detail_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
     Method = patch,
     Path = ["/trustanchor/", aws_util:encode_uri(TrustAnchorId), ""],
@@ -973,7 +1676,7 @@ update_trust_anchor(Client, TrustAnchorId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -25,6 +25,194 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% call_instructions_message_type() :: #{
+%%   <<"Text">> => string()
+%% }
+-type call_instructions_message_type() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_destination() :: #{
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LogGroupArn">> => string()
+%% }
+-type cloud_watch_logs_destination() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_event_destination_request() :: #{
+%%   <<"EventDestination">> => event_destination_definition(),
+%%   <<"EventDestinationName">> => string()
+%% }
+-type create_configuration_set_event_destination_request() :: #{binary() => any()}.
+%% Example:
+%% create_configuration_set_event_destination_response() :: #{}
+-type create_configuration_set_event_destination_response() :: #{}.
+
+%% Example:
+%% create_configuration_set_request() :: #{
+%%   <<"ConfigurationSetName">> => string()
+%% }
+-type create_configuration_set_request() :: #{binary() => any()}.
+%% Example:
+%% create_configuration_set_response() :: #{}
+-type create_configuration_set_response() :: #{}.
+%% Example:
+%% delete_configuration_set_event_destination_request() :: #{}
+-type delete_configuration_set_event_destination_request() :: #{}.
+%% Example:
+%% delete_configuration_set_event_destination_response() :: #{}
+-type delete_configuration_set_event_destination_response() :: #{}.
+%% Example:
+%% delete_configuration_set_request() :: #{}
+-type delete_configuration_set_request() :: #{}.
+%% Example:
+%% delete_configuration_set_response() :: #{}
+-type delete_configuration_set_response() :: #{}.
+
+%% Example:
+%% event_destination() :: #{
+%%   <<"CloudWatchLogsDestination">> => cloud_watch_logs_destination(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
+%%   <<"MatchingEventTypes">> => list(list(any())()),
+%%   <<"Name">> => string(),
+%%   <<"SnsDestination">> => sns_destination()
+%% }
+-type event_destination() :: #{binary() => any()}.
+
+%% Example:
+%% event_destination_definition() :: #{
+%%   <<"CloudWatchLogsDestination">> => cloud_watch_logs_destination(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
+%%   <<"MatchingEventTypes">> => list(list(any())()),
+%%   <<"SnsDestination">> => sns_destination()
+%% }
+-type event_destination_definition() :: #{binary() => any()}.
+%% Example:
+%% get_configuration_set_event_destinations_request() :: #{}
+-type get_configuration_set_event_destinations_request() :: #{}.
+
+%% Example:
+%% get_configuration_set_event_destinations_response() :: #{
+%%   <<"EventDestinations">> => list(event_destination()())
+%% }
+-type get_configuration_set_event_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_firehose_destination() :: #{
+%%   <<"DeliveryStreamArn">> => string(),
+%%   <<"IamRoleArn">> => string()
+%% }
+-type kinesis_firehose_destination() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_configuration_sets_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => string()
+%% }
+-type list_configuration_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_configuration_sets_response() :: #{
+%%   <<"ConfigurationSets">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% plain_text_message_type() :: #{
+%%   <<"LanguageCode">> => string(),
+%%   <<"Text">> => string(),
+%%   <<"VoiceId">> => string()
+%% }
+-type plain_text_message_type() :: #{binary() => any()}.
+
+%% Example:
+%% s_s_ml_message_type() :: #{
+%%   <<"LanguageCode">> => string(),
+%%   <<"Text">> => string(),
+%%   <<"VoiceId">> => string()
+%% }
+-type s_s_ml_message_type() :: #{binary() => any()}.
+
+%% Example:
+%% send_voice_message_request() :: #{
+%%   <<"CallerId">> => string(),
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Content">> => voice_message_content(),
+%%   <<"DestinationPhoneNumber">> => string(),
+%%   <<"OriginationPhoneNumber">> => string()
+%% }
+-type send_voice_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_voice_message_response() :: #{
+%%   <<"MessageId">> => string()
+%% }
+-type send_voice_message_response() :: #{binary() => any()}.
+
+%% Example:
+%% sns_destination() :: #{
+%%   <<"TopicArn">> => string()
+%% }
+-type sns_destination() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_set_event_destination_request() :: #{
+%%   <<"EventDestination">> => event_destination_definition()
+%% }
+-type update_configuration_set_event_destination_request() :: #{binary() => any()}.
+%% Example:
+%% update_configuration_set_event_destination_response() :: #{}
+-type update_configuration_set_event_destination_response() :: #{}.
+
+%% Example:
+%% voice_message_content() :: #{
+%%   <<"CallInstructionsMessage">> => call_instructions_message_type(),
+%%   <<"PlainTextMessage">> => plain_text_message_type(),
+%%   <<"SSMLMessage">> => s_s_ml_message_type()
+%% }
+-type voice_message_content() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -33,8 +221,25 @@
 %%
 %% After you create the configuration set, you can add one or more event
 %% destinations to it.
+-spec create_configuration_set(map(), create_configuration_set_request()) ->
+    {ok, create_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_configuration_set(Client, Input) ->
     create_configuration_set(Client, Input, []).
+
+-spec create_configuration_set(map(), create_configuration_set_request(), proplists:proplist()) ->
+    {ok, create_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_configuration_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/sms-voice/configuration-sets"],
@@ -58,8 +263,27 @@ create_configuration_set(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a new event destination in a configuration set.
+-spec create_configuration_set_event_destination(map(), binary() | list(), create_configuration_set_event_destination_request()) ->
+    {ok, create_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input) ->
     create_configuration_set_event_destination(Client, ConfigurationSetName, Input, []).
+
+-spec create_configuration_set_event_destination(map(), binary() | list(), create_configuration_set_event_destination_request(), proplists:proplist()) ->
+    {ok, create_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, already_exists_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_configuration_set_event_destination(Client, ConfigurationSetName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
@@ -83,8 +307,23 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing configuration set.
+-spec delete_configuration_set(map(), binary() | list(), delete_configuration_set_request()) ->
+    {ok, delete_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_configuration_set(Client, ConfigurationSetName, Input) ->
     delete_configuration_set(Client, ConfigurationSetName, Input, []).
+
+-spec delete_configuration_set(map(), binary() | list(), delete_configuration_set_request(), proplists:proplist()) ->
+    {ok, delete_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
@@ -108,8 +347,23 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an event destination in a configuration set.
+-spec delete_configuration_set_event_destination(map(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request()) ->
+    {ok, delete_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
+
+-spec delete_configuration_set_event_destination(map(), binary() | list(), binary() | list(), delete_configuration_set_event_destination_request(), proplists:proplist()) ->
+    {ok, delete_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
@@ -135,14 +389,35 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 %% @doc Obtain information about an event destination, including the types of
 %% events it reports, the Amazon Resource Name (ARN) of the destination, and
 %% the name of the event destination.
+-spec get_configuration_set_event_destinations(map(), binary() | list()) ->
+    {ok, get_configuration_set_event_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_configuration_set_event_destinations(Client, ConfigurationSetName)
   when is_map(Client) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, #{}, #{}).
 
+-spec get_configuration_set_event_destinations(map(), binary() | list(), map(), map()) ->
+    {ok, get_configuration_set_event_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, []).
 
+-spec get_configuration_set_event_destinations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_configuration_set_event_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
@@ -161,14 +436,32 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
 
 %% @doc List all of the configuration sets associated with your Amazon
 %% Pinpoint account in the current region.
+-spec list_configuration_sets(map()) ->
+    {ok, list_configuration_sets_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_configuration_sets(Client)
   when is_map(Client) ->
     list_configuration_sets(Client, #{}, #{}).
 
+-spec list_configuration_sets(map(), map(), map()) ->
+    {ok, list_configuration_sets_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_configuration_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_sets(Client, QueryMap, HeadersMap, []).
 
+-spec list_configuration_sets(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_configuration_sets_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/sms-voice/configuration-sets"],
@@ -192,8 +485,21 @@ list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Create a new voice message and send it to a recipient's phone
 %% number.
+-spec send_voice_message(map(), send_voice_message_request()) ->
+    {ok, send_voice_message_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 send_voice_message(Client, Input) ->
     send_voice_message(Client, Input, []).
+
+-spec send_voice_message(map(), send_voice_message_request(), proplists:proplist()) ->
+    {ok, send_voice_message_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 send_voice_message(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/sms-voice/voice/message"],
@@ -221,8 +527,23 @@ send_voice_message(Client, Input0, Options0) ->
 %% An event destination is a location that you publish information about your
 %% voice calls to. For example, you can log an event to an Amazon CloudWatch
 %% destination when a call fails.
+-spec update_configuration_set_event_destination(map(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request()) ->
+    {ok, update_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input) ->
     update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input, []).
+
+-spec update_configuration_set_event_destination(map(), binary() | list(), binary() | list(), update_configuration_set_event_destination_request(), proplists:proplist()) ->
+    {ok, update_configuration_set_event_destination_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_configuration_set_event_destination(Client, ConfigurationSetName, EventDestinationName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/sms-voice/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
@@ -249,7 +570,7 @@ update_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

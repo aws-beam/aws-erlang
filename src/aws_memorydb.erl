@@ -90,6 +90,1253 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% batch_update_cluster_response() :: #{
+%%   <<"ProcessedClusters">> => list(cluster()()),
+%%   <<"UnprocessedClusters">> => list(unprocessed_cluster()())
+%% }
+-type batch_update_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_acl_request() :: #{
+%%   <<"ACLName">> := string(),
+%%   <<"UserNamesToAdd">> => list(string()()),
+%%   <<"UserNamesToRemove">> => list(string()())
+%% }
+-type update_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_user_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_user_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% node_quota_for_customer_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type node_quota_for_customer_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_request() :: #{
+%%   <<"SnapshotName">> := string()
+%% }
+-type delete_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_subnet_group_response() :: #{
+%%   <<"SubnetGroup">> => subnet_group()
+%% }
+-type create_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% failover_shard_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type failover_shard_response() :: #{binary() => any()}.
+
+%% Example:
+%% aws_memorydb_node() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type aws_memorydb_node() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_versions_request() :: #{
+%%   <<"DefaultOnly">> => boolean(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroupFamily">> => string()
+%% }
+-type describe_engine_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_parameter_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Family">> := string(),
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_parameter_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone() :: #{
+%%   <<"Name">> => string()
+%% }
+-type availability_zone() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameter_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroups">> => list(parameter_group()())
+%% }
+-type describe_parameter_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type update_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_updates_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceUpdates">> => list(service_update()())
+%% }
+-type describe_service_updates_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_nodes_request() :: #{
+%%   <<"Duration">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"OfferingType">> => string(),
+%%   <<"ReservationId">> => string(),
+%%   <<"ReservedNodesOfferingId">> => string()
+%% }
+-type describe_reserved_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+%%   <<"TagList">> => list(tag()())
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% unprocessed_cluster() :: #{
+%%   <<"ClusterName">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => string()
+%% }
+-type unprocessed_cluster() :: #{binary() => any()}.
+
+%% Example:
+%% service_update_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_update_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_parameter_group_response() :: #{
+%%   <<"ParameterGroup">> => parameter_group()
+%% }
+-type create_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SnapshotName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user()())
+%% }
+-type describe_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_node_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_nodes_offering() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"NodeType">> => string(),
+%%   <<"OfferingType">> => string(),
+%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"ReservedNodesOfferingId">> => string()
+%% }
+-type reserved_nodes_offering() :: #{binary() => any()}.
+
+%% Example:
+%% delete_acl_request() :: #{
+%%   <<"ACLName">> := string()
+%% }
+-type delete_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroupName">> := string()
+%% }
+-type describe_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% security_group_membership() :: #{
+%%   <<"SecurityGroupId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type security_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshots_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Snapshots">> => list(snapshot()())
+%% }
+-type describe_snapshots_response() :: #{binary() => any()}.
+
+%% Example:
+%% recurring_charge() :: #{
+%%   <<"RecurringChargeAmount">> => float(),
+%%   <<"RecurringChargeFrequency">> => string()
+%% }
+-type recurring_charge() :: #{binary() => any()}.
+
+%% Example:
+%% reset_parameter_group_request() :: #{
+%%   <<"AllParameters">> => boolean(),
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"ParameterNames">> => list(string()())
+%% }
+-type reset_parameter_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_kms_key_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_kms_key_fault() :: #{binary() => any()}.
+
+%% Example:
+%% user_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_response() :: #{
+%%   <<"Snapshot">> => snapshot()
+%% }
+-type create_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% acls_update_status() :: #{
+%%   <<"ACLToApply">> => string()
+%% }
+-type acls_update_status() :: #{binary() => any()}.
+
+%% Example:
+%% subnet() :: #{
+%%   <<"AvailabilityZone">> => availability_zone(),
+%%   <<"Identifier">> => string()
+%% }
+-type subnet() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_subnet() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_name_value() :: #{
+%%   <<"ParameterName">> => string(),
+%%   <<"ParameterValue">> => string()
+%% }
+-type parameter_name_value() :: #{binary() => any()}.
+
+%% Example:
+%% list_allowed_node_type_updates_response() :: #{
+%%   <<"ScaleDownNodeTypes">> => list(string()()),
+%%   <<"ScaleUpNodeTypes">> => list(string()())
+%% }
+-type list_allowed_node_type_updates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"TagList">> => list(tag()())
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_users_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type describe_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% resharding_status() :: #{
+%%   <<"SlotMigration">> => slot_migration()
+%% }
+-type resharding_status() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameters_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(parameter()())
+%% }
+-type describe_parameters_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_acl_response() :: #{
+%%   <<"ACL">> => acl()
+%% }
+-type update_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% reset_parameter_group_response() :: #{
+%%   <<"ParameterGroup">> => parameter_group()
+%% }
+-type reset_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_acl_request() :: #{
+%%   <<"ACLName">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UserNames">> => list(string()())
+%% }
+-type create_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% acl() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Clusters">> => list(string()()),
+%%   <<"MinimumEngineVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PendingChanges">> => acl_pending_changes(),
+%%   <<"Status">> => string(),
+%%   <<"UserNames">> => list(string()())
+%% }
+-type acl() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameter_group_request() :: #{
+%%   <<"ParameterGroupName">> := string()
+%% }
+-type delete_parameter_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% acl_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type acl_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_nodes_offerings_request() :: #{
+%%   <<"Duration">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"OfferingType">> => string(),
+%%   <<"ReservedNodesOfferingId">> => string()
+%% }
+-type describe_reserved_nodes_offerings_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"ACLName">> => string(),
+%%   <<"ClusterName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"MaintenanceWindow">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"ReplicaConfiguration">> => replica_configuration_request(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"ShardConfiguration">> => shard_configuration_request(),
+%%   <<"SnapshotRetentionLimit">> => integer(),
+%%   <<"SnapshotWindow">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SnsTopicStatus">> => string()
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_combination_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_combination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_configuration() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"MaintenanceWindow">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"NumShards">> => integer(),
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"Shards">> => list(shard_detail()()),
+%%   <<"SnapshotRetentionLimit">> => integer(),
+%%   <<"SnapshotWindow">> => string(),
+%%   <<"SubnetGroupName">> => string(),
+%%   <<"TopicArn">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type cluster_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_vpc_network_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_vpc_network_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tag_quota_per_resource_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_quota_per_resource_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_not_allowed_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_not_allowed_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subnet_group_request() :: #{
+%%   <<"SubnetGroupName">> := string()
+%% }
+-type delete_subnet_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% shards_per_cluster_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type shards_per_cluster_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Subnets">> => list(subnet()()),
+%%   <<"VpcId">> => string()
+%% }
+-type subnet_group() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"ACLName">> := string(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"ClusterName">> := string(),
+%%   <<"DataTiering">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MaintenanceWindow">> => string(),
+%%   <<"NodeType">> := string(),
+%%   <<"NumReplicasPerShard">> => integer(),
+%%   <<"NumShards">> => integer(),
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SnapshotArns">> => list(string()()),
+%%   <<"SnapshotName">> => string(),
+%%   <<"SnapshotRetentionLimit">> => integer(),
+%%   <<"SnapshotWindow">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SubnetGroupName">> => string(),
+%%   <<"TLSEnabled">> => boolean(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% engine_version_info() :: #{
+%%   <<"EnginePatchVersion">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"ParameterGroupFamily">> => string()
+%% }
+-type engine_version_info() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% no_operation_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_operation_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster() :: #{
+%%   <<"ACLName">> => string(),
+%%   <<"ARN">> => string(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AvailabilityMode">> => list(any()),
+%%   <<"ClusterEndpoint">> => endpoint(),
+%%   <<"DataTiering">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"EnginePatchVersion">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MaintenanceWindow">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NodeType">> => string(),
+%%   <<"NumberOfShards">> => integer(),
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"ParameterGroupStatus">> => string(),
+%%   <<"PendingUpdates">> => cluster_pending_updates(),
+%%   <<"SecurityGroups">> => list(security_group_membership()()),
+%%   <<"Shards">> => list(shard()()),
+%%   <<"SnapshotRetentionLimit">> => integer(),
+%%   <<"SnapshotWindow">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SnsTopicStatus">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SubnetGroupName">> => string(),
+%%   <<"TLSEnabled">> => boolean()
+%% }
+-type cluster() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% shard_detail() :: #{
+%%   <<"Configuration">> => shard_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"Size">> => string(),
+%%   <<"SnapshotCreationTime">> => non_neg_integer()
+%% }
+-type shard_detail() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_snapshot_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_snapshot_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acls_request() :: #{
+%%   <<"ACLName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_acls_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_failover_not_available_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type test_failover_not_available_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_acl_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_acl_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_allowed_node_type_updates_request() :: #{
+%%   <<"ClusterName">> := string()
+%% }
+-type list_allowed_node_type_updates_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subnet_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SubnetGroups">> => list(subnet_group()())
+%% }
+-type describe_subnet_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_update_request() :: #{
+%%   <<"ServiceUpdateNameToApply">> => string()
+%% }
+-type service_update_request() :: #{binary() => any()}.
+
+%% Example:
+%% parameter() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"MinimumEngineVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+%% Example:
+%% update_subnet_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"SubnetGroupName">> := string(),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type update_subnet_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_fault() :: #{binary() => any()}.
+
+%% Example:
+%% authentication() :: #{
+%%   <<"PasswordCount">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type authentication() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"FixedPrice">> => float(),
+%%   <<"NodeCount">> => integer(),
+%%   <<"NodeType">> => string(),
+%%   <<"OfferingType">> => string(),
+%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"ReservationId">> => string(),
+%%   <<"ReservedNodesOfferingId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => string()
+%% }
+-type reserved_node() :: #{binary() => any()}.
+
+%% Example:
+%% create_subnet_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"SubnetGroupName">> := string(),
+%%   <<"SubnetIds">> := list(string()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_subnet_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% acl_pending_changes() :: #{
+%%   <<"UserNamesToAdd">> => list(string()()),
+%%   <<"UserNamesToRemove">> => list(string()())
+%% }
+-type acl_pending_changes() :: #{binary() => any()}.
+
+%% Example:
+%% api_call_rate_for_customer_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type api_call_rate_for_customer_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% batch_update_cluster_request() :: #{
+%%   <<"ClusterNames">> := list(string()()),
+%%   <<"ServiceUpdate">> => service_update_request()
+%% }
+-type batch_update_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subnet_group_response() :: #{
+%%   <<"SubnetGroup">> => subnet_group()
+%% }
+-type delete_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"UserName">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% create_acl_response() :: #{
+%%   <<"ACL">> => acl()
+%% }
+-type create_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_reserved_nodes_offering_request() :: #{
+%%   <<"NodeCount">> => integer(),
+%%   <<"ReservationId">> => string(),
+%%   <<"ReservedNodesOfferingId">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type purchase_reserved_nodes_offering_request() :: #{binary() => any()}.
+
+%% Example:
+%% shard_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type shard_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type delete_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_quota_for_customer_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_quota_for_customer_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% user_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameter_group_response() :: #{
+%%   <<"ParameterGroup">> => parameter_group()
+%% }
+-type delete_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% user_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_acls_response() :: #{
+%%   <<"ACLs">> => list(acl()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_acls_response() :: #{binary() => any()}.
+
+%% Example:
+%% purchase_reserved_nodes_offering_response() :: #{
+%%   <<"ReservedNode">> => reserved_node()
+%% }
+-type purchase_reserved_nodes_offering_response() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_node_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% shard() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Nodes">> => list(memorydb_node()()),
+%%   <<"NumberOfNodes">> => integer(),
+%%   <<"Slots">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type shard() :: #{binary() => any()}.
+
+%% Example:
+%% shard_configuration_request() :: #{
+%%   <<"ShardCount">> => integer()
+%% }
+-type shard_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_user_name_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_user_name_fault() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"FinalSnapshotName">> => string()
+%% }
+-type delete_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_request() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"ClusterConfiguration">> => cluster_configuration(),
+%%   <<"DataTiering">> => list(any()),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subnet_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SubnetGroupName">> => string()
+%% }
+-type describe_subnet_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% service_linked_role_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_linked_role_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+%%   <<"TagList">> => list(tag()())
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% acl_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type acl_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_nodes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedNodes">> => list(reserved_node()())
+%% }
+-type describe_reserved_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameter_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroupName">> => string()
+%% }
+-type describe_parameter_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_snapshot_request() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SourceSnapshotName">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetBucket">> => string(),
+%%   <<"TargetSnapshotName">> := string()
+%% }
+-type copy_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_response() :: #{
+%%   <<"Clusters">> => list(cluster()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_pending_updates() :: #{
+%%   <<"ACLs">> => acls_update_status(),
+%%   <<"Resharding">> => resharding_status(),
+%%   <<"ServiceUpdates">> => list(pending_modified_service_update()())
+%% }
+-type cluster_pending_updates() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type snapshot_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"AccessString">> => string(),
+%%   <<"AuthenticationMode">> => authentication_mode(),
+%%   <<"UserName">> := string()
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% replica_configuration_request() :: #{
+%%   <<"ReplicaCount">> => integer()
+%% }
+-type replica_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_nodes_offering_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_nodes_offering_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% user() :: #{
+%%   <<"ACLNames">> => list(string()()),
+%%   <<"ARN">> => string(),
+%%   <<"AccessString">> => string(),
+%%   <<"Authentication">> => authentication(),
+%%   <<"MinimumEngineVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+%% Example:
+%% service_update() :: #{
+%%   <<"AutoUpdateStartDate">> => non_neg_integer(),
+%%   <<"ClusterName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"NodesUpdated">> => string(),
+%%   <<"ReleaseDate">> => non_neg_integer(),
+%%   <<"ServiceUpdateName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type service_update() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% default_user_required() :: #{
+%%   <<"message">> => string()
+%% }
+-type default_user_required() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshots_request() :: #{
+%%   <<"ClusterName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ShowDetail">> => boolean(),
+%%   <<"SnapshotName">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type describe_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_node_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type reserved_node_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% update_parameter_group_response() :: #{
+%%   <<"ParameterGroup">> => parameter_group()
+%% }
+-type update_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_mode() :: #{
+%%   <<"Passwords">> => list(string()()),
+%%   <<"Type">> => list(any())
+%% }
+-type authentication_mode() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_nodes_offerings_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedNodesOfferings">> => list(reserved_nodes_offering()())
+%% }
+-type describe_reserved_nodes_offerings_response() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_in_use_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_in_use_fault() :: #{binary() => any()}.
+
+%% Example:
+%% update_parameter_group_request() :: #{
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"ParameterNameValues">> := list(parameter_name_value()())
+%% }
+-type update_parameter_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% pending_modified_service_update() :: #{
+%%   <<"ServiceUpdateName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type pending_modified_service_update() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_group() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Family">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type parameter_group() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_node_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_node_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_cluster_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_snapshot_response() :: #{
+%%   <<"Snapshot">> => snapshot()
+%% }
+-type copy_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_updates_request() :: #{
+%%   <<"ClusterNames">> => list(string()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceUpdateName">> => string(),
+%%   <<"Status">> => list(list(any())())
+%% }
+-type describe_service_updates_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_versions_response() :: #{
+%%   <<"EngineVersions">> => list(engine_version_info()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_engine_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_credentials_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_credentials_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_acl_response() :: #{
+%%   <<"ACL">> => acl()
+%% }
+-type delete_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% acl_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type acl_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% slot_migration() :: #{
+%%   <<"ProgressPercentage">> => float()
+%% }
+-type slot_migration() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% failover_shard_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"ShardName">> := string()
+%% }
+-type failover_shard_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_request() :: #{
+%%   <<"ClusterName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ShowShardDetails">> => boolean()
+%% }
+-type describe_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_response() :: #{
+%%   <<"Events">> => list(event()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_subnet_group_response() :: #{
+%%   <<"SubnetGroup">> => subnet_group()
+%% }
+-type update_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% shard_configuration() :: #{
+%%   <<"ReplicaCount">> => integer(),
+%%   <<"Slots">> => string()
+%% }
+-type shard_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_response() :: #{
+%%   <<"Snapshot">> => snapshot()
+%% }
+-type delete_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"AccessString">> := string(),
+%%   <<"AuthenticationMode">> := authentication_mode(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"UserName">> := string()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% node_quota_for_cluster_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type node_quota_for_cluster_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type update_cluster_response() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -99,17 +1346,51 @@
 %% For more information on service updates and applying them, see Applying
 %% the service updates:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/managing-updates.html#applying-updates.
+-spec batch_update_cluster(map(), batch_update_cluster_request()) ->
+    {ok, batch_update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_update_not_found_fault(), tuple()}.
 batch_update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_update_cluster(Client, Input, []).
+
+-spec batch_update_cluster(map(), batch_update_cluster_request(), proplists:proplist()) ->
+    {ok, batch_update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_update_not_found_fault(), tuple()}.
 batch_update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchUpdateCluster">>, Input, Options).
 
 %% @doc Makes a copy of an existing snapshot.
+-spec copy_snapshot(map(), copy_snapshot_request()) ->
+    {ok, copy_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_snapshot_state_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_already_exists_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 copy_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_snapshot(Client, Input, []).
+
+-spec copy_snapshot(map(), copy_snapshot_request(), proplists:proplist()) ->
+    {ok, copy_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_snapshot_state_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_already_exists_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 copy_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopySnapshot">>, Input, Options).
@@ -119,9 +1400,30 @@ copy_snapshot(Client, Input, Options)
 %% For more information, see Authenticating users with Access Contol Lists
 %% (ACLs):
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/clusters.acls.html.
+-spec create_acl(map(), create_acl_request()) ->
+    {ok, create_acl_response(), tuple()} |
+    {error, any()} |
+    {error, acl_already_exists_fault(), tuple()} |
+    {error, acl_quota_exceeded_fault(), tuple()} |
+    {error, default_user_required(), tuple()} |
+    {error, duplicate_user_name_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 create_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_acl(Client, Input, []).
+
+-spec create_acl(map(), create_acl_request(), proplists:proplist()) ->
+    {ok, create_acl_response(), tuple()} |
+    {error, any()} |
+    {error, acl_already_exists_fault(), tuple()} |
+    {error, acl_quota_exceeded_fault(), tuple()} |
+    {error, default_user_required(), tuple()} |
+    {error, duplicate_user_name_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 create_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateACL">>, Input, Options).
@@ -129,9 +1431,48 @@ create_acl(Client, Input, Options)
 %% @doc Creates a cluster.
 %%
 %% All nodes in the cluster run the same protocol-compliant engine software.
+-spec create_cluster(map(), create_cluster_request()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_already_exists_fault(), tuple()} |
+    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, insufficient_cluster_capacity_fault(), tuple()} |
+    {error, invalid_acl_state_fault(), tuple()} |
+    {error, invalid_credentials_exception(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
+    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, shards_per_cluster_quota_exceeded_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
+
+-spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_already_exists_fault(), tuple()} |
+    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, insufficient_cluster_capacity_fault(), tuple()} |
+    {error, invalid_acl_state_fault(), tuple()} |
+    {error, invalid_credentials_exception(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
+    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, shards_per_cluster_quota_exceeded_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -143,17 +1484,61 @@ create_cluster(Client, Input, Options)
 %% more information, see Configuring engine parameters using parameter
 %% groups:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/parametergroups.html.
+-spec create_parameter_group(map(), create_parameter_group_request()) ->
+    {ok, create_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_already_exists_fault(), tuple()} |
+    {error, parameter_group_quota_exceeded_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_parameter_group(Client, Input, []).
+
+-spec create_parameter_group(map(), create_parameter_group_request(), proplists:proplist()) ->
+    {ok, create_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_already_exists_fault(), tuple()} |
+    {error, parameter_group_quota_exceeded_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateParameterGroup">>, Input, Options).
 
 %% @doc Creates a copy of an entire cluster at a specific moment in time.
+-spec create_snapshot(map(), create_snapshot_request()) ->
+    {ok, create_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_already_exists_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
+
+-spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
+    {ok, create_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_already_exists_fault(), tuple()} |
+    {error, snapshot_quota_exceeded_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
@@ -169,9 +1554,30 @@ create_snapshot(Client, Input, Options)
 %% within that subnet to associate with your nodes.
 %% For more information, see Subnets and subnet groups:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/subnetgroups.html.
+-spec create_subnet_group(map(), create_subnet_group_request()) ->
+    {ok, create_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_already_exists_fault(), tuple()} |
+    {error, subnet_group_quota_exceeded_fault(), tuple()} |
+    {error, subnet_not_allowed_fault(), tuple()} |
+    {error, subnet_quota_exceeded_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet_group(Client, Input, []).
+
+-spec create_subnet_group(map(), create_subnet_group_request(), proplists:proplist()) ->
+    {ok, create_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_already_exists_fault(), tuple()} |
+    {error, subnet_group_quota_exceeded_fault(), tuple()} |
+    {error, subnet_not_allowed_fault(), tuple()} |
+    {error, subnet_quota_exceeded_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSubnetGroup">>, Input, Options).
@@ -181,9 +1587,28 @@ create_subnet_group(Client, Input, Options)
 %% For more information, see Authenticating users with Access Contol Lists
 %% (ACLs):
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/clusters.acls.html.
+-spec create_user(map(), create_user_request()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_user_name_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()} |
+    {error, user_already_exists_fault(), tuple()} |
+    {error, user_quota_exceeded_fault(), tuple()}.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
+
+-spec create_user(map(), create_user_request(), proplists:proplist()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_user_name_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()} |
+    {error, user_already_exists_fault(), tuple()} |
+    {error, user_quota_exceeded_fault(), tuple()}.
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
@@ -194,9 +1619,22 @@ create_user(Client, Input, Options)
 %% deleted. For more information, see Authenticating users with Access Contol
 %% Lists (ACLs):
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/clusters.acls.html.
+-spec delete_acl(map(), delete_acl_request()) ->
+    {ok, delete_acl_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, invalid_acl_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()}.
 delete_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_acl(Client, Input, []).
+
+-spec delete_acl(map(), delete_acl_request(), proplists:proplist()) ->
+    {ok, delete_acl_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, invalid_acl_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()}.
 delete_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteACL">>, Input, Options).
@@ -204,9 +1642,28 @@ delete_acl(Client, Input, Options)
 %% @doc Deletes a cluster.
 %%
 %% It also deletes all associated nodes and node endpoints
+-spec delete_cluster(map(), delete_cluster_request()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_already_exists_fault(), tuple()}.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
+
+-spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_already_exists_fault(), tuple()}.
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
@@ -215,9 +1672,26 @@ delete_cluster(Client, Input, Options)
 %%
 %% You cannot delete a parameter group if it is associated with any clusters.
 %% You cannot delete the default parameter groups in your account.
+-spec delete_parameter_group(map(), delete_parameter_group_request()) ->
+    {ok, delete_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 delete_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameter_group(Client, Input, []).
+
+-spec delete_parameter_group(map(), delete_parameter_group_request(), proplists:proplist()) ->
+    {ok, delete_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 delete_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteParameterGroup">>, Input, Options).
@@ -227,9 +1701,26 @@ delete_parameter_group(Client, Input, Options)
 %% When you receive a successful response from this operation, MemoryDB
 %% immediately begins deleting the snapshot; you cannot cancel or revert this
 %% operation.
+-spec delete_snapshot(map(), delete_snapshot_request()) ->
+    {ok, delete_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_snapshot_state_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()}.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
+
+-spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
+    {ok, delete_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_snapshot_state_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()}.
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
@@ -238,9 +1729,22 @@ delete_snapshot(Client, Input, Options)
 %%
 %% You cannot delete a default subnet group or one that is associated with
 %% any clusters.
+-spec delete_subnet_group(map(), delete_subnet_group_request()) ->
+    {ok, delete_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_in_use_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()}.
 delete_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subnet_group(Client, Input, []).
+
+-spec delete_subnet_group(map(), delete_subnet_group_request(), proplists:proplist()) ->
+    {ok, delete_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_in_use_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()}.
 delete_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubnetGroup">>, Input, Options).
@@ -249,17 +1753,41 @@ delete_subnet_group(Client, Input, Options)
 %%
 %% The user will be removed from all ACLs and in turn removed from all
 %% clusters.
+-spec delete_user(map(), delete_user_request()) ->
+    {ok, delete_user_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_user_state_fault(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
+
+-spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+    {ok, delete_user_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_user_state_fault(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
 
 %% @doc Returns a list of ACLs
+-spec describe_acls(map(), describe_acls_request()) ->
+    {ok, describe_acls_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()}.
 describe_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_acls(Client, Input, []).
+
+-spec describe_acls(map(), describe_acls_request(), proplists:proplist()) ->
+    {ok, describe_acls_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()}.
 describe_acls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeACLs">>, Input, Options).
@@ -267,17 +1795,45 @@ describe_acls(Client, Input, Options)
 %% @doc Returns information about all provisioned clusters if no cluster
 %% identifier is specified, or about a specific cluster if a cluster name is
 %% supplied.
+-spec describe_clusters(map(), describe_clusters_request()) ->
+    {ok, describe_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
+
+-spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
+    {ok, describe_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
 
 %% @doc Returns a list of the available Redis engine versions.
+-spec describe_engine_versions(map(), describe_engine_versions_request()) ->
+    {ok, describe_engine_versions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_engine_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_engine_versions(Client, Input, []).
+
+-spec describe_engine_versions(map(), describe_engine_versions_request(), proplists:proplist()) ->
+    {ok, describe_engine_versions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_engine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEngineVersions">>, Input, Options).
@@ -290,9 +1846,22 @@ describe_engine_versions(Client, Input, Options)
 %%
 %% By default, only the events occurring within the last hour are returned;
 %% however, you can retrieve up to 14 days' worth of events if necessary.
+-spec describe_events(map(), describe_events_request()) ->
+    {ok, describe_events_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
+
+-spec describe_events(map(), describe_events_request(), proplists:proplist()) ->
+    {ok, describe_events_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
@@ -301,42 +1870,113 @@ describe_events(Client, Input, Options)
 %%
 %% If a parameter group name is specified, the list contains only the
 %% descriptions for that group.
+-spec describe_parameter_groups(map(), describe_parameter_groups_request()) ->
+    {ok, describe_parameter_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameter_groups(Client, Input, []).
+
+-spec describe_parameter_groups(map(), describe_parameter_groups_request(), proplists:proplist()) ->
+    {ok, describe_parameter_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeParameterGroups">>, Input, Options).
 
 %% @doc Returns the detailed parameter list for a particular parameter group.
+-spec describe_parameters(map(), describe_parameters_request()) ->
+    {ok, describe_parameters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
+
+-spec describe_parameters(map(), describe_parameters_request(), proplists:proplist()) ->
+    {ok, describe_parameters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeParameters">>, Input, Options).
 
 %% @doc Returns information about reserved nodes for this account, or about a
 %% specified reserved node.
+-spec describe_reserved_nodes(map(), describe_reserved_nodes_request()) ->
+    {ok, describe_reserved_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, reserved_node_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_reserved_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_nodes(Client, Input, []).
+
+-spec describe_reserved_nodes(map(), describe_reserved_nodes_request(), proplists:proplist()) ->
+    {ok, describe_reserved_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, reserved_node_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_reserved_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedNodes">>, Input, Options).
 
 %% @doc Lists available reserved node offerings.
+-spec describe_reserved_nodes_offerings(map(), describe_reserved_nodes_offerings_request()) ->
+    {ok, describe_reserved_nodes_offerings_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, reserved_nodes_offering_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_reserved_nodes_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_reserved_nodes_offerings(Client, Input, []).
+
+-spec describe_reserved_nodes_offerings(map(), describe_reserved_nodes_offerings_request(), proplists:proplist()) ->
+    {ok, describe_reserved_nodes_offerings_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, reserved_nodes_offering_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_reserved_nodes_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedNodesOfferings">>, Input, Options).
 
 %% @doc Returns details of the service updates
+-spec describe_service_updates(map(), describe_service_updates_request()) ->
+    {ok, describe_service_updates_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()}.
 describe_service_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_service_updates(Client, Input, []).
+
+-spec describe_service_updates(map(), describe_service_updates_request(), proplists:proplist()) ->
+    {ok, describe_service_updates_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()}.
 describe_service_updates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceUpdates">>, Input, Options).
@@ -346,9 +1986,24 @@ describe_service_updates(Client, Input, Options)
 %% By default, DescribeSnapshots lists all of your snapshots; it can
 %% optionally describe a single snapshot,
 %% or just the snapshots associated with a particular cluster.
+-spec describe_snapshots(map(), describe_snapshots_request()) ->
+    {ok, describe_snapshots_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()}.
 describe_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_snapshots(Client, Input, []).
+
+-spec describe_snapshots(map(), describe_snapshots_request(), proplists:proplist()) ->
+    {ok, describe_snapshots_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()}.
 describe_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshots">>, Input, Options).
@@ -357,17 +2012,39 @@ describe_snapshots(Client, Input, Options)
 %%
 %% If a subnet group name is specified, the list contains only the
 %% description of that group.
+-spec describe_subnet_groups(map(), describe_subnet_groups_request()) ->
+    {ok, describe_subnet_groups_response(), tuple()} |
+    {error, any()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()}.
 describe_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subnet_groups(Client, Input, []).
+
+-spec describe_subnet_groups(map(), describe_subnet_groups_request(), proplists:proplist()) ->
+    {ok, describe_subnet_groups_response(), tuple()} |
+    {error, any()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()}.
 describe_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubnetGroups">>, Input, Options).
 
 %% @doc Returns a list of users.
+-spec describe_users(map(), describe_users_request()) ->
+    {ok, describe_users_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 describe_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_users(Client, Input, []).
+
+-spec describe_users(map(), describe_users_request(), proplists:proplist()) ->
+    {ok, describe_users_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 describe_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUsers">>, Input, Options).
@@ -380,9 +2057,32 @@ describe_users(Client, Input, Options)
 %% a failover to overcome a problem you may have with the cluster. Moreover,
 %% in certain conditions such as large scale operational events, Amazon may
 %% block this API.
+-spec failover_shard(map(), failover_shard_request()) ->
+    {ok, failover_shard_response(), tuple()} |
+    {error, any()} |
+    {error, api_call_rate_for_customer_exceeded_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_kms_key_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, shard_not_found_fault(), tuple()} |
+    {error, test_failover_not_available_fault(), tuple()}.
 failover_shard(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_shard(Client, Input, []).
+
+-spec failover_shard(map(), failover_shard_request(), proplists:proplist()) ->
+    {ok, failover_shard_response(), tuple()} |
+    {error, any()} |
+    {error, api_call_rate_for_customer_exceeded_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_kms_key_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, shard_not_found_fault(), tuple()} |
+    {error, test_failover_not_available_fault(), tuple()}.
 failover_shard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverShard">>, Input, Options).
@@ -393,9 +2093,24 @@ failover_shard(Client, Input, Options)
 %% When you use the UpdateCluster operation to scale your cluster, the value
 %% of the NodeType parameter must be one of the node types returned by this
 %% operation.
+-spec list_allowed_node_type_updates(map(), list_allowed_node_type_updates_request()) ->
+    {ok, list_allowed_node_type_updates_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 list_allowed_node_type_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_allowed_node_type_updates(Client, Input, []).
+
+-spec list_allowed_node_type_updates(map(), list_allowed_node_type_updates_request(), proplists:proplist()) ->
+    {ok, list_allowed_node_type_updates_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 list_allowed_node_type_updates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAllowedNodeTypeUpdates">>, Input, Options).
@@ -406,9 +2121,34 @@ list_allowed_node_type_updates(Client, Input, Options)
 %% can use tags to categorize and track your MemoryDB resources.
 %% For more information, see Tagging your MemoryDB resources:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/Tagging-Resources.html
+-spec list_tags(map(), list_tags_request()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
+
+-spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -416,9 +2156,30 @@ list_tags(Client, Input, Options)
 %% @doc Allows you to purchase a reserved node offering.
 %%
 %% Reserved nodes are not eligible for cancellation and are non-refundable.
+-spec purchase_reserved_nodes_offering(map(), purchase_reserved_nodes_offering_request()) ->
+    {ok, purchase_reserved_nodes_offering_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, reserved_node_already_exists_fault(), tuple()} |
+    {error, reserved_node_quota_exceeded_fault(), tuple()} |
+    {error, reserved_nodes_offering_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 purchase_reserved_nodes_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_reserved_nodes_offering(Client, Input, []).
+
+-spec purchase_reserved_nodes_offering(map(), purchase_reserved_nodes_offering_request(), proplists:proplist()) ->
+    {ok, purchase_reserved_nodes_offering_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, reserved_node_already_exists_fault(), tuple()} |
+    {error, reserved_node_quota_exceeded_fault(), tuple()} |
+    {error, reserved_nodes_offering_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 purchase_reserved_nodes_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseReservedNodesOffering">>, Input, Options).
@@ -429,9 +2190,26 @@ purchase_reserved_nodes_offering(Client, Input, Options)
 %% You can reset specific parameters by submitting a list of parameter names.
 %% To reset the entire parameter group, specify the AllParameters and
 %% ParameterGroupName parameters.
+-spec reset_parameter_group(map(), reset_parameter_group_request()) ->
+    {ok, reset_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 reset_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_parameter_group(Client, Input, []).
+
+-spec reset_parameter_group(map(), reset_parameter_group_request(), proplists:proplist()) ->
+    {ok, reset_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 reset_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetParameterGroup">>, Input, Options).
@@ -455,25 +2233,100 @@ reset_parameter_group(Client, Input, Options)
 %%
 %% For more information, see Using Cost Allocation Tags:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/tagging.html.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Use this operation to remove tags on a resource
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, tag_not_found_fault(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, snapshot_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, tag_not_found_fault(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Changes the list of users that belong to the Access Control List.
+-spec update_acl(map(), update_acl_request()) ->
+    {ok, update_acl_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, default_user_required(), tuple()} |
+    {error, duplicate_user_name_fault(), tuple()} |
+    {error, invalid_acl_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 update_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_acl(Client, Input, []).
+
+-spec update_acl(map(), update_acl_request(), proplists:proplist()) ->
+    {ok, update_acl_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, default_user_required(), tuple()} |
+    {error, duplicate_user_name_fault(), tuple()} |
+    {error, invalid_acl_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 update_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateACL">>, Input, Options).
@@ -482,9 +2335,48 @@ update_acl(Client, Input, Options)
 %%
 %% You can use this operation to change one or more cluster configuration
 %% settings by specifying the settings and the new values.
+-spec update_cluster(map(), update_cluster_request()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, invalid_acl_state_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_kms_key_fault(), tuple()} |
+    {error, invalid_node_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
+    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, no_operation_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, shards_per_cluster_quota_exceeded_fault(), tuple()}.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
+
+-spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, acl_not_found_fault(), tuple()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, invalid_acl_state_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_kms_key_fault(), tuple()} |
+    {error, invalid_node_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
+    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, no_operation_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, shards_per_cluster_quota_exceeded_fault(), tuple()}.
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
@@ -493,9 +2385,26 @@ update_cluster(Client, Input, Options)
 %%
 %% You can modify up to 20 parameters in a single request by submitting a
 %% list parameter name and value pairs.
+-spec update_parameter_group(map(), update_parameter_group_request()) ->
+    {ok, update_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 update_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_parameter_group(Client, Input, []).
+
+-spec update_parameter_group(map(), update_parameter_group_request(), proplists:proplist()) ->
+    {ok, update_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 update_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateParameterGroup">>, Input, Options).
@@ -504,17 +2413,51 @@ update_parameter_group(Client, Input, Options)
 %%
 %% For more information, see Updating a subnet group:
 %% https://docs.aws.amazon.com/MemoryDB/latest/devguide/ubnetGroups.Modifying.html
+-spec update_subnet_group(map(), update_subnet_group_request()) ->
+    {ok, update_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, subnet_in_use(), tuple()} |
+    {error, subnet_not_allowed_fault(), tuple()} |
+    {error, subnet_quota_exceeded_fault(), tuple()}.
 update_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subnet_group(Client, Input, []).
+
+-spec update_subnet_group(map(), update_subnet_group_request(), proplists:proplist()) ->
+    {ok, update_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, subnet_in_use(), tuple()} |
+    {error, subnet_not_allowed_fault(), tuple()} |
+    {error, subnet_quota_exceeded_fault(), tuple()}.
 update_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSubnetGroup">>, Input, Options).
 
 %% @doc Changes user password(s) and/or access string.
+-spec update_user(map(), update_user_request()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_user_state_fault(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).
+
+-spec update_user(map(), update_user_request(), proplists:proplist()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_user_state_fault(), tuple()} |
+    {error, user_not_found_fault(), tuple()}.
 update_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUser">>, Input, Options).

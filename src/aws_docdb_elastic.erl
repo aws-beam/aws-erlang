@@ -63,13 +63,362 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% cluster_snapshot_in_list() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"snapshotArn">> => [string()],
+%%   <<"snapshotCreationTime">> => [string()],
+%%   <<"snapshotName">> => [string()],
+%%   <<"status">> => string()
+%% }
+-type cluster_snapshot_in_list() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_input() :: #{
+%%   <<"adminUserPassword">> => string(),
+%%   <<"authType">> => string(),
+%%   <<"backupRetentionPeriod">> => [integer()],
+%%   <<"clientToken">> => [string()],
+%%   <<"preferredBackupWindow">> => [string()],
+%%   <<"preferredMaintenanceWindow">> => [string()],
+%%   <<"shardCapacity">> => [integer()],
+%%   <<"shardCount">> => [integer()],
+%%   <<"shardInstanceCount">> => [integer()],
+%%   <<"subnetIds">> => list([string()]()),
+%%   <<"vpcSecurityGroupIds">> => list([string()]())
+%% }
+-type update_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_snapshot_output() :: #{
+%%   <<"snapshot">> := cluster_snapshot()
+%% }
+-type create_cluster_snapshot_output() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% restore_cluster_from_snapshot_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type restore_cluster_from_snapshot_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_cluster_output() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type start_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_input() :: #{
+%%   <<"adminUserName">> := [string()],
+%%   <<"adminUserPassword">> := string(),
+%%   <<"authType">> := string(),
+%%   <<"backupRetentionPeriod">> => [integer()],
+%%   <<"clientToken">> => [string()],
+%%   <<"clusterName">> := [string()],
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"preferredBackupWindow">> => [string()],
+%%   <<"preferredMaintenanceWindow">> => [string()],
+%%   <<"shardCapacity">> := [integer()],
+%%   <<"shardCount">> := [integer()],
+%%   <<"shardInstanceCount">> => [integer()],
+%%   <<"subnetIds">> => list([string()]()),
+%%   <<"tags">> => map(),
+%%   <<"vpcSecurityGroupIds">> => list([string()]())
+%% }
+-type create_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% copy_cluster_snapshot_input() :: #{
+%%   <<"copyTags">> => [boolean()],
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"targetSnapshotName">> := [string()]
+%% }
+-type copy_cluster_snapshot_input() :: #{binary() => any()}.
+%% Example:
+%% get_cluster_input() :: #{}
+-type get_cluster_input() :: #{}.
+
+%% Example:
+%% list_cluster_snapshots_input() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"snapshotType">> => [string()]
+%% }
+-type list_cluster_snapshots_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+%% Example:
+%% stop_cluster_input() :: #{}
+-type stop_cluster_input() :: #{}.
+
+%% Example:
+%% list_clusters_output() :: #{
+%%   <<"clusters">> => list(cluster_in_list()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_output() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stop_cluster_output() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type stop_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type delete_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% cluster() :: #{
+%%   <<"adminUserName">> => [string()],
+%%   <<"authType">> => string(),
+%%   <<"backupRetentionPeriod">> => [integer()],
+%%   <<"clusterArn">> => [string()],
+%%   <<"clusterEndpoint">> => [string()],
+%%   <<"clusterName">> => [string()],
+%%   <<"createTime">> => [string()],
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"preferredBackupWindow">> => [string()],
+%%   <<"preferredMaintenanceWindow">> => [string()],
+%%   <<"shardCapacity">> => [integer()],
+%%   <<"shardCount">> => [integer()],
+%%   <<"shardInstanceCount">> => [integer()],
+%%   <<"shards">> => list(shard()()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list([string()]()),
+%%   <<"vpcSecurityGroupIds">> => list([string()]())
+%% }
+-type cluster() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type get_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type update_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_snapshot() :: #{
+%%   <<"adminUserName">> => [string()],
+%%   <<"clusterArn">> => [string()],
+%%   <<"clusterCreationTime">> => [string()],
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"snapshotArn">> => [string()],
+%%   <<"snapshotCreationTime">> => [string()],
+%%   <<"snapshotName">> => [string()],
+%%   <<"snapshotType">> => string(),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list([string()]()),
+%%   <<"vpcSecurityGroupIds">> => list([string()]())
+%% }
+-type cluster_snapshot() :: #{binary() => any()}.
+%% Example:
+%% delete_cluster_input() :: #{}
+-type delete_cluster_input() :: #{}.
+
+%% Example:
+%% list_cluster_snapshots_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"snapshots">> => list(cluster_snapshot_in_list()())
+%% }
+-type list_cluster_snapshots_output() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type create_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% shard() :: #{
+%%   <<"createTime">> => [string()],
+%%   <<"shardId">> => [string()],
+%%   <<"status">> => string()
+%% }
+-type shard() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% delete_cluster_snapshot_output() :: #{
+%%   <<"snapshot">> := cluster_snapshot()
+%% }
+-type delete_cluster_snapshot_output() :: #{binary() => any()}.
+%% Example:
+%% delete_cluster_snapshot_input() :: #{}
+-type delete_cluster_snapshot_input() :: #{}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_snapshot_input() :: #{
+%%   <<"clusterArn">> := [string()],
+%%   <<"snapshotName">> := [string()],
+%%   <<"tags">> => map()
+%% }
+-type create_cluster_snapshot_input() :: #{binary() => any()}.
+
+%% Example:
+%% restore_cluster_from_snapshot_input() :: #{
+%%   <<"clusterName">> := [string()],
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"shardCapacity">> => [integer()],
+%%   <<"shardInstanceCount">> => [integer()],
+%%   <<"subnetIds">> => list([string()]()),
+%%   <<"tags">> => map(),
+%%   <<"vpcSecurityGroupIds">> => list([string()]())
+%% }
+-type restore_cluster_from_snapshot_input() :: #{binary() => any()}.
+%% Example:
+%% start_cluster_input() :: #{}
+-type start_cluster_input() :: #{}.
+
+%% Example:
+%% cluster_in_list() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"clusterName">> => [string()],
+%%   <<"status">> => string()
+%% }
+-type cluster_in_list() :: #{binary() => any()}.
+%% Example:
+%% get_cluster_snapshot_input() :: #{}
+-type get_cluster_snapshot_input() :: #{}.
+
+%% Example:
+%% get_cluster_snapshot_output() :: #{
+%%   <<"snapshot">> := cluster_snapshot()
+%% }
+-type get_cluster_snapshot_output() :: #{binary() => any()}.
+
+%% Example:
+%% copy_cluster_snapshot_output() :: #{
+%%   <<"snapshot">> => cluster_snapshot()
+%% }
+-type copy_cluster_snapshot_output() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Copies a snapshot of an elastic cluster.
+-spec copy_cluster_snapshot(map(), binary() | list(), copy_cluster_snapshot_input()) ->
+    {ok, copy_cluster_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 copy_cluster_snapshot(Client, SnapshotArn, Input) ->
     copy_cluster_snapshot(Client, SnapshotArn, Input, []).
+
+-spec copy_cluster_snapshot(map(), binary() | list(), copy_cluster_snapshot_input(), proplists:proplist()) ->
+    {ok, copy_cluster_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 copy_cluster_snapshot(Client, SnapshotArn, Input0, Options0) ->
     Method = post,
     Path = ["/cluster-snapshot/", aws_util:encode_uri(SnapshotArn), "/copy"],
@@ -94,8 +443,27 @@ copy_cluster_snapshot(Client, SnapshotArn, Input0, Options0) ->
 
 %% @doc Creates a new Amazon DocumentDB elastic cluster and returns its
 %% cluster structure.
+-spec create_cluster(map(), create_cluster_input()) ->
+    {ok, create_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
+
+-spec create_cluster(map(), create_cluster_input(), proplists:proplist()) ->
+    {ok, create_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cluster"],
@@ -119,8 +487,29 @@ create_cluster(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a snapshot of an elastic cluster.
+-spec create_cluster_snapshot(map(), create_cluster_snapshot_input()) ->
+    {ok, create_cluster_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_cluster_snapshot(Client, Input) ->
     create_cluster_snapshot(Client, Input, []).
+
+-spec create_cluster_snapshot(map(), create_cluster_snapshot_input(), proplists:proplist()) ->
+    {ok, create_cluster_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_cluster_snapshot(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cluster-snapshot"],
@@ -144,8 +533,27 @@ create_cluster_snapshot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an elastic cluster.
+-spec delete_cluster(map(), binary() | list(), delete_cluster_input()) ->
+    {ok, delete_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_cluster(Client, ClusterArn, Input) ->
     delete_cluster(Client, ClusterArn, Input, []).
+
+-spec delete_cluster(map(), binary() | list(), delete_cluster_input(), proplists:proplist()) ->
+    {ok, delete_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_cluster(Client, ClusterArn, Input0, Options0) ->
     Method = delete,
     Path = ["/cluster/", aws_util:encode_uri(ClusterArn), ""],
@@ -169,8 +577,27 @@ delete_cluster(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an elastic cluster snapshot.
+-spec delete_cluster_snapshot(map(), binary() | list(), delete_cluster_snapshot_input()) ->
+    {ok, delete_cluster_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_cluster_snapshot(Client, SnapshotArn, Input) ->
     delete_cluster_snapshot(Client, SnapshotArn, Input, []).
+
+-spec delete_cluster_snapshot(map(), binary() | list(), delete_cluster_snapshot_input(), proplists:proplist()) ->
+    {ok, delete_cluster_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_cluster_snapshot(Client, SnapshotArn, Input0, Options0) ->
     Method = delete,
     Path = ["/cluster-snapshot/", aws_util:encode_uri(SnapshotArn), ""],
@@ -194,14 +621,38 @@ delete_cluster_snapshot(Client, SnapshotArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specific elastic cluster.
+-spec get_cluster(map(), binary() | list()) ->
+    {ok, get_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_cluster(Client, ClusterArn)
   when is_map(Client) ->
     get_cluster(Client, ClusterArn, #{}, #{}).
 
+-spec get_cluster(map(), binary() | list(), map(), map()) ->
+    {ok, get_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_cluster(Client, ClusterArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cluster(Client, ClusterArn, QueryMap, HeadersMap, []).
 
+-spec get_cluster(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cluster/", aws_util:encode_uri(ClusterArn), ""],
@@ -219,14 +670,38 @@ get_cluster(Client, ClusterArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specific elastic cluster snapshot
+-spec get_cluster_snapshot(map(), binary() | list()) ->
+    {ok, get_cluster_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_cluster_snapshot(Client, SnapshotArn)
   when is_map(Client) ->
     get_cluster_snapshot(Client, SnapshotArn, #{}, #{}).
 
+-spec get_cluster_snapshot(map(), binary() | list(), map(), map()) ->
+    {ok, get_cluster_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_cluster_snapshot(Client, SnapshotArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cluster_snapshot(Client, SnapshotArn, QueryMap, HeadersMap, []).
 
+-spec get_cluster_snapshot(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cluster_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_cluster_snapshot(Client, SnapshotArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cluster-snapshot/", aws_util:encode_uri(SnapshotArn), ""],
@@ -244,14 +719,35 @@ get_cluster_snapshot(Client, SnapshotArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about snapshots for a specified elastic cluster.
+-spec list_cluster_snapshots(map()) ->
+    {ok, list_cluster_snapshots_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_cluster_snapshots(Client)
   when is_map(Client) ->
     list_cluster_snapshots(Client, #{}, #{}).
 
+-spec list_cluster_snapshots(map(), map(), map()) ->
+    {ok, list_cluster_snapshots_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_cluster_snapshots(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cluster_snapshots(Client, QueryMap, HeadersMap, []).
 
+-spec list_cluster_snapshots(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_cluster_snapshots_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_cluster_snapshots(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cluster-snapshots"],
@@ -277,14 +773,35 @@ list_cluster_snapshots(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns information about provisioned Amazon DocumentDB elastic
 %% clusters.
+-spec list_clusters(map()) ->
+    {ok, list_clusters_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_clusters(Client)
   when is_map(Client) ->
     list_clusters(Client, #{}, #{}).
 
+-spec list_clusters(map(), map(), map()) ->
+    {ok, list_clusters_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_clusters(Client, QueryMap, HeadersMap, []).
 
+-spec list_clusters(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_clusters_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_clusters(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters"],
@@ -307,14 +824,35 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all tags on a elastic cluster resource
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -332,8 +870,29 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Restores an elastic cluster from a snapshot.
+-spec restore_cluster_from_snapshot(map(), binary() | list(), restore_cluster_from_snapshot_input()) ->
+    {ok, restore_cluster_from_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_cluster_from_snapshot(Client, SnapshotArn, Input) ->
     restore_cluster_from_snapshot(Client, SnapshotArn, Input, []).
+
+-spec restore_cluster_from_snapshot(map(), binary() | list(), restore_cluster_from_snapshot_input(), proplists:proplist()) ->
+    {ok, restore_cluster_from_snapshot_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_cluster_from_snapshot(Client, SnapshotArn, Input0, Options0) ->
     Method = post,
     Path = ["/cluster-snapshot/", aws_util:encode_uri(SnapshotArn), "/restore"],
@@ -358,8 +917,25 @@ restore_cluster_from_snapshot(Client, SnapshotArn, Input0, Options0) ->
 
 %% @doc Restarts the stopped elastic cluster that is specified by
 %% `clusterARN'.
+-spec start_cluster(map(), binary() | list(), start_cluster_input()) ->
+    {ok, start_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_cluster(Client, ClusterArn, Input) ->
     start_cluster(Client, ClusterArn, Input, []).
+
+-spec start_cluster(map(), binary() | list(), start_cluster_input(), proplists:proplist()) ->
+    {ok, start_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_cluster(Client, ClusterArn, Input0, Options0) ->
     Method = post,
     Path = ["/cluster/", aws_util:encode_uri(ClusterArn), "/start"],
@@ -386,8 +962,25 @@ start_cluster(Client, ClusterArn, Input0, Options0) ->
 %% `clusterArn'.
 %%
 %% The elastic cluster must be in the available state.
+-spec stop_cluster(map(), binary() | list(), stop_cluster_input()) ->
+    {ok, stop_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_cluster(Client, ClusterArn, Input) ->
     stop_cluster(Client, ClusterArn, Input, []).
+
+-spec stop_cluster(map(), binary() | list(), stop_cluster_input(), proplists:proplist()) ->
+    {ok, stop_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_cluster(Client, ClusterArn, Input0, Options0) ->
     Method = post,
     Path = ["/cluster/", aws_util:encode_uri(ClusterArn), "/stop"],
@@ -411,8 +1004,23 @@ stop_cluster(Client, ClusterArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds metadata tags to an elastic cluster resource
+-spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -436,8 +1044,23 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes metadata tags from an elastic cluster resource
+-spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -466,8 +1089,27 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% This includes updating admin-username/password,
 %% upgrading the API version, and setting up a backup window and maintenance
 %% window
+-spec update_cluster(map(), binary() | list(), update_cluster_input()) ->
+    {ok, update_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_cluster(Client, ClusterArn, Input) ->
     update_cluster(Client, ClusterArn, Input, []).
+
+-spec update_cluster(map(), binary() | list(), update_cluster_input(), proplists:proplist()) ->
+    {ok, update_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_cluster(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/cluster/", aws_util:encode_uri(ClusterArn), ""],
@@ -494,7 +1136,7 @@ update_cluster(Client, ClusterArn, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -301,6 +301,2413 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% create_user_pool_domain_response() :: #{
+%%   <<"CloudFrontDomain">> => string()
+%% }
+-type create_user_pool_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_result_type() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"ExpiresIn">> => integer(),
+%%   <<"IdToken">> => string(),
+%%   <<"NewDeviceMetadata">> => new_device_metadata_type(),
+%%   <<"RefreshToken">> => string(),
+%%   <<"TokenType">> => string()
+%% }
+-type authentication_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% verify_user_attribute_response() :: #{
+
+%% }
+-type verify_user_attribute_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_auth_event_feedback_response() :: #{
+
+%% }
+-type admin_update_auth_event_feedback_response() :: #{binary() => any()}.
+
+%% Example:
+%% analytics_metadata_type() :: #{
+%%   <<"AnalyticsEndpointId">> => string()
+%% }
+-type analytics_metadata_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_import_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_import_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_auth_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"AuthFlow">> := list(any()),
+%%   <<"AuthParameters">> => map(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"UserContextData">> => user_context_data_type()
+%% }
+-type initiate_auth_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_device_status_response() :: #{
+
+%% }
+-type admin_update_device_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_mfa_preference_response() :: #{
+
+%% }
+-type set_user_mfa_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"PaginationToken">> => string()
+%% }
+-type list_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_pool_request() :: #{
+%%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
+%%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
+%%   <<"AutoVerifiedAttributes">> => list(list(any())()),
+%%   <<"DeletionProtection">> => list(any()),
+%%   <<"DeviceConfiguration">> => device_configuration_type(),
+%%   <<"EmailConfiguration">> => email_configuration_type(),
+%%   <<"EmailVerificationMessage">> => string(),
+%%   <<"EmailVerificationSubject">> => string(),
+%%   <<"LambdaConfig">> => lambda_config_type(),
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"Policies">> => user_pool_policy_type(),
+%%   <<"SmsAuthenticationMessage">> => string(),
+%%   <<"SmsConfiguration">> => sms_configuration_type(),
+%%   <<"SmsVerificationMessage">> => string(),
+%%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
+%%   <<"UserPoolAddOns">> => user_pool_add_ons_type(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"UserPoolTags">> => map(),
+%%   <<"VerificationMessageTemplate">> => verification_message_template_type()
+%% }
+-type update_user_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_csv_header_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_csv_header_request() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_token_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_token_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_failed_attempts_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_failed_attempts_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_attributes_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"UserAttributeNames">> := list(string()())
+%% }
+-type delete_user_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_attributes_response() :: #{
+%%   <<"CodeDeliveryDetailsList">> => list(code_delivery_details_type()())
+%% }
+-type update_user_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% event_context_data_type() :: #{
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Timezone">> => string()
+%% }
+-type event_context_data_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_not_confirmed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_not_confirmed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_providers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_identity_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_client_description() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ClientName">> => string(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type user_pool_client_description() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_server_scope_type() :: #{
+%%   <<"ScopeDescription">> => string(),
+%%   <<"ScopeName">> => string()
+%% }
+-type resource_server_scope_type() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_email_role_access_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_email_role_access_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_csv_header_response() :: #{
+%%   <<"CSVHeader">> => list(string()()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type get_csv_header_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_log_delivery_configuration_request() :: #{
+%%   <<"LogConfigurations">> := list(log_configuration_type()()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type set_log_delivery_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_identity_provider_response() :: #{
+%%   <<"IdentityProvider">> => identity_provider_type()
+%% }
+-type update_identity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_provider_request() :: #{
+%%   <<"ProviderName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_identity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_user_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_user_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_sign_up_response() :: #{
+
+%% }
+-type confirm_sign_up_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_pool_domain_request() :: #{
+%%   <<"CustomDomainConfig">> => custom_domain_config_type(),
+%%   <<"Domain">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_user_pool_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_respond_to_auth_challenge_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeParameters">> => map(),
+%%   <<"Session">> => string()
+%% }
+-type admin_respond_to_auth_challenge_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_pool_domain_response() :: #{
+%%   <<"CloudFrontDomain">> => string()
+%% }
+-type update_user_pool_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_create_user_request() :: #{
+%%   <<"ClientMetadata">> => map(),
+%%   <<"DesiredDeliveryMediums">> => list(list(any())()),
+%%   <<"ForceAliasCreation">> => boolean(),
+%%   <<"MessageAction">> => list(any()),
+%%   <<"TemporaryPassword">> => string(),
+%%   <<"UserAttributes">> => list(attribute_type()()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string(),
+%%   <<"ValidationData">> => list(attribute_type()())
+%% }
+-type admin_create_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_settings_response() :: #{
+
+%% }
+-type admin_set_user_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_link_provider_for_user_request() :: #{
+%%   <<"DestinationUser">> := provider_user_identifier_type(),
+%%   <<"SourceUser">> := provider_user_identifier_type(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type admin_link_provider_for_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_attributes_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"UserAttributes">> := list(attribute_type()())
+%% }
+-type update_user_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_get_user_request() :: #{
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_get_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% account_takeover_risk_configuration_type() :: #{
+%%   <<"Actions">> => account_takeover_actions_type(),
+%%   <<"NotifyConfiguration">> => notify_configuration_type()
+%% }
+-type account_takeover_risk_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% sms_mfa_config_type() :: #{
+%%   <<"SmsAuthenticationMessage">> => string(),
+%%   <<"SmsConfiguration">> => sms_configuration_type()
+%% }
+-type sms_mfa_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% device_secret_verifier_config_type() :: #{
+%%   <<"PasswordVerifier">> => string(),
+%%   <<"Salt">> => string()
+%% }
+-type device_secret_verifier_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+%% Example:
+%% message_template_type() :: #{
+%%   <<"EmailMessage">> => string(),
+%%   <<"EmailSubject">> => string(),
+%%   <<"SMSMessage">> => string()
+%% }
+-type message_template_type() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pools_request() :: #{
+%%   <<"MaxResults">> := integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_user_pools_request() :: #{binary() => any()}.
+
+%% Example:
+%% new_device_metadata_type() :: #{
+%%   <<"DeviceGroupKey">> => string(),
+%%   <<"DeviceKey">> => string()
+%% }
+-type new_device_metadata_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_import_job_response() :: #{
+%%   <<"UserImportJob">> => user_import_job_type()
+%% }
+-type describe_user_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_software_token_response() :: #{
+%%   <<"SecretCode">> => string(),
+%%   <<"Session">> => string()
+%% }
+-type associate_software_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_provider_response() :: #{
+%%   <<"IdentityProvider">> => identity_provider_type()
+%% }
+-type create_identity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_server_response() :: #{
+%%   <<"ResourceServer">> => resource_server_type()
+%% }
+-type update_resource_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% number_attribute_constraints_type() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type number_attribute_constraints_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_add_user_to_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_add_user_to_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% alias_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type alias_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% verify_software_token_response() :: #{
+%%   <<"Session">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type verify_software_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_domain_response() :: #{
+
+%% }
+-type delete_user_pool_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"MFAOptions">> => list(mfa_option_type()()),
+%%   <<"PreferredMfaSetting">> => string(),
+%%   <<"UserAttributes">> => list(attribute_type()()),
+%%   <<"UserMFASettingList">> => list(string()()),
+%%   <<"Username">> => string()
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_in_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_users_in_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% user_type() :: #{
+%%   <<"Attributes">> => list(attribute_type()()),
+%%   <<"Enabled">> => boolean(),
+%%   <<"MFAOptions">> => list(mfa_option_type()()),
+%%   <<"UserCreateDate">> => non_neg_integer(),
+%%   <<"UserLastModifiedDate">> => non_neg_integer(),
+%%   <<"UserStatus">> => list(any()),
+%%   <<"Username">> => string()
+%% }
+-type user_type() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pools_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserPools">> => list(user_pool_description_type()())
+%% }
+-type list_user_pools_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_pool_response() :: #{
+%%   <<"UserPool">> => user_pool_type()
+%% }
+-type create_user_pool_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_risk_configuration_request() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_risk_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_provider_response() :: #{
+%%   <<"IdentityProvider">> => identity_provider_type()
+%% }
+-type describe_identity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_identity_provider_request() :: #{
+%%   <<"ProviderName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_identity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% compromised_credentials_risk_configuration_type() :: #{
+%%   <<"Actions">> => compromised_credentials_actions_type(),
+%%   <<"EventFilter">> => list(list(any())())
+%% }
+-type compromised_credentials_risk_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_domain_request() :: #{
+%%   <<"Domain">> := string()
+%% }
+-type describe_user_pool_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% compromised_credentials_actions_type() :: #{
+%%   <<"EventAction">> => list(any())
+%% }
+-type compromised_credentials_actions_type() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_server_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scopes">> => list(resource_server_scope_type()()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type update_resource_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_description_type() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LambdaConfig">> => lambda_config_type(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type user_pool_description_type() :: #{binary() => any()}.
+
+%% Example:
+%% verify_software_token_request() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"FriendlyDeviceName">> => string(),
+%%   <<"Session">> => string(),
+%%   <<"UserCode">> := string()
+%% }
+-type verify_software_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_server_response() :: #{
+%%   <<"ResourceServer">> => resource_server_type()
+%% }
+-type describe_resource_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% group_type() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Precedence">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type group_type() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_pool_mfa_config_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_user_pool_mfa_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% change_password_response() :: #{
+
+%% }
+-type change_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_create_user_response() :: #{
+%%   <<"User">> => user_type()
+%% }
+-type admin_create_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_server_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_resource_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% global_sign_out_request() :: #{
+%%   <<"AccessToken">> := string()
+%% }
+-type global_sign_out_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_attributes_response() :: #{
+
+%% }
+-type delete_user_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_attribute_verification_code_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"AttributeName">> := string(),
+%%   <<"ClientMetadata">> => map()
+%% }
+-type get_user_attribute_verification_code_request() :: #{binary() => any()}.
+
+%% Example:
+%% user_attribute_update_settings_type() :: #{
+%%   <<"AttributesRequireVerificationBeforeUpdate">> => list(list(any())())
+%% }
+-type user_attribute_update_settings_type() :: #{binary() => any()}.
+
+%% Example:
+%% software_token_mfa_settings_type() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"PreferredMfa">> => boolean()
+%% }
+-type software_token_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_groups_for_user_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_list_groups_for_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_type() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type attribute_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_client_type() :: #{
+%%   <<"AccessTokenValidity">> => integer(),
+%%   <<"AllowedOAuthFlows">> => list(list(any())()),
+%%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
+%%   <<"AllowedOAuthScopes">> => list(string()()),
+%%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
+%%   <<"AuthSessionValidity">> => integer(),
+%%   <<"CallbackURLs">> => list(string()()),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientName">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DefaultRedirectURI">> => string(),
+%%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
+%%   <<"EnableTokenRevocation">> => boolean(),
+%%   <<"ExplicitAuthFlows">> => list(list(any())()),
+%%   <<"IdTokenValidity">> => integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"LogoutURLs">> => list(string()()),
+%%   <<"PreventUserExistenceErrors">> => list(any()),
+%%   <<"ReadAttributes">> => list(string()()),
+%%   <<"RefreshTokenValidity">> => integer(),
+%%   <<"SupportedIdentityProviders">> => list(string()()),
+%%   <<"TokenValidityUnits">> => token_validity_units_type(),
+%%   <<"UserPoolId">> => string(),
+%%   <<"WriteAttributes">> => list(string()())
+%% }
+-type user_pool_client_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_create_user_config_type() :: #{
+%%   <<"AllowAdminCreateUserOnly">> => boolean(),
+%%   <<"InviteMessageTemplate">> => message_template_type(),
+%%   <<"UnusedAccountValidityDays">> => integer()
+%% }
+-type admin_create_user_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_pool_mfa_config_response() :: #{
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
+%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type()
+%% }
+-type set_user_pool_mfa_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_provider_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_provider_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% admin_get_user_response() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"MFAOptions">> => list(mfa_option_type()()),
+%%   <<"PreferredMfaSetting">> => string(),
+%%   <<"UserAttributes">> => list(attribute_type()()),
+%%   <<"UserCreateDate">> => non_neg_integer(),
+%%   <<"UserLastModifiedDate">> => non_neg_integer(),
+%%   <<"UserMFASettingList">> => list(string()()),
+%%   <<"UserStatus">> => list(any()),
+%%   <<"Username">> => string()
+%% }
+-type admin_get_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_device_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"DeviceKey">> := string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"DeviceSecretVerifierConfig">> => device_secret_verifier_config_type()
+%% }
+-type confirm_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_import_job_response() :: #{
+%%   <<"UserImportJob">> => user_import_job_type()
+%% }
+-type create_user_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_pool_domain_request() :: #{
+%%   <<"CustomDomainConfig">> := custom_domain_config_type(),
+%%   <<"Domain">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type update_user_pool_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GroupName">> := string(),
+%%   <<"Precedence">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type update_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_custom_attributes_response() :: #{
+
+%% }
+-type add_custom_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_policy_type() :: #{
+%%   <<"PasswordPolicy">> => password_policy_type()
+%% }
+-type user_pool_policy_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_disable_user_response() :: #{
+
+%% }
+-type admin_disable_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_user_attributes_request() :: #{
+%%   <<"ClientMetadata">> => map(),
+%%   <<"UserAttributes">> := list(attribute_type()()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_update_user_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_enable_user_response() :: #{
+
+%% }
+-type admin_enable_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% identity_provider_type() :: #{
+%%   <<"AttributeMapping">> => map(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"IdpIdentifiers">> => list(string()()),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"ProviderDetails">> => map(),
+%%   <<"ProviderName">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type identity_provider_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_server_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_resource_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_risk_configuration_response() :: #{
+%%   <<"RiskConfiguration">> => risk_configuration_type()
+%% }
+-type describe_risk_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_settings_request() :: #{
+%%   <<"MFAOptions">> := list(mfa_option_type()()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_set_user_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_ui_customization_request() :: #{
+%%   <<"CSS">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"ImageFile">> => binary(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type set_ui_customization_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sms_role_access_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sms_role_access_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_provider_by_identifier_request() :: #{
+%%   <<"IdpIdentifier">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_identity_provider_by_identifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_mfa_preference_response() :: #{
+
+%% }
+-type admin_set_user_mfa_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_pool_response() :: #{
+
+%% }
+-type update_user_pool_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_risk_configuration_request() :: #{
+%%   <<"AccountTakeoverRiskConfiguration">> => account_takeover_risk_configuration_type(),
+%%   <<"ClientId">> => string(),
+%%   <<"CompromisedCredentialsRiskConfiguration">> => compromised_credentials_risk_configuration_type(),
+%%   <<"RiskExceptionConfiguration">> => risk_exception_configuration_type(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type set_risk_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_device_status_response() :: #{
+
+%% }
+-type update_device_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_user_global_sign_out_response() :: #{
+
+%% }
+-type admin_user_global_sign_out_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_client_response() :: #{
+%%   <<"UserPoolClient">> => user_pool_client_type()
+%% }
+-type describe_user_pool_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% code_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type code_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_signing_certificate_response() :: #{
+%%   <<"Certificate">> => string()
+%% }
+-type get_signing_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_email_lambda_version_config_type() :: #{
+%%   <<"LambdaArn">> => string(),
+%%   <<"LambdaVersion">> => list(any())
+%% }
+-type custom_email_lambda_version_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% device_type() :: #{
+%%   <<"DeviceAttributes">> => list(attribute_type()()),
+%%   <<"DeviceCreateDate">> => non_neg_integer(),
+%%   <<"DeviceKey">> => string(),
+%%   <<"DeviceLastAuthenticatedDate">> => non_neg_integer(),
+%%   <<"DeviceLastModifiedDate">> => non_neg_integer()
+%% }
+-type device_type() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_pool_mfa_config_response() :: #{
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
+%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type()
+%% }
+-type get_user_pool_mfa_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_token_response() :: #{
+
+%% }
+-type revoke_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% ui_customization_type() :: #{
+%%   <<"CSS">> => string(),
+%%   <<"CSSVersion">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ImageUrl">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type ui_customization_type() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{
+%%   <<"AccessToken">> := string()
+%% }
+-type get_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_user_attribute_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"AttributeName">> := string(),
+%%   <<"Code">> := string()
+%% }
+-type verify_user_attribute_request() :: #{binary() => any()}.
+
+%% Example:
+%% notify_email_type() :: #{
+%%   <<"HtmlBody">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"TextBody">> => string()
+%% }
+-type notify_email_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_auth_event_feedback_request() :: #{
+%%   <<"EventId">> := string(),
+%%   <<"FeedbackValue">> := list(any()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_update_auth_event_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_in_group_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user_type()())
+%% }
+-type list_users_in_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% scope_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type scope_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% respond_to_auth_challenge_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ChallengeName">> := list(any()),
+%%   <<"ChallengeResponses">> => map(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"Session">> => string(),
+%%   <<"UserContextData">> => user_context_data_type()
+%% }
+-type respond_to_auth_challenge_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_ui_customization_response() :: #{
+%%   <<"UICustomization">> => ui_customization_type()
+%% }
+-type set_ui_customization_response() :: #{binary() => any()}.
+
+%% Example:
+%% token_validity_units_type() :: #{
+%%   <<"AccessToken">> => list(any()),
+%%   <<"IdToken">> => list(any()),
+%%   <<"RefreshToken">> => list(any())
+%% }
+-type token_validity_units_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_context_data_type() :: #{
+%%   <<"EncodedData">> => string(),
+%%   <<"IpAddress">> => string()
+%% }
+-type user_context_data_type() :: #{binary() => any()}.
+
+%% Example:
+%% string_attribute_constraints_type() :: #{
+%%   <<"MaxLength">> => string(),
+%%   <<"MinLength">> => string()
+%% }
+-type string_attribute_constraints_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_delete_user_attributes_request() :: #{
+%%   <<"UserAttributeNames">> := list(string()()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_delete_user_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_config_type() :: #{
+%%   <<"CreateAuthChallenge">> => string(),
+%%   <<"CustomEmailSender">> => custom_email_lambda_version_config_type(),
+%%   <<"CustomMessage">> => string(),
+%%   <<"CustomSMSSender">> => custom_sms_lambda_version_config_type(),
+%%   <<"DefineAuthChallenge">> => string(),
+%%   <<"KMSKeyID">> => string(),
+%%   <<"PostAuthentication">> => string(),
+%%   <<"PostConfirmation">> => string(),
+%%   <<"PreAuthentication">> => string(),
+%%   <<"PreSignUp">> => string(),
+%%   <<"PreTokenGeneration">> => string(),
+%%   <<"PreTokenGenerationConfig">> => pre_token_generation_version_config_type(),
+%%   <<"UserMigration">> => string(),
+%%   <<"VerifyAuthChallengeResponse">> => string()
+%% }
+-type lambda_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% log_delivery_configuration_type() :: #{
+%%   <<"LogConfigurations">> => list(log_configuration_type()()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type log_delivery_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% risk_exception_configuration_type() :: #{
+%%   <<"BlockedIPRangeList">> => list(string()()),
+%%   <<"SkippedIPRangeList">> => list(string()())
+%% }
+-type risk_exception_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% group_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type group_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% password_reset_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type password_reset_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_password_response() :: #{
+
+%% }
+-type admin_set_user_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_devices_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_list_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_pool_client_response() :: #{
+%%   <<"UserPoolClient">> => user_pool_client_type()
+%% }
+-type create_user_pool_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_response() :: #{
+%%   <<"UserPool">> => user_pool_type()
+%% }
+-type describe_user_pool_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_pool_request() :: #{
+%%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
+%%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
+%%   <<"AliasAttributes">> => list(list(any())()),
+%%   <<"AutoVerifiedAttributes">> => list(list(any())()),
+%%   <<"DeletionProtection">> => list(any()),
+%%   <<"DeviceConfiguration">> => device_configuration_type(),
+%%   <<"EmailConfiguration">> => email_configuration_type(),
+%%   <<"EmailVerificationMessage">> => string(),
+%%   <<"EmailVerificationSubject">> => string(),
+%%   <<"LambdaConfig">> => lambda_config_type(),
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"Policies">> => user_pool_policy_type(),
+%%   <<"PoolName">> := string(),
+%%   <<"Schema">> => list(schema_attribute_type()()),
+%%   <<"SmsAuthenticationMessage">> => string(),
+%%   <<"SmsConfiguration">> => sms_configuration_type(),
+%%   <<"SmsVerificationMessage">> => string(),
+%%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
+%%   <<"UserPoolAddOns">> => user_pool_add_ons_type(),
+%%   <<"UserPoolTags">> => map(),
+%%   <<"UsernameAttributes">> => list(list(any())()),
+%%   <<"UsernameConfiguration">> => username_configuration_type(),
+%%   <<"VerificationMessageTemplate">> => verification_message_template_type()
+%% }
+-type create_user_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_import_jobs_response() :: #{
+%%   <<"PaginationToken">> => string(),
+%%   <<"UserImportJobs">> => list(user_import_job_type()())
+%% }
+-type list_user_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"PaginationToken">> => string(),
+%%   <<"Users">> => list(user_type()())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% user_import_job_type() :: #{
+%%   <<"CloudWatchLogsRoleArn">> => string(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CompletionMessage">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"FailedUsers">> => float(),
+%%   <<"ImportedUsers">> => float(),
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"SkippedUsers">> => float(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type user_import_job_type() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_pool_client_request() :: #{
+%%   <<"AccessTokenValidity">> => integer(),
+%%   <<"AllowedOAuthFlows">> => list(list(any())()),
+%%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
+%%   <<"AllowedOAuthScopes">> => list(string()()),
+%%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
+%%   <<"AuthSessionValidity">> => integer(),
+%%   <<"CallbackURLs">> => list(string()()),
+%%   <<"ClientName">> := string(),
+%%   <<"DefaultRedirectURI">> => string(),
+%%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
+%%   <<"EnableTokenRevocation">> => boolean(),
+%%   <<"ExplicitAuthFlows">> => list(list(any())()),
+%%   <<"GenerateSecret">> => boolean(),
+%%   <<"IdTokenValidity">> => integer(),
+%%   <<"LogoutURLs">> => list(string()()),
+%%   <<"PreventUserExistenceErrors">> => list(any()),
+%%   <<"ReadAttributes">> => list(string()()),
+%%   <<"RefreshTokenValidity">> => integer(),
+%%   <<"SupportedIdentityProviders">> => list(string()()),
+%%   <<"TokenValidityUnits">> => token_validity_units_type(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"WriteAttributes">> => list(string()())
+%% }
+-type create_user_pool_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_provider_by_identifier_response() :: #{
+%%   <<"IdentityProvider">> => identity_provider_type()
+%% }
+-type get_identity_provider_by_identifier_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_disable_provider_for_user_response() :: #{
+
+%% }
+-type admin_disable_provider_for_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_configuration_type() :: #{
+%%   <<"LogGroupArn">> => string()
+%% }
+-type cloud_watch_logs_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_client_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_user_pool_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% user_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% password_policy_type() :: #{
+%%   <<"MinimumLength">> => integer(),
+%%   <<"RequireLowercase">> => boolean(),
+%%   <<"RequireNumbers">> => boolean(),
+%%   <<"RequireSymbols">> => boolean(),
+%%   <<"RequireUppercase">> => boolean(),
+%%   <<"TemporaryPasswordValidityDays">> => integer()
+%% }
+-type password_policy_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_confirm_sign_up_request() :: #{
+%%   <<"ClientMetadata">> => map(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_confirm_sign_up_request() :: #{binary() => any()}.
+
+%% Example:
+%% custom_domain_config_type() :: #{
+%%   <<"CertificateArn">> => string()
+%% }
+-type custom_domain_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% custom_sms_lambda_version_config_type() :: #{
+%%   <<"LambdaArn">> => string(),
+%%   <<"LambdaVersion">> => list(any())
+%% }
+-type custom_sms_lambda_version_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_enable_user_request() :: #{
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_enable_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_server_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scopes">> => list(resource_server_scope_type()()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_resource_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_initiate_auth_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"AuthFlow">> := list(any()),
+%%   <<"AuthParameters">> => map(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ContextData">> => context_data_type(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type admin_initiate_auth_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_device_status_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"DeviceKey">> := string(),
+%%   <<"DeviceRememberedStatus">> => list(any())
+%% }
+-type update_device_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_server_type() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Scopes">> => list(resource_server_scope_type()()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type resource_server_type() :: #{binary() => any()}.
+
+%% Example:
+%% software_token_mfa_config_type() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type software_token_mfa_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_response() :: #{
+%%   <<"Devices">> => list(device_type()()),
+%%   <<"PaginationToken">> => string()
+%% }
+-type list_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_reset_user_password_response() :: #{
+
+%% }
+-type admin_reset_user_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GroupName">> := string(),
+%%   <<"Precedence">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_user_global_sign_out_request() :: #{
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_user_global_sign_out_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_auth_event_feedback_response() :: #{
+
+%% }
+-type update_auth_event_feedback_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_lambda_response_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_lambda_response_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sms_mfa_settings_type() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"PreferredMfa">> => boolean()
+%% }
+-type sms_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
+%% add_custom_attributes_request() :: #{
+%%   <<"CustomAttributes">> := list(schema_attribute_type()()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type add_custom_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_disable_user_request() :: #{
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_disable_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% email_configuration_type() :: #{
+%%   <<"ConfigurationSet">> => string(),
+%%   <<"EmailSendingAccount">> => list(any()),
+%%   <<"From">> => string(),
+%%   <<"ReplyToEmailAddress">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type email_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% expired_code_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_code_exception() :: #{binary() => any()}.
+
+%% Example:
+%% forgot_password_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"SecretHash">> => string(),
+%%   <<"UserContextData">> => user_context_data_type(),
+%%   <<"Username">> := string()
+%% }
+-type forgot_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_clients_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_user_pool_clients_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_remove_user_from_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_remove_user_from_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_tagging_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_pool_tagging_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_settings_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"MFAOptions">> := list(mfa_option_type()())
+%% }
+-type set_user_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% recovery_option_type() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Priority">> => integer()
+%% }
+-type recovery_option_type() :: #{binary() => any()}.
+
+%% Example:
+%% provider_user_identifier_type() :: #{
+%%   <<"ProviderAttributeName">> => string(),
+%%   <<"ProviderAttributeValue">> => string(),
+%%   <<"ProviderName">> => string()
+%% }
+-type provider_user_identifier_type() :: #{binary() => any()}.
+
+%% Example:
+%% event_feedback_type() :: #{
+%%   <<"FeedbackDate">> => non_neg_integer(),
+%%   <<"FeedbackValue">> => list(any()),
+%%   <<"Provider">> => string()
+%% }
+-type event_feedback_type() :: #{binary() => any()}.
+
+%% Example:
+%% change_password_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"PreviousPassword">> := string(),
+%%   <<"ProposedPassword">> := string()
+%% }
+-type change_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_devices_response() :: #{
+%%   <<"Devices">> => list(device_type()()),
+%%   <<"PaginationToken">> => string()
+%% }
+-type admin_list_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"AccessToken">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_delivery_configuration_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_log_delivery_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_o_auth_flow_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_o_auth_flow_exception() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_auth_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeParameters">> => map(),
+%%   <<"Session">> => string()
+%% }
+-type initiate_auth_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_request() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"DeviceKey">> := string()
+%% }
+-type get_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_import_job_request() :: #{
+%%   <<"CloudWatchLogsRoleArn">> := string(),
+%%   <<"JobName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_user_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_password_request() :: #{
+%%   <<"Password">> := string(),
+%%   <<"Permanent">> => boolean(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_set_user_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_domain_response() :: #{
+%%   <<"DomainDescription">> => domain_description_type()
+%% }
+-type describe_user_pool_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% sign_up_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"Password">> := string(),
+%%   <<"SecretHash">> => string(),
+%%   <<"UserAttributes">> => list(attribute_type()()),
+%%   <<"UserContextData">> => user_context_data_type(),
+%%   <<"Username">> := string(),
+%%   <<"ValidationData">> => list(attribute_type()())
+%% }
+-type sign_up_request() :: #{binary() => any()}.
+
+%% Example:
+%% forget_device_request() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"DeviceKey">> := string()
+%% }
+-type forget_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% device_configuration_type() :: #{
+%%   <<"ChallengeRequiredOnNewDevice">> => boolean(),
+%%   <<"DeviceOnlyRememberedOnUserPrompt">> => boolean()
+%% }
+-type device_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_add_ons_type() :: #{
+%%   <<"AdvancedSecurityMode">> => list(any())
+%% }
+-type user_pool_add_ons_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_user_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_domain_request() :: #{
+%%   <<"Domain">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_user_pool_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% user_lambda_validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_lambda_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_user_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_import_jobs_request() :: #{
+%%   <<"MaxResults">> := integer(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_user_import_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% challenge_response_type() :: #{
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeResponse">> => list(any())
+%% }
+-type challenge_response_type() :: #{binary() => any()}.
+
+%% Example:
+%% resend_confirmation_code_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"SecretHash">> => string(),
+%%   <<"UserContextData">> => user_context_data_type(),
+%%   <<"Username">> := string()
+%% }
+-type resend_confirmation_code_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_respond_to_auth_challenge_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ChallengeName">> := list(any()),
+%%   <<"ChallengeResponses">> => map(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ContextData">> => context_data_type(),
+%%   <<"Session">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type admin_respond_to_auth_challenge_request() :: #{binary() => any()}.
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_user_auth_events_response() :: #{
+%%   <<"AuthEvents">> => list(auth_event_type()()),
+%%   <<"NextToken">> => string()
+%% }
+-type admin_list_user_auth_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_identity_provider_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_identity_provider_exception() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_add_on_not_enabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_pool_add_on_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% auth_event_type() :: #{
+%%   <<"ChallengeResponses">> => list(challenge_response_type()()),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"EventContextData">> => event_context_data_type(),
+%%   <<"EventFeedback">> => event_feedback_type(),
+%%   <<"EventId">> => string(),
+%%   <<"EventResponse">> => list(any()),
+%%   <<"EventRisk">> => event_risk_type(),
+%%   <<"EventType">> => list(any())
+%% }
+-type auth_event_type() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_provider_request() :: #{
+%%   <<"AttributeMapping">> => map(),
+%%   <<"IdpIdentifiers">> => list(string()()),
+%%   <<"ProviderDetails">> := map(),
+%%   <<"ProviderName">> := string(),
+%%   <<"ProviderType">> := list(any()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_identity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_user_pool_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_user_pool_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_log_delivery_configuration_response() :: #{
+%%   <<"LogDeliveryConfiguration">> => log_delivery_configuration_type()
+%% }
+-type set_log_delivery_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% sign_up_response() :: #{
+%%   <<"CodeDeliveryDetails">> => code_delivery_details_type(),
+%%   <<"UserConfirmed">> => boolean(),
+%%   <<"UserSub">> => string()
+%% }
+-type sign_up_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_user_import_job_response() :: #{
+%%   <<"UserImportJob">> => user_import_job_type()
+%% }
+-type start_user_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_forgot_password_response() :: #{
+
+%% }
+-type confirm_forgot_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% log_configuration_type() :: #{
+%%   <<"CloudWatchLogsConfiguration">> => cloud_watch_logs_configuration_type(),
+%%   <<"EventSource">> => list(any()),
+%%   <<"LogLevel">> => list(any())
+%% }
+-type log_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% global_sign_out_response() :: #{
+
+%% }
+-type global_sign_out_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% admin_confirm_sign_up_response() :: #{
+
+%% }
+-type admin_confirm_sign_up_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_pool_mfa_config_request() :: #{
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
+%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type set_user_pool_mfa_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_import_job_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_user_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_disable_provider_for_user_request() :: #{
+%%   <<"User">> := provider_user_identifier_type(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type admin_disable_provider_for_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% code_delivery_details_type() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"DeliveryMedium">> => list(any()),
+%%   <<"Destination">> => string()
+%% }
+-type code_delivery_details_type() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% event_risk_type() :: #{
+%%   <<"CompromisedCredentialsDetected">> => boolean(),
+%%   <<"RiskDecision">> => list(any()),
+%%   <<"RiskLevel">> => list(any())
+%% }
+-type event_risk_type() :: #{binary() => any()}.
+
+%% Example:
+%% get_ui_customization_request() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_ui_customization_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_settings_response() :: #{
+
+%% }
+-type set_user_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_device_response() :: #{
+%%   <<"UserConfirmationNecessary">> => boolean()
+%% }
+-type confirm_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% account_recovery_setting_type() :: #{
+%%   <<"RecoveryMechanisms">> => list(recovery_option_type()())
+%% }
+-type account_recovery_setting_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_client_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_user_pool_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_auth_event_feedback_request() :: #{
+%%   <<"EventId">> := string(),
+%%   <<"FeedbackToken">> := string(),
+%%   <<"FeedbackValue">> := list(any()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type update_auth_event_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% pre_token_generation_version_config_type() :: #{
+%%   <<"LambdaArn">> => string(),
+%%   <<"LambdaVersion">> => list(any())
+%% }
+-type pre_token_generation_version_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_device_status_request() :: #{
+%%   <<"DeviceKey">> := string(),
+%%   <<"DeviceRememberedStatus">> => list(any()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_update_device_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% software_token_mfa_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type software_token_mfa_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_delivery_configuration_response() :: #{
+%%   <<"LogDeliveryConfiguration">> => log_delivery_configuration_type()
+%% }
+-type get_log_delivery_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resend_confirmation_code_response() :: #{
+%%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
+%% }
+-type resend_confirmation_code_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_reset_user_password_request() :: #{
+%%   <<"ClientMetadata">> => map(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_reset_user_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_link_provider_for_user_response() :: #{
+
+%% }
+-type admin_link_provider_for_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_get_device_response() :: #{
+%%   <<"Device">> => device_type()
+%% }
+-type admin_get_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_servers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_resource_servers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_user_attributes_response() :: #{
+
+%% }
+-type admin_update_user_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_pool_client_response() :: #{
+%%   <<"UserPoolClient">> => user_pool_client_type()
+%% }
+-type update_user_pool_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_providers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Providers">> => list(provider_description()())
+%% }
+-type list_identity_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% http_header() :: #{
+%%   <<"headerName">> => string(),
+%%   <<"headerValue">> => string()
+%% }
+-type http_header() :: #{binary() => any()}.
+
+%% Example:
+%% enable_software_token_mfa_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type enable_software_token_mfa_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_response() :: #{
+%%   <<"Group">> => group_type()
+%% }
+-type get_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_user_import_job_response() :: #{
+%%   <<"UserImportJob">> => user_import_job_type()
+%% }
+-type stop_user_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% notify_configuration_type() :: #{
+%%   <<"BlockEmail">> => notify_email_type(),
+%%   <<"From">> => string(),
+%%   <<"MfaEmail">> => notify_email_type(),
+%%   <<"NoActionEmail">> => notify_email_type(),
+%%   <<"ReplyTo">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type notify_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_groups_for_user_response() :: #{
+%%   <<"Groups">> => list(group_type()()),
+%%   <<"NextToken">> => string()
+%% }
+-type admin_list_groups_for_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% username_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type username_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_pool_client_request() :: #{
+%%   <<"AccessTokenValidity">> => integer(),
+%%   <<"AllowedOAuthFlows">> => list(list(any())()),
+%%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
+%%   <<"AllowedOAuthScopes">> => list(string()()),
+%%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
+%%   <<"AuthSessionValidity">> => integer(),
+%%   <<"CallbackURLs">> => list(string()()),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientName">> => string(),
+%%   <<"DefaultRedirectURI">> => string(),
+%%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
+%%   <<"EnableTokenRevocation">> => boolean(),
+%%   <<"ExplicitAuthFlows">> => list(list(any())()),
+%%   <<"IdTokenValidity">> => integer(),
+%%   <<"LogoutURLs">> => list(string()()),
+%%   <<"PreventUserExistenceErrors">> => list(any()),
+%%   <<"ReadAttributes">> => list(string()()),
+%%   <<"RefreshTokenValidity">> => integer(),
+%%   <<"SupportedIdentityProviders">> => list(string()()),
+%%   <<"TokenValidityUnits">> => token_validity_units_type(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"WriteAttributes">> => list(string()())
+%% }
+-type update_user_pool_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ui_customization_response() :: #{
+%%   <<"UICustomization">> => ui_customization_type()
+%% }
+-type get_ui_customization_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"Filter">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_token_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Token">> := string()
+%% }
+-type revoke_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% associate_software_token_request() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"Session">> => string()
+%% }
+-type associate_software_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_forgot_password_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ConfirmationCode">> := string(),
+%%   <<"Password">> := string(),
+%%   <<"SecretHash">> => string(),
+%%   <<"UserContextData">> => user_context_data_type(),
+%%   <<"Username">> := string()
+%% }
+-type confirm_forgot_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% mfa_option_type() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"DeliveryMedium">> => list(any())
+%% }
+-type mfa_option_type() :: #{binary() => any()}.
+
+%% Example:
+%% code_delivery_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type code_delivery_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_server_response() :: #{
+%%   <<"ResourceServer">> => resource_server_type()
+%% }
+-type create_resource_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% forgot_password_response() :: #{
+%%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
+%% }
+-type forgot_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% schema_attribute_type() :: #{
+%%   <<"AttributeDataType">> => list(any()),
+%%   <<"DeveloperOnlyAttribute">> => boolean(),
+%%   <<"Mutable">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"NumberAttributeConstraints">> => number_attribute_constraints_type(),
+%%   <<"Required">> => boolean(),
+%%   <<"StringAttributeConstraints">> => string_attribute_constraints_type()
+%% }
+-type schema_attribute_type() :: #{binary() => any()}.
+
+%% Example:
+%% account_takeover_action_type() :: #{
+%%   <<"EventAction">> => list(any()),
+%%   <<"Notify">> => boolean()
+%% }
+-type account_takeover_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% update_identity_provider_request() :: #{
+%%   <<"AttributeMapping">> => map(),
+%%   <<"IdpIdentifiers">> => list(string()()),
+%%   <<"ProviderDetails">> => map(),
+%%   <<"ProviderName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type update_identity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% context_data_type() :: #{
+%%   <<"EncodedData">> => string(),
+%%   <<"HttpHeaders">> => list(http_header()()),
+%%   <<"IpAddress">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServerPath">> => string()
+%% }
+-type context_data_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_get_device_request() :: #{
+%%   <<"DeviceKey">> := string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_get_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"Groups">> => list(group_type()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_initiate_auth_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeParameters">> => map(),
+%%   <<"Session">> => string()
+%% }
+-type admin_initiate_auth_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_sign_up_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ConfirmationCode">> := string(),
+%%   <<"ForceAliasCreation">> => boolean(),
+%%   <<"SecretHash">> => string(),
+%%   <<"UserContextData">> => user_context_data_type(),
+%%   <<"Username">> := string()
+%% }
+-type confirm_sign_up_request() :: #{binary() => any()}.
+
+%% Example:
+%% respond_to_auth_challenge_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeParameters">> => map(),
+%%   <<"Session">> => string()
+%% }
+-type respond_to_auth_challenge_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_forget_device_request() :: #{
+%%   <<"DeviceKey">> := string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_forget_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_risk_configuration_response() :: #{
+%%   <<"RiskConfiguration">> => risk_configuration_type()
+%% }
+-type set_risk_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sms_role_trust_relationship_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sms_role_trust_relationship_exception() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_user_auth_events_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_list_user_auth_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_type() :: #{
+%%   <<"SchemaAttributes">> => list(schema_attribute_type()()),
+%%   <<"Policies">> => user_pool_policy_type(),
+%%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
+%%   <<"CustomDomain">> => string(),
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"EstimatedNumberOfUsers">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"UserPoolTags">> => map(),
+%%   <<"EmailConfigurationFailure">> => string(),
+%%   <<"UserPoolAddOns">> => user_pool_add_ons_type(),
+%%   <<"VerificationMessageTemplate">> => verification_message_template_type(),
+%%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
+%%   <<"EmailVerificationMessage">> => string(),
+%%   <<"AliasAttributes">> => list(list(any())()),
+%%   <<"EmailConfiguration">> => email_configuration_type(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"SmsConfigurationFailure">> => string(),
+%%   <<"EmailVerificationSubject">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"AutoVerifiedAttributes">> => list(list(any())()),
+%%   <<"DeviceConfiguration">> => device_configuration_type(),
+%%   <<"SmsConfiguration">> => sms_configuration_type(),
+%%   <<"UsernameConfiguration">> => username_configuration_type(),
+%%   <<"UsernameAttributes">> => list(list(any())()),
+%%   <<"SmsAuthenticationMessage">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"SmsVerificationMessage">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
+%%   <<"LambdaConfig">> => lambda_config_type(),
+%%   <<"DeletionProtection">> => list(any())
+%% }
+-type user_pool_type() :: #{binary() => any()}.
+
+%% Example:
+%% precondition_not_met_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type precondition_not_met_exception() :: #{binary() => any()}.
+
+%% Example:
+%% admin_delete_user_attributes_response() :: #{
+
+%% }
+-type admin_delete_user_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% username_configuration_type() :: #{
+%%   <<"CaseSensitive">> => boolean()
+%% }
+-type username_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% account_takeover_actions_type() :: #{
+%%   <<"HighAction">> => account_takeover_action_type(),
+%%   <<"LowAction">> => account_takeover_action_type(),
+%%   <<"MediumAction">> => account_takeover_action_type()
+%% }
+-type account_takeover_actions_type() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_mfa_preference_request() :: #{
+%%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
+%%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_set_user_mfa_preference_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_user_import_job_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type stop_user_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_signing_certificate_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_signing_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_password_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_password_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_group_response() :: #{
+%%   <<"Group">> => group_type()
+%% }
+-type update_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% risk_configuration_type() :: #{
+%%   <<"AccountTakeoverRiskConfiguration">> => account_takeover_risk_configuration_type(),
+%%   <<"ClientId">> => string(),
+%%   <<"CompromisedCredentialsRiskConfiguration">> => compromised_credentials_risk_configuration_type(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"RiskExceptionConfiguration">> => risk_exception_configuration_type(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type risk_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% verification_message_template_type() :: #{
+%%   <<"DefaultEmailOption">> => list(any()),
+%%   <<"EmailMessage">> => string(),
+%%   <<"EmailMessageByLink">> => string(),
+%%   <<"EmailSubject">> => string(),
+%%   <<"EmailSubjectByLink">> => string(),
+%%   <<"SmsMessage">> => string()
+%% }
+-type verification_message_template_type() :: #{binary() => any()}.
+
+%% Example:
+%% analytics_configuration_type() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UserDataShared">> => boolean()
+%% }
+-type analytics_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_response() :: #{
+%%   <<"Group">> => group_type()
+%% }
+-type create_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% mfa_method_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type mfa_method_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sms_configuration_type() :: #{
+%%   <<"ExternalId">> => string(),
+%%   <<"SnsCallerArn">> => string(),
+%%   <<"SnsRegion">> => string()
+%% }
+-type sms_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_clients_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolClients">> => list(user_pool_client_description()())
+%% }
+-type list_user_pool_clients_response() :: #{binary() => any()}.
+
+%% Example:
+%% provider_description() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"ProviderName">> => string(),
+%%   <<"ProviderType">> => list(any())
+%% }
+-type provider_description() :: #{binary() => any()}.
+
+%% Example:
+%% admin_delete_user_request() :: #{
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_mfa_preference_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
+%%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type()
+%% }
+-type set_user_mfa_preference_request() :: #{binary() => any()}.
+
+%% Example:
+%% unexpected_lambda_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unexpected_lambda_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_response() :: #{
+%%   <<"Device">> => device_type()
+%% }
+-type get_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_attribute_verification_code_response() :: #{
+%%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
+%% }
+-type get_user_attribute_verification_code_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_servers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceServers">> => list(resource_server_type()())
+%% }
+-type list_resource_servers_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_user_import_job_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type start_user_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% domain_description_type() :: #{
+%%   <<"AWSAccountId">> => string(),
+%%   <<"CloudFrontDistribution">> => string(),
+%%   <<"CustomDomainConfig">> => custom_domain_config_type(),
+%%   <<"Domain">> => string(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserPoolId">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type domain_description_type() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -320,9 +2727,28 @@
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec add_custom_attributes(map(), add_custom_attributes_request()) ->
+    {ok, add_custom_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_import_in_progress_exception(), tuple()}.
 add_custom_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_custom_attributes(Client, Input, []).
+
+-spec add_custom_attributes(map(), add_custom_attributes_request(), proplists:proplist()) ->
+    {ok, add_custom_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_import_in_progress_exception(), tuple()}.
 add_custom_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCustomAttributes">>, Input, Options).
@@ -347,9 +2773,28 @@ add_custom_attributes(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_add_user_to_group(map(), admin_add_user_to_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_add_user_to_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_add_user_to_group(Client, Input, []).
+
+-spec admin_add_user_to_group(map(), admin_add_user_to_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_add_user_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminAddUserToGroup">>, Input, Options).
@@ -386,9 +2831,38 @@ admin_add_user_to_group(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_confirm_sign_up(map(), admin_confirm_sign_up_request()) ->
+    {ok, admin_confirm_sign_up_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_failed_attempts_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_confirm_sign_up(Client, Input, []).
+
+-spec admin_confirm_sign_up(map(), admin_confirm_sign_up_request(), proplists:proplist()) ->
+    {ok, admin_confirm_sign_up_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_failed_attempts_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_confirm_sign_up(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminConfirmSignUp">>, Input, Options).
@@ -455,9 +2929,48 @@ admin_confirm_sign_up(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_create_user(map(), admin_create_user_request()) ->
+    {ok, admin_create_user_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, precondition_not_met_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, unsupported_user_state_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, username_exists_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_create_user(Client, Input, []).
+
+-spec admin_create_user(map(), admin_create_user_request(), proplists:proplist()) ->
+    {ok, admin_create_user_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, precondition_not_met_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, unsupported_user_state_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, username_exists_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminCreateUser">>, Input, Options).
@@ -479,9 +2992,28 @@ admin_create_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_delete_user(map(), admin_delete_user_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user(Client, Input, []).
+
+-spec admin_delete_user(map(), admin_delete_user_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDeleteUser">>, Input, Options).
@@ -504,9 +3036,28 @@ admin_delete_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_delete_user_attributes(map(), admin_delete_user_attributes_request()) ->
+    {ok, admin_delete_user_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_delete_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_delete_user_attributes(Client, Input, []).
+
+-spec admin_delete_user_attributes(map(), admin_delete_user_attributes_request(), proplists:proplist()) ->
+    {ok, admin_delete_user_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_delete_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDeleteUserAttributes">>, Input, Options).
@@ -570,9 +3121,30 @@ admin_delete_user_attributes(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_disable_provider_for_user(map(), admin_disable_provider_for_user_request()) ->
+    {ok, admin_disable_provider_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_disable_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_provider_for_user(Client, Input, []).
+
+-spec admin_disable_provider_for_user(map(), admin_disable_provider_for_user_request(), proplists:proplist()) ->
+    {ok, admin_disable_provider_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_disable_provider_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDisableProviderForUser">>, Input, Options).
@@ -596,9 +3168,28 @@ admin_disable_provider_for_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_disable_user(map(), admin_disable_user_request()) ->
+    {ok, admin_disable_user_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_disable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_user(Client, Input, []).
+
+-spec admin_disable_user(map(), admin_disable_user_request(), proplists:proplist()) ->
+    {ok, admin_disable_user_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_disable_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminDisableUser">>, Input, Options).
@@ -620,9 +3211,28 @@ admin_disable_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_enable_user(map(), admin_enable_user_request()) ->
+    {ok, admin_enable_user_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_enable_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_enable_user(Client, Input, []).
+
+-spec admin_enable_user(map(), admin_enable_user_request(), proplists:proplist()) ->
+    {ok, admin_enable_user_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_enable_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminEnableUser">>, Input, Options).
@@ -642,9 +3252,30 @@ admin_enable_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_forget_device(map(), admin_forget_device_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_forget_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_forget_device(Client, Input, []).
+
+-spec admin_forget_device(map(), admin_forget_device_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_forget_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminForgetDevice">>, Input, Options).
@@ -664,9 +3295,28 @@ admin_forget_device(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_get_device(map(), admin_get_device_request()) ->
+    {ok, admin_get_device_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 admin_get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_device(Client, Input, []).
+
+-spec admin_get_device(map(), admin_get_device_request(), proplists:proplist()) ->
+    {ok, admin_get_device_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 admin_get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminGetDevice">>, Input, Options).
@@ -690,9 +3340,28 @@ admin_get_device(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_get_user(map(), admin_get_user_request()) ->
+    {ok, admin_get_user_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_get_user(Client, Input, []).
+
+-spec admin_get_user(map(), admin_get_user_request(), proplists:proplist()) ->
+    {ok, admin_get_user_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_get_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminGetUser">>, Input, Options).
@@ -741,9 +3410,46 @@ admin_get_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_initiate_auth(map(), admin_initiate_auth_request()) ->
+    {ok, admin_initiate_auth_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, mfa_method_not_found_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_initiate_auth(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_initiate_auth(Client, Input, []).
+
+-spec admin_initiate_auth(map(), admin_initiate_auth_request(), proplists:proplist()) ->
+    {ok, admin_initiate_auth_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, mfa_method_not_found_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminInitiateAuth">>, Input, Options).
@@ -789,9 +3495,32 @@ admin_initiate_auth(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_link_provider_for_user(map(), admin_link_provider_for_user_request()) ->
+    {ok, admin_link_provider_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_link_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_link_provider_for_user(Client, Input, []).
+
+-spec admin_link_provider_for_user(map(), admin_link_provider_for_user_request(), proplists:proplist()) ->
+    {ok, admin_link_provider_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_link_provider_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminLinkProviderForUser">>, Input, Options).
@@ -811,9 +3540,28 @@ admin_link_provider_for_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_list_devices(map(), admin_list_devices_request()) ->
+    {ok, admin_list_devices_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 admin_list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_devices(Client, Input, []).
+
+-spec admin_list_devices(map(), admin_list_devices_request(), proplists:proplist()) ->
+    {ok, admin_list_devices_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 admin_list_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminListDevices">>, Input, Options).
@@ -833,9 +3581,28 @@ admin_list_devices(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_list_groups_for_user(map(), admin_list_groups_for_user_request()) ->
+    {ok, admin_list_groups_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_list_groups_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_groups_for_user(Client, Input, []).
+
+-spec admin_list_groups_for_user(map(), admin_list_groups_for_user_request(), proplists:proplist()) ->
+    {ok, admin_list_groups_for_user_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_list_groups_for_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminListGroupsForUser">>, Input, Options).
@@ -857,9 +3624,30 @@ admin_list_groups_for_user(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_list_user_auth_events(map(), admin_list_user_auth_events_request()) ->
+    {ok, admin_list_user_auth_events_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 admin_list_user_auth_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_list_user_auth_events(Client, Input, []).
+
+-spec admin_list_user_auth_events(map(), admin_list_user_auth_events_request(), proplists:proplist()) ->
+    {ok, admin_list_user_auth_events_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 admin_list_user_auth_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminListUserAuthEvents">>, Input, Options).
@@ -879,9 +3667,28 @@ admin_list_user_auth_events(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_remove_user_from_group(map(), admin_remove_user_from_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_remove_user_from_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_remove_user_from_group(Client, Input, []).
+
+-spec admin_remove_user_from_group(map(), admin_remove_user_from_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_remove_user_from_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminRemoveUserFromGroup">>, Input, Options).
@@ -954,9 +3761,42 @@ admin_remove_user_from_group(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_reset_user_password(map(), admin_reset_user_password_request()) ->
+    {ok, admin_reset_user_password_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_reset_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_reset_user_password(Client, Input, []).
+
+-spec admin_reset_user_password(map(), admin_reset_user_password_request(), proplists:proplist()) ->
+    {ok, admin_reset_user_password_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_reset_user_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminResetUserPassword">>, Input, Options).
@@ -1018,9 +3858,56 @@ admin_reset_user_password(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_respond_to_auth_challenge(map(), admin_respond_to_auth_challenge_request()) ->
+    {ok, admin_respond_to_auth_challenge_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, mfa_method_not_found_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, software_token_mfa_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_respond_to_auth_challenge(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_respond_to_auth_challenge(Client, Input, []).
+
+-spec admin_respond_to_auth_challenge(map(), admin_respond_to_auth_challenge_request(), proplists:proplist()) ->
+    {ok, admin_respond_to_auth_challenge_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, mfa_method_not_found_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, software_token_mfa_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_respond_to_auth_challenge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminRespondToAuthChallenge">>, Input, Options).
@@ -1049,9 +3936,30 @@ admin_respond_to_auth_challenge(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_set_user_mfa_preference(map(), admin_set_user_mfa_preference_request()) ->
+    {ok, admin_set_user_mfa_preference_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_mfa_preference(Client, Input, []).
+
+-spec admin_set_user_mfa_preference(map(), admin_set_user_mfa_preference_request(), proplists:proplist()) ->
+    {ok, admin_set_user_mfa_preference_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_set_user_mfa_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserMFAPreference">>, Input, Options).
@@ -1109,9 +4017,30 @@ admin_set_user_mfa_preference(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_set_user_password(map(), admin_set_user_password_request()) ->
+    {ok, admin_set_user_password_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_set_user_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_password(Client, Input, []).
+
+-spec admin_set_user_password(map(), admin_set_user_password_request(), proplists:proplist()) ->
+    {ok, admin_set_user_password_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_set_user_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserPassword">>, Input, Options).
@@ -1139,9 +4068,26 @@ admin_set_user_password(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_set_user_settings(map(), admin_set_user_settings_request()) ->
+    {ok, admin_set_user_settings_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_settings(Client, Input, []).
+
+-spec admin_set_user_settings(map(), admin_set_user_settings_request(), proplists:proplist()) ->
+    {ok, admin_set_user_settings_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_set_user_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminSetUserSettings">>, Input, Options).
@@ -1166,9 +4112,30 @@ admin_set_user_settings(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_update_auth_event_feedback(map(), admin_update_auth_event_feedback_request()) ->
+    {ok, admin_update_auth_event_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 admin_update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_auth_event_feedback(Client, Input, []).
+
+-spec admin_update_auth_event_feedback(map(), admin_update_auth_event_feedback_request(), proplists:proplist()) ->
+    {ok, admin_update_auth_event_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 admin_update_auth_event_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateAuthEventFeedback">>, Input, Options).
@@ -1188,9 +4155,30 @@ admin_update_auth_event_feedback(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_update_device_status(map(), admin_update_device_status_request()) ->
+    {ok, admin_update_device_status_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_update_device_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_device_status(Client, Input, []).
+
+-spec admin_update_device_status(map(), admin_update_device_status_request(), proplists:proplist()) ->
+    {ok, admin_update_device_status_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_update_device_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateDeviceStatus">>, Input, Options).
@@ -1252,9 +4240,42 @@ admin_update_device_status(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_update_user_attributes(map(), admin_update_user_attributes_request()) ->
+    {ok, admin_update_user_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_update_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_update_user_attributes(Client, Input, []).
+
+-spec admin_update_user_attributes(map(), admin_update_user_attributes_request(), proplists:proplist()) ->
+    {ok, admin_update_user_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateUserAttributes">>, Input, Options).
@@ -1307,9 +4328,28 @@ admin_update_user_attributes(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_user_global_sign_out(map(), admin_user_global_sign_out_request()) ->
+    {ok, admin_user_global_sign_out_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_user_global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_user_global_sign_out(Client, Input, []).
+
+-spec admin_user_global_sign_out(map(), admin_user_global_sign_out_request(), proplists:proplist()) ->
+    {ok, admin_user_global_sign_out_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 admin_user_global_sign_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUserGlobalSignOut">>, Input, Options).
@@ -1353,9 +4393,30 @@ admin_user_global_sign_out(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec associate_software_token(map(), associate_software_token_request()) ->
+    {ok, associate_software_token_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, software_token_mfa_not_found_exception(), tuple()}.
 associate_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_software_token(Client, Input, []).
+
+-spec associate_software_token(map(), associate_software_token_request(), proplists:proplist()) ->
+    {ok, associate_software_token_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, software_token_mfa_not_found_exception(), tuple()}.
 associate_software_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSoftwareToken">>, Input, Options).
@@ -1374,9 +4435,38 @@ associate_software_token(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec change_password(map(), change_password_request()) ->
+    {ok, change_password_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 change_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_password(Client, Input, []).
+
+-spec change_password(map(), change_password_request(), proplists:proplist()) ->
+    {ok, change_password_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 change_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangePassword">>, Input, Options).
@@ -1400,9 +4490,42 @@ change_password(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec confirm_device(map(), confirm_device_request()) ->
+    {ok, confirm_device_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, username_exists_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 confirm_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_device(Client, Input, []).
+
+-spec confirm_device(map(), confirm_device_request(), proplists:proplist()) ->
+    {ok, confirm_device_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, username_exists_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 confirm_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmDevice">>, Input, Options).
@@ -1419,9 +4542,48 @@ confirm_device(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec confirm_forgot_password(map(), confirm_forgot_password_request()) ->
+    {ok, confirm_forgot_password_response(), tuple()} |
+    {error, any()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_failed_attempts_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 confirm_forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_forgot_password(Client, Input, []).
+
+-spec confirm_forgot_password(map(), confirm_forgot_password_request(), proplists:proplist()) ->
+    {ok, confirm_forgot_password_response(), tuple()} |
+    {error, any()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_failed_attempts_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 confirm_forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmForgotPassword">>, Input, Options).
@@ -1461,9 +4623,46 @@ confirm_forgot_password(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec confirm_sign_up(map(), confirm_sign_up_request()) ->
+    {ok, confirm_sign_up_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_failed_attempts_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_sign_up(Client, Input, []).
+
+-spec confirm_sign_up(map(), confirm_sign_up_request(), proplists:proplist()) ->
+    {ok, confirm_sign_up_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_failed_attempts_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 confirm_sign_up(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmSignUp">>, Input, Options).
@@ -1483,9 +4682,30 @@ confirm_sign_up(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_group(map(), create_group_request()) ->
+    {ok, create_group_response(), tuple()} |
+    {error, any()} |
+    {error, group_exists_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group(Client, Input, []).
+
+-spec create_group(map(), create_group_request(), proplists:proplist()) ->
+    {ok, create_group_response(), tuple()} |
+    {error, any()} |
+    {error, group_exists_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
@@ -1506,9 +4726,30 @@ create_group(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_identity_provider(map(), create_identity_provider_request()) ->
+    {ok, create_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_provider_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_provider(Client, Input, []).
+
+-spec create_identity_provider(map(), create_identity_provider_request(), proplists:proplist()) ->
+    {ok, create_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_provider_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIdentityProvider">>, Input, Options).
@@ -1529,9 +4770,28 @@ create_identity_provider(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_resource_server(map(), create_resource_server_request()) ->
+    {ok, create_resource_server_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_server(Client, Input, []).
+
+-spec create_resource_server(map(), create_resource_server_request(), proplists:proplist()) ->
+    {ok, create_resource_server_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResourceServer">>, Input, Options).
@@ -1551,9 +4811,30 @@ create_resource_server(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_user_import_job(map(), create_user_import_job_request()) ->
+    {ok, create_user_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, precondition_not_met_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_import_job(Client, Input, []).
+
+-spec create_user_import_job(map(), create_user_import_job_request(), proplists:proplist()) ->
+    {ok, create_user_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, precondition_not_met_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserImportJob">>, Input, Options).
@@ -1609,9 +4890,34 @@ create_user_import_job(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_user_pool(map(), create_user_pool_request()) ->
+    {ok, create_user_pool_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_pool_tagging_exception(), tuple()}.
 create_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool(Client, Input, []).
+
+-spec create_user_pool(map(), create_user_pool_request(), proplists:proplist()) ->
+    {ok, create_user_pool_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_pool_tagging_exception(), tuple()}.
 create_user_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserPool">>, Input, Options).
@@ -1639,9 +4945,32 @@ create_user_pool(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_user_pool_client(map(), create_user_pool_client_request()) ->
+    {ok, create_user_pool_client_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_o_auth_flow_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, scope_does_not_exist_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool_client(Client, Input, []).
+
+-spec create_user_pool_client(map(), create_user_pool_client_request(), proplists:proplist()) ->
+    {ok, create_user_pool_client_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_o_auth_flow_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, scope_does_not_exist_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_user_pool_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserPoolClient">>, Input, Options).
@@ -1661,9 +4990,26 @@ create_user_pool_client(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_user_pool_domain(map(), create_user_pool_domain_request()) ->
+    {ok, create_user_pool_domain_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_pool_domain(Client, Input, []).
+
+-spec create_user_pool_domain(map(), create_user_pool_domain_request(), proplists:proplist()) ->
+    {ok, create_user_pool_domain_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserPoolDomain">>, Input, Options).
@@ -1671,25 +5017,80 @@ create_user_pool_domain(Client, Input, Options)
 %% @doc Deletes a group.
 %%
 %% Calling this action requires developer credentials.
+-spec delete_group(map(), delete_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
+
+-spec delete_group(map(), delete_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroup">>, Input, Options).
 
 %% @doc Deletes an IdP for a user pool.
+-spec delete_identity_provider(map(), delete_identity_provider_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_identity_provider_exception(), tuple()}.
 delete_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_provider(Client, Input, []).
+
+-spec delete_identity_provider(map(), delete_identity_provider_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_identity_provider_exception(), tuple()}.
 delete_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIdentityProvider">>, Input, Options).
 
 %% @doc Deletes a resource server.
+-spec delete_resource_server(map(), delete_resource_server_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_server(Client, Input, []).
+
+-spec delete_resource_server(map(), delete_resource_server_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceServer">>, Input, Options).
@@ -1708,9 +5109,34 @@ delete_resource_server(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec delete_user(map(), delete_user_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 delete_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user(Client, Input, []).
+
+-spec delete_user(map(), delete_user_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
@@ -1729,65 +5155,213 @@ delete_user(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec delete_user_attributes(map(), delete_user_attributes_request()) ->
+    {ok, delete_user_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 delete_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_attributes(Client, Input, []).
+
+-spec delete_user_attributes(map(), delete_user_attributes_request(), proplists:proplist()) ->
+    {ok, delete_user_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 delete_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserAttributes">>, Input, Options).
 
 %% @doc Deletes the specified Amazon Cognito user pool.
+-spec delete_user_pool(map(), delete_user_pool_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_import_in_progress_exception(), tuple()}.
 delete_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_pool(Client, Input, []).
+
+-spec delete_user_pool(map(), delete_user_pool_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_import_in_progress_exception(), tuple()}.
 delete_user_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPool">>, Input, Options).
 
 %% @doc Allows the developer to delete the user pool client.
+-spec delete_user_pool_client(map(), delete_user_pool_client_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_pool_client(Client, Input, []).
+
+-spec delete_user_pool_client(map(), delete_user_pool_client_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_user_pool_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPoolClient">>, Input, Options).
 
 %% @doc Deletes a domain for a user pool.
+-spec delete_user_pool_domain(map(), delete_user_pool_domain_request()) ->
+    {ok, delete_user_pool_domain_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_pool_domain(Client, Input, []).
+
+-spec delete_user_pool_domain(map(), delete_user_pool_domain_request(), proplists:proplist()) ->
+    {ok, delete_user_pool_domain_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPoolDomain">>, Input, Options).
 
 %% @doc Gets information about a specific IdP.
+-spec describe_identity_provider(map(), describe_identity_provider_request()) ->
+    {ok, describe_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity_provider(Client, Input, []).
+
+-spec describe_identity_provider(map(), describe_identity_provider_request(), proplists:proplist()) ->
+    {ok, describe_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIdentityProvider">>, Input, Options).
 
 %% @doc Describes a resource server.
+-spec describe_resource_server(map(), describe_resource_server_request()) ->
+    {ok, describe_resource_server_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_server(Client, Input, []).
+
+-spec describe_resource_server(map(), describe_resource_server_request(), proplists:proplist()) ->
+    {ok, describe_resource_server_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourceServer">>, Input, Options).
 
 %% @doc Describes the risk configuration.
+-spec describe_risk_configuration(map(), describe_risk_configuration_request()) ->
+    {ok, describe_risk_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 describe_risk_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_risk_configuration(Client, Input, []).
+
+-spec describe_risk_configuration(map(), describe_risk_configuration_request(), proplists:proplist()) ->
+    {ok, describe_risk_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 describe_risk_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRiskConfiguration">>, Input, Options).
 
 %% @doc Describes the user import job.
+-spec describe_user_import_job(map(), describe_user_import_job_request()) ->
+    {ok, describe_user_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_import_job(Client, Input, []).
+
+-spec describe_user_import_job(map(), describe_user_import_job_request(), proplists:proplist()) ->
+    {ok, describe_user_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserImportJob">>, Input, Options).
@@ -1808,9 +5382,28 @@ describe_user_import_job(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec describe_user_pool(map(), describe_user_pool_request()) ->
+    {ok, describe_user_pool_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_pool_tagging_exception(), tuple()}.
 describe_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool(Client, Input, []).
+
+-spec describe_user_pool(map(), describe_user_pool_request(), proplists:proplist()) ->
+    {ok, describe_user_pool_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_pool_tagging_exception(), tuple()}.
 describe_user_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserPool">>, Input, Options).
@@ -1832,17 +5425,49 @@ describe_user_pool(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec describe_user_pool_client(map(), describe_user_pool_client_request()) ->
+    {ok, describe_user_pool_client_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool_client(Client, Input, []).
+
+-spec describe_user_pool_client(map(), describe_user_pool_client_request(), proplists:proplist()) ->
+    {ok, describe_user_pool_client_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_user_pool_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserPoolClient">>, Input, Options).
 
 %% @doc Gets information about a domain.
+-spec describe_user_pool_domain(map(), describe_user_pool_domain_request()) ->
+    {ok, describe_user_pool_domain_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_pool_domain(Client, Input, []).
+
+-spec describe_user_pool_domain(map(), describe_user_pool_domain_request(), proplists:proplist()) ->
+    {ok, describe_user_pool_domain_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserPoolDomain">>, Input, Options).
@@ -1865,9 +5490,36 @@ describe_user_pool_domain(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec forget_device(map(), forget_device_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 forget_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     forget_device(Client, Input, []).
+
+-spec forget_device(map(), forget_device_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 forget_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgetDevice">>, Input, Options).
@@ -1939,9 +5591,46 @@ forget_device(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
+-spec forgot_password(map(), forgot_password_request()) ->
+    {ok, forgot_password_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 forgot_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     forgot_password(Client, Input, []).
+
+-spec forgot_password(map(), forgot_password_request(), proplists:proplist()) ->
+    {ok, forgot_password_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgotPassword">>, Input, Options).
@@ -1949,9 +5638,26 @@ forgot_password(Client, Input, Options)
 %% @doc Gets the header information for the comma-separated value (CSV) file
 %% to be used as
 %% input for the user import job.
+-spec get_csv_header(map(), get_csv_header_request()) ->
+    {ok, get_csv_header_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_csv_header(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_csv_header(Client, Input, []).
+
+-spec get_csv_header(map(), get_csv_header_request(), proplists:proplist()) ->
+    {ok, get_csv_header_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_csv_header(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCSVHeader">>, Input, Options).
@@ -1974,9 +5680,36 @@ get_csv_header(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec get_device(map(), get_device_request()) ->
+    {ok, get_device_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 get_device(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_device(Client, Input, []).
+
+-spec get_device(map(), get_device_request(), proplists:proplist()) ->
+    {ok, get_device_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 get_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevice">>, Input, Options).
@@ -1984,25 +5717,76 @@ get_device(Client, Input, Options)
 %% @doc Gets a group.
 %%
 %% Calling this action requires developer credentials.
+-spec get_group(map(), get_group_request()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group(Client, Input, []).
+
+-spec get_group(map(), get_group_request(), proplists:proplist()) ->
+    {ok, get_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroup">>, Input, Options).
 
 %% @doc Gets the specified IdP.
+-spec get_identity_provider_by_identifier(map(), get_identity_provider_by_identifier_request()) ->
+    {ok, get_identity_provider_by_identifier_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_identity_provider_by_identifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_provider_by_identifier(Client, Input, []).
+
+-spec get_identity_provider_by_identifier(map(), get_identity_provider_by_identifier_request(), proplists:proplist()) ->
+    {ok, get_identity_provider_by_identifier_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_identity_provider_by_identifier(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIdentityProviderByIdentifier">>, Input, Options).
 
 %% @doc Gets the detailed activity logging configuration for a user pool.
+-spec get_log_delivery_configuration(map(), get_log_delivery_configuration_request()) ->
+    {ok, get_log_delivery_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_log_delivery_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_delivery_configuration(Client, Input, []).
+
+-spec get_log_delivery_configuration(map(), get_log_delivery_configuration_request(), proplists:proplist()) ->
+    {ok, get_log_delivery_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_log_delivery_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogDeliveryConfiguration">>, Input, Options).
@@ -2018,9 +5802,22 @@ get_log_delivery_configuration(Client, Input, Options)
 %% new value in the response to `GetSigningCertificate', but doesn't
 %% invalidate
 %% the original certificate.
+-spec get_signing_certificate(map(), get_signing_certificate_request()) ->
+    {ok, get_signing_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_signing_certificate(Client, Input, []).
+
+-spec get_signing_certificate(map(), get_signing_certificate_request(), proplists:proplist()) ->
+    {ok, get_signing_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_signing_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSigningCertificate">>, Input, Options).
@@ -2034,9 +5831,26 @@ get_signing_certificate(Client, Input, Options)
 %% app
 %% `clientId' is `ALL'), then that information is returned. If
 %% nothing is present, then an empty shape is returned.
+-spec get_ui_customization(map(), get_ui_customization_request()) ->
+    {ok, get_ui_customization_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ui_customization(Client, Input, []).
+
+-spec get_ui_customization(map(), get_ui_customization_request(), proplists:proplist()) ->
+    {ok, get_ui_customization_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_ui_customization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUICustomization">>, Input, Options).
@@ -2055,9 +5869,34 @@ get_ui_customization(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec get_user(map(), get_user_request()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 get_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user(Client, Input, []).
+
+-spec get_user(map(), get_user_request(), proplists:proplist()) ->
+    {ok, get_user_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 get_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUser">>, Input, Options).
@@ -2111,17 +5950,75 @@ get_user(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
+-spec get_user_attribute_verification_code(map(), get_user_attribute_verification_code_request()) ->
+    {ok, get_user_attribute_verification_code_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 get_user_attribute_verification_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_attribute_verification_code(Client, Input, []).
+
+-spec get_user_attribute_verification_code(map(), get_user_attribute_verification_code_request(), proplists:proplist()) ->
+    {ok, get_user_attribute_verification_code_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 get_user_attribute_verification_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserAttributeVerificationCode">>, Input, Options).
 
 %% @doc Gets the user pool multi-factor authentication (MFA) configuration.
+-spec get_user_pool_mfa_config(map(), get_user_pool_mfa_config_request()) ->
+    {ok, get_user_pool_mfa_config_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_user_pool_mfa_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_user_pool_mfa_config(Client, Input, []).
+
+-spec get_user_pool_mfa_config(map(), get_user_pool_mfa_config_request(), proplists:proplist()) ->
+    {ok, get_user_pool_mfa_config_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserPoolMfaConfig">>, Input, Options).
@@ -2173,9 +6070,32 @@ get_user_pool_mfa_config(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec global_sign_out(map(), global_sign_out_request()) ->
+    {ok, global_sign_out_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()}.
 global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     global_sign_out(Client, Input, []).
+
+-spec global_sign_out(map(), global_sign_out_request(), proplists:proplist()) ->
+    {ok, global_sign_out_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()}.
 global_sign_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GlobalSignOut">>, Input, Options).
@@ -2225,9 +6145,46 @@ global_sign_out(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
+-spec initiate_auth(map(), initiate_auth_request()) ->
+    {ok, initiate_auth_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 initiate_auth(Client, Input)
   when is_map(Client), is_map(Input) ->
     initiate_auth(Client, Input, []).
+
+-spec initiate_auth(map(), initiate_auth_request(), proplists:proplist()) ->
+    {ok, initiate_auth_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiateAuth">>, Input, Options).
@@ -2252,9 +6209,36 @@ initiate_auth(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec list_devices(map(), list_devices_request()) ->
+    {ok, list_devices_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_devices(Client, Input, []).
+
+-spec list_devices(map(), list_devices_request(), proplists:proplist()) ->
+    {ok, list_devices_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 list_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevices">>, Input, Options).
@@ -2274,9 +6258,26 @@ list_devices(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_groups(map(), list_groups_request()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
+
+-spec list_groups(map(), list_groups_request(), proplists:proplist()) ->
+    {ok, list_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
@@ -2296,9 +6297,26 @@ list_groups(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_identity_providers(map(), list_identity_providers_request()) ->
+    {ok, list_identity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_identity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_providers(Client, Input, []).
+
+-spec list_identity_providers(map(), list_identity_providers_request(), proplists:proplist()) ->
+    {ok, list_identity_providers_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_identity_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentityProviders">>, Input, Options).
@@ -2318,9 +6336,26 @@ list_identity_providers(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_resource_servers(map(), list_resource_servers_request()) ->
+    {ok, list_resource_servers_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_resource_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_servers(Client, Input, []).
+
+-spec list_resource_servers(map(), list_resource_servers_request(), proplists:proplist()) ->
+    {ok, list_resource_servers_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_resource_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourceServers">>, Input, Options).
@@ -2332,9 +6367,26 @@ list_resource_servers(Client, Input, Options)
 %% different ways, such as by purpose, owner, environment, or other criteria.
 %%
 %% You can use this action up to 10 times per second, per account.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -2354,9 +6406,26 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_user_import_jobs(map(), list_user_import_jobs_request()) ->
+    {ok, list_user_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_user_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_import_jobs(Client, Input, []).
+
+-spec list_user_import_jobs(map(), list_user_import_jobs_request(), proplists:proplist()) ->
+    {ok, list_user_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_user_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserImportJobs">>, Input, Options).
@@ -2376,9 +6445,26 @@ list_user_import_jobs(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_user_pool_clients(map(), list_user_pool_clients_request()) ->
+    {ok, list_user_pool_clients_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_user_pool_clients(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_pool_clients(Client, Input, []).
+
+-spec list_user_pool_clients(map(), list_user_pool_clients_request(), proplists:proplist()) ->
+    {ok, list_user_pool_clients_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_user_pool_clients(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPoolClients">>, Input, Options).
@@ -2398,9 +6484,24 @@ list_user_pool_clients(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_user_pools(map(), list_user_pools_request()) ->
+    {ok, list_user_pools_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_user_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_pools(Client, Input, []).
+
+-spec list_user_pools(map(), list_user_pools_request(), proplists:proplist()) ->
+    {ok, list_user_pools_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_user_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPools">>, Input, Options).
@@ -2420,9 +6521,26 @@ list_user_pools(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_users(map(), list_users_request()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
+
+-spec list_users(map(), list_users_request(), proplists:proplist()) ->
+    {ok, list_users_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
@@ -2442,9 +6560,26 @@ list_users(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_users_in_group(map(), list_users_in_group_request()) ->
+    {ok, list_users_in_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_users_in_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users_in_group(Client, Input, []).
+
+-spec list_users_in_group(map(), list_users_in_group_request(), proplists:proplist()) ->
+    {ok, list_users_in_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_users_in_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsersInGroup">>, Input, Options).
@@ -2491,9 +6626,46 @@ list_users_in_group(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
+-spec resend_confirmation_code(map(), resend_confirmation_code_request()) ->
+    {ok, resend_confirmation_code_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 resend_confirmation_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_confirmation_code(Client, Input, []).
+
+-spec resend_confirmation_code(map(), resend_confirmation_code_request(), proplists:proplist()) ->
+    {ok, resend_confirmation_code_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 resend_confirmation_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendConfirmationCode">>, Input, Options).
@@ -2551,9 +6723,58 @@ resend_confirmation_code(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
+-spec respond_to_auth_challenge(map(), respond_to_auth_challenge_request()) ->
+    {ok, respond_to_auth_challenge_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, mfa_method_not_found_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, software_token_mfa_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 respond_to_auth_challenge(Client, Input)
   when is_map(Client), is_map(Input) ->
     respond_to_auth_challenge(Client, Input, []).
+
+-spec respond_to_auth_challenge(map(), respond_to_auth_challenge_request(), proplists:proplist()) ->
+    {ok, respond_to_auth_challenge_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, mfa_method_not_found_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, software_token_mfa_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 respond_to_auth_challenge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RespondToAuthChallenge">>, Input, Options).
@@ -2575,18 +6796,56 @@ respond_to_auth_challenge(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec revoke_token(map(), revoke_token_request()) ->
+    {ok, revoke_token_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, unsupported_operation_exception(), tuple()} |
+    {error, unsupported_token_type_exception(), tuple()}.
 revoke_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_token(Client, Input, []).
+
+-spec revoke_token(map(), revoke_token_request(), proplists:proplist()) ->
+    {ok, revoke_token_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, unsupported_operation_exception(), tuple()} |
+    {error, unsupported_token_type_exception(), tuple()}.
 revoke_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeToken">>, Input, Options).
 
 %% @doc Sets up or modifies the detailed activity logging configuration of a
 %% user pool.
+-spec set_log_delivery_configuration(map(), set_log_delivery_configuration_request()) ->
+    {ok, set_log_delivery_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 set_log_delivery_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_log_delivery_configuration(Client, Input, []).
+
+-spec set_log_delivery_configuration(map(), set_log_delivery_configuration_request(), proplists:proplist()) ->
+    {ok, set_log_delivery_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 set_log_delivery_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetLogDeliveryConfiguration">>, Input, Options).
@@ -2600,9 +6859,32 @@ set_log_delivery_configuration(Client, Input, Options)
 %% To activate Amazon Cognito advanced security features, update the user
 %% pool to include the
 %% `UserPoolAddOns' key`AdvancedSecurityMode'.
+-spec set_risk_configuration(map(), set_risk_configuration_request()) ->
+    {ok, set_risk_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 set_risk_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_risk_configuration(Client, Input, []).
+
+-spec set_risk_configuration(map(), set_risk_configuration_request(), proplists:proplist()) ->
+    {ok, set_risk_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 set_risk_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetRiskConfiguration">>, Input, Options).
@@ -2626,9 +6908,26 @@ set_risk_configuration(Client, Input, Options)
 %% there is no place to host the app's pages, and the service will throw
 %% an
 %% error.
+-spec set_ui_customization(map(), set_ui_customization_request()) ->
+    {ok, set_ui_customization_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 set_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ui_customization(Client, Input, []).
+
+-spec set_ui_customization(map(), set_ui_customization_request(), proplists:proplist()) ->
+    {ok, set_ui_customization_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 set_ui_customization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUICustomization">>, Input, Options).
@@ -2664,9 +6963,32 @@ set_ui_customization(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec set_user_mfa_preference(map(), set_user_mfa_preference_request()) ->
+    {ok, set_user_mfa_preference_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 set_user_mfa_preference(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_mfa_preference(Client, Input, []).
+
+-spec set_user_mfa_preference(map(), set_user_mfa_preference_request(), proplists:proplist()) ->
+    {ok, set_user_mfa_preference_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 set_user_mfa_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserMFAPreference">>, Input, Options).
@@ -2701,9 +7023,32 @@ set_user_mfa_preference(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
+-spec set_user_pool_mfa_config(map(), set_user_pool_mfa_config_request()) ->
+    {ok, set_user_pool_mfa_config_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 set_user_pool_mfa_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_pool_mfa_config(Client, Input, []).
+
+-spec set_user_pool_mfa_config(map(), set_user_pool_mfa_config_request(), proplists:proplist()) ->
+    {ok, set_user_pool_mfa_config_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 set_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserPoolMfaConfig">>, Input, Options).
@@ -2730,9 +7075,32 @@ set_user_pool_mfa_config(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec set_user_settings(map(), set_user_settings_request()) ->
+    {ok, set_user_settings_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_settings(Client, Input, []).
+
+-spec set_user_settings(map(), set_user_settings_request(), proplists:proplist()) ->
+    {ok, set_user_settings_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 set_user_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserSettings">>, Input, Options).
@@ -2779,25 +7147,100 @@ set_user_settings(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
+-spec sign_up(map(), sign_up_request()) ->
+    {ok, sign_up_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, username_exists_exception(), tuple()}.
 sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     sign_up(Client, Input, []).
+
+-spec sign_up(map(), sign_up_request(), proplists:proplist()) ->
+    {ok, sign_up_response(), tuple()} |
+    {error, any()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, username_exists_exception(), tuple()}.
 sign_up(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SignUp">>, Input, Options).
 
 %% @doc Starts the user import.
+-spec start_user_import_job(map(), start_user_import_job_request()) ->
+    {ok, start_user_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, precondition_not_met_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 start_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_user_import_job(Client, Input, []).
+
+-spec start_user_import_job(map(), start_user_import_job_request(), proplists:proplist()) ->
+    {ok, start_user_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, precondition_not_met_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 start_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartUserImportJob">>, Input, Options).
 
 %% @doc Stops the user import job.
+-spec stop_user_import_job(map(), stop_user_import_job_request()) ->
+    {ok, stop_user_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, precondition_not_met_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 stop_user_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_user_import_job(Client, Input, []).
+
+-spec stop_user_import_job(map(), stop_user_import_job_request(), proplists:proplist()) ->
+    {ok, stop_user_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, precondition_not_met_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 stop_user_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopUserImportJob">>, Input, Options).
@@ -2830,9 +7273,26 @@ stop_user_import_job(Client, Input, Options)
 %% You can use this action up to 5 times per second, per account. A user pool
 %% can have as
 %% many as 50 tags.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -2841,9 +7301,26 @@ tag_resource(Client, Input, Options)
 %%
 %% You can use this action up to 5
 %% times per second, per account.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -2865,9 +7342,30 @@ untag_resource(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec update_auth_event_feedback(map(), update_auth_event_feedback_request()) ->
+    {ok, update_auth_event_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 update_auth_event_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_auth_event_feedback(Client, Input, []).
+
+-spec update_auth_event_feedback(map(), update_auth_event_feedback_request(), proplists:proplist()) ->
+    {ok, update_auth_event_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()} |
+    {error, user_pool_add_on_not_enabled_exception(), tuple()}.
 update_auth_event_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAuthEventFeedback">>, Input, Options).
@@ -2890,9 +7388,36 @@ update_auth_event_feedback(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec update_device_status(map(), update_device_status_request()) ->
+    {ok, update_device_status_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 update_device_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_device_status(Client, Input, []).
+
+-spec update_device_status(map(), update_device_status_request(), proplists:proplist()) ->
+    {ok, update_device_status_response(), tuple()} |
+    {error, any()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 update_device_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDeviceStatus">>, Input, Options).
@@ -2912,9 +7437,26 @@ update_device_status(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_group(map(), update_group_request()) ->
+    {ok, update_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_group(Client, Input, []).
+
+-spec update_group(map(), update_group_request(), proplists:proplist()) ->
+    {ok, update_group_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
@@ -2934,9 +7476,30 @@ update_group(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_identity_provider(map(), update_identity_provider_request()) ->
+    {ok, update_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_identity_provider_exception(), tuple()}.
 update_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_provider(Client, Input, []).
+
+-spec update_identity_provider(map(), update_identity_provider_request(), proplists:proplist()) ->
+    {ok, update_identity_provider_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_identity_provider_exception(), tuple()}.
 update_identity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIdentityProvider">>, Input, Options).
@@ -2962,9 +7525,26 @@ update_identity_provider(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_resource_server(map(), update_resource_server_request()) ->
+    {ok, update_resource_server_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_server(Client, Input, []).
+
+-spec update_resource_server(map(), update_resource_server_request(), proplists:proplist()) ->
+    {ok, update_resource_server_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResourceServer">>, Input, Options).
@@ -3021,9 +7601,54 @@ update_resource_server(Client, Input, Options)
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-sms-settings.html
 %% in the Amazon Cognito
 %% Developer Guide.
+-spec update_user_attributes(map(), update_user_attributes_request()) ->
+    {ok, update_user_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 update_user_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_attributes(Client, Input, []).
+
+-spec update_user_attributes(map(), update_user_attributes_request(), proplists:proplist()) ->
+    {ok, update_user_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_delivery_failure_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_lambda_response_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unexpected_lambda_exception(), tuple()} |
+    {error, user_lambda_validation_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserAttributes">>, Input, Options).
@@ -3080,9 +7705,38 @@ update_user_attributes(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_user_pool(map(), update_user_pool_request()) ->
+    {ok, update_user_pool_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_import_in_progress_exception(), tuple()} |
+    {error, user_pool_tagging_exception(), tuple()}.
 update_user_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool(Client, Input, []).
+
+-spec update_user_pool(map(), update_user_pool_request(), proplists:proplist()) ->
+    {ok, update_user_pool_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_email_role_access_policy_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_sms_role_access_policy_exception(), tuple()} |
+    {error, invalid_sms_role_trust_relationship_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_import_in_progress_exception(), tuple()} |
+    {error, user_pool_tagging_exception(), tuple()}.
 update_user_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserPool">>, Input, Options).
@@ -3116,9 +7770,32 @@ update_user_pool(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_user_pool_client(map(), update_user_pool_client_request()) ->
+    {ok, update_user_pool_client_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_o_auth_flow_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, scope_does_not_exist_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_user_pool_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_client(Client, Input, []).
+
+-spec update_user_pool_client(map(), update_user_pool_client_request(), proplists:proplist()) ->
+    {ok, update_user_pool_client_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_o_auth_flow_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, scope_does_not_exist_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_user_pool_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserPoolClient">>, Input, Options).
@@ -3178,9 +7855,26 @@ update_user_pool_client(Client, Input, Options)
 %%
 %% Using the Amazon Cognito user pools API and user pool endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_user_pool_domain(map(), update_user_pool_domain_request()) ->
+    {ok, update_user_pool_domain_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_user_pool_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_pool_domain(Client, Input, []).
+
+-spec update_user_pool_domain(map(), update_user_pool_domain_request(), proplists:proplist()) ->
+    {ok, update_user_pool_domain_response(), tuple()} |
+    {error, any()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserPoolDomain">>, Input, Options).
@@ -3202,9 +7896,42 @@ update_user_pool_domain(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec verify_software_token(map(), verify_software_token_request()) ->
+    {ok, verify_software_token_response(), tuple()} |
+    {error, any()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, enable_software_token_mfa_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, software_token_mfa_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 verify_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_software_token(Client, Input, []).
+
+-spec verify_software_token(map(), verify_software_token_request(), proplists:proplist()) ->
+    {ok, verify_software_token_response(), tuple()} |
+    {error, any()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, enable_software_token_mfa_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_user_pool_configuration_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, software_token_mfa_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 verify_software_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifySoftwareToken">>, Input, Options).
@@ -3230,9 +7957,42 @@ verify_software_token(Client, Input, Options)
 %% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
 %% endpoints:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec verify_user_attribute(map(), verify_user_attribute_request()) ->
+    {ok, verify_user_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 verify_user_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_user_attribute(Client, Input, []).
+
+-spec verify_user_attribute(map(), verify_user_attribute_request(), proplists:proplist()) ->
+    {ok, verify_user_attribute_response(), tuple()} |
+    {error, any()} |
+    {error, alias_exists_exception(), tuple()} |
+    {error, code_mismatch_exception(), tuple()} |
+    {error, expired_code_exception(), tuple()} |
+    {error, forbidden_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, password_reset_required_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, user_not_confirmed_exception(), tuple()} |
+    {error, user_not_found_exception(), tuple()}.
 verify_user_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"VerifyUserAttribute">>, Input, Options).

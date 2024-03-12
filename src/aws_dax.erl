@@ -60,6 +60,623 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% sse_description() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type sse_description() :: #{binary() => any()}.
+
+%% Example:
+%% node_quota_for_customer_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type node_quota_for_customer_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_node_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type reboot_node_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_subnet_group_response() :: #{
+%%   <<"SubnetGroup">> => subnet_group()
+%% }
+-type create_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_parameter_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ParameterGroupName">> := string()
+%% }
+-type create_parameter_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameter_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroups">> => list(parameter_group()())
+%% }
+-type describe_parameter_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% create_parameter_group_response() :: #{
+%%   <<"ParameterGroup">> => parameter_group()
+%% }
+-type create_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"Source">> => string()
+%% }
+-type describe_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% security_group_membership() :: #{
+%%   <<"SecurityGroupIdentifier">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type security_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet() :: #{
+%%   <<"SubnetAvailabilityZone">> => string(),
+%%   <<"SubnetIdentifier">> => string()
+%% }
+-type subnet() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_subnet() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_name_value() :: #{
+%%   <<"ParameterName">> => string(),
+%%   <<"ParameterValue">> => string()
+%% }
+-type parameter_name_value() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameters_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(parameter()())
+%% }
+-type describe_parameters_response() :: #{binary() => any()}.
+
+%% Example:
+%% aws_dax_node() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Endpoint">> => endpoint(),
+%%   <<"NodeCreateTime">> => non_neg_integer(),
+%%   <<"NodeId">> => string(),
+%%   <<"NodeStatus">> => string(),
+%%   <<"ParameterGroupStatus">> => string()
+%% }
+-type aws_dax_node() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_group_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_group_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameter_group_request() :: #{
+%%   <<"ParameterGroupName">> := string()
+%% }
+-type delete_parameter_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_group_status() :: #{
+%%   <<"NodeIdsToReboot">> => list(string()()),
+%%   <<"ParameterApplyStatus">> => string(),
+%%   <<"ParameterGroupName">> => string()
+%% }
+-type parameter_group_status() :: #{binary() => any()}.
+
+%% Example:
+%% tag_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"NotificationTopicArn">> => string(),
+%%   <<"NotificationTopicStatus">> => string(),
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()())
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_combination_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_combination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_vpc_network_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_vpc_network_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% tag_quota_per_resource_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_quota_per_resource_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subnet_group_request() :: #{
+%%   <<"SubnetGroupName">> := string()
+%% }
+-type delete_subnet_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group() :: #{
+%%   <<"Description">> => string(),
+%%   <<"SubnetGroupName">> => string(),
+%%   <<"Subnets">> => list(subnet()()),
+%%   <<"VpcId">> => string()
+%% }
+-type subnet_group() :: #{binary() => any()}.
+
+%% Example:
+%% decrease_replication_factor_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type decrease_replication_factor_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_request() :: #{
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"ClusterEndpointEncryptionType">> => list(any()),
+%%   <<"ClusterName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"NodeType">> := string(),
+%%   <<"NotificationTopicArn">> => string(),
+%%   <<"ParameterGroupName">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ReplicationFactor">> := integer(),
+%%   <<"SSESpecification">> => sse_specification(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetGroupName">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_default_parameters_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(parameter()())
+%% }
+-type describe_default_parameters_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% cluster() :: #{
+%%   <<"ActiveNodes">> => integer(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterDiscoveryEndpoint">> => endpoint(),
+%%   <<"ClusterEndpointEncryptionType">> => list(any()),
+%%   <<"ClusterName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"NodeIdsToRemove">> => list(string()()),
+%%   <<"NodeType">> => string(),
+%%   <<"Nodes">> => list(dax_node()()),
+%%   <<"NotificationConfiguration">> => notification_configuration(),
+%%   <<"ParameterGroup">> => parameter_group_status(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"SSEDescription">> => sse_description(),
+%%   <<"SecurityGroups">> => list(security_group_membership()()),
+%%   <<"Status">> => string(),
+%%   <<"SubnetGroup">> => string(),
+%%   <<"TotalNodes">> => integer()
+%% }
+-type cluster() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% increase_replication_factor_request() :: #{
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"ClusterName">> := string(),
+%%   <<"NewReplicationFactor">> := integer()
+%% }
+-type increase_replication_factor_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subnet_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SubnetGroups">> => list(subnet_group()())
+%% }
+-type describe_subnet_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% parameter() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"ChangeType">> => list(any()),
+%%   <<"DataType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsModifiable">> => list(any()),
+%%   <<"NodeTypeSpecificValues">> => list(node_type_specific_value()()),
+%%   <<"ParameterName">> => string(),
+%%   <<"ParameterType">> => list(any()),
+%%   <<"ParameterValue">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+%% Example:
+%% update_subnet_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"SubnetGroupName">> := string(),
+%%   <<"SubnetIds">> => list(string()())
+%% }
+-type update_subnet_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_default_parameters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_default_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_subnet_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"SubnetGroupName">> := string(),
+%%   <<"SubnetIds">> := list(string()())
+%% }
+-type create_subnet_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_group_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_group_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% node_type_specific_value() :: #{
+%%   <<"NodeType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type node_type_specific_value() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subnet_group_response() :: #{
+%%   <<"DeletionMessage">> => string()
+%% }
+-type delete_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% decrease_replication_factor_request() :: #{
+%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"ClusterName">> := string(),
+%%   <<"NewReplicationFactor">> := integer(),
+%%   <<"NodeIdsToRemove">> => list(string()())
+%% }
+-type decrease_replication_factor_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_quota_for_customer_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_quota_for_customer_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicStatus">> => string()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameter_group_response() :: #{
+%%   <<"DeletionMessage">> => string()
+%% }
+-type delete_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"URL">> => string()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_request() :: #{
+%%   <<"ClusterName">> := string()
+%% }
+-type delete_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_group_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_group_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_request() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subnet_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SubnetGroupNames">> => list(string()())
+%% }
+-type describe_subnet_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% service_linked_role_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_linked_role_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% increase_replication_factor_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type increase_replication_factor_response() :: #{binary() => any()}.
+
+%% Example:
+%% sse_specification() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type sse_specification() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameter_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterGroupNames">> => list(string()())
+%% }
+-type describe_parameter_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_response() :: #{
+%%   <<"Clusters">> => list(cluster()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_node_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"NodeId">> := string()
+%% }
+-type reboot_node_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_cluster_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_cluster_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% update_parameter_group_response() :: #{
+%%   <<"ParameterGroup">> => parameter_group()
+%% }
+-type update_parameter_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_group_in_use_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_group_in_use_fault() :: #{binary() => any()}.
+
+%% Example:
+%% update_parameter_group_request() :: #{
+%%   <<"ParameterGroupName">> := string(),
+%%   <<"ParameterNameValues">> := list(parameter_name_value()())
+%% }
+-type update_parameter_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_group() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ParameterGroupName">> => string()
+%% }
+-type parameter_group() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_cluster_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_cluster_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceName">> := string()
+%% }
+-type list_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% node_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type node_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_group_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_group_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_clusters_request() :: #{
+%%   <<"ClusterNames">> => list(string()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_response() :: #{
+%%   <<"Events">> => list(event()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_subnet_group_response() :: #{
+%%   <<"SubnetGroup">> => subnet_group()
+%% }
+-type update_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% node_quota_for_cluster_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type node_quota_for_cluster_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_response() :: #{
+%%   <<"Cluster">> => cluster()
+%% }
+-type update_cluster_response() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -67,9 +684,46 @@
 %% @doc Creates a DAX cluster.
 %%
 %% All nodes in the cluster run the same DAX caching software.
+-spec create_cluster(map(), create_cluster_request()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_already_exists_fault(), tuple()} |
+    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, insufficient_cluster_capacity_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
+    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
+
+-spec create_cluster(map(), create_cluster_request(), proplists:proplist()) ->
+    {ok, create_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_already_exists_fault(), tuple()} |
+    {error, cluster_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, insufficient_cluster_capacity_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
+    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
@@ -78,17 +732,53 @@ create_cluster(Client, Input, Options)
 %%
 %% A parameter group is a collection of parameters that
 %% you apply to all of the nodes in a DAX cluster.
+-spec create_parameter_group(map(), create_parameter_group_request()) ->
+    {ok, create_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_already_exists_fault(), tuple()} |
+    {error, parameter_group_quota_exceeded_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 create_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_parameter_group(Client, Input, []).
+
+-spec create_parameter_group(map(), create_parameter_group_request(), proplists:proplist()) ->
+    {ok, create_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_already_exists_fault(), tuple()} |
+    {error, parameter_group_quota_exceeded_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 create_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateParameterGroup">>, Input, Options).
 
 %% @doc Creates a new subnet group.
+-spec create_subnet_group(map(), create_subnet_group_request()) ->
+    {ok, create_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_already_exists_fault(), tuple()} |
+    {error, subnet_group_quota_exceeded_fault(), tuple()} |
+    {error, subnet_quota_exceeded_fault(), tuple()}.
 create_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subnet_group(Client, Input, []).
+
+-spec create_subnet_group(map(), create_subnet_group_request(), proplists:proplist()) ->
+    {ok, create_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_already_exists_fault(), tuple()} |
+    {error, subnet_group_quota_exceeded_fault(), tuple()} |
+    {error, subnet_quota_exceeded_fault(), tuple()}.
 create_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSubnetGroup">>, Input, Options).
@@ -97,9 +787,28 @@ create_subnet_group(Client, Input, Options)
 %%
 %% You cannot use `DecreaseReplicationFactor' to remove the last node in
 %% a DAX cluster. If you need to do this, use `DeleteCluster' instead.
+-spec decrease_replication_factor(map(), decrease_replication_factor_request()) ->
+    {ok, decrease_replication_factor_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, node_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 decrease_replication_factor(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_replication_factor(Client, Input, []).
+
+-spec decrease_replication_factor(map(), decrease_replication_factor_request(), proplists:proplist()) ->
+    {ok, decrease_replication_factor_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, node_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 decrease_replication_factor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecreaseReplicationFactor">>, Input, Options).
@@ -112,9 +821,26 @@ decrease_replication_factor(Client, Input, Options)
 %% DAX immediately begins deleting the cluster; you cannot cancel or revert
 %% this
 %% action.
+-spec delete_cluster(map(), delete_cluster_request()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
+
+-spec delete_cluster(map(), delete_cluster_request(), proplists:proplist()) ->
+    {ok, delete_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
@@ -123,9 +849,26 @@ delete_cluster(Client, Input, Options)
 %%
 %% You cannot delete a parameter group if it is
 %% associated with any DAX clusters.
+-spec delete_parameter_group(map(), delete_parameter_group_request()) ->
+    {ok, delete_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 delete_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_parameter_group(Client, Input, []).
+
+-spec delete_parameter_group(map(), delete_parameter_group_request(), proplists:proplist()) ->
+    {ok, delete_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 delete_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteParameterGroup">>, Input, Options).
@@ -134,9 +877,22 @@ delete_parameter_group(Client, Input, Options)
 %%
 %% You cannot delete a subnet group if it is associated with any DAX
 %% clusters.
+-spec delete_subnet_group(map(), delete_subnet_group_request()) ->
+    {ok, delete_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_in_use_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()}.
 delete_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subnet_group(Client, Input, []).
+
+-spec delete_subnet_group(map(), delete_subnet_group_request(), proplists:proplist()) ->
+    {ok, delete_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_in_use_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()}.
 delete_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubnetGroup">>, Input, Options).
@@ -163,18 +919,46 @@ delete_subnet_group(Client, Input, Options)
 %%
 %% If nodes are currently being removed from the DAX cluster, no endpoint
 %% information for the removed nodes is displayed.
+-spec describe_clusters(map(), describe_clusters_request()) ->
+    {ok, describe_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
+
+-spec describe_clusters(map(), describe_clusters_request(), proplists:proplist()) ->
+    {ok, describe_clusters_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
 
 %% @doc Returns the default system parameter information for the DAX caching
 %% software.
+-spec describe_default_parameters(map(), describe_default_parameters_request()) ->
+    {ok, describe_default_parameters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_default_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_default_parameters(Client, Input, []).
+
+-spec describe_default_parameters(map(), describe_default_parameters_request(), proplists:proplist()) ->
+    {ok, describe_default_parameters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_default_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDefaultParameters">>, Input, Options).
@@ -189,9 +973,22 @@ describe_default_parameters(Client, Input, Options)
 %% By default, only the events occurring within the last 24 hours are
 %% returned; however,
 %% you can retrieve up to 14 days' worth of events if necessary.
+-spec describe_events(map(), describe_events_request()) ->
+    {ok, describe_events_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
+
+-spec describe_events(map(), describe_events_request(), proplists:proplist()) ->
+    {ok, describe_events_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
@@ -200,17 +997,47 @@ describe_events(Client, Input, Options)
 %%
 %% If a parameter group name is
 %% specified, the list will contain only the descriptions for that group.
+-spec describe_parameter_groups(map(), describe_parameter_groups_request()) ->
+    {ok, describe_parameter_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameter_groups(Client, Input, []).
+
+-spec describe_parameter_groups(map(), describe_parameter_groups_request(), proplists:proplist()) ->
+    {ok, describe_parameter_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_parameter_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeParameterGroups">>, Input, Options).
 
 %% @doc Returns the detailed parameter list for a particular parameter group.
+-spec describe_parameters(map(), describe_parameters_request()) ->
+    {ok, describe_parameters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_parameters(Client, Input, []).
+
+-spec describe_parameters(map(), describe_parameters_request(), proplists:proplist()) ->
+    {ok, describe_parameters_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 describe_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeParameters">>, Input, Options).
@@ -219,17 +1046,53 @@ describe_parameters(Client, Input, Options)
 %%
 %% If a subnet group name is specified,
 %% the list will contain only the description of that group.
+-spec describe_subnet_groups(map(), describe_subnet_groups_request()) ->
+    {ok, describe_subnet_groups_response(), tuple()} |
+    {error, any()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()}.
 describe_subnet_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subnet_groups(Client, Input, []).
+
+-spec describe_subnet_groups(map(), describe_subnet_groups_request(), proplists:proplist()) ->
+    {ok, describe_subnet_groups_response(), tuple()} |
+    {error, any()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()}.
 describe_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubnetGroups">>, Input, Options).
 
 %% @doc Adds one or more nodes to a DAX cluster.
+-spec increase_replication_factor(map(), increase_replication_factor_request()) ->
+    {ok, increase_replication_factor_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, insufficient_cluster_capacity_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
+    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 increase_replication_factor(Client, Input)
   when is_map(Client), is_map(Input) ->
     increase_replication_factor(Client, Input, []).
+
+-spec increase_replication_factor(map(), increase_replication_factor_request(), proplists:proplist()) ->
+    {ok, increase_replication_factor_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, insufficient_cluster_capacity_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, invalid_vpc_network_state_fault(), tuple()} |
+    {error, node_quota_for_cluster_exceeded_fault(), tuple()} |
+    {error, node_quota_for_customer_exceeded_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 increase_replication_factor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IncreaseReplicationFactor">>, Input, Options).
@@ -238,9 +1101,28 @@ increase_replication_factor(Client, Input, Options)
 %%
 %% You can call `ListTags' up to
 %% 10 times per second, per account.
+-spec list_tags(map(), list_tags_request()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
+
+-spec list_tags(map(), list_tags_request(), proplists:proplist()) ->
+    {ok, list_tags_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
@@ -253,9 +1135,28 @@ list_tags(Client, Input, Options)
 %%
 %% `RebootNode' restarts the DAX engine process and does not remove the
 %% contents of the cache.
+-spec reboot_node(map(), reboot_node_request()) ->
+    {ok, reboot_node_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, node_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 reboot_node(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_node(Client, Input, []).
+
+-spec reboot_node(map(), reboot_node_request(), proplists:proplist()) ->
+    {ok, reboot_node_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, node_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 reboot_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootNode">>, Input, Options).
@@ -264,9 +1165,30 @@ reboot_node(Client, Input, Options)
 %%
 %% You can call `TagResource' up to 5 times per second, per
 %% account.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, tag_quota_per_resource_exceeded(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -275,9 +1197,30 @@ tag_resource(Client, Input, Options)
 %%
 %% You can call
 %% `UntagResource' up to 5 times per second, per account.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, tag_not_found_fault(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_arn_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, tag_not_found_fault(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -288,9 +1231,30 @@ untag_resource(Client, Input, Options)
 %% more cluster configuration parameters by specifying the parameters and the
 %% new
 %% values.
+-spec update_cluster(map(), update_cluster_request()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 update_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cluster(Client, Input, []).
+
+-spec update_cluster(map(), update_cluster_request(), proplists:proplist()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, cluster_not_found_fault(), tuple()} |
+    {error, invalid_cluster_state_fault(), tuple()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
@@ -301,17 +1265,51 @@ update_cluster(Client, Input, Options)
 %% parameters in a single request by submitting a list parameter name and
 %% value
 %% pairs.
+-spec update_parameter_group(map(), update_parameter_group_request()) ->
+    {ok, update_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 update_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_parameter_group(Client, Input, []).
+
+-spec update_parameter_group(map(), update_parameter_group_request(), proplists:proplist()) ->
+    {ok, update_parameter_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_combination_exception(), tuple()} |
+    {error, invalid_parameter_group_state_fault(), tuple()} |
+    {error, invalid_parameter_value_exception(), tuple()} |
+    {error, parameter_group_not_found_fault(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()}.
 update_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateParameterGroup">>, Input, Options).
 
 %% @doc Modifies an existing subnet group.
+-spec update_subnet_group(map(), update_subnet_group_request()) ->
+    {ok, update_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, subnet_in_use(), tuple()} |
+    {error, subnet_quota_exceeded_fault(), tuple()}.
 update_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subnet_group(Client, Input, []).
+
+-spec update_subnet_group(map(), update_subnet_group_request(), proplists:proplist()) ->
+    {ok, update_subnet_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_subnet(), tuple()} |
+    {error, service_linked_role_not_found_fault(), tuple()} |
+    {error, subnet_group_not_found_fault(), tuple()} |
+    {error, subnet_in_use(), tuple()} |
+    {error, subnet_quota_exceeded_fault(), tuple()}.
 update_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSubnetGroup">>, Input, Options).

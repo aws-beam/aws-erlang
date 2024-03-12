@@ -9,6 +9,68 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% client_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type client_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% connection_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type connection_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_media_input() :: #{
+%%   <<"StartSelector">> := start_selector(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string()
+%% }
+-type get_media_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_media_output() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Payload">> => binary()
+%% }
+-type get_media_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_endpoint_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_endpoint_exception() :: #{binary() => any()}.
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_selector() :: #{
+%%   <<"AfterFragmentNumber">> => string(),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"StartSelectorType">> => list(any()),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type start_selector() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -64,8 +126,27 @@
 %% For more information, see the Errors section at the
 %% bottom of this topic, as well as Common Errors:
 %% https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/CommonErrors.html.
+-spec get_media(map(), get_media_input()) ->
+    {ok, get_media_output(), tuple()} |
+    {error, any()} |
+    {error, client_limit_exceeded_exception(), tuple()} |
+    {error, connection_limit_exceeded_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_endpoint_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_media(Client, Input) ->
     get_media(Client, Input, []).
+
+-spec get_media(map(), get_media_input(), proplists:proplist()) ->
+    {ok, get_media_output(), tuple()} |
+    {error, any()} |
+    {error, client_limit_exceeded_exception(), tuple()} |
+    {error, connection_limit_exceeded_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_endpoint_exception(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_media(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getMedia"],
@@ -108,7 +189,7 @@ get_media(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

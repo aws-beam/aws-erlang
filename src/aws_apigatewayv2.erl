@@ -178,13 +178,1489 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% update_stage_request() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageVariables">> => map()
+%% }
+-type update_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_integration_response_response() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseId">> => string(),
+%%   <<"IntegrationResponseKey">> => string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type update_integration_response_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_stages_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_stages_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_response_response() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseId">> => string(),
+%%   <<"IntegrationResponseKey">> => string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type create_integration_response_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_api_request() :: #{
+%%   <<"ExportVersion">> => string(),
+%%   <<"IncludeExtensions">> => boolean(),
+%%   <<"OutputType">> := string(),
+%%   <<"StageName">> => string()
+%% }
+-type export_api_request() :: #{binary() => any()}.
+
+%% Example:
+%% stage() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastDeploymentStatusMessage">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageName">> => string(),
+%%   <<"StageVariables">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type stage() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployments_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_deployments_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tls_config_input() :: #{
+%%   <<"ServerNameToVerify">> => string()
+%% }
+-type tls_config_input() :: #{binary() => any()}.
+%% Example:
+%% delete_vpc_link_response() :: #{}
+-type delete_vpc_link_response() :: #{}.
+
+%% Example:
+%% authorizer() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> => list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> => string()
+%% }
+-type authorizer() :: #{binary() => any()}.
+
+%% Example:
+%% get_authorizer_response() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> => list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> => string()
+%% }
+-type get_authorizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_stage_response() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastDeploymentStatusMessage">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageName">> => string(),
+%%   <<"StageVariables">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type create_stage_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_links_response() :: #{
+%%   <<"Items">> => list(vpc_link()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_vpc_links_response() :: #{binary() => any()}.
+%% Example:
+%% get_tags_request() :: #{}
+-type get_tags_request() :: #{}.
+
+%% Example:
+%% get_stage_response() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastDeploymentStatusMessage">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageName">> => string(),
+%%   <<"StageVariables">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type get_stage_response() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_constraints() :: #{
+%%   <<"Required">> => boolean()
+%% }
+-type parameter_constraints() :: #{binary() => any()}.
+
+%% Example:
+%% deployment() :: #{
+%%   <<"AutoDeployed">> => boolean(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentStatus">> => list(any()),
+%%   <<"DeploymentStatusMessage">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type deployment() :: #{binary() => any()}.
+%% Example:
+%% delete_api_mapping_request() :: #{}
+-type delete_api_mapping_request() :: #{}.
+
+%% Example:
+%% integration() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationId">> => string(),
+%%   <<"IntegrationMethod">> => string(),
+%%   <<"IntegrationResponseSelectionExpression">> => string(),
+%%   <<"IntegrationSubtype">> => string(),
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"IntegrationUri">> => string(),
+%%   <<"PassthroughBehavior">> => list(any()),
+%%   <<"PayloadFormatVersion">> => string(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RequestTemplates">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"TemplateSelectionExpression">> => string(),
+%%   <<"TimeoutInMillis">> => integer(),
+%%   <<"TlsConfig">> => tls_config()
+%% }
+-type integration() :: #{binary() => any()}.
+
+%% Example:
+%% update_api_mapping_request() :: #{
+%%   <<"ApiId">> := string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type update_api_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationId">> => string(),
+%%   <<"IntegrationMethod">> => string(),
+%%   <<"IntegrationResponseSelectionExpression">> => string(),
+%%   <<"IntegrationSubtype">> => string(),
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"IntegrationUri">> => string(),
+%%   <<"PassthroughBehavior">> => list(any()),
+%%   <<"PayloadFormatVersion">> => string(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RequestTemplates">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"TemplateSelectionExpression">> => string(),
+%%   <<"TimeoutInMillis">> => integer(),
+%%   <<"TlsConfig">> => tls_config()
+%% }
+-type get_integration_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_authorizers_response() :: #{
+%%   <<"Items">> => list(authorizer()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_authorizers_response() :: #{binary() => any()}.
+%% Example:
+%% delete_integration_response_request() :: #{}
+-type delete_integration_response_request() :: #{}.
+
+%% Example:
+%% route_settings() :: #{
+%%   <<"DataTraceEnabled">> => boolean(),
+%%   <<"DetailedMetricsEnabled">> => boolean(),
+%%   <<"LoggingLevel">> => list(any()),
+%%   <<"ThrottlingBurstLimit">> => integer(),
+%%   <<"ThrottlingRateLimit">> => float()
+%% }
+-type route_settings() :: #{binary() => any()}.
+
+%% Example:
+%% get_route_responses_response() :: #{
+%%   <<"Items">> => list(route_response()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_route_responses_response() :: #{binary() => any()}.
+
+%% Example:
+%% mutual_tls_authentication() :: #{
+%%   <<"TruststoreUri">> => string(),
+%%   <<"TruststoreVersion">> => string(),
+%%   <<"TruststoreWarnings">> => list(string()())
+%% }
+-type mutual_tls_authentication() :: #{binary() => any()}.
+
+%% Example:
+%% create_route_response_request() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseKey">> := string()
+%% }
+-type create_route_response_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_api_mapping_response() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"ApiMappingId">> => string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type update_api_mapping_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_route_response_response() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseId">> => string(),
+%%   <<"RouteResponseKey">> => string()
+%% }
+-type get_route_response_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"StageName">> => string()
+%% }
+-type create_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_api_response() :: #{
+%%   <<"ApiEndpoint">> => string(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"ImportInfo">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"ProtocolType">> => list(any()),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => list(string()())
+%% }
+-type create_api_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_request() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Schema">> := string()
+%% }
+-type create_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_route_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type update_route_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_model_request() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type update_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% reimport_api_request() :: #{
+%%   <<"Basepath">> => string(),
+%%   <<"Body">> := string(),
+%%   <<"FailOnWarnings">> => boolean()
+%% }
+-type reimport_api_request() :: #{binary() => any()}.
+%% Example:
+%% get_route_response_request() :: #{}
+-type get_route_response_request() :: #{}.
+
+%% Example:
+%% create_domain_name_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input(),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_name_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_stage_response() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastDeploymentStatusMessage">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageName">> => string(),
+%%   <<"StageVariables">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type update_stage_response() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_link() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcLinkId">> => string(),
+%%   <<"VpcLinkStatus">> => list(any()),
+%%   <<"VpcLinkStatusMessage">> => string(),
+%%   <<"VpcLinkVersion">> => list(any())
+%% }
+-type vpc_link() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_response() :: #{
+%%   <<"AutoDeployed">> => boolean(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentStatus">> => list(any()),
+%%   <<"DeploymentStatusMessage">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type create_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+%% Example:
+%% get_model_template_request() :: #{}
+-type get_model_template_request() :: #{}.
+%% Example:
+%% delete_authorizer_request() :: #{}
+-type delete_authorizer_request() :: #{}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"LimitType">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_authorizer_request() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> := list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> := list(string()()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> := string()
+%% }
+-type create_authorizer_request() :: #{binary() => any()}.
+%% Example:
+%% get_stage_request() :: #{}
+-type get_stage_request() :: #{}.
+%% Example:
+%% get_authorizer_request() :: #{}
+-type get_authorizer_request() :: #{}.
+
+%% Example:
+%% get_integration_responses_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_integration_responses_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_route_response_response() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseId">> => string(),
+%%   <<"RouteResponseKey">> => string()
+%% }
+-type update_route_response_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_api_mapping_request() :: #{
+%%   <<"ApiId">> := string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> := string()
+%% }
+-type create_api_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_authorizer_response() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> => list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> => string()
+%% }
+-type create_authorizer_response() :: #{binary() => any()}.
+%% Example:
+%% delete_route_request_parameter_request() :: #{}
+-type delete_route_request_parameter_request() :: #{}.
+
+%% Example:
+%% create_integration_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationId">> => string(),
+%%   <<"IntegrationMethod">> => string(),
+%%   <<"IntegrationResponseSelectionExpression">> => string(),
+%%   <<"IntegrationSubtype">> => string(),
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"IntegrationUri">> => string(),
+%%   <<"PassthroughBehavior">> => list(any()),
+%%   <<"PayloadFormatVersion">> => string(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RequestTemplates">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"TemplateSelectionExpression">> => string(),
+%%   <<"TimeoutInMillis">> => integer(),
+%%   <<"TlsConfig">> => tls_config()
+%% }
+-type create_integration_result() :: #{binary() => any()}.
+%% Example:
+%% delete_stage_request() :: #{}
+-type delete_stage_request() :: #{}.
+
+%% Example:
+%% get_authorizers_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_authorizers_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_integration_request() :: #{}
+-type delete_integration_request() :: #{}.
+
+%% Example:
+%% get_api_response() :: #{
+%%   <<"ApiEndpoint">> => string(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"ImportInfo">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"ProtocolType">> => list(any()),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => list(string()())
+%% }
+-type get_api_response() :: #{binary() => any()}.
+%% Example:
+%% delete_cors_configuration_request() :: #{}
+-type delete_cors_configuration_request() :: #{}.
+
+%% Example:
+%% update_api_response() :: #{
+%%   <<"ApiEndpoint">> => string(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"ImportInfo">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"ProtocolType">> => list(any()),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => list(string()())
+%% }
+-type update_api_response() :: #{binary() => any()}.
+%% Example:
+%% get_deployment_request() :: #{}
+-type get_deployment_request() :: #{}.
+
+%% Example:
+%% j_w_t_configuration() :: #{
+%%   <<"Audience">> => list(string()()),
+%%   <<"Issuer">> => string()
+%% }
+-type j_w_t_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_link_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> := list(string()()),
+%%   <<"Tags">> => map()
+%% }
+-type create_vpc_link_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_api_request() :: #{
+%%   <<"Basepath">> => string(),
+%%   <<"Body">> := string(),
+%%   <<"FailOnWarnings">> => boolean()
+%% }
+-type import_api_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_link_response() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcLinkId">> => string(),
+%%   <<"VpcLinkStatus">> => list(any()),
+%%   <<"VpcLinkStatusMessage">> => string(),
+%%   <<"VpcLinkVersion">> => list(any())
+%% }
+-type create_vpc_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_template_response() :: #{
+%%   <<"Value">> => string()
+%% }
+-type get_model_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_responses_response() :: #{
+%%   <<"Items">> => list(integration_response()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_integration_responses_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% route() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type route() :: #{binary() => any()}.
+
+%% Example:
+%% api_mapping() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"ApiMappingId">> => string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type api_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% get_tags_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type get_tags_response() :: #{binary() => any()}.
+%% Example:
+%% get_api_mapping_request() :: #{}
+-type get_api_mapping_request() :: #{}.
+%% Example:
+%% delete_route_response_request() :: #{}
+-type delete_route_response_request() :: #{}.
+
+%% Example:
+%% update_domain_name_response() :: #{
+%%   <<"ApiMappingSelectionExpression">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"Tags">> => map()
+%% }
+-type update_domain_name_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_names_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_domain_names_request() :: #{binary() => any()}.
+%% Example:
+%% delete_access_log_settings_request() :: #{}
+-type delete_access_log_settings_request() :: #{}.
+
+%% Example:
+%% get_integrations_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_integrations_request() :: #{binary() => any()}.
+%% Example:
+%% get_integration_request() :: #{}
+-type get_integration_request() :: #{}.
+
+%% Example:
+%% get_routes_response() :: #{
+%%   <<"Items">> => list(route()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_routes_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_integration_response_request() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseKey">> => string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type update_integration_response_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_route_response_request() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseKey">> => string()
+%% }
+-type update_route_response_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_integration_request() :: #{
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationMethod">> => string(),
+%%   <<"IntegrationSubtype">> => string(),
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"IntegrationUri">> => string(),
+%%   <<"PassthroughBehavior">> => list(any()),
+%%   <<"PayloadFormatVersion">> => string(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RequestTemplates">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"TemplateSelectionExpression">> => string(),
+%%   <<"TimeoutInMillis">> => integer(),
+%%   <<"TlsConfig">> => tls_config_input()
+%% }
+-type update_integration_request() :: #{binary() => any()}.
+%% Example:
+%% delete_route_settings_request() :: #{}
+-type delete_route_settings_request() :: #{}.
+
+%% Example:
+%% update_model_response() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ModelId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type update_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_model_response() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ModelId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type create_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% reimport_api_response() :: #{
+%%   <<"ApiEndpoint">> => string(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"ImportInfo">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"ProtocolType">> => list(any()),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => list(string()())
+%% }
+-type reimport_api_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_route_request() :: #{
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type update_route_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_name_request() :: #{
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input()
+%% }
+-type update_domain_name_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_route_responses_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_route_responses_request() :: #{binary() => any()}.
+
+%% Example:
+%% domain_name() :: #{
+%%   <<"ApiMappingSelectionExpression">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"Tags">> => map()
+%% }
+-type domain_name() :: #{binary() => any()}.
+
+%% Example:
+%% create_stage_request() :: #{
+%%   <<"AccessLogSettings">> => access_log_settings(),
+%%   <<"AutoDeploy">> => boolean(),
+%%   <<"ClientCertificateId">> => string(),
+%%   <<"DefaultRouteSettings">> => route_settings(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"RouteSettings">> => map(),
+%%   <<"StageName">> := string(),
+%%   <<"StageVariables">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type create_stage_request() :: #{binary() => any()}.
+%% Example:
+%% delete_deployment_request() :: #{}
+-type delete_deployment_request() :: #{}.
+
+%% Example:
+%% get_domain_names_response() :: #{
+%%   <<"Items">> => list(domain_name()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_domain_names_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_request() :: #{
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationMethod">> => string(),
+%%   <<"IntegrationSubtype">> => string(),
+%%   <<"IntegrationType">> := list(any()),
+%%   <<"IntegrationUri">> => string(),
+%%   <<"PassthroughBehavior">> => list(any()),
+%%   <<"PayloadFormatVersion">> => string(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RequestTemplates">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"TemplateSelectionExpression">> => string(),
+%%   <<"TimeoutInMillis">> => integer(),
+%%   <<"TlsConfig">> => tls_config_input()
+%% }
+-type create_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_api_mapping_response() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"ApiMappingId">> => string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type get_api_mapping_response() :: #{binary() => any()}.
+
+%% Example:
+%% mutual_tls_authentication_input() :: #{
+%%   <<"TruststoreUri">> => string(),
+%%   <<"TruststoreVersion">> => string()
+%% }
+-type mutual_tls_authentication_input() :: #{binary() => any()}.
+
+%% Example:
+%% domain_name_configuration() :: #{
+%%   <<"ApiGatewayDomainName">> => string(),
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateName">> => string(),
+%%   <<"CertificateUploadDate">> => non_neg_integer(),
+%%   <<"DomainNameStatus">> => list(any()),
+%%   <<"DomainNameStatusMessage">> => string(),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"OwnershipVerificationCertificateArn">> => string(),
+%%   <<"SecurityPolicy">> => list(any())
+%% }
+-type domain_name_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% export_api_response() :: #{
+%%   <<"body">> => binary()
+%% }
+-type export_api_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_api_mappings_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_api_mappings_request() :: #{binary() => any()}.
+%% Example:
+%% delete_model_request() :: #{}
+-type delete_model_request() :: #{}.
+
+%% Example:
+%% tls_config() :: #{
+%%   <<"ServerNameToVerify">> => string()
+%% }
+-type tls_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_integrations_response() :: #{
+%%   <<"Items">> => list(integration()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_integrations_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_log_settings() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"Format">> => string()
+%% }
+-type access_log_settings() :: #{binary() => any()}.
+
+%% Example:
+%% get_models_response() :: #{
+%%   <<"Items">> => list(model()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_models_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_route_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type get_route_result() :: #{binary() => any()}.
+%% Example:
+%% get_integration_response_request() :: #{}
+-type get_integration_response_request() :: #{}.
+
+%% Example:
+%% get_stages_response() :: #{
+%%   <<"Items">> => list(stage()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_stages_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_models_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_models_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_route_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type create_route_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_routes_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_routes_request() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_vpc_link_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_vpc_link_request() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+%% Example:
+%% get_domain_name_request() :: #{}
+-type get_domain_name_request() :: #{}.
+%% Example:
+%% get_model_request() :: #{}
+-type get_model_request() :: #{}.
+
+%% Example:
+%% update_api_request() :: #{
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Target">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type update_api_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_integration_response_request() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseKey">> := string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type create_integration_response_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_deployment_response() :: #{
+%%   <<"AutoDeployed">> => boolean(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentStatus">> => list(any()),
+%%   <<"DeploymentStatusMessage">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type update_deployment_response() :: #{binary() => any()}.
+%% Example:
+%% delete_route_request() :: #{}
+-type delete_route_request() :: #{}.
+
+%% Example:
+%% get_deployment_response() :: #{
+%%   <<"AutoDeployed">> => boolean(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DeploymentId">> => string(),
+%%   <<"DeploymentStatus">> => list(any()),
+%%   <<"DeploymentStatusMessage">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type get_deployment_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_authorizer_response() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> => list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> => string()
+%% }
+-type update_authorizer_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_api_request() :: #{
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"ProtocolType">> := list(any()),
+%%   <<"RouteKey">> => string(),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Target">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type create_api_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_link_response() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcLinkId">> => string(),
+%%   <<"VpcLinkStatus">> => list(any()),
+%%   <<"VpcLinkStatusMessage">> => string(),
+%%   <<"VpcLinkVersion">> => list(any())
+%% }
+-type get_vpc_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% cors() :: #{
+%%   <<"AllowCredentials">> => boolean(),
+%%   <<"AllowHeaders">> => list(string()()),
+%%   <<"AllowMethods">> => list(string()()),
+%%   <<"AllowOrigins">> => list(string()()),
+%%   <<"ExposeHeaders">> => list(string()()),
+%%   <<"MaxAge">> => integer()
+%% }
+-type cors() :: #{binary() => any()}.
+
+%% Example:
+%% api() :: #{
+%%   <<"ApiEndpoint">> => string(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"ImportInfo">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"ProtocolType">> => list(any()),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => list(string()())
+%% }
+-type api() :: #{binary() => any()}.
+
+%% Example:
+%% create_route_response_response() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseId">> => string(),
+%%   <<"RouteResponseKey">> => string()
+%% }
+-type create_route_response_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_model_response() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ModelId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type get_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_api_mapping_response() :: #{
+%%   <<"ApiId">> => string(),
+%%   <<"ApiMappingId">> => string(),
+%%   <<"ApiMappingKey">> => string(),
+%%   <<"Stage">> => string()
+%% }
+-type create_api_mapping_response() :: #{binary() => any()}.
+%% Example:
+%% delete_domain_name_request() :: #{}
+-type delete_domain_name_request() :: #{}.
+
+%% Example:
+%% update_vpc_link_response() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcLinkId">> => string(),
+%%   <<"VpcLinkStatus">> => list(any()),
+%%   <<"VpcLinkStatusMessage">> => string(),
+%%   <<"VpcLinkVersion">> => list(any())
+%% }
+-type update_vpc_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_domain_name_response() :: #{
+%%   <<"ApiMappingSelectionExpression">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_name_response() :: #{binary() => any()}.
+%% Example:
+%% get_vpc_link_request() :: #{}
+-type get_vpc_link_request() :: #{}.
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployments_response() :: #{
+%%   <<"Items">> => list(deployment()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_deployments_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_api_response() :: #{
+%%   <<"ApiEndpoint">> => string(),
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ApiId">> => string(),
+%%   <<"ApiKeySelectionExpression">> => string(),
+%%   <<"CorsConfiguration">> => cors(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisableExecuteApiEndpoint">> => boolean(),
+%%   <<"DisableSchemaValidation">> => boolean(),
+%%   <<"ImportInfo">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"ProtocolType">> => list(any()),
+%%   <<"RouteSelectionExpression">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => list(string()())
+%% }
+-type import_api_response() :: #{binary() => any()}.
+%% Example:
+%% reset_authorizers_cache_request() :: #{}
+-type reset_authorizers_cache_request() :: #{}.
+
+%% Example:
+%% get_api_mappings_response() :: #{
+%%   <<"Items">> => list(api_mapping()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_api_mappings_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_route_request() :: #{
+%%   <<"ApiKeyRequired">> => boolean(),
+%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"AuthorizerId">> => string(),
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"OperationName">> => string(),
+%%   <<"RequestModels">> => map(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RouteKey">> := string(),
+%%   <<"RouteResponseSelectionExpression">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type create_route_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_links_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_vpc_links_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_apis_response() :: #{
+%%   <<"Items">> => list(api()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_apis_response() :: #{binary() => any()}.
+
+%% Example:
+%% integration_response() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseId">> => string(),
+%%   <<"IntegrationResponseKey">> => string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% model() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ModelId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type model() :: #{binary() => any()}.
+
+%% Example:
+%% get_apis_request() :: #{
+%%   <<"MaxResults">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_apis_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_deployment_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_deployment_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_response_response() :: #{
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"IntegrationResponseId">> => string(),
+%%   <<"IntegrationResponseKey">> => string(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"ResponseTemplates">> => map(),
+%%   <<"TemplateSelectionExpression">> => string()
+%% }
+-type get_integration_response_response() :: #{binary() => any()}.
+%% Example:
+%% get_api_request() :: #{}
+-type get_api_request() :: #{}.
+
+%% Example:
+%% get_domain_name_response() :: #{
+%%   <<"ApiMappingSelectionExpression">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
+%%   <<"Tags">> => map()
+%% }
+-type get_domain_name_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_integration_result() :: #{
+%%   <<"ApiGatewayManaged">> => boolean(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"ContentHandlingStrategy">> => list(any()),
+%%   <<"CredentialsArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IntegrationId">> => string(),
+%%   <<"IntegrationMethod">> => string(),
+%%   <<"IntegrationResponseSelectionExpression">> => string(),
+%%   <<"IntegrationSubtype">> => string(),
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"IntegrationUri">> => string(),
+%%   <<"PassthroughBehavior">> => list(any()),
+%%   <<"PayloadFormatVersion">> => string(),
+%%   <<"RequestParameters">> => map(),
+%%   <<"RequestTemplates">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"TemplateSelectionExpression">> => string(),
+%%   <<"TimeoutInMillis">> => integer(),
+%%   <<"TlsConfig">> => tls_config()
+%% }
+-type update_integration_result() :: #{binary() => any()}.
+%% Example:
+%% delete_vpc_link_request() :: #{}
+-type delete_vpc_link_request() :: #{}.
+
+%% Example:
+%% update_authorizer_request() :: #{
+%%   <<"AuthorizerCredentialsArn">> => string(),
+%%   <<"AuthorizerPayloadFormatVersion">> => string(),
+%%   <<"AuthorizerResultTtlInSeconds">> => integer(),
+%%   <<"AuthorizerType">> => list(any()),
+%%   <<"AuthorizerUri">> => string(),
+%%   <<"EnableSimpleResponses">> => boolean(),
+%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentityValidationExpression">> => string(),
+%%   <<"JwtConfiguration">> => j_w_t_configuration(),
+%%   <<"Name">> => string()
+%% }
+-type update_authorizer_request() :: #{binary() => any()}.
+%% Example:
+%% delete_api_request() :: #{}
+-type delete_api_request() :: #{}.
+%% Example:
+%% get_route_request() :: #{}
+-type get_route_request() :: #{}.
+
+%% Example:
+%% route_response() :: #{
+%%   <<"ModelSelectionExpression">> => string(),
+%%   <<"ResponseModels">> => map(),
+%%   <<"ResponseParameters">> => map(),
+%%   <<"RouteResponseId">> => string(),
+%%   <<"RouteResponseKey">> => string()
+%% }
+-type route_response() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Creates an Api resource.
+-spec create_api(map(), create_api_request()) ->
+    {ok, create_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_api(Client, Input) ->
     create_api(Client, Input, []).
+
+-spec create_api(map(), create_api_request(), proplists:proplist()) ->
+    {ok, create_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_api(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis"],
@@ -208,8 +1684,23 @@ create_api(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an API mapping.
+-spec create_api_mapping(map(), binary() | list(), create_api_mapping_request()) ->
+    {ok, create_api_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_api_mapping(Client, DomainName, Input) ->
     create_api_mapping(Client, DomainName, Input, []).
+
+-spec create_api_mapping(map(), binary() | list(), create_api_mapping_request(), proplists:proplist()) ->
+    {ok, create_api_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_api_mapping(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings"],
@@ -233,8 +1724,23 @@ create_api_mapping(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Authorizer for an API.
+-spec create_authorizer(map(), binary() | list(), create_authorizer_request()) ->
+    {ok, create_authorizer_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_authorizer(Client, ApiId, Input) ->
     create_authorizer(Client, ApiId, Input, []).
+
+-spec create_authorizer(map(), binary() | list(), create_authorizer_request(), proplists:proplist()) ->
+    {ok, create_authorizer_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_authorizer(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers"],
@@ -258,8 +1764,23 @@ create_authorizer(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Deployment for an API.
+-spec create_deployment(map(), binary() | list(), create_deployment_request()) ->
+    {ok, create_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_deployment(Client, ApiId, Input) ->
     create_deployment(Client, ApiId, Input, []).
+
+-spec create_deployment(map(), binary() | list(), create_deployment_request(), proplists:proplist()) ->
+    {ok, create_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_deployment(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments"],
@@ -283,8 +1804,25 @@ create_deployment(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a domain name.
+-spec create_domain_name(map(), create_domain_name_request()) ->
+    {ok, create_domain_name_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_domain_name(Client, Input) ->
     create_domain_name(Client, Input, []).
+
+-spec create_domain_name(map(), create_domain_name_request(), proplists:proplist()) ->
+    {ok, create_domain_name_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_domain_name(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domainnames"],
@@ -308,8 +1846,23 @@ create_domain_name(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Integration.
+-spec create_integration(map(), binary() | list(), create_integration_request()) ->
+    {ok, create_integration_result(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_integration(Client, ApiId, Input) ->
     create_integration(Client, ApiId, Input, []).
+
+-spec create_integration(map(), binary() | list(), create_integration_request(), proplists:proplist()) ->
+    {ok, create_integration_result(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_integration(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations"],
@@ -333,8 +1886,23 @@ create_integration(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an IntegrationResponses.
+-spec create_integration_response(map(), binary() | list(), binary() | list(), create_integration_response_request()) ->
+    {ok, create_integration_response_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_integration_response(Client, ApiId, IntegrationId, Input) ->
     create_integration_response(Client, ApiId, IntegrationId, Input, []).
+
+-spec create_integration_response(map(), binary() | list(), binary() | list(), create_integration_response_request(), proplists:proplist()) ->
+    {ok, create_integration_response_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_integration_response(Client, ApiId, IntegrationId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses"],
@@ -358,8 +1926,23 @@ create_integration_response(Client, ApiId, IntegrationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Model for an API.
+-spec create_model(map(), binary() | list(), create_model_request()) ->
+    {ok, create_model_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_model(Client, ApiId, Input) ->
     create_model(Client, ApiId, Input, []).
+
+-spec create_model(map(), binary() | list(), create_model_request(), proplists:proplist()) ->
+    {ok, create_model_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_model(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models"],
@@ -383,8 +1966,23 @@ create_model(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Route for an API.
+-spec create_route(map(), binary() | list(), create_route_request()) ->
+    {ok, create_route_result(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_route(Client, ApiId, Input) ->
     create_route(Client, ApiId, Input, []).
+
+-spec create_route(map(), binary() | list(), create_route_request(), proplists:proplist()) ->
+    {ok, create_route_result(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_route(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes"],
@@ -408,8 +2006,23 @@ create_route(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a RouteResponse for a Route.
+-spec create_route_response(map(), binary() | list(), binary() | list(), create_route_response_request()) ->
+    {ok, create_route_response_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_route_response(Client, ApiId, RouteId, Input) ->
     create_route_response(Client, ApiId, RouteId, Input, []).
+
+-spec create_route_response(map(), binary() | list(), binary() | list(), create_route_response_request(), proplists:proplist()) ->
+    {ok, create_route_response_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_route_response(Client, ApiId, RouteId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses"],
@@ -433,8 +2046,23 @@ create_route_response(Client, ApiId, RouteId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Stage for an API.
+-spec create_stage(map(), binary() | list(), create_stage_request()) ->
+    {ok, create_stage_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_stage(Client, ApiId, Input) ->
     create_stage(Client, ApiId, Input, []).
+
+-spec create_stage(map(), binary() | list(), create_stage_request(), proplists:proplist()) ->
+    {ok, create_stage_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_stage(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages"],
@@ -458,8 +2086,19 @@ create_stage(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a VPC link.
+-spec create_vpc_link(map(), create_vpc_link_request()) ->
+    {ok, create_vpc_link_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_vpc_link(Client, Input) ->
     create_vpc_link(Client, Input, []).
+
+-spec create_vpc_link(map(), create_vpc_link_request(), proplists:proplist()) ->
+    {ok, create_vpc_link_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_vpc_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/vpclinks"],
@@ -485,8 +2124,19 @@ create_vpc_link(Client, Input0, Options0) ->
 %% @doc Deletes the AccessLogSettings for a Stage.
 %%
 %% To disable access logging for a Stage, delete its AccessLogSettings.
+-spec delete_access_log_settings(map(), binary() | list(), binary() | list(), delete_access_log_settings_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_access_log_settings(Client, ApiId, StageName, Input) ->
     delete_access_log_settings(Client, ApiId, StageName, Input, []).
+
+-spec delete_access_log_settings(map(), binary() | list(), binary() | list(), delete_access_log_settings_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_access_log_settings(Client, ApiId, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/accesslogsettings"],
@@ -510,8 +2160,19 @@ delete_access_log_settings(Client, ApiId, StageName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Api resource.
+-spec delete_api(map(), binary() | list(), delete_api_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_api(Client, ApiId, Input) ->
     delete_api(Client, ApiId, Input, []).
+
+-spec delete_api(map(), binary() | list(), delete_api_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_api(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
@@ -535,8 +2196,21 @@ delete_api(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an API mapping.
+-spec delete_api_mapping(map(), binary() | list(), binary() | list(), delete_api_mapping_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_api_mapping(Client, ApiMappingId, DomainName, Input) ->
     delete_api_mapping(Client, ApiMappingId, DomainName, Input, []).
+
+-spec delete_api_mapping(map(), binary() | list(), binary() | list(), delete_api_mapping_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_api_mapping(Client, ApiMappingId, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
@@ -560,8 +2234,19 @@ delete_api_mapping(Client, ApiMappingId, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Authorizer.
+-spec delete_authorizer(map(), binary() | list(), binary() | list(), delete_authorizer_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_authorizer(Client, ApiId, AuthorizerId, Input) ->
     delete_authorizer(Client, ApiId, AuthorizerId, Input, []).
+
+-spec delete_authorizer(map(), binary() | list(), binary() | list(), delete_authorizer_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_authorizer(Client, ApiId, AuthorizerId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
@@ -585,8 +2270,19 @@ delete_authorizer(Client, ApiId, AuthorizerId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a CORS configuration.
+-spec delete_cors_configuration(map(), binary() | list(), delete_cors_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_cors_configuration(Client, ApiId, Input) ->
     delete_cors_configuration(Client, ApiId, Input, []).
+
+-spec delete_cors_configuration(map(), binary() | list(), delete_cors_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_cors_configuration(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/cors"],
@@ -610,8 +2306,19 @@ delete_cors_configuration(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Deployment.
+-spec delete_deployment(map(), binary() | list(), binary() | list(), delete_deployment_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_deployment(Client, ApiId, DeploymentId, Input) ->
     delete_deployment(Client, ApiId, DeploymentId, Input, []).
+
+-spec delete_deployment(map(), binary() | list(), binary() | list(), delete_deployment_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_deployment(Client, ApiId, DeploymentId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -635,8 +2342,19 @@ delete_deployment(Client, ApiId, DeploymentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a domain name.
+-spec delete_domain_name(map(), binary() | list(), delete_domain_name_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_domain_name(Client, DomainName, Input) ->
     delete_domain_name(Client, DomainName, Input, []).
+
+-spec delete_domain_name(map(), binary() | list(), delete_domain_name_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_domain_name(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
@@ -660,8 +2378,19 @@ delete_domain_name(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Integration.
+-spec delete_integration(map(), binary() | list(), binary() | list(), delete_integration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_integration(Client, ApiId, IntegrationId, Input) ->
     delete_integration(Client, ApiId, IntegrationId, Input, []).
+
+-spec delete_integration(map(), binary() | list(), binary() | list(), delete_integration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_integration(Client, ApiId, IntegrationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
@@ -685,8 +2414,19 @@ delete_integration(Client, ApiId, IntegrationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an IntegrationResponses.
+-spec delete_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), delete_integration_response_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input) ->
     delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input, []).
+
+-spec delete_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), delete_integration_response_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
@@ -710,8 +2450,19 @@ delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Model.
+-spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_model(Client, ApiId, ModelId, Input) ->
     delete_model(Client, ApiId, ModelId, Input, []).
+
+-spec delete_model(map(), binary() | list(), binary() | list(), delete_model_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_model(Client, ApiId, ModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
@@ -735,8 +2486,19 @@ delete_model(Client, ApiId, ModelId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Route.
+-spec delete_route(map(), binary() | list(), binary() | list(), delete_route_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_route(Client, ApiId, RouteId, Input) ->
     delete_route(Client, ApiId, RouteId, Input, []).
+
+-spec delete_route(map(), binary() | list(), binary() | list(), delete_route_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_route(Client, ApiId, RouteId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
@@ -762,8 +2524,19 @@ delete_route(Client, ApiId, RouteId, Input0, Options0) ->
 %% @doc Deletes a route request parameter.
 %%
 %% Supported only for WebSocket APIs.
+-spec delete_route_request_parameter(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_request_parameter_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input) ->
     delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input, []).
+
+-spec delete_route_request_parameter(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_request_parameter_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/requestparameters/", aws_util:encode_uri(RequestParameterKey), ""],
@@ -787,8 +2560,19 @@ delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Inpu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a RouteResponse.
+-spec delete_route_response(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_response_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input) ->
     delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input, []).
+
+-spec delete_route_response(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_response_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
@@ -812,8 +2596,19 @@ delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the RouteSettings for a stage.
+-spec delete_route_settings(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_settings_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_route_settings(Client, ApiId, RouteKey, StageName, Input) ->
     delete_route_settings(Client, ApiId, RouteKey, StageName, Input, []).
+
+-spec delete_route_settings(map(), binary() | list(), binary() | list(), binary() | list(), delete_route_settings_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_route_settings(Client, ApiId, RouteKey, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/routesettings/", aws_util:encode_uri(RouteKey), ""],
@@ -837,8 +2632,19 @@ delete_route_settings(Client, ApiId, RouteKey, StageName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Stage.
+-spec delete_stage(map(), binary() | list(), binary() | list(), delete_stage_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_stage(Client, ApiId, StageName, Input) ->
     delete_stage(Client, ApiId, StageName, Input, []).
+
+-spec delete_stage(map(), binary() | list(), binary() | list(), delete_stage_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_stage(Client, ApiId, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
@@ -862,8 +2668,19 @@ delete_stage(Client, ApiId, StageName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a VPC link.
+-spec delete_vpc_link(map(), binary() | list(), delete_vpc_link_request()) ->
+    {ok, delete_vpc_link_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_vpc_link(Client, VpcLinkId, Input) ->
     delete_vpc_link(Client, VpcLinkId, Input, []).
+
+-spec delete_vpc_link(map(), binary() | list(), delete_vpc_link_request(), proplists:proplist()) ->
+    {ok, delete_vpc_link_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
@@ -887,14 +2704,32 @@ delete_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 
+-spec export_api(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, export_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 export_api(Client, ApiId, Specification, OutputType)
   when is_map(Client) ->
     export_api(Client, ApiId, Specification, OutputType, #{}, #{}).
 
+-spec export_api(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, export_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap, []).
 
+-spec export_api(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, export_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/exports/", aws_util:encode_uri(Specification), ""],
@@ -919,14 +2754,29 @@ export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Api resource.
+-spec get_api(map(), binary() | list()) ->
+    {ok, get_api_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_api(Client, ApiId)
   when is_map(Client) ->
     get_api(Client, ApiId, #{}, #{}).
 
+-spec get_api(map(), binary() | list(), map(), map()) ->
+    {ok, get_api_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_api(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api(Client, ApiId, QueryMap, HeadersMap, []).
 
+-spec get_api(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_api_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_api(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
@@ -944,14 +2794,32 @@ get_api(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an API mapping.
+-spec get_api_mapping(map(), binary() | list(), binary() | list()) ->
+    {ok, get_api_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_api_mapping(Client, ApiMappingId, DomainName)
   when is_map(Client) ->
     get_api_mapping(Client, ApiMappingId, DomainName, #{}, #{}).
 
+-spec get_api_mapping(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_api_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap, []).
 
+-spec get_api_mapping(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_api_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
@@ -969,14 +2837,32 @@ get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets API mappings.
+-spec get_api_mappings(map(), binary() | list()) ->
+    {ok, get_api_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_api_mappings(Client, DomainName)
   when is_map(Client) ->
     get_api_mappings(Client, DomainName, #{}, #{}).
 
+-spec get_api_mappings(map(), binary() | list(), map(), map()) ->
+    {ok, get_api_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_api_mappings(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_mappings(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec get_api_mappings(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_api_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_api_mappings(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings"],
@@ -999,14 +2885,32 @@ get_api_mappings(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a collection of Api resources.
+-spec get_apis(map()) ->
+    {ok, get_apis_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_apis(Client)
   when is_map(Client) ->
     get_apis(Client, #{}, #{}).
 
+-spec get_apis(map(), map(), map()) ->
+    {ok, get_apis_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_apis(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apis(Client, QueryMap, HeadersMap, []).
 
+-spec get_apis(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_apis_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_apis(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis"],
@@ -1029,14 +2933,29 @@ get_apis(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Authorizer.
+-spec get_authorizer(map(), binary() | list(), binary() | list()) ->
+    {ok, get_authorizer_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_authorizer(Client, ApiId, AuthorizerId)
   when is_map(Client) ->
     get_authorizer(Client, ApiId, AuthorizerId, #{}, #{}).
 
+-spec get_authorizer(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_authorizer_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap, []).
 
+-spec get_authorizer(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_authorizer_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
@@ -1054,14 +2973,32 @@ get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Authorizers for an API.
+-spec get_authorizers(map(), binary() | list()) ->
+    {ok, get_authorizers_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_authorizers(Client, ApiId)
   when is_map(Client) ->
     get_authorizers(Client, ApiId, #{}, #{}).
 
+-spec get_authorizers(map(), binary() | list(), map(), map()) ->
+    {ok, get_authorizers_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_authorizers(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_authorizers(Client, ApiId, QueryMap, HeadersMap, []).
 
+-spec get_authorizers(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_authorizers_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_authorizers(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers"],
@@ -1084,14 +3021,29 @@ get_authorizers(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a Deployment.
+-spec get_deployment(map(), binary() | list(), binary() | list()) ->
+    {ok, get_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_deployment(Client, ApiId, DeploymentId)
   when is_map(Client) ->
     get_deployment(Client, ApiId, DeploymentId, #{}, #{}).
 
+-spec get_deployment(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap, []).
 
+-spec get_deployment(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -1109,14 +3061,32 @@ get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Deployments for an API.
+-spec get_deployments(map(), binary() | list()) ->
+    {ok, get_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_deployments(Client, ApiId)
   when is_map(Client) ->
     get_deployments(Client, ApiId, #{}, #{}).
 
+-spec get_deployments(map(), binary() | list(), map(), map()) ->
+    {ok, get_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_deployments(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployments(Client, ApiId, QueryMap, HeadersMap, []).
 
+-spec get_deployments(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_deployments(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments"],
@@ -1139,14 +3109,29 @@ get_deployments(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a domain name.
+-spec get_domain_name(map(), binary() | list()) ->
+    {ok, get_domain_name_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_domain_name(Client, DomainName)
   when is_map(Client) ->
     get_domain_name(Client, DomainName, #{}, #{}).
 
+-spec get_domain_name(map(), binary() | list(), map(), map()) ->
+    {ok, get_domain_name_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_domain_name(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_name(Client, DomainName, QueryMap, HeadersMap, []).
 
+-spec get_domain_name(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_domain_name_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
@@ -1164,14 +3149,32 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the domain names for an AWS account.
+-spec get_domain_names(map()) ->
+    {ok, get_domain_names_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_domain_names(Client)
   when is_map(Client) ->
     get_domain_names(Client, #{}, #{}).
 
+-spec get_domain_names(map(), map(), map()) ->
+    {ok, get_domain_names_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_names(Client, QueryMap, HeadersMap, []).
 
+-spec get_domain_names(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_domain_names_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_domain_names(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domainnames"],
@@ -1194,14 +3197,29 @@ get_domain_names(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Integration.
+-spec get_integration(map(), binary() | list(), binary() | list()) ->
+    {ok, get_integration_result(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integration(Client, ApiId, IntegrationId)
   when is_map(Client) ->
     get_integration(Client, ApiId, IntegrationId, #{}, #{}).
 
+-spec get_integration(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_integration_result(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap, []).
 
+-spec get_integration(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_integration_result(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
@@ -1219,14 +3237,29 @@ get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an IntegrationResponses.
+-spec get_integration_response(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_integration_response_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId)
   when is_map(Client) ->
     get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, #{}, #{}).
 
+-spec get_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_integration_response_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, QueryMap, HeadersMap, []).
 
+-spec get_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_integration_response_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
@@ -1244,14 +3277,32 @@ get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Qu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the IntegrationResponses for an Integration.
+-spec get_integration_responses(map(), binary() | list(), binary() | list()) ->
+    {ok, get_integration_responses_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integration_responses(Client, ApiId, IntegrationId)
   when is_map(Client) ->
     get_integration_responses(Client, ApiId, IntegrationId, #{}, #{}).
 
+-spec get_integration_responses(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_integration_responses_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap, []).
 
+-spec get_integration_responses(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_integration_responses_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses"],
@@ -1274,14 +3325,32 @@ get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Integrations for an API.
+-spec get_integrations(map(), binary() | list()) ->
+    {ok, get_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integrations(Client, ApiId)
   when is_map(Client) ->
     get_integrations(Client, ApiId, #{}, #{}).
 
+-spec get_integrations(map(), binary() | list(), map(), map()) ->
+    {ok, get_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integrations(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integrations(Client, ApiId, QueryMap, HeadersMap, []).
 
+-spec get_integrations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_integrations_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_integrations(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations"],
@@ -1304,14 +3373,29 @@ get_integrations(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a Model.
+-spec get_model(map(), binary() | list(), binary() | list()) ->
+    {ok, get_model_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_model(Client, ApiId, ModelId)
   when is_map(Client) ->
     get_model(Client, ApiId, ModelId, #{}, #{}).
 
+-spec get_model(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_model_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_model(Client, ApiId, ModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model(Client, ApiId, ModelId, QueryMap, HeadersMap, []).
 
+-spec get_model(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_model_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_model(Client, ApiId, ModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
@@ -1329,14 +3413,29 @@ get_model(Client, ApiId, ModelId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a model template.
+-spec get_model_template(map(), binary() | list(), binary() | list()) ->
+    {ok, get_model_template_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_model_template(Client, ApiId, ModelId)
   when is_map(Client) ->
     get_model_template(Client, ApiId, ModelId, #{}, #{}).
 
+-spec get_model_template(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_model_template_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap, []).
 
+-spec get_model_template(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_model_template_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), "/template"],
@@ -1354,14 +3453,32 @@ get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Models for an API.
+-spec get_models(map(), binary() | list()) ->
+    {ok, get_models_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_models(Client, ApiId)
   when is_map(Client) ->
     get_models(Client, ApiId, #{}, #{}).
 
+-spec get_models(map(), binary() | list(), map(), map()) ->
+    {ok, get_models_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_models(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_models(Client, ApiId, QueryMap, HeadersMap, []).
 
+-spec get_models(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_models_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_models(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models"],
@@ -1384,14 +3501,29 @@ get_models(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a Route.
+-spec get_route(map(), binary() | list(), binary() | list()) ->
+    {ok, get_route_result(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_route(Client, ApiId, RouteId)
   when is_map(Client) ->
     get_route(Client, ApiId, RouteId, #{}, #{}).
 
+-spec get_route(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_route_result(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_route(Client, ApiId, RouteId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_route(Client, ApiId, RouteId, QueryMap, HeadersMap, []).
 
+-spec get_route(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_route_result(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_route(Client, ApiId, RouteId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
@@ -1409,14 +3541,29 @@ get_route(Client, ApiId, RouteId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a RouteResponse.
+-spec get_route_response(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_route_response_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_route_response(Client, ApiId, RouteId, RouteResponseId)
   when is_map(Client) ->
     get_route_response(Client, ApiId, RouteId, RouteResponseId, #{}, #{}).
 
+-spec get_route_response(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_route_response_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap, []).
 
+-spec get_route_response(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_route_response_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
@@ -1434,14 +3581,32 @@ get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the RouteResponses for a Route.
+-spec get_route_responses(map(), binary() | list(), binary() | list()) ->
+    {ok, get_route_responses_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_route_responses(Client, ApiId, RouteId)
   when is_map(Client) ->
     get_route_responses(Client, ApiId, RouteId, #{}, #{}).
 
+-spec get_route_responses(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_route_responses_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap, []).
 
+-spec get_route_responses(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_route_responses_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses"],
@@ -1464,14 +3629,32 @@ get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Routes for an API.
+-spec get_routes(map(), binary() | list()) ->
+    {ok, get_routes_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_routes(Client, ApiId)
   when is_map(Client) ->
     get_routes(Client, ApiId, #{}, #{}).
 
+-spec get_routes(map(), binary() | list(), map(), map()) ->
+    {ok, get_routes_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_routes(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_routes(Client, ApiId, QueryMap, HeadersMap, []).
 
+-spec get_routes(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_routes_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_routes(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes"],
@@ -1494,14 +3677,29 @@ get_routes(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a Stage.
+-spec get_stage(map(), binary() | list(), binary() | list()) ->
+    {ok, get_stage_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_stage(Client, ApiId, StageName)
   when is_map(Client) ->
     get_stage(Client, ApiId, StageName, #{}, #{}).
 
+-spec get_stage(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_stage_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_stage(Client, ApiId, StageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_stage(Client, ApiId, StageName, QueryMap, HeadersMap, []).
 
+-spec get_stage(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_stage_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_stage(Client, ApiId, StageName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
@@ -1519,14 +3717,32 @@ get_stage(Client, ApiId, StageName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the Stages for an API.
+-spec get_stages(map(), binary() | list()) ->
+    {ok, get_stages_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_stages(Client, ApiId)
   when is_map(Client) ->
     get_stages(Client, ApiId, #{}, #{}).
 
+-spec get_stages(map(), binary() | list(), map(), map()) ->
+    {ok, get_stages_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_stages(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_stages(Client, ApiId, QueryMap, HeadersMap, []).
 
+-spec get_stages(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_stages_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_stages(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages"],
@@ -1549,14 +3765,35 @@ get_stages(Client, ApiId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a collection of Tag resources.
+-spec get_tags(map(), binary() | list()) ->
+    {ok, get_tags_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_tags(Client, ResourceArn)
   when is_map(Client) ->
     get_tags(Client, ResourceArn, #{}, #{}).
 
+-spec get_tags(map(), binary() | list(), map(), map()) ->
+    {ok, get_tags_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec get_tags(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_tags_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1574,14 +3811,29 @@ get_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a VPC link.
+-spec get_vpc_link(map(), binary() | list()) ->
+    {ok, get_vpc_link_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_vpc_link(Client, VpcLinkId)
   when is_map(Client) ->
     get_vpc_link(Client, VpcLinkId, #{}, #{}).
 
+-spec get_vpc_link(map(), binary() | list(), map(), map()) ->
+    {ok, get_vpc_link_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, []).
 
+-spec get_vpc_link(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_vpc_link_response(), tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
@@ -1599,14 +3851,29 @@ get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a collection of VPC links.
+-spec get_vpc_links(map()) ->
+    {ok, get_vpc_links_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_vpc_links(Client)
   when is_map(Client) ->
     get_vpc_links(Client, #{}, #{}).
 
+-spec get_vpc_links(map(), map(), map()) ->
+    {ok, get_vpc_links_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_vpc_links(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vpc_links(Client, QueryMap, HeadersMap, []).
 
+-spec get_vpc_links(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_vpc_links_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 get_vpc_links(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/vpclinks"],
@@ -1629,8 +3896,23 @@ get_vpc_links(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Imports an API.
+-spec import_api(map(), import_api_request()) ->
+    {ok, import_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 import_api(Client, Input) ->
     import_api(Client, Input, []).
+
+-spec import_api(map(), import_api_request(), proplists:proplist()) ->
+    {ok, import_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 import_api(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/apis"],
@@ -1656,8 +3938,23 @@ import_api(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Puts an Api resource.
+-spec reimport_api(map(), binary() | list(), reimport_api_request()) ->
+    {ok, reimport_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 reimport_api(Client, ApiId, Input) ->
     reimport_api(Client, ApiId, Input, []).
+
+-spec reimport_api(map(), binary() | list(), reimport_api_request(), proplists:proplist()) ->
+    {ok, reimport_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 reimport_api(Client, ApiId, Input0, Options0) ->
     Method = put,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
@@ -1685,8 +3982,19 @@ reimport_api(Client, ApiId, Input0, Options0) ->
 %% @doc Resets all authorizer cache entries on a stage.
 %%
 %% Supported only for HTTP APIs.
+-spec reset_authorizers_cache(map(), binary() | list(), binary() | list(), reset_authorizers_cache_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 reset_authorizers_cache(Client, ApiId, StageName, Input) ->
     reset_authorizers_cache(Client, ApiId, StageName, Input, []).
+
+-spec reset_authorizers_cache(map(), binary() | list(), binary() | list(), reset_authorizers_cache_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 reset_authorizers_cache(Client, ApiId, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/authorizers"],
@@ -1710,8 +4018,23 @@ reset_authorizers_cache(Client, ApiId, StageName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Tag resource to represent a tag.
+-spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1735,8 +4058,23 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Tag.
+-spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -1761,8 +4099,23 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Api resource.
+-spec update_api(map(), binary() | list(), update_api_request()) ->
+    {ok, update_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_api(Client, ApiId, Input) ->
     update_api(Client, ApiId, Input, []).
+
+-spec update_api(map(), binary() | list(), update_api_request(), proplists:proplist()) ->
+    {ok, update_api_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_api(Client, ApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
@@ -1786,8 +4139,23 @@ update_api(Client, ApiId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The API mapping.
+-spec update_api_mapping(map(), binary() | list(), binary() | list(), update_api_mapping_request()) ->
+    {ok, update_api_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_api_mapping(Client, ApiMappingId, DomainName, Input) ->
     update_api_mapping(Client, ApiMappingId, DomainName, Input, []).
+
+-spec update_api_mapping(map(), binary() | list(), binary() | list(), update_api_mapping_request(), proplists:proplist()) ->
+    {ok, update_api_mapping_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_api_mapping(Client, ApiMappingId, DomainName, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
@@ -1811,8 +4179,23 @@ update_api_mapping(Client, ApiMappingId, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Authorizer.
+-spec update_authorizer(map(), binary() | list(), binary() | list(), update_authorizer_request()) ->
+    {ok, update_authorizer_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_authorizer(Client, ApiId, AuthorizerId, Input) ->
     update_authorizer(Client, ApiId, AuthorizerId, Input, []).
+
+-spec update_authorizer(map(), binary() | list(), binary() | list(), update_authorizer_request(), proplists:proplist()) ->
+    {ok, update_authorizer_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_authorizer(Client, ApiId, AuthorizerId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
@@ -1836,8 +4219,23 @@ update_authorizer(Client, ApiId, AuthorizerId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Deployment.
+-spec update_deployment(map(), binary() | list(), binary() | list(), update_deployment_request()) ->
+    {ok, update_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_deployment(Client, ApiId, DeploymentId, Input) ->
     update_deployment(Client, ApiId, DeploymentId, Input, []).
+
+-spec update_deployment(map(), binary() | list(), binary() | list(), update_deployment_request(), proplists:proplist()) ->
+    {ok, update_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_deployment(Client, ApiId, DeploymentId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
@@ -1861,8 +4259,23 @@ update_deployment(Client, ApiId, DeploymentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a domain name.
+-spec update_domain_name(map(), binary() | list(), update_domain_name_request()) ->
+    {ok, update_domain_name_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_domain_name(Client, DomainName, Input) ->
     update_domain_name(Client, DomainName, Input, []).
+
+-spec update_domain_name(map(), binary() | list(), update_domain_name_request(), proplists:proplist()) ->
+    {ok, update_domain_name_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_domain_name(Client, DomainName, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
@@ -1886,8 +4299,23 @@ update_domain_name(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an Integration.
+-spec update_integration(map(), binary() | list(), binary() | list(), update_integration_request()) ->
+    {ok, update_integration_result(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_integration(Client, ApiId, IntegrationId, Input) ->
     update_integration(Client, ApiId, IntegrationId, Input, []).
+
+-spec update_integration(map(), binary() | list(), binary() | list(), update_integration_request(), proplists:proplist()) ->
+    {ok, update_integration_result(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_integration(Client, ApiId, IntegrationId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
@@ -1911,8 +4339,23 @@ update_integration(Client, ApiId, IntegrationId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an IntegrationResponses.
+-spec update_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), update_integration_response_request()) ->
+    {ok, update_integration_response_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input) ->
     update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input, []).
+
+-spec update_integration_response(map(), binary() | list(), binary() | list(), binary() | list(), update_integration_response_request(), proplists:proplist()) ->
+    {ok, update_integration_response_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
@@ -1936,8 +4379,23 @@ update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Model.
+-spec update_model(map(), binary() | list(), binary() | list(), update_model_request()) ->
+    {ok, update_model_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_model(Client, ApiId, ModelId, Input) ->
     update_model(Client, ApiId, ModelId, Input, []).
+
+-spec update_model(map(), binary() | list(), binary() | list(), update_model_request(), proplists:proplist()) ->
+    {ok, update_model_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_model(Client, ApiId, ModelId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
@@ -1961,8 +4419,23 @@ update_model(Client, ApiId, ModelId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Route.
+-spec update_route(map(), binary() | list(), binary() | list(), update_route_request()) ->
+    {ok, update_route_result(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_route(Client, ApiId, RouteId, Input) ->
     update_route(Client, ApiId, RouteId, Input, []).
+
+-spec update_route(map(), binary() | list(), binary() | list(), update_route_request(), proplists:proplist()) ->
+    {ok, update_route_result(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_route(Client, ApiId, RouteId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
@@ -1986,8 +4459,23 @@ update_route(Client, ApiId, RouteId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a RouteResponse.
+-spec update_route_response(map(), binary() | list(), binary() | list(), binary() | list(), update_route_response_request()) ->
+    {ok, update_route_response_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_route_response(Client, ApiId, RouteId, RouteResponseId, Input) ->
     update_route_response(Client, ApiId, RouteId, RouteResponseId, Input, []).
+
+-spec update_route_response(map(), binary() | list(), binary() | list(), binary() | list(), update_route_response_request(), proplists:proplist()) ->
+    {ok, update_route_response_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
@@ -2011,8 +4499,23 @@ update_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Stage.
+-spec update_stage(map(), binary() | list(), binary() | list(), update_stage_request()) ->
+    {ok, update_stage_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_stage(Client, ApiId, StageName, Input) ->
     update_stage(Client, ApiId, StageName, Input, []).
+
+-spec update_stage(map(), binary() | list(), binary() | list(), update_stage_request(), proplists:proplist()) ->
+    {ok, update_stage_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_stage(Client, ApiId, StageName, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
@@ -2036,8 +4539,21 @@ update_stage(Client, ApiId, StageName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a VPC link.
+-spec update_vpc_link(map(), binary() | list(), update_vpc_link_request()) ->
+    {ok, update_vpc_link_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_vpc_link(Client, VpcLinkId, Input) ->
     update_vpc_link(Client, VpcLinkId, Input, []).
+
+-spec update_vpc_link(map(), binary() | list(), update_vpc_link_request(), proplists:proplist()) ->
+    {ok, update_vpc_link_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
@@ -2064,7 +4580,7 @@ update_vpc_link(Client, VpcLinkId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

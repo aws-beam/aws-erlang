@@ -64,6 +64,335 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% delete_hsm_request() :: #{
+%%   <<"HsmArn">> := string()
+%% }
+-type delete_hsm_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hsm_response() :: #{
+%%   <<"HsmArn">> => string()
+%% }
+-type create_hsm_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_hapg_response() :: #{
+%%   <<"HapgArn">> => string()
+%% }
+-type modify_hapg_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_luna_client_request() :: #{
+%%   <<"Certificate">> := string(),
+%%   <<"ClientArn">> := string()
+%% }
+-type modify_luna_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_hsm_request() :: #{
+%%   <<"EniIp">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"HsmArn">> := string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"SyslogIp">> => string()
+%% }
+-type modify_hsm_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hapgs_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_hapgs_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type remove_tags_from_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_config_request() :: #{
+%%   <<"ClientArn">> := string(),
+%%   <<"ClientVersion">> := list(any()),
+%%   <<"HapgList">> := list(string()())
+%% }
+-type get_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hsms_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_hsms_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_luna_clients_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_luna_clients_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_config_response() :: #{
+%%   <<"ConfigCred">> => string(),
+%%   <<"ConfigFile">> => string(),
+%%   <<"ConfigType">> => string()
+%% }
+-type get_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hapg_request() :: #{
+%%   <<"HapgArn">> := string()
+%% }
+-type describe_hapg_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_luna_client_request() :: #{
+%%   <<"ClientArn">> := string()
+%% }
+-type delete_luna_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagList">> := list(tag()())
+%% }
+-type add_tags_to_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hsm_response() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"EniId">> => string(),
+%%   <<"EniIp">> => string(),
+%%   <<"HsmArn">> => string(),
+%%   <<"HsmType">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"Partitions">> => list(string()()),
+%%   <<"SerialNumber">> => string(),
+%%   <<"ServerCertLastUpdated">> => string(),
+%%   <<"ServerCertUri">> => string(),
+%%   <<"SoftwareVersion">> => string(),
+%%   <<"SshKeyLastUpdated">> => string(),
+%%   <<"SshPublicKey">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"SubscriptionEndDate">> => string(),
+%%   <<"SubscriptionStartDate">> => string(),
+%%   <<"SubscriptionType">> => list(any()),
+%%   <<"VendorName">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type describe_hsm_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_luna_client_response() :: #{
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateFingerprint">> => string(),
+%%   <<"ClientArn">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"LastModifiedTimestamp">> => string()
+%% }
+-type describe_luna_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_luna_client_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type delete_luna_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_luna_client_response() :: #{
+%%   <<"ClientArn">> => string()
+%% }
+-type create_luna_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hsm_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type delete_hsm_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hapg_request() :: #{
+%%   <<"HapgArn">> := string()
+%% }
+-type delete_hapg_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_luna_client_response() :: #{
+%%   <<"ClientArn">> => string()
+%% }
+-type modify_luna_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_hapg_request() :: #{
+%%   <<"HapgArn">> := string(),
+%%   <<"Label">> => string(),
+%%   <<"PartitionSerialList">> => list(string()())
+%% }
+-type modify_hapg_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryable">> => boolean()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_hapg_response() :: #{
+%%   <<"HapgArn">> => string()
+%% }
+-type create_hapg_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hsm_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"EniIp">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"SshKey">> := string(),
+%%   <<"SubnetId">> := string(),
+%%   <<"SubscriptionType">> := list(any()),
+%%   <<"SyslogIp">> => string()
+%% }
+-type create_hsm_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"TagList">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeyList">> := list(string()())
+%% }
+-type remove_tags_from_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type add_tags_to_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_hsm_internal_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryable">> => boolean()
+%% }
+-type cloud_hsm_internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_hapgs_response() :: #{
+%%   <<"HapgList">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hapgs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hsm_request() :: #{
+%%   <<"HsmArn">> => string(),
+%%   <<"HsmSerialNumber">> => string()
+%% }
+-type describe_hsm_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_zones_request() :: #{
+
+%% }
+-type list_available_zones_request() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_hsm_service_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryable">> => boolean()
+%% }
+-type cloud_hsm_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_luna_clients_response() :: #{
+%%   <<"ClientList">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_luna_clients_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_zones_response() :: #{
+%%   <<"AZList">> => list(string()())
+%% }
+-type list_available_zones_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_hapg_request() :: #{
+%%   <<"Label">> := string()
+%% }
+-type create_hapg_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hsms_response() :: #{
+%%   <<"HsmList">> => list(string()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hsms_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_luna_client_request() :: #{
+%%   <<"CertificateFingerprint">> => string(),
+%%   <<"ClientArn">> => string()
+%% }
+-type describe_luna_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hapg_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type delete_hapg_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hapg_response() :: #{
+%%   <<"HapgArn">> => string(),
+%%   <<"HapgSerial">> => string(),
+%%   <<"HsmsLastActionFailed">> => list(string()()),
+%%   <<"HsmsPendingDeletion">> => list(string()()),
+%%   <<"HsmsPendingRegistration">> => list(string()()),
+%%   <<"Label">> => string(),
+%%   <<"LastModifiedTimestamp">> => string(),
+%%   <<"PartitionSerialList">> => list(string()()),
+%%   <<"State">> => list(any())
+%% }
+-type describe_hapg_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_hsm_response() :: #{
+%%   <<"HsmArn">> => string()
+%% }
+-type modify_hsm_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_luna_client_request() :: #{
+%%   <<"Certificate">> := string(),
+%%   <<"Label">> => string()
+%% }
+-type create_luna_client_request() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -90,9 +419,22 @@
 %%
 %% Each tag consists of a key and a value. Tag keys must be unique to each
 %% resource.
+-spec add_tags_to_resource(map(), add_tags_to_resource_request()) ->
+    {ok, add_tags_to_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
+
+-spec add_tags_to_resource(map(), add_tags_to_resource_request(), proplists:proplist()) ->
+    {ok, add_tags_to_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 add_tags_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToResource">>, Input, Options).
@@ -117,9 +459,22 @@ add_tags_to_resource(Client, Input, Options)
 %% Creates a high-availability partition group. A high-availability partition
 %% group is a
 %% group of partitions that spans multiple physical HSMs.
+-spec create_hapg(map(), create_hapg_request()) ->
+    {ok, create_hapg_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 create_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hapg(Client, Input, []).
+
+-spec create_hapg(map(), create_hapg_request(), proplists:proplist()) ->
+    {ok, create_hapg_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 create_hapg(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHapg">>, Input, Options).
@@ -157,9 +512,22 @@ create_hapg(Client, Input, Options)
 %% status of the HSM with the `DescribeHsm' operation. The HSM is ready
 %% to be
 %% initialized when the status changes to `RUNNING'.
+-spec create_hsm(map(), create_hsm_request()) ->
+    {ok, create_hsm_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 create_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hsm(Client, Input, []).
+
+-spec create_hsm(map(), create_hsm_request(), proplists:proplist()) ->
+    {ok, create_hsm_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 create_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHsm">>, Input, Options).
@@ -182,9 +550,22 @@ create_hsm(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Creates an HSM client.
+-spec create_luna_client(map(), create_luna_client_request()) ->
+    {ok, create_luna_client_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 create_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_luna_client(Client, Input, []).
+
+-spec create_luna_client(map(), create_luna_client_request(), proplists:proplist()) ->
+    {ok, create_luna_client_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 create_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLunaClient">>, Input, Options).
@@ -207,9 +588,22 @@ create_luna_client(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Deletes a high-availability partition group.
+-spec delete_hapg(map(), delete_hapg_request()) ->
+    {ok, delete_hapg_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 delete_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hapg(Client, Input, []).
+
+-spec delete_hapg(map(), delete_hapg_request(), proplists:proplist()) ->
+    {ok, delete_hapg_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 delete_hapg(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHapg">>, Input, Options).
@@ -234,9 +628,22 @@ delete_hapg(Client, Input, Options)
 %% Deletes an HSM. After completion, this operation cannot be undone and your
 %% key material
 %% cannot be recovered.
+-spec delete_hsm(map(), delete_hsm_request()) ->
+    {ok, delete_hsm_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 delete_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hsm(Client, Input, []).
+
+-spec delete_hsm(map(), delete_hsm_request(), proplists:proplist()) ->
+    {ok, delete_hsm_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 delete_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHsm">>, Input, Options).
@@ -259,9 +666,22 @@ delete_hsm(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Deletes a client.
+-spec delete_luna_client(map(), delete_luna_client_request()) ->
+    {ok, delete_luna_client_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 delete_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_luna_client(Client, Input, []).
+
+-spec delete_luna_client(map(), delete_luna_client_request(), proplists:proplist()) ->
+    {ok, delete_luna_client_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 delete_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLunaClient">>, Input, Options).
@@ -284,9 +704,22 @@ delete_luna_client(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Retrieves information about a high-availability partition group.
+-spec describe_hapg(map(), describe_hapg_request()) ->
+    {ok, describe_hapg_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hapg(Client, Input, []).
+
+-spec describe_hapg(map(), describe_hapg_request(), proplists:proplist()) ->
+    {ok, describe_hapg_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_hapg(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHapg">>, Input, Options).
@@ -311,9 +744,22 @@ describe_hapg(Client, Input, Options)
 %% Retrieves information about an HSM. You can identify the HSM by its ARN or
 %% its serial
 %% number.
+-spec describe_hsm(map(), describe_hsm_request()) ->
+    {ok, describe_hsm_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hsm(Client, Input, []).
+
+-spec describe_hsm(map(), describe_hsm_request(), proplists:proplist()) ->
+    {ok, describe_hsm_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHsm">>, Input, Options).
@@ -336,9 +782,22 @@ describe_hsm(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Retrieves information about an HSM client.
+-spec describe_luna_client(map(), describe_luna_client_request()) ->
+    {ok, describe_luna_client_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_luna_client(Client, Input, []).
+
+-spec describe_luna_client(map(), describe_luna_client_request(), proplists:proplist()) ->
+    {ok, describe_luna_client_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLunaClient">>, Input, Options).
@@ -363,9 +822,22 @@ describe_luna_client(Client, Input, Options)
 %% Gets the configuration files necessary to connect to all high availability
 %% partition
 %% groups the client is associated with.
+-spec get_config(map(), get_config_request()) ->
+    {ok, get_config_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 get_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_config(Client, Input, []).
+
+-spec get_config(map(), get_config_request(), proplists:proplist()) ->
+    {ok, get_config_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 get_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConfig">>, Input, Options).
@@ -388,9 +860,22 @@ get_config(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Lists the Availability Zones that have available AWS CloudHSM capacity.
+-spec list_available_zones(map(), list_available_zones_request()) ->
+    {ok, list_available_zones_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_available_zones(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_zones(Client, Input, []).
+
+-spec list_available_zones(map(), list_available_zones_request(), proplists:proplist()) ->
+    {ok, list_available_zones_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_available_zones(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableZones">>, Input, Options).
@@ -421,9 +906,22 @@ list_available_zones(Client, Input, Options)
 %% token that you pass in the next call to `ListHapgs' to retrieve the
 %% next set of
 %% items.
+-spec list_hapgs(map(), list_hapgs_request()) ->
+    {ok, list_hapgs_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_hapgs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hapgs(Client, Input, []).
+
+-spec list_hapgs(map(), list_hapgs_request(), proplists:proplist()) ->
+    {ok, list_hapgs_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_hapgs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHapgs">>, Input, Options).
@@ -455,9 +953,22 @@ list_hapgs(Client, Input, Options)
 %% token that you pass in the next call to `ListHsms' to retrieve the
 %% next set of
 %% items.
+-spec list_hsms(map(), list_hsms_request()) ->
+    {ok, list_hsms_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_hsms(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hsms(Client, Input, []).
+
+-spec list_hsms(map(), list_hsms_request(), proplists:proplist()) ->
+    {ok, list_hsms_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_hsms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHsms">>, Input, Options).
@@ -488,9 +999,22 @@ list_hsms(Client, Input, Options)
 %% token that you pass in the next call to `ListLunaClients' to retrieve
 %% the next set
 %% of items.
+-spec list_luna_clients(map(), list_luna_clients_request()) ->
+    {ok, list_luna_clients_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_luna_clients(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_luna_clients(Client, Input, []).
+
+-spec list_luna_clients(map(), list_luna_clients_request(), proplists:proplist()) ->
+    {ok, list_luna_clients_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_luna_clients(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLunaClients">>, Input, Options).
@@ -513,9 +1037,22 @@ list_luna_clients(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Returns a list of all tags for the specified AWS CloudHSM resource.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -538,9 +1075,22 @@ list_tags_for_resource(Client, Input, Options)
 %% Reference: https://docs.aws.amazon.com/cloudhsm/latest/APIReference/.
 %%
 %% Modifies an existing high-availability partition group.
+-spec modify_hapg(map(), modify_hapg_request()) ->
+    {ok, modify_hapg_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 modify_hapg(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_hapg(Client, Input, []).
+
+-spec modify_hapg(map(), modify_hapg_request(), proplists:proplist()) ->
+    {ok, modify_hapg_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 modify_hapg(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyHapg">>, Input, Options).
@@ -571,9 +1121,22 @@ modify_hapg(Client, Input, Options)
 %% that your AWS CloudHSM service is configured for high availability, and
 %% consider executing this
 %% operation during a maintenance window.
+-spec modify_hsm(map(), modify_hsm_request()) ->
+    {ok, modify_hsm_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 modify_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_hsm(Client, Input, []).
+
+-spec modify_hsm(map(), modify_hsm_request(), proplists:proplist()) ->
+    {ok, modify_hsm_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 modify_hsm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyHsm">>, Input, Options).
@@ -600,9 +1163,18 @@ modify_hsm(Client, Input, Options)
 %% This action can potentially start a workflow to install the new
 %% certificate on the
 %% client's HSMs.
+-spec modify_luna_client(map(), modify_luna_client_request()) ->
+    {ok, modify_luna_client_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_service_exception(), tuple()}.
 modify_luna_client(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_luna_client(Client, Input, []).
+
+-spec modify_luna_client(map(), modify_luna_client_request(), proplists:proplist()) ->
+    {ok, modify_luna_client_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_service_exception(), tuple()}.
 modify_luna_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyLunaClient">>, Input, Options).
@@ -629,9 +1201,22 @@ modify_luna_client(Client, Input, Options)
 %% To remove a tag, specify only the tag key to remove (not the value). To
 %% overwrite the
 %% value for an existing tag, use `AddTagsToResource'.
+-spec remove_tags_from_resource(map(), remove_tags_from_resource_request()) ->
+    {ok, remove_tags_from_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
+
+-spec remove_tags_from_resource(map(), remove_tags_from_resource_request(), proplists:proplist()) ->
+    {ok, remove_tags_from_resource_response(), tuple()} |
+    {error, any()} |
+    {error, cloud_hsm_internal_exception(), tuple()} |
+    {error, cloud_hsm_service_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).

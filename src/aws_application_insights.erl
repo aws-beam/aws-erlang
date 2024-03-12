@@ -96,6 +96,720 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% update_problem_request() :: #{
+%%   <<"ProblemId">> := string(),
+%%   <<"UpdateStatus">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type update_problem_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_patterns_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PatternSetName">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type list_log_patterns_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_workload_response() :: #{
+%%   <<"WorkloadConfiguration">> => workload_configuration(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type add_workload_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workloads_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkloadList">> => list(workload()())
+%% }
+-type list_workloads_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_pattern_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"PatternName">> := string(),
+%%   <<"PatternSetName">> := string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type describe_log_pattern_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workloads_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ComponentName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type list_workloads_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_problem_observations_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ProblemId">> := string()
+%% }
+-type describe_problem_observations_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_problems_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProblemList">> => list(problem()()),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type list_problems_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_observation_response() :: #{
+%%   <<"Observation">> => observation()
+%% }
+-type describe_observation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_configuration_recommendation_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"RecommendationType">> => list(any()),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"Tier">> := list(any()),
+%%   <<"WorkloadName">> => string()
+%% }
+-type describe_component_configuration_recommendation_request() :: #{binary() => any()}.
+
+%% Example:
+%% log_pattern() :: #{
+%%   <<"Pattern">> => string(),
+%%   <<"PatternName">> => string(),
+%%   <<"PatternSetName">> => string(),
+%%   <<"Rank">> => integer()
+%% }
+-type log_pattern() :: #{binary() => any()}.
+
+%% Example:
+%% delete_component_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type delete_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_configuration_history_response() :: #{
+%%   <<"EventList">> => list(configuration_event()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_configuration_response() :: #{
+%%   <<"ComponentConfiguration">> => string(),
+%%   <<"Monitor">> => boolean(),
+%%   <<"Tier">> => list(any())
+%% }
+-type describe_component_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_component_response() :: #{
+
+%% }
+-type update_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_log_pattern_response() :: #{
+%%   <<"LogPattern">> => log_pattern(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type update_log_pattern_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_problem_observations_response() :: #{
+%%   <<"RelatedObservations">> => related_observations()
+%% }
+-type describe_problem_observations_response() :: #{binary() => any()}.
+
+%% Example:
+%% observation() :: #{
+%%   <<"CodeDeployInstanceGroupId">> => string(),
+%%   <<"XRayRequestCount">> => integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"MetricNamespace">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"XRayThrottlePercent">> => integer(),
+%%   <<"LogFilter">> => list(any()),
+%%   <<"Ec2State">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"StatesInput">> => string(),
+%%   <<"S3EventName">> => string(),
+%%   <<"XRayNodeName">> => string(),
+%%   <<"EbsEvent">> => string(),
+%%   <<"XRayRequestAverageLatency">> => float(),
+%%   <<"LogGroup">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"XRayErrorPercent">> => integer(),
+%%   <<"RdsEventCategories">> => string(),
+%%   <<"EbsCause">> => string(),
+%%   <<"SourceARN">> => string(),
+%%   <<"StatesExecutionArn">> => string(),
+%%   <<"HealthService">> => string(),
+%%   <<"RdsEventMessage">> => string(),
+%%   <<"MetricName">> => string(),
+%%   <<"Unit">> => string(),
+%%   <<"HealthEventTypeCode">> => string(),
+%%   <<"CodeDeployDeploymentId">> => string(),
+%%   <<"EbsResult">> => string(),
+%%   <<"XRayNodeType">> => string(),
+%%   <<"CodeDeployApplication">> => string(),
+%%   <<"CloudWatchEventDetailType">> => string(),
+%%   <<"LogText">> => string(),
+%%   <<"HealthEventArn">> => string(),
+%%   <<"CodeDeployDeploymentGroup">> => string(),
+%%   <<"StatesArn">> => string(),
+%%   <<"LineTime">> => non_neg_integer(),
+%%   <<"CloudWatchEventId">> => string(),
+%%   <<"XRayFaultPercent">> => integer(),
+%%   <<"StatesStatus">> => string(),
+%%   <<"CloudWatchEventSource">> => list(any()),
+%%   <<"CodeDeployState">> => string(),
+%%   <<"EbsRequestId">> => string(),
+%%   <<"HealthEventTypeCategory">> => string(),
+%%   <<"Value">> => float(),
+%%   <<"HealthEventDescription">> => string()
+%% }
+-type observation() :: #{binary() => any()}.
+
+%% Example:
+%% create_component_response() :: #{
+
+%% }
+-type create_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_component_configuration_response() :: #{
+
+%% }
+-type update_component_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_problem_response() :: #{
+%%   <<"Problem">> => problem()
+%% }
+-type describe_problem_response() :: #{binary() => any()}.
+
+%% Example:
+%% application_info() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AttachMissingPermission">> => boolean(),
+%%   <<"AutoConfigEnabled">> => boolean(),
+%%   <<"CWEMonitorEnabled">> => boolean(),
+%%   <<"DiscoveryType">> => list(any()),
+%%   <<"LifeCycle">> => string(),
+%%   <<"OpsCenterEnabled">> => boolean(),
+%%   <<"OpsItemSNSTopicArn">> => string(),
+%%   <<"Remarks">> => string(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type application_info() :: #{binary() => any()}.
+
+%% Example:
+%% update_component_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"NewComponentName">> => string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"ResourceList">> => list(string()())
+%% }
+-type update_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% workload() :: #{
+%%   <<"ComponentName">> => string(),
+%%   <<"Tier">> => list(any()),
+%%   <<"WorkloadId">> => string(),
+%%   <<"WorkloadName">> => string(),
+%%   <<"WorkloadRemarks">> => string()
+%% }
+-type workload() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_components_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type list_components_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_pattern_sets_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LogPatternSets">> => list(string()()),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type list_log_pattern_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_pattern_response() :: #{
+
+%% }
+-type delete_log_pattern_response() :: #{binary() => any()}.
+
+%% Example:
+%% workload_configuration() :: #{
+%%   <<"Configuration">> => string(),
+%%   <<"Tier">> => list(any()),
+%%   <<"WorkloadName">> => string()
+%% }
+-type workload_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workload_response() :: #{
+%%   <<"WorkloadConfiguration">> => workload_configuration(),
+%%   <<"WorkloadId">> => string(),
+%%   <<"WorkloadRemarks">> => string()
+%% }
+-type describe_workload_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_component_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"ResourceList">> := list(string()())
+%% }
+-type create_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_log_pattern_request() :: #{
+%%   <<"Pattern">> := string(),
+%%   <<"PatternName">> := string(),
+%%   <<"PatternSetName">> := string(),
+%%   <<"Rank">> := integer(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type create_log_pattern_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_workload_response() :: #{
+
+%% }
+-type remove_workload_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"AttachMissingPermission">> => boolean(),
+%%   <<"AutoConfigEnabled">> => boolean(),
+%%   <<"AutoCreate">> => boolean(),
+%%   <<"CWEMonitorEnabled">> => boolean(),
+%%   <<"GroupingType">> => list(any()),
+%%   <<"OpsCenterEnabled">> => boolean(),
+%%   <<"OpsItemSNSTopicArn">> => string(),
+%%   <<"ResourceGroupName">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_patterns_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LogPatterns">> => list(log_pattern()()),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type list_log_patterns_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"ApplicationInfo">> => application_info()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_log_pattern_request() :: #{
+%%   <<"Pattern">> => string(),
+%%   <<"PatternName">> := string(),
+%%   <<"PatternSetName">> := string(),
+%%   <<"Rank">> => integer(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type update_log_pattern_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workload_response() :: #{
+%%   <<"WorkloadConfiguration">> => workload_configuration(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type update_workload_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_response() :: #{
+
+%% }
+-type delete_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_log_pattern_response() :: #{
+%%   <<"LogPattern">> => log_pattern(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type create_log_pattern_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_component_response() :: #{
+
+%% }
+-type delete_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"AttachMissingPermission">> => boolean(),
+%%   <<"AutoConfigEnabled">> => boolean(),
+%%   <<"CWEMonitorEnabled">> => boolean(),
+%%   <<"OpsCenterEnabled">> => boolean(),
+%%   <<"OpsItemSNSTopicArn">> => string(),
+%%   <<"RemoveSNSTopic">> => boolean(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_response() :: #{
+%%   <<"ApplicationInfo">> => application_info()
+%% }
+-type update_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_workload_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"WorkloadId">> := string()
+%% }
+-type remove_workload_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_configuration_history_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EventStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type list_configuration_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type describe_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_problem_response() :: #{
+
+%% }
+-type update_problem_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% problem() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AffectedResource">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Feedback">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"Insights">> => string(),
+%%   <<"LastRecurrenceTime">> => non_neg_integer(),
+%%   <<"RecurringCount">> => float(),
+%%   <<"ResolutionMethod">> => list(any()),
+%%   <<"ResourceGroupName">> => string(),
+%%   <<"SeverityLevel">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type problem() :: #{binary() => any()}.
+
+%% Example:
+%% describe_observation_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ObservationId">> := string()
+%% }
+-type describe_observation_request() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_event() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"EventDetail">> => string(),
+%%   <<"EventResourceName">> => string(),
+%%   <<"EventResourceType">> => list(any()),
+%%   <<"EventStatus">> => list(any()),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"MonitoredResourceARN">> => string(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type configuration_event() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_pattern_request() :: #{
+%%   <<"PatternName">> := string(),
+%%   <<"PatternSetName">> := string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type delete_log_pattern_request() :: #{binary() => any()}.
+
+%% Example:
+%% tags_already_exist_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type tags_already_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_configuration_recommendation_response() :: #{
+%%   <<"ComponentConfiguration">> => string()
+%% }
+-type describe_component_configuration_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_pattern_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LogPattern">> => log_pattern(),
+%%   <<"ResourceGroupName">> => string()
+%% }
+-type describe_log_pattern_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_response() :: #{
+%%   <<"ApplicationComponent">> => application_component(),
+%%   <<"ResourceList">> => list(string()())
+%% }
+-type describe_component_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_problems_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ComponentName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type list_problems_request() :: #{binary() => any()}.
+
+%% Example:
+%% related_observations() :: #{
+%%   <<"ObservationList">> => list(observation()())
+%% }
+-type related_observations() :: #{binary() => any()}.
+
+%% Example:
+%% list_components_response() :: #{
+%%   <<"ApplicationComponentList">> => list(application_component()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_components_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"ApplicationInfoList">> => list(application_info()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_workload_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"WorkloadConfiguration">> := workload_configuration()
+%% }
+-type add_workload_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_configuration_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type describe_component_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_component_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type describe_component_request() :: #{binary() => any()}.
+
+%% Example:
+%% application_component() :: #{
+%%   <<"ComponentName">> => string(),
+%%   <<"ComponentRemarks">> => string(),
+%%   <<"DetectedWorkload">> => map(),
+%%   <<"Monitor">> => boolean(),
+%%   <<"OsType">> => list(any()),
+%%   <<"ResourceType">> => string(),
+%%   <<"Tier">> => list(any())
+%% }
+-type application_component() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workload_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"WorkloadId">> := string()
+%% }
+-type describe_workload_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_pattern_sets_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type list_log_pattern_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_problem_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ProblemId">> := string()
+%% }
+-type describe_problem_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workload_request() :: #{
+%%   <<"ComponentName">> := string(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"WorkloadConfiguration">> := workload_configuration(),
+%%   <<"WorkloadId">> => string()
+%% }
+-type update_workload_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_response() :: #{
+%%   <<"ApplicationInfo">> => application_info()
+%% }
+-type describe_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_component_configuration_request() :: #{
+%%   <<"AutoConfigEnabled">> => boolean(),
+%%   <<"ComponentConfiguration">> => string(),
+%%   <<"ComponentName">> := string(),
+%%   <<"Monitor">> => boolean(),
+%%   <<"ResourceGroupName">> := string(),
+%%   <<"Tier">> => list(any())
+%% }
+-type update_component_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{
+%%   <<"ResourceGroupName">> := string()
+%% }
+-type delete_application_request() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -103,34 +817,98 @@
 %% @doc Adds a workload to a component.
 %%
 %% Each component can have at most five workloads.
+-spec add_workload(map(), add_workload_request()) ->
+    {ok, add_workload_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 add_workload(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_workload(Client, Input, []).
+
+-spec add_workload(map(), add_workload_request(), proplists:proplist()) ->
+    {ok, add_workload_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 add_workload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddWorkload">>, Input, Options).
 
 %% @doc Adds an application that is created from a resource group.
+-spec create_application(map(), create_application_request()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, tags_already_exist_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application(Client, Input, []).
+
+-spec create_application(map(), create_application_request(), proplists:proplist()) ->
+    {ok, create_application_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, tags_already_exist_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplication">>, Input, Options).
 
 %% @doc Creates a custom component by grouping similar standalone instances
 %% to monitor.
+-spec create_component(map(), create_component_request()) ->
+    {ok, create_component_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_component(Client, Input, []).
+
+-spec create_component(map(), create_component_request(), proplists:proplist()) ->
+    {ok, create_component_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateComponent">>, Input, Options).
 
 %% @doc Adds an log pattern to a `LogPatternSet'.
+-spec create_log_pattern(map(), create_log_pattern_request()) ->
+    {ok, create_log_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_pattern(Client, Input, []).
+
+-spec create_log_pattern(map(), create_log_pattern_request(), proplists:proplist()) ->
+    {ok, create_log_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_log_pattern(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogPattern">>, Input, Options).
@@ -139,9 +917,24 @@ create_log_pattern(Client, Input, Options)
 %%
 %% Does not delete the
 %% application.
+-spec delete_application(map(), delete_application_request()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_application(Client, Input, []).
+
+-spec delete_application(map(), delete_application_request(), proplists:proplist()) ->
+    {ok, delete_application_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplication">>, Input, Options).
@@ -152,25 +945,66 @@ delete_application(Client, Input, Options)
 %% that are set up for the component are removed and the instances revert to
 %% their standalone
 %% status.
+-spec delete_component(map(), delete_component_request()) ->
+    {ok, delete_component_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_component(Client, Input, []).
+
+-spec delete_component(map(), delete_component_request(), proplists:proplist()) ->
+    {ok, delete_component_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteComponent">>, Input, Options).
 
 %% @doc Removes the specified log pattern from a `LogPatternSet'.
+-spec delete_log_pattern(map(), delete_log_pattern_request()) ->
+    {ok, delete_log_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_log_pattern(Client, Input, []).
+
+-spec delete_log_pattern(map(), delete_log_pattern_request(), proplists:proplist()) ->
+    {ok, delete_log_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_log_pattern(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLogPattern">>, Input, Options).
 
 %% @doc Describes the application.
+-spec describe_application(map(), describe_application_request()) ->
+    {ok, describe_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
+
+-spec describe_application(map(), describe_application_request(), proplists:proplist()) ->
+    {ok, describe_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplication">>, Input, Options).
@@ -178,82 +1012,210 @@ describe_application(Client, Input, Options)
 %% @doc Describes a component and lists the resources that are grouped
 %% together in a
 %% component.
+-spec describe_component(map(), describe_component_request()) ->
+    {ok, describe_component_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_component(Client, Input, []).
+
+-spec describe_component(map(), describe_component_request(), proplists:proplist()) ->
+    {ok, describe_component_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeComponent">>, Input, Options).
 
 %% @doc Describes the monitoring configuration of the component.
+-spec describe_component_configuration(map(), describe_component_configuration_request()) ->
+    {ok, describe_component_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_component_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_component_configuration(Client, Input, []).
+
+-spec describe_component_configuration(map(), describe_component_configuration_request(), proplists:proplist()) ->
+    {ok, describe_component_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_component_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeComponentConfiguration">>, Input, Options).
 
 %% @doc Describes the recommended monitoring configuration of the component.
+-spec describe_component_configuration_recommendation(map(), describe_component_configuration_recommendation_request()) ->
+    {ok, describe_component_configuration_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_component_configuration_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_component_configuration_recommendation(Client, Input, []).
+
+-spec describe_component_configuration_recommendation(map(), describe_component_configuration_recommendation_request(), proplists:proplist()) ->
+    {ok, describe_component_configuration_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_component_configuration_recommendation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeComponentConfigurationRecommendation">>, Input, Options).
 
 %% @doc Describe a specific log pattern from a `LogPatternSet'.
+-spec describe_log_pattern(map(), describe_log_pattern_request()) ->
+    {ok, describe_log_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_pattern(Client, Input, []).
+
+-spec describe_log_pattern(map(), describe_log_pattern_request(), proplists:proplist()) ->
+    {ok, describe_log_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_log_pattern(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLogPattern">>, Input, Options).
 
 %% @doc Describes an anomaly or error with the application.
+-spec describe_observation(map(), describe_observation_request()) ->
+    {ok, describe_observation_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_observation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_observation(Client, Input, []).
+
+-spec describe_observation(map(), describe_observation_request(), proplists:proplist()) ->
+    {ok, describe_observation_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_observation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeObservation">>, Input, Options).
 
 %% @doc Describes an application problem.
+-spec describe_problem(map(), describe_problem_request()) ->
+    {ok, describe_problem_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_problem(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_problem(Client, Input, []).
+
+-spec describe_problem(map(), describe_problem_request(), proplists:proplist()) ->
+    {ok, describe_problem_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_problem(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProblem">>, Input, Options).
 
 %% @doc Describes the anomalies or errors associated with the problem.
+-spec describe_problem_observations(map(), describe_problem_observations_request()) ->
+    {ok, describe_problem_observations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_problem_observations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_problem_observations(Client, Input, []).
+
+-spec describe_problem_observations(map(), describe_problem_observations_request(), proplists:proplist()) ->
+    {ok, describe_problem_observations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_problem_observations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProblemObservations">>, Input, Options).
 
 %% @doc Describes a workload and its configuration.
+-spec describe_workload(map(), describe_workload_request()) ->
+    {ok, describe_workload_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_workload(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workload(Client, Input, []).
+
+-spec describe_workload(map(), describe_workload_request(), proplists:proplist()) ->
+    {ok, describe_workload_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_workload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkload">>, Input, Options).
 
 %% @doc Lists the IDs of the applications that you are monitoring.
+-spec list_applications(map(), list_applications_request()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_applications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_applications(Client, Input, []).
+
+-spec list_applications(map(), list_applications_request(), proplists:proplist()) ->
+    {ok, list_applications_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplications">>, Input, Options).
 
 %% @doc Lists the auto-grouped, standalone, and custom components of the
 %% application.
+-spec list_components(map(), list_components_request()) ->
+    {ok, list_components_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_components(Client, Input, []).
+
+-spec list_components(map(), list_components_request(), proplists:proplist()) ->
+    {ok, list_components_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_components(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComponents">>, Input, Options).
@@ -270,33 +1232,85 @@ list_components(Client, Input, Options)
 %% thresholds.
 %%
 %% ERROR: alarm not created due to permission errors or exceeding quotas.
+-spec list_configuration_history(map(), list_configuration_history_request()) ->
+    {ok, list_configuration_history_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_configuration_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_configuration_history(Client, Input, []).
+
+-spec list_configuration_history(map(), list_configuration_history_request(), proplists:proplist()) ->
+    {ok, list_configuration_history_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_configuration_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConfigurationHistory">>, Input, Options).
 
 %% @doc Lists the log pattern sets in the specific application.
+-spec list_log_pattern_sets(map(), list_log_pattern_sets_request()) ->
+    {ok, list_log_pattern_sets_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_log_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_pattern_sets(Client, Input, []).
+
+-spec list_log_pattern_sets(map(), list_log_pattern_sets_request(), proplists:proplist()) ->
+    {ok, list_log_pattern_sets_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_log_pattern_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogPatternSets">>, Input, Options).
 
 %% @doc Lists the log patterns in the specific log `LogPatternSet'.
+-spec list_log_patterns(map(), list_log_patterns_request()) ->
+    {ok, list_log_patterns_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_log_patterns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_patterns(Client, Input, []).
+
+-spec list_log_patterns(map(), list_log_patterns_request(), proplists:proplist()) ->
+    {ok, list_log_patterns_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_log_patterns(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLogPatterns">>, Input, Options).
 
 %% @doc Lists the problems with your application.
+-spec list_problems(map(), list_problems_request()) ->
+    {ok, list_problems_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_problems(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_problems(Client, Input, []).
+
+-spec list_problems(map(), list_problems_request(), proplists:proplist()) ->
+    {ok, list_problems_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_problems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProblems">>, Input, Options).
@@ -311,25 +1325,62 @@ list_problems(Client, Input, Options)
 %% as a category for more specific tag values. A tag value acts as a
 %% descriptor within a tag
 %% key.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists the workloads that are configured on a given component.
+-spec list_workloads(map(), list_workloads_request()) ->
+    {ok, list_workloads_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_workloads(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workloads(Client, Input, []).
+
+-spec list_workloads(map(), list_workloads_request(), proplists:proplist()) ->
+    {ok, list_workloads_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_workloads(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkloads">>, Input, Options).
 
 %% @doc Remove workload from a component.
+-spec remove_workload(map(), remove_workload_request()) ->
+    {ok, remove_workload_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 remove_workload(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_workload(Client, Input, []).
+
+-spec remove_workload(map(), remove_workload_request(), proplists:proplist()) ->
+    {ok, remove_workload_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 remove_workload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveWorkload">>, Input, Options).
@@ -347,26 +1398,63 @@ remove_workload(Client, Input, Options)
 %% that acts as a category for more specific tag values. A tag value acts as
 %% a descriptor
 %% within a tag key.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Remove one or more tags (keys and values) from a specified
 %% application.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates the application.
+-spec update_application(map(), update_application_request()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).
+
+-spec update_application(map(), update_application_request(), proplists:proplist()) ->
+    {ok, update_application_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplication">>, Input, Options).
@@ -374,9 +1462,24 @@ update_application(Client, Input, Options)
 %% @doc Updates the custom component name and/or the list of resources that
 %% make up the
 %% component.
+-spec update_component(map(), update_component_request()) ->
+    {ok, update_component_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component(Client, Input, []).
+
+-spec update_component(map(), update_component_request(), proplists:proplist()) ->
+    {ok, update_component_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateComponent">>, Input, Options).
@@ -387,26 +1490,69 @@ update_component(Client, Input, Options)
 %% parameter is an escaped JSON of the configuration and should match the
 %% schema of what is
 %% returned by `DescribeComponentConfigurationRecommendation'.
+-spec update_component_configuration(map(), update_component_configuration_request()) ->
+    {ok, update_component_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_component_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component_configuration(Client, Input, []).
+
+-spec update_component_configuration(map(), update_component_configuration_request(), proplists:proplist()) ->
+    {ok, update_component_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_component_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateComponentConfiguration">>, Input, Options).
 
 %% @doc Adds a log pattern to a `LogPatternSet'.
+-spec update_log_pattern(map(), update_log_pattern_request()) ->
+    {ok, update_log_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_log_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_log_pattern(Client, Input, []).
+
+-spec update_log_pattern(map(), update_log_pattern_request(), proplists:proplist()) ->
+    {ok, update_log_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_log_pattern(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLogPattern">>, Input, Options).
 
 %% @doc Updates the visibility of the problem or specifies the problem as
 %% `RESOLVED'.
+-spec update_problem(map(), update_problem_request()) ->
+    {ok, update_problem_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_problem(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_problem(Client, Input, []).
+
+-spec update_problem(map(), update_problem_request(), proplists:proplist()) ->
+    {ok, update_problem_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_problem(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProblem">>, Input, Options).
@@ -414,9 +1560,22 @@ update_problem(Client, Input, Options)
 %% @doc Adds a workload to a component.
 %%
 %% Each component can have at most five workloads.
+-spec update_workload(map(), update_workload_request()) ->
+    {ok, update_workload_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_workload(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workload(Client, Input, []).
+
+-spec update_workload(map(), update_workload_request(), proplists:proplist()) ->
+    {ok, update_workload_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_workload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkload">>, Input, Options).

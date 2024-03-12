@@ -9,6 +9,38 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% client_limit_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type client_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% join_storage_session_input() :: #{
+%%   <<"channelArn">> := string()
+%% }
+-type join_storage_session_input() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -40,8 +72,23 @@
 %% client joins the session of a specific channel as a video producing
 %% device,
 %% the most recent client request takes precedence.
+-spec join_storage_session(map(), join_storage_session_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_limit_exceeded_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 join_storage_session(Client, Input) ->
     join_storage_session(Client, Input, []).
+
+-spec join_storage_session(map(), join_storage_session_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, client_limit_exceeded_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 join_storage_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/joinStorageSession"],
@@ -68,7 +115,7 @@ join_storage_session(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

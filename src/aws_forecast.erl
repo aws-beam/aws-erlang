@@ -133,6 +133,1533 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% list_forecast_export_jobs_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_forecast_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% weighted_quantile_loss() :: #{
+%%   <<"LossValue">> => float(),
+%%   <<"Quantile">> => float()
+%% }
+-type weighted_quantile_loss() :: #{binary() => any()}.
+
+%% Example:
+%% list_what_if_forecasts_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WhatIfForecasts">> => list(what_if_forecast_summary()())
+%% }
+-type list_what_if_forecasts_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_explainability_export_request() :: #{
+%%   <<"ExplainabilityExportArn">> := string()
+%% }
+-type describe_explainability_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_predictor_request() :: #{
+%%   <<"AlgorithmArn">> => string(),
+%%   <<"AutoMLOverrideStrategy">> => list(any()),
+%%   <<"EncryptionConfig">> => encryption_config(),
+%%   <<"EvaluationParameters">> => evaluation_parameters(),
+%%   <<"FeaturizationConfig">> := featurization_config(),
+%%   <<"ForecastHorizon">> := integer(),
+%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"HPOConfig">> => hyper_parameter_tuning_job_config(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"OptimizationMetric">> => list(any()),
+%%   <<"PerformAutoML">> => boolean(),
+%%   <<"PerformHPO">> => boolean(),
+%%   <<"PredictorName">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TrainingParameters">> => map()
+%% }
+-type create_predictor_request() :: #{binary() => any()}.
+
+%% Example:
+%% integer_parameter_range() :: #{
+%%   <<"MaxValue">> => integer(),
+%%   <<"MinValue">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"ScalingType">> => list(any())
+%% }
+-type integer_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% describe_explainability_export_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Destination">> => data_destination(),
+%%   <<"ExplainabilityArn">> => string(),
+%%   <<"ExplainabilityExportArn">> => string(),
+%%   <<"ExplainabilityExportName">> => string(),
+%%   <<"Format">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type describe_explainability_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_config() :: #{
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type encryption_config() :: #{binary() => any()}.
+
+%% Example:
+%% reference_predictor_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type reference_predictor_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_monitor_request() :: #{
+%%   <<"MonitorArn">> := string()
+%% }
+-type delete_monitor_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitors_response() :: #{
+%%   <<"Monitors">> => list(monitor_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitor_evaluations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PredictorMonitorEvaluations">> => list(predictor_monitor_evaluation()())
+%% }
+-type list_monitor_evaluations_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_forecast_request() :: #{
+%%   <<"ForecastArn">> := string()
+%% }
+-type delete_forecast_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_forecast_request() :: #{
+%%   <<"ForecastArn">> := string()
+%% }
+-type describe_forecast_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_accuracy_metrics_response() :: #{
+%%   <<"AutoMLOverrideStrategy">> => list(any()),
+%%   <<"IsAutoPredictor">> => boolean(),
+%%   <<"OptimizationMetric">> => list(any()),
+%%   <<"PredictorEvaluationResults">> => list(evaluation_result()())
+%% }
+-type get_accuracy_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% predictor_monitor_evaluation() :: #{
+%%   <<"EvaluationState">> => string(),
+%%   <<"EvaluationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"MetricResults">> => list(metric_result()()),
+%%   <<"MonitorArn">> => string(),
+%%   <<"MonitorDataSource">> => monitor_data_source(),
+%%   <<"NumItemsEvaluated">> => float(),
+%%   <<"PredictorEvent">> => predictor_event(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"WindowEndDatetime">> => non_neg_integer(),
+%%   <<"WindowStartDatetime">> => non_neg_integer()
+%% }
+-type predictor_monitor_evaluation() :: #{binary() => any()}.
+
+%% Example:
+%% input_data_config() :: #{
+%%   <<"DatasetGroupArn">> => string(),
+%%   <<"SupplementaryFeatures">> => list(supplementary_feature()())
+%% }
+-type input_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_predictor_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataConfig">> => data_config(),
+%%   <<"DatasetImportJobArns">> => list(string()()),
+%%   <<"EncryptionConfig">> => encryption_config(),
+%%   <<"EstimatedTimeRemainingInMinutes">> => float(),
+%%   <<"ExplainabilityInfo">> => explainability_info(),
+%%   <<"ForecastDimensions">> => list(string()()),
+%%   <<"ForecastFrequency">> => string(),
+%%   <<"ForecastHorizon">> => integer(),
+%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"MonitorInfo">> => monitor_info(),
+%%   <<"OptimizationMetric">> => list(any()),
+%%   <<"PredictorArn">> => string(),
+%%   <<"PredictorName">> => string(),
+%%   <<"ReferencePredictorSummary">> => reference_predictor_summary(),
+%%   <<"Status">> => string(),
+%%   <<"TimeAlignmentBoundary">> => time_alignment_boundary()
+%% }
+-type describe_auto_predictor_response() :: #{binary() => any()}.
+
+%% Example:
+%% monitor_config() :: #{
+%%   <<"MonitorName">> => string()
+%% }
+-type monitor_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_import_job_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataSize">> => float(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetImportJobArn">> => string(),
+%%   <<"DatasetImportJobName">> => string(),
+%%   <<"EstimatedTimeRemainingInMinutes">> => float(),
+%%   <<"FieldStatistics">> => map(),
+%%   <<"Format">> => string(),
+%%   <<"GeolocationFormat">> => string(),
+%%   <<"ImportMode">> => list(any()),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TimeZone">> => string(),
+%%   <<"TimestampFormat">> => string(),
+%%   <<"UseGeolocationForTimeZone">> => boolean()
+%% }
+-type describe_dataset_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_config() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Transformations">> => map()
+%% }
+-type attribute_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_what_if_analyses_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WhatIfAnalyses">> => list(what_if_analysis_summary()())
+%% }
+-type list_what_if_analyses_response() :: #{binary() => any()}.
+
+%% Example:
+%% featurization_method() :: #{
+%%   <<"FeaturizationMethodName">> => list(any()),
+%%   <<"FeaturizationMethodParameters">> => map()
+%% }
+-type featurization_method() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_ranges() :: #{
+%%   <<"CategoricalParameterRanges">> => list(categorical_parameter_range()()),
+%%   <<"ContinuousParameterRanges">> => list(continuous_parameter_range()()),
+%%   <<"IntegerParameterRanges">> => list(integer_parameter_range()())
+%% }
+-type parameter_ranges() :: #{binary() => any()}.
+
+%% Example:
+%% create_predictor_response() :: #{
+%%   <<"PredictorArn">> => string()
+%% }
+-type create_predictor_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_forecast_export_jobs_response() :: #{
+%%   <<"ForecastExportJobs">> => list(forecast_export_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_forecast_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_explainability_export_request() :: #{
+%%   <<"Destination">> := data_destination(),
+%%   <<"ExplainabilityArn">> := string(),
+%%   <<"ExplainabilityExportName">> := string(),
+%%   <<"Format">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_explainability_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_dataset_group_response() :: #{
+
+%% }
+-type update_dataset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_what_if_forecast_exports_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WhatIfForecastExports">> => list(what_if_forecast_export_summary()())
+%% }
+-type list_what_if_forecast_exports_response() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_parameters() :: #{
+%%   <<"BackTestWindowOffset">> => integer(),
+%%   <<"NumberOfBacktestWindows">> => integer()
+%% }
+-type evaluation_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% featurization_config() :: #{
+%%   <<"Featurizations">> => list(featurization()()),
+%%   <<"ForecastDimensions">> => list(string()()),
+%%   <<"ForecastFrequency">> => string()
+%% }
+-type featurization_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitors_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_predictors_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Predictors">> => list(predictor_summary()())
+%% }
+-type list_predictors_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_predictor_backtest_export_job_response() :: #{
+%%   <<"PredictorBacktestExportJobArn">> => string()
+%% }
+-type create_predictor_backtest_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% monitor_info() :: #{
+%%   <<"MonitorArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type monitor_info() :: #{binary() => any()}.
+
+%% Example:
+%% create_monitor_response() :: #{
+%%   <<"MonitorArn">> => string()
+%% }
+-type create_monitor_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_what_if_forecasts_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_what_if_forecasts_request() :: #{binary() => any()}.
+
+%% Example:
+%% explainability_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExplainabilityArn">> => string(),
+%%   <<"ExplainabilityConfig">> => explainability_config(),
+%%   <<"ExplainabilityName">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type explainability_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_group_request() :: #{
+%%   <<"DatasetArns">> => list(string()()),
+%%   <<"DatasetGroupName">> := string(),
+%%   <<"Domain">> := list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_forecast_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetGroupArn">> => string(),
+%%   <<"EstimatedTimeRemainingInMinutes">> => float(),
+%%   <<"ForecastArn">> => string(),
+%%   <<"ForecastName">> => string(),
+%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"PredictorArn">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TimeSeriesSelector">> => time_series_selector()
+%% }
+-type describe_forecast_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_what_if_forecast_export_request() :: #{
+%%   <<"WhatIfForecastExportArn">> := string()
+%% }
+-type describe_what_if_forecast_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% baseline() :: #{
+%%   <<"PredictorBaseline">> => predictor_baseline()
+%% }
+-type baseline() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_selector() :: #{
+%%   <<"TimeSeriesIdentifiers">> => time_series_identifiers()
+%% }
+-type time_series_selector() :: #{binary() => any()}.
+
+%% Example:
+%% predictor_execution_details() :: #{
+%%   <<"PredictorExecutions">> => list(predictor_execution()())
+%% }
+-type predictor_execution_details() :: #{binary() => any()}.
+
+%% Example:
+%% forecast_summary() :: #{
+%%   <<"CreatedUsingAutoPredictor">> => boolean(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetGroupArn">> => string(),
+%%   <<"ForecastArn">> => string(),
+%%   <<"ForecastName">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"PredictorArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type forecast_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_predictor_response() :: #{
+%%   <<"AlgorithmArn">> => string(),
+%%   <<"AutoMLAlgorithmArns">> => list(string()()),
+%%   <<"AutoMLOverrideStrategy">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetImportJobArns">> => list(string()()),
+%%   <<"EncryptionConfig">> => encryption_config(),
+%%   <<"EstimatedTimeRemainingInMinutes">> => float(),
+%%   <<"EvaluationParameters">> => evaluation_parameters(),
+%%   <<"FeaturizationConfig">> => featurization_config(),
+%%   <<"ForecastHorizon">> => integer(),
+%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"HPOConfig">> => hyper_parameter_tuning_job_config(),
+%%   <<"InputDataConfig">> => input_data_config(),
+%%   <<"IsAutoPredictor">> => boolean(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"OptimizationMetric">> => list(any()),
+%%   <<"PerformAutoML">> => boolean(),
+%%   <<"PerformHPO">> => boolean(),
+%%   <<"PredictorArn">> => string(),
+%%   <<"PredictorExecutionDetails">> => predictor_execution_details(),
+%%   <<"PredictorName">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TrainingParameters">> => map()
+%% }
+-type describe_predictor_response() :: #{binary() => any()}.
+
+%% Example:
+%% what_if_forecast_export_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Destination">> => data_destination(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"WhatIfForecastArns">> => list(string()()),
+%%   <<"WhatIfForecastExportArn">> => string(),
+%%   <<"WhatIfForecastExportName">> => string()
+%% }
+-type what_if_forecast_export_summary() :: #{binary() => any()}.
+
+%% Example:
+%% test_window_summary() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TestWindowEnd">> => non_neg_integer(),
+%%   <<"TestWindowStart">> => non_neg_integer()
+%% }
+-type test_window_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stop_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type stop_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_explainability_exports_response() :: #{
+%%   <<"ExplainabilityExports">> => list(explainability_export_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_explainability_exports_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_predictor_response() :: #{
+%%   <<"PredictorArn">> => string()
+%% }
+-type create_auto_predictor_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"DatasetArn">> => string()
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% metrics() :: #{
+%%   <<"AverageWeightedQuantileLoss">> => float(),
+%%   <<"ErrorMetrics">> => list(error_metric()()),
+%%   <<"RMSE">> => float(),
+%%   <<"WeightedQuantileLosses">> => list(weighted_quantile_loss()())
+%% }
+-type metrics() :: #{binary() => any()}.
+
+%% Example:
+%% explainability_export_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Destination">> => data_destination(),
+%%   <<"ExplainabilityExportArn">> => string(),
+%%   <<"ExplainabilityExportName">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type explainability_export_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_what_if_forecast_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EstimatedTimeRemainingInMinutes">> => float(),
+%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TimeSeriesReplacementsDataSource">> => time_series_replacements_data_source(),
+%%   <<"TimeSeriesTransformations">> => list(time_series_transformation()()),
+%%   <<"WhatIfAnalysisArn">> => string(),
+%%   <<"WhatIfForecastArn">> => string(),
+%%   <<"WhatIfForecastName">> => string()
+%% }
+-type describe_what_if_forecast_response() :: #{binary() => any()}.
+
+%% Example:
+%% supplementary_feature() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type supplementary_feature() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_import_jobs_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dataset_import_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_what_if_forecast_response() :: #{
+%%   <<"WhatIfForecastArn">> => string()
+%% }
+-type create_what_if_forecast_response() :: #{binary() => any()}.
+
+%% Example:
+%% forecast_export_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Destination">> => data_destination(),
+%%   <<"ForecastExportJobArn">> => string(),
+%%   <<"ForecastExportJobName">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type forecast_export_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_explainability_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"EnableVisualization">> => boolean(),
+%%   <<"EndDateTime">> => string(),
+%%   <<"EstimatedTimeRemainingInMinutes">> => float(),
+%%   <<"ExplainabilityArn">> => string(),
+%%   <<"ExplainabilityConfig">> => explainability_config(),
+%%   <<"ExplainabilityName">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Schema">> => schema(),
+%%   <<"StartDateTime">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type describe_explainability_response() :: #{binary() => any()}.
+
+%% Example:
+%% explainability_info() :: #{
+%%   <<"ExplainabilityArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type explainability_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_accuracy_metrics_request() :: #{
+%%   <<"PredictorArn">> := string()
+%% }
+-type get_accuracy_metrics_request() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"DatasetType">> => list(any()),
+%%   <<"Domain">> => list(any()),
+%%   <<"LastModificationTime">> => non_neg_integer()
+%% }
+-type dataset_summary() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_predictor_request() :: #{
+%%   <<"PredictorArn">> := string()
+%% }
+-type describe_auto_predictor_request() :: #{binary() => any()}.
+
+%% Example:
+%% resume_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type resume_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% s3_config() :: #{
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type s3_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_import_job_request() :: #{
+%%   <<"DatasetImportJobArn">> := string()
+%% }
+-type delete_dataset_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_forecast_export_job_request() :: #{
+%%   <<"ForecastExportJobArn">> := string()
+%% }
+-type delete_forecast_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_transformation() :: #{
+%%   <<"Action">> => action(),
+%%   <<"TimeSeriesConditions">> => list(time_series_condition()())
+%% }
+-type time_series_transformation() :: #{binary() => any()}.
+
+%% Example:
+%% data_config() :: #{
+%%   <<"AdditionalDatasets">> => list(additional_dataset()()),
+%%   <<"AttributeConfigs">> => list(attribute_config()()),
+%%   <<"DatasetGroupArn">> => string()
+%% }
+-type data_config() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_forecast_export_job_response() :: #{
+%%   <<"ForecastExportJobArn">> => string()
+%% }
+-type create_forecast_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_what_if_forecast_request() :: #{
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TimeSeriesReplacementsDataSource">> => time_series_replacements_data_source(),
+%%   <<"TimeSeriesTransformations">> => list(time_series_transformation()()),
+%%   <<"WhatIfAnalysisArn">> := string(),
+%%   <<"WhatIfForecastName">> := string()
+%% }
+-type create_what_if_forecast_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_predictor_request() :: #{
+%%   <<"DataConfig">> => data_config(),
+%%   <<"EncryptionConfig">> => encryption_config(),
+%%   <<"ExplainPredictor">> => boolean(),
+%%   <<"ForecastDimensions">> => list(string()()),
+%%   <<"ForecastFrequency">> => string(),
+%%   <<"ForecastHorizon">> => integer(),
+%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"MonitorConfig">> => monitor_config(),
+%%   <<"OptimizationMetric">> => list(any()),
+%%   <<"PredictorName">> := string(),
+%%   <<"ReferencePredictorArn">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TimeAlignmentBoundary">> => time_alignment_boundary()
+%% }
+-type create_auto_predictor_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_groups_response() :: #{
+%%   <<"DatasetGroups">> => list(dataset_group_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dataset_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_what_if_analysis_response() :: #{
+%%   <<"WhatIfAnalysisArn">> => string()
+%% }
+-type create_what_if_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_what_if_analyses_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_what_if_analyses_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_predictors_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_predictors_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_what_if_analysis_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EstimatedTimeRemainingInMinutes">> => float(),
+%%   <<"ForecastArn">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TimeSeriesSelector">> => time_series_selector(),
+%%   <<"WhatIfAnalysisArn">> => string(),
+%%   <<"WhatIfAnalysisName">> => string()
+%% }
+-type describe_what_if_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% schema() :: #{
+%%   <<"Attributes">> => list(schema_attribute()())
+%% }
+-type schema() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dataset_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_forecasts_response() :: #{
+%%   <<"Forecasts">> => list(forecast_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_forecasts_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_explainability_request() :: #{
+%%   <<"ExplainabilityArn">> := string()
+%% }
+-type delete_explainability_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_predictor_backtest_export_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PredictorBacktestExportJobs">> => list(predictor_backtest_export_job_summary()())
+%% }
+-type list_predictor_backtest_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_what_if_analysis_request() :: #{
+%%   <<"ForecastArn">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TimeSeriesSelector">> => time_series_selector(),
+%%   <<"WhatIfAnalysisName">> := string()
+%% }
+-type create_what_if_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_what_if_analysis_request() :: #{
+%%   <<"WhatIfAnalysisArn">> := string()
+%% }
+-type describe_what_if_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% baseline_metric() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => float()
+%% }
+-type baseline_metric() :: #{binary() => any()}.
+
+%% Example:
+%% categorical_parameter_range() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type categorical_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% describe_predictor_backtest_export_job_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Destination">> => data_destination(),
+%%   <<"Format">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"PredictorArn">> => string(),
+%%   <<"PredictorBacktestExportJobArn">> => string(),
+%%   <<"PredictorBacktestExportJobName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type describe_predictor_backtest_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Condition">> => list(any()),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_explainabilities_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_explainabilities_request() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_condition() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValue">> => string(),
+%%   <<"Condition">> => list(any())
+%% }
+-type time_series_condition() :: #{binary() => any()}.
+
+%% Example:
+%% create_explainability_request() :: #{
+%%   <<"DataSource">> => data_source(),
+%%   <<"EnableVisualization">> => boolean(),
+%%   <<"EndDateTime">> => string(),
+%%   <<"ExplainabilityConfig">> := explainability_config(),
+%%   <<"ExplainabilityName">> := string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"Schema">> => schema(),
+%%   <<"StartDateTime">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_explainability_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_predictor_request() :: #{
+%%   <<"PredictorArn">> := string()
+%% }
+-type delete_predictor_request() :: #{binary() => any()}.
+
+%% Example:
+%% metric_result() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"MetricValue">> => float()
+%% }
+-type metric_result() :: #{binary() => any()}.
+
+%% Example:
+%% data_destination() :: #{
+%%   <<"S3Config">> => s3_config()
+%% }
+-type data_destination() :: #{binary() => any()}.
+
+%% Example:
+%% explainability_config() :: #{
+%%   <<"TimePointGranularity">> => list(any()),
+%%   <<"TimeSeriesGranularity">> => list(any())
+%% }
+-type explainability_config() :: #{binary() => any()}.
+
+%% Example:
+%% predictor_execution() :: #{
+%%   <<"AlgorithmArn">> => string(),
+%%   <<"TestWindows">> => list(test_window_summary()())
+%% }
+-type predictor_execution() :: #{binary() => any()}.
+
+%% Example:
+%% monitor_data_source() :: #{
+%%   <<"DatasetImportJobArn">> => string(),
+%%   <<"ForecastArn">> => string(),
+%%   <<"PredictorArn">> => string()
+%% }
+-type monitor_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% create_what_if_forecast_export_response() :: #{
+%%   <<"WhatIfForecastExportArn">> => string()
+%% }
+-type create_what_if_forecast_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% action() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Operation">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type action() :: #{binary() => any()}.
+
+%% Example:
+%% schema_attribute() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeType">> => list(any())
+%% }
+-type schema_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% create_explainability_export_response() :: #{
+%%   <<"ExplainabilityExportArn">> => string()
+%% }
+-type create_explainability_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_import_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataSource">> => data_source(),
+%%   <<"DatasetImportJobArn">> => string(),
+%%   <<"DatasetImportJobName">> => string(),
+%%   <<"ImportMode">> => list(any()),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type dataset_import_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_predictor_backtest_export_job_request() :: #{
+%%   <<"PredictorBacktestExportJobArn">> := string()
+%% }
+-type describe_predictor_backtest_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_dataset_import_jobs_response() :: #{
+%%   <<"DatasetImportJobs">> => list(dataset_import_job_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dataset_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% error_metric() :: #{
+%%   <<"ForecastType">> => string(),
+%%   <<"MAPE">> => float(),
+%%   <<"MASE">> => float(),
+%%   <<"RMSE">> => float(),
+%%   <<"WAPE">> => float()
+%% }
+-type error_metric() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_group_request() :: #{
+%%   <<"DatasetGroupArn">> := string()
+%% }
+-type delete_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% predictor_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetGroupArn">> => string(),
+%%   <<"IsAutoPredictor">> => boolean(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"PredictorArn">> => string(),
+%%   <<"PredictorName">> => string(),
+%%   <<"ReferencePredictorSummary">> => reference_predictor_summary(),
+%%   <<"Status">> => string()
+%% }
+-type predictor_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_dataset_group_request() :: #{
+%%   <<"DatasetArns">> := list(string()()),
+%%   <<"DatasetGroupArn">> := string()
+%% }
+-type update_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_predictor_request() :: #{
+%%   <<"PredictorArn">> := string()
+%% }
+-type describe_predictor_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_what_if_forecast_exports_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_what_if_forecast_exports_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_forecast_export_job_request() :: #{
+%%   <<"Destination">> := data_destination(),
+%%   <<"ForecastArn">> := string(),
+%%   <<"ForecastExportJobName">> := string(),
+%%   <<"Format">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_forecast_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_predictor_backtest_export_job_request() :: #{
+%%   <<"Destination">> := data_destination(),
+%%   <<"Format">> => string(),
+%%   <<"PredictorArn">> := string(),
+%%   <<"PredictorBacktestExportJobName">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_predictor_backtest_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_group_response() :: #{
+%%   <<"DatasetGroupArn">> => string()
+%% }
+-type create_dataset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% statistics() :: #{
+%%   <<"Avg">> => float(),
+%%   <<"Count">> => integer(),
+%%   <<"CountDistinct">> => integer(),
+%%   <<"CountDistinctLong">> => float(),
+%%   <<"CountLong">> => float(),
+%%   <<"CountNan">> => integer(),
+%%   <<"CountNanLong">> => float(),
+%%   <<"CountNull">> => integer(),
+%%   <<"CountNullLong">> => float(),
+%%   <<"Max">> => string(),
+%%   <<"Min">> => string(),
+%%   <<"Stddev">> => float()
+%% }
+-type statistics() :: #{binary() => any()}.
+
+%% Example:
+%% delete_what_if_forecast_request() :: #{
+%%   <<"WhatIfForecastArn">> := string()
+%% }
+-type delete_what_if_forecast_request() :: #{binary() => any()}.
+
+%% Example:
+%% predictor_backtest_export_job_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Destination">> => data_destination(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"PredictorBacktestExportJobArn">> => string(),
+%%   <<"PredictorBacktestExportJobName">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type predictor_backtest_export_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DataFrequency">> => string(),
+%%   <<"DatasetArn">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"DatasetType">> => list(any()),
+%%   <<"Domain">> => list(any()),
+%%   <<"EncryptionConfig">> => encryption_config(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Schema">> => schema(),
+%%   <<"Status">> => string()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_what_if_forecast_export_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Destination">> => data_destination(),
+%%   <<"EstimatedTimeRemainingInMinutes">> => float(),
+%%   <<"Format">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"WhatIfForecastArns">> => list(string()()),
+%%   <<"WhatIfForecastExportArn">> => string(),
+%%   <<"WhatIfForecastExportName">> => string()
+%% }
+-type describe_what_if_forecast_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_what_if_forecast_request() :: #{
+%%   <<"WhatIfForecastArn">> := string()
+%% }
+-type describe_what_if_forecast_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_what_if_analysis_request() :: #{
+%%   <<"WhatIfAnalysisArn">> := string()
+%% }
+-type delete_what_if_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"DataFrequency">> => string(),
+%%   <<"DatasetName">> := string(),
+%%   <<"DatasetType">> := list(any()),
+%%   <<"Domain">> := list(any()),
+%%   <<"EncryptionConfig">> => encryption_config(),
+%%   <<"Schema">> := schema(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_group_request() :: #{
+%%   <<"DatasetGroupArn">> := string()
+%% }
+-type describe_dataset_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_predictor_backtest_export_job_request() :: #{
+%%   <<"PredictorBacktestExportJobArn">> := string()
+%% }
+-type delete_predictor_backtest_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% continuous_parameter_range() :: #{
+%%   <<"MaxValue">> => float(),
+%%   <<"MinValue">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"ScalingType">> => list(any())
+%% }
+-type continuous_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_import_job_request() :: #{
+%%   <<"DataSource">> := data_source(),
+%%   <<"DatasetArn">> := string(),
+%%   <<"DatasetImportJobName">> := string(),
+%%   <<"Format">> => string(),
+%%   <<"GeolocationFormat">> => string(),
+%%   <<"ImportMode">> => list(any()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TimeZone">> => string(),
+%%   <<"TimestampFormat">> => string(),
+%%   <<"UseGeolocationForTimeZone">> => boolean()
+%% }
+-type create_dataset_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_monitor_request() :: #{
+%%   <<"MonitorArn">> := string()
+%% }
+-type describe_monitor_request() :: #{binary() => any()}.
+
+%% Example:
+%% predictor_event() :: #{
+%%   <<"Datetime">> => non_neg_integer(),
+%%   <<"Detail">> => string()
+%% }
+-type predictor_event() :: #{binary() => any()}.
+
+%% Example:
+%% describe_explainability_request() :: #{
+%%   <<"ExplainabilityArn">> := string()
+%% }
+-type describe_explainability_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_forecast_export_job_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Destination">> => data_destination(),
+%%   <<"ForecastArn">> => string(),
+%%   <<"ForecastExportJobArn">> => string(),
+%%   <<"ForecastExportJobName">> => string(),
+%%   <<"Format">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type describe_forecast_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_explainability_response() :: #{
+%%   <<"ExplainabilityArn">> => string()
+%% }
+-type create_explainability_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_monitor_response() :: #{
+%%   <<"Baseline">> => baseline(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EstimatedEvaluationTimeRemainingInMinutes">> => float(),
+%%   <<"LastEvaluationState">> => string(),
+%%   <<"LastEvaluationTime">> => non_neg_integer(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"MonitorArn">> => string(),
+%%   <<"MonitorName">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type describe_monitor_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_import_job_request() :: #{
+%%   <<"DatasetImportJobArn">> := string()
+%% }
+-type describe_dataset_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_forecast_export_job_request() :: #{
+%%   <<"ForecastExportJobArn">> := string()
+%% }
+-type describe_forecast_export_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_what_if_forecast_export_request() :: #{
+%%   <<"Destination">> := data_destination(),
+%%   <<"Format">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"WhatIfForecastArns">> := list(string()()),
+%%   <<"WhatIfForecastExportName">> := string()
+%% }
+-type create_what_if_forecast_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% what_if_analysis_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ForecastArn">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"WhatIfAnalysisArn">> => string(),
+%%   <<"WhatIfAnalysisName">> => string()
+%% }
+-type what_if_analysis_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitor_evaluations_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitorArn">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitor_evaluations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_group_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetArns">> => list(string()()),
+%%   <<"DatasetGroupArn">> => string(),
+%%   <<"DatasetGroupName">> => string(),
+%%   <<"Domain">> => list(any()),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type describe_dataset_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation_result() :: #{
+%%   <<"AlgorithmArn">> => string(),
+%%   <<"TestWindows">> => list(window_summary()())
+%% }
+-type evaluation_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_forecasts_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_forecasts_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_request() :: #{
+%%   <<"DatasetArn">> := string()
+%% }
+-type describe_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_request() :: #{
+%%   <<"DatasetArn">> := string()
+%% }
+-type delete_dataset_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"Datasets">> => list(dataset_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+%% Example:
+%% what_if_forecast_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"WhatIfAnalysisArn">> => string(),
+%%   <<"WhatIfForecastArn">> => string(),
+%%   <<"WhatIfForecastName">> => string()
+%% }
+-type what_if_forecast_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_forecast_request() :: #{
+%%   <<"ForecastName">> := string(),
+%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"PredictorArn">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TimeSeriesSelector">> => time_series_selector()
+%% }
+-type create_forecast_request() :: #{binary() => any()}.
+
+%% Example:
+%% additional_dataset() :: #{
+%%   <<"Configuration">> => map(),
+%%   <<"Name">> => string()
+%% }
+-type additional_dataset() :: #{binary() => any()}.
+
+%% Example:
+%% delete_explainability_export_request() :: #{
+%%   <<"ExplainabilityExportArn">> := string()
+%% }
+-type delete_explainability_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_monitor_request() :: #{
+%%   <<"MonitorName">> := string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_monitor_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_explainability_exports_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_explainability_exports_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_source() :: #{
+%%   <<"S3Config">> => s3_config()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_tree_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_tree_request() :: #{binary() => any()}.
+
+%% Example:
+%% window_summary() :: #{
+%%   <<"EvaluationType">> => list(any()),
+%%   <<"ItemCount">> => integer(),
+%%   <<"Metrics">> => metrics(),
+%%   <<"TestWindowEnd">> => non_neg_integer(),
+%%   <<"TestWindowStart">> => non_neg_integer()
+%% }
+-type window_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_explainabilities_response() :: #{
+%%   <<"Explainabilities">> => list(explainability_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_explainabilities_response() :: #{binary() => any()}.
+
+%% Example:
+%% predictor_baseline() :: #{
+%%   <<"BaselineMetrics">> => list(baseline_metric()())
+%% }
+-type predictor_baseline() :: #{binary() => any()}.
+
+%% Example:
+%% hyper_parameter_tuning_job_config() :: #{
+%%   <<"ParameterRanges">> => parameter_ranges()
+%% }
+-type hyper_parameter_tuning_job_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_forecast_response() :: #{
+%%   <<"ForecastArn">> => string()
+%% }
+-type create_forecast_response() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_replacements_data_source() :: #{
+%%   <<"Format">> => string(),
+%%   <<"S3Config">> => s3_config(),
+%%   <<"Schema">> => schema(),
+%%   <<"TimestampFormat">> => string()
+%% }
+-type time_series_replacements_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% delete_what_if_forecast_export_request() :: #{
+%%   <<"WhatIfForecastExportArn">> := string()
+%% }
+-type delete_what_if_forecast_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% monitor_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModificationTime">> => non_neg_integer(),
+%%   <<"MonitorArn">> => string(),
+%%   <<"MonitorName">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type monitor_summary() :: #{binary() => any()}.
+
+%% Example:
+%% time_alignment_boundary() :: #{
+%%   <<"DayOfMonth">> => integer(),
+%%   <<"DayOfWeek">> => list(any()),
+%%   <<"Hour">> => integer(),
+%%   <<"Month">> => list(any())
+%% }
+-type time_alignment_boundary() :: #{binary() => any()}.
+
+%% Example:
+%% featurization() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"FeaturizationPipeline">> => list(featurization_method()())
+%% }
+-type featurization() :: #{binary() => any()}.
+
+%% Example:
+%% list_predictor_backtest_export_jobs_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_predictor_backtest_export_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% time_series_identifiers() :: #{
+%%   <<"DataSource">> => data_source(),
+%%   <<"Format">> => string(),
+%%   <<"Schema">> => schema()
+%% }
+-type time_series_identifiers() :: #{binary() => any()}.
+
+%% Example:
+%% create_dataset_import_job_response() :: #{
+%%   <<"DatasetImportJobArn">> => string()
+%% }
+-type create_dataset_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% dataset_group_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DatasetGroupArn">> => string(),
+%%   <<"DatasetGroupName">> => string(),
+%%   <<"LastModificationTime">> => non_neg_integer()
+%% }
+-type dataset_group_summary() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -176,9 +1703,26 @@
 %%
 %% When upgrading or retraining a predictor, only specify values for the
 %% `ReferencePredictorArn' and `PredictorName'.
+-spec create_auto_predictor(map(), create_auto_predictor_request()) ->
+    {ok, create_auto_predictor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_auto_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_predictor(Client, Input, []).
+
+-spec create_auto_predictor(map(), create_auto_predictor_request(), proplists:proplist()) ->
+    {ok, create_auto_predictor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_auto_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoPredictor">>, Input, Options).
@@ -229,9 +1773,22 @@ create_auto_predictor(Client, Input, Options)
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
 %% operation to get
 %% the status.
+-spec create_dataset(map(), create_dataset_request()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()}.
 create_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset(Client, Input, []).
+
+-spec create_dataset(map(), create_dataset_request(), proplists:proplist()) ->
+    {ok, create_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()}.
 create_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataset">>, Input, Options).
@@ -259,9 +1816,26 @@ create_dataset(Client, Input, Options)
 %% DescribeDatasetGroup:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
 %% operation.
+-spec create_dataset_group(map(), create_dataset_group_request()) ->
+    {ok, create_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_group(Client, Input, []).
+
+-spec create_dataset_group(map(), create_dataset_group_request(), proplists:proplist()) ->
+    {ok, create_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatasetGroup">>, Input, Options).
@@ -305,9 +1879,26 @@ create_dataset_group(Client, Input, Options)
 %% ListDatasetImportJobs:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_ListDatasetImportJobs.html
 %% operation.
+-spec create_dataset_import_job(map(), create_dataset_import_job_request()) ->
+    {ok, create_dataset_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_dataset_import_job(Client, Input, []).
+
+-spec create_dataset_import_job(map(), create_dataset_import_job_request(), proplists:proplist()) ->
+    {ok, create_dataset_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatasetImportJob">>, Input, Options).
@@ -403,9 +1994,26 @@ create_dataset_import_job(Client, Input, Options)
 %%
 %% `EndDateTime' - The last timestamp in the range of time
 %% points.
+-spec create_explainability(map(), create_explainability_request()) ->
+    {ok, create_explainability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_explainability(Client, Input, []).
+
+-spec create_explainability(map(), create_explainability_request(), proplists:proplist()) ->
+    {ok, create_explainability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_explainability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExplainability">>, Input, Options).
@@ -424,9 +2032,26 @@ create_explainability(Client, Input, Options)
 %% The `Status' of the export job must be `ACTIVE' before you
 %% can access the export in your Amazon S3 bucket. To get the status, use the
 %% `DescribeExplainabilityExport' operation.
+-spec create_explainability_export(map(), create_explainability_export_request()) ->
+    {ok, create_explainability_export_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_explainability_export(Client, Input, []).
+
+-spec create_explainability_export(map(), create_explainability_export_request(), proplists:proplist()) ->
+    {ok, create_explainability_export_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_explainability_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExplainabilityExport">>, Input, Options).
@@ -467,9 +2092,26 @@ create_explainability_export(Client, Input, Options)
 %% time series that you specify that are not in the input dataset. The
 %% forecast export file will not contain these time series or their
 %% forecasted values.
+-spec create_forecast(map(), create_forecast_request()) ->
+    {ok, create_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_forecast(Client, Input, []).
+
+-spec create_forecast(map(), create_forecast_request(), proplists:proplist()) ->
+    {ok, create_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateForecast">>, Input, Options).
@@ -499,9 +2141,26 @@ create_forecast(Client, Input, Options)
 %% The `Status' of the forecast export job must be `ACTIVE' before
 %% you can access the forecast in your Amazon S3 bucket. To get the status,
 %% use the `DescribeForecastExportJob' operation.
+-spec create_forecast_export_job(map(), create_forecast_export_job_request()) ->
+    {ok, create_forecast_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_forecast_export_job(Client, Input, []).
+
+-spec create_forecast_export_job(map(), create_forecast_export_job_request(), proplists:proplist()) ->
+    {ok, create_forecast_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_forecast_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateForecastExportJob">>, Input, Options).
@@ -512,9 +2171,26 @@ create_forecast_export_job(Client, Input, Options)
 %% performance changes over time.
 %% For more information, see Predictor Monitoring:
 %% https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring.html.
+-spec create_monitor(map(), create_monitor_request()) ->
+    {ok, create_monitor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_monitor(Client, Input, []).
+
+-spec create_monitor(map(), create_monitor_request(), proplists:proplist()) ->
+    {ok, create_monitor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMonitor">>, Input, Options).
@@ -590,9 +2266,26 @@ create_monitor(Client, Input, Options)
 %% predictor must be `ACTIVE', signifying that training has completed. To
 %% get the
 %% status, use the `DescribePredictor' operation.
+-spec create_predictor(map(), create_predictor_request()) ->
+    {ok, create_predictor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_predictor(Client, Input, []).
+
+-spec create_predictor(map(), create_predictor_request(), proplists:proplist()) ->
+    {ok, create_predictor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePredictor">>, Input, Options).
@@ -619,9 +2312,26 @@ create_predictor(Client, Input, Options)
 %% The `Status' of the export job must be `ACTIVE' before you
 %% can access the export in your Amazon S3 bucket. To get the status, use the
 %% `DescribePredictorBacktestExportJob' operation.
+-spec create_predictor_backtest_export_job(map(), create_predictor_backtest_export_job_request()) ->
+    {ok, create_predictor_backtest_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_predictor_backtest_export_job(Client, Input, []).
+
+-spec create_predictor_backtest_export_job(map(), create_predictor_backtest_export_job_request(), proplists:proplist()) ->
+    {ok, create_predictor_backtest_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_predictor_backtest_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePredictorBacktestExportJob">>, Input, Options).
@@ -660,9 +2370,26 @@ create_predictor_backtest_export_job(Client, Input, Options)
 %%
 %% The `TimeSeriesSelector' object defines the items that you want in the
 %% what-if analysis.
+-spec create_what_if_analysis(map(), create_what_if_analysis_request()) ->
+    {ok, create_what_if_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_analysis(Client, Input, []).
+
+-spec create_what_if_analysis(map(), create_what_if_analysis_request(), proplists:proplist()) ->
+    {ok, create_what_if_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_what_if_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWhatIfAnalysis">>, Input, Options).
@@ -673,9 +2400,26 @@ create_what_if_analysis(Client, Input, Options)
 %% Each
 %% what-if forecast incorporates either a replacement dataset or a set of
 %% transformations to the original dataset.
+-spec create_what_if_forecast(map(), create_what_if_forecast_request()) ->
+    {ok, create_what_if_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_forecast(Client, Input, []).
+
+-spec create_what_if_forecast(map(), create_what_if_forecast_request(), proplists:proplist()) ->
+    {ok, create_what_if_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_what_if_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWhatIfForecast">>, Input, Options).
@@ -706,9 +2450,26 @@ create_what_if_forecast(Client, Input, Options)
 %% The `Status' of the forecast export job must be `ACTIVE' before
 %% you can access the forecast in your Amazon S3 bucket. To get the status,
 %% use the `DescribeWhatIfForecastExport' operation.
+-spec create_what_if_forecast_export(map(), create_what_if_forecast_export_request()) ->
+    {ok, create_what_if_forecast_export_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_what_if_forecast_export(Client, Input, []).
+
+-spec create_what_if_forecast_export(map(), create_what_if_forecast_export_request(), proplists:proplist()) ->
+    {ok, create_what_if_forecast_export_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_what_if_forecast_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWhatIfForecastExport">>, Input, Options).
@@ -731,9 +2492,22 @@ create_what_if_forecast_export(Client, Input, Options)
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_UpdateDatasetGroup.html
 %% operation,
 %% omitting the deleted dataset's ARN.
+-spec delete_dataset(map(), delete_dataset_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
+
+-spec delete_dataset(map(), delete_dataset_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataset">>, Input, Options).
@@ -750,9 +2524,22 @@ delete_dataset(Client, Input, Options)
 %%
 %% This operation deletes only the dataset group, not the datasets in the
 %% group.
+-spec delete_dataset_group(map(), delete_dataset_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_group(Client, Input, []).
+
+-spec delete_dataset_group(map(), delete_dataset_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatasetGroup">>, Input, Options).
@@ -767,9 +2554,22 @@ delete_dataset_group(Client, Input, Options)
 %% DescribeDatasetImportJob:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetImportJob.html
 %% operation.
+-spec delete_dataset_import_job(map(), delete_dataset_import_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset_import_job(Client, Input, []).
+
+-spec delete_dataset_import_job(map(), delete_dataset_import_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatasetImportJob">>, Input, Options).
@@ -779,17 +2579,43 @@ delete_dataset_import_job(Client, Input, Options)
 %% You can delete only predictor that have a status of `ACTIVE' or
 %% `CREATE_FAILED'. To get the status, use the
 %% `DescribeExplainability' operation.
+-spec delete_explainability(map(), delete_explainability_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_explainability(Client, Input, []).
+
+-spec delete_explainability(map(), delete_explainability_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_explainability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExplainability">>, Input, Options).
 
 %% @doc Deletes an Explainability export.
+-spec delete_explainability_export(map(), delete_explainability_export_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_explainability_export(Client, Input, []).
+
+-spec delete_explainability_export(map(), delete_explainability_export_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_explainability_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExplainabilityExport">>, Input, Options).
@@ -804,9 +2630,22 @@ delete_explainability_export(Client, Input, Options)
 %% You can't delete a forecast while it is being exported. After a
 %% forecast is deleted, you
 %% can no longer query the forecast.
+-spec delete_forecast(map(), delete_forecast_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_forecast(Client, Input, []).
+
+-spec delete_forecast(map(), delete_forecast_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteForecast">>, Input, Options).
@@ -818,9 +2657,22 @@ delete_forecast(Client, Input, Options)
 %% You can delete only export jobs that have a status of `ACTIVE' or
 %% `CREATE_FAILED'. To get the status, use the
 %% `DescribeForecastExportJob' operation.
+-spec delete_forecast_export_job(map(), delete_forecast_export_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_forecast_export_job(Client, Input, []).
+
+-spec delete_forecast_export_job(map(), delete_forecast_export_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_forecast_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteForecastExportJob">>, Input, Options).
@@ -829,9 +2681,22 @@ delete_forecast_export_job(Client, Input, Options)
 %%
 %% You can only delete a monitor resource with a status of `ACTIVE',
 %% `ACTIVE_STOPPED', `CREATE_FAILED', or `CREATE_STOPPED'.
+-spec delete_monitor(map(), delete_monitor_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_monitor(Client, Input, []).
+
+-spec delete_monitor(map(), delete_monitor_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMonitor">>, Input, Options).
@@ -842,17 +2707,43 @@ delete_monitor(Client, Input, Options)
 %% You can delete only predictor that have a status of
 %% `ACTIVE' or `CREATE_FAILED'. To get the status, use the
 %% `DescribePredictor' operation.
+-spec delete_predictor(map(), delete_predictor_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_predictor(Client, Input, []).
+
+-spec delete_predictor(map(), delete_predictor_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePredictor">>, Input, Options).
 
 %% @doc Deletes a predictor backtest export job.
+-spec delete_predictor_backtest_export_job(map(), delete_predictor_backtest_export_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_predictor_backtest_export_job(Client, Input, []).
+
+-spec delete_predictor_backtest_export_job(map(), delete_predictor_backtest_export_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_predictor_backtest_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePredictorBacktestExportJob">>, Input, Options).
@@ -884,9 +2775,22 @@ delete_predictor_backtest_export_job(Client, Input, Options)
 %% `DeleteResourceTree' will only delete Amazon Forecast resources, and
 %% will not
 %% delete datasets or exported files stored in Amazon S3.
+-spec delete_resource_tree(map(), delete_resource_tree_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_resource_tree(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_tree(Client, Input, []).
+
+-spec delete_resource_tree(map(), delete_resource_tree_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_resource_tree(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceTree">>, Input, Options).
@@ -901,9 +2805,22 @@ delete_resource_tree(Client, Input, Options)
 %%
 %% You can't delete a what-if analysis while any of its forecasts are
 %% being exported.
+-spec delete_what_if_analysis(map(), delete_what_if_analysis_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_what_if_analysis(Client, Input, []).
+
+-spec delete_what_if_analysis(map(), delete_what_if_analysis_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_what_if_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWhatIfAnalysis">>, Input, Options).
@@ -919,9 +2836,22 @@ delete_what_if_analysis(Client, Input, Options)
 %% You can't delete a what-if forecast while it is being exported. After
 %% a what-if forecast is deleted, you can no longer query the what-if
 %% analysis.
+-spec delete_what_if_forecast(map(), delete_what_if_forecast_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_what_if_forecast(Client, Input, []).
+
+-spec delete_what_if_forecast(map(), delete_what_if_forecast_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_what_if_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWhatIfForecast">>, Input, Options).
@@ -933,18 +2863,42 @@ delete_what_if_forecast(Client, Input, Options)
 %% You can delete only what-if forecast exports that have a status of
 %% `ACTIVE' or `CREATE_FAILED'. To get the status, use the
 %% `DescribeWhatIfForecastExport' operation.
+-spec delete_what_if_forecast_export(map(), delete_what_if_forecast_export_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_what_if_forecast_export(Client, Input, []).
+
+-spec delete_what_if_forecast_export(map(), delete_what_if_forecast_export_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_what_if_forecast_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWhatIfForecastExport">>, Input, Options).
 
 %% @doc Describes a predictor created using the CreateAutoPredictor
 %% operation.
+-spec describe_auto_predictor(map(), describe_auto_predictor_request()) ->
+    {ok, describe_auto_predictor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_auto_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_predictor(Client, Input, []).
+
+-spec describe_auto_predictor(map(), describe_auto_predictor_request(), proplists:proplist()) ->
+    {ok, describe_auto_predictor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_auto_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoPredictor">>, Input, Options).
@@ -962,9 +2916,20 @@ describe_auto_predictor(Client, Input, Options)
 %% `LastModificationTime'
 %%
 %% `Status'
+-spec describe_dataset(map(), describe_dataset_request()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
+
+-spec describe_dataset(map(), describe_dataset_request(), proplists:proplist()) ->
+    {ok, describe_dataset_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
@@ -984,9 +2949,20 @@ describe_dataset(Client, Input, Options)
 %% `LastModificationTime'
 %%
 %% `Status'
+-spec describe_dataset_group(map(), describe_dataset_group_request()) ->
+    {ok, describe_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_group(Client, Input, []).
+
+-spec describe_dataset_group(map(), describe_dataset_group_request(), proplists:proplist()) ->
+    {ok, describe_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatasetGroup">>, Input, Options).
@@ -1011,27 +2987,60 @@ describe_dataset_group(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' - If an error occurred, information about the error.
+-spec describe_dataset_import_job(map(), describe_dataset_import_job_request()) ->
+    {ok, describe_dataset_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_import_job(Client, Input, []).
+
+-spec describe_dataset_import_job(map(), describe_dataset_import_job_request(), proplists:proplist()) ->
+    {ok, describe_dataset_import_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatasetImportJob">>, Input, Options).
 
 %% @doc Describes an Explainability resource created using the
 %% `CreateExplainability' operation.
+-spec describe_explainability(map(), describe_explainability_request()) ->
+    {ok, describe_explainability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_explainability(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_explainability(Client, Input, []).
+
+-spec describe_explainability(map(), describe_explainability_request(), proplists:proplist()) ->
+    {ok, describe_explainability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_explainability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExplainability">>, Input, Options).
 
 %% @doc Describes an Explainability export created using the
 %% `CreateExplainabilityExport' operation.
+-spec describe_explainability_export(map(), describe_explainability_export_request()) ->
+    {ok, describe_explainability_export_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_explainability_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_explainability_export(Client, Input, []).
+
+-spec describe_explainability_export(map(), describe_explainability_export_request(), proplists:proplist()) ->
+    {ok, describe_explainability_export_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_explainability_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExplainabilityExport">>, Input, Options).
@@ -1053,9 +3062,20 @@ describe_explainability_export(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' - If an error occurred, information about the error.
+-spec describe_forecast(map(), describe_forecast_request()) ->
+    {ok, describe_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_forecast(Client, Input, []).
+
+-spec describe_forecast(map(), describe_forecast_request(), proplists:proplist()) ->
+    {ok, describe_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeForecast">>, Input, Options).
@@ -1074,9 +3094,20 @@ describe_forecast(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' - If an error occurred, information about the error.
+-spec describe_forecast_export_job(map(), describe_forecast_export_job_request()) ->
+    {ok, describe_forecast_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_forecast_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_forecast_export_job(Client, Input, []).
+
+-spec describe_forecast_export_job(map(), describe_forecast_export_job_request(), proplists:proplist()) ->
+    {ok, describe_forecast_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_forecast_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeForecastExportJob">>, Input, Options).
@@ -1099,9 +3130,20 @@ describe_forecast_export_job(Client, Input, Options)
 %% `Message'
 %%
 %% `Status'
+-spec describe_monitor(map(), describe_monitor_request()) ->
+    {ok, describe_monitor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_monitor(Client, Input, []).
+
+-spec describe_monitor(map(), describe_monitor_request(), proplists:proplist()) ->
+    {ok, describe_monitor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMonitor">>, Input, Options).
@@ -1135,9 +3177,20 @@ describe_monitor(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' - If an error occurred, information about the error.
+-spec describe_predictor(map(), describe_predictor_request()) ->
+    {ok, describe_predictor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_predictor(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_predictor(Client, Input, []).
+
+-spec describe_predictor(map(), describe_predictor_request(), proplists:proplist()) ->
+    {ok, describe_predictor_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_predictor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePredictor">>, Input, Options).
@@ -1156,9 +3209,20 @@ describe_predictor(Client, Input, Options)
 %% `Status'
 %%
 %% `Message' (if an error occurred)
+-spec describe_predictor_backtest_export_job(map(), describe_predictor_backtest_export_job_request()) ->
+    {ok, describe_predictor_backtest_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_predictor_backtest_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_predictor_backtest_export_job(Client, Input, []).
+
+-spec describe_predictor_backtest_export_job(map(), describe_predictor_backtest_export_job_request(), proplists:proplist()) ->
+    {ok, describe_predictor_backtest_export_job_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_predictor_backtest_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePredictorBacktestExportJob">>, Input, Options).
@@ -1177,9 +3241,20 @@ describe_predictor_backtest_export_job(Client, Input, Options)
 %% `Message' - If an error occurred, information about the error.
 %%
 %% `Status'
+-spec describe_what_if_analysis(map(), describe_what_if_analysis_request()) ->
+    {ok, describe_what_if_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_what_if_analysis(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_analysis(Client, Input, []).
+
+-spec describe_what_if_analysis(map(), describe_what_if_analysis_request(), proplists:proplist()) ->
+    {ok, describe_what_if_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_what_if_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWhatIfAnalysis">>, Input, Options).
@@ -1198,9 +3273,20 @@ describe_what_if_analysis(Client, Input, Options)
 %% `Message' - If an error occurred, information about the error.
 %%
 %% `Status'
+-spec describe_what_if_forecast(map(), describe_what_if_forecast_request()) ->
+    {ok, describe_what_if_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_what_if_forecast(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_forecast(Client, Input, []).
+
+-spec describe_what_if_forecast(map(), describe_what_if_forecast_request(), proplists:proplist()) ->
+    {ok, describe_what_if_forecast_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_what_if_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWhatIfForecast">>, Input, Options).
@@ -1219,9 +3305,20 @@ describe_what_if_forecast(Client, Input, Options)
 %% `Message' - If an error occurred, information about the error.
 %%
 %% `Status'
+-spec describe_what_if_forecast_export(map(), describe_what_if_forecast_export_request()) ->
+    {ok, describe_what_if_forecast_export_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_what_if_forecast_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_what_if_forecast_export(Client, Input, []).
+
+-spec describe_what_if_forecast_export(map(), describe_what_if_forecast_export_request(), proplists:proplist()) ->
+    {ok, describe_what_if_forecast_export_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_what_if_forecast_export(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWhatIfForecastExport">>, Input, Options).
@@ -1255,9 +3352,22 @@ describe_what_if_forecast_export(Client, Input, Options)
 %% `ACTIVE', signifying that training has completed. To get the status,
 %% use the
 %% `DescribePredictor' operation.
+-spec get_accuracy_metrics(map(), get_accuracy_metrics_request()) ->
+    {ok, get_accuracy_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_accuracy_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_accuracy_metrics(Client, Input, []).
+
+-spec get_accuracy_metrics(map(), get_accuracy_metrics_request(), proplists:proplist()) ->
+    {ok, get_accuracy_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 get_accuracy_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccuracyMetrics">>, Input, Options).
@@ -1274,9 +3384,18 @@ get_accuracy_metrics(Client, Input, Options)
 %% dataset group ARN with the DescribeDatasetGroup:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
 %% operation.
+-spec list_dataset_groups(map(), list_dataset_groups_request()) ->
+    {ok, list_dataset_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_groups(Client, Input, []).
+
+-spec list_dataset_groups(map(), list_dataset_groups_request(), proplists:proplist()) ->
+    {ok, list_dataset_groups_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetGroups">>, Input, Options).
@@ -1294,9 +3413,20 @@ list_dataset_groups(Client, Input, Options)
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetImportJob.html
 %% operation. You can filter the list by providing an array of Filter:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_Filter.html objects.
+-spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request()) ->
+    {ok, list_dataset_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_import_jobs(Client, Input, []).
+
+-spec list_dataset_import_jobs(map(), list_dataset_import_jobs_request(), proplists:proplist()) ->
+    {ok, list_dataset_import_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_dataset_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasetImportJobs">>, Input, Options).
@@ -1312,9 +3442,18 @@ list_dataset_import_jobs(Client, Input, Options)
 %% DescribeDataset:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDataset.html
 %% operation.
+-spec list_datasets(map(), list_datasets_request()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
+
+-spec list_datasets(map(), list_datasets_request(), proplists:proplist()) ->
+    {ok, list_datasets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_datasets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasets">>, Input, Options).
@@ -1330,9 +3469,20 @@ list_datasets(Client, Input, Options)
 %% To retrieve the complete set of properties for a particular Explainability
 %% resource,
 %% use the ARN with the `DescribeExplainability' operation.
+-spec list_explainabilities(map(), list_explainabilities_request()) ->
+    {ok, list_explainabilities_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_explainabilities(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_explainabilities(Client, Input, []).
+
+-spec list_explainabilities(map(), list_explainabilities_request(), proplists:proplist()) ->
+    {ok, list_explainabilities_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_explainabilities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExplainabilities">>, Input, Options).
@@ -1347,9 +3497,20 @@ list_explainabilities(Client, Input, Options)
 %% To retrieve the complete set of properties for a particular Explainability
 %% export, use
 %% the ARN with the `DescribeExplainability' operation.
+-spec list_explainability_exports(map(), list_explainability_exports_request()) ->
+    {ok, list_explainability_exports_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_explainability_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_explainability_exports(Client, Input, []).
+
+-spec list_explainability_exports(map(), list_explainability_exports_request(), proplists:proplist()) ->
+    {ok, list_explainability_exports_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_explainability_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExplainabilityExports">>, Input, Options).
@@ -1363,9 +3524,20 @@ list_explainability_exports(Client, Input, Options)
 %% complete set of properties, use the ARN with the
 %% `DescribeForecastExportJob'
 %% operation. You can filter the list using an array of `Filter' objects.
+-spec list_forecast_export_jobs(map(), list_forecast_export_jobs_request()) ->
+    {ok, list_forecast_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_forecast_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_forecast_export_jobs(Client, Input, []).
+
+-spec list_forecast_export_jobs(map(), list_forecast_export_jobs_request(), proplists:proplist()) ->
+    {ok, list_forecast_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_forecast_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListForecastExportJobs">>, Input, Options).
@@ -1380,9 +3552,20 @@ list_forecast_export_jobs(Client, Input, Options)
 %% `DescribeForecast' operation. You can filter the list using an array
 %% of
 %% `Filter' objects.
+-spec list_forecasts(map(), list_forecasts_request()) ->
+    {ok, list_forecasts_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_forecasts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_forecasts(Client, Input, []).
+
+-spec list_forecasts(map(), list_forecasts_request(), proplists:proplist()) ->
+    {ok, list_forecasts_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_forecasts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListForecasts">>, Input, Options).
@@ -1395,9 +3578,22 @@ list_forecasts(Client, Input, Options)
 %% more information about retrieving monitoring results see Viewing
 %% Monitoring Results:
 %% https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring-results.html.
+-spec list_monitor_evaluations(map(), list_monitor_evaluations_request()) ->
+    {ok, list_monitor_evaluations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_monitor_evaluations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitor_evaluations(Client, Input, []).
+
+-spec list_monitor_evaluations(map(), list_monitor_evaluations_request(), proplists:proplist()) ->
+    {ok, list_monitor_evaluations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_monitor_evaluations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitorEvaluations">>, Input, Options).
@@ -1409,9 +3605,20 @@ list_monitor_evaluations(Client, Input, Options)
 %% properties, including its Amazon Resource Name (ARN). You
 %% can retrieve a complete set of properties of a monitor resource by specify
 %% the monitor's ARN in the `DescribeMonitor' operation.
+-spec list_monitors(map(), list_monitors_request()) ->
+    {ok, list_monitors_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_monitors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_monitors(Client, Input, []).
+
+-spec list_monitors(map(), list_monitors_request(), proplists:proplist()) ->
+    {ok, list_monitors_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_monitors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMonitors">>, Input, Options).
@@ -1426,9 +3633,20 @@ list_monitors(Client, Input, Options)
 %% To retrieve the complete set of properties for a particular backtest
 %% export job, use
 %% the ARN with the `DescribePredictorBacktestExportJob' operation.
+-spec list_predictor_backtest_export_jobs(map(), list_predictor_backtest_export_jobs_request()) ->
+    {ok, list_predictor_backtest_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_predictor_backtest_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_predictor_backtest_export_jobs(Client, Input, []).
+
+-spec list_predictor_backtest_export_jobs(map(), list_predictor_backtest_export_jobs_request(), proplists:proplist()) ->
+    {ok, list_predictor_backtest_export_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_predictor_backtest_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPredictorBacktestExportJobs">>, Input, Options).
@@ -1443,17 +3661,39 @@ list_predictor_backtest_export_jobs(Client, Input, Options)
 %% You can retrieve the complete set of properties by using the ARN with the
 %% `DescribeAutoPredictor' and `DescribePredictor' operations. You
 %% can filter the list using an array of `Filter' objects.
+-spec list_predictors(map(), list_predictors_request()) ->
+    {ok, list_predictors_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_predictors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_predictors(Client, Input, []).
+
+-spec list_predictors(map(), list_predictors_request(), proplists:proplist()) ->
+    {ok, list_predictors_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_predictors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPredictors">>, Input, Options).
 
 %% @doc Lists the tags for an Amazon Forecast resource.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1465,9 +3705,20 @@ list_tags_for_resource(Client, Input, Options)
 %% properties, including its Amazon Resource Name (ARN). You can retrieve the
 %% complete set of properties by using the what-if analysis ARN with the
 %% `DescribeWhatIfAnalysis' operation.
+-spec list_what_if_analyses(map(), list_what_if_analyses_request()) ->
+    {ok, list_what_if_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_what_if_analyses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_what_if_analyses(Client, Input, []).
+
+-spec list_what_if_analyses(map(), list_what_if_analyses_request(), proplists:proplist()) ->
+    {ok, list_what_if_analyses_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_what_if_analyses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWhatIfAnalyses">>, Input, Options).
@@ -1479,9 +3730,20 @@ list_what_if_analyses(Client, Input, Options)
 %% properties, including its Amazon Resource Name (ARN). You can retrieve the
 %% complete set of properties by using the what-if forecast export ARN with
 %% the `DescribeWhatIfForecastExport' operation.
+-spec list_what_if_forecast_exports(map(), list_what_if_forecast_exports_request()) ->
+    {ok, list_what_if_forecast_exports_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_what_if_forecast_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_what_if_forecast_exports(Client, Input, []).
+
+-spec list_what_if_forecast_exports(map(), list_what_if_forecast_exports_request(), proplists:proplist()) ->
+    {ok, list_what_if_forecast_exports_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_what_if_forecast_exports(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWhatIfForecastExports">>, Input, Options).
@@ -1493,17 +3755,43 @@ list_what_if_forecast_exports(Client, Input, Options)
 %% properties, including its Amazon Resource Name (ARN). You can retrieve the
 %% complete set of properties by using the what-if forecast ARN with the
 %% `DescribeWhatIfForecast' operation.
+-spec list_what_if_forecasts(map(), list_what_if_forecasts_request()) ->
+    {ok, list_what_if_forecasts_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_what_if_forecasts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_what_if_forecasts(Client, Input, []).
+
+-spec list_what_if_forecasts(map(), list_what_if_forecasts_request(), proplists:proplist()) ->
+    {ok, list_what_if_forecasts_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_what_if_forecasts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWhatIfForecasts">>, Input, Options).
 
 %% @doc Resumes a stopped monitor resource.
+-spec resume_resource(map(), resume_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 resume_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_resource(Client, Input, []).
+
+-spec resume_resource(map(), resume_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 resume_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeResource">>, Input, Options).
@@ -1531,9 +3819,22 @@ resume_resource(Client, Input, Options)
 %% Explainability Job
 %%
 %% Explainability Export Job
+-spec stop_resource(map(), stop_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 stop_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_resource(Client, Input, []).
+
+-spec stop_resource(map(), stop_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 stop_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopResource">>, Input, Options).
@@ -1546,17 +3847,41 @@ stop_resource(Client, Input, Options)
 %% changed. When a resource is deleted, the tags associated with that
 %% resource are also
 %% deleted.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes the specified tags from a resource.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1567,9 +3892,22 @@ untag_resource(Client, Input, Options)
 %% use the dataset group to create a predictor. Use the DescribeDatasetGroup:
 %% https://docs.aws.amazon.com/forecast/latest/dg/API_DescribeDatasetGroup.html
 %% operation to get the status.
+-spec update_dataset_group(map(), update_dataset_group_request()) ->
+    {ok, update_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_dataset_group(Client, Input, []).
+
+-spec update_dataset_group(map(), update_dataset_group_request(), proplists:proplist()) ->
+    {ok, update_dataset_group_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDatasetGroup">>, Input, Options).

@@ -101,14 +101,495 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% project_creation_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type project_creation_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_profile_result() :: #{
+%%   <<"userArn">> => string()
+%% }
+-type delete_user_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_profile_request() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"sshPublicKey">> => string(),
+%%   <<"userArn">> := string()
+%% }
+-type update_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% team_member_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type team_member_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% toolchain_source() :: #{
+%%   <<"s3">> => s3_location()
+%% }
+-type toolchain_source() :: #{binary() => any()}.
+
+%% Example:
+%% toolchain() :: #{
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => toolchain_source(),
+%%   <<"stackParameters">> => map()
+%% }
+-type toolchain() :: #{binary() => any()}.
+
+%% Example:
+%% describe_project_result() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"createdTimeStamp">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"projectTemplateId">> => string(),
+%%   <<"stackId">> => string(),
+%%   <<"status">> => project_status()
+%% }
+-type describe_project_result() :: #{binary() => any()}.
+
+%% Example:
+%% code_commit_code_destination() :: #{
+%%   <<"name">> => string()
+%% }
+-type code_commit_code_destination() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_profiles_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"userProfiles">> => list(user_profile_summary()())
+%% }
+-type list_user_profiles_result() :: #{binary() => any()}.
+
+%% Example:
+%% project_summary() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"projectId">> => string()
+%% }
+-type project_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_project_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type describe_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_result() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"stackId">> => string()
+%% }
+-type delete_project_result() :: #{binary() => any()}.
+
+%% Example:
+%% user_profile_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_profile_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_project_result() :: #{
+%%   <<"tags">> => map()
+%% }
+-type tag_project_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_team_member_result() :: #{
+
+%% }
+-type disassociate_team_member_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_project_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tags_for_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_profile_result() :: #{
+%%   <<"createdTimestamp">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"lastModifiedTimestamp">> => non_neg_integer(),
+%%   <<"sshPublicKey">> => string(),
+%%   <<"userArn">> => string()
+%% }
+-type describe_user_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_profile_request() :: #{
+%%   <<"userArn">> := string()
+%% }
+-type describe_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_team_members_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectId">> := string()
+%% }
+-type list_team_members_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_team_members_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"teamMembers">> => list(team_member()())
+%% }
+-type list_team_members_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_profile_request() :: #{
+%%   <<"userArn">> := string()
+%% }
+-type delete_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% code_destination() :: #{
+%%   <<"codeCommit">> => code_commit_code_destination(),
+%%   <<"gitHub">> => git_hub_code_destination()
+%% }
+-type code_destination() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% team_member() :: #{
+%%   <<"projectRole">> => string(),
+%%   <<"remoteAccessAllowed">> => boolean(),
+%%   <<"userArn">> => string()
+%% }
+-type team_member() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_user_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% team_member_already_associated_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type team_member_already_associated_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_profile_result() :: #{
+%%   <<"createdTimestamp">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"lastModifiedTimestamp">> => non_neg_integer(),
+%%   <<"sshPublicKey">> => string(),
+%%   <<"userArn">> => string()
+%% }
+-type update_user_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucketKey">> => string(),
+%%   <<"bucketName">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resources">> => list(resource()())
+%% }
+-type list_resources_result() :: #{binary() => any()}.
+
+%% Example:
+%% untag_project_result() :: #{
+
+%% }
+-type untag_project_result() :: #{binary() => any()}.
+
+%% Example:
+%% code() :: #{
+%%   <<"destination">> => code_destination(),
+%%   <<"source">> => code_source()
+%% }
+-type code() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_team_member_request() :: #{
+%%   <<"projectId">> := string(),
+%%   <<"userArn">> := string()
+%% }
+-type disassociate_team_member_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"id">> := string(),
+%%   <<"name">> => string()
+%% }
+-type update_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% project_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type project_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_team_member_result() :: #{
+%%   <<"projectRole">> => string(),
+%%   <<"remoteAccessAllowed">> => boolean(),
+%%   <<"userArn">> => string()
+%% }
+-type update_team_member_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_project_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_project_result() :: #{binary() => any()}.
+
+%% Example:
+%% code_source() :: #{
+%%   <<"s3">> => s3_location()
+%% }
+-type code_source() :: #{binary() => any()}.
+
+%% Example:
+%% git_hub_code_destination() :: #{
+%%   <<"description">> => string(),
+%%   <<"issuesEnabled">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"privateRepository">> => boolean(),
+%%   <<"token">> => string(),
+%%   <<"type">> => string()
+%% }
+-type git_hub_code_destination() :: #{binary() => any()}.
+
+%% Example:
+%% user_profile_summary() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"sshPublicKey">> => string(),
+%%   <<"userArn">> => string()
+%% }
+-type user_profile_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_profile_request() :: #{
+%%   <<"displayName">> := string(),
+%%   <<"emailAddress">> := string(),
+%%   <<"sshPublicKey">> => string(),
+%%   <<"userArn">> := string()
+%% }
+-type create_user_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_profile_result() :: #{
+%%   <<"createdTimestamp">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"lastModifiedTimestamp">> => non_neg_integer(),
+%%   <<"sshPublicKey">> => string(),
+%%   <<"userArn">> => string()
+%% }
+-type create_user_profile_result() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> := string(),
+%%   <<"name">> := string(),
+%%   <<"sourceCode">> => list(code()()),
+%%   <<"tags">> => map(),
+%%   <<"toolchain">> => toolchain()
+%% }
+-type create_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% project_status() :: #{
+%%   <<"reason">> => string(),
+%%   <<"state">> => string()
+%% }
+-type project_status() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_projects_request() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectId">> := string()
+%% }
+-type list_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_team_member_result() :: #{
+%%   <<"clientRequestToken">> => string()
+%% }
+-type associate_team_member_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_team_member_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"projectId">> := string(),
+%%   <<"projectRole">> := string(),
+%%   <<"remoteAccessAllowed">> => boolean(),
+%%   <<"userArn">> := string()
+%% }
+-type associate_team_member_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_result() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"projects">> => list(project_summary()())
+%% }
+-type list_projects_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"deleteStack">> => boolean(),
+%%   <<"id">> := string()
+%% }
+-type delete_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% project_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type project_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% user_profile_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_profile_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_service_role_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_service_role_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_result() :: #{
+%%   <<"arn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"id">> => string(),
+%%   <<"projectTemplateId">> => string()
+%% }
+-type create_project_result() :: #{binary() => any()}.
+
+%% Example:
+%% untag_project_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"tags">> := list(string()())
+%% }
+-type untag_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% project_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type project_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_team_member_request() :: #{
+%%   <<"projectId">> := string(),
+%%   <<"projectRole">> => string(),
+%%   <<"remoteAccessAllowed">> => boolean(),
+%%   <<"userArn">> := string()
+%% }
+-type update_team_member_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource() :: #{
+%%   <<"id">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+%% Example:
+%% tag_project_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_result() :: #{
+
+%% }
+-type update_project_result() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Adds an IAM user to the team for an AWS CodeStar project.
+-spec associate_team_member(map(), associate_team_member_request()) ->
+    {ok, associate_team_member_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_configuration_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, team_member_already_associated_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_team_member(Client, Input, []).
+
+-spec associate_team_member(map(), associate_team_member_request(), proplists:proplist()) ->
+    {ok, associate_team_member_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_configuration_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, team_member_already_associated_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_team_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTeamMember">>, Input, Options).
@@ -120,9 +601,30 @@ associate_team_member(Client, Input, Options)
 %% template file
 %% can be included with the project request. If these are not provided, an
 %% empty project is created.
+-spec create_project(map(), create_project_request()) ->
+    {ok, create_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_already_exists_exception(), tuple()} |
+    {error, project_configuration_exception(), tuple()} |
+    {error, project_creation_failed_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_project(Client, Input, []).
+
+-spec create_project(map(), create_project_request(), proplists:proplist()) ->
+    {ok, create_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_already_exists_exception(), tuple()} |
+    {error, project_configuration_exception(), tuple()} |
+    {error, project_creation_failed_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
@@ -135,9 +637,20 @@ create_project(Client, Input, Options)
 %% project-specific. Information in the user profile is displayed wherever
 %% the user's information
 %% appears to other users in AWS CodeStar.
+-spec create_user_profile(map(), create_user_profile_request()) ->
+    {ok, create_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, user_profile_already_exists_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
+
+-spec create_user_profile(map(), create_user_profile_request(), proplists:proplist()) ->
+    {ok, create_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, user_profile_already_exists_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserProfile">>, Input, Options).
@@ -147,9 +660,22 @@ create_user_profile(Client, Input, Options)
 %% Does not delete users associated with
 %% the project, but does delete the IAM roles that allowed access to the
 %% project.
+-spec delete_project(map(), delete_project_request()) ->
+    {ok, delete_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project(Client, Input, []).
+
+-spec delete_project(map(), delete_project_request(), proplists:proplist()) ->
+    {ok, delete_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
@@ -160,26 +686,63 @@ delete_project(Client, Input, Options)
 %%
 %% It does not delete the history of that
 %% user, for example the history of commits made by that user.
+-spec delete_user_profile(map(), delete_user_profile_request()) ->
+    {ok, delete_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, validation_exception(), tuple()}.
 delete_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_user_profile(Client, Input, []).
+
+-spec delete_user_profile(map(), delete_user_profile_request(), proplists:proplist()) ->
+    {ok, delete_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, validation_exception(), tuple()}.
 delete_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserProfile">>, Input, Options).
 
 %% @doc Describes a project and its resources.
+-spec describe_project(map(), describe_project_request()) ->
+    {ok, describe_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, project_configuration_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_project(Client, Input, []).
+
+-spec describe_project(map(), describe_project_request(), proplists:proplist()) ->
+    {ok, describe_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, project_configuration_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProject">>, Input, Options).
 
 %% @doc Describes a user in AWS CodeStar and the user attributes across all
 %% projects.
+-spec describe_user_profile(map(), describe_user_profile_request()) ->
+    {ok, describe_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, user_profile_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user_profile(Client, Input, []).
+
+-spec describe_user_profile(map(), describe_user_profile_request(), proplists:proplist()) ->
+    {ok, describe_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, user_profile_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUserProfile">>, Input, Options).
@@ -192,74 +755,191 @@ describe_user_profile(Client, Input, Options)
 %% team member does not remove that user's profile from AWS CodeStar. It
 %% does not remove the user from
 %% IAM.
+-spec disassociate_team_member(map(), disassociate_team_member_request()) ->
+    {ok, disassociate_team_member_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_team_member(Client, Input, []).
+
+-spec disassociate_team_member(map(), disassociate_team_member_request(), proplists:proplist()) ->
+    {ok, disassociate_team_member_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_team_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateTeamMember">>, Input, Options).
 
 %% @doc Lists all projects in AWS CodeStar associated with your AWS account.
+-spec list_projects(map(), list_projects_request()) ->
+    {ok, list_projects_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
+
+-spec list_projects(map(), list_projects_request(), proplists:proplist()) ->
+    {ok, list_projects_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
 
 %% @doc Lists resources associated with a project in AWS CodeStar.
+-spec list_resources(map(), list_resources_request()) ->
+    {ok, list_resources_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources(Client, Input, []).
+
+-spec list_resources(map(), list_resources_request(), proplists:proplist()) ->
+    {ok, list_resources_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResources">>, Input, Options).
 
 %% @doc Gets the tags for a project.
+-spec list_tags_for_project(map(), list_tags_for_project_request()) ->
+    {ok, list_tags_for_project_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_project(Client, Input, []).
+
+-spec list_tags_for_project(map(), list_tags_for_project_request(), proplists:proplist()) ->
+    {ok, list_tags_for_project_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForProject">>, Input, Options).
 
 %% @doc Lists all team members associated with a project.
+-spec list_team_members(map(), list_team_members_request()) ->
+    {ok, list_team_members_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_team_members(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_team_members(Client, Input, []).
+
+-spec list_team_members(map(), list_team_members_request(), proplists:proplist()) ->
+    {ok, list_team_members_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_team_members(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTeamMembers">>, Input, Options).
 
 %% @doc Lists all the user profiles configured for your AWS account in AWS
 %% CodeStar.
+-spec list_user_profiles(map(), list_user_profiles_request()) ->
+    {ok, list_user_profiles_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_user_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_user_profiles(Client, Input, []).
+
+-spec list_user_profiles(map(), list_user_profiles_request(), proplists:proplist()) ->
+    {ok, list_user_profiles_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_user_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserProfiles">>, Input, Options).
 
 %% @doc Adds tags to a project.
+-spec tag_project(map(), tag_project_request()) ->
+    {ok, tag_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_project(Client, Input, []).
+
+-spec tag_project(map(), tag_project_request(), proplists:proplist()) ->
+    {ok, tag_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagProject">>, Input, Options).
 
 %% @doc Removes tags from a project.
+-spec untag_project(map(), untag_project_request()) ->
+    {ok, untag_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_project(Client, Input, []).
+
+-spec untag_project(map(), untag_project_request(), proplists:proplist()) ->
+    {ok, untag_project_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagProject">>, Input, Options).
 
 %% @doc Updates a project in AWS CodeStar.
+-spec update_project(map(), update_project_request()) ->
+    {ok, update_project_result(), tuple()} |
+    {error, any()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
+
+-spec update_project(map(), update_project_request(), proplists:proplist()) ->
+    {ok, update_project_result(), tuple()} |
+    {error, any()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
@@ -270,9 +950,30 @@ update_project(Client, Input, Options)
 %% team member's role in the project, or change whether they have remote
 %% access to project
 %% resources.
+-spec update_team_member(map(), update_team_member_request()) ->
+    {ok, update_team_member_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_configuration_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, team_member_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_team_member(Client, Input, []).
+
+-spec update_team_member(map(), update_team_member_request(), proplists:proplist()) ->
+    {ok, update_team_member_result(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_service_role_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, project_configuration_exception(), tuple()} |
+    {error, project_not_found_exception(), tuple()} |
+    {error, team_member_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_team_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTeamMember">>, Input, Options).
@@ -283,9 +984,20 @@ update_team_member(Client, Input, Options)
 %% Information in the user profile is displayed wherever the user's
 %% information appears to other
 %% users in AWS CodeStar.
+-spec update_user_profile(map(), update_user_profile_request()) ->
+    {ok, update_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, user_profile_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).
+
+-spec update_user_profile(map(), update_user_profile_request(), proplists:proplist()) ->
+    {ok, update_user_profile_result(), tuple()} |
+    {error, any()} |
+    {error, user_profile_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_user_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUserProfile">>, Input, Options).

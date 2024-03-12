@@ -54,6 +54,162 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_value() :: #{
+%%   <<"Value">> => string()
+%% }
+-type attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_request() :: #{
+%%   <<"FormatVersion">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type describe_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_services_response() :: #{
+%%   <<"FormatVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Services">> => list(service()())
+%% }
+-type describe_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% expired_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type expired_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Field">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_attribute_values_request() :: #{
+%%   <<"AttributeName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type get_attribute_values_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_attribute_values_response() :: #{
+%%   <<"AttributeValues">> => list(attribute_value()()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_attribute_values_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_price_list_file_url_request() :: #{
+%%   <<"FileFormat">> := string(),
+%%   <<"PriceListArn">> := string()
+%% }
+-type get_price_list_file_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_price_list_file_url_response() :: #{
+%%   <<"Url">> => string()
+%% }
+-type get_price_list_file_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_products_request() :: #{
+%%   <<"Filters">> => list(filter()()),
+%%   <<"FormatVersion">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type get_products_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_products_response() :: #{
+%%   <<"FormatVersion">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PriceList">> => list(string()())
+%% }
+-type get_products_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_price_lists_request() :: #{
+%%   <<"CurrencyCode">> := string(),
+%%   <<"EffectiveDate">> := non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RegionCode">> => string(),
+%%   <<"ServiceCode">> := string()
+%% }
+-type list_price_lists_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_price_lists_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PriceLists">> => list(price_list()())
+%% }
+-type list_price_lists_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% price_list() :: #{
+%%   <<"CurrencyCode">> => string(),
+%%   <<"FileFormats">> => list(string()()),
+%%   <<"PriceListArn">> => string(),
+%%   <<"RegionCode">> => string()
+%% }
+-type price_list() :: #{binary() => any()}.
+
+%% Example:
+%% service() :: #{
+%%   <<"AttributeNames">> => list(string()()),
+%%   <<"ServiceCode">> => string()
+%% }
+-type service() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -70,9 +226,28 @@
 %% available for EC2 are
 %% `volumeType', `maxIopsVolume', `operation',
 %% `locationType', and `instanceCapacity10xlarge'.
+-spec describe_services(map(), describe_services_request()) ->
+    {ok, describe_services_response(), tuple()} |
+    {error, any()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_services(Client, Input, []).
+
+-spec describe_services(map(), describe_services_request(), proplists:proplist()) ->
+    {ok, describe_services_response(), tuple()} |
+    {error, any()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServices">>, Input, Options).
@@ -85,9 +260,28 @@ describe_services(Client, Input, Options)
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs
 %% in the Billing and Cost Management User Guide:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html.
+-spec get_attribute_values(map(), get_attribute_values_request()) ->
+    {ok, get_attribute_values_response(), tuple()} |
+    {error, any()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_attribute_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_attribute_values(Client, Input, []).
+
+-spec get_attribute_values(map(), get_attribute_values_request(), proplists:proplist()) ->
+    {ok, get_attribute_values_response(), tuple()} |
+    {error, any()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_attribute_values(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAttributeValues">>, Input, Options).
@@ -106,17 +300,53 @@ get_attribute_values(Client, Input, Options)
 %% ListPriceLists:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html
 %% response.
+-spec get_price_list_file_url(map(), get_price_list_file_url_request()) ->
+    {ok, get_price_list_file_url_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_price_list_file_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_price_list_file_url(Client, Input, []).
+
+-spec get_price_list_file_url(map(), get_price_list_file_url_request(), proplists:proplist()) ->
+    {ok, get_price_list_file_url_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_price_list_file_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPriceListFileUrl">>, Input, Options).
 
 %% @doc Returns a list of all products that match the filter criteria.
+-spec get_products(map(), get_products_request()) ->
+    {ok, get_products_response(), tuple()} |
+    {error, any()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_products(Client, Input, []).
+
+-spec get_products(map(), get_products_request(), proplists:proplist()) ->
+    {ok, get_products_response(), tuple()} |
+    {error, any()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_products(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProducts">>, Input, Options).
@@ -142,9 +372,30 @@ get_products(Client, Input, Options)
 %% GetPriceListFileUrl:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetPriceListFileUrl.html
 %% API.
+-spec list_price_lists(map(), list_price_lists_request()) ->
+    {ok, list_price_lists_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_price_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_price_lists(Client, Input, []).
+
+-spec list_price_lists(map(), list_price_lists_request(), proplists:proplist()) ->
+    {ok, list_price_lists_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_price_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPriceLists">>, Input, Options).

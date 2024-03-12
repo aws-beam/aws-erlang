@@ -78,6 +78,271 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_managed_resources_response() :: #{
+%%   <<"items">> => list(managed_resource_summary()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_managed_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_resource_response() :: #{
+%%   <<"appliedWeights">> => map(),
+%%   <<"arn">> => string(),
+%%   <<"autoshifts">> => list(autoshift_in_resource()()),
+%%   <<"name">> => string(),
+%%   <<"practiceRunConfiguration">> => practice_run_configuration(),
+%%   <<"zonalAutoshiftStatus">> => list(any()),
+%%   <<"zonalShifts">> => list(zonal_shift_in_resource()())
+%% }
+-type get_managed_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_zonal_shifts_response() :: #{
+%%   <<"items">> => list(zonal_shift_summary()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_zonal_shifts_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_zonal_shift_request() :: #{
+%%   <<"comment">> => string(),
+%%   <<"expiresIn">> => string()
+%% }
+-type update_zonal_shift_request() :: #{binary() => any()}.
+
+%% Example:
+%% autoshift_summary() :: #{
+%%   <<"awayFrom">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type autoshift_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_autoshifts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type list_autoshifts_request() :: #{binary() => any()}.
+
+%% Example:
+%% zonal_shift() :: #{
+%%   <<"awayFrom">> := string(),
+%%   <<"comment">> := string(),
+%%   <<"expiryTime">> := non_neg_integer(),
+%%   <<"resourceIdentifier">> := string(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"status">> := list(any()),
+%%   <<"zonalShiftId">> := string()
+%% }
+-type zonal_shift() :: #{binary() => any()}.
+
+%% Example:
+%% autoshift_in_resource() :: #{
+%%   <<"appliedStatus">> => list(any()),
+%%   <<"awayFrom">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type autoshift_in_resource() :: #{binary() => any()}.
+
+%% Example:
+%% managed_resource_summary() :: #{
+%%   <<"appliedWeights">> => map(),
+%%   <<"arn">> => string(),
+%%   <<"autoshifts">> => list(autoshift_in_resource()()),
+%%   <<"availabilityZones">> => list(string()()),
+%%   <<"name">> => string(),
+%%   <<"practiceRunStatus">> => list(any()),
+%%   <<"zonalAutoshiftStatus">> => list(any()),
+%%   <<"zonalShifts">> => list(zonal_shift_in_resource()())
+%% }
+-type managed_resource_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_zonal_autoshift_configuration_request() :: #{
+%%   <<"zonalAutoshiftStatus">> := list(any())
+%% }
+-type update_zonal_autoshift_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% zonal_shift_summary() :: #{
+%%   <<"awayFrom">> => string(),
+%%   <<"comment">> => string(),
+%%   <<"expiryTime">> => non_neg_integer(),
+%%   <<"practiceRunOutcome">> => list(any()),
+%%   <<"resourceIdentifier">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"zonalShiftId">> => string()
+%% }
+-type zonal_shift_summary() :: #{binary() => any()}.
+%% Example:
+%% cancel_zonal_shift_request() :: #{}
+-type cancel_zonal_shift_request() :: #{}.
+
+%% Example:
+%% update_practice_run_configuration_request() :: #{
+%%   <<"blockedDates">> => list(string()()),
+%%   <<"blockedWindows">> => list(string()()),
+%%   <<"blockingAlarms">> => list(control_condition()()),
+%%   <<"outcomeAlarms">> => list(control_condition()())
+%% }
+-type update_practice_run_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string(),
+%%   <<"zonalShiftId">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% zonal_shift_in_resource() :: #{
+%%   <<"appliedStatus">> => list(any()),
+%%   <<"awayFrom">> => string(),
+%%   <<"comment">> => string(),
+%%   <<"expiryTime">> => non_neg_integer(),
+%%   <<"practiceRunOutcome">> => list(any()),
+%%   <<"resourceIdentifier">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"zonalShiftId">> => string()
+%% }
+-type zonal_shift_in_resource() :: #{binary() => any()}.
+
+%% Example:
+%% list_zonal_shifts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()],
+%%   <<"resourceIdentifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_zonal_shifts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_resources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_managed_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_zonal_autoshift_configuration_response() :: #{
+%%   <<"resourceIdentifier">> => string(),
+%%   <<"zonalAutoshiftStatus">> => list(any())
+%% }
+-type update_zonal_autoshift_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% control_condition() :: #{
+%%   <<"alarmIdentifier">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type control_condition() :: #{binary() => any()}.
+
+%% Example:
+%% create_practice_run_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"practiceRunConfiguration">> => practice_run_configuration(),
+%%   <<"zonalAutoshiftStatus">> => list(any())
+%% }
+-type create_practice_run_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+%% Example:
+%% get_managed_resource_request() :: #{}
+-type get_managed_resource_request() :: #{}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_zonal_shift_request() :: #{
+%%   <<"awayFrom">> := string(),
+%%   <<"comment">> := string(),
+%%   <<"expiresIn">> := string(),
+%%   <<"resourceIdentifier">> := string()
+%% }
+-type start_zonal_shift_request() :: #{binary() => any()}.
+%% Example:
+%% delete_practice_run_configuration_request() :: #{}
+-type delete_practice_run_configuration_request() :: #{}.
+
+%% Example:
+%% list_autoshifts_response() :: #{
+%%   <<"items">> => list(autoshift_summary()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autoshifts_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_practice_run_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"practiceRunConfiguration">> => practice_run_configuration(),
+%%   <<"zonalAutoshiftStatus">> => list(any())
+%% }
+-type update_practice_run_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_practice_run_configuration_request() :: #{
+%%   <<"blockedDates">> => list(string()()),
+%%   <<"blockedWindows">> => list(string()()),
+%%   <<"blockingAlarms">> => list(control_condition()()),
+%%   <<"outcomeAlarms">> := list(control_condition()()),
+%%   <<"resourceIdentifier">> := string()
+%% }
+-type create_practice_run_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% practice_run_configuration() :: #{
+%%   <<"blockedDates">> => list(string()()),
+%%   <<"blockedWindows">> => list(string()()),
+%%   <<"blockingAlarms">> => list(control_condition()()),
+%%   <<"outcomeAlarms">> => list(control_condition()())
+%% }
+-type practice_run_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_practice_run_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"zonalAutoshiftStatus">> => list(any())
+%% }
+-type delete_practice_run_configuration_response() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -92,8 +357,27 @@
 %% in an Amazon Web Services Region, or it can be a zonal shift started by a
 %% practice run with zonal
 %% autoshift.
+-spec cancel_zonal_shift(map(), binary() | list(), cancel_zonal_shift_request()) ->
+    {ok, zonal_shift(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 cancel_zonal_shift(Client, ZonalShiftId, Input) ->
     cancel_zonal_shift(Client, ZonalShiftId, Input, []).
+
+-spec cancel_zonal_shift(map(), binary() | list(), cancel_zonal_shift_request(), proplists:proplist()) ->
+    {ok, zonal_shift(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 cancel_zonal_shift(Client, ZonalShiftId, Input0, Options0) ->
     Method = delete,
     Path = ["/zonalshifts/", aws_util:encode_uri(ZonalShiftId), ""],
@@ -131,8 +415,27 @@ cancel_zonal_shift(Client, ZonalShiftId, Input0, Options0) ->
 %% Considerations when you configure zonal autoshift:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-autoshift.considerations.html
 %% in the Amazon Route 53 Application Recovery Controller Developer Guide.
+-spec create_practice_run_configuration(map(), create_practice_run_configuration_request()) ->
+    {ok, create_practice_run_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_practice_run_configuration(Client, Input) ->
     create_practice_run_configuration(Client, Input, []).
+
+-spec create_practice_run_configuration(map(), create_practice_run_configuration_request(), proplists:proplist()) ->
+    {ok, create_practice_run_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_practice_run_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration"],
@@ -162,8 +465,27 @@ create_practice_run_configuration(Client, Input0, Options0) ->
 %% autoshift for
 %% the resource. Practice runs must be configured for zonal autoshift to be
 %% enabled.
+-spec delete_practice_run_configuration(map(), binary() | list(), delete_practice_run_configuration_request()) ->
+    {ok, delete_practice_run_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_practice_run_configuration(Client, ResourceIdentifier, Input) ->
     delete_practice_run_configuration(Client, ResourceIdentifier, Input, []).
+
+-spec delete_practice_run_configuration(map(), binary() | list(), delete_practice_run_configuration_request(), proplists:proplist()) ->
+    {ok, delete_practice_run_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_practice_run_configuration(Client, ResourceIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/configuration/", aws_util:encode_uri(ResourceIdentifier), ""],
@@ -197,14 +519,38 @@ delete_practice_run_configuration(Client, ResourceIdentifier, Input0, Options0) 
 %% At this time, you can only start a zonal shift or configure zonal
 %% autoshift for Network Load Balancers and Application Load Balancers with
 %% cross-zone load balancing turned off.
+-spec get_managed_resource(map(), binary() | list()) ->
+    {ok, get_managed_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_managed_resource(Client, ResourceIdentifier)
   when is_map(Client) ->
     get_managed_resource(Client, ResourceIdentifier, #{}, #{}).
 
+-spec get_managed_resource(map(), binary() | list(), map(), map()) ->
+    {ok, get_managed_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_managed_resource(Client, ResourceIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_managed_resource(Client, ResourceIdentifier, QueryMap, HeadersMap, []).
 
+-spec get_managed_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_managed_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_managed_resource(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managedresources/", aws_util:encode_uri(ResourceIdentifier), ""],
@@ -222,14 +568,35 @@ get_managed_resource(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the active autoshifts for a specified resource.
+-spec list_autoshifts(map()) ->
+    {ok, list_autoshifts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_autoshifts(Client)
   when is_map(Client) ->
     list_autoshifts(Client, #{}, #{}).
 
+-spec list_autoshifts(map(), map(), map()) ->
+    {ok, list_autoshifts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_autoshifts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_autoshifts(Client, QueryMap, HeadersMap, []).
 
+-spec list_autoshifts(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_autoshifts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_autoshifts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/autoshifts"],
@@ -261,14 +628,35 @@ list_autoshifts(Client, QueryMap, HeadersMap, Options0)
 %% as well as the Amazon Resource Name (ARN), the Availability Zones that
 %% each resource is deployed in, and
 %% the resource name.
+-spec list_managed_resources(map()) ->
+    {ok, list_managed_resources_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_managed_resources(Client)
   when is_map(Client) ->
     list_managed_resources(Client, #{}, #{}).
 
+-spec list_managed_resources(map(), map(), map()) ->
+    {ok, list_managed_resources_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_managed_resources(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_managed_resources(Client, QueryMap, HeadersMap, []).
 
+-spec list_managed_resources(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_managed_resources_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_managed_resources(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managedresources"],
@@ -302,14 +690,35 @@ list_managed_resources(Client, QueryMap, HeadersMap, Options0)
 %% information about listing
 %% autoshifts, see &quot;&gt;ListAutoshifts:
 %% https://docs.aws.amazon.com/arc-zonal-shift/latest/api/API_ListAutoshifts.html.
+-spec list_zonal_shifts(map()) ->
+    {ok, list_zonal_shifts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_zonal_shifts(Client)
   when is_map(Client) ->
     list_zonal_shifts(Client, #{}, #{}).
 
+-spec list_zonal_shifts(map(), map(), map()) ->
+    {ok, list_zonal_shifts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_zonal_shifts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_zonal_shifts(Client, QueryMap, HeadersMap, []).
 
+-spec list_zonal_shifts(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_zonal_shifts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_zonal_shifts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/zonalshifts"],
@@ -357,8 +766,27 @@ list_zonal_shifts(Client, QueryMap, HeadersMap, Options0)
 %% For more information, see Zonal shift:
 %% https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-shift.html
 %% in the Amazon Route 53 Application Recovery Controller Developer Guide.
+-spec start_zonal_shift(map(), start_zonal_shift_request()) ->
+    {ok, zonal_shift(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_zonal_shift(Client, Input) ->
     start_zonal_shift(Client, Input, []).
+
+-spec start_zonal_shift(map(), start_zonal_shift_request(), proplists:proplist()) ->
+    {ok, zonal_shift(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_zonal_shift(Client, Input0, Options0) ->
     Method = post,
     Path = ["/zonalshifts"],
@@ -386,8 +814,27 @@ start_zonal_shift(Client, Input0, Options0) ->
 %% change, or remove the blocking alarm; change the outcome alarm; or add,
 %% change,
 %% or remove blocking dates or time windows.
+-spec update_practice_run_configuration(map(), binary() | list(), update_practice_run_configuration_request()) ->
+    {ok, update_practice_run_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_practice_run_configuration(Client, ResourceIdentifier, Input) ->
     update_practice_run_configuration(Client, ResourceIdentifier, Input, []).
+
+-spec update_practice_run_configuration(map(), binary() | list(), update_practice_run_configuration_request(), proplists:proplist()) ->
+    {ok, update_practice_run_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_practice_run_configuration(Client, ResourceIdentifier, Input0, Options0) ->
     Method = patch,
     Path = ["/configuration/", aws_util:encode_uri(ResourceIdentifier), ""],
@@ -419,8 +866,27 @@ update_practice_run_configuration(Client, ResourceIdentifier, Input0, Options0) 
 %% Web Services
 %% determines that there's an issue in the Availability Zone that could
 %% potentially affect customers.
+-spec update_zonal_autoshift_configuration(map(), binary() | list(), update_zonal_autoshift_configuration_request()) ->
+    {ok, update_zonal_autoshift_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_zonal_autoshift_configuration(Client, ResourceIdentifier, Input) ->
     update_zonal_autoshift_configuration(Client, ResourceIdentifier, Input, []).
+
+-spec update_zonal_autoshift_configuration(map(), binary() | list(), update_zonal_autoshift_configuration_request(), proplists:proplist()) ->
+    {ok, update_zonal_autoshift_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_zonal_autoshift_configuration(Client, ResourceIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/managedresources/", aws_util:encode_uri(ResourceIdentifier), ""],
@@ -448,8 +914,27 @@ update_zonal_autoshift_configuration(Client, ResourceIdentifier, Input0, Options
 %%
 %% You can update a zonal shift to set a new expiration, or
 %% edit or replace the comment for the zonal shift.
+-spec update_zonal_shift(map(), binary() | list(), update_zonal_shift_request()) ->
+    {ok, zonal_shift(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_zonal_shift(Client, ZonalShiftId, Input) ->
     update_zonal_shift(Client, ZonalShiftId, Input, []).
+
+-spec update_zonal_shift(map(), binary() | list(), update_zonal_shift_request(), proplists:proplist()) ->
+    {ok, zonal_shift(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_zonal_shift(Client, ZonalShiftId, Input0, Options0) ->
     Method = patch,
     Path = ["/zonalshifts/", aws_util:encode_uri(ZonalShiftId), ""],
@@ -476,7 +961,7 @@ update_zonal_shift(Client, ZonalShiftId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

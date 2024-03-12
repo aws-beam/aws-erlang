@@ -95,6 +95,409 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% create_index_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"State">> => string()
+%% }
+-type create_index_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_property() :: #{
+%%   <<"Data">> => [any()],
+%%   <<"LastReportedAt">> => [non_neg_integer()],
+%%   <<"Name">> => [string()]
+%% }
+-type resource_property() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_view_output() :: #{
+%%   <<"Errors">> => list(batch_get_view_error()()),
+%%   <<"Views">> => list(view()())
+%% }
+-type batch_get_view_output() :: #{binary() => any()}.
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_view_output() :: #{
+%%   <<"View">> => view()
+%% }
+-type create_view_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_indexes_for_members_input() :: #{
+%%   <<"AccountIdList">> := list(string()()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_indexes_for_members_input() :: #{binary() => any()}.
+
+%% Example:
+%% included_property() :: #{
+%%   <<"Name">> => [string()]
+%% }
+-type included_property() :: #{binary() => any()}.
+
+%% Example:
+%% search_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"QueryString">> := string(),
+%%   <<"ViewArn">> => [string()]
+%% }
+-type search_input() :: #{binary() => any()}.
+
+%% Example:
+%% view() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"IncludedProperties">> => list(included_property()()),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"Owner">> => [string()],
+%%   <<"Scope">> => [string()],
+%%   <<"ViewArn">> => [string()]
+%% }
+-type view() :: #{binary() => any()}.
+
+%% Example:
+%% associate_default_view_input() :: #{
+%%   <<"ViewArn">> := [string()]
+%% }
+-type associate_default_view_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_view_input() :: #{
+%%   <<"ViewArn">> := [string()]
+%% }
+-type delete_view_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_views_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Views">> => list([string()]())
+%% }
+-type list_views_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_view_output() :: #{
+%%   <<"ViewArn">> => [string()]
+%% }
+-type delete_view_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_count() :: #{
+%%   <<"Complete">> => [boolean()],
+%%   <<"TotalResources">> => [float()]
+%% }
+-type resource_count() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_view_input() :: #{
+%%   <<"ViewArns">> => list([string()]())
+%% }
+-type batch_get_view_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_supported_resource_types_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_supported_resource_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_index_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"ReplicatingFrom">> => list([string()]()),
+%%   <<"ReplicatingTo">> => list([string()]()),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => string()
+%% }
+-type get_index_output() :: #{binary() => any()}.
+
+%% Example:
+%% search_output() :: #{
+%%   <<"Count">> => resource_count(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Resources">> => list(resource()()),
+%%   <<"ViewArn">> => [string()]
+%% }
+-type search_output() :: #{binary() => any()}.
+
+%% Example:
+%% search_filter() :: #{
+%%   <<"FilterString">> => [string()]
+%% }
+-type search_filter() :: #{binary() => any()}.
+
+%% Example:
+%% index() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Region">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type index() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_indexes_for_members_output() :: #{
+%%   <<"Indexes">> => list(member_index()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_indexes_for_members_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_view_error() :: #{
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"ViewArn">> => [string()]
+%% }
+-type batch_get_view_error() :: #{binary() => any()}.
+
+%% Example:
+%% update_view_input() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"IncludedProperties">> => list(included_property()()),
+%%   <<"ViewArn">> := [string()]
+%% }
+-type update_view_input() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_indexes_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"Regions">> => list([string()]()),
+%%   <<"Type">> => string()
+%% }
+-type list_indexes_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_views_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_views_input() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"ValidationIssue">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% org_configuration() :: #{
+%%   <<"AWSServiceAccessStatus">> => string(),
+%%   <<"ServiceLinkedRole">> => [string()]
+%% }
+-type org_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_default_view_output() :: #{
+%%   <<"ViewArn">> => [string()]
+%% }
+-type associate_default_view_output() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"State">> => string()
+%% }
+-type delete_index_output() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_index_type_input() :: #{
+%%   <<"Arn">> := [string()],
+%%   <<"Type">> := string()
+%% }
+-type update_index_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list([string()]())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_view_input() :: #{
+%%   <<"ClientToken">> => [string()],
+%%   <<"Filters">> => search_filter(),
+%%   <<"IncludedProperties">> => list(included_property()()),
+%%   <<"Scope">> => [string()],
+%%   <<"Tags">> => map(),
+%%   <<"ViewName">> := string()
+%% }
+-type create_view_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_view_input() :: #{
+%%   <<"ViewArn">> := [string()]
+%% }
+-type get_view_input() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"FieldList">> => list(validation_exception_field()()),
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+%% Example:
+%% delete_index_input() :: #{
+%%   <<"Arn">> := [string()]
+%% }
+-type delete_index_input() :: #{binary() => any()}.
+
+%% Example:
+%% supported_resource_type() :: #{
+%%   <<"ResourceType">> => [string()],
+%%   <<"Service">> => [string()]
+%% }
+-type supported_resource_type() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+%% Example:
+%% update_view_output() :: #{
+%%   <<"View">> => view()
+%% }
+-type update_view_output() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_level_service_configuration_output() :: #{
+%%   <<"OrgConfiguration">> => org_configuration()
+%% }
+-type get_account_level_service_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_indexes_output() :: #{
+%%   <<"Indexes">> => list(index()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_indexes_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_view_output() :: #{
+%%   <<"Tags">> => map(),
+%%   <<"View">> => view()
+%% }
+-type get_view_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_supported_resource_types_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ResourceTypes">> => list(supported_resource_type()())
+%% }
+-type list_supported_resource_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_index_input() :: #{
+%%   <<"ClientToken">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type create_index_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_index_type_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"State">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type update_index_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% member_index() :: #{
+%%   <<"AccountId">> => [string()],
+%%   <<"Arn">> => [string()],
+%%   <<"Region">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type member_index() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_view_output() :: #{
+%%   <<"ViewArn">> => [string()]
+%% }
+-type get_default_view_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"LastReportedAt">> => [non_neg_integer()],
+%%   <<"OwningAccountId">> => [string()],
+%%   <<"Properties">> => list(resource_property()()),
+%%   <<"Region">> => [string()],
+%%   <<"ResourceType">> => [string()],
+%%   <<"Service">> => [string()]
+%% }
+-type resource() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -112,8 +515,25 @@
 %% configured, then users must explicitly specify a view with every
 %% `Search'
 %% operation performed in that Region.
+-spec associate_default_view(map(), associate_default_view_input()) ->
+    {ok, associate_default_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_default_view(Client, Input) ->
     associate_default_view(Client, Input, []).
+
+-spec associate_default_view(map(), associate_default_view_input(), proplists:proplist()) ->
+    {ok, associate_default_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 associate_default_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/AssociateDefaultView"],
@@ -137,8 +557,25 @@ associate_default_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves details about a list of views.
+-spec batch_get_view(map(), batch_get_view_input()) ->
+    {ok, batch_get_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_get_view(Client, Input) ->
     batch_get_view(Client, Input, []).
+
+-spec batch_get_view(map(), batch_get_view_input(), proplists:proplist()) ->
+    {ok, batch_get_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_get_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchGetView"],
@@ -232,8 +669,25 @@ batch_get_view(Client, Input0, Options0) ->
 %% Resource Explorer uses the
 %% same service-linked role for all additional indexes you create
 %% afterwards.
+-spec create_index(map(), create_index_input()) ->
+    {ok, create_index_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_index(Client, Input) ->
     create_index(Client, Input, []).
+
+-spec create_index(map(), create_index_input(), proplists:proplist()) ->
+    {ok, create_index_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateIndex"],
@@ -274,8 +728,29 @@ create_index(Client, Input0, Options0) ->
 %% of
 %% this view can `Search' using views you create with this
 %% operation.
+-spec create_view(map(), create_view_input()) ->
+    {ok, create_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_view(Client, Input) ->
     create_view(Client, Input, []).
+
+-spec create_view(map(), create_view_input(), proplists:proplist()) ->
+    {ok, create_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateView"],
@@ -316,8 +791,25 @@ create_view(Client, Input0, Options0) ->
 %% aggregator index for the account. Users can't perform account-wide
 %% searches using
 %% Resource Explorer until another aggregator index is configured.
+-spec delete_index(map(), delete_index_input()) ->
+    {ok, delete_index_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_index(Client, Input) ->
     delete_index(Client, Input, []).
+
+-spec delete_index(map(), delete_index_input(), proplists:proplist()) ->
+    {ok, delete_index_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteIndex"],
@@ -348,8 +840,27 @@ delete_index(Client, Input0, Options0) ->
 %% until you configure a new default by calling the
 %% `AssociateDefaultView'
 %% operation.
+-spec delete_view(map(), delete_view_input()) ->
+    {ok, delete_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_view(Client, Input) ->
     delete_view(Client, Input, []).
+
+-spec delete_view(map(), delete_view_input(), proplists:proplist()) ->
+    {ok, delete_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteView"],
@@ -384,8 +895,25 @@ delete_view(Client, Input0, Options0) ->
 %% configured, then users must explicitly specify a view with every
 %% `Search'
 %% operation performed in that Region.
+-spec disassociate_default_view(map(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_default_view(Client, Input) ->
     disassociate_default_view(Client, Input, []).
+
+-spec disassociate_default_view(map(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 disassociate_default_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DisassociateDefaultView"],
@@ -416,8 +944,23 @@ disassociate_default_view(Client, Input0, Options0) ->
 %% account or a delegated administrator with service access enabled can
 %% invoke this API
 %% call.
+-spec get_account_level_service_configuration(map(), #{}) ->
+    {ok, get_account_level_service_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_account_level_service_configuration(Client, Input) ->
     get_account_level_service_configuration(Client, Input, []).
+
+-spec get_account_level_service_configuration(map(), #{}, proplists:proplist()) ->
+    {ok, get_account_level_service_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_account_level_service_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetAccountLevelServiceConfiguration"],
@@ -445,8 +988,25 @@ get_account_level_service_configuration(Client, Input0, Options0) ->
 %% Amazon Web Services Region in which you call this operation.
 %%
 %% You can then call `GetView' to retrieve the details of that view.
+-spec get_default_view(map(), #{}) ->
+    {ok, get_default_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_default_view(Client, Input) ->
     get_default_view(Client, Input, []).
+
+-spec get_default_view(map(), #{}, proplists:proplist()) ->
+    {ok, get_default_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_default_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetDefaultView"],
@@ -472,8 +1032,25 @@ get_default_view(Client, Input0, Options0) ->
 %% @doc Retrieves details about the Amazon Web Services Resource Explorer
 %% index in the Amazon Web Services Region in which you invoked
 %% the operation.
+-spec get_index(map(), #{}) ->
+    {ok, get_index_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_index(Client, Input) ->
     get_index(Client, Input, []).
+
+-spec get_index(map(), #{}, proplists:proplist()) ->
+    {ok, get_index_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetIndex"],
@@ -497,8 +1074,27 @@ get_index(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves details of the specified view.
+-spec get_view(map(), get_view_input()) ->
+    {ok, get_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_view(Client, Input) ->
     get_view(Client, Input, []).
+
+-spec get_view(map(), get_view_input(), proplists:proplist()) ->
+    {ok, get_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetView"],
@@ -524,8 +1120,23 @@ get_view(Client, Input0, Options0) ->
 %% @doc Retrieves a list of all of the indexes in Amazon Web Services Regions
 %% that are currently collecting
 %% resource information for Amazon Web Services Resource Explorer.
+-spec list_indexes(map(), list_indexes_input()) ->
+    {ok, list_indexes_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_indexes(Client, Input) ->
     list_indexes(Client, Input, []).
+
+-spec list_indexes(map(), list_indexes_input(), proplists:proplist()) ->
+    {ok, list_indexes_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_indexes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListIndexes"],
@@ -555,8 +1166,23 @@ list_indexes(Client, Input0, Options0) ->
 %% Only the management account or a
 %% delegated administrator with service access enabled can invoke this API
 %% call.
+-spec list_indexes_for_members(map(), list_indexes_for_members_input()) ->
+    {ok, list_indexes_for_members_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_indexes_for_members(Client, Input) ->
     list_indexes_for_members(Client, Input, []).
+
+-spec list_indexes_for_members(map(), list_indexes_for_members_input(), proplists:proplist()) ->
+    {ok, list_indexes_for_members_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_indexes_for_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListIndexesForMembers"],
@@ -581,8 +1207,23 @@ list_indexes_for_members(Client, Input0, Options0) ->
 
 %% @doc Retrieves a list of all resource types currently supported by Amazon
 %% Web Services Resource Explorer.
+-spec list_supported_resource_types(map(), list_supported_resource_types_input()) ->
+    {ok, list_supported_resource_types_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_supported_resource_types(Client, Input) ->
     list_supported_resource_types(Client, Input, []).
+
+-spec list_supported_resource_types(map(), list_supported_resource_types_input(), proplists:proplist()) ->
+    {ok, list_supported_resource_types_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_supported_resource_types(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListSupportedResourceTypes"],
@@ -606,14 +1247,41 @@ list_supported_resource_types(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the tags that are attached to the specified resource.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -643,8 +1311,23 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% `NextToken' response parameter value is `null'
 %% only
 %% when there are no more results to display.
+-spec list_views(map(), list_views_input()) ->
+    {ok, list_views_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_views(Client, Input) ->
     list_views(Client, Input, []).
+
+-spec list_views(map(), list_views_input(), proplists:proplist()) ->
+    {ok, list_views_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_views(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListViews"],
@@ -692,8 +1375,27 @@ list_views(Client, Input0, Options0) ->
 %% there, see Troubleshooting Resource Explorer
 %% search:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/troubleshooting_search.html.
+-spec search(map(), search_input()) ->
+    {ok, search_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 search(Client, Input) ->
     search(Client, Input, []).
+
+-spec search(map(), search_input(), proplists:proplist()) ->
+    {ok, search_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 search(Client, Input0, Options0) ->
     Method = post,
     Path = ["/Search"],
@@ -718,8 +1420,27 @@ search(Client, Input0, Options0) ->
 
 %% @doc Adds one or more tag key and value pairs to an Amazon Web Services
 %% Resource Explorer view or index.
+-spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -744,8 +1465,27 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Removes one or more tag key and value pairs from an Amazon Web
 %% Services Resource Explorer view or index.
+-spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -843,8 +1583,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% After you demote an aggregator index to a local index, you must wait
 %% 24 hours before you can promote another index to be the new
 %% aggregator index for the account.
+-spec update_index_type(map(), update_index_type_input()) ->
+    {ok, update_index_type_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_index_type(Client, Input) ->
     update_index_type(Client, Input, []).
+
+-spec update_index_type(map(), update_index_type_input(), proplists:proplist()) ->
+    {ok, update_index_type_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_index_type(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateIndexType"],
@@ -871,8 +1632,27 @@ update_index_type(Client, Input0, Options0) ->
 %%
 %% You can change the filter string and the list
 %% of included properties. You can't change the name of the view.
+-spec update_view(map(), update_view_input()) ->
+    {ok, update_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_view(Client, Input) ->
     update_view(Client, Input, []).
+
+-spec update_view(map(), update_view_input(), proplists:proplist()) ->
+    {ok, update_view_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, unauthorized_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_view(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateView"],
@@ -899,7 +1679,7 @@ update_view(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

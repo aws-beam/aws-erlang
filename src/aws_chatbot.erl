@@ -53,13 +53,605 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% create_teams_channel_configuration_request() :: #{
+%%   <<"ChannelId">> := string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ConfigurationName">> := string(),
+%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"TeamId">> := string(),
+%%   <<"TeamName">> => string(),
+%%   <<"TenantId">> := string(),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type create_teams_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slack_workspace_authorization_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_slack_workspace_authorization_fault() :: #{binary() => any()}.
+
+%% Example:
+%% list_teams_channel_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TeamId">> => string()
+%% }
+-type list_teams_channel_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_teams_configured_team_request() :: #{
+%%   <<"TeamId">> := string()
+%% }
+-type delete_teams_configured_team_request() :: #{binary() => any()}.
+%% Example:
+%% delete_slack_channel_configuration_result() :: #{}
+-type delete_slack_channel_configuration_result() :: #{}.
+
+%% Example:
+%% describe_slack_channel_configurations_request() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_slack_channel_configurations_request() :: #{binary() => any()}.
+%% Example:
+%% delete_slack_workspace_authorization_result() :: #{}
+-type delete_slack_workspace_authorization_result() :: #{}.
+
+%% Example:
+%% describe_slack_workspaces_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type describe_slack_workspaces_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_preferences_request() :: #{
+%%   <<"TrainingDataCollectionEnabled">> => boolean(),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type update_account_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_slack_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => slack_channel_configuration()
+%% }
+-type create_slack_channel_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_teams_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_teams_channel_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_microsoft_teams_configured_teams_result() :: #{
+%%   <<"ConfiguredTeams">> => list(configured_team()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_microsoft_teams_configured_teams_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_microsoft_teams_configured_teams_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_microsoft_teams_configured_teams_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_slack_channel_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SlackChannelId">> := string(),
+%%   <<"SlackChannelName">> => string(),
+%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type update_slack_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_teams_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type update_teams_channel_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_microsoft_teams_configured_teams_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type list_microsoft_teams_configured_teams_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_teams_configured_team_result() :: #{}
+-type delete_teams_configured_team_result() :: #{}.
+
+%% Example:
+%% delete_slack_channel_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string()
+%% }
+-type delete_slack_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_preferences_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type get_account_preferences_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_microsoft_teams_user_identity_result() :: #{}
+-type delete_microsoft_teams_user_identity_result() :: #{}.
+
+%% Example:
+%% create_chime_webhook_configuration_result() :: #{
+%%   <<"WebhookConfiguration">> => chime_webhook_configuration()
+%% }
+-type create_chime_webhook_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_teams_channel_configuration_request() :: #{
+%%   <<"ChannelId">> := string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type update_teams_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_chime_webhook_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WebhookConfigurations">> => list(chime_webhook_configuration()())
+%% }
+-type describe_chime_webhook_configurations_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_microsoft_teams_user_identities_request() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_microsoft_teams_user_identities_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_slack_user_identity_result() :: #{}
+-type delete_slack_user_identity_result() :: #{}.
+
+%% Example:
+%% teams_user_identity() :: #{
+%%   <<"AwsUserIdentity">> => string(),
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"TeamId">> => string(),
+%%   <<"TeamsChannelId">> => string(),
+%%   <<"TeamsTenantId">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type teams_user_identity() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_preferences_result() :: #{
+%%   <<"AccountPreferences">> => account_preferences()
+%% }
+-type get_account_preferences_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_preferences_result() :: #{
+%%   <<"AccountPreferences">> => account_preferences()
+%% }
+-type update_account_preferences_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_teams_configured_team_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_teams_configured_team_exception() :: #{binary() => any()}.
+%% Example:
+%% get_account_preferences_request() :: #{}
+-type get_account_preferences_request() :: #{}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_slack_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type create_slack_channel_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_slack_workspaces_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SlackWorkspaces">> => list(slack_workspace()())
+%% }
+-type describe_slack_workspaces_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_teams_channel_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string()
+%% }
+-type delete_teams_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_teams_channel_configurations_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type list_teams_channel_configurations_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_chime_webhook_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type update_chime_webhook_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_teams_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => teams_channel_configuration()
+%% }
+-type create_teams_channel_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_microsoft_teams_user_identity_request() :: #{
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type delete_microsoft_teams_user_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_teams_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type create_teams_channel_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_teams_channel_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TeamChannelConfigurations">> => list(teams_channel_configuration()())
+%% }
+-type list_teams_channel_configurations_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_chime_webhook_configuration_result() :: #{
+%%   <<"WebhookConfiguration">> => chime_webhook_configuration()
+%% }
+-type update_chime_webhook_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% account_preferences() :: #{
+%%   <<"TrainingDataCollectionEnabled">> => boolean(),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type account_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_preferences_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type update_account_preferences_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_microsoft_teams_user_identity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_microsoft_teams_user_identity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% slack_workspace() :: #{
+%%   <<"SlackTeamId">> => string(),
+%%   <<"SlackTeamName">> => string()
+%% }
+-type slack_workspace() :: #{binary() => any()}.
+
+%% Example:
+%% create_chime_webhook_configuration_request() :: #{
+%%   <<"ConfigurationName">> := string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> := list(string()()),
+%%   <<"WebhookDescription">> := string(),
+%%   <<"WebhookUrl">> := string()
+%% }
+-type create_chime_webhook_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_slack_workspaces_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_slack_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_teams_channel_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string()
+%% }
+-type get_teams_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_slack_channel_configuration_request() :: #{
+%%   <<"ConfigurationName">> := string(),
+%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SlackChannelId">> := string(),
+%%   <<"SlackChannelName">> => string(),
+%%   <<"SlackTeamId">> := string(),
+%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type create_slack_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_chime_webhook_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"WebhookDescription">> => string(),
+%%   <<"WebhookUrl">> => string()
+%% }
+-type update_chime_webhook_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% configured_team() :: #{
+%%   <<"TeamId">> => string(),
+%%   <<"TeamName">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type configured_team() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slack_user_identity_request() :: #{
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"SlackTeamId">> := string(),
+%%   <<"SlackUserId">> := string()
+%% }
+-type delete_slack_user_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_slack_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type update_slack_channel_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slack_user_identity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_slack_user_identity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_chime_webhook_configurations_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type describe_chime_webhook_configurations_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_microsoft_teams_user_identities_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type list_microsoft_teams_user_identities_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_chime_webhook_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_chime_webhook_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slack_workspace_authorization_request() :: #{
+%%   <<"SlackTeamId">> := string()
+%% }
+-type delete_slack_workspace_authorization_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_slack_user_identities_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type describe_slack_user_identities_exception() :: #{binary() => any()}.
+
+%% Example:
+%% slack_channel_configuration() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"ConfigurationName">> => string(),
+%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SlackChannelId">> => string(),
+%%   <<"SlackChannelName">> => string(),
+%%   <<"SlackTeamId">> => string(),
+%%   <<"SlackTeamName">> => string(),
+%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type slack_channel_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_microsoft_teams_user_identities_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TeamsUserIdentities">> => list(teams_user_identity()())
+%% }
+-type list_microsoft_teams_user_identities_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_teams_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => teams_channel_configuration()
+%% }
+-type get_teams_channel_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% chime_webhook_configuration() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"ConfigurationName">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"WebhookDescription">> => string()
+%% }
+-type chime_webhook_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% slack_user_identity() :: #{
+%%   <<"AwsUserIdentity">> => string(),
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"SlackTeamId">> => string(),
+%%   <<"SlackUserId">> => string()
+%% }
+-type slack_user_identity() :: #{binary() => any()}.
+%% Example:
+%% delete_chime_webhook_configuration_result() :: #{}
+-type delete_chime_webhook_configuration_result() :: #{}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_chime_webhook_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type create_chime_webhook_configuration_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_teams_channel_configuration_result() :: #{}
+-type delete_teams_channel_configuration_result() :: #{}.
+
+%% Example:
+%% describe_chime_webhook_configurations_request() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_chime_webhook_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_slack_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => slack_channel_configuration()
+%% }
+-type update_slack_channel_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_teams_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => teams_channel_configuration()
+%% }
+-type update_teams_channel_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% teams_channel_configuration() :: #{
+%%   <<"ChannelId">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"ConfigurationName">> => string(),
+%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"TeamId">> => string(),
+%%   <<"TeamName">> => string(),
+%%   <<"TenantId">> => string(),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type teams_channel_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_slack_user_identities_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SlackUserIdentities">> => list(slack_user_identity()())
+%% }
+-type describe_slack_user_identities_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slack_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_slack_channel_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_chime_webhook_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string()
+%% }
+-type delete_chime_webhook_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_teams_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type get_teams_channel_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_slack_user_identities_request() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_slack_user_identities_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_slack_channel_configurations_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type describe_slack_channel_configurations_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_slack_channel_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SlackChannelConfigurations">> => list(slack_channel_configuration()())
+%% }
+-type describe_slack_channel_configurations_result() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Creates Chime Webhook Configuration
+-spec create_chime_webhook_configuration(map(), create_chime_webhook_configuration_request()) ->
+    {ok, create_chime_webhook_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, create_chime_webhook_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_chime_webhook_configuration(Client, Input) ->
     create_chime_webhook_configuration(Client, Input, []).
+
+-spec create_chime_webhook_configuration(map(), create_chime_webhook_configuration_request(), proplists:proplist()) ->
+    {ok, create_chime_webhook_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, create_chime_webhook_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_chime_webhook_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-chime-webhook-configuration"],
@@ -83,8 +675,25 @@ create_chime_webhook_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates MS Teams Channel Configuration
+-spec create_microsoft_teams_channel_configuration(map(), create_teams_channel_configuration_request()) ->
+    {ok, create_teams_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, create_teams_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_microsoft_teams_channel_configuration(Client, Input) ->
     create_microsoft_teams_channel_configuration(Client, Input, []).
+
+-spec create_microsoft_teams_channel_configuration(map(), create_teams_channel_configuration_request(), proplists:proplist()) ->
+    {ok, create_teams_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, create_teams_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-ms-teams-channel-configuration"],
@@ -108,8 +717,25 @@ create_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates Slack Channel Configuration
+-spec create_slack_channel_configuration(map(), create_slack_channel_configuration_request()) ->
+    {ok, create_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, create_slack_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_slack_channel_configuration(Client, Input) ->
     create_slack_channel_configuration(Client, Input, []).
+
+-spec create_slack_channel_configuration(map(), create_slack_channel_configuration_request(), proplists:proplist()) ->
+    {ok, create_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, create_slack_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_slack_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-slack-channel-configuration"],
@@ -133,8 +759,23 @@ create_slack_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Chime Webhook Configuration
+-spec delete_chime_webhook_configuration(map(), delete_chime_webhook_configuration_request()) ->
+    {ok, delete_chime_webhook_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_chime_webhook_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_chime_webhook_configuration(Client, Input) ->
     delete_chime_webhook_configuration(Client, Input, []).
+
+-spec delete_chime_webhook_configuration(map(), delete_chime_webhook_configuration_request(), proplists:proplist()) ->
+    {ok, delete_chime_webhook_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_chime_webhook_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_chime_webhook_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-chime-webhook-configuration"],
@@ -158,8 +799,23 @@ delete_chime_webhook_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes MS Teams Channel Configuration
+-spec delete_microsoft_teams_channel_configuration(map(), delete_teams_channel_configuration_request()) ->
+    {ok, delete_teams_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_teams_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_microsoft_teams_channel_configuration(Client, Input) ->
     delete_microsoft_teams_channel_configuration(Client, Input, []).
+
+-spec delete_microsoft_teams_channel_configuration(map(), delete_teams_channel_configuration_request(), proplists:proplist()) ->
+    {ok, delete_teams_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_teams_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-ms-teams-channel-configuration"],
@@ -187,8 +843,19 @@ delete_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
 %%
 %% Note that the Microsoft Teams team must have no channels configured to
 %% remove it.
+-spec delete_microsoft_teams_configured_team(map(), delete_teams_configured_team_request()) ->
+    {ok, delete_teams_configured_team_result(), tuple()} |
+    {error, any()} |
+    {error, delete_teams_configured_team_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()}.
 delete_microsoft_teams_configured_team(Client, Input) ->
     delete_microsoft_teams_configured_team(Client, Input, []).
+
+-spec delete_microsoft_teams_configured_team(map(), delete_teams_configured_team_request(), proplists:proplist()) ->
+    {ok, delete_teams_configured_team_result(), tuple()} |
+    {error, any()} |
+    {error, delete_teams_configured_team_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()}.
 delete_microsoft_teams_configured_team(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-ms-teams-configured-teams"],
@@ -212,8 +879,21 @@ delete_microsoft_teams_configured_team(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Teams user identity
+-spec delete_microsoft_teams_user_identity(map(), delete_microsoft_teams_user_identity_request()) ->
+    {ok, delete_microsoft_teams_user_identity_result(), tuple()} |
+    {error, any()} |
+    {error, delete_microsoft_teams_user_identity_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_microsoft_teams_user_identity(Client, Input) ->
     delete_microsoft_teams_user_identity(Client, Input, []).
+
+-spec delete_microsoft_teams_user_identity(map(), delete_microsoft_teams_user_identity_request(), proplists:proplist()) ->
+    {ok, delete_microsoft_teams_user_identity_result(), tuple()} |
+    {error, any()} |
+    {error, delete_microsoft_teams_user_identity_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_microsoft_teams_user_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-ms-teams-user-identity"],
@@ -237,8 +917,23 @@ delete_microsoft_teams_user_identity(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes Slack Channel Configuration
+-spec delete_slack_channel_configuration(map(), delete_slack_channel_configuration_request()) ->
+    {ok, delete_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_slack_channel_configuration(Client, Input) ->
     delete_slack_channel_configuration(Client, Input, []).
+
+-spec delete_slack_channel_configuration(map(), delete_slack_channel_configuration_request(), proplists:proplist()) ->
+    {ok, delete_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_slack_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-slack-channel-configuration"],
@@ -262,8 +957,21 @@ delete_slack_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Slack user identity
+-spec delete_slack_user_identity(map(), delete_slack_user_identity_request()) ->
+    {ok, delete_slack_user_identity_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_user_identity_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_slack_user_identity(Client, Input) ->
     delete_slack_user_identity(Client, Input, []).
+
+-spec delete_slack_user_identity(map(), delete_slack_user_identity_request(), proplists:proplist()) ->
+    {ok, delete_slack_user_identity_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_user_identity_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_slack_user_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-slack-user-identity"],
@@ -290,8 +998,19 @@ delete_slack_user_identity(Client, Input0, Options0) ->
 %% configured in that workspace.
 %%
 %% This requires all configured channels in the workspace to be deleted.
+-spec delete_slack_workspace_authorization(map(), delete_slack_workspace_authorization_request()) ->
+    {ok, delete_slack_workspace_authorization_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_workspace_authorization_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()}.
 delete_slack_workspace_authorization(Client, Input) ->
     delete_slack_workspace_authorization(Client, Input, []).
+
+-spec delete_slack_workspace_authorization(map(), delete_slack_workspace_authorization_request(), proplists:proplist()) ->
+    {ok, delete_slack_workspace_authorization_result(), tuple()} |
+    {error, any()} |
+    {error, delete_slack_workspace_authorization_fault(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()}.
 delete_slack_workspace_authorization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-slack-workspace-authorization"],
@@ -316,8 +1035,21 @@ delete_slack_workspace_authorization(Client, Input0, Options0) ->
 
 %% @doc Lists Chime Webhook Configurations optionally filtered by
 %% ChatConfigurationArn
+-spec describe_chime_webhook_configurations(map(), describe_chime_webhook_configurations_request()) ->
+    {ok, describe_chime_webhook_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_chime_webhook_configurations_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_chime_webhook_configurations(Client, Input) ->
     describe_chime_webhook_configurations(Client, Input, []).
+
+-spec describe_chime_webhook_configurations(map(), describe_chime_webhook_configurations_request(), proplists:proplist()) ->
+    {ok, describe_chime_webhook_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_chime_webhook_configurations_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_chime_webhook_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-chime-webhook-configurations"],
@@ -342,8 +1074,21 @@ describe_chime_webhook_configurations(Client, Input0, Options0) ->
 
 %% @doc Lists Slack Channel Configurations optionally filtered by
 %% ChatConfigurationArn
+-spec describe_slack_channel_configurations(map(), describe_slack_channel_configurations_request()) ->
+    {ok, describe_slack_channel_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_slack_channel_configurations_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_slack_channel_configurations(Client, Input) ->
     describe_slack_channel_configurations(Client, Input, []).
+
+-spec describe_slack_channel_configurations(map(), describe_slack_channel_configurations_request(), proplists:proplist()) ->
+    {ok, describe_slack_channel_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_slack_channel_configurations_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_slack_channel_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-slack-channel-configurations"],
@@ -367,8 +1112,21 @@ describe_slack_channel_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all Slack user identities with a mapped role.
+-spec describe_slack_user_identities(map(), describe_slack_user_identities_request()) ->
+    {ok, describe_slack_user_identities_result(), tuple()} |
+    {error, any()} |
+    {error, describe_slack_user_identities_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_slack_user_identities(Client, Input) ->
     describe_slack_user_identities(Client, Input, []).
+
+-spec describe_slack_user_identities(map(), describe_slack_user_identities_request(), proplists:proplist()) ->
+    {ok, describe_slack_user_identities_result(), tuple()} |
+    {error, any()} |
+    {error, describe_slack_user_identities_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_slack_user_identities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-slack-user-identities"],
@@ -392,8 +1150,21 @@ describe_slack_user_identities(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all authorized Slack Workspaces for AWS Account
+-spec describe_slack_workspaces(map(), describe_slack_workspaces_request()) ->
+    {ok, describe_slack_workspaces_result(), tuple()} |
+    {error, any()} |
+    {error, describe_slack_workspaces_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_slack_workspaces(Client, Input) ->
     describe_slack_workspaces(Client, Input, []).
+
+-spec describe_slack_workspaces(map(), describe_slack_workspaces_request(), proplists:proplist()) ->
+    {ok, describe_slack_workspaces_result(), tuple()} |
+    {error, any()} |
+    {error, describe_slack_workspaces_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 describe_slack_workspaces(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-slack-workspaces"],
@@ -417,8 +1188,19 @@ describe_slack_workspaces(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get Chatbot account level preferences
+-spec get_account_preferences(map(), get_account_preferences_request()) ->
+    {ok, get_account_preferences_result(), tuple()} |
+    {error, any()} |
+    {error, get_account_preferences_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 get_account_preferences(Client, Input) ->
     get_account_preferences(Client, Input, []).
+
+-spec get_account_preferences(map(), get_account_preferences_request(), proplists:proplist()) ->
+    {ok, get_account_preferences_result(), tuple()} |
+    {error, any()} |
+    {error, get_account_preferences_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 get_account_preferences(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-account-preferences"],
@@ -442,8 +1224,21 @@ get_account_preferences(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get a single MS Teams Channel Configurations
+-spec get_microsoft_teams_channel_configuration(map(), get_teams_channel_configuration_request()) ->
+    {ok, get_teams_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, get_teams_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 get_microsoft_teams_channel_configuration(Client, Input) ->
     get_microsoft_teams_channel_configuration(Client, Input, []).
+
+-spec get_microsoft_teams_channel_configuration(map(), get_teams_channel_configuration_request(), proplists:proplist()) ->
+    {ok, get_teams_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, get_teams_channel_configuration_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()}.
 get_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-ms-teams-channel-configuration"],
@@ -467,8 +1262,21 @@ get_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists MS Teams Channel Configurations optionally filtered by TeamId
+-spec list_microsoft_teams_channel_configurations(map(), list_teams_channel_configurations_request()) ->
+    {ok, list_teams_channel_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, list_teams_channel_configurations_exception(), tuple()}.
 list_microsoft_teams_channel_configurations(Client, Input) ->
     list_microsoft_teams_channel_configurations(Client, Input, []).
+
+-spec list_microsoft_teams_channel_configurations(map(), list_teams_channel_configurations_request(), proplists:proplist()) ->
+    {ok, list_teams_channel_configurations_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, list_teams_channel_configurations_exception(), tuple()}.
 list_microsoft_teams_channel_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-ms-teams-channel-configurations"],
@@ -492,8 +1300,21 @@ list_microsoft_teams_channel_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all authorized MS teams for AWS Account
+-spec list_microsoft_teams_configured_teams(map(), list_microsoft_teams_configured_teams_request()) ->
+    {ok, list_microsoft_teams_configured_teams_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, list_microsoft_teams_configured_teams_exception(), tuple()}.
 list_microsoft_teams_configured_teams(Client, Input) ->
     list_microsoft_teams_configured_teams(Client, Input, []).
+
+-spec list_microsoft_teams_configured_teams(map(), list_microsoft_teams_configured_teams_request(), proplists:proplist()) ->
+    {ok, list_microsoft_teams_configured_teams_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, list_microsoft_teams_configured_teams_exception(), tuple()}.
 list_microsoft_teams_configured_teams(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-ms-teams-configured-teams"],
@@ -517,8 +1338,21 @@ list_microsoft_teams_configured_teams(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all Microsoft Teams user identities with a mapped role.
+-spec list_microsoft_teams_user_identities(map(), list_microsoft_teams_user_identities_request()) ->
+    {ok, list_microsoft_teams_user_identities_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, list_microsoft_teams_user_identities_exception(), tuple()}.
 list_microsoft_teams_user_identities(Client, Input) ->
     list_microsoft_teams_user_identities(Client, Input, []).
+
+-spec list_microsoft_teams_user_identities(map(), list_microsoft_teams_user_identities_request(), proplists:proplist()) ->
+    {ok, list_microsoft_teams_user_identities_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, list_microsoft_teams_user_identities_exception(), tuple()}.
 list_microsoft_teams_user_identities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-ms-teams-user-identities"],
@@ -542,8 +1376,21 @@ list_microsoft_teams_user_identities(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update Chatbot account level preferences
+-spec update_account_preferences(map(), update_account_preferences_request()) ->
+    {ok, update_account_preferences_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, update_account_preferences_exception(), tuple()}.
 update_account_preferences(Client, Input) ->
     update_account_preferences(Client, Input, []).
+
+-spec update_account_preferences(map(), update_account_preferences_request(), proplists:proplist()) ->
+    {ok, update_account_preferences_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, update_account_preferences_exception(), tuple()}.
 update_account_preferences(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-account-preferences"],
@@ -567,8 +1414,23 @@ update_account_preferences(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Chime Webhook Configuration
+-spec update_chime_webhook_configuration(map(), update_chime_webhook_configuration_request()) ->
+    {ok, update_chime_webhook_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, update_chime_webhook_configuration_exception(), tuple()}.
 update_chime_webhook_configuration(Client, Input) ->
     update_chime_webhook_configuration(Client, Input, []).
+
+-spec update_chime_webhook_configuration(map(), update_chime_webhook_configuration_request(), proplists:proplist()) ->
+    {ok, update_chime_webhook_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, update_chime_webhook_configuration_exception(), tuple()}.
 update_chime_webhook_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-chime-webhook-configuration"],
@@ -592,8 +1454,23 @@ update_chime_webhook_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates MS Teams Channel Configuration
+-spec update_microsoft_teams_channel_configuration(map(), update_teams_channel_configuration_request()) ->
+    {ok, update_teams_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, update_teams_channel_configuration_exception(), tuple()}.
 update_microsoft_teams_channel_configuration(Client, Input) ->
     update_microsoft_teams_channel_configuration(Client, Input, []).
+
+-spec update_microsoft_teams_channel_configuration(map(), update_teams_channel_configuration_request(), proplists:proplist()) ->
+    {ok, update_teams_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, update_teams_channel_configuration_exception(), tuple()}.
 update_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-ms-teams-channel-configuration"],
@@ -617,8 +1494,23 @@ update_microsoft_teams_channel_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates Slack Channel Configuration
+-spec update_slack_channel_configuration(map(), update_slack_channel_configuration_request()) ->
+    {ok, update_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, update_slack_channel_configuration_exception(), tuple()}.
 update_slack_channel_configuration(Client, Input) ->
     update_slack_channel_configuration(Client, Input, []).
+
+-spec update_slack_channel_configuration(map(), update_slack_channel_configuration_request(), proplists:proplist()) ->
+    {ok, update_slack_channel_configuration_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, update_slack_channel_configuration_exception(), tuple()}.
 update_slack_channel_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-slack-channel-configuration"],
@@ -645,7 +1537,7 @@ update_slack_channel_configuration(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -133,6 +133,1132 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% delete_namespace_response() :: #{
+%%   <<"namespace">> => namespace()
+%% }
+-type delete_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% table_restore_status() :: #{
+%%   <<"message">> => [string()],
+%%   <<"namespaceName">> => [string()],
+%%   <<"newTableName">> => [string()],
+%%   <<"progressInMegaBytes">> => [float()],
+%%   <<"recoveryPointId">> => [string()],
+%%   <<"requestTime">> => [non_neg_integer()],
+%%   <<"snapshotName">> => [string()],
+%%   <<"sourceDatabaseName">> => [string()],
+%%   <<"sourceSchemaName">> => [string()],
+%%   <<"sourceTableName">> => [string()],
+%%   <<"status">> => [string()],
+%%   <<"tableRestoreRequestId">> => [string()],
+%%   <<"targetDatabaseName">> => [string()],
+%%   <<"targetSchemaName">> => [string()],
+%%   <<"totalDataInMegaBytes">> => [float()],
+%%   <<"workgroupName">> => [string()]
+%% }
+-type table_restore_status() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_access_request() :: #{
+%%   <<"endpointName">> := [string()],
+%%   <<"vpcSecurityGroupIds">> => list(string()())
+%% }
+-type update_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_request() :: #{
+%%   <<"snapshotName">> := [string()]
+%% }
+-type delete_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_copy_configuration_request() :: #{
+%%   <<"snapshotCopyConfigurationId">> := [string()]
+%% }
+-type delete_snapshot_copy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_limit_response() :: #{
+%%   <<"usageLimit">> => usage_limit()
+%% }
+-type get_usage_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_restore_status_request() :: #{
+%%   <<"tableRestoreRequestId">> := [string()]
+%% }
+-type get_table_restore_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_usage_limit_request() :: #{
+%%   <<"amount">> => [float()],
+%%   <<"breachAction">> => string(),
+%%   <<"usageLimitId">> := [string()]
+%% }
+-type update_usage_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_response() :: #{
+%%   <<"scheduledAction">> => scheduled_action_response()
+%% }
+-type delete_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_domain_association_request() :: #{
+%%   <<"customDomainName">> := string(),
+%%   <<"workgroupName">> := string()
+%% }
+-type get_custom_domain_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_request() :: #{
+%%   <<"retentionPeriod">> => [integer()],
+%%   <<"snapshotName">> := [string()]
+%% }
+-type update_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_namespaces_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_namespaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_limit_request() :: #{
+%%   <<"usageLimitId">> := [string()]
+%% }
+-type delete_usage_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_request() :: #{
+%%   <<"namespaceName">> := [string()],
+%%   <<"retentionPeriod">> => [integer()],
+%%   <<"snapshotName">> := [string()],
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_copy_configuration_response() :: #{
+%%   <<"snapshotCopyConfiguration">> => snapshot_copy_configuration()
+%% }
+-type delete_snapshot_copy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% config_parameter() :: #{
+%%   <<"parameterKey">> => string(),
+%%   <<"parameterValue">> => string()
+%% }
+-type config_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_recovery_point_response() :: #{
+%%   <<"tableRestoreStatus">> => table_restore_status()
+%% }
+-type restore_table_from_recovery_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_snapshot_request() :: #{
+%%   <<"adminPasswordSecretKmsKeyId">> => string(),
+%%   <<"manageAdminPassword">> => [boolean()],
+%%   <<"namespaceName">> := string(),
+%%   <<"ownerAccount">> => [string()],
+%%   <<"snapshotArn">> => [string()],
+%%   <<"snapshotName">> => [string()],
+%%   <<"workgroupName">> := string()
+%% }
+-type restore_from_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type create_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"availabilityZone">> => [string()],
+%%   <<"networkInterfaceId">> => [string()],
+%%   <<"privateIpAddress">> => [string()],
+%%   <<"subnetId">> => [string()]
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% get_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type get_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_domain_association_request() :: #{
+%%   <<"customDomainName">> := string(),
+%%   <<"workgroupName">> := string()
+%% }
+-type delete_custom_domain_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workgroup_response() :: #{
+%%   <<"workgroup">> => workgroup()
+%% }
+-type delete_workgroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_snapshot_response() :: #{
+%%   <<"tableRestoreStatus">> => table_restore_status()
+%% }
+-type restore_table_from_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_snapshot_response() :: #{
+%%   <<"namespace">> => namespace(),
+%%   <<"ownerAccount">> => [string()],
+%%   <<"snapshotName">> => [string()]
+%% }
+-type restore_from_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"resourcePolicy">> => resource_policy()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workgroup_request() :: #{
+%%   <<"workgroupName">> := string()
+%% }
+-type delete_workgroup_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_limit_request() :: #{
+%%   <<"amount">> := [float()],
+%%   <<"breachAction">> => string(),
+%%   <<"period">> => string(),
+%%   <<"resourceArn">> := [string()],
+%%   <<"usageType">> := string()
+%% }
+-type create_usage_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_recovery_point_response() :: #{
+%%   <<"namespace">> => namespace(),
+%%   <<"recoveryPointId">> => [string()]
+%% }
+-type restore_from_recovery_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action_response() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"namespaceName">> => string(),
+%%   <<"nextInvocations">> => list([non_neg_integer()]()),
+%%   <<"roleArn">> => string(),
+%%   <<"schedule">> => list(),
+%%   <<"scheduledActionDescription">> => [string()],
+%%   <<"scheduledActionName">> => string(),
+%%   <<"scheduledActionUuid">> => [string()],
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"state">> => string(),
+%%   <<"targetAction">> => list()
+%% }
+-type scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_table_restore_status_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tableRestoreStatuses">> => list(table_restore_status()())
+%% }
+-type list_table_restore_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_usage_limit_response() :: #{
+%%   <<"usageLimit">> => usage_limit()
+%% }
+-type update_usage_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_access_request() :: #{
+%%   <<"endpointName">> := [string()],
+%%   <<"ownerAccount">> => string(),
+%%   <<"subnetIds">> := list(string()()),
+%%   <<"vpcSecurityGroupIds">> => list(string()()),
+%%   <<"workgroupName">> := [string()]
+%% }
+-type create_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_domain_association_request() :: #{
+%%   <<"customDomainCertificateArn">> := string(),
+%%   <<"customDomainName">> := string(),
+%%   <<"workgroupName">> := string()
+%% }
+-type update_custom_domain_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pagination_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_pagination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_scheduled_action_response() :: #{
+%%   <<"scheduledAction">> => scheduled_action_response()
+%% }
+-type update_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_recovery_point_request() :: #{
+%%   <<"activateCaseSensitiveIdentifier">> => [boolean()],
+%%   <<"namespaceName">> := [string()],
+%%   <<"newTableName">> := [string()],
+%%   <<"recoveryPointId">> := [string()],
+%%   <<"sourceDatabaseName">> := [string()],
+%%   <<"sourceSchemaName">> => [string()],
+%%   <<"sourceTableName">> := [string()],
+%%   <<"targetDatabaseName">> => [string()],
+%%   <<"targetSchemaName">> => [string()],
+%%   <<"workgroupName">> := [string()]
+%% }
+-type restore_table_from_recovery_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_recovery_point_response() :: #{
+%%   <<"recoveryPoint">> => recovery_point()
+%% }
+-type get_recovery_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_capacity_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type insufficient_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_action_response() :: #{
+%%   <<"scheduledAction">> => scheduled_action_response()
+%% }
+-type create_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_response() :: #{
+%%   <<"namespace">> => namespace()
+%% }
+-type get_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recovery_point_request() :: #{
+%%   <<"recoveryPointId">> := [string()]
+%% }
+-type get_recovery_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_actions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceName">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_scheduled_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_workgroup_request() :: #{
+%%   <<"workgroupName">> := string()
+%% }
+-type get_workgroup_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_limit_request() :: #{
+%%   <<"usageLimitId">> := [string()]
+%% }
+-type get_usage_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_access_request() :: #{
+%%   <<"endpointName">> := [string()]
+%% }
+-type get_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_namespace_request() :: #{
+%%   <<"adminPasswordSecretKmsKeyId">> => string(),
+%%   <<"adminUserPassword">> => string(),
+%%   <<"adminUsername">> => string(),
+%%   <<"dbName">> => [string()],
+%%   <<"defaultIamRoleArn">> => [string()],
+%%   <<"iamRoles">> => list(string()()),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"logExports">> => list(string()()),
+%%   <<"manageAdminPassword">> => [boolean()],
+%%   <<"namespaceName">> := string(),
+%%   <<"redshiftIdcApplicationArn">> => string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_scheduled_action_request() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"roleArn">> => string(),
+%%   <<"schedule">> => list(),
+%%   <<"scheduledActionDescription">> => [string()],
+%%   <<"scheduledActionName">> := string(),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"targetAction">> => list()
+%% }
+-type update_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_access_response() :: #{
+%%   <<"endpoints">> => list(endpoint_access()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_endpoint_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% workgroup() :: #{
+%%   <<"baseCapacity">> => [integer()],
+%%   <<"configParameters">> => list(config_parameter()()),
+%%   <<"creationDate">> => [non_neg_integer()],
+%%   <<"crossAccountVpcs">> => list([string()]()),
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
+%%   <<"customDomainName">> => string(),
+%%   <<"endpoint">> => endpoint(),
+%%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"maxCapacity">> => [integer()],
+%%   <<"namespaceName">> => [string()],
+%%   <<"patchVersion">> => [string()],
+%%   <<"port">> => [integer()],
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"status">> => string(),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"workgroupArn">> => [string()],
+%%   <<"workgroupId">> => [string()],
+%%   <<"workgroupName">> => string(),
+%%   <<"workgroupVersion">> => [string()]
+%% }
+-type workgroup() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_limits_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"usageLimits">> => list(usage_limit()())
+%% }
+-type list_usage_limits_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshots_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"snapshots">> => list(snapshot()())
+%% }
+-type list_snapshots_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% convert_recovery_point_to_snapshot_request() :: #{
+%%   <<"recoveryPointId">> := [string()],
+%%   <<"retentionPeriod">> => [integer()],
+%%   <<"snapshotName">> := [string()],
+%%   <<"tags">> => list(tag()())
+%% }
+-type convert_recovery_point_to_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_copy_configuration() :: #{
+%%   <<"destinationKmsKeyId">> => string(),
+%%   <<"destinationRegion">> => [string()],
+%%   <<"namespaceName">> => string(),
+%%   <<"snapshotCopyConfigurationArn">> => [string()],
+%%   <<"snapshotCopyConfigurationId">> => [string()],
+%%   <<"snapshotRetentionPeriod">> => [integer()]
+%% }
+-type snapshot_copy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_recovery_points_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"recoveryPoints">> => list(recovery_point()())
+%% }
+-type list_recovery_points_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_actions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scheduledActions">> => list(string()())
+%% }
+-type list_scheduled_actions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_restore_status_response() :: #{
+%%   <<"tableRestoreStatus">> => table_restore_status()
+%% }
+-type get_table_restore_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_access_response() :: #{
+%%   <<"endpoint">> => endpoint_access()
+%% }
+-type delete_endpoint_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_snapshot_request() :: #{
+%%   <<"activateCaseSensitiveIdentifier">> => [boolean()],
+%%   <<"namespaceName">> := [string()],
+%%   <<"newTableName">> := [string()],
+%%   <<"snapshotName">> := [string()],
+%%   <<"sourceDatabaseName">> := [string()],
+%%   <<"sourceSchemaName">> => [string()],
+%%   <<"sourceTableName">> := [string()],
+%%   <<"targetDatabaseName">> => [string()],
+%%   <<"targetSchemaName">> => [string()],
+%%   <<"workgroupName">> := [string()]
+%% }
+-type restore_table_from_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% association() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
+%%   <<"customDomainName">> => string(),
+%%   <<"workgroupName">> => string()
+%% }
+-type association() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_schedule_action_parameters() :: #{
+%%   <<"namespaceName">> => string(),
+%%   <<"retentionPeriod">> => [integer()],
+%%   <<"snapshotNamePrefix">> => string(),
+%%   <<"tags">> => list(tag()())
+%% }
+-type create_snapshot_schedule_action_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% list_table_restore_status_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceName">> => [string()],
+%%   <<"nextToken">> => string(),
+%%   <<"workgroupName">> => [string()]
+%% }
+-type list_table_restore_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_access_request() :: #{
+%%   <<"endpointName">> := [string()]
+%% }
+-type delete_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_endpoint() :: #{
+%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"vpcEndpointId">> => [string()],
+%%   <<"vpcId">> => [string()]
+%% }
+-type vpc_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_copy_configuration_request() :: #{
+%%   <<"destinationKmsKeyId">> => string(),
+%%   <<"destinationRegion">> := [string()],
+%%   <<"namespaceName">> := string(),
+%%   <<"snapshotRetentionPeriod">> => [integer()]
+%% }
+-type create_snapshot_copy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshots_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceName">> => [string()],
+%%   <<"nextToken">> => [string()],
+%%   <<"ownerAccount">> => [string()],
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type list_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"resourceArn">> := [string()]
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_workgroup_response() :: #{
+%%   <<"workgroup">> => workgroup()
+%% }
+-type create_workgroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_action_request() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"namespaceName">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"schedule">> := list(),
+%%   <<"scheduledActionDescription">> => [string()],
+%%   <<"scheduledActionName">> := string(),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"targetAction">> := list()
+%% }
+-type create_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_workgroup_request() :: #{
+%%   <<"baseCapacity">> => [integer()],
+%%   <<"configParameters">> => list(config_parameter()()),
+%%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"maxCapacity">> => [integer()],
+%%   <<"namespaceName">> := string(),
+%%   <<"port">> => [integer()],
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"tags">> => list(tag()()),
+%%   <<"workgroupName">> := string()
+%% }
+-type create_workgroup_request() :: #{binary() => any()}.
+
+%% Example:
+%% convert_recovery_point_to_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type convert_recovery_point_to_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_recovery_point_request() :: #{
+%%   <<"namespaceName">> := string(),
+%%   <<"recoveryPointId">> := [string()],
+%%   <<"workgroupName">> := string()
+%% }
+-type restore_from_recovery_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_access_response() :: #{
+%%   <<"endpoint">> => endpoint_access()
+%% }
+-type update_endpoint_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_limits_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> => [string()],
+%%   <<"usageType">> => string()
+%% }
+-type list_usage_limits_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_domain_association_response() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
+%%   <<"customDomainName">> => string(),
+%%   <<"workgroupName">> => string()
+%% }
+-type create_custom_domain_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"address">> => [string()],
+%%   <<"port">> => [integer()],
+%%   <<"vpcEndpoints">> => list(vpc_endpoint()())
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_domain_association_response() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
+%%   <<"customDomainName">> => string(),
+%%   <<"workgroupName">> => string()
+%% }
+-type update_custom_domain_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"policy">> => [string()],
+%%   <<"resourceArn">> => [string()]
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_action_response() :: #{
+%%   <<"scheduledAction">> => scheduled_action_response()
+%% }
+-type get_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_domain_association_response() :: #{
+
+%% }
+-type delete_custom_domain_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_credentials_request() :: #{
+%%   <<"customDomainName">> => string(),
+%%   <<"dbName">> => string(),
+%%   <<"durationSeconds">> => [integer()],
+%%   <<"workgroupName">> => string()
+%% }
+-type get_credentials_request() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot() :: #{
+%%   <<"accountsWithProvisionedRestoreAccess">> => list([string()]()),
+%%   <<"accountsWithRestoreAccess">> => list([string()]()),
+%%   <<"actualIncrementalBackupSizeInMegaBytes">> => [float()],
+%%   <<"adminPasswordSecretArn">> => [string()],
+%%   <<"adminPasswordSecretKmsKeyId">> => string(),
+%%   <<"adminUsername">> => [string()],
+%%   <<"backupProgressInMegaBytes">> => [float()],
+%%   <<"currentBackupRateInMegaBytesPerSecond">> => [float()],
+%%   <<"elapsedTimeInSeconds">> => [float()],
+%%   <<"estimatedSecondsToCompletion">> => [float()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceName">> => [string()],
+%%   <<"ownerAccount">> => [string()],
+%%   <<"snapshotArn">> => [string()],
+%%   <<"snapshotCreateTime">> => [non_neg_integer()],
+%%   <<"snapshotName">> => [string()],
+%%   <<"snapshotRemainingDays">> => [integer()],
+%%   <<"snapshotRetentionPeriod">> => [integer()],
+%%   <<"snapshotRetentionStartTime">> => [non_neg_integer()],
+%%   <<"status">> => string(),
+%%   <<"totalBackupSizeInMegaBytes">> => [float()]
+%% }
+-type snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_domain_associations_response() :: #{
+%%   <<"associations">> => list(association()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_domain_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"policy">> := [string()],
+%%   <<"resourceArn">> := [string()]
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_copy_configuration_response() :: #{
+%%   <<"snapshotCopyConfiguration">> => snapshot_copy_configuration()
+%% }
+-type create_snapshot_copy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_domain_association_response() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
+%%   <<"customDomainName">> => string(),
+%%   <<"workgroupName">> => string()
+%% }
+-type get_custom_domain_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_recovery_points_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceName">> => string(),
+%%   <<"nextToken">> => [string()],
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type list_recovery_points_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_domain_associations_request() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainName">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_domain_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_workgroup_response() :: #{
+%%   <<"workgroup">> => workgroup()
+%% }
+-type update_workgroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_namespace_response() :: #{
+%%   <<"namespace">> => namespace()
+%% }
+-type create_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% usage_limit() :: #{
+%%   <<"amount">> => [float()],
+%%   <<"breachAction">> => string(),
+%%   <<"period">> => string(),
+%%   <<"resourceArn">> => [string()],
+%%   <<"usageLimitArn">> => [string()],
+%%   <<"usageLimitId">> => [string()],
+%%   <<"usageType">> => string()
+%% }
+-type usage_limit() :: #{binary() => any()}.
+
+%% Example:
+%% get_snapshot_request() :: #{
+%%   <<"ownerAccount">> => [string()],
+%%   <<"snapshotArn">> => [string()],
+%%   <<"snapshotName">> => [string()]
+%% }
+-type get_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_credentials_response() :: #{
+%%   <<"dbPassword">> => string(),
+%%   <<"dbUser">> => string(),
+%%   <<"expiration">> => [non_neg_integer()],
+%%   <<"nextRefreshTime">> => [non_neg_integer()]
+%% }
+-type get_credentials_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_action_request() :: #{
+%%   <<"scheduledActionName">> := string()
+%% }
+-type get_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_domain_association_request() :: #{
+%%   <<"customDomainCertificateArn">> := string(),
+%%   <<"customDomainName">> := string(),
+%%   <<"workgroupName">> := string()
+%% }
+-type create_custom_domain_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_namespaces_response() :: #{
+%%   <<"namespaces">> => list(namespace()()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_namespaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_access_response() :: #{
+%%   <<"endpoint">> => endpoint_access()
+%% }
+-type get_endpoint_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_namespace_request() :: #{
+%%   <<"finalSnapshotName">> => [string()],
+%%   <<"finalSnapshotRetentionPeriod">> => [integer()],
+%%   <<"namespaceName">> := string()
+%% }
+-type delete_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_namespace_request() :: #{
+%%   <<"adminPasswordSecretKmsKeyId">> => string(),
+%%   <<"adminUserPassword">> => string(),
+%%   <<"adminUsername">> => string(),
+%%   <<"defaultIamRoleArn">> => [string()],
+%%   <<"iamRoles">> => list(string()()),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"logExports">> => list(string()()),
+%%   <<"manageAdminPassword">> => [boolean()],
+%%   <<"namespaceName">> := string()
+%% }
+-type update_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_copy_configuration_response() :: #{
+%%   <<"snapshotCopyConfiguration">> => snapshot_copy_configuration()
+%% }
+-type update_snapshot_copy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshot_copy_configurations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceName">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_snapshot_copy_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_access_response() :: #{
+%%   <<"endpoint">> => endpoint_access()
+%% }
+-type create_endpoint_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshot_copy_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"snapshotCopyConfigurations">> => list(snapshot_copy_configuration()())
+%% }
+-type list_snapshot_copy_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type update_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"resourcePolicy">> => resource_policy()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_limit_response() :: #{
+%%   <<"usageLimit">> => usage_limit()
+%% }
+-type delete_usage_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_request() :: #{
+%%   <<"scheduledActionName">> := string()
+%% }
+-type delete_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workgroup_request() :: #{
+%%   <<"baseCapacity">> => [integer()],
+%%   <<"configParameters">> => list(config_parameter()()),
+%%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"maxCapacity">> => [integer()],
+%%   <<"port">> => [integer()],
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"workgroupName">> := string()
+%% }
+-type update_workgroup_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"resourceArn">> := [string()]
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_namespace_response() :: #{
+%%   <<"namespace">> => namespace()
+%% }
+-type update_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_access() :: #{
+%%   <<"address">> => [string()],
+%%   <<"endpointArn">> => [string()],
+%%   <<"endpointCreateTime">> => [non_neg_integer()],
+%%   <<"endpointName">> => [string()],
+%%   <<"endpointStatus">> => [string()],
+%%   <<"port">> => [integer()],
+%%   <<"subnetIds">> => list(string()()),
+%%   <<"vpcEndpoint">> => vpc_endpoint(),
+%%   <<"vpcSecurityGroups">> => list(vpc_security_group_membership()()),
+%%   <<"workgroupName">> => [string()]
+%% }
+-type endpoint_access() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_limit_response() :: #{
+%%   <<"usageLimit">> => usage_limit()
+%% }
+-type create_usage_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% namespace() :: #{
+%%   <<"adminPasswordSecretArn">> => [string()],
+%%   <<"adminPasswordSecretKmsKeyId">> => string(),
+%%   <<"adminUsername">> => string(),
+%%   <<"creationDate">> => [non_neg_integer()],
+%%   <<"dbName">> => [string()],
+%%   <<"defaultIamRoleArn">> => [string()],
+%%   <<"iamRoles">> => list(string()()),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"logExports">> => list(string()()),
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceId">> => [string()],
+%%   <<"namespaceName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type namespace() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_security_group_membership() :: #{
+%%   <<"status">> => [string()],
+%%   <<"vpcSecurityGroupId">> => string()
+%% }
+-type vpc_security_group_membership() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_access_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"ownerAccount">> => string(),
+%%   <<"vpcId">> => [string()],
+%%   <<"workgroupName">> => [string()]
+%% }
+-type list_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_copy_configuration_request() :: #{
+%%   <<"snapshotCopyConfigurationId">> := [string()],
+%%   <<"snapshotRetentionPeriod">> => [integer()]
+%% }
+-type update_snapshot_copy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workgroups_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"workgroups">> => list(workgroup()())
+%% }
+-type list_workgroups_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_workgroup_response() :: #{
+%%   <<"workgroup">> => workgroup()
+%% }
+-type get_workgroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workgroups_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"ownerAccount">> => string()
+%% }
+-type list_workgroups_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_request() :: #{
+%%   <<"namespaceName">> := string()
+%% }
+-type get_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% recovery_point() :: #{
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceName">> => string(),
+%%   <<"recoveryPointCreateTime">> => [non_neg_integer()],
+%%   <<"recoveryPointId">> => [string()],
+%%   <<"totalSizeInMegaBytes">> => [float()],
+%%   <<"workgroupName">> => string()
+%% }
+-type recovery_point() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type delete_snapshot_response() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -142,33 +1268,105 @@
 %% For more information about recovery points and snapshots,
 %% see Working with snapshots and recovery points:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
+-spec convert_recovery_point_to_snapshot(map(), convert_recovery_point_to_snapshot_request()) ->
+    {ok, convert_recovery_point_to_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 convert_recovery_point_to_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     convert_recovery_point_to_snapshot(Client, Input, []).
+
+-spec convert_recovery_point_to_snapshot(map(), convert_recovery_point_to_snapshot_request(), proplists:proplist()) ->
+    {ok, convert_recovery_point_to_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 convert_recovery_point_to_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConvertRecoveryPointToSnapshot">>, Input, Options).
 
 %% @doc Creates a custom domain association for Amazon Redshift Serverless.
+-spec create_custom_domain_association(map(), create_custom_domain_association_request()) ->
+    {ok, create_custom_domain_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_domain_association(Client, Input, []).
+
+-spec create_custom_domain_association(map(), create_custom_domain_association_request(), proplists:proplist()) ->
+    {ok, create_custom_domain_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomDomainAssociation">>, Input, Options).
 
 %% @doc Creates an Amazon Redshift Serverless managed VPC endpoint.
+-spec create_endpoint_access(map(), create_endpoint_access_request()) ->
+    {ok, create_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_access(Client, Input, []).
+
+-spec create_endpoint_access(map(), create_endpoint_access_request(), proplists:proplist()) ->
+    {ok, create_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpointAccess">>, Input, Options).
 
 %% @doc Creates a namespace in Amazon Redshift Serverless.
+-spec create_namespace(map(), create_namespace_request()) ->
+    {ok, create_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_namespace(Client, Input, []).
+
+-spec create_namespace(map(), create_namespace_request(), proplists:proplist()) ->
+    {ok, create_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNamespace">>, Input, Options).
@@ -178,9 +1376,24 @@ create_namespace(Client, Input, Options)
 %% A scheduled action contains a schedule and an Amazon Redshift API action.
 %% For example, you can create a schedule of when to run the
 %% `CreateSnapshot' API operation.
+-spec create_scheduled_action(map(), create_scheduled_action_request()) ->
+    {ok, create_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scheduled_action(Client, Input, []).
+
+-spec create_scheduled_action(map(), create_scheduled_action_request(), proplists:proplist()) ->
+    {ok, create_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateScheduledAction">>, Input, Options).
@@ -191,18 +1404,56 @@ create_scheduled_action(Client, Input, Options)
 %%
 %% Working with snapshots and recovery points:
 %% https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html.
+-spec create_snapshot(map(), create_snapshot_request()) ->
+    {ok, create_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
+
+-spec create_snapshot(map(), create_snapshot_request(), proplists:proplist()) ->
+    {ok, create_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
 
 %% @doc Creates a snapshot copy configuration that lets you copy snapshots to
 %% another Amazon Web Services Region.
+-spec create_snapshot_copy_configuration(map(), create_snapshot_copy_configuration_request()) ->
+    {ok, create_snapshot_copy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_snapshot_copy_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot_copy_configuration(Client, Input, []).
+
+-spec create_snapshot_copy_configuration(map(), create_snapshot_copy_configuration_request(), proplists:proplist()) ->
+    {ok, create_snapshot_copy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_snapshot_copy_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshotCopyConfiguration">>, Input, Options).
@@ -211,33 +1462,103 @@ create_snapshot_copy_configuration(Client, Input, Options)
 %% usage type.
 %%
 %% The usage limit is identified by the returned usage limit identifier.
+-spec create_usage_limit(map(), create_usage_limit_request()) ->
+    {ok, create_usage_limit_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_usage_limit(Client, Input, []).
+
+-spec create_usage_limit(map(), create_usage_limit_request(), proplists:proplist()) ->
+    {ok, create_usage_limit_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUsageLimit">>, Input, Options).
 
 %% @doc Creates an workgroup in Amazon Redshift Serverless.
+-spec create_workgroup(map(), create_workgroup_request()) ->
+    {ok, create_workgroup_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workgroup(Client, Input, []).
+
+-spec create_workgroup(map(), create_workgroup_request(), proplists:proplist()) ->
+    {ok, create_workgroup_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkgroup">>, Input, Options).
 
 %% @doc Deletes a custom domain association for Amazon Redshift Serverless.
+-spec delete_custom_domain_association(map(), delete_custom_domain_association_request()) ->
+    {ok, delete_custom_domain_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_domain_association(Client, Input, []).
+
+-spec delete_custom_domain_association(map(), delete_custom_domain_association_request(), proplists:proplist()) ->
+    {ok, delete_custom_domain_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomDomainAssociation">>, Input, Options).
 
 %% @doc Deletes an Amazon Redshift Serverless managed VPC endpoint.
+-spec delete_endpoint_access(map(), delete_endpoint_access_request()) ->
+    {ok, delete_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_access(Client, Input, []).
+
+-spec delete_endpoint_access(map(), delete_endpoint_access_request(), proplists:proplist()) ->
+    {ok, delete_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpointAccess">>, Input, Options).
@@ -246,57 +1567,160 @@ delete_endpoint_access(Client, Input, Options)
 %%
 %% Before you delete the namespace, you can create a final snapshot that has
 %% all of the data within the namespace.
+-spec delete_namespace(map(), delete_namespace_request()) ->
+    {ok, delete_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).
+
+-spec delete_namespace(map(), delete_namespace_request(), proplists:proplist()) ->
+    {ok, delete_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNamespace">>, Input, Options).
 
 %% @doc Deletes the specified resource policy.
+-spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
 %% @doc Deletes a scheduled action.
+-spec delete_scheduled_action(map(), delete_scheduled_action_request()) ->
+    {ok, delete_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_scheduled_action(Client, Input, []).
+
+-spec delete_scheduled_action(map(), delete_scheduled_action_request(), proplists:proplist()) ->
+    {ok, delete_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteScheduledAction">>, Input, Options).
 
 %% @doc Deletes a snapshot from Amazon Redshift Serverless.
+-spec delete_snapshot(map(), delete_snapshot_request()) ->
+    {ok, delete_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
+
+-spec delete_snapshot(map(), delete_snapshot_request(), proplists:proplist()) ->
+    {ok, delete_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
 
 %% @doc Deletes a snapshot copy configuration
+-spec delete_snapshot_copy_configuration(map(), delete_snapshot_copy_configuration_request()) ->
+    {ok, delete_snapshot_copy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_snapshot_copy_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot_copy_configuration(Client, Input, []).
+
+-spec delete_snapshot_copy_configuration(map(), delete_snapshot_copy_configuration_request(), proplists:proplist()) ->
+    {ok, delete_snapshot_copy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_snapshot_copy_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshotCopyConfiguration">>, Input, Options).
 
 %% @doc Deletes a usage limit from Amazon Redshift Serverless.
+-spec delete_usage_limit(map(), delete_usage_limit_request()) ->
+    {ok, delete_usage_limit_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_usage_limit(Client, Input, []).
+
+-spec delete_usage_limit(map(), delete_usage_limit_request(), proplists:proplist()) ->
+    {ok, delete_usage_limit_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUsageLimit">>, Input, Options).
 
 %% @doc Deletes a workgroup.
+-spec delete_workgroup(map(), delete_workgroup_request()) ->
+    {ok, delete_workgroup_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workgroup(Client, Input, []).
+
+-spec delete_workgroup(map(), delete_workgroup_request(), proplists:proplist()) ->
+    {ok, delete_workgroup_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkgroup">>, Input, Options).
@@ -314,122 +1738,329 @@ delete_workgroup(Client, Input, Options)
 %%
 %% If the `DbName' parameter is specified, the IAM policy must
 %% allow access to the resource dbname for the specified database name.
+-spec get_credentials(map(), get_credentials_request()) ->
+    {ok, get_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credentials(Client, Input, []).
+
+-spec get_credentials(map(), get_credentials_request(), proplists:proplist()) ->
+    {ok, get_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCredentials">>, Input, Options).
 
 %% @doc Gets information about a specific custom domain association.
+-spec get_custom_domain_association(map(), get_custom_domain_association_request()) ->
+    {ok, get_custom_domain_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_domain_association(Client, Input, []).
+
+-spec get_custom_domain_association(map(), get_custom_domain_association_request(), proplists:proplist()) ->
+    {ok, get_custom_domain_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCustomDomainAssociation">>, Input, Options).
 
 %% @doc Returns information, such as the name, about a VPC endpoint.
+-spec get_endpoint_access(map(), get_endpoint_access_request()) ->
+    {ok, get_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_endpoint_access(Client, Input, []).
+
+-spec get_endpoint_access(map(), get_endpoint_access_request(), proplists:proplist()) ->
+    {ok, get_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEndpointAccess">>, Input, Options).
 
 %% @doc Returns information about a namespace in Amazon Redshift Serverless.
+-spec get_namespace(map(), get_namespace_request()) ->
+    {ok, get_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_namespace(Client, Input, []).
+
+-spec get_namespace(map(), get_namespace_request(), proplists:proplist()) ->
+    {ok, get_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNamespace">>, Input, Options).
 
 %% @doc Returns information about a recovery point.
+-spec get_recovery_point(map(), get_recovery_point_request()) ->
+    {ok, get_recovery_point_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_recovery_point(Client, Input, []).
+
+-spec get_recovery_point(map(), get_recovery_point_request(), proplists:proplist()) ->
+    {ok, get_recovery_point_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecoveryPoint">>, Input, Options).
 
 %% @doc Returns a resource policy.
+-spec get_resource_policy(map(), get_resource_policy_request()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(map(), get_resource_policy_request(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
 %% @doc Returns information about a scheduled action.
+-spec get_scheduled_action(map(), get_scheduled_action_request()) ->
+    {ok, get_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_scheduled_action(Client, Input, []).
+
+-spec get_scheduled_action(map(), get_scheduled_action_request(), proplists:proplist()) ->
+    {ok, get_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetScheduledAction">>, Input, Options).
 
 %% @doc Returns information about a specific snapshot.
+-spec get_snapshot(map(), get_snapshot_request()) ->
+    {ok, get_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snapshot(Client, Input, []).
+
+-spec get_snapshot(map(), get_snapshot_request(), proplists:proplist()) ->
+    {ok, get_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshot">>, Input, Options).
 
 %% @doc Returns information about a `TableRestoreStatus' object.
+-spec get_table_restore_status(map(), get_table_restore_status_request()) ->
+    {ok, get_table_restore_status_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table_restore_status(Client, Input, []).
+
+-spec get_table_restore_status(map(), get_table_restore_status_request(), proplists:proplist()) ->
+    {ok, get_table_restore_status_response(), tuple()} |
+    {error, any()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_table_restore_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTableRestoreStatus">>, Input, Options).
 
 %% @doc Returns information about a usage limit.
+-spec get_usage_limit(map(), get_usage_limit_request()) ->
+    {ok, get_usage_limit_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_usage_limit(Client, Input, []).
+
+-spec get_usage_limit(map(), get_usage_limit_request(), proplists:proplist()) ->
+    {ok, get_usage_limit_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUsageLimit">>, Input, Options).
 
 %% @doc Returns information about a specific workgroup.
+-spec get_workgroup(map(), get_workgroup_request()) ->
+    {ok, get_workgroup_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_workgroup(Client, Input, []).
+
+-spec get_workgroup(map(), get_workgroup_request(), proplists:proplist()) ->
+    {ok, get_workgroup_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkgroup">>, Input, Options).
 
 %% @doc Lists custom domain associations for Amazon Redshift Serverless.
+-spec list_custom_domain_associations(map(), list_custom_domain_associations_request()) ->
+    {ok, list_custom_domain_associations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_custom_domain_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_domain_associations(Client, Input, []).
+
+-spec list_custom_domain_associations(map(), list_custom_domain_associations_request(), proplists:proplist()) ->
+    {ok, list_custom_domain_associations_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_custom_domain_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomDomainAssociations">>, Input, Options).
 
 %% @doc Returns an array of `EndpointAccess' objects and relevant
 %% information.
+-spec list_endpoint_access(map(), list_endpoint_access_request()) ->
+    {ok, list_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoint_access(Client, Input, []).
+
+-spec list_endpoint_access(map(), list_endpoint_access_request(), proplists:proplist()) ->
+    {ok, list_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpointAccess">>, Input, Options).
 
 %% @doc Returns information about a list of specified namespaces.
+-spec list_namespaces(map(), list_namespaces_request()) ->
+    {ok, list_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_namespaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_namespaces(Client, Input, []).
+
+-spec list_namespaces(map(), list_namespaces_request(), proplists:proplist()) ->
+    {ok, list_namespaces_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_namespaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNamespaces">>, Input, Options).
 
 %% @doc Returns an array of recovery points.
+-spec list_recovery_points(map(), list_recovery_points_request()) ->
+    {ok, list_recovery_points_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_recovery_points(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_recovery_points(Client, Input, []).
+
+-spec list_recovery_points(map(), list_recovery_points_request(), proplists:proplist()) ->
+    {ok, list_recovery_points_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_recovery_points(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecoveryPoints">>, Input, Options).
@@ -437,58 +2068,159 @@ list_recovery_points(Client, Input, Options)
 %% @doc Returns a list of scheduled actions.
 %%
 %% You can use the flags to filter the list of returned scheduled actions.
+-spec list_scheduled_actions(map(), list_scheduled_actions_request()) ->
+    {ok, list_scheduled_actions_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_scheduled_actions(Client, Input, []).
+
+-spec list_scheduled_actions(map(), list_scheduled_actions_request(), proplists:proplist()) ->
+    {ok, list_scheduled_actions_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListScheduledActions">>, Input, Options).
 
 %% @doc Returns a list of snapshot copy configurations.
+-spec list_snapshot_copy_configurations(map(), list_snapshot_copy_configurations_request()) ->
+    {ok, list_snapshot_copy_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_snapshot_copy_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_snapshot_copy_configurations(Client, Input, []).
+
+-spec list_snapshot_copy_configurations(map(), list_snapshot_copy_configurations_request(), proplists:proplist()) ->
+    {ok, list_snapshot_copy_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_snapshot_copy_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSnapshotCopyConfigurations">>, Input, Options).
 
 %% @doc Returns a list of snapshots.
+-spec list_snapshots(map(), list_snapshots_request()) ->
+    {ok, list_snapshots_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_snapshots(Client, Input, []).
+
+-spec list_snapshots(map(), list_snapshots_request(), proplists:proplist()) ->
+    {ok, list_snapshots_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSnapshots">>, Input, Options).
 
 %% @doc Returns information about an array of `TableRestoreStatus'
 %% objects.
+-spec list_table_restore_status(map(), list_table_restore_status_request()) ->
+    {ok, list_table_restore_status_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_table_restore_status(Client, Input, []).
+
+-spec list_table_restore_status(map(), list_table_restore_status_request(), proplists:proplist()) ->
+    {ok, list_table_restore_status_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_table_restore_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTableRestoreStatus">>, Input, Options).
 
 %% @doc Lists the tags assigned to a resource.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists all usage limits within Amazon Redshift Serverless.
+-spec list_usage_limits(map(), list_usage_limits_request()) ->
+    {ok, list_usage_limits_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_usage_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_usage_limits(Client, Input, []).
+
+-spec list_usage_limits(map(), list_usage_limits_request(), proplists:proplist()) ->
+    {ok, list_usage_limits_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_pagination_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_usage_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsageLimits">>, Input, Options).
 
 %% @doc Returns information about a list of specified workgroups.
+-spec list_workgroups(map(), list_workgroups_request()) ->
+    {ok, list_workgroups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_workgroups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workgroups(Client, Input, []).
+
+-spec list_workgroups(map(), list_workgroups_request(), proplists:proplist()) ->
+    {ok, list_workgroups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_workgroups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkgroups">>, Input, Options).
@@ -497,25 +2229,74 @@ list_workgroups(Client, Input, Options)
 %%
 %% Currently, you can use policies to share snapshots across Amazon Web
 %% Services accounts.
+-spec put_resource_policy(map(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Restore the data from a recovery point.
+-spec restore_from_recovery_point(map(), restore_from_recovery_point_request()) ->
+    {ok, restore_from_recovery_point_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_from_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_recovery_point(Client, Input, []).
+
+-spec restore_from_recovery_point(map(), restore_from_recovery_point_request(), proplists:proplist()) ->
+    {ok, restore_from_recovery_point_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_from_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromRecoveryPoint">>, Input, Options).
 
 %% @doc Restores a namespace from a snapshot.
+-spec restore_from_snapshot(map(), restore_from_snapshot_request()) ->
+    {ok, restore_from_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_from_snapshot(Client, Input, []).
+
+-spec restore_from_snapshot(map(), restore_from_snapshot_request(), proplists:proplist()) ->
+    {ok, restore_from_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
@@ -525,9 +2306,24 @@ restore_from_snapshot(Client, Input, Options)
 %%
 %% You can't use this operation to restore tables with interleaved sort
 %% keys.
+-spec restore_table_from_recovery_point(map(), restore_table_from_recovery_point_request()) ->
+    {ok, restore_table_from_recovery_point_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_table_from_recovery_point(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_recovery_point(Client, Input, []).
+
+-spec restore_table_from_recovery_point(map(), restore_table_from_recovery_point_request(), proplists:proplist()) ->
+    {ok, restore_table_from_recovery_point_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_table_from_recovery_point(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableFromRecoveryPoint">>, Input, Options).
@@ -538,42 +2334,125 @@ restore_table_from_recovery_point(Client, Input, Options)
 %% You can't use this operation to
 %% restore tables with interleaved sort keys:
 %% https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html#t_Sorting_data-interleaved.
+-spec restore_table_from_snapshot(map(), restore_table_from_snapshot_request()) ->
+    {ok, restore_table_from_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_table_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_snapshot(Client, Input, []).
+
+-spec restore_table_from_snapshot(map(), restore_table_from_snapshot_request(), proplists:proplist()) ->
+    {ok, restore_table_from_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 restore_table_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableFromSnapshot">>, Input, Options).
 
 %% @doc Assigns one or more tags to a resource.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Removes a tag or set of tags from a resource.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates an Amazon Redshift Serverless certificate associated with a
 %% custom domain.
+-spec update_custom_domain_association(map(), update_custom_domain_association_request()) ->
+    {ok, update_custom_domain_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_custom_domain_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_domain_association(Client, Input, []).
+
+-spec update_custom_domain_association(map(), update_custom_domain_association_request(), proplists:proplist()) ->
+    {ok, update_custom_domain_association_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_custom_domain_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomDomainAssociation">>, Input, Options).
 
 %% @doc Updates an Amazon Redshift Serverless managed endpoint.
+-spec update_endpoint_access(map(), update_endpoint_access_request()) ->
+    {ok, update_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_endpoint_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_access(Client, Input, []).
+
+-spec update_endpoint_access(map(), update_endpoint_access_request(), proplists:proplist()) ->
+    {ok, update_endpoint_access_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_endpoint_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpointAccess">>, Input, Options).
@@ -585,33 +2464,95 @@ update_endpoint_access(Client, Input, Options)
 %% you must specify both `adminUsername' and `adminUserPassword' to
 %% update either field, but you can't update both `kmsKeyId'
 %% and `logExports' in a single request.
+-spec update_namespace(map(), update_namespace_request()) ->
+    {ok, update_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_namespace(Client, Input, []).
+
+-spec update_namespace(map(), update_namespace_request(), proplists:proplist()) ->
+    {ok, update_namespace_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNamespace">>, Input, Options).
 
 %% @doc Updates a scheduled action.
+-spec update_scheduled_action(map(), update_scheduled_action_request()) ->
+    {ok, update_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_scheduled_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_scheduled_action(Client, Input, []).
+
+-spec update_scheduled_action(map(), update_scheduled_action_request(), proplists:proplist()) ->
+    {ok, update_scheduled_action_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateScheduledAction">>, Input, Options).
 
 %% @doc Updates a snapshot.
+-spec update_snapshot(map(), update_snapshot_request()) ->
+    {ok, update_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot(Client, Input, []).
+
+-spec update_snapshot(map(), update_snapshot_request(), proplists:proplist()) ->
+    {ok, update_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshot">>, Input, Options).
 
 %% @doc Updates a snapshot copy configuration.
+-spec update_snapshot_copy_configuration(map(), update_snapshot_copy_configuration_request()) ->
+    {ok, update_snapshot_copy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_snapshot_copy_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot_copy_configuration(Client, Input, []).
+
+-spec update_snapshot_copy_configuration(map(), update_snapshot_copy_configuration_request(), proplists:proplist()) ->
+    {ok, update_snapshot_copy_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_snapshot_copy_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshotCopyConfiguration">>, Input, Options).
@@ -619,9 +2560,24 @@ update_snapshot_copy_configuration(Client, Input, Options)
 %% @doc Update a usage limit in Amazon Redshift Serverless.
 %%
 %% You can't update the usage type or period of a usage limit.
+-spec update_usage_limit(map(), update_usage_limit_request()) ->
+    {ok, update_usage_limit_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_usage_limit(Client, Input, []).
+
+-spec update_usage_limit(map(), update_usage_limit_request(), proplists:proplist()) ->
+    {ok, update_usage_limit_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateUsageLimit">>, Input, Options).
@@ -631,9 +2587,26 @@ update_usage_limit(Client, Input, Options)
 %% You can't update multiple parameters in one request. For example,
 %% you can update `baseCapacity' or `port' in a single request, but
 %% you can't update both in the same request.
+-spec update_workgroup(map(), update_workgroup_request()) ->
+    {ok, update_workgroup_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workgroup(Client, Input, []).
+
+-spec update_workgroup(map(), update_workgroup_request(), proplists:proplist()) ->
+    {ok, update_workgroup_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, insufficient_capacity_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_workgroup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkgroup">>, Input, Options).

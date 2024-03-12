@@ -101,6 +101,548 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% list_queue_tags_request() :: #{
+%%   <<"QueueUrl">> := string()
+%% }
+-type list_queue_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% kms_access_denied() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_access_denied() :: #{binary() => any()}.
+
+%% Example:
+%% tag_queue_request() :: #{
+%%   <<"QueueUrl">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% queue_name_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type queue_name_exists() :: #{binary() => any()}.
+
+%% Example:
+%% list_queues_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueueNamePrefix">> => string()
+%% }
+-type list_queues_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_queue_attributes_request() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"QueueUrl">> := string()
+%% }
+-type set_queue_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_message_contents() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_message_contents() :: #{binary() => any()}.
+
+%% Example:
+%% kms_opt_in_required() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_opt_in_required() :: #{binary() => any()}.
+
+%% Example:
+%% purge_queue_in_progress() :: #{
+%%   <<"message">> => string()
+%% }
+-type purge_queue_in_progress() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_attribute_name() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_attribute_name() :: #{binary() => any()}.
+
+%% Example:
+%% queue_does_not_exist() :: #{
+%%   <<"message">> => string()
+%% }
+-type queue_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% receive_message_result() :: #{
+%%   <<"Messages">> => list(message()())
+%% }
+-type receive_message_result() :: #{binary() => any()}.
+
+%% Example:
+%% purge_queue_request() :: #{
+%%   <<"QueueUrl">> := string()
+%% }
+-type purge_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_security() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_security() :: #{binary() => any()}.
+
+%% Example:
+%% send_message_batch_request() :: #{
+%%   <<"Entries">> := list(send_message_batch_request_entry()()),
+%%   <<"QueueUrl">> := string()
+%% }
+-type send_message_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_batch_request() :: #{
+%%   <<"Entries">> := list(delete_message_batch_request_entry()()),
+%%   <<"QueueUrl">> := string()
+%% }
+-type delete_message_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_entries_in_batch_request() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_entries_in_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_request() :: #{
+%%   <<"QueueUrl">> := string(),
+%%   <<"ReceiptHandle">> := string()
+%% }
+-type delete_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_url_request() :: #{
+%%   <<"QueueName">> := string(),
+%%   <<"QueueOwnerAWSAccountId">> => string()
+%% }
+-type get_queue_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% kms_throttled() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_throttled() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_message_move_task_request() :: #{
+%%   <<"TaskHandle">> := string()
+%% }
+-type cancel_message_move_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% message_attribute_value() :: #{
+%%   <<"BinaryListValues">> => list(binary()()),
+%%   <<"BinaryValue">> => binary(),
+%%   <<"DataType">> => string(),
+%%   <<"StringListValues">> => list(string()()),
+%%   <<"StringValue">> => string()
+%% }
+-type message_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% list_message_move_tasks_result() :: #{
+%%   <<"Results">> => list(list_message_move_tasks_result_entry()())
+%% }
+-type list_message_move_tasks_result() :: #{binary() => any()}.
+
+%% Example:
+%% kms_disabled() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_disabled() :: #{binary() => any()}.
+
+%% Example:
+%% list_queues_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueueUrls">> => list(string()())
+%% }
+-type list_queues_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_result_error_entry() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"SenderFault">> => boolean()
+%% }
+-type batch_result_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% change_message_visibility_batch_result_entry() :: #{
+%%   <<"Id">> => string()
+%% }
+-type change_message_visibility_batch_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_batch_result() :: #{
+%%   <<"Failed">> => list(batch_result_error_entry()()),
+%%   <<"Successful">> => list(delete_message_batch_result_entry()())
+%% }
+-type delete_message_batch_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_message_move_tasks_result_entry() :: #{
+%%   <<"ApproximateNumberOfMessagesMoved">> => float(),
+%%   <<"ApproximateNumberOfMessagesToMove">> => float(),
+%%   <<"DestinationArn">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"MaxNumberOfMessagesPerSecond">> => integer(),
+%%   <<"SourceArn">> => string(),
+%%   <<"StartedTimestamp">> => float(),
+%%   <<"Status">> => string(),
+%%   <<"TaskHandle">> => string()
+%% }
+-type list_message_move_tasks_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_operation() :: #{binary() => any()}.
+
+%% Example:
+%% send_message_batch_result() :: #{
+%%   <<"Failed">> => list(batch_result_error_entry()()),
+%%   <<"Successful">> => list(send_message_batch_result_entry()())
+%% }
+-type send_message_batch_result() :: #{binary() => any()}.
+
+%% Example:
+%% untag_queue_request() :: #{
+%%   <<"QueueUrl">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_attribute_value() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% list_message_move_tasks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"SourceArn">> := string()
+%% }
+-type list_message_move_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_message_move_task_result() :: #{
+%%   <<"ApproximateNumberOfMessagesMoved">> => float()
+%% }
+-type cancel_message_move_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% send_message_batch_result_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"MD5OfMessageAttributes">> => string(),
+%%   <<"MD5OfMessageBody">> => string(),
+%%   <<"MD5OfMessageSystemAttributes">> => string(),
+%%   <<"MessageId">> => string(),
+%%   <<"SequenceNumber">> => string()
+%% }
+-type send_message_batch_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% empty_batch_request() :: #{
+%%   <<"message">> => string()
+%% }
+-type empty_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% request_throttled() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_throttled() :: #{binary() => any()}.
+
+%% Example:
+%% create_queue_result() :: #{
+%%   <<"QueueUrl">> => string()
+%% }
+-type create_queue_result() :: #{binary() => any()}.
+
+%% Example:
+%% change_message_visibility_batch_request() :: #{
+%%   <<"Entries">> := list(change_message_visibility_batch_request_entry()()),
+%%   <<"QueueUrl">> := string()
+%% }
+-type change_message_visibility_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_message_batch_request_entry() :: #{
+%%   <<"DelaySeconds">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"MessageAttributes">> => map(),
+%%   <<"MessageBody">> => string(),
+%%   <<"MessageDeduplicationId">> => string(),
+%%   <<"MessageGroupId">> => string(),
+%%   <<"MessageSystemAttributes">> => map()
+%% }
+-type send_message_batch_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% remove_permission_request() :: #{
+%%   <<"Label">> := string(),
+%%   <<"QueueUrl">> := string()
+%% }
+-type remove_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% change_message_visibility_request() :: #{
+%%   <<"QueueUrl">> := string(),
+%%   <<"ReceiptHandle">> := string(),
+%%   <<"VisibilityTimeout">> := integer()
+%% }
+-type change_message_visibility_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_message_result() :: #{
+%%   <<"MD5OfMessageAttributes">> => string(),
+%%   <<"MD5OfMessageBody">> => string(),
+%%   <<"MD5OfMessageSystemAttributes">> => string(),
+%%   <<"MessageId">> => string(),
+%%   <<"SequenceNumber">> => string()
+%% }
+-type send_message_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_queue_request() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"QueueName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_queue_tags_result() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_queue_tags_result() :: #{binary() => any()}.
+
+%% Example:
+%% kms_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% change_message_visibility_batch_request_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"ReceiptHandle">> => string(),
+%%   <<"VisibilityTimeout">> => integer()
+%% }
+-type change_message_visibility_batch_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% start_message_move_task_request() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"MaxNumberOfMessagesPerSecond">> => integer(),
+%%   <<"SourceArn">> := string()
+%% }
+-type start_message_move_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_attributes_request() :: #{
+%%   <<"AttributeNames">> => list(list(any())()),
+%%   <<"QueueUrl">> := string()
+%% }
+-type get_queue_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_state() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_id_format() :: #{
+
+%% }
+-type invalid_id_format() :: #{binary() => any()}.
+
+%% Example:
+%% receive_message_request() :: #{
+%%   <<"AttributeNames">> => list(list(any())()),
+%%   <<"MaxNumberOfMessages">> => integer(),
+%%   <<"MessageAttributeNames">> => list(string()()),
+%%   <<"QueueUrl">> := string(),
+%%   <<"ReceiveRequestAttemptId">> => string(),
+%%   <<"VisibilityTimeout">> => integer(),
+%%   <<"WaitTimeSeconds">> => integer()
+%% }
+-type receive_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_batch_result_entry() :: #{
+%%   <<"Id">> => string()
+%% }
+-type delete_message_batch_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% message_system_attribute_value() :: #{
+%%   <<"BinaryListValues">> => list(binary()()),
+%%   <<"BinaryValue">> => binary(),
+%%   <<"DataType">> => string(),
+%%   <<"StringListValues">> => list(string()()),
+%%   <<"StringValue">> => string()
+%% }
+-type message_system_attribute_value() :: #{binary() => any()}.
+
+%% Example:
+%% queue_deleted_recently() :: #{
+%%   <<"message">> => string()
+%% }
+-type queue_deleted_recently() :: #{binary() => any()}.
+
+%% Example:
+%% start_message_move_task_result() :: #{
+%%   <<"TaskHandle">> => string()
+%% }
+-type start_message_move_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_dead_letter_source_queues_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"queueUrls">> => list(string()())
+%% }
+-type list_dead_letter_source_queues_result() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_batch_entry_id() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_batch_entry_id() :: #{binary() => any()}.
+
+%% Example:
+%% batch_entry_ids_not_distinct() :: #{
+%%   <<"message">> => string()
+%% }
+-type batch_entry_ids_not_distinct() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_key_usage() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_key_usage() :: #{binary() => any()}.
+
+%% Example:
+%% send_message_request() :: #{
+%%   <<"DelaySeconds">> => integer(),
+%%   <<"MessageAttributes">> => map(),
+%%   <<"MessageBody">> := string(),
+%%   <<"MessageDeduplicationId">> => string(),
+%%   <<"MessageGroupId">> => string(),
+%%   <<"MessageSystemAttributes">> => map(),
+%%   <<"QueueUrl">> := string()
+%% }
+-type send_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_queue_request() :: #{
+%%   <<"QueueUrl">> := string()
+%% }
+-type delete_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% message_not_inflight() :: #{
+
+%% }
+-type message_not_inflight() :: #{binary() => any()}.
+
+%% Example:
+%% over_limit() :: #{
+%%   <<"message">> => string()
+%% }
+-type over_limit() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_url_result() :: #{
+%%   <<"QueueUrl">> => string()
+%% }
+-type get_queue_url_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_request_too_long() :: #{
+%%   <<"message">> => string()
+%% }
+-type batch_request_too_long() :: #{binary() => any()}.
+
+%% Example:
+%% change_message_visibility_batch_result() :: #{
+%%   <<"Failed">> => list(batch_result_error_entry()()),
+%%   <<"Successful">> => list(change_message_visibility_batch_result_entry()())
+%% }
+-type change_message_visibility_batch_result() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_address() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_address() :: #{binary() => any()}.
+
+%% Example:
+%% list_dead_letter_source_queues_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueueUrl">> := string()
+%% }
+-type list_dead_letter_source_queues_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_message_batch_request_entry() :: #{
+%%   <<"Id">> => string(),
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type delete_message_batch_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_attributes_result() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_queue_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% receipt_handle_is_invalid() :: #{
+%%   <<"message">> => string()
+%% }
+-type receipt_handle_is_invalid() :: #{binary() => any()}.
+
+%% Example:
+%% add_permission_request() :: #{
+%%   <<"AWSAccountIds">> := list(string()()),
+%%   <<"Actions">> := list(string()()),
+%%   <<"Label">> := string(),
+%%   <<"QueueUrl">> := string()
+%% }
+-type add_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% message() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Body">> => string(),
+%%   <<"MD5OfBody">> => string(),
+%%   <<"MD5OfMessageAttributes">> => string(),
+%%   <<"MessageAttributes">> => map(),
+%%   <<"MessageId">> => string(),
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type message() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -148,9 +690,28 @@
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
+-spec add_permission(map(), add_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, over_limit(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_permission(Client, Input, []).
+
+-spec add_permission(map(), add_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, over_limit(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 add_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddPermission">>, Input, Options).
@@ -177,9 +738,26 @@ add_permission(Client, Input, Options)
 %%
 %% Only one active message movement task is supported per queue at any given
 %% time.
+-spec cancel_message_move_task(map(), cancel_message_move_task_request()) ->
+    {ok, cancel_message_move_task_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 cancel_message_move_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_message_move_task(Client, Input, []).
+
+-spec cancel_message_move_task(map(), cancel_message_move_task_request(), proplists:proplist()) ->
+    {ok, cancel_message_move_task_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 cancel_message_move_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMessageMoveTask">>, Input, Options).
@@ -265,9 +843,30 @@ cancel_message_move_task(Client, Input, Options)
 %% using the
 %% `ChangeMessageVisibility' action) the next time the message is
 %% received.
+-spec change_message_visibility(map(), change_message_visibility_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, message_not_inflight(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, receipt_handle_is_invalid(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 change_message_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_message_visibility(Client, Input, []).
+
+-spec change_message_visibility(map(), change_message_visibility_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, message_not_inflight(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, receipt_handle_is_invalid(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 change_message_visibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangeMessageVisibility">>, Input, Options).
@@ -289,9 +888,34 @@ change_message_visibility(Client, Input, Options)
 %% unsuccessful actions, you should check for batch errors even when the call
 %% returns
 %% an HTTP status code of `200'.
+-spec change_message_visibility_batch(map(), change_message_visibility_batch_request()) ->
+    {ok, change_message_visibility_batch_result(), tuple()} |
+    {error, any()} |
+    {error, batch_entry_ids_not_distinct(), tuple()} |
+    {error, empty_batch_request(), tuple()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_batch_entry_id(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, too_many_entries_in_batch_request(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 change_message_visibility_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_message_visibility_batch(Client, Input, []).
+
+-spec change_message_visibility_batch(map(), change_message_visibility_batch_request(), proplists:proplist()) ->
+    {ok, change_message_visibility_batch_result(), tuple()} |
+    {error, any()} |
+    {error, batch_entry_ids_not_distinct(), tuple()} |
+    {error, empty_batch_request(), tuple()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_batch_entry_id(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, too_many_entries_in_batch_request(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 change_message_visibility_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ChangeMessageVisibilityBatch">>, Input, Options).
@@ -355,9 +979,32 @@ change_message_visibility_batch(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
+-spec create_queue(map(), create_queue_request()) ->
+    {ok, create_queue_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_attribute_name(), tuple()} |
+    {error, invalid_attribute_value(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_deleted_recently(), tuple()} |
+    {error, queue_name_exists(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 create_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_queue(Client, Input, []).
+
+-spec create_queue(map(), create_queue_request(), proplists:proplist()) ->
+    {ok, create_queue_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_attribute_name(), tuple()} |
+    {error, invalid_attribute_value(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_deleted_recently(), tuple()} |
+    {error, queue_name_exists(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 create_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateQueue">>, Input, Options).
@@ -394,9 +1041,30 @@ create_queue(Client, Input, Options)
 %% request. You should ensure that your application is idempotent, so that
 %% receiving a
 %% message more than once does not cause issues.
+-spec delete_message(map(), delete_message_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_id_format(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, receipt_handle_is_invalid(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 delete_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_message(Client, Input, []).
+
+-spec delete_message(map(), delete_message_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_id_format(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, receipt_handle_is_invalid(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 delete_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMessage">>, Input, Options).
@@ -413,9 +1081,34 @@ delete_message(Client, Input, Options)
 %% unsuccessful actions, you should check for batch errors even when the call
 %% returns
 %% an HTTP status code of `200'.
+-spec delete_message_batch(map(), delete_message_batch_request()) ->
+    {ok, delete_message_batch_result(), tuple()} |
+    {error, any()} |
+    {error, batch_entry_ids_not_distinct(), tuple()} |
+    {error, empty_batch_request(), tuple()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_batch_entry_id(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, too_many_entries_in_batch_request(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 delete_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_message_batch(Client, Input, []).
+
+-spec delete_message_batch(map(), delete_message_batch_request(), proplists:proplist()) ->
+    {ok, delete_message_batch_result(), tuple()} |
+    {error, any()} |
+    {error, batch_entry_ids_not_distinct(), tuple()} |
+    {error, empty_batch_request(), tuple()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_batch_entry_id(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, too_many_entries_in_batch_request(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 delete_message_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMessageBatch">>, Input, Options).
@@ -448,9 +1141,26 @@ delete_message_batch(Client, Input, Options)
 %% Amazon SQS Developer Guide.
 %%
 %% The delete operation uses the HTTP `GET' verb.
+-spec delete_queue(map(), delete_queue_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 delete_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_queue(Client, Input, []).
+
+-spec delete_queue(map(), delete_queue_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 delete_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteQueue">>, Input, Options).
@@ -461,9 +1171,28 @@ delete_queue(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html,
 %% you can check whether `QueueName' ends with the
 %% `.fifo' suffix.
+-spec get_queue_attributes(map(), get_queue_attributes_request()) ->
+    {ok, get_queue_attributes_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_attribute_name(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 get_queue_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_attributes(Client, Input, []).
+
+-spec get_queue_attributes(map(), get_queue_attributes_request(), proplists:proplist()) ->
+    {ok, get_queue_attributes_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_attribute_name(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 get_queue_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueueAttributes">>, Input, Options).
@@ -481,9 +1210,26 @@ get_queue_attributes(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue
 %% in the
 %% Amazon SQS Developer Guide.
+-spec get_queue_url(map(), get_queue_url_request()) ->
+    {ok, get_queue_url_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 get_queue_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_url(Client, Input, []).
+
+-spec get_queue_url(map(), get_queue_url_request(), proplists:proplist()) ->
+    {ok, get_queue_url_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 get_queue_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueueUrl">>, Input, Options).
@@ -508,9 +1254,26 @@ get_queue_url(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
 %% in the Amazon SQS Developer
 %% Guide.
+-spec list_dead_letter_source_queues(map(), list_dead_letter_source_queues_request()) ->
+    {ok, list_dead_letter_source_queues_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 list_dead_letter_source_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dead_letter_source_queues(Client, Input, []).
+
+-spec list_dead_letter_source_queues(map(), list_dead_letter_source_queues_request(), proplists:proplist()) ->
+    {ok, list_dead_letter_source_queues_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 list_dead_letter_source_queues(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDeadLetterSourceQueues">>, Input, Options).
@@ -532,9 +1295,26 @@ list_dead_letter_source_queues(Client, Input, Options)
 %%
 %% Only one active message movement task is supported per queue at any given
 %% time.
+-spec list_message_move_tasks(map(), list_message_move_tasks_request()) ->
+    {ok, list_message_move_tasks_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 list_message_move_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_message_move_tasks(Client, Input, []).
+
+-spec list_message_move_tasks(map(), list_message_move_tasks_request(), proplists:proplist()) ->
+    {ok, list_message_move_tasks_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 list_message_move_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMessageMoveTasks">>, Input, Options).
@@ -555,9 +1335,26 @@ list_message_move_tasks(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
+-spec list_queue_tags(map(), list_queue_tags_request()) ->
+    {ok, list_queue_tags_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 list_queue_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queue_tags(Client, Input, []).
+
+-spec list_queue_tags(map(), list_queue_tags_request(), proplists:proplist()) ->
+    {ok, list_queue_tags_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 list_queue_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueueTags">>, Input, Options).
@@ -589,9 +1386,24 @@ list_queue_tags(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
+-spec list_queues(map(), list_queues_request()) ->
+    {ok, list_queues_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 list_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queues(Client, Input, []).
+
+-spec list_queues(map(), list_queues_request(), proplists:proplist()) ->
+    {ok, list_queues_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 list_queues(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueues">>, Input, Options).
@@ -614,9 +1426,28 @@ list_queues(Client, Input, Options)
 %%
 %% Messages sent to the queue after you call `PurgeQueue'
 %% might be deleted while the queue is being purged.
+-spec purge_queue(map(), purge_queue_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, purge_queue_in_progress(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 purge_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     purge_queue(Client, Input, []).
+
+-spec purge_queue(map(), purge_queue_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, purge_queue_in_progress(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 purge_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurgeQueue">>, Input, Options).
@@ -688,9 +1519,42 @@ purge_queue(Client, Input, Options)
 %% action, we recommend that you structure your code so that it can handle
 %% new
 %% attributes gracefully.
+-spec receive_message(map(), receive_message_request()) ->
+    {ok, receive_message_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, kms_access_denied(), tuple()} |
+    {error, kms_disabled(), tuple()} |
+    {error, kms_invalid_key_usage(), tuple()} |
+    {error, kms_invalid_state(), tuple()} |
+    {error, kms_not_found(), tuple()} |
+    {error, kms_opt_in_required(), tuple()} |
+    {error, kms_throttled(), tuple()} |
+    {error, over_limit(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 receive_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     receive_message(Client, Input, []).
+
+-spec receive_message(map(), receive_message_request(), proplists:proplist()) ->
+    {ok, receive_message_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, kms_access_denied(), tuple()} |
+    {error, kms_disabled(), tuple()} |
+    {error, kms_invalid_key_usage(), tuple()} |
+    {error, kms_invalid_state(), tuple()} |
+    {error, kms_not_found(), tuple()} |
+    {error, kms_opt_in_required(), tuple()} |
+    {error, kms_throttled(), tuple()} |
+    {error, over_limit(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 receive_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReceiveMessage">>, Input, Options).
@@ -710,9 +1574,26 @@ receive_message(Client, Input, Options)
 %% To remove the ability to change queue permissions, you must deny
 %% permission to the `AddPermission', `RemovePermission',
 %% and `SetQueueAttributes' actions in your IAM policy.
+-spec remove_permission(map(), remove_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
+
+-spec remove_permission(map(), remove_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 remove_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemovePermission">>, Input, Options).
@@ -731,9 +1612,42 @@ remove_permission(Client, Input, Options)
 %% information,
 %% see the W3C specification for
 %% characters: http://www.w3.org/TR/REC-xml/#charsets.
+-spec send_message(map(), send_message_request()) ->
+    {ok, send_message_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_message_contents(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, kms_access_denied(), tuple()} |
+    {error, kms_disabled(), tuple()} |
+    {error, kms_invalid_key_usage(), tuple()} |
+    {error, kms_invalid_state(), tuple()} |
+    {error, kms_not_found(), tuple()} |
+    {error, kms_opt_in_required(), tuple()} |
+    {error, kms_throttled(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 send_message(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_message(Client, Input, []).
+
+-spec send_message(map(), send_message_request(), proplists:proplist()) ->
+    {ok, send_message_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_message_contents(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, kms_access_denied(), tuple()} |
+    {error, kms_disabled(), tuple()} |
+    {error, kms_invalid_key_usage(), tuple()} |
+    {error, kms_invalid_state(), tuple()} |
+    {error, kms_not_found(), tuple()} |
+    {error, kms_opt_in_required(), tuple()} |
+    {error, kms_throttled(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 send_message(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendMessage">>, Input, Options).
@@ -780,9 +1694,50 @@ send_message(Client, Input, Options)
 %% If you don't specify the `DelaySeconds' parameter for an entry,
 %% Amazon SQS
 %% uses the default value for the queue.
+-spec send_message_batch(map(), send_message_batch_request()) ->
+    {ok, send_message_batch_result(), tuple()} |
+    {error, any()} |
+    {error, batch_entry_ids_not_distinct(), tuple()} |
+    {error, batch_request_too_long(), tuple()} |
+    {error, empty_batch_request(), tuple()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_batch_entry_id(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, kms_access_denied(), tuple()} |
+    {error, kms_disabled(), tuple()} |
+    {error, kms_invalid_key_usage(), tuple()} |
+    {error, kms_invalid_state(), tuple()} |
+    {error, kms_not_found(), tuple()} |
+    {error, kms_opt_in_required(), tuple()} |
+    {error, kms_throttled(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, too_many_entries_in_batch_request(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 send_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_message_batch(Client, Input, []).
+
+-spec send_message_batch(map(), send_message_batch_request(), proplists:proplist()) ->
+    {ok, send_message_batch_result(), tuple()} |
+    {error, any()} |
+    {error, batch_entry_ids_not_distinct(), tuple()} |
+    {error, batch_request_too_long(), tuple()} |
+    {error, empty_batch_request(), tuple()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_batch_entry_id(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, kms_access_denied(), tuple()} |
+    {error, kms_disabled(), tuple()} |
+    {error, kms_invalid_key_usage(), tuple()} |
+    {error, kms_invalid_state(), tuple()} |
+    {error, kms_not_found(), tuple()} |
+    {error, kms_opt_in_required(), tuple()} |
+    {error, kms_throttled(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, too_many_entries_in_batch_request(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 send_message_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendMessageBatch">>, Input, Options).
@@ -814,9 +1769,32 @@ send_message_batch(Client, Input, Options)
 %% To remove the ability to change queue permissions, you must deny
 %% permission to the `AddPermission', `RemovePermission',
 %% and `SetQueueAttributes' actions in your IAM policy.
+-spec set_queue_attributes(map(), set_queue_attributes_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_attribute_name(), tuple()} |
+    {error, invalid_attribute_value(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, over_limit(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 set_queue_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_queue_attributes(Client, Input, []).
+
+-spec set_queue_attributes(map(), set_queue_attributes_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_attribute_name(), tuple()} |
+    {error, invalid_attribute_value(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, over_limit(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 set_queue_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetQueueAttributes">>, Input, Options).
@@ -845,9 +1823,26 @@ set_queue_attributes(Client, Input, Options)
 %%
 %% Only one active message movement task is supported per queue at any given
 %% time.
+-spec start_message_move_task(map(), start_message_move_task_request()) ->
+    {ok, start_message_move_task_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 start_message_move_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_message_move_task(Client, Input, []).
+
+-spec start_message_move_task(map(), start_message_move_task_request(), proplists:proplist()) ->
+    {ok, start_message_move_task_result(), tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 start_message_move_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMessageMoveTask">>, Input, Options).
@@ -885,9 +1880,26 @@ start_message_move_task(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
+-spec tag_queue(map(), tag_queue_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 tag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_queue(Client, Input, []).
+
+-spec tag_queue(map(), tag_queue_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 tag_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagQueue">>, Input, Options).
@@ -907,9 +1919,26 @@ tag_queue(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name
 %% in the
 %% Amazon SQS Developer Guide.
+-spec untag_queue(map(), untag_queue_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 untag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_queue(Client, Input, []).
+
+-spec untag_queue(map(), untag_queue_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_address(), tuple()} |
+    {error, invalid_security(), tuple()} |
+    {error, queue_does_not_exist(), tuple()} |
+    {error, request_throttled(), tuple()} |
+    {error, unsupported_operation(), tuple()}.
 untag_queue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagQueue">>, Input, Options).

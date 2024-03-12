@@ -169,6 +169,993 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% get_document_path_response() :: #{
+%%   <<"Path">> => resource_path()
+%% }
+-type get_document_path_response() :: #{binary() => any()}.
+
+%% Example:
+%% entity_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entity_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% search_resources_request() :: #{
+%%   <<"AdditionalResponseFields">> => list(list(any())()),
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Filters">> => filters(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"OrderBy">> => list(search_sort_result()()),
+%%   <<"OrganizationId">> => string(),
+%%   <<"QueryScopes">> => list(list(any())()),
+%%   <<"QueryText">> => string()
+%% }
+-type search_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_permissions_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Principals">> => list(principal()())
+%% }
+-type describe_resource_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_notification_subscription_request() :: #{
+%%   <<"Endpoint">> := string(),
+%%   <<"Protocol">> := list(any()),
+%%   <<"SubscriptionType">> := list(any())
+%% }
+-type create_notification_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_resource_permissions_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"NotificationOptions">> => notification_options(),
+%%   <<"Principals">> := list(share_principal()())
+%% }
+-type add_resource_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflicting_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflicting_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_folder_response() :: #{
+%%   <<"Metadata">> => folder_metadata()
+%% }
+-type create_folder_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_comment_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type delete_comment_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_metadata() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OriginalName">> => string(),
+%%   <<"Owner">> => user_metadata(),
+%%   <<"ParentId">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type resource_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% restore_document_versions_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type restore_document_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_permissions_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"PrincipalId">> => string()
+%% }
+-type describe_resource_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_folder_path_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Fields">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type get_folder_path_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_path_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Fields">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type get_document_path_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type update_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_comment_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"NotifyCollaborators">> => boolean(),
+%%   <<"ParentId">> => string(),
+%%   <<"Text">> := string(),
+%%   <<"ThreadId">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type create_comment_request() :: #{binary() => any()}.
+
+%% Example:
+%% user_metadata() :: #{
+%%   <<"EmailAddress">> => string(),
+%%   <<"GivenName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Surname">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type user_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% permission_info() :: #{
+%%   <<"Role">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type permission_info() :: #{binary() => any()}.
+
+%% Example:
+%% failed_dependency_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type failed_dependency_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_users_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"TotalNumberOfUsers">> => float(),
+%%   <<"Users">> => list(user()())
+%% }
+-type describe_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_folder_contents_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Include">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"Order">> => list(any()),
+%%   <<"Sort">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_folder_contents_request() :: #{binary() => any()}.
+
+%% Example:
+%% prohibited_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type prohibited_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unauthorized_operation_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_operation_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_labels_response() :: #{}
+-type delete_labels_response() :: #{}.
+
+%% Example:
+%% add_resource_permissions_response() :: #{
+%%   <<"ShareResults">> => list(share_result()())
+%% }
+-type add_resource_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_version_response() :: #{
+%%   <<"CustomMetadata">> => map(),
+%%   <<"Metadata">> => document_version_metadata()
+%% }
+-type get_document_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_folder_contents_response() :: #{
+%%   <<"Documents">> => list(document_metadata()()),
+%%   <<"Folders">> => list(folder_metadata()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_folder_contents_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_root_folders_request() :: #{
+%%   <<"AuthenticationToken">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type describe_root_folders_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_folder_response() :: #{
+%%   <<"CustomMetadata">> => map(),
+%%   <<"Metadata">> => folder_metadata()
+%% }
+-type get_folder_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_users_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Fields">> => string(),
+%%   <<"Include">> => list(any()),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"Order">> => list(any()),
+%%   <<"OrganizationId">> => string(),
+%%   <<"Query">> => string(),
+%%   <<"Sort">> => list(any()),
+%%   <<"UserIds">> => string()
+%% }
+-type describe_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% group_metadata() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type group_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% describe_comments_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type describe_comments_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_document_version_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"VersionStatus">> => list(any())
+%% }
+-type update_document_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_document_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ParentFolderId">> => string(),
+%%   <<"ResourceState">> => list(any())
+%% }
+-type update_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_metadata_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"DeleteAll">> => boolean(),
+%%   <<"Keys">> => list(string()()),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_custom_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% activate_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type activate_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% entity_not_exists_exception() :: #{
+%%   <<"EntityIds">> => list(string()()),
+%%   <<"Message">> => string()
+%% }
+-type entity_not_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_labels_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"DeleteAll">> => boolean(),
+%%   <<"Labels">> => list(string()())
+%% }
+-type delete_labels_request() :: #{binary() => any()}.
+
+%% Example:
+%% principal() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Roles">> => list(permission_info()()),
+%%   <<"Type">> => list(any())
+%% }
+-type principal() :: #{binary() => any()}.
+%% Example:
+%% delete_custom_metadata_response() :: #{}
+-type delete_custom_metadata_response() :: #{}.
+
+%% Example:
+%% delete_document_version_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"DeletePriorVersions">> := boolean()
+%% }
+-type delete_document_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_document_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type delete_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_versions_response() :: #{
+%%   <<"DocumentVersions">> => list(document_version_metadata()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_document_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_labels_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_labels_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activities_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"UserActivities">> => list(activity()())
+%% }
+-type describe_activities_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_principal_type() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Roles">> => list(list(any())())
+%% }
+-type search_principal_type() :: #{binary() => any()}.
+
+%% Example:
+%% unauthorized_resource_access_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_resource_access_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_metadata_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type custom_metadata_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment_metadata() :: #{
+%%   <<"CommentId">> => string(),
+%%   <<"CommentStatus">> => list(any()),
+%%   <<"Contributor">> => user(),
+%%   <<"ContributorId">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"RecipientId">> => string()
+%% }
+-type comment_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% search_resources_response() :: #{
+%%   <<"Items">> => list(response_item()()),
+%%   <<"Marker">> => string()
+%% }
+-type search_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% date_range_type() :: #{
+%%   <<"EndValue">> => non_neg_integer(),
+%%   <<"StartValue">> => non_neg_integer()
+%% }
+-type date_range_type() :: #{binary() => any()}.
+
+%% Example:
+%% storage_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type storage_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"IncludeCustomMetadata">> => boolean()
+%% }
+-type get_document_request() :: #{binary() => any()}.
+%% Example:
+%% delete_notification_subscription_request() :: #{}
+-type delete_notification_subscription_request() :: #{}.
+
+%% Example:
+%% get_resources_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"CollectionType">> => list(any()),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type get_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_groups_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"OrganizationId">> => string(),
+%%   <<"SearchQuery">> := string()
+%% }
+-type describe_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% requested_entity_too_large_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type requested_entity_too_large_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_folder_path_response() :: #{
+%%   <<"Path">> => resource_path()
+%% }
+-type get_folder_path_response() :: #{binary() => any()}.
+
+%% Example:
+%% activity() :: #{
+%%   <<"CommentMetadata">> => comment_metadata(),
+%%   <<"Initiator">> => user_metadata(),
+%%   <<"IsIndirectActivity">> => boolean(),
+%%   <<"OrganizationId">> => string(),
+%%   <<"OriginalParent">> => resource_metadata(),
+%%   <<"Participants">> => participants(),
+%%   <<"ResourceMetadata">> => resource_metadata(),
+%%   <<"TimeStamp">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type activity() :: #{binary() => any()}.
+
+%% Example:
+%% share_principal() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type share_principal() :: #{binary() => any()}.
+
+%% Example:
+%% comment() :: #{
+%%   <<"CommentId">> => string(),
+%%   <<"Contributor">> => user(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"ParentId">> => string(),
+%%   <<"RecipientId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Text">> => string(),
+%%   <<"ThreadId">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type comment() :: #{binary() => any()}.
+
+%% Example:
+%% get_resources_response() :: #{
+%%   <<"Documents">> => list(document_metadata()()),
+%%   <<"Folders">> => list(folder_metadata()()),
+%%   <<"Marker">> => string()
+%% }
+-type get_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_all_resource_permissions_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type remove_all_resource_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_folder_contents_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type delete_folder_contents_request() :: #{binary() => any()}.
+
+%% Example:
+%% folder_metadata() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"CreatorId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Labels">> => list(string()()),
+%%   <<"LatestVersionSize">> => float(),
+%%   <<"ModifiedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ParentFolderId">> => string(),
+%%   <<"ResourceState">> => list(any()),
+%%   <<"Signature">> => string(),
+%%   <<"Size">> => float()
+%% }
+-type folder_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_subscriptions_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_subscriptions_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_labels_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Labels">> := list(string()())
+%% }
+-type create_labels_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_current_user_request() :: #{
+%%   <<"AuthenticationToken">> := string()
+%% }
+-type get_current_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_comment_response() :: #{
+%%   <<"Comment">> => comment()
+%% }
+-type create_comment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_folder_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type delete_folder_request() :: #{binary() => any()}.
+
+%% Example:
+%% long_range_type() :: #{
+%%   <<"EndValue">> => float(),
+%%   <<"StartValue">> => float()
+%% }
+-type long_range_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notification_subscriptions_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type describe_notification_subscriptions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_current_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type get_current_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_path() :: #{
+%%   <<"Components">> => list(resource_path_component()())
+%% }
+-type resource_path() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_comment_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_comment_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_notification_subscription_response() :: #{
+%%   <<"Subscription">> => subscription()
+%% }
+-type create_notification_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% user_storage_metadata() :: #{
+%%   <<"StorageRule">> => storage_rule_type(),
+%%   <<"StorageUtilizedInBytes">> => float()
+%% }
+-type user_storage_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_versions_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Fields">> => string(),
+%%   <<"Include">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string()
+%% }
+-type describe_document_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% abort_document_version_upload_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type abort_document_version_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_comments_response() :: #{
+%%   <<"Comments">> => list(comment()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_comments_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_folder_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ParentFolderId">> => string(),
+%%   <<"ResourceState">> => list(any())
+%% }
+-type update_folder_request() :: #{binary() => any()}.
+
+%% Example:
+%% deactivating_last_system_user_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type deactivating_last_system_user_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_metadata_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"CustomMetadata">> := map(),
+%%   <<"VersionId">> => string()
+%% }
+-type create_custom_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_version_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Fields">> => string(),
+%%   <<"IncludeCustomMetadata">> => boolean()
+%% }
+-type get_document_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_groups_response() :: #{
+%%   <<"Groups">> => list(group_metadata()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% illegal_user_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_user_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_root_folders_response() :: #{
+%%   <<"Folders">> => list(folder_metadata()()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_root_folders_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"GivenName">> => string(),
+%%   <<"GrantPoweruserPrivileges">> => list(any()),
+%%   <<"Locale">> => list(any()),
+%%   <<"StorageRule">> => storage_rule_type(),
+%%   <<"Surname">> => string(),
+%%   <<"TimeZoneId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_folder_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"IncludeCustomMetadata">> => boolean()
+%% }
+-type get_folder_request() :: #{binary() => any()}.
+
+%% Example:
+%% document_metadata() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"CreatorId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Labels">> => list(string()()),
+%%   <<"LatestVersionMetadata">> => document_version_metadata(),
+%%   <<"ModifiedTimestamp">> => non_neg_integer(),
+%%   <<"ParentFolderId">> => string(),
+%%   <<"ResourceState">> => list(any())
+%% }
+-type document_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% subscription() :: #{
+%%   <<"EndPoint">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"SubscriptionId">> => string()
+%% }
+-type subscription() :: #{binary() => any()}.
+
+%% Example:
+%% user() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"GivenName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Locale">> => list(any()),
+%%   <<"ModifiedTimestamp">> => non_neg_integer(),
+%%   <<"OrganizationId">> => string(),
+%%   <<"RecycleBinFolderId">> => string(),
+%%   <<"RootFolderId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Storage">> => user_storage_metadata(),
+%%   <<"Surname">> => string(),
+%%   <<"TimeZoneId">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Username">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+%% Example:
+%% storage_limit_will_exceed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type storage_limit_will_exceed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% draft_upload_out_of_sync_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type draft_upload_out_of_sync_exception() :: #{binary() => any()}.
+
+%% Example:
+%% notification_options() :: #{
+%%   <<"EmailMessage">> => string(),
+%%   <<"SendEmail">> => boolean()
+%% }
+-type notification_options() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notification_subscriptions_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Subscriptions">> => list(subscription()())
+%% }
+-type describe_notification_subscriptions_response() :: #{binary() => any()}.
+
+%% Example:
+%% filters() :: #{
+%%   <<"AncestorIds">> => list(string()()),
+%%   <<"ContentCategories">> => list(list(any())()),
+%%   <<"CreatedRange">> => date_range_type(),
+%%   <<"Labels">> => list(string()()),
+%%   <<"ModifiedRange">> => date_range_type(),
+%%   <<"Principals">> => list(search_principal_type()()),
+%%   <<"ResourceTypes">> => list(list(any())()),
+%%   <<"SearchCollectionTypes">> => list(list(any())()),
+%%   <<"SizeRange">> => long_range_type(),
+%%   <<"TextLocales">> => list(list(any())())
+%% }
+-type filters() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% search_sort_result() :: #{
+%%   <<"Field">> => list(any()),
+%%   <<"Order">> => list(any())
+%% }
+-type search_sort_result() :: #{binary() => any()}.
+
+%% Example:
+%% share_result() :: #{
+%%   <<"InviteePrincipalId">> => string(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"ShareId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type share_result() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_document_version_upload_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"ContentCreatedTimestamp">> => non_neg_integer(),
+%%   <<"ContentModifiedTimestamp">> => non_neg_integer(),
+%%   <<"ContentType">> => string(),
+%%   <<"DocumentSizeInBytes">> => float(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ParentFolderId">> => string()
+%% }
+-type initiate_document_version_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activities_request() :: #{
+%%   <<"ActivityTypes">> => string(),
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"IncludeIndirectActivities">> => boolean(),
+%%   <<"Limit">> => integer(),
+%%   <<"Marker">> => string(),
+%%   <<"OrganizationId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"UserId">> => string()
+%% }
+-type describe_activities_request() :: #{binary() => any()}.
+
+%% Example:
+%% storage_rule_type() :: #{
+%%   <<"StorageAllocatedInBytes">> => float(),
+%%   <<"StorageType">> => list(any())
+%% }
+-type storage_rule_type() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_document_version_upload_response() :: #{
+%%   <<"Metadata">> => document_metadata(),
+%%   <<"UploadMetadata">> => upload_metadata()
+%% }
+-type initiate_document_version_upload_response() :: #{binary() => any()}.
+
+%% Example:
+%% document_version_metadata() :: #{
+%%   <<"ContentCreatedTimestamp">> => non_neg_integer(),
+%%   <<"ContentModifiedTimestamp">> => non_neg_integer(),
+%%   <<"ContentType">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"CreatorId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ModifiedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Signature">> => string(),
+%%   <<"Size">> => float(),
+%%   <<"Source">> => map(),
+%%   <<"Status">> => list(any()),
+%%   <<"Thumbnail">> => map()
+%% }
+-type document_version_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% remove_resource_permission_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"PrincipalType">> => list(any())
+%% }
+-type remove_resource_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% participants() :: #{
+%%   <<"Groups">> => list(group_metadata()()),
+%%   <<"Users">> => list(user_metadata()())
+%% }
+-type participants() :: #{binary() => any()}.
+
+%% Example:
+%% activate_user_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type activate_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_folder_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ParentFolderId">> := string()
+%% }
+-type create_folder_request() :: #{binary() => any()}.
+
+%% Example:
+%% response_item() :: #{
+%%   <<"CommentMetadata">> => comment_metadata(),
+%%   <<"DocumentMetadata">> => document_metadata(),
+%%   <<"DocumentVersionMetadata">> => document_version_metadata(),
+%%   <<"FolderMetadata">> => folder_metadata(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"WebUrl">> => string()
+%% }
+-type response_item() :: #{binary() => any()}.
+%% Example:
+%% create_labels_response() :: #{}
+-type create_labels_response() :: #{}.
+
+%% Example:
+%% upload_metadata() :: #{
+%%   <<"SignedHeaders">> => map(),
+%%   <<"UploadUrl">> => string()
+%% }
+-type upload_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% resource_path_component() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type resource_path_component() :: #{binary() => any()}.
+
+%% Example:
+%% document_locked_for_comments_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type document_locked_for_comments_exception() :: #{binary() => any()}.
+%% Example:
+%% create_custom_metadata_response() :: #{}
+-type create_custom_metadata_response() :: #{}.
+
+%% Example:
+%% create_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_password_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_password_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_user_request() :: #{
+%%   <<"AuthenticationToken">> => string()
+%% }
+-type deactivate_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_response() :: #{
+%%   <<"CustomMetadata">> => map(),
+%%   <<"Metadata">> => document_metadata()
+%% }
+-type get_document_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_checked_out_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_already_checked_out_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"AuthenticationToken">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"GivenName">> := string(),
+%%   <<"OrganizationId">> => string(),
+%%   <<"Password">> := string(),
+%%   <<"StorageRule">> => storage_rule_type(),
+%%   <<"Surname">> := string(),
+%%   <<"TimeZoneId">> => string(),
+%%   <<"Username">> := string()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -181,8 +1168,29 @@
 %% only when it no longer intends to upload the document version, or fails to
 %% do
 %% so.
+-spec abort_document_version_upload(map(), binary() | list(), binary() | list(), abort_document_version_upload_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 abort_document_version_upload(Client, DocumentId, VersionId, Input) ->
     abort_document_version_upload(Client, DocumentId, VersionId, Input, []).
+
+-spec abort_document_version_upload(map(), binary() | list(), binary() | list(), abort_document_version_upload_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
@@ -211,8 +1219,25 @@ abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options0) -
 %%
 %% Only active users can access Amazon
 %% WorkDocs.
+-spec activate_user(map(), binary() | list(), activate_user_request()) ->
+    {ok, activate_user_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 activate_user(Client, UserId, Input) ->
     activate_user(Client, UserId, Input, []).
+
+-spec activate_user(map(), binary() | list(), activate_user_request(), proplists:proplist()) ->
+    {ok, activate_user_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 activate_user(Client, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
@@ -242,8 +1267,25 @@ activate_user(Client, UserId, Input0, Options0) ->
 %% The resource
 %% permissions are overwritten if the principals already have different
 %% permissions.
+-spec add_resource_permissions(map(), binary() | list(), add_resource_permissions_request()) ->
+    {ok, add_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 add_resource_permissions(Client, ResourceId, Input) ->
     add_resource_permissions(Client, ResourceId, Input, []).
+
+-spec add_resource_permissions(map(), binary() | list(), add_resource_permissions_request(), proplists:proplist()) ->
+    {ok, add_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 add_resource_permissions(Client, ResourceId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
@@ -269,8 +1311,31 @@ add_resource_permissions(Client, ResourceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a new comment to the specified document version.
+-spec create_comment(map(), binary() | list(), binary() | list(), create_comment_request()) ->
+    {ok, create_comment_response(), tuple()} |
+    {error, any()} |
+    {error, document_locked_for_comments_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_comment_operation_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_comment(Client, DocumentId, VersionId, Input) ->
     create_comment(Client, DocumentId, VersionId, Input, []).
+
+-spec create_comment(map(), binary() | list(), binary() | list(), create_comment_request(), proplists:proplist()) ->
+    {ok, create_comment_response(), tuple()} |
+    {error, any()} |
+    {error, document_locked_for_comments_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_comment_operation_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_comment(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment"],
@@ -298,8 +1363,29 @@ create_comment(Client, DocumentId, VersionId, Input0, Options0) ->
 %% @doc Adds one or more custom properties to the specified resource (a
 %% folder, document,
 %% or version).
+-spec create_custom_metadata(map(), binary() | list(), create_custom_metadata_request()) ->
+    {ok, create_custom_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, custom_metadata_limit_exceeded_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_custom_metadata(Client, ResourceId, Input) ->
     create_custom_metadata(Client, ResourceId, Input, []).
+
+-spec create_custom_metadata(map(), binary() | list(), create_custom_metadata_request(), proplists:proplist()) ->
+    {ok, create_custom_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, custom_metadata_limit_exceeded_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_custom_metadata(Client, ResourceId, Input0, Options0) ->
     Method = put,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
@@ -326,8 +1412,35 @@ create_custom_metadata(Client, ResourceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a folder with the specified name and parent folder.
+-spec create_folder(map(), create_folder_request()) ->
+    {ok, create_folder_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_folder(Client, Input) ->
     create_folder(Client, Input, []).
+
+-spec create_folder(map(), create_folder_request(), proplists:proplist()) ->
+    {ok, create_folder_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_folder(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/folders"],
@@ -355,8 +1468,27 @@ create_folder(Client, Input0, Options0) ->
 %% @doc Adds the specified list of labels to the given resource (a document
 %% or
 %% folder)
+-spec create_labels(map(), binary() | list(), create_labels_request()) ->
+    {ok, create_labels_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, too_many_labels_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_labels(Client, ResourceId, Input) ->
     create_labels(Client, ResourceId, Input, []).
+
+-spec create_labels(map(), binary() | list(), create_labels_request(), proplists:proplist()) ->
+    {ok, create_labels_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, too_many_labels_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_labels(Client, ResourceId, Input0, Options0) ->
     Method = put,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
@@ -391,8 +1523,23 @@ create_labels(Client, ResourceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/workdocs/latest/developerguide/manage-notifications.html
 %% in the Amazon WorkDocs Developer
 %% Guide.
+-spec create_notification_subscription(map(), binary() | list(), create_notification_subscription_request()) ->
+    {ok, create_notification_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, too_many_subscriptions_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_notification_subscription(Client, OrganizationId, Input) ->
     create_notification_subscription(Client, OrganizationId, Input, []).
+
+-spec create_notification_subscription(map(), binary() | list(), create_notification_subscription_request(), proplists:proplist()) ->
+    {ok, create_notification_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, too_many_subscriptions_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_notification_subscription(Client, OrganizationId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
@@ -419,8 +1566,25 @@ create_notification_subscription(Client, OrganizationId, Input0, Options0) ->
 %%
 %% The status of a newly
 %% created user is &quot;ACTIVE&quot;. New users can access Amazon WorkDocs.
+-spec create_user(map(), create_user_request()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_user(Client, Input) ->
     create_user(Client, Input, []).
+
+-spec create_user(map(), create_user_request(), proplists:proplist()) ->
+    {ok, create_user_response(), tuple()} |
+    {error, any()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 create_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/users"],
@@ -448,8 +1612,25 @@ create_user(Client, Input0, Options0) ->
 %% @doc Deactivates the specified user, which revokes the user's access
 %% to Amazon
 %% WorkDocs.
+-spec deactivate_user(map(), binary() | list(), deactivate_user_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 deactivate_user(Client, UserId, Input) ->
     deactivate_user(Client, UserId, Input, []).
+
+-spec deactivate_user(map(), binary() | list(), deactivate_user_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 deactivate_user(Client, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
@@ -475,8 +1656,29 @@ deactivate_user(Client, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified comment from the document version.
+-spec delete_comment(map(), binary() | list(), binary() | list(), binary() | list(), delete_comment_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, document_locked_for_comments_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_comment(Client, CommentId, DocumentId, VersionId, Input) ->
     delete_comment(Client, CommentId, DocumentId, VersionId, Input, []).
+
+-spec delete_comment(map(), binary() | list(), binary() | list(), binary() | list(), delete_comment_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, document_locked_for_comments_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_comment(Client, CommentId, DocumentId, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment/", aws_util:encode_uri(CommentId), ""],
@@ -502,8 +1704,27 @@ delete_comment(Client, CommentId, DocumentId, VersionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes custom metadata from the specified resource.
+-spec delete_custom_metadata(map(), binary() | list(), delete_custom_metadata_request()) ->
+    {ok, delete_custom_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_custom_metadata(Client, ResourceId, Input) ->
     delete_custom_metadata(Client, ResourceId, Input, []).
+
+-spec delete_custom_metadata(map(), binary() | list(), delete_custom_metadata_request(), proplists:proplist()) ->
+    {ok, delete_custom_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_custom_metadata(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
@@ -533,8 +1754,33 @@ delete_custom_metadata(Client, ResourceId, Input0, Options0) ->
 
 %% @doc Permanently deletes the specified document and its associated
 %% metadata.
+-spec delete_document(map(), binary() | list(), delete_document_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_document(Client, DocumentId, Input) ->
     delete_document(Client, DocumentId, Input, []).
+
+-spec delete_document(map(), binary() | list(), delete_document_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_document(Client, DocumentId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
@@ -560,8 +1806,31 @@ delete_document(Client, DocumentId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a specific version of a document.
+-spec delete_document_version(map(), binary() | list(), binary() | list(), delete_document_version_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_document_version(Client, DocumentId, VersionId, Input) ->
     delete_document_version(Client, DocumentId, VersionId, Input, []).
+
+-spec delete_document_version(map(), binary() | list(), binary() | list(), delete_document_version_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documentVersions/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
@@ -588,8 +1857,33 @@ delete_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Permanently deletes the specified folder and its contents.
+-spec delete_folder(map(), binary() | list(), delete_folder_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_folder(Client, FolderId, Input) ->
     delete_folder(Client, FolderId, Input, []).
+
+-spec delete_folder(map(), binary() | list(), delete_folder_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_folder(Client, FolderId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
@@ -615,8 +1909,29 @@ delete_folder(Client, FolderId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the contents of the specified folder.
+-spec delete_folder_contents(map(), binary() | list(), delete_folder_contents_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_folder_contents(Client, FolderId, Input) ->
     delete_folder_contents(Client, FolderId, Input, []).
+
+-spec delete_folder_contents(map(), binary() | list(), delete_folder_contents_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_folder_contents(Client, FolderId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
@@ -642,8 +1957,27 @@ delete_folder_contents(Client, FolderId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified list of labels from a resource.
+-spec delete_labels(map(), binary() | list(), delete_labels_request()) ->
+    {ok, delete_labels_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_labels(Client, ResourceId, Input) ->
     delete_labels(Client, ResourceId, Input, []).
+
+-spec delete_labels(map(), binary() | list(), delete_labels_request(), proplists:proplist()) ->
+    {ok, delete_labels_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_labels(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
@@ -671,8 +2005,23 @@ delete_labels(Client, ResourceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified subscription from the specified organization.
+-spec delete_notification_subscription(map(), binary() | list(), binary() | list(), delete_notification_subscription_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input) ->
     delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input, []).
+
+-spec delete_notification_subscription(map(), binary() | list(), binary() | list(), delete_notification_subscription_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions/", aws_util:encode_uri(SubscriptionId), ""],
@@ -701,8 +2050,25 @@ delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input0,
 %% Deleting a user immediately and permanently deletes all content in that
 %% user's folder structure. Site retention policies do NOT apply to this
 %% type of deletion.
+-spec delete_user(map(), binary() | list(), delete_user_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_user(Client, UserId, Input) ->
     delete_user(Client, UserId, Input, []).
+
+-spec delete_user(map(), binary() | list(), delete_user_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 delete_user(Client, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
@@ -728,14 +2094,38 @@ delete_user(Client, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the user activities in a specified time period.
+-spec describe_activities(map()) ->
+    {ok, describe_activities_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_activities(Client)
   when is_map(Client) ->
     describe_activities(Client, #{}, #{}).
 
+-spec describe_activities(map(), map(), map()) ->
+    {ok, describe_activities_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_activities(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_activities(Client, QueryMap, HeadersMap, []).
 
+-spec describe_activities(map(), map(), map(), proplists:proplist()) ->
+    {ok, describe_activities_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_activities(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/activities"],
@@ -769,14 +2159,41 @@ describe_activities(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all the comments for the specified document version.
+-spec describe_comments(map(), binary() | list(), binary() | list()) ->
+    {ok, describe_comments_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_comments(Client, DocumentId, VersionId)
   when is_map(Client) ->
     describe_comments(Client, DocumentId, VersionId, #{}, #{}).
 
+-spec describe_comments(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_comments_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap, []).
 
+-spec describe_comments(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_comments_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comments"],
@@ -805,14 +2222,47 @@ describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the document versions for the specified document.
 %%
 %% By default, only active versions are returned.
+-spec describe_document_versions(map(), binary() | list()) ->
+    {ok, describe_document_versions_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_document_versions(Client, DocumentId)
   when is_map(Client) ->
     describe_document_versions(Client, DocumentId, #{}, #{}).
 
+-spec describe_document_versions(map(), binary() | list(), map(), map()) ->
+    {ok, describe_document_versions_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_document_versions(Client, DocumentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, []).
 
+-spec describe_document_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_document_versions_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions"],
@@ -850,14 +2300,41 @@ describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, Options0)
 %% that you can
 %% use to request the next set of results. You can also request initialized
 %% documents.
+-spec describe_folder_contents(map(), binary() | list()) ->
+    {ok, describe_folder_contents_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_folder_contents(Client, FolderId)
   when is_map(Client) ->
     describe_folder_contents(Client, FolderId, #{}, #{}).
 
+-spec describe_folder_contents(map(), binary() | list(), map(), map()) ->
+    {ok, describe_folder_contents_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_folder_contents(Client, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, []).
 
+-spec describe_folder_contents(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_folder_contents_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
@@ -891,14 +2368,35 @@ describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, Options0)
 %%
 %% Groups are defined by the underlying
 %% Active Directory.
+-spec describe_groups(map(), binary() | list()) ->
+    {ok, describe_groups_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_groups(Client, SearchQuery)
   when is_map(Client) ->
     describe_groups(Client, SearchQuery, #{}, #{}).
 
+-spec describe_groups(map(), binary() | list(), map(), map()) ->
+    {ok, describe_groups_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_groups(Client, SearchQuery, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_groups(Client, SearchQuery, QueryMap, HeadersMap, []).
 
+-spec describe_groups(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_groups_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_groups(Client, SearchQuery, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/groups"],
@@ -927,14 +2425,32 @@ describe_groups(Client, SearchQuery, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the specified notification subscriptions.
+-spec describe_notification_subscriptions(map(), binary() | list()) ->
+    {ok, describe_notification_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_notification_subscriptions(Client, OrganizationId)
   when is_map(Client) ->
     describe_notification_subscriptions(Client, OrganizationId, #{}, #{}).
 
+-spec describe_notification_subscriptions(map(), binary() | list(), map(), map()) ->
+    {ok, describe_notification_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap, []).
 
+-spec describe_notification_subscriptions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_notification_subscriptions_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
@@ -957,14 +2473,38 @@ describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the permissions of a specified resource.
+-spec describe_resource_permissions(map(), binary() | list()) ->
+    {ok, describe_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_resource_permissions(Client, ResourceId)
   when is_map(Client) ->
     describe_resource_permissions(Client, ResourceId, #{}, #{}).
 
+-spec describe_resource_permissions(map(), binary() | list(), map(), map()) ->
+    {ok, describe_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, []).
 
+-spec describe_resource_permissions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
@@ -1009,14 +2549,38 @@ describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, Options0
 %% in the
 %% Amazon
 %% WorkDocs Developer Guide.
+-spec describe_root_folders(map(), binary() | list()) ->
+    {ok, describe_root_folders_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_root_folders(Client, AuthenticationToken)
   when is_map(Client) ->
     describe_root_folders(Client, AuthenticationToken, #{}, #{}).
 
+-spec describe_root_folders(map(), binary() | list(), map(), map()) ->
+    {ok, describe_root_folders_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, []).
 
+-spec describe_root_folders(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_root_folders_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/me/root"],
@@ -1052,14 +2616,44 @@ describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, Options
 %% are more results, the response includes a marker that you can use to
 %% request the next
 %% set of results.
+-spec describe_users(map()) ->
+    {ok, describe_users_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, requested_entity_too_large_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_users(Client)
   when is_map(Client) ->
     describe_users(Client, #{}, #{}).
 
+-spec describe_users(map(), map(), map()) ->
+    {ok, describe_users_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, requested_entity_too_large_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_users(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_users(Client, QueryMap, HeadersMap, []).
 
+-spec describe_users(map(), map(), map(), proplists:proplist()) ->
+    {ok, describe_users_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, requested_entity_too_large_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 describe_users(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/users"],
@@ -1107,14 +2701,38 @@ describe_users(Client, QueryMap, HeadersMap, Options0)
 %% in the
 %% Amazon
 %% WorkDocs Developer Guide.
+-spec get_current_user(map(), binary() | list()) ->
+    {ok, get_current_user_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_current_user(Client, AuthenticationToken)
   when is_map(Client) ->
     get_current_user(Client, AuthenticationToken, #{}, #{}).
 
+-spec get_current_user(map(), binary() | list(), map(), map()) ->
+    {ok, get_current_user_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap, []).
 
+-spec get_current_user(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_current_user_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/me"],
@@ -1136,14 +2754,44 @@ get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details of a document.
+-spec get_document(map(), binary() | list()) ->
+    {ok, get_document_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_document(Client, DocumentId)
   when is_map(Client) ->
     get_document(Client, DocumentId, #{}, #{}).
 
+-spec get_document(map(), binary() | list(), map(), map()) ->
+    {ok, get_document_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_document(Client, DocumentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_document(Client, DocumentId, QueryMap, HeadersMap, []).
 
+-spec get_document(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_document_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_document(Client, DocumentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
@@ -1179,14 +2827,38 @@ get_document(Client, DocumentId, QueryMap, HeadersMap, Options0)
 %% limit the maximum number of levels. You can also request the names of the
 %% parent
 %% folders.
+-spec get_document_path(map(), binary() | list()) ->
+    {ok, get_document_path_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_document_path(Client, DocumentId)
   when is_map(Client) ->
     get_document_path(Client, DocumentId, #{}, #{}).
 
+-spec get_document_path(map(), binary() | list(), map(), map()) ->
+    {ok, get_document_path_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_document_path(Client, DocumentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_document_path(Client, DocumentId, QueryMap, HeadersMap, []).
 
+-spec get_document_path(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_document_path_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_document_path(Client, DocumentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/path"],
@@ -1214,14 +2886,44 @@ get_document_path(Client, DocumentId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves version metadata for the specified document.
+-spec get_document_version(map(), binary() | list(), binary() | list()) ->
+    {ok, get_document_version_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_document_version(Client, DocumentId, VersionId)
   when is_map(Client) ->
     get_document_version(Client, DocumentId, VersionId, #{}, #{}).
 
+-spec get_document_version(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_document_version_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap, []).
 
+-spec get_document_version(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_document_version_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
@@ -1248,14 +2950,44 @@ get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the metadata of the specified folder.
+-spec get_folder(map(), binary() | list()) ->
+    {ok, get_folder_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_folder(Client, FolderId)
   when is_map(Client) ->
     get_folder(Client, FolderId, #{}, #{}).
 
+-spec get_folder(map(), binary() | list(), map(), map()) ->
+    {ok, get_folder_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_folder(Client, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_folder(Client, FolderId, QueryMap, HeadersMap, []).
 
+-spec get_folder(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_folder_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_folder(Client, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
@@ -1290,14 +3022,38 @@ get_folder(Client, FolderId, QueryMap, HeadersMap, Options0)
 %% path. You can
 %% limit the maximum number of levels. You can also request the parent folder
 %% names.
+-spec get_folder_path(map(), binary() | list()) ->
+    {ok, get_folder_path_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_folder_path(Client, FolderId)
   when is_map(Client) ->
     get_folder_path(Client, FolderId, #{}, #{}).
 
+-spec get_folder_path(map(), binary() | list(), map(), map()) ->
+    {ok, get_folder_path_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_folder_path(Client, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_folder_path(Client, FolderId, QueryMap, HeadersMap, []).
 
+-spec get_folder_path(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_folder_path_response(), tuple()} |
+    {error, any()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_folder_path(Client, FolderId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/path"],
@@ -1328,14 +3084,38 @@ get_folder_path(Client, FolderId, QueryMap, HeadersMap, Options0)
 %%
 %% The only
 %% `CollectionType' supported is `SHARED_WITH_ME'.
+-spec get_resources(map()) ->
+    {ok, get_resources_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_resources(Client)
   when is_map(Client) ->
     get_resources(Client, #{}, #{}).
 
+-spec get_resources(map(), map(), map()) ->
+    {ok, get_resources_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_resources(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resources(Client, QueryMap, HeadersMap, []).
 
+-spec get_resources(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_resources_response(), tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 get_resources(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/resources"],
@@ -1374,8 +3154,43 @@ get_resources(Client, QueryMap, HeadersMap, Options0)
 %% the call, and then call `UpdateDocumentVersion'.
 %%
 %% To cancel the document upload, call `AbortDocumentVersionUpload'.
+-spec initiate_document_version_upload(map(), initiate_document_version_upload_request()) ->
+    {ok, initiate_document_version_upload_response(), tuple()} |
+    {error, any()} |
+    {error, draft_upload_out_of_sync_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, resource_already_checked_out_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, storage_limit_exceeded_exception(), tuple()} |
+    {error, storage_limit_will_exceed_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 initiate_document_version_upload(Client, Input) ->
     initiate_document_version_upload(Client, Input, []).
+
+-spec initiate_document_version_upload(map(), initiate_document_version_upload_request(), proplists:proplist()) ->
+    {ok, initiate_document_version_upload_response(), tuple()} |
+    {error, any()} |
+    {error, draft_upload_out_of_sync_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_password_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, resource_already_checked_out_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, storage_limit_exceeded_exception(), tuple()} |
+    {error, storage_limit_will_exceed_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 initiate_document_version_upload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/documents"],
@@ -1401,8 +3216,23 @@ initiate_document_version_upload(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes all the permissions from the specified resource.
+-spec remove_all_resource_permissions(map(), binary() | list(), remove_all_resource_permissions_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 remove_all_resource_permissions(Client, ResourceId, Input) ->
     remove_all_resource_permissions(Client, ResourceId, Input, []).
+
+-spec remove_all_resource_permissions(map(), binary() | list(), remove_all_resource_permissions_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 remove_all_resource_permissions(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
@@ -1429,8 +3259,23 @@ remove_all_resource_permissions(Client, ResourceId, Input0, Options0) ->
 
 %% @doc Removes the permission for the specified principal from the specified
 %% resource.
+-spec remove_resource_permission(map(), binary() | list(), binary() | list(), remove_resource_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 remove_resource_permission(Client, PrincipalId, ResourceId, Input) ->
     remove_resource_permission(Client, PrincipalId, ResourceId, Input, []).
+
+-spec remove_resource_permission(map(), binary() | list(), binary() | list(), remove_resource_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions/", aws_util:encode_uri(PrincipalId), ""],
@@ -1457,8 +3302,31 @@ remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Recovers a deleted version of an Amazon WorkDocs document.
+-spec restore_document_versions(map(), binary() | list(), restore_document_versions_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 restore_document_versions(Client, DocumentId, Input) ->
     restore_document_versions(Client, DocumentId, Input, []).
+
+-spec restore_document_versions(map(), binary() | list(), restore_document_versions_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 restore_document_versions(Client, DocumentId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/documentVersions/restore/", aws_util:encode_uri(DocumentId), ""],
@@ -1485,8 +3353,23 @@ restore_document_versions(Client, DocumentId, Input0, Options0) ->
 
 %% @doc Searches metadata and the content of folders, documents, document
 %% versions, and comments.
+-spec search_resources(map(), search_resources_request()) ->
+    {ok, search_resources_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 search_resources(Client, Input) ->
     search_resources(Client, Input, []).
+
+-spec search_resources(map(), search_resources_request(), proplists:proplist()) ->
+    {ok, search_resources_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 search_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/search"],
@@ -1515,8 +3398,35 @@ search_resources(Client, Input0, Options0) ->
 %%
 %% The user must have access to both
 %% the document and its parent folder, if applicable.
+-spec update_document(map(), binary() | list(), update_document_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 update_document(Client, DocumentId, Input) ->
     update_document(Client, DocumentId, Input, []).
+
+-spec update_document(map(), binary() | list(), update_document_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 update_document(Client, DocumentId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
@@ -1548,8 +3458,31 @@ update_document(Client, DocumentId, Input0, Options0) ->
 %% in a document upload, after the client uploads the document to an
 %% S3-presigned URL
 %% returned by `InitiateDocumentVersionUpload'.
+-spec update_document_version(map(), binary() | list(), binary() | list(), update_document_version_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 update_document_version(Client, DocumentId, VersionId, Input) ->
     update_document_version(Client, DocumentId, VersionId, Input, []).
+
+-spec update_document_version(map(), binary() | list(), binary() | list(), update_document_version_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, invalid_operation_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 update_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
@@ -1578,8 +3511,35 @@ update_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
 %%
 %% The user must have access
 %% to both the folder and its parent folder, if applicable.
+-spec update_folder(map(), binary() | list(), update_folder_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 update_folder(Client, FolderId, Input) ->
     update_folder(Client, FolderId, Input, []).
+
+-spec update_folder(map(), binary() | list(), update_folder_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflicting_operation_exception(), tuple()} |
+    {error, entity_already_exists_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 update_folder(Client, FolderId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
@@ -1607,8 +3567,33 @@ update_folder(Client, FolderId, Input0, Options0) ->
 %% @doc Updates the specified attributes of the specified user, and grants or
 %% revokes
 %% administrative privileges to the Amazon WorkDocs site.
+-spec update_user(map(), binary() | list(), update_user_request()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, deactivating_last_system_user_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, illegal_user_state_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 update_user(Client, UserId, Input) ->
     update_user(Client, UserId, Input, []).
+
+-spec update_user(map(), binary() | list(), update_user_request(), proplists:proplist()) ->
+    {ok, update_user_response(), tuple()} |
+    {error, any()} |
+    {error, deactivating_last_system_user_exception(), tuple()} |
+    {error, entity_not_exists_exception(), tuple()} |
+    {error, failed_dependency_exception(), tuple()} |
+    {error, illegal_user_state_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, prohibited_state_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, unauthorized_operation_exception(), tuple()} |
+    {error, unauthorized_resource_access_exception(), tuple()}.
 update_user(Client, UserId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
@@ -1637,7 +3622,7 @@ update_user(Client, UserId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

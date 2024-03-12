@@ -75,19 +75,804 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% ip_address_based_remote_info() :: #{
+%%   <<"authType">> => string(),
+%%   <<"ipAddressConfigurationTimeStamp">> => string(),
+%%   <<"osType">> => string()
+%% }
+-type ip_address_based_remote_info() :: #{binary() => any()}.
+%% Example:
+%% get_latest_assessment_id_request() :: #{}
+-type get_latest_assessment_id_request() :: #{}.
+
+%% Example:
+%% start_import_file_task_request() :: #{
+%%   <<"S3Bucket">> := string(),
+%%   <<"dataSourceType">> => string(),
+%%   <<"groupId">> => list(group()()),
+%%   <<"name">> := string(),
+%%   <<"s3bucketForReportData">> => string(),
+%%   <<"s3key">> := string()
+%% }
+-type start_import_file_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_latest_assessment_id_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type get_latest_assessment_id_response() :: #{binary() => any()}.
+
+%% Example:
+%% no_database_migration_preference() :: #{
+%%   <<"targetDatabaseEngine">> => list(string()())
+%% }
+-type no_database_migration_preference() :: #{binary() => any()}.
+
+%% Example:
+%% heterogeneous() :: #{
+%%   <<"targetDatabaseEngine">> => list(string()())
+%% }
+-type heterogeneous() :: #{binary() => any()}.
+
+%% Example:
+%% dependency_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dependency_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_collectors_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_import_file_task_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type start_import_file_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_component_details_response() :: #{
+%%   <<"applicationComponentDetail">> => application_component_detail(),
+%%   <<"associatedApplications">> => list(associated_application()()),
+%%   <<"associatedServerIds">> => list(string()()),
+%%   <<"moreApplicationResource">> => boolean()
+%% }
+-type get_application_component_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% server_status_summary() :: #{
+%%   <<"count">> => integer(),
+%%   <<"runTimeAssessmentStatus">> => string()
+%% }
+-type server_status_summary() :: #{binary() => any()}.
+
+%% Example:
+%% o_s_info() :: #{
+%%   <<"type">> => string(),
+%%   <<"version">> => string()
+%% }
+-type o_s_info() :: #{binary() => any()}.
+
+%% Example:
+%% app_unit_error() :: #{
+%%   <<"appUnitErrorCategory">> => string()
+%% }
+-type app_unit_error() :: #{binary() => any()}.
+
+%% Example:
+%% strategy_summary() :: #{
+%%   <<"count">> => integer(),
+%%   <<"strategy">> => string()
+%% }
+-type strategy_summary() :: #{binary() => any()}.
+
+%% Example:
+%% collector() :: #{
+%%   <<"collectorHealth">> => string(),
+%%   <<"collectorId">> => string(),
+%%   <<"collectorVersion">> => string(),
+%%   <<"configurationSummary">> => configuration_summary(),
+%%   <<"hostName">> => string(),
+%%   <<"ipAddress">> => string(),
+%%   <<"lastActivityTimeStamp">> => string(),
+%%   <<"registeredTimeStamp">> => string()
+%% }
+-type collector() :: #{binary() => any()}.
+
+%% Example:
+%% list_collectors_response() :: #{
+%%   <<"Collectors">> => list(collector()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% system_info() :: #{
+%%   <<"cpuArchitecture">> => string(),
+%%   <<"fileSystemType">> => string(),
+%%   <<"networkInfoList">> => list(network_info()()),
+%%   <<"osInfo">> => o_s_info()
+%% }
+-type system_info() :: #{binary() => any()}.
+
+%% Example:
+%% homogeneous() :: #{
+%%   <<"targetDatabaseEngine">> => list(string()())
+%% }
+-type homogeneous() :: #{binary() => any()}.
+
+%% Example:
+%% get_server_details_response() :: #{
+%%   <<"associatedApplications">> => list(associated_application()()),
+%%   <<"nextToken">> => string(),
+%%   <<"serverDetail">> => server_detail()
+%% }
+-type get_server_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_server_config_request() :: #{
+%%   <<"serverId">> := string(),
+%%   <<"strategyOption">> => strategy_option()
+%% }
+-type update_server_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_assessment_request() :: #{
+%%   <<"assessmentId">> := string()
+%% }
+-type stop_assessment_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_servers_request() :: #{
+%%   <<"filterValue">> => string(),
+%%   <<"groupIdFilter">> => list(group()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serverCriteria">> => string(),
+%%   <<"sort">> => string()
+%% }
+-type list_servers_request() :: #{binary() => any()}.
+
+%% Example:
+%% antipattern_severity_summary() :: #{
+%%   <<"count">> => integer(),
+%%   <<"severity">> => string()
+%% }
+-type antipattern_severity_summary() :: #{binary() => any()}.
+
+%% Example:
+%% prioritize_business_goals() :: #{
+%%   <<"businessGoals">> => business_goals()
+%% }
+-type prioritize_business_goals() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_file_task_response() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"importName">> => string(),
+%%   <<"inputS3Bucket">> => string(),
+%%   <<"inputS3Key">> => string(),
+%%   <<"numberOfRecordsFailed">> => integer(),
+%%   <<"numberOfRecordsSuccess">> => integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"statusReportS3Bucket">> => string(),
+%%   <<"statusReportS3Key">> => string()
+%% }
+-type get_import_file_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3key">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
+
+%% Example:
+%% associated_application() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type associated_application() :: #{binary() => any()}.
+%% Example:
+%% get_portfolio_summary_request() :: #{}
+-type get_portfolio_summary_request() :: #{}.
+
+%% Example:
+%% list_application_components_request() :: #{
+%%   <<"applicationComponentCriteria">> => string(),
+%%   <<"filterValue">> => string(),
+%%   <<"groupIdFilter">> => list(group()()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => string()
+%% }
+-type list_application_components_request() :: #{binary() => any()}.
+%% Example:
+%% get_application_component_strategies_request() :: #{}
+-type get_application_component_strategies_request() :: #{}.
+
+%% Example:
+%% no_management_preference() :: #{
+%%   <<"targetDestination">> => list(string()())
+%% }
+-type no_management_preference() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_summary() :: #{
+%%   <<"ipAddressBasedRemoteInfoList">> => list(ip_address_based_remote_info()()),
+%%   <<"pipelineInfoList">> => list(pipeline_info()()),
+%%   <<"remoteSourceCodeAnalysisServerInfo">> => remote_source_code_analysis_server_info(),
+%%   <<"vcenterBasedRemoteInfoList">> => list(vcenter_based_remote_info()()),
+%%   <<"versionControlInfoList">> => list(version_control_info()())
+%% }
+-type configuration_summary() :: #{binary() => any()}.
+%% Example:
+%% stop_assessment_response() :: #{}
+-type stop_assessment_response() :: #{}.
+
+%% Example:
+%% application_component_status_summary() :: #{
+%%   <<"count">> => integer(),
+%%   <<"srcCodeOrDbAnalysisStatus">> => string()
+%% }
+-type application_component_status_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_info() :: #{
+%%   <<"pipelineConfigurationTimeStamp">> => string(),
+%%   <<"pipelineType">> => string()
+%% }
+-type pipeline_info() :: #{binary() => any()}.
+
+%% Example:
+%% list_analyzable_servers_response() :: #{
+%%   <<"analyzableServers">> => list(analyzable_server_summary()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_analyzable_servers_response() :: #{binary() => any()}.
+
+%% Example:
+%% server_error() :: #{
+%%   <<"serverErrorCategory">> => string()
+%% }
+-type server_error() :: #{binary() => any()}.
+
+%% Example:
+%% version_control_info() :: #{
+%%   <<"versionControlConfigurationTimeStamp">> => string(),
+%%   <<"versionControlType">> => string()
+%% }
+-type version_control_info() :: #{binary() => any()}.
+
+%% Example:
+%% list_import_file_task_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_file_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% database_preferences() :: #{
+%%   <<"databaseManagementPreference">> => string(),
+%%   <<"databaseMigrationPreference">> => list()
+%% }
+-type database_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% strategy_option() :: #{
+%%   <<"isPreferred">> => boolean(),
+%%   <<"strategy">> => string(),
+%%   <<"targetDestination">> => string(),
+%%   <<"toolName">> => string()
+%% }
+-type strategy_option() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_set() :: #{
+%%   <<"strategy">> => string(),
+%%   <<"targetDestination">> => string(),
+%%   <<"transformationTool">> => transformation_tool()
+%% }
+-type recommendation_set() :: #{binary() => any()}.
+
+%% Example:
+%% aws_managed_resources() :: #{
+%%   <<"targetDestination">> => list(string()())
+%% }
+-type aws_managed_resources() :: #{binary() => any()}.
+
+%% Example:
+%% application_component_strategy() :: #{
+%%   <<"isPreferred">> => boolean(),
+%%   <<"recommendation">> => recommendation_set(),
+%%   <<"status">> => string()
+%% }
+-type application_component_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% application_component_detail() :: #{
+%%   <<"analysisStatus">> => string(),
+%%   <<"antipatternReportS3Object">> => s3_object(),
+%%   <<"antipatternReportStatus">> => string(),
+%%   <<"antipatternReportStatusMessage">> => string(),
+%%   <<"appType">> => string(),
+%%   <<"appUnitError">> => app_unit_error(),
+%%   <<"associatedServerId">> => string(),
+%%   <<"databaseConfigDetail">> => database_config_detail(),
+%%   <<"id">> => string(),
+%%   <<"inclusionStatus">> => string(),
+%%   <<"lastAnalyzedTimestamp">> => non_neg_integer(),
+%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()()),
+%%   <<"moreServerAssociationExists">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"osDriver">> => string(),
+%%   <<"osVersion">> => string(),
+%%   <<"recommendationSet">> => recommendation_set(),
+%%   <<"resourceSubType">> => string(),
+%%   <<"resultList">> => list(result()()),
+%%   <<"runtimeStatus">> => string(),
+%%   <<"runtimeStatusMessage">> => string(),
+%%   <<"sourceCodeRepositories">> => list(source_code_repository()()),
+%%   <<"statusMessage">> => string()
+%% }
+-type application_component_detail() :: #{binary() => any()}.
+
+%% Example:
+%% server_detail() :: #{
+%%   <<"antipatternReportS3Object">> => s3_object(),
+%%   <<"antipatternReportStatus">> => string(),
+%%   <<"antipatternReportStatusMessage">> => string(),
+%%   <<"applicationComponentStrategySummary">> => list(strategy_summary()()),
+%%   <<"dataCollectionStatus">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastAnalyzedTimestamp">> => non_neg_integer(),
+%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()()),
+%%   <<"name">> => string(),
+%%   <<"recommendationSet">> => recommendation_set(),
+%%   <<"serverError">> => server_error(),
+%%   <<"serverType">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"systemInfo">> => system_info()
+%% }
+-type server_detail() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_server_strategies_response() :: #{
+%%   <<"serverStrategies">> => list(server_strategy()())
+%% }
+-type get_server_strategies_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_report_details() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Keys">> => list(string()()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type recommendation_report_details() :: #{binary() => any()}.
+%% Example:
+%% get_server_strategies_request() :: #{}
+-type get_server_strategies_request() :: #{}.
+
+%% Example:
+%% result() :: #{
+%%   <<"analysisStatus">> => list(),
+%%   <<"analysisType">> => string(),
+%%   <<"antipatternReportResultList">> => list(antipattern_report_result()()),
+%%   <<"statusMessage">> => string()
+%% }
+-type result() :: #{binary() => any()}.
+
+%% Example:
+%% business_goals() :: #{
+%%   <<"licenseCostReduction">> => integer(),
+%%   <<"modernizeInfrastructureWithCloudNativeTechnologies">> => integer(),
+%%   <<"reduceOperationalOverheadWithManagedServices">> => integer(),
+%%   <<"speedOfMigration">> => integer()
+%% }
+-type business_goals() :: #{binary() => any()}.
+
+%% Example:
+%% server_strategy() :: #{
+%%   <<"isPreferred">> => boolean(),
+%%   <<"numberOfApplicationComponents">> => integer(),
+%%   <<"recommendation">> => recommendation_set(),
+%%   <<"status">> => string()
+%% }
+-type server_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% start_assessment_request() :: #{
+%%   <<"assessmentDataSourceType">> => string(),
+%%   <<"assessmentTargets">> => list(assessment_target()()),
+%%   <<"s3bucketForAnalysisData">> => string(),
+%%   <<"s3bucketForReportData">> => string()
+%% }
+-type start_assessment_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_component_strategies_response() :: #{
+%%   <<"applicationComponentStrategies">> => list(application_component_strategy()())
+%% }
+-type get_application_component_strategies_response() :: #{binary() => any()}.
+%% Example:
+%% get_recommendation_report_details_request() :: #{}
+-type get_recommendation_report_details_request() :: #{}.
+
+%% Example:
+%% list_import_file_task_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taskInfos">> => list(import_file_task_information()())
+%% }
+-type list_import_file_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_recommendation_report_generation_request() :: #{
+%%   <<"groupIdFilter">> => list(group()()),
+%%   <<"outputFormat">> => string()
+%% }
+-type start_recommendation_report_generation_request() :: #{binary() => any()}.
+
+%% Example:
+%% network_info() :: #{
+%%   <<"interfaceName">> => string(),
+%%   <<"ipAddress">> => string(),
+%%   <<"macAddress">> => string(),
+%%   <<"netMask">> => string()
+%% }
+-type network_info() :: #{binary() => any()}.
+%% Example:
+%% put_portfolio_preferences_response() :: #{}
+-type put_portfolio_preferences_response() :: #{}.
+
+%% Example:
+%% source_code_repository() :: #{
+%%   <<"branch">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"repository">> => string(),
+%%   <<"versionControlType">> => string()
+%% }
+-type source_code_repository() :: #{binary() => any()}.
+%% Example:
+%% get_assessment_request() :: #{}
+-type get_assessment_request() :: #{}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% application_preferences() :: #{
+%%   <<"managementPreference">> => list()
+%% }
+-type application_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% application_component_summary() :: #{
+%%   <<"appType">> => string(),
+%%   <<"count">> => integer()
+%% }
+-type application_component_summary() :: #{binary() => any()}.
+
+%% Example:
+%% server_summary() :: #{
+%%   <<"ServerOsType">> => string(),
+%%   <<"count">> => integer()
+%% }
+-type server_summary() :: #{binary() => any()}.
+
+%% Example:
+%% analyzable_server_summary() :: #{
+%%   <<"hostname">> => string(),
+%%   <<"ipAddress">> => string(),
+%%   <<"source">> => string(),
+%%   <<"vmId">> => string()
+%% }
+-type analyzable_server_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_component_config_request() :: #{
+%%   <<"appType">> => string(),
+%%   <<"applicationComponentId">> := string(),
+%%   <<"configureOnly">> => boolean(),
+%%   <<"inclusionStatus">> => string(),
+%%   <<"secretsManagerKey">> => string(),
+%%   <<"sourceCodeList">> => list(source_code()()),
+%%   <<"strategyOption">> => strategy_option()
+%% }
+-type update_application_component_config_request() :: #{binary() => any()}.
+%% Example:
+%% get_import_file_task_request() :: #{}
+-type get_import_file_task_request() :: #{}.
+
+%% Example:
+%% transformation_tool() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tranformationToolInstallationLink">> => string()
+%% }
+-type transformation_tool() :: #{binary() => any()}.
+
+%% Example:
+%% get_assessment_response() :: #{
+%%   <<"assessmentTargets">> => list(assessment_target()()),
+%%   <<"dataCollectionDetails">> => data_collection_details(),
+%%   <<"id">> => string()
+%% }
+-type get_assessment_response() :: #{binary() => any()}.
+%% Example:
+%% get_application_component_details_request() :: #{}
+-type get_application_component_details_request() :: #{}.
+
+%% Example:
+%% get_server_details_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_server_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% data_collection_details() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"failed">> => integer(),
+%%   <<"inProgress">> => integer(),
+%%   <<"servers">> => integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"success">> => integer()
+%% }
+-type data_collection_details() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_components_response() :: #{
+%%   <<"applicationComponentInfos">> => list(application_component_detail()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_application_components_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_portfolio_preferences_response() :: #{
+%%   <<"applicationMode">> => string(),
+%%   <<"applicationPreferences">> => application_preferences(),
+%%   <<"databasePreferences">> => database_preferences(),
+%%   <<"prioritizeBusinessGoals">> => prioritize_business_goals()
+%% }
+-type get_portfolio_preferences_response() :: #{binary() => any()}.
+%% Example:
+%% get_portfolio_preferences_request() :: #{}
+-type get_portfolio_preferences_request() :: #{}.
+
+%% Example:
+%% get_recommendation_report_details_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"recommendationReportDetails">> => recommendation_report_details()
+%% }
+-type get_recommendation_report_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% database_config_detail() :: #{
+%%   <<"secretName">> => string()
+%% }
+-type database_config_detail() :: #{binary() => any()}.
+
+%% Example:
+%% service_linked_role_lock_client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_linked_role_lock_client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% group() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type group() :: #{binary() => any()}.
+
+%% Example:
+%% source_code() :: #{
+%%   <<"location">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"sourceVersion">> => string(),
+%%   <<"versionControl">> => string()
+%% }
+-type source_code() :: #{binary() => any()}.
+%% Example:
+%% update_server_config_response() :: #{}
+-type update_server_config_response() :: #{}.
+
+%% Example:
+%% list_servers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serverInfos">> => list(server_detail()())
+%% }
+-type list_servers_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_recommendation_report_generation_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type start_recommendation_report_generation_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_portfolio_preferences_request() :: #{
+%%   <<"applicationMode">> => string(),
+%%   <<"applicationPreferences">> => application_preferences(),
+%%   <<"databasePreferences">> => database_preferences(),
+%%   <<"prioritizeBusinessGoals">> => prioritize_business_goals()
+%% }
+-type put_portfolio_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_assessment_response() :: #{
+%%   <<"assessmentId">> => string()
+%% }
+-type start_assessment_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_analyzable_servers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => string()
+%% }
+-type list_analyzable_servers_request() :: #{binary() => any()}.
+
+%% Example:
+%% remote_source_code_analysis_server_info() :: #{
+%%   <<"remoteSourceCodeAnalysisServerConfigurationTimestamp">> => string()
+%% }
+-type remote_source_code_analysis_server_info() :: #{binary() => any()}.
+%% Example:
+%% update_application_component_config_response() :: #{}
+-type update_application_component_config_response() :: #{}.
+
+%% Example:
+%% vcenter_based_remote_info() :: #{
+%%   <<"osType">> => string(),
+%%   <<"vcenterConfigurationTimeStamp">> => string()
+%% }
+-type vcenter_based_remote_info() :: #{binary() => any()}.
+
+%% Example:
+%% self_manage_resources() :: #{
+%%   <<"targetDestination">> => list(string()())
+%% }
+-type self_manage_resources() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_target() :: #{
+%%   <<"condition">> => string(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string()())
+%% }
+-type assessment_target() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_summary() :: #{
+%%   <<"antipatternReportS3Object">> => s3_object(),
+%%   <<"antipatternReportStatus">> => string(),
+%%   <<"antipatternReportStatusMessage">> => string(),
+%%   <<"lastAnalyzedTimestamp">> => non_neg_integer(),
+%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()()),
+%%   <<"listApplicationComponentStatusSummary">> => list(application_component_status_summary()()),
+%%   <<"listApplicationComponentStrategySummary">> => list(strategy_summary()()),
+%%   <<"listApplicationComponentSummary">> => list(application_component_summary()()),
+%%   <<"listServerStatusSummary">> => list(server_status_summary()()),
+%%   <<"listServerStrategySummary">> => list(strategy_summary()()),
+%%   <<"listServerSummary">> => list(server_summary()())
+%% }
+-type assessment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% antipattern_report_result() :: #{
+%%   <<"analyzerName">> => list(),
+%%   <<"antiPatternReportS3Object">> => s3_object(),
+%%   <<"antipatternReportStatus">> => string(),
+%%   <<"antipatternReportStatusMessage">> => string()
+%% }
+-type antipattern_report_result() :: #{binary() => any()}.
+
+%% Example:
+%% import_file_task_information() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"importName">> => string(),
+%%   <<"inputS3Bucket">> => string(),
+%%   <<"inputS3Key">> => string(),
+%%   <<"numberOfRecordsFailed">> => integer(),
+%%   <<"numberOfRecordsSuccess">> => integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"statusReportS3Bucket">> => string(),
+%%   <<"statusReportS3Key">> => string()
+%% }
+-type import_file_task_information() :: #{binary() => any()}.
+
+%% Example:
+%% get_portfolio_summary_response() :: #{
+%%   <<"assessmentSummary">> => assessment_summary()
+%% }
+-type get_portfolio_summary_response() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Retrieves details about an application component.
+-spec get_application_component_details(map(), binary() | list()) ->
+    {ok, get_application_component_details_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_application_component_details(Client, ApplicationComponentId)
   when is_map(Client) ->
     get_application_component_details(Client, ApplicationComponentId, #{}, #{}).
 
+-spec get_application_component_details(map(), binary() | list(), map(), map()) ->
+    {ok, get_application_component_details_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_application_component_details(Client, ApplicationComponentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_component_details(Client, ApplicationComponentId, QueryMap, HeadersMap, []).
 
+-spec get_application_component_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_application_component_details_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_application_component_details(Client, ApplicationComponentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-applicationcomponent-details/", aws_util:encode_uri(ApplicationComponentId), ""],
@@ -107,14 +892,32 @@ get_application_component_details(Client, ApplicationComponentId, QueryMap, Head
 %% @doc Retrieves a list of all the recommended strategies and tools for an
 %% application component
 %% running on a server.
+-spec get_application_component_strategies(map(), binary() | list()) ->
+    {ok, get_application_component_strategies_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_application_component_strategies(Client, ApplicationComponentId)
   when is_map(Client) ->
     get_application_component_strategies(Client, ApplicationComponentId, #{}, #{}).
 
+-spec get_application_component_strategies(map(), binary() | list(), map(), map()) ->
+    {ok, get_application_component_strategies_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_application_component_strategies(Client, ApplicationComponentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_component_strategies(Client, ApplicationComponentId, QueryMap, HeadersMap, []).
 
+-spec get_application_component_strategies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_application_component_strategies_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_application_component_strategies(Client, ApplicationComponentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-applicationcomponent-strategies/", aws_util:encode_uri(ApplicationComponentId), ""],
@@ -132,14 +935,35 @@ get_application_component_strategies(Client, ApplicationComponentId, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the status of an on-going assessment.
+-spec get_assessment(map(), binary() | list()) ->
+    {ok, get_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_assessment(Client, Id)
   when is_map(Client) ->
     get_assessment(Client, Id, #{}, #{}).
 
+-spec get_assessment(map(), binary() | list(), map(), map()) ->
+    {ok, get_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_assessment(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_assessment(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_assessment(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-assessment/", aws_util:encode_uri(Id), ""],
@@ -157,14 +981,38 @@ get_assessment(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details about a specific import task.
+-spec get_import_file_task(map(), binary() | list()) ->
+    {ok, get_import_file_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_import_file_task(Client, Id)
   when is_map(Client) ->
     get_import_file_task(Client, Id, #{}, #{}).
 
+-spec get_import_file_task(map(), binary() | list(), map(), map()) ->
+    {ok, get_import_file_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_import_file_task(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_import_file_task(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_import_file_task(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_import_file_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_import_file_task(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-import-file-task/", aws_util:encode_uri(Id), ""],
@@ -182,14 +1030,35 @@ get_import_file_task(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve the latest ID of a specific assessment task.
+-spec get_latest_assessment_id(map()) ->
+    {ok, get_latest_assessment_id_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, dependency_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_latest_assessment_id(Client)
   when is_map(Client) ->
     get_latest_assessment_id(Client, #{}, #{}).
 
+-spec get_latest_assessment_id(map(), map(), map()) ->
+    {ok, get_latest_assessment_id_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, dependency_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_latest_assessment_id(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_latest_assessment_id(Client, QueryMap, HeadersMap, []).
 
+-spec get_latest_assessment_id(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_latest_assessment_id_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, dependency_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_latest_assessment_id(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-latest-assessment-id"],
@@ -207,14 +1076,35 @@ get_latest_assessment_id(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves your migration and modernization preferences.
+-spec get_portfolio_preferences(map()) ->
+    {ok, get_portfolio_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_portfolio_preferences(Client)
   when is_map(Client) ->
     get_portfolio_preferences(Client, #{}, #{}).
 
+-spec get_portfolio_preferences(map(), map(), map()) ->
+    {ok, get_portfolio_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_portfolio_preferences(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_portfolio_preferences(Client, QueryMap, HeadersMap, []).
 
+-spec get_portfolio_preferences(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_portfolio_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_portfolio_preferences(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-portfolio-preferences"],
@@ -234,14 +1124,32 @@ get_portfolio_preferences(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves overall summary including the number of servers to rehost
 %% and the overall
 %% number of anti-patterns.
+-spec get_portfolio_summary(map()) ->
+    {ok, get_portfolio_summary_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_portfolio_summary(Client)
   when is_map(Client) ->
     get_portfolio_summary(Client, #{}, #{}).
 
+-spec get_portfolio_summary(map(), map(), map()) ->
+    {ok, get_portfolio_summary_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_portfolio_summary(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_portfolio_summary(Client, QueryMap, HeadersMap, []).
 
+-spec get_portfolio_summary(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_portfolio_summary_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 get_portfolio_summary(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-portfolio-summary"],
@@ -260,14 +1168,38 @@ get_portfolio_summary(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves detailed information about the specified recommendation
 %% report.
+-spec get_recommendation_report_details(map(), binary() | list()) ->
+    {ok, get_recommendation_report_details_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recommendation_report_details(Client, Id)
   when is_map(Client) ->
     get_recommendation_report_details(Client, Id, #{}, #{}).
 
+-spec get_recommendation_report_details(map(), binary() | list(), map(), map()) ->
+    {ok, get_recommendation_report_details_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recommendation_report_details(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendation_report_details(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_recommendation_report_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_recommendation_report_details_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_recommendation_report_details(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-recommendation-report-details/", aws_util:encode_uri(Id), ""],
@@ -285,14 +1217,38 @@ get_recommendation_report_details(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves detailed information about a specified server.
+-spec get_server_details(map(), binary() | list()) ->
+    {ok, get_server_details_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_server_details(Client, ServerId)
   when is_map(Client) ->
     get_server_details(Client, ServerId, #{}, #{}).
 
+-spec get_server_details(map(), binary() | list(), map(), map()) ->
+    {ok, get_server_details_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_server_details(Client, ServerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_server_details(Client, ServerId, QueryMap, HeadersMap, []).
 
+-spec get_server_details(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_server_details_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_server_details(Client, ServerId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-server-details/", aws_util:encode_uri(ServerId), ""],
@@ -315,14 +1271,38 @@ get_server_details(Client, ServerId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves recommended strategies and tools for the specified server.
+-spec get_server_strategies(map(), binary() | list()) ->
+    {ok, get_server_strategies_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_server_strategies(Client, ServerId)
   when is_map(Client) ->
     get_server_strategies(Client, ServerId, #{}, #{}).
 
+-spec get_server_strategies(map(), binary() | list(), map(), map()) ->
+    {ok, get_server_strategies_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_server_strategies(Client, ServerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_server_strategies(Client, ServerId, QueryMap, HeadersMap, []).
 
+-spec get_server_strategies(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_server_strategies_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_server_strategies(Client, ServerId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-server-strategies/", aws_util:encode_uri(ServerId), ""],
@@ -341,8 +1321,23 @@ get_server_strategies(Client, ServerId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of all the servers fetched from customer vCenter
 %% using Strategy Recommendation Collector.
+-spec list_analyzable_servers(map(), list_analyzable_servers_request()) ->
+    {ok, list_analyzable_servers_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_analyzable_servers(Client, Input) ->
     list_analyzable_servers(Client, Input, []).
+
+-spec list_analyzable_servers(map(), list_analyzable_servers_request(), proplists:proplist()) ->
+    {ok, list_analyzable_servers_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_analyzable_servers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-analyzable-servers"],
@@ -366,8 +1361,23 @@ list_analyzable_servers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of all the application components (processes).
+-spec list_application_components(map(), list_application_components_request()) ->
+    {ok, list_application_components_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_linked_role_lock_client_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_application_components(Client, Input) ->
     list_application_components(Client, Input, []).
+
+-spec list_application_components(map(), list_application_components_request(), proplists:proplist()) ->
+    {ok, list_application_components_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_linked_role_lock_client_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_application_components(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-applicationcomponents"],
@@ -391,14 +1401,35 @@ list_application_components(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of all the installed collectors.
+-spec list_collectors(map()) ->
+    {ok, list_collectors_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_collectors(Client)
   when is_map(Client) ->
     list_collectors(Client, #{}, #{}).
 
+-spec list_collectors(map(), map(), map()) ->
+    {ok, list_collectors_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_collectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_collectors(Client, QueryMap, HeadersMap, []).
 
+-spec list_collectors(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_collectors_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_collectors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-collectors"],
@@ -421,14 +1452,35 @@ list_collectors(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of all the imports performed.
+-spec list_import_file_task(map()) ->
+    {ok, list_import_file_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_import_file_task(Client)
   when is_map(Client) ->
     list_import_file_task(Client, #{}, #{}).
 
+-spec list_import_file_task(map(), map(), map()) ->
+    {ok, list_import_file_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_import_file_task(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_import_file_task(Client, QueryMap, HeadersMap, []).
 
+-spec list_import_file_task(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_import_file_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_import_file_task(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/list-import-file-task"],
@@ -451,8 +1503,23 @@ list_import_file_task(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the servers.
+-spec list_servers(map(), list_servers_request()) ->
+    {ok, list_servers_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_servers(Client, Input) ->
     list_servers(Client, Input, []).
+
+-spec list_servers(map(), list_servers_request(), proplists:proplist()) ->
+    {ok, list_servers_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_servers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-servers"],
@@ -476,8 +1543,25 @@ list_servers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Saves the specified migration and modernization preferences.
+-spec put_portfolio_preferences(map(), put_portfolio_preferences_request()) ->
+    {ok, put_portfolio_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_portfolio_preferences(Client, Input) ->
     put_portfolio_preferences(Client, Input, []).
+
+-spec put_portfolio_preferences(map(), put_portfolio_preferences_request(), proplists:proplist()) ->
+    {ok, put_portfolio_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_portfolio_preferences(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-portfolio-preferences"],
@@ -501,8 +1585,23 @@ put_portfolio_preferences(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts the assessment of an on-premises environment.
+-spec start_assessment(map(), start_assessment_request()) ->
+    {ok, start_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 start_assessment(Client, Input) ->
     start_assessment(Client, Input, []).
+
+-spec start_assessment(map(), start_assessment_request(), proplists:proplist()) ->
+    {ok, start_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 start_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-assessment"],
@@ -526,8 +1625,25 @@ start_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a file import.
+-spec start_import_file_task(map(), start_import_file_task_request()) ->
+    {ok, start_import_file_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_import_file_task(Client, Input) ->
     start_import_file_task(Client, Input, []).
+
+-spec start_import_file_task(map(), start_import_file_task_request(), proplists:proplist()) ->
+    {ok, start_import_file_task_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_import_file_task(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-import-file-task"],
@@ -551,8 +1667,25 @@ start_import_file_task(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts generating a recommendation report.
+-spec start_recommendation_report_generation(map(), start_recommendation_report_generation_request()) ->
+    {ok, start_recommendation_report_generation_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_recommendation_report_generation(Client, Input) ->
     start_recommendation_report_generation(Client, Input, []).
+
+-spec start_recommendation_report_generation(map(), start_recommendation_report_generation_request(), proplists:proplist()) ->
+    {ok, start_recommendation_report_generation_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_recommendation_report_generation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-recommendation-report-generation"],
@@ -576,8 +1709,23 @@ start_recommendation_report_generation(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops the assessment of an on-premises environment.
+-spec stop_assessment(map(), stop_assessment_request()) ->
+    {ok, stop_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_assessment(Client, Input) ->
     stop_assessment(Client, Input, []).
+
+-spec stop_assessment(map(), stop_assessment_request(), proplists:proplist()) ->
+    {ok, stop_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stop-assessment"],
@@ -601,8 +1749,23 @@ stop_assessment(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of an application component.
+-spec update_application_component_config(map(), update_application_component_config_request()) ->
+    {ok, update_application_component_config_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_application_component_config(Client, Input) ->
     update_application_component_config(Client, Input, []).
+
+-spec update_application_component_config(map(), update_application_component_config_request(), proplists:proplist()) ->
+    {ok, update_application_component_config_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_application_component_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-applicationcomponent-config/"],
@@ -626,8 +1789,23 @@ update_application_component_config(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration of the specified server.
+-spec update_server_config(map(), update_server_config_request()) ->
+    {ok, update_server_config_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_server_config(Client, Input) ->
     update_server_config(Client, Input, []).
+
+-spec update_server_config(map(), update_server_config_request(), proplists:proplist()) ->
+    {ok, update_server_config_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_server_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-server-config/"],
@@ -654,7 +1832,7 @@ update_server_config(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

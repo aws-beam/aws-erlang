@@ -135,6 +135,1325 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% cancel_replay_request() :: #{
+%%   <<"ReplayName">> := string()
+%% }
+-type cancel_replay_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_bus_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type describe_event_bus_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_request() :: #{
+%%   <<"AuthParameters">> => update_connection_auth_request_parameters(),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type update_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% deauthorize_connection_response() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastAuthorizedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type deauthorize_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_bus_request() :: #{
+%%   <<"EventSourceName">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_event_bus_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_retry_strategy() :: #{
+%%   <<"Attempts">> => integer()
+%% }
+-type batch_retry_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% list_archives_response() :: #{
+%%   <<"Archives">> => list(archive()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_archives_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_partner_events_request_entry() :: #{
+%%   <<"Detail">> => string(),
+%%   <<"DetailType">> => string(),
+%%   <<"Resources">> => list(string()()),
+%%   <<"Source">> => string(),
+%%   <<"Time">> => non_neg_integer()
+%% }
+-type put_partner_events_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% connection_query_string_parameter() :: #{
+%%   <<"IsValueSecret">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type connection_query_string_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_o_auth_request_parameters() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientParameters">> => update_connection_o_auth_client_request_parameters(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"OAuthHttpParameters">> => connection_http_parameters()
+%% }
+-type update_connection_o_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% put_rule_response() :: #{
+%%   <<"RuleArn">> => string()
+%% }
+-type put_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% run_command_target() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type run_command_target() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_event_pattern_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_event_pattern_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_event_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_length_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type policy_length_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_targets_result_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"TargetId">> => string()
+%% }
+-type put_targets_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_api_destination_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_api_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type enable_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_archive_request() :: #{
+%%   <<"ArchiveName">> := string()
+%% }
+-type describe_archive_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_event_pattern_request() :: #{
+%%   <<"Event">> := string(),
+%%   <<"EventPattern">> := string()
+%% }
+-type test_event_pattern_request() :: #{binary() => any()}.
+
+%% Example:
+%% connection_auth_response_parameters() :: #{
+%%   <<"ApiKeyAuthParameters">> => connection_api_key_auth_response_parameters(),
+%%   <<"BasicAuthParameters">> => connection_basic_auth_response_parameters(),
+%%   <<"InvocationHttpParameters">> => connection_http_parameters(),
+%%   <<"OAuthParameters">> => connection_o_auth_response_parameters()
+%% }
+-type connection_auth_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_event_source_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type deactivate_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_sources_response() :: #{
+%%   <<"EventSources">> => list(event_source()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_array_properties() :: #{
+%%   <<"Size">> => integer()
+%% }
+-type batch_array_properties() :: #{binary() => any()}.
+
+%% Example:
+%% partner_event_source_account() :: #{
+%%   <<"Account">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type partner_event_source_account() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_o_auth_request_parameters() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientParameters">> => create_connection_o_auth_client_request_parameters(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"OAuthHttpParameters">> => connection_http_parameters()
+%% }
+-type create_connection_o_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_event_source_request() :: #{
+%%   <<"Account">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_partner_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_response() :: #{
+%%   <<"Connections">> => list(connection()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connections_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_parameters() :: #{
+%%   <<"ArrayProperties">> => batch_array_properties(),
+%%   <<"JobDefinition">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"RetryStrategy">> => batch_retry_strategy()
+%% }
+-type batch_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_sources_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% run_command_parameters() :: #{
+%%   <<"RunCommandTargets">> => list(run_command_target()())
+%% }
+-type run_command_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% http_parameters() :: #{
+%%   <<"HeaderParameters">> => map(),
+%%   <<"PathParameterValues">> => list(string()()),
+%%   <<"QueryStringParameters">> => map()
+%% }
+-type http_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% sage_maker_pipeline_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type sage_maker_pipeline_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% connection_header_parameter() :: #{
+%%   <<"IsValueSecret">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type connection_header_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% delete_api_destination_response() :: #{
+
+%% }
+-type delete_api_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_bus_response() :: #{
+%%   <<"EventBusArn">> => string()
+%% }
+-type create_event_bus_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_events_response() :: #{
+%%   <<"Entries">> => list(put_events_result_entry()()),
+%%   <<"FailedEntryCount">> => integer()
+%% }
+-type put_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_events_request_entry() :: #{
+%%   <<"Detail">> => string(),
+%%   <<"DetailType">> => string(),
+%%   <<"EventBusName">> => string(),
+%%   <<"Resources">> => list(string()()),
+%%   <<"Source">> => string(),
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"TraceHeader">> => string()
+%% }
+-type put_events_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replay_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Destination">> => replay_destination(),
+%%   <<"EventEndTime">> => non_neg_integer(),
+%%   <<"EventLastReplayedTime">> => non_neg_integer(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"EventStartTime">> => non_neg_integer(),
+%%   <<"ReplayArn">> => string(),
+%%   <<"ReplayEndTime">> => non_neg_integer(),
+%%   <<"ReplayName">> => string(),
+%%   <<"ReplayStartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type describe_replay_response() :: #{binary() => any()}.
+
+%% Example:
+%% connection_api_key_auth_response_parameters() :: #{
+%%   <<"ApiKeyName">> => string()
+%% }
+-type connection_api_key_auth_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% replay() :: #{
+%%   <<"EventEndTime">> => non_neg_integer(),
+%%   <<"EventLastReplayedTime">> => non_neg_integer(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"EventStartTime">> => non_neg_integer(),
+%%   <<"ReplayEndTime">> => non_neg_integer(),
+%%   <<"ReplayName">> => string(),
+%%   <<"ReplayStartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type replay() :: #{binary() => any()}.
+
+%% Example:
+%% list_rules_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% event_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type event_source() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_auth_request_parameters() :: #{
+%%   <<"ApiKeyAuthParameters">> => update_connection_api_key_auth_request_parameters(),
+%%   <<"BasicAuthParameters">> => update_connection_basic_auth_request_parameters(),
+%%   <<"InvocationHttpParameters">> => connection_http_parameters(),
+%%   <<"OAuthParameters">> => update_connection_o_auth_request_parameters()
+%% }
+-type update_connection_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% describe_partner_event_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type describe_partner_event_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_archive_response() :: #{
+
+%% }
+-type delete_archive_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_api_key_auth_request_parameters() :: #{
+%%   <<"ApiKeyName">> => string(),
+%%   <<"ApiKeyValue">> => string()
+%% }
+-type update_connection_api_key_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% create_archive_request() :: #{
+%%   <<"ArchiveName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EventPattern">> => string(),
+%%   <<"EventSourceArn">> := string(),
+%%   <<"RetentionDays">> => integer()
+%% }
+-type create_archive_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Force">> => boolean(),
+%%   <<"Name">> := string()
+%% }
+-type delete_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_archive_request() :: #{
+%%   <<"ArchiveName">> := string()
+%% }
+-type delete_archive_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_event_source_accounts_request() :: #{
+%%   <<"EventSourceName">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_partner_event_source_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_response() :: #{
+%%   <<"AuthParameters">> => connection_auth_response_parameters(),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastAuthorizedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"StateReason">> => string()
+%% }
+-type describe_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_targets_result_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"TargetId">> => string()
+%% }
+-type remove_targets_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% describe_api_destination_response() :: #{
+%%   <<"ApiDestinationArn">> => string(),
+%%   <<"ApiDestinationState">> => list(any()),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"InvocationEndpoint">> => string(),
+%%   <<"InvocationRateLimitPerSecond">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type describe_api_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% target() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"BatchParameters">> => batch_parameters(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"EcsParameters">> => ecs_parameters(),
+%%   <<"HttpParameters">> => http_parameters(),
+%%   <<"Id">> => string(),
+%%   <<"Input">> => string(),
+%%   <<"InputPath">> => string(),
+%%   <<"InputTransformer">> => input_transformer(),
+%%   <<"KinesisParameters">> => kinesis_parameters(),
+%%   <<"RedshiftDataParameters">> => redshift_data_parameters(),
+%%   <<"RetryPolicy">> => retry_policy(),
+%%   <<"RoleArn">> => string(),
+%%   <<"RunCommandParameters">> => run_command_parameters(),
+%%   <<"SageMakerPipelineParameters">> => sage_maker_pipeline_parameters(),
+%%   <<"SqsParameters">> => sqs_parameters()
+%% }
+-type target() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_request() :: #{
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connections_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_archives_request() :: #{
+%%   <<"EventSourceArn">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_archives_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_archive_response() :: #{
+%%   <<"ArchiveArn">> => string(),
+%%   <<"ArchiveName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventCount">> => float(),
+%%   <<"EventPattern">> => string(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"RetentionDays">> => integer(),
+%%   <<"SizeBytes">> => float(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type describe_archive_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_replays_request() :: #{
+%%   <<"EventSourceArn">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_replays_request() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_data_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"SecretManagerArn">> => string(),
+%%   <<"Sql">> => string(),
+%%   <<"StatementName">> => string(),
+%%   <<"WithEvent">> => boolean()
+%% }
+-type redshift_data_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% start_replay_response() :: #{
+%%   <<"ReplayArn">> => string(),
+%%   <<"ReplayStartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type start_replay_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deauthorize_connection_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type deauthorize_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% input_transformer() :: #{
+%%   <<"InputPathsMap">> => map(),
+%%   <<"InputTemplate">> => string()
+%% }
+-type input_transformer() :: #{binary() => any()}.
+
+%% Example:
+%% connection_http_parameters() :: #{
+%%   <<"BodyParameters">> => list(connection_body_parameter()()),
+%%   <<"HeaderParameters">> => list(connection_header_parameter()()),
+%%   <<"QueryStringParameters">> => list(connection_query_string_parameter()())
+%% }
+-type connection_http_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% create_api_destination_request() :: #{
+%%   <<"ConnectionArn">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"HttpMethod">> := list(any()),
+%%   <<"InvocationEndpoint">> := string(),
+%%   <<"InvocationRateLimitPerSecond">> => integer(),
+%%   <<"Name">> := string()
+%% }
+-type create_api_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_events_request() :: #{
+%%   <<"Entries">> := list(put_events_request_entry()())
+%% }
+-type put_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% connection() :: #{
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastAuthorizedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"StateReason">> => string()
+%% }
+-type connection() :: #{binary() => any()}.
+
+%% Example:
+%% activate_event_source_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type activate_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% replay_destination() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FilterArns">> => list(string()())
+%% }
+-type replay_destination() :: #{binary() => any()}.
+
+%% Example:
+%% list_replays_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Replays">> => list(replay()())
+%% }
+-type list_replays_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_buses_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_buses_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_source_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_api_destination_response() :: #{
+%%   <<"ApiDestinationArn">> => string(),
+%%   <<"ApiDestinationState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type create_api_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_permission_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"RemoveAllPermissions">> => boolean(),
+%%   <<"StatementId">> => string()
+%% }
+-type remove_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% sage_maker_pipeline_parameters() :: #{
+%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter()())
+%% }
+-type sage_maker_pipeline_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% managed_rule_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type managed_rule_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disable_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type disable_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_response() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastAuthorizedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type update_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% sqs_parameters() :: #{
+%%   <<"MessageGroupId">> => string()
+%% }
+-type sqs_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% put_permission_request() :: #{
+%%   <<"Action">> => string(),
+%%   <<"Condition">> => condition(),
+%%   <<"EventBusName">> => string(),
+%%   <<"Policy">> => string(),
+%%   <<"Principal">> => string(),
+%%   <<"StatementId">> => string()
+%% }
+-type put_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_api_destinations_response() :: #{
+%%   <<"ApiDestinations">> => list(api_destination()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_api_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_bus_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_event_bus_request() :: #{binary() => any()}.
+
+%% Example:
+%% condition() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+%% Example:
+%% put_partner_events_response() :: #{
+%%   <<"Entries">> => list(put_partner_events_result_entry()()),
+%%   <<"FailedEntryCount">> => integer()
+%% }
+-type put_partner_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% partner_event_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type partner_event_source() :: #{binary() => any()}.
+
+%% Example:
+%% operation_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EventBusName">> => string(),
+%%   <<"EventPattern">> => string(),
+%%   <<"ManagedBy">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type rule() :: #{binary() => any()}.
+
+%% Example:
+%% put_events_result_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventId">> => string()
+%% }
+-type put_events_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% update_api_destination_request() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"InvocationEndpoint">> => string(),
+%%   <<"InvocationRateLimitPerSecond">> => integer(),
+%%   <<"Name">> := string()
+%% }
+-type update_api_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_api_key_auth_request_parameters() :: #{
+%%   <<"ApiKeyName">> => string(),
+%%   <<"ApiKeyValue">> => string()
+%% }
+-type create_connection_api_key_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type describe_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_o_auth_client_request_parameters() :: #{
+%%   <<"ClientID">> => string(),
+%%   <<"ClientSecret">> => string()
+%% }
+-type create_connection_o_auth_client_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_provider_strategy_item() :: #{
+%%   <<"base">> => integer(),
+%%   <<"capacityProvider">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type capacity_provider_strategy_item() :: #{binary() => any()}.
+
+%% Example:
+%% placement_constraint() :: #{
+%%   <<"expression">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type placement_constraint() :: #{binary() => any()}.
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% api_destination() :: #{
+%%   <<"ApiDestinationArn">> => string(),
+%%   <<"ApiDestinationState">> => list(any()),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"InvocationEndpoint">> => string(),
+%%   <<"InvocationRateLimitPerSecond">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type api_destination() :: #{binary() => any()}.
+
+%% Example:
+%% internal_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_rules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Rules">> => list(rule()())
+%% }
+-type list_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_partner_event_source_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_partner_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_event_source_response() :: #{
+%%   <<"EventSourceArn">> => string()
+%% }
+-type create_partner_event_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_basic_auth_request_parameters() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type update_connection_basic_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_event_sources_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_partner_event_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_bus_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type describe_event_bus_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_targets_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Force">> => boolean(),
+%%   <<"Ids">> := list(string()()),
+%%   <<"Rule">> := string()
+%% }
+-type remove_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% dead_letter_config() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type dead_letter_config() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_api_destination_response() :: #{
+%%   <<"ApiDestinationArn">> => string(),
+%%   <<"ApiDestinationState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type update_api_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_replay_response() :: #{
+%%   <<"ReplayArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type cancel_replay_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_response() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastAuthorizedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type delete_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_rule_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventBusName">> => string(),
+%%   <<"EventPattern">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type put_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_event_sources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PartnerEventSources">> => list(partner_event_source()())
+%% }
+-type list_partner_event_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replay_request() :: #{
+%%   <<"ReplayName">> := string()
+%% }
+-type describe_replay_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_api_destinations_request() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_api_destinations_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_archive_response() :: #{
+%%   <<"ArchiveArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type create_archive_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_replay_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Destination">> := replay_destination(),
+%%   <<"EventEndTime">> := non_neg_integer(),
+%%   <<"EventSourceArn">> := string(),
+%%   <<"EventStartTime">> := non_neg_integer(),
+%%   <<"ReplayName">> := string()
+%% }
+-type start_replay_request() :: #{binary() => any()}.
+
+%% Example:
+%% connection_o_auth_response_parameters() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientParameters">> => connection_o_auth_client_response_parameters(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"OAuthHttpParameters">> => connection_http_parameters()
+%% }
+-type connection_o_auth_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% archive() :: #{
+%%   <<"ArchiveName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EventCount">> => float(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"RetentionDays">> => integer(),
+%%   <<"SizeBytes">> => float(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type archive() :: #{binary() => any()}.
+
+%% Example:
+%% remove_targets_response() :: #{
+%%   <<"FailedEntries">> => list(remove_targets_result_entry()()),
+%%   <<"FailedEntryCount">> => integer()
+%% }
+-type remove_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_response() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type create_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_buses_response() :: #{
+%%   <<"EventBuses">> => list(event_bus()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_buses_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_archive_request() :: #{
+%%   <<"ArchiveName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EventPattern">> => string(),
+%%   <<"RetentionDays">> => integer()
+%% }
+-type update_archive_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_names_by_target_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetArn">> := string()
+%% }
+-type list_rule_names_by_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% aws_vpc_configuration() :: #{
+%%   <<"AssignPublicIp">> => list(any()),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type aws_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% put_partner_events_result_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventId">> => string()
+%% }
+-type put_partner_events_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_basic_auth_request_parameters() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type create_connection_basic_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% put_partner_events_request() :: #{
+%%   <<"Entries">> := list(put_partner_events_request_entry()())
+%% }
+-type put_partner_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_parameters() :: #{
+%%   <<"PartitionKeyPath">> => string()
+%% }
+-type kinesis_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% list_targets_by_rule_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Targets">> => list(target()())
+%% }
+-type list_targets_by_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_archive_response() :: #{
+%%   <<"ArchiveArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type update_archive_response() :: #{binary() => any()}.
+
+%% Example:
+%% test_event_pattern_response() :: #{
+%%   <<"Result">> => boolean()
+%% }
+-type test_event_pattern_response() :: #{binary() => any()}.
+
+%% Example:
+%% illegal_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type illegal_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_targets_by_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Rule">> := string()
+%% }
+-type list_targets_by_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% retry_policy() :: #{
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer()
+%% }
+-type retry_policy() :: #{binary() => any()}.
+
+%% Example:
+%% connection_body_parameter() :: #{
+%%   <<"IsValueSecret">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type connection_body_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% connection_basic_auth_response_parameters() :: #{
+%%   <<"Username">> => string()
+%% }
+-type connection_basic_auth_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% put_targets_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Rule">> := string(),
+%%   <<"Targets">> := list(target()())
+%% }
+-type put_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_request() :: #{
+%%   <<"AuthParameters">> := create_connection_auth_request_parameters(),
+%%   <<"AuthorizationType">> := list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type create_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_o_auth_client_request_parameters() :: #{
+%%   <<"ClientID">> => string(),
+%%   <<"ClientSecret">> => string()
+%% }
+-type update_connection_o_auth_client_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% event_bus() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type event_bus() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_auth_request_parameters() :: #{
+%%   <<"ApiKeyAuthParameters">> => create_connection_api_key_auth_request_parameters(),
+%%   <<"BasicAuthParameters">> => create_connection_basic_auth_request_parameters(),
+%%   <<"InvocationHttpParameters">> => connection_http_parameters(),
+%%   <<"OAuthParameters">> => create_connection_o_auth_request_parameters()
+%% }
+-type create_connection_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% delete_api_destination_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_api_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% connection_o_auth_client_response_parameters() :: #{
+%%   <<"ClientID">> => string()
+%% }
+-type connection_o_auth_client_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EventBusName">> => string(),
+%%   <<"EventPattern">> => string(),
+%%   <<"ManagedBy">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_event_source_accounts_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PartnerEventSourceAccounts">> => list(partner_event_source_account()())
+%% }
+-type list_partner_event_source_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_names_by_target_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleNames">> => list(string()())
+%% }
+-type list_rule_names_by_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partner_event_source_request() :: #{
+%%   <<"Account">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type delete_partner_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% placement_strategy() :: #{
+%%   <<"field">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type placement_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% ecs_parameters() :: #{
+%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"EnableECSManagedTags">> => boolean(),
+%%   <<"EnableExecuteCommand">> => boolean(),
+%%   <<"Group">> => string(),
+%%   <<"LaunchType">> => list(any()),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"PlacementConstraints">> => list(placement_constraint()()),
+%%   <<"PlacementStrategy">> => list(placement_strategy()()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"PropagateTags">> => list(any()),
+%%   <<"ReferenceId">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TaskCount">> => integer(),
+%%   <<"TaskDefinitionArn">> => string()
+%% }
+-type ecs_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% put_targets_response() :: #{
+%%   <<"FailedEntries">> => list(put_targets_result_entry()()),
+%%   <<"FailedEntryCount">> => integer()
+%% }
+-type put_targets_response() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -143,17 +1462,49 @@
 %%
 %% Once activated, your matching
 %% event bus will start receiving events from the event source.
+-spec activate_event_source(map(), activate_event_source_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 activate_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_event_source(Client, Input, []).
+
+-spec activate_event_source(map(), activate_event_source_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 activate_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateEventSource">>, Input, Options).
 
 %% @doc Cancels the specified replay.
+-spec cancel_replay(map(), cancel_replay_request()) ->
+    {ok, cancel_replay_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, illegal_status_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 cancel_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_replay(Client, Input, []).
+
+-spec cancel_replay(map(), cancel_replay_request(), proplists:proplist()) ->
+    {ok, cancel_replay_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, illegal_status_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 cancel_replay(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelReplay">>, Input, Options).
@@ -161,9 +1512,24 @@ cancel_replay(Client, Input, Options)
 %% @doc Creates an API destination, which is an HTTP invocation endpoint
 %% configured as a target
 %% for events.
+-spec create_api_destination(map(), create_api_destination_request()) ->
+    {ok, create_api_destination_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_api_destination(Client, Input, []).
+
+-spec create_api_destination(map(), create_api_destination_request(), proplists:proplist()) ->
+    {ok, create_api_destination_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_api_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApiDestination">>, Input, Options).
@@ -178,9 +1544,28 @@ create_api_destination(Client, Input, Options)
 %% archive, all events are sent to the archive except replayed events.
 %% Replayed events are not
 %% sent to an archive.
+-spec create_archive(map(), create_archive_request()) ->
+    {ok, create_archive_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_archive(Client, Input, []).
+
+-spec create_archive(map(), create_archive_request(), proplists:proplist()) ->
+    {ok, create_archive_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateArchive">>, Input, Options).
@@ -189,9 +1574,22 @@ create_archive(Client, Input, Options)
 %%
 %% A connection defines the authorization type and credentials to use
 %% for authorization with an API destination HTTP endpoint.
+-spec create_connection(map(), create_connection_request()) ->
+    {ok, create_connection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()}.
 create_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connection(Client, Input, []).
+
+-spec create_connection(map(), create_connection_request(), proplists:proplist()) ->
+    {ok, create_connection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()}.
 create_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnection">>, Input, Options).
@@ -202,9 +1600,30 @@ create_connection(Client, Input, Options)
 %% use to receive events from your custom applications and services, or it
 %% can be a partner event
 %% bus which can be matched to a partner event source.
+-spec create_event_bus(map(), create_event_bus_request()) ->
+    {ok, create_event_bus_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_bus(Client, Input, []).
+
+-spec create_event_bus(map(), create_event_bus_request(), proplists:proplist()) ->
+    {ok, create_event_bus_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 create_event_bus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventBus">>, Input, Options).
@@ -243,9 +1662,26 @@ create_event_bus(Client, Input, Options)
 %% an event-generating resource within the partner system. The combination of
 %% event_namespace and event_name should help Amazon Web Services
 %% customers decide whether to create an event bus to receive these events.
+-spec create_partner_event_source(map(), create_partner_event_source_request()) ->
+    {ok, create_partner_event_source_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()}.
 create_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_partner_event_source(Client, Input, []).
+
+-spec create_partner_event_source(map(), create_partner_event_source_request(), proplists:proplist()) ->
+    {ok, create_partner_event_source_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()}.
 create_partner_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePartnerEventSource">>, Input, Options).
@@ -262,9 +1698,26 @@ create_partner_event_source(Client, Input, Options)
 %%
 %% To activate a deactivated partner event source, use ActivateEventSource:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ActivateEventSource.html.
+-spec deactivate_event_source(map(), deactivate_event_source_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 deactivate_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_event_source(Client, Input, []).
+
+-spec deactivate_event_source(map(), deactivate_event_source_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_state_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 deactivate_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateEventSource">>, Input, Options).
@@ -274,33 +1727,85 @@ deactivate_event_source(Client, Input, Options)
 %% This lets you remove the secret
 %% from the connection so you can reuse it without having to create a new
 %% connection.
+-spec deauthorize_connection(map(), deauthorize_connection_request()) ->
+    {ok, deauthorize_connection_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 deauthorize_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     deauthorize_connection(Client, Input, []).
+
+-spec deauthorize_connection(map(), deauthorize_connection_request(), proplists:proplist()) ->
+    {ok, deauthorize_connection_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 deauthorize_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeauthorizeConnection">>, Input, Options).
 
 %% @doc Deletes the specified API destination.
+-spec delete_api_destination(map(), delete_api_destination_request()) ->
+    {ok, delete_api_destination_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_api_destination(Client, Input, []).
+
+-spec delete_api_destination(map(), delete_api_destination_request(), proplists:proplist()) ->
+    {ok, delete_api_destination_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_api_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApiDestination">>, Input, Options).
 
 %% @doc Deletes the specified archive.
+-spec delete_archive(map(), delete_archive_request()) ->
+    {ok, delete_archive_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_archive(Client, Input, []).
+
+-spec delete_archive(map(), delete_archive_request(), proplists:proplist()) ->
+    {ok, delete_archive_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteArchive">>, Input, Options).
 
 %% @doc Deletes a connection.
+-spec delete_connection(map(), delete_connection_request()) ->
+    {ok, delete_connection_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connection(Client, Input, []).
+
+-spec delete_connection(map(), delete_connection_request(), proplists:proplist()) ->
+    {ok, delete_connection_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
@@ -310,9 +1815,20 @@ delete_connection(Client, Input, Options)
 %% All rules associated with
 %% this event bus need to be deleted. You can't delete your account's
 %% default event bus.
+-spec delete_event_bus(map(), delete_event_bus_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()}.
 delete_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_bus(Client, Input, []).
+
+-spec delete_event_bus(map(), delete_event_bus_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()}.
 delete_event_bus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventBus">>, Input, Options).
@@ -326,9 +1842,22 @@ delete_event_bus(Client, Input, Options)
 %% When you delete an event source, the status of the corresponding partner
 %% event bus in the
 %% Amazon Web Services customer account becomes DELETED.
+-spec delete_partner_event_source(map(), delete_partner_event_source_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()}.
 delete_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_partner_event_source(Client, Input, []).
+
+-spec delete_partner_event_source(map(), delete_partner_event_source_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()}.
 delete_partner_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePartnerEventSource">>, Input, Options).
@@ -356,33 +1885,83 @@ delete_partner_event_source(Client, Input, Options)
 %% can delete these rules using the `Force' option, but you should do so
 %% only if you
 %% are sure the other service is not still using that rule.
+-spec delete_rule(map(), delete_rule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
+
+-spec delete_rule(map(), delete_rule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
 
 %% @doc Retrieves details about an API destination.
+-spec describe_api_destination(map(), describe_api_destination_request()) ->
+    {ok, describe_api_destination_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_api_destination(Client, Input, []).
+
+-spec describe_api_destination(map(), describe_api_destination_request(), proplists:proplist()) ->
+    {ok, describe_api_destination_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_api_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApiDestination">>, Input, Options).
 
 %% @doc Retrieves details about an archive.
+-spec describe_archive(map(), describe_archive_request()) ->
+    {ok, describe_archive_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_archive(Client, Input, []).
+
+-spec describe_archive(map(), describe_archive_request(), proplists:proplist()) ->
+    {ok, describe_archive_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeArchive">>, Input, Options).
 
 %% @doc Retrieves details about a connection.
+-spec describe_connection(map(), describe_connection_request()) ->
+    {ok, describe_connection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connection(Client, Input, []).
+
+-spec describe_connection(map(), describe_connection_request(), proplists:proplist()) ->
+    {ok, describe_connection_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnection">>, Input, Options).
@@ -403,9 +1982,20 @@ describe_connection(Client, Input, Options)
 %%
 %% For more information about partner event buses, see CreateEventBus:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html.
+-spec describe_event_bus(map(), describe_event_bus_request()) ->
+    {ok, describe_event_bus_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_event_bus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_bus(Client, Input, []).
+
+-spec describe_event_bus(map(), describe_event_bus_request(), proplists:proplist()) ->
+    {ok, describe_event_bus_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_event_bus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventBus">>, Input, Options).
@@ -413,9 +2003,22 @@ describe_event_bus(Client, Input, Options)
 %% @doc This operation lists details about a partner event source that is
 %% shared with your
 %% account.
+-spec describe_event_source(map(), describe_event_source_request()) ->
+    {ok, describe_event_source_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_source(Client, Input, []).
+
+-spec describe_event_source(map(), describe_event_source_request(), proplists:proplist()) ->
+    {ok, describe_event_source_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventSource">>, Input, Options).
@@ -429,9 +2032,22 @@ describe_event_source(Client, Input, Options)
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventSource.html
 %% to see details about a partner event source that is
 %% shared with them.
+-spec describe_partner_event_source(map(), describe_partner_event_source_request()) ->
+    {ok, describe_partner_event_source_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_partner_event_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_partner_event_source(Client, Input, []).
+
+-spec describe_partner_event_source(map(), describe_partner_event_source_request(), proplists:proplist()) ->
+    {ok, describe_partner_event_source_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_partner_event_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePartnerEventSource">>, Input, Options).
@@ -452,9 +2068,20 @@ describe_partner_event_source(Client, Input, Options)
 %% `EventLastReplayedTime' indicates the time within the specified time
 %% range
 %% associated with the last event replayed.
+-spec describe_replay(map(), describe_replay_request()) ->
+    {ok, describe_replay_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replay(Client, Input, []).
+
+-spec describe_replay(map(), describe_replay_request(), proplists:proplist()) ->
+    {ok, describe_replay_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_replay(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplay">>, Input, Options).
@@ -465,9 +2092,20 @@ describe_replay(Client, Input, Options)
 %% associated with a
 %% rule, use ListTargetsByRule:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListTargetsByRule.html.
+-spec describe_rule(map(), describe_rule_request()) ->
+    {ok, describe_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rule(Client, Input, []).
+
+-spec describe_rule(map(), describe_rule_request(), proplists:proplist()) ->
+    {ok, describe_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 describe_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRule">>, Input, Options).
@@ -480,9 +2118,24 @@ describe_rule(Client, Input, Options)
 %% When you disable a rule, incoming events might continue to match to the
 %% disabled rule.
 %% Allow a short period of time for changes to take effect.
+-spec disable_rule(map(), disable_rule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 disable_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_rule(Client, Input, []).
+
+-spec disable_rule(map(), disable_rule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 disable_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableRule">>, Input, Options).
@@ -494,18 +2147,42 @@ disable_rule(Client, Input, Options)
 %% When you enable a rule, incoming events might not immediately start
 %% matching to a newly
 %% enabled rule. Allow a short period of time for changes to take effect.
+-spec enable_rule(map(), enable_rule_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 enable_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_rule(Client, Input, []).
+
+-spec enable_rule(map(), enable_rule_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 enable_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableRule">>, Input, Options).
 
 %% @doc Retrieves a list of API destination in the account in the current
 %% Region.
+-spec list_api_destinations(map(), list_api_destinations_request()) ->
+    {ok, list_api_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 list_api_destinations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_api_destinations(Client, Input, []).
+
+-spec list_api_destinations(map(), list_api_destinations_request(), proplists:proplist()) ->
+    {ok, list_api_destinations_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 list_api_destinations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApiDestinations">>, Input, Options).
@@ -514,17 +2191,37 @@ list_api_destinations(Client, Input, Options)
 %%
 %% You can either list all the archives or you can provide a prefix to
 %% match to the archive names. Filter parameters are exclusive.
+-spec list_archives(map(), list_archives_request()) ->
+    {ok, list_archives_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_archives(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_archives(Client, Input, []).
+
+-spec list_archives(map(), list_archives_request(), proplists:proplist()) ->
+    {ok, list_archives_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_archives(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListArchives">>, Input, Options).
 
 %% @doc Retrieves a list of connections from the account.
+-spec list_connections(map(), list_connections_request()) ->
+    {ok, list_connections_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 list_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_connections(Client, Input, []).
+
+-spec list_connections(map(), list_connections_request(), proplists:proplist()) ->
+    {ok, list_connections_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 list_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConnections">>, Input, Options).
@@ -532,9 +2229,18 @@ list_connections(Client, Input, Options)
 %% @doc Lists all the event buses in your account, including the default
 %% event bus, custom event
 %% buses, and partner event buses.
+-spec list_event_buses(map(), list_event_buses_request()) ->
+    {ok, list_event_buses_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 list_event_buses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_buses(Client, Input, []).
+
+-spec list_event_buses(map(), list_event_buses_request(), proplists:proplist()) ->
+    {ok, list_event_buses_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 list_event_buses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventBuses">>, Input, Options).
@@ -545,9 +2251,20 @@ list_event_buses(Client, Input, Options)
 %%
 %% For more information about partner event sources, see CreateEventBus:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html.
+-spec list_event_sources(map(), list_event_sources_request()) ->
+    {ok, list_event_sources_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()}.
 list_event_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_sources(Client, Input, []).
+
+-spec list_event_sources(map(), list_event_sources_request(), proplists:proplist()) ->
+    {ok, list_event_sources_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()}.
 list_event_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventSources">>, Input, Options).
@@ -558,9 +2275,22 @@ list_event_sources(Client, Input, Options)
 %%
 %% This operation is not used by Amazon Web Services
 %% customers.
+-spec list_partner_event_source_accounts(map(), list_partner_event_source_accounts_request()) ->
+    {ok, list_partner_event_source_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_partner_event_source_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partner_event_source_accounts(Client, Input, []).
+
+-spec list_partner_event_source_accounts(map(), list_partner_event_source_accounts_request(), proplists:proplist()) ->
+    {ok, list_partner_event_source_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_partner_event_source_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPartnerEventSourceAccounts">>, Input, Options).
@@ -570,9 +2300,20 @@ list_partner_event_source_accounts(Client, Input, Options)
 %% they have created.
 %%
 %% This operation is not used by Amazon Web Services customers.
+-spec list_partner_event_sources(map(), list_partner_event_sources_request()) ->
+    {ok, list_partner_event_sources_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()}.
 list_partner_event_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_partner_event_sources(Client, Input, []).
+
+-spec list_partner_event_sources(map(), list_partner_event_sources_request(), proplists:proplist()) ->
+    {ok, list_partner_event_sources_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()}.
 list_partner_event_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPartnerEventSources">>, Input, Options).
@@ -581,9 +2322,18 @@ list_partner_event_sources(Client, Input, Options)
 %%
 %% You can either list all the replays or you can provide a prefix to
 %% match to the replay names. Filter parameters are exclusive.
+-spec list_replays(map(), list_replays_request()) ->
+    {ok, list_replays_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 list_replays(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_replays(Client, Input, []).
+
+-spec list_replays(map(), list_replays_request(), proplists:proplist()) ->
+    {ok, list_replays_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 list_replays(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReplays">>, Input, Options).
@@ -592,9 +2342,20 @@ list_replays(Client, Input, Options)
 %%
 %% You can see which of the rules in Amazon
 %% EventBridge can invoke a specific target in your account.
+-spec list_rule_names_by_target(map(), list_rule_names_by_target_request()) ->
+    {ok, list_rule_names_by_target_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_rule_names_by_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_names_by_target(Client, Input, []).
+
+-spec list_rule_names_by_target(map(), list_rule_names_by_target_request(), proplists:proplist()) ->
+    {ok, list_rule_names_by_target_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_rule_names_by_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleNamesByTarget">>, Input, Options).
@@ -608,9 +2369,20 @@ list_rule_names_by_target(Client, Input, Options)
 %% associated with a rule,
 %% use ListTargetsByRule:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListTargetsByRule.html.
+-spec list_rules(map(), list_rules_request()) ->
+    {ok, list_rules_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rules(Client, Input, []).
+
+-spec list_rules(map(), list_rules_request(), proplists:proplist()) ->
+    {ok, list_rules_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRules">>, Input, Options).
@@ -619,26 +2391,57 @@ list_rules(Client, Input, Options)
 %%
 %% In EventBridge, rules and event
 %% buses can be tagged.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Lists the targets assigned to the specified rule.
+-spec list_targets_by_rule(map(), list_targets_by_rule_request()) ->
+    {ok, list_targets_by_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_targets_by_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_targets_by_rule(Client, Input, []).
+
+-spec list_targets_by_rule(map(), list_targets_by_rule_request(), proplists:proplist()) ->
+    {ok, list_targets_by_rule_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 list_targets_by_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTargetsByRule">>, Input, Options).
 
 %% @doc Sends custom events to Amazon EventBridge so that they can be matched
 %% to rules.
+-spec put_events(map(), put_events_request()) ->
+    {ok, put_events_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 put_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_events(Client, Input, []).
+
+-spec put_events(map(), put_events_request(), proplists:proplist()) ->
+    {ok, put_events_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()}.
 put_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEvents">>, Input, Options).
@@ -648,9 +2451,20 @@ put_events(Client, Input, Options)
 %%
 %% Amazon Web Services
 %% customers do not use this operation.
+-spec put_partner_events(map(), put_partner_events_request()) ->
+    {ok, put_partner_events_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()}.
 put_partner_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_partner_events(Client, Input, []).
+
+-spec put_partner_events(map(), put_partner_events_request(), proplists:proplist()) ->
+    {ok, put_partner_events_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()}.
 put_partner_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPartnerEvents">>, Input, Options).
@@ -691,9 +2505,26 @@ put_partner_events(Client, Input, Options)
 %% Guide.
 %%
 %% The permission policy on the event bus cannot exceed 10 KB in size.
+-spec put_permission(map(), put_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, policy_length_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 put_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permission(Client, Input, []).
+
+-spec put_permission(map(), put_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, policy_length_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 put_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPermission">>, Input, Options).
@@ -786,9 +2617,28 @@ put_permission(Client, Input, Options)
 %% see Managing Your Costs with
 %% Budgets:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html.
+-spec put_rule(map(), put_rule_request()) ->
+    {ok, put_rule_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 put_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_rule(Client, Input, []).
+
+-spec put_rule(map(), put_rule_request(), proplists:proplist()) ->
+    {ok, put_rule_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 put_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRule">>, Input, Options).
@@ -962,9 +2812,26 @@ put_rule(Client, Input, Options)
 %% in
 %% `FailedEntries' provides the ID of the failed target and the error
 %% code.
+-spec put_targets(map(), put_targets_request()) ->
+    {ok, put_targets_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 put_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_targets(Client, Input, []).
+
+-spec put_targets(map(), put_targets_request(), proplists:proplist()) ->
+    {ok, put_targets_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 put_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutTargets">>, Input, Options).
@@ -978,9 +2845,24 @@ put_targets(Client, Input, Options)
 %% `PutPermission'.
 %% You can find the `StatementId' by using DescribeEventBus:
 %% https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventBus.html.
+-spec remove_permission(map(), remove_permission_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
+
+-spec remove_permission(map(), remove_permission_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, operation_disabled_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 remove_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemovePermission">>, Input, Options).
@@ -1001,9 +2883,24 @@ remove_permission(Client, Input, Options)
 %% in
 %% `FailedEntries' provides the ID of the failed target and the error
 %% code.
+-spec remove_targets(map(), remove_targets_request()) ->
+    {ok, remove_targets_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 remove_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_targets(Client, Input, []).
+
+-spec remove_targets(map(), remove_targets_request(), proplists:proplist()) ->
+    {ok, remove_targets_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 remove_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTargets">>, Input, Options).
@@ -1025,9 +2922,26 @@ remove_targets(Client, Input, Options)
 %% indicates the time within the specified time range associated with the
 %% last event
 %% replayed.
+-spec start_replay(map(), start_replay_request()) ->
+    {ok, start_replay_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 start_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replay(Client, Input, []).
+
+-spec start_replay(map(), start_replay_request(), proplists:proplist()) ->
+    {ok, start_replay_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_already_exists_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 start_replay(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartReplay">>, Input, Options).
@@ -1055,9 +2969,24 @@ start_replay(Client, Input, Options)
 %% value that you specify replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1071,9 +3000,20 @@ tag_resource(Client, Input, Options)
 %% correct ARN characters when creating event patterns so that they match the
 %% ARN syntax in the
 %% event you want to match.
+-spec test_event_pattern(map(), test_event_pattern_request()) ->
+    {ok, test_event_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()}.
 test_event_pattern(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_event_pattern(Client, Input, []).
+
+-spec test_event_pattern(map(), test_event_pattern_request(), proplists:proplist()) ->
+    {ok, test_event_pattern_response(), tuple()} |
+    {error, any()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()}.
 test_event_pattern(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestEventPattern">>, Input, Options).
@@ -1082,33 +3022,95 @@ test_event_pattern(Client, Input, Options)
 %%
 %% In Amazon EventBridge
 %% (CloudWatch Events), rules and event buses can be tagged.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, managed_rule_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates an API destination.
+-spec update_api_destination(map(), update_api_destination_request()) ->
+    {ok, update_api_destination_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_api_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_api_destination(Client, Input, []).
+
+-spec update_api_destination(map(), update_api_destination_request(), proplists:proplist()) ->
+    {ok, update_api_destination_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_api_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApiDestination">>, Input, Options).
 
 %% @doc Updates the specified archive.
+-spec update_archive(map(), update_archive_request()) ->
+    {ok, update_archive_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_archive(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_archive(Client, Input, []).
+
+-spec update_archive(map(), update_archive_request(), proplists:proplist()) ->
+    {ok, update_archive_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, invalid_event_pattern_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_archive(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateArchive">>, Input, Options).
 
 %% @doc Updates settings for a connection.
+-spec update_connection(map(), update_connection_request()) ->
+    {ok, update_connection_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connection(Client, Input, []).
+
+-spec update_connection(map(), update_connection_request(), proplists:proplist()) ->
+    {ok, update_connection_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, internal_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()}.
 update_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnection">>, Input, Options).

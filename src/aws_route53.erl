@@ -205,6 +205,1689 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% create_vpc_association_authorization_request() :: #{
+%%   <<"VPC">> := vpc()
+%% }
+-type create_vpc_association_authorization_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_hosted_zone_comment_response() :: #{
+%%   <<"HostedZone">> => hosted_zone()
+%% }
+-type update_hosted_zone_comment_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policies_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyIdMarker">> => string()
+%% }
+-type list_traffic_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_change_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type get_change_response() :: #{binary() => any()}.
+
+%% Example:
+%% geo_location_details() :: #{
+%%   <<"ContinentCode">> => string(),
+%%   <<"ContinentName">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"CountryName">> => string(),
+%%   <<"SubdivisionCode">> => string(),
+%%   <<"SubdivisionName">> => string()
+%% }
+-type geo_location_details() :: #{binary() => any()}.
+%% Example:
+%% get_query_logging_config_request() :: #{}
+-type get_query_logging_config_request() :: #{}.
+
+%% Example:
+%% delegation_set_not_reusable() :: #{
+%%   <<"message">> => string()
+%% }
+-type delegation_set_not_reusable() :: #{binary() => any()}.
+
+%% Example:
+%% delegation_set() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"NameServers">> => list(string()())
+%% }
+-type delegation_set() :: #{binary() => any()}.
+
+%% Example:
+%% health_check_version_mismatch() :: #{
+%%   <<"message">> => string()
+%% }
+-type health_check_version_mismatch() :: #{binary() => any()}.
+
+%% Example:
+%% create_traffic_policy_version_response() :: #{
+%%   <<"Location">> => string(),
+%%   <<"TrafficPolicy">> => traffic_policy()
+%% }
+-type create_traffic_policy_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_query_logging_config_response() :: #{
+%%   <<"Location">> => string(),
+%%   <<"QueryLoggingConfig">> => query_logging_config()
+%% }
+-type create_query_logging_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_logging_config() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> => string(),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type query_logging_config() :: #{binary() => any()}.
+
+%% Example:
+%% key_signing_key() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DNSKEYRecord">> => string(),
+%%   <<"DSRecord">> => string(),
+%%   <<"DigestAlgorithmMnemonic">> => string(),
+%%   <<"DigestAlgorithmType">> => integer(),
+%%   <<"DigestValue">> => string(),
+%%   <<"Flag">> => integer(),
+%%   <<"KeyTag">> => integer(),
+%%   <<"KmsArn">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublicKey">> => string(),
+%%   <<"SigningAlgorithmMnemonic">> => string(),
+%%   <<"SigningAlgorithmType">> => integer(),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type key_signing_key() :: #{binary() => any()}.
+
+%% Example:
+%% incompatible_version() :: #{
+%%   <<"message">> => string()
+%% }
+-type incompatible_version() :: #{binary() => any()}.
+
+%% Example:
+%% list_hosted_zones_by_vpc_response() :: #{
+%%   <<"HostedZoneSummaries">> => list(hosted_zone_summary()()),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_hosted_zones_by_vpc_response() :: #{binary() => any()}.
+
+%% Example:
+%% change() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ResourceRecordSet">> => resource_record_set()
+%% }
+-type change() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_policy_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type traffic_policy_in_use() :: #{binary() => any()}.
+%% Example:
+%% get_traffic_policy_instance_request() :: #{}
+-type get_traffic_policy_instance_request() :: #{}.
+
+%% Example:
+%% dns_sec_status() :: #{
+%%   <<"ServeSignature">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type dns_sec_status() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_alarm_configuration() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"EvaluationPeriods">> => integer(),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Threshold">> => float()
+%% }
+-type cloud_watch_alarm_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_hosted_zone_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"DelegationSetId">> => string(),
+%%   <<"HostedZoneConfig">> => hosted_zone_config(),
+%%   <<"Name">> := string(),
+%%   <<"VPC">> => vpc()
+%% }
+-type create_hosted_zone_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input() :: #{binary() => any()}.
+%% Example:
+%% delete_traffic_policy_instance_request() :: #{}
+-type delete_traffic_policy_instance_request() :: #{}.
+
+%% Example:
+%% hosted_zone_not_private() :: #{
+%%   <<"message">> => string()
+%% }
+-type hosted_zone_not_private() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_change_batch() :: #{
+%%   <<"message">> => string(),
+%%   <<"messages">> => list(string()())
+%% }
+-type invalid_change_batch() :: #{binary() => any()}.
+%% Example:
+%% get_traffic_policy_instance_count_request() :: #{}
+-type get_traffic_policy_instance_count_request() :: #{}.
+
+%% Example:
+%% too_many_traffic_policies() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_traffic_policies() :: #{binary() => any()}.
+%% Example:
+%% delete_health_check_request() :: #{}
+-type delete_health_check_request() :: #{}.
+
+%% Example:
+%% create_traffic_policy_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Document">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_traffic_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_reusable_delegation_set_limit_response() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Limit">> => reusable_delegation_set_limit()
+%% }
+-type get_reusable_delegation_set_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pagination_token() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pagination_token() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policy_instances_by_policy_response() :: #{
+%%   <<"HostedZoneIdMarker">> => string(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
+%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance()())
+%% }
+-type list_traffic_policy_instances_by_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_health_check() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_health_check() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_traffic_policy_versions_for_current_policy() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_traffic_policy_versions_for_current_policy() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policy_instances_by_policy_request() :: #{
+%%   <<"HostedZoneIdMarker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyId">> := string(),
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
+%%   <<"TrafficPolicyVersion">> := integer()
+%% }
+-type list_traffic_policy_instances_by_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% hosted_zone_limit() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type hosted_zone_limit() :: #{binary() => any()}.
+
+%% Example:
+%% vpc() :: #{
+%%   <<"VPCId">> => string(),
+%%   <<"VPCRegion">> => list(any())
+%% }
+-type vpc() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_traffic_policy_instance() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_traffic_policy_instance() :: #{binary() => any()}.
+
+%% Example:
+%% resource_record_set() :: #{
+%%   <<"AliasTarget">> => alias_target(),
+%%   <<"CidrRoutingConfig">> => cidr_routing_config(),
+%%   <<"Failover">> => list(any()),
+%%   <<"GeoLocation">> => geo_location(),
+%%   <<"GeoProximityLocation">> => geo_proximity_location(),
+%%   <<"HealthCheckId">> => string(),
+%%   <<"MultiValueAnswer">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Region">> => list(any()),
+%%   <<"ResourceRecords">> => list(resource_record()()),
+%%   <<"SetIdentifier">> => string(),
+%%   <<"TTL">> => float(),
+%%   <<"TrafficPolicyInstanceId">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Weight">> => float()
+%% }
+-type resource_record_set() :: #{binary() => any()}.
+
+%% Example:
+%% get_traffic_policy_instance_response() :: #{
+%%   <<"TrafficPolicyInstance">> => traffic_policy_instance()
+%% }
+-type get_traffic_policy_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% collection_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type collection_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_hosted_zone_limit_response() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Limit">> => hosted_zone_limit()
+%% }
+-type get_hosted_zone_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_hosted_zone_count_response() :: #{
+%%   <<"HostedZoneCount">> => float()
+%% }
+-type get_hosted_zone_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_traffic_policy_comment_response() :: #{
+%%   <<"TrafficPolicy">> => traffic_policy()
+%% }
+-type update_traffic_policy_comment_response() :: #{binary() => any()}.
+%% Example:
+%% delete_health_check_response() :: #{}
+-type delete_health_check_response() :: #{}.
+
+%% Example:
+%% vpc_association_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type vpc_association_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% delegation_set_not_available() :: #{
+%%   <<"message">> => string()
+%% }
+-type delegation_set_not_available() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_association_authorization_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type vpc_association_authorization_not_found() :: #{binary() => any()}.
+%% Example:
+%% change_tags_for_resource_response() :: #{}
+-type change_tags_for_resource_response() :: #{}.
+%% Example:
+%% delete_reusable_delegation_set_request() :: #{}
+-type delete_reusable_delegation_set_request() :: #{}.
+
+%% Example:
+%% associate_vpc_with_hosted_zone_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type associate_vpc_with_hosted_zone_response() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_cloud_watch_logs_resource_policy() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_cloud_watch_logs_resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_hosted_zone() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_hosted_zone() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyIdMarker">> => string(),
+%%   <<"TrafficPolicySummaries">> => list(traffic_policy_summary()())
+%% }
+-type list_traffic_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_reusable_delegation_sets_response() :: #{
+%%   <<"DelegationSets">> => list(delegation_set()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextMarker">> => string()
+%% }
+-type list_reusable_delegation_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_key_signing_key_name() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_key_signing_key_name() :: #{binary() => any()}.
+
+%% Example:
+%% public_zone_vpc_association() :: #{
+%%   <<"message">> => string()
+%% }
+-type public_zone_vpc_association() :: #{binary() => any()}.
+
+%% Example:
+%% create_health_check_response() :: #{
+%%   <<"HealthCheck">> => health_check(),
+%%   <<"Location">> => string()
+%% }
+-type create_health_check_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_health_check_response() :: #{
+%%   <<"HealthCheck">> => health_check()
+%% }
+-type update_health_check_response() :: #{binary() => any()}.
+
+%% Example:
+%% dns_sec_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type dns_sec_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% status_report() :: #{
+%%   <<"CheckedTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type status_report() :: #{binary() => any()}.
+
+%% Example:
+%% create_traffic_policy_instance_request() :: #{
+%%   <<"HostedZoneId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"TTL">> := float(),
+%%   <<"TrafficPolicyId">> := string(),
+%%   <<"TrafficPolicyVersion">> := integer()
+%% }
+-type create_traffic_policy_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% change_batch() :: #{
+%%   <<"Changes">> => list(change()()),
+%%   <<"Comment">> => string()
+%% }
+-type change_batch() :: #{binary() => any()}.
+
+%% Example:
+%% reusable_delegation_set_limit() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type reusable_delegation_set_limit() :: #{binary() => any()}.
+
+%% Example:
+%% health_check_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type health_check_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_delegation_set() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_delegation_set() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_policy() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Document">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => integer()
+%% }
+-type traffic_policy() :: #{binary() => any()}.
+%% Example:
+%% get_health_check_count_request() :: #{}
+-type get_health_check_count_request() :: #{}.
+
+%% Example:
+%% list_traffic_policy_instances_request() :: #{
+%%   <<"HostedZoneIdMarker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any())
+%% }
+-type list_traffic_policy_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_argument() :: #{binary() => any()}.
+
+%% Example:
+%% change_tags_for_resource_request() :: #{
+%%   <<"AddTags">> => list(tag()()),
+%%   <<"RemoveTagKeys">> => list(string()())
+%% }
+-type change_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_health_check_response() :: #{
+%%   <<"HealthCheck">> => health_check()
+%% }
+-type get_health_check_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_query_logging_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueryLoggingConfigs">> => list(query_logging_config()())
+%% }
+-type list_query_logging_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% change_cidr_collection_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type change_cidr_collection_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_traffic_policy_instances() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_traffic_policy_instances() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_collection_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cidr_collection_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% linked_service() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ServicePrincipal">> => string()
+%% }
+-type linked_service() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_traffic_policy_document() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_traffic_policy_document() :: #{binary() => any()}.
+
+%% Example:
+%% delete_key_signing_key_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type delete_key_signing_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resources_response() :: #{
+%%   <<"ResourceTagSets">> => list(resource_tag_set()())
+%% }
+-type list_tags_for_resources_response() :: #{binary() => any()}.
+%% Example:
+%% delete_vpc_association_authorization_response() :: #{}
+-type delete_vpc_association_authorization_response() :: #{}.
+
+%% Example:
+%% list_geo_locations_response() :: #{
+%%   <<"GeoLocationDetailsList">> => list(geo_location_details()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextContinentCode">> => string(),
+%%   <<"NextCountryCode">> => string(),
+%%   <<"NextSubdivisionCode">> => string()
+%% }
+-type list_geo_locations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cidr_collections_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_collections_request() :: #{binary() => any()}.
+%% Example:
+%% get_dns_sec_request() :: #{}
+-type get_dns_sec_request() :: #{}.
+
+%% Example:
+%% too_many_vpc_association_authorizations() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_vpc_association_authorizations() :: #{binary() => any()}.
+%% Example:
+%% get_hosted_zone_limit_request() :: #{}
+-type get_hosted_zone_limit_request() :: #{}.
+
+%% Example:
+%% key_signing_key_with_active_status_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_signing_key_with_active_status_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% list_cidr_blocks_request() :: #{
+%%   <<"LocationName">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_blocks_request() :: #{binary() => any()}.
+
+%% Example:
+%% alias_target() :: #{
+%%   <<"DNSName">> => string(),
+%%   <<"EvaluateTargetHealth">> => boolean(),
+%%   <<"HostedZoneId">> => string()
+%% }
+-type alias_target() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_collection_change() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"CidrList">> => list(string()()),
+%%   <<"LocationName">> => string()
+%% }
+-type cidr_collection_change() :: #{binary() => any()}.
+
+%% Example:
+%% get_health_check_last_failure_reason_response() :: #{
+%%   <<"HealthCheckObservations">> => list(health_check_observation()())
+%% }
+-type get_health_check_last_failure_reason_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_checker_ip_ranges_response() :: #{
+%%   <<"CheckerIpRanges">> => list(string()())
+%% }
+-type get_checker_ip_ranges_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policy_instances_response() :: #{
+%%   <<"HostedZoneIdMarker">> => string(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
+%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance()())
+%% }
+-type list_traffic_policy_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_cidr_collection_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_cidr_collection_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_signing_status() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_signing_status() :: #{binary() => any()}.
+
+%% Example:
+%% geo_proximity_location() :: #{
+%%   <<"AWSRegion">> => string(),
+%%   <<"Bias">> => integer(),
+%%   <<"Coordinates">> => coordinates(),
+%%   <<"LocalZoneGroup">> => string()
+%% }
+-type geo_proximity_location() :: #{binary() => any()}.
+
+%% Example:
+%% test_dns_answer_request() :: #{
+%%   <<"EDNS0ClientSubnetIP">> => string(),
+%%   <<"EDNS0ClientSubnetMask">> => string(),
+%%   <<"HostedZoneId">> := string(),
+%%   <<"RecordName">> := string(),
+%%   <<"RecordType">> := list(any()),
+%%   <<"ResolverIP">> => string()
+%% }
+-type test_dns_answer_request() :: #{binary() => any()}.
+%% Example:
+%% deactivate_key_signing_key_request() :: #{}
+-type deactivate_key_signing_key_request() :: #{}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% delegation_set_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type delegation_set_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_change() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_change() :: #{binary() => any()}.
+
+%% Example:
+%% get_geo_location_request() :: #{
+%%   <<"ContinentCode">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"SubdivisionCode">> => string()
+%% }
+-type get_geo_location_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cidr_blocks_response() :: #{
+%%   <<"CidrBlocks">> => list(cidr_block_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_blocks_response() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_block_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cidr_block_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% key_signing_key_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_signing_key_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% limits_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type limits_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policy_instances_by_hosted_zone_request() :: #{
+%%   <<"HostedZoneId">> := string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any())
+%% }
+-type list_traffic_policy_instances_by_hosted_zone_request() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_query_logging_config() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_query_logging_config() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_policy_instance_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type traffic_policy_instance_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_policy_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type traffic_policy_already_exists() :: #{binary() => any()}.
+%% Example:
+%% delete_hosted_zone_request() :: #{}
+-type delete_hosted_zone_request() :: #{}.
+
+%% Example:
+%% list_cidr_collections_response() :: #{
+%%   <<"CidrCollections">> => list(collection_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_collections_response() :: #{binary() => any()}.
+%% Example:
+%% enable_hosted_zone_dns_sec_request() :: #{}
+-type enable_hosted_zone_dns_sec_request() :: #{}.
+
+%% Example:
+%% list_health_checks_response() :: #{
+%%   <<"HealthChecks">> => list(health_check()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextMarker">> => string()
+%% }
+-type list_health_checks_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_traffic_policy_response() :: #{
+%%   <<"Location">> => string(),
+%%   <<"TrafficPolicy">> => traffic_policy()
+%% }
+-type create_traffic_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_hosted_zone_response() :: #{
+%%   <<"DelegationSet">> => delegation_set(),
+%%   <<"HostedZone">> => hosted_zone(),
+%%   <<"VPCs">> => list(vpc()())
+%% }
+-type get_hosted_zone_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hosted_zone_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type delete_hosted_zone_response() :: #{binary() => any()}.
+
+%% Example:
+%% delegation_set_already_reusable() :: #{
+%%   <<"message">> => string()
+%% }
+-type delegation_set_already_reusable() :: #{binary() => any()}.
+
+%% Example:
+%% change_resource_record_sets_request() :: #{
+%%   <<"ChangeBatch">> := change_batch()
+%% }
+-type change_resource_record_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% hosted_zone_owner() :: #{
+%%   <<"OwningAccount">> => string(),
+%%   <<"OwningService">> => string()
+%% }
+-type hosted_zone_owner() :: #{binary() => any()}.
+
+%% Example:
+%% create_query_logging_config_request() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> := string(),
+%%   <<"HostedZoneId">> := string()
+%% }
+-type create_query_logging_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflicting_domain_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflicting_domain_exists() :: #{binary() => any()}.
+
+%% Example:
+%% hosted_zone_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type hosted_zone_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% enable_hosted_zone_dns_sec_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type enable_hosted_zone_dns_sec_response() :: #{binary() => any()}.
+
+%% Example:
+%% hosted_zone_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type hosted_zone_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag_set() :: #{
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type resource_tag_set() :: #{binary() => any()}.
+%% Example:
+%% activate_key_signing_key_request() :: #{}
+-type activate_key_signing_key_request() :: #{}.
+
+%% Example:
+%% update_traffic_policy_comment_request() :: #{
+%%   <<"Comment">> := string()
+%% }
+-type update_traffic_policy_comment_request() :: #{binary() => any()}.
+
+%% Example:
+%% health_check_observation() :: #{
+%%   <<"IPAddress">> => string(),
+%%   <<"Region">> => list(any()),
+%%   <<"StatusReport">> => status_report()
+%% }
+-type health_check_observation() :: #{binary() => any()}.
+
+%% Example:
+%% alarm_identifier() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Region">> => list(any())
+%% }
+-type alarm_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% create_health_check_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"HealthCheckConfig">> := health_check_config()
+%% }
+-type create_health_check_request() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_cloud_watch_logs_log_group() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_cloud_watch_logs_log_group() :: #{binary() => any()}.
+
+%% Example:
+%% change_resource_record_sets_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type change_resource_record_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_association_authorization_request() :: #{
+%%   <<"VPC">> := vpc()
+%% }
+-type delete_vpc_association_authorization_request() :: #{binary() => any()}.
+
+%% Example:
+%% account_limit() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type account_limit() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceTagSet">> => resource_tag_set()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% change_info() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubmittedAt">> => non_neg_integer()
+%% }
+-type change_info() :: #{binary() => any()}.
+%% Example:
+%% delete_cidr_collection_response() :: #{}
+-type delete_cidr_collection_response() :: #{}.
+
+%% Example:
+%% list_hosted_zones_by_name_response() :: #{
+%%   <<"DNSName">> => string(),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"HostedZones">> => list(hosted_zone()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextDNSName">> => string(),
+%%   <<"NextHostedZoneId">> => string()
+%% }
+-type list_hosted_zones_by_name_response() :: #{binary() => any()}.
+
+%% Example:
+%% health_check() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"CloudWatchAlarmConfiguration">> => cloud_watch_alarm_configuration(),
+%%   <<"HealthCheckConfig">> => health_check_config(),
+%%   <<"HealthCheckVersion">> => float(),
+%%   <<"Id">> => string(),
+%%   <<"LinkedService">> => linked_service()
+%% }
+-type health_check() :: #{binary() => any()}.
+
+%% Example:
+%% list_hosted_zones_response() :: #{
+%%   <<"HostedZones">> => list(hosted_zone()()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextMarker">> => string()
+%% }
+-type list_hosted_zones_response() :: #{binary() => any()}.
+%% Example:
+%% get_change_request() :: #{}
+-type get_change_request() :: #{}.
+
+%% Example:
+%% invalid_vpc_id() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_vpc_id() :: #{binary() => any()}.
+
+%% Example:
+%% create_vpc_association_authorization_response() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"VPC">> => vpc()
+%% }
+-type create_vpc_association_authorization_response() :: #{binary() => any()}.
+%% Example:
+%% delete_traffic_policy_response() :: #{}
+-type delete_traffic_policy_response() :: #{}.
+
+%% Example:
+%% list_cidr_locations_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_locations_request() :: #{binary() => any()}.
+%% Example:
+%% delete_query_logging_config_response() :: #{}
+-type delete_query_logging_config_response() :: #{}.
+
+%% Example:
+%% update_traffic_policy_instance_response() :: #{
+%%   <<"TrafficPolicyInstance">> => traffic_policy_instance()
+%% }
+-type update_traffic_policy_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_traffic_policy_instance_response() :: #{
+%%   <<"Location">> => string(),
+%%   <<"TrafficPolicyInstance">> => traffic_policy_instance()
+%% }
+-type create_traffic_policy_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_reusable_delegation_set_response() :: #{
+%%   <<"DelegationSet">> => delegation_set(),
+%%   <<"Location">> => string()
+%% }
+-type create_reusable_delegation_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_health_check_count_response() :: #{
+%%   <<"HealthCheckCount">> => float()
+%% }
+-type get_health_check_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_association_authorizations_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_association_authorizations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_geo_locations_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"StartContinentCode">> => string(),
+%%   <<"StartCountryCode">> => string(),
+%%   <<"StartSubdivisionCode">> => string()
+%% }
+-type list_geo_locations_request() :: #{binary() => any()}.
+%% Example:
+%% delete_query_logging_config_request() :: #{}
+-type delete_query_logging_config_request() :: #{}.
+%% Example:
+%% get_hosted_zone_request() :: #{}
+-type get_hosted_zone_request() :: #{}.
+
+%% Example:
+%% update_health_check_request() :: #{
+%%   <<"AlarmIdentifier">> => alarm_identifier(),
+%%   <<"ChildHealthChecks">> => list(string()()),
+%%   <<"Disabled">> => boolean(),
+%%   <<"EnableSNI">> => boolean(),
+%%   <<"FailureThreshold">> => integer(),
+%%   <<"FullyQualifiedDomainName">> => string(),
+%%   <<"HealthCheckVersion">> => float(),
+%%   <<"HealthThreshold">> => integer(),
+%%   <<"IPAddress">> => string(),
+%%   <<"InsufficientDataHealthStatus">> => list(any()),
+%%   <<"Inverted">> => boolean(),
+%%   <<"Port">> => integer(),
+%%   <<"Regions">> => list(list(any())()),
+%%   <<"ResetElements">> => list(list(any())()),
+%%   <<"ResourcePath">> => string(),
+%%   <<"SearchString">> => string()
+%% }
+-type update_health_check_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_signing_key_response() :: #{
+%%   <<"ChangeInfo">> => change_info(),
+%%   <<"KeySigningKey">> => key_signing_key(),
+%%   <<"Location">> => string()
+%% }
+-type create_key_signing_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+%% Example:
+%% get_account_limit_request() :: #{}
+-type get_account_limit_request() :: #{}.
+
+%% Example:
+%% geo_location() :: #{
+%%   <<"ContinentCode">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"SubdivisionCode">> => string()
+%% }
+-type geo_location() :: #{binary() => any()}.
+
+%% Example:
+%% get_traffic_policy_instance_count_response() :: #{
+%%   <<"TrafficPolicyInstanceCount">> => integer()
+%% }
+-type get_traffic_policy_instance_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% hosted_zone_summary() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => hosted_zone_owner()
+%% }
+-type hosted_zone_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_traffic_policy_response() :: #{
+%%   <<"TrafficPolicy">> => traffic_policy()
+%% }
+-type get_traffic_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policy_versions_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyVersionMarker">> => string()
+%% }
+-type list_traffic_policy_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vpc_association_authorizations_response() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"VPCs">> => list(vpc()())
+%% }
+-type list_vpc_association_authorizations_response() :: #{binary() => any()}.
+%% Example:
+%% get_hosted_zone_count_request() :: #{}
+-type get_hosted_zone_count_request() :: #{}.
+%% Example:
+%% get_reusable_delegation_set_limit_request() :: #{}
+-type get_reusable_delegation_set_limit_request() :: #{}.
+
+%% Example:
+%% list_traffic_policy_instances_by_hosted_zone_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
+%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance()())
+%% }
+-type list_traffic_policy_instances_by_hosted_zone_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_domain_name() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_domain_name() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_policy_summary() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LatestVersion">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"TrafficPolicyCount">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type traffic_policy_summary() :: #{binary() => any()}.
+
+%% Example:
+%% disable_hosted_zone_dns_sec_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type disable_hosted_zone_dns_sec_response() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_geo_location() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_geo_location() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_policy_instance() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string(),
+%%   <<"TTL">> => float(),
+%%   <<"TrafficPolicyId">> => string(),
+%%   <<"TrafficPolicyType">> => list(any()),
+%%   <<"TrafficPolicyVersion">> => integer()
+%% }
+-type traffic_policy_instance() :: #{binary() => any()}.
+
+%% Example:
+%% create_cidr_collection_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_cidr_collection_request() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_cidr_location_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_cidr_location_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_kms_arn() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_kms_arn() :: #{binary() => any()}.
+
+%% Example:
+%% create_cidr_collection_response() :: #{
+%%   <<"Collection">> => cidr_collection(),
+%%   <<"Location">> => string()
+%% }
+-type create_cidr_collection_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_dns_sec_response() :: #{
+%%   <<"KeySigningKeys">> => list(key_signing_key()()),
+%%   <<"Status">> => dns_sec_status()
+%% }
+-type get_dns_sec_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_query_logging_configs_request() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_query_logging_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_key_signing_key_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"HostedZoneId">> := string(),
+%%   <<"KeyManagementServiceArn">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Status">> := string()
+%% }
+-type create_key_signing_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resources_request() :: #{
+%%   <<"ResourceIds">> := list(string()())
+%% }
+-type list_tags_for_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cidr_locations_response() :: #{
+%%   <<"CidrLocations">> => list(location_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_locations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_hosted_zones_by_vpc_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"VPCId">> := string(),
+%%   <<"VPCRegion">> := list(any())
+%% }
+-type list_hosted_zones_by_vpc_request() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% update_hosted_zone_comment_request() :: #{
+%%   <<"Comment">> => string()
+%% }
+-type update_hosted_zone_comment_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hosted_zones_request() :: #{
+%%   <<"DelegationSetId">> => string(),
+%%   <<"HostedZoneType">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_hosted_zones_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_hosted_zones() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_hosted_zones() :: #{binary() => any()}.
+
+%% Example:
+%% get_geo_location_response() :: #{
+%%   <<"GeoLocationDetails">> => geo_location_details()
+%% }
+-type get_geo_location_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_reusable_delegation_set_response() :: #{
+%%   <<"DelegationSet">> => delegation_set()
+%% }
+-type get_reusable_delegation_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_routing_config() :: #{
+%%   <<"CollectionId">> => string(),
+%%   <<"LocationName">> => string()
+%% }
+-type cidr_routing_config() :: #{binary() => any()}.
+
+%% Example:
+%% health_check_config() :: #{
+%%   <<"AlarmIdentifier">> => alarm_identifier(),
+%%   <<"ChildHealthChecks">> => list(string()()),
+%%   <<"Disabled">> => boolean(),
+%%   <<"EnableSNI">> => boolean(),
+%%   <<"FailureThreshold">> => integer(),
+%%   <<"FullyQualifiedDomainName">> => string(),
+%%   <<"HealthThreshold">> => integer(),
+%%   <<"IPAddress">> => string(),
+%%   <<"InsufficientDataHealthStatus">> => list(any()),
+%%   <<"Inverted">> => boolean(),
+%%   <<"MeasureLatency">> => boolean(),
+%%   <<"Port">> => integer(),
+%%   <<"Regions">> => list(list(any())()),
+%%   <<"RequestInterval">> => integer(),
+%%   <<"ResourcePath">> => string(),
+%%   <<"RoutingControlArn">> => string(),
+%%   <<"SearchString">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type health_check_config() :: #{binary() => any()}.
+%% Example:
+%% disable_hosted_zone_dns_sec_request() :: #{}
+-type disable_hosted_zone_dns_sec_request() :: #{}.
+%% Example:
+%% delete_reusable_delegation_set_response() :: #{}
+-type delete_reusable_delegation_set_response() :: #{}.
+
+%% Example:
+%% key_signing_key_in_parent_d_s_record() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_signing_key_in_parent_d_s_record() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+%% Example:
+%% get_health_check_status_request() :: #{}
+-type get_health_check_status_request() :: #{}.
+
+%% Example:
+%% hosted_zone() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"Config">> => hosted_zone_config(),
+%%   <<"Id">> => string(),
+%%   <<"LinkedService">> => linked_service(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceRecordSetCount">> => float()
+%% }
+-type hosted_zone() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policy_versions_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicies">> => list(traffic_policy()()),
+%%   <<"TrafficPolicyVersionMarker">> => string()
+%% }
+-type list_traffic_policy_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_record_sets_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"StartRecordIdentifier">> => string(),
+%%   <<"StartRecordName">> => string(),
+%%   <<"StartRecordType">> => list(any())
+%% }
+-type list_resource_record_sets_request() :: #{binary() => any()}.
+%% Example:
+%% delete_cidr_collection_request() :: #{}
+-type delete_cidr_collection_request() :: #{}.
+
+%% Example:
+%% location_summary() :: #{
+%%   <<"LocationName">> => string()
+%% }
+-type location_summary() :: #{binary() => any()}.
+
+%% Example:
+%% hosted_zone_partially_delegated() :: #{
+%%   <<"message">> => string()
+%% }
+-type hosted_zone_partially_delegated() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_collection_version_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cidr_collection_version_mismatch_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_key_signing_key_request() :: #{}
+-type delete_key_signing_key_request() :: #{}.
+
+%% Example:
+%% last_vpc_association() :: #{
+%%   <<"message">> => string()
+%% }
+-type last_vpc_association() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_limit_response() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Limit">> => account_limit()
+%% }
+-type get_account_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_reusable_delegation_sets_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_reusable_delegation_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_collection_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cidr_collection_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_traffic_policy() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_traffic_policy() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_vpc_from_hosted_zone_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type disassociate_vpc_from_hosted_zone_response() :: #{binary() => any()}.
+
+%% Example:
+%% dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type dimension() :: #{binary() => any()}.
+
+%% Example:
+%% prior_request_not_complete() :: #{
+%%   <<"message">> => string()
+%% }
+-type prior_request_not_complete() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_key_signing_key_status() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_key_signing_key_status() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_vpc_from_hosted_zone_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"VPC">> := vpc()
+%% }
+-type disassociate_vpc_from_hosted_zone_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hosted_zones_by_name_request() :: #{
+%%   <<"DNSName">> => string(),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_hosted_zones_by_name_request() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_key_signing_key() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_key_signing_key() :: #{binary() => any()}.
+
+%% Example:
+%% update_traffic_policy_instance_request() :: #{
+%%   <<"TTL">> := float(),
+%%   <<"TrafficPolicyId">> := string(),
+%%   <<"TrafficPolicyVersion">> := integer()
+%% }
+-type update_traffic_policy_instance_request() :: #{binary() => any()}.
+%% Example:
+%% delete_traffic_policy_request() :: #{}
+-type delete_traffic_policy_request() :: #{}.
+
+%% Example:
+%% coordinates() :: #{
+%%   <<"Latitude">> => string(),
+%%   <<"Longitude">> => string()
+%% }
+-type coordinates() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_logging_config_response() :: #{
+%%   <<"QueryLoggingConfig">> => query_logging_config()
+%% }
+-type get_query_logging_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_collection() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type cidr_collection() :: #{binary() => any()}.
+%% Example:
+%% get_traffic_policy_request() :: #{}
+-type get_traffic_policy_request() :: #{}.
+
+%% Example:
+%% activate_key_signing_key_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type activate_key_signing_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% query_logging_config_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type query_logging_config_already_exists() :: #{binary() => any()}.
+%% Example:
+%% get_health_check_request() :: #{}
+-type get_health_check_request() :: #{}.
+
+%% Example:
+%% resource_record() :: #{
+%%   <<"Value">> => string()
+%% }
+-type resource_record() :: #{binary() => any()}.
+%% Example:
+%% delete_traffic_policy_instance_response() :: #{}
+-type delete_traffic_policy_instance_response() :: #{}.
+
+%% Example:
+%% too_many_key_signing_keys() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_key_signing_keys() :: #{binary() => any()}.
+
+%% Example:
+%% key_signing_key_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_signing_key_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% get_health_check_status_response() :: #{
+%%   <<"HealthCheckObservations">> => list(health_check_observation()())
+%% }
+-type get_health_check_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_record_sets_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextRecordIdentifier">> => string(),
+%%   <<"NextRecordName">> => string(),
+%%   <<"NextRecordType">> => list(any()),
+%%   <<"ResourceRecordSets">> => list(resource_record_set()())
+%% }
+-type list_resource_record_sets_response() :: #{binary() => any()}.
+%% Example:
+%% get_reusable_delegation_set_request() :: #{}
+-type get_reusable_delegation_set_request() :: #{}.
+%% Example:
+%% get_health_check_last_failure_reason_request() :: #{}
+-type get_health_check_last_failure_reason_request() :: #{}.
+
+%% Example:
+%% hosted_zone_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"PrivateZone">> => boolean()
+%% }
+-type hosted_zone_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_reusable_delegation_set_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"HostedZoneId">> => string()
+%% }
+-type create_reusable_delegation_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_vpc_with_hosted_zone_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"VPC">> := vpc()
+%% }
+-type associate_vpc_with_hosted_zone_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_health_checks_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_health_checks_request() :: #{binary() => any()}.
+
+%% Example:
+%% conflicting_types() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflicting_types() :: #{binary() => any()}.
+
+%% Example:
+%% health_check_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type health_check_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_key_signing_key_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type deactivate_key_signing_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_health_checks() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_health_checks() :: #{binary() => any()}.
+
+%% Example:
+%% create_hosted_zone_response() :: #{
+%%   <<"ChangeInfo">> => change_info(),
+%%   <<"DelegationSet">> => delegation_set(),
+%%   <<"HostedZone">> => hosted_zone(),
+%%   <<"Location">> => string(),
+%%   <<"VPC">> => vpc()
+%% }
+-type create_hosted_zone_response() :: #{binary() => any()}.
+
+%% Example:
+%% test_dns_answer_response() :: #{
+%%   <<"Nameserver">> => string(),
+%%   <<"Protocol">> => string(),
+%%   <<"RecordData">> => list(string()()),
+%%   <<"RecordName">> => string(),
+%%   <<"RecordType">> => list(any()),
+%%   <<"ResponseCode">> => string()
+%% }
+-type test_dns_answer_response() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_block_summary() :: #{
+%%   <<"CidrBlock">> => string(),
+%%   <<"LocationName">> => string()
+%% }
+-type cidr_block_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delegation_set_already_created() :: #{
+%%   <<"message">> => string()
+%% }
+-type delegation_set_already_created() :: #{binary() => any()}.
+
+%% Example:
+%% create_traffic_policy_version_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Document">> := string()
+%% }
+-type create_traffic_policy_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% hosted_zone_not_empty() :: #{
+%%   <<"message">> => string()
+%% }
+-type hosted_zone_not_empty() :: #{binary() => any()}.
+%% Example:
+%% get_checker_ip_ranges_request() :: #{}
+-type get_checker_ip_ranges_request() :: #{}.
+
+%% Example:
+%% change_cidr_collection_request() :: #{
+%%   <<"Changes">> := list(cidr_collection_change()()),
+%%   <<"CollectionVersion">> => float()
+%% }
+-type change_cidr_collection_request() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -214,8 +1897,27 @@
 %%
 %% This
 %% operation changes the KSK status to `ACTIVE'.
+-spec activate_key_signing_key(map(), binary() | list(), binary() | list(), activate_key_signing_key_request()) ->
+    {ok, activate_key_signing_key_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, invalid_signing_status(), tuple()} |
+    {error, no_such_key_signing_key(), tuple()}.
 activate_key_signing_key(Client, HostedZoneId, Name, Input) ->
     activate_key_signing_key(Client, HostedZoneId, Name, Input, []).
+
+-spec activate_key_signing_key(map(), binary() | list(), binary() | list(), activate_key_signing_key_request(), proplists:proplist()) ->
+    {ok, activate_key_signing_key_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, invalid_signing_status(), tuple()} |
+    {error, no_such_key_signing_key(), tuple()}.
 activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/activate"],
@@ -269,8 +1971,31 @@ activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %% For more information, see Access Management:
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% in the Amazon Web Services General Reference.
+-spec associate_vpc_with_hosted_zone(map(), binary() | list(), associate_vpc_with_hosted_zone_request()) ->
+    {ok, associate_vpc_with_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, conflicting_domain_exists(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, limits_exceeded(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, prior_request_not_complete(), tuple()} |
+    {error, public_zone_vpc_association(), tuple()}.
 associate_vpc_with_hosted_zone(Client, HostedZoneId, Input) ->
     associate_vpc_with_hosted_zone(Client, HostedZoneId, Input, []).
+
+-spec associate_vpc_with_hosted_zone(map(), binary() | list(), associate_vpc_with_hosted_zone_request(), proplists:proplist()) ->
+    {ok, associate_vpc_with_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, conflicting_domain_exists(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, limits_exceeded(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, not_authorized_exception(), tuple()} |
+    {error, prior_request_not_complete(), tuple()} |
+    {error, public_zone_vpc_association(), tuple()}.
 associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/associatevpc"],
@@ -318,8 +2043,27 @@ associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
 %%
 %% ` DELETE_IF_EXISTS': Delete an existing CIDR block from the
 %% collection.
+-spec change_cidr_collection(map(), binary() | list(), change_cidr_collection_request()) ->
+    {ok, change_cidr_collection_response(), tuple()} |
+    {error, any()} |
+    {error, cidr_block_in_use_exception(), tuple()} |
+    {error, cidr_collection_version_mismatch_exception(), tuple()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, limits_exceeded(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()}.
 change_cidr_collection(Client, Id, Input) ->
     change_cidr_collection(Client, Id, Input, []).
+
+-spec change_cidr_collection(map(), binary() | list(), change_cidr_collection_request(), proplists:proplist()) ->
+    {ok, change_cidr_collection_response(), tuple()} |
+    {error, any()} |
+    {error, cidr_block_in_use_exception(), tuple()} |
+    {error, cidr_collection_version_mismatch_exception(), tuple()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, limits_exceeded(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()}.
 change_cidr_collection(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(Id), ""],
@@ -460,8 +2204,25 @@ change_cidr_collection(Client, Id, Input0, Options0) ->
 %% see Limits:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html
 %% in the Amazon Route 53 Developer Guide.
+-spec change_resource_record_sets(map(), binary() | list(), change_resource_record_sets_request()) ->
+    {ok, change_resource_record_sets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_change_batch(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 change_resource_record_sets(Client, HostedZoneId, Input) ->
     change_resource_record_sets(Client, HostedZoneId, Input, []).
+
+-spec change_resource_record_sets(map(), binary() | list(), change_resource_record_sets_request(), proplists:proplist()) ->
+    {ok, change_resource_record_sets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_change_batch(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset"],
@@ -491,8 +2252,25 @@ change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
 %% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management User Guide.
+-spec change_tags_for_resource(map(), binary() | list(), binary() | list(), change_tags_for_resource_request()) ->
+    {ok, change_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 change_tags_for_resource(Client, ResourceId, ResourceType, Input) ->
     change_tags_for_resource(Client, ResourceId, ResourceType, Input, []).
+
+-spec change_tags_for_resource(map(), binary() | list(), binary() | list(), change_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, change_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
@@ -516,8 +2294,23 @@ change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a CIDR collection in the current Amazon Web Services account.
+-spec create_cidr_collection(map(), create_cidr_collection_request()) ->
+    {ok, create_cidr_collection_response(), tuple()} |
+    {error, any()} |
+    {error, cidr_collection_already_exists_exception(), tuple()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, limits_exceeded(), tuple()}.
 create_cidr_collection(Client, Input) ->
     create_cidr_collection(Client, Input, []).
+
+-spec create_cidr_collection(map(), create_cidr_collection_request(), proplists:proplist()) ->
+    {ok, create_cidr_collection_response(), tuple()} |
+    {error, any()} |
+    {error, cidr_collection_already_exists_exception(), tuple()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, limits_exceeded(), tuple()}.
 create_cidr_collection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/cidrcollection"],
@@ -603,8 +2396,21 @@ create_cidr_collection(Client, Input0, Options0) ->
 %% see the Amazon
 %% CloudWatch User Guide:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html.
+-spec create_health_check(map(), create_health_check_request()) ->
+    {ok, create_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, health_check_already_exists(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, too_many_health_checks(), tuple()}.
 create_health_check(Client, Input) ->
     create_health_check(Client, Input, []).
+
+-spec create_health_check(map(), create_health_check_request(), proplists:proplist()) ->
+    {ok, create_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, health_check_already_exists(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, too_many_health_checks(), tuple()}.
 create_health_check(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/healthcheck"],
@@ -721,8 +2527,33 @@ create_health_check(Client, Input0, Options0) ->
 %% For more information, see Access Management:
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% in the Amazon Web Services General Reference.
+-spec create_hosted_zone(map(), create_hosted_zone_request()) ->
+    {ok, create_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, conflicting_domain_exists(), tuple()} |
+    {error, delegation_set_not_available(), tuple()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, hosted_zone_already_exists(), tuple()} |
+    {error, invalid_domain_name(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, no_such_delegation_set(), tuple()} |
+    {error, too_many_hosted_zones(), tuple()}.
 create_hosted_zone(Client, Input) ->
     create_hosted_zone(Client, Input, []).
+
+-spec create_hosted_zone(map(), create_hosted_zone_request(), proplists:proplist()) ->
+    {ok, create_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, conflicting_domain_exists(), tuple()} |
+    {error, delegation_set_not_available(), tuple()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, hosted_zone_already_exists(), tuple()} |
+    {error, invalid_domain_name(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, no_such_delegation_set(), tuple()} |
+    {error, too_many_hosted_zones(), tuple()}.
 create_hosted_zone(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone"],
@@ -765,8 +2596,35 @@ create_hosted_zone(Client, Input0, Options0) ->
 %%
 %% You can only have
 %% two KSKs per hosted zone.
+-spec create_key_signing_key(map(), create_key_signing_key_request()) ->
+    {ok, create_key_signing_key_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_name(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, invalid_signing_status(), tuple()} |
+    {error, key_signing_key_already_exists(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, too_many_key_signing_keys(), tuple()}.
 create_key_signing_key(Client, Input) ->
     create_key_signing_key(Client, Input, []).
+
+-spec create_key_signing_key(map(), create_key_signing_key_request(), proplists:proplist()) ->
+    {ok, create_key_signing_key_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_name(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, invalid_signing_status(), tuple()} |
+    {error, key_signing_key_already_exists(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, too_many_key_signing_keys(), tuple()}.
 create_key_signing_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/keysigningkey"],
@@ -963,8 +2821,27 @@ create_key_signing_key(Client, Input0, Options0) ->
 %% the query logging configuration. For more information, see
 %% DeleteQueryLoggingConfig:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html.
+-spec create_query_logging_config(map(), create_query_logging_config_request()) ->
+    {ok, create_query_logging_config_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, insufficient_cloud_watch_logs_resource_policy(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cloud_watch_logs_log_group(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, query_logging_config_already_exists(), tuple()}.
 create_query_logging_config(Client, Input) ->
     create_query_logging_config(Client, Input, []).
+
+-spec create_query_logging_config(map(), create_query_logging_config_request(), proplists:proplist()) ->
+    {ok, create_query_logging_config_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, insufficient_cloud_watch_logs_resource_policy(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cloud_watch_logs_log_group(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, query_logging_config_already_exists(), tuple()}.
 create_query_logging_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/queryloggingconfig"],
@@ -1067,8 +2944,29 @@ create_query_logging_config(Client, Input0, Options0) ->
 %% servers, then migrate the hosted zones again to use the reusable
 %% delegation
 %% set.
+-spec create_reusable_delegation_set(map(), create_reusable_delegation_set_request()) ->
+    {ok, create_reusable_delegation_set_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_already_created(), tuple()} |
+    {error, delegation_set_already_reusable(), tuple()} |
+    {error, delegation_set_not_available(), tuple()} |
+    {error, hosted_zone_not_found(), tuple()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, limits_exceeded(), tuple()}.
 create_reusable_delegation_set(Client, Input) ->
     create_reusable_delegation_set(Client, Input, []).
+
+-spec create_reusable_delegation_set(map(), create_reusable_delegation_set_request(), proplists:proplist()) ->
+    {ok, create_reusable_delegation_set_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_already_created(), tuple()} |
+    {error, delegation_set_already_reusable(), tuple()} |
+    {error, delegation_set_not_available(), tuple()} |
+    {error, hosted_zone_not_found(), tuple()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, limits_exceeded(), tuple()}.
 create_reusable_delegation_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/delegationset"],
@@ -1111,8 +3009,23 @@ create_reusable_delegation_set(Client, Input0, Options0) ->
 %% resource record sets
 %% for one domain name (such as example.com) or one subdomain name (such as
 %% www.example.com).
+-spec create_traffic_policy(map(), create_traffic_policy_request()) ->
+    {ok, create_traffic_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_traffic_policy_document(), tuple()} |
+    {error, too_many_traffic_policies(), tuple()} |
+    {error, traffic_policy_already_exists(), tuple()}.
 create_traffic_policy(Client, Input) ->
     create_traffic_policy(Client, Input, []).
+
+-spec create_traffic_policy(map(), create_traffic_policy_request(), proplists:proplist()) ->
+    {ok, create_traffic_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_traffic_policy_document(), tuple()} |
+    {error, too_many_traffic_policies(), tuple()} |
+    {error, traffic_policy_already_exists(), tuple()}.
 create_traffic_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy"],
@@ -1172,8 +3085,25 @@ create_traffic_policy(Client, Input0, Options0) ->
 %% instance to confirm that the `CreateTrafficPolicyInstance'
 %% request completed successfully. For more information, see the
 %% `State' response element.
+-spec create_traffic_policy_instance(map(), create_traffic_policy_instance_request()) ->
+    {ok, create_traffic_policy_instance_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, too_many_traffic_policy_instances(), tuple()} |
+    {error, traffic_policy_instance_already_exists(), tuple()}.
 create_traffic_policy_instance(Client, Input) ->
     create_traffic_policy_instance(Client, Input, []).
+
+-spec create_traffic_policy_instance(map(), create_traffic_policy_instance_request(), proplists:proplist()) ->
+    {ok, create_traffic_policy_instance_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, too_many_traffic_policy_instances(), tuple()} |
+    {error, traffic_policy_instance_already_exists(), tuple()}.
 create_traffic_policy_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicyinstance"],
@@ -1226,8 +3156,25 @@ create_traffic_policy_instance(Client, Input0, Options0) ->
 %% of a traffic policy. If you reach the limit and need to create another
 %% version, you'll
 %% need to start a new traffic policy.
+-spec create_traffic_policy_version(map(), binary() | list(), create_traffic_policy_version_request()) ->
+    {ok, create_traffic_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_traffic_policy_document(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, too_many_traffic_policy_versions_for_current_policy(), tuple()}.
 create_traffic_policy_version(Client, Id, Input) ->
     create_traffic_policy_version(Client, Id, Input, []).
+
+-spec create_traffic_policy_version(map(), binary() | list(), create_traffic_policy_version_request(), proplists:proplist()) ->
+    {ok, create_traffic_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_traffic_policy_document(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, too_many_traffic_policy_versions_for_current_policy(), tuple()}.
 create_traffic_policy_version(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), ""],
@@ -1282,8 +3229,25 @@ create_traffic_policy_version(Client, Id, Input0, Options0) ->
 %% a hosted zone that you created by using a different account, you must
 %% submit one
 %% authorization request for each VPC.
+-spec create_vpc_association_authorization(map(), binary() | list(), create_vpc_association_authorization_request()) ->
+    {ok, create_vpc_association_authorization_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, too_many_vpc_association_authorizations(), tuple()}.
 create_vpc_association_authorization(Client, HostedZoneId, Input) ->
     create_vpc_association_authorization(Client, HostedZoneId, Input, []).
+
+-spec create_vpc_association_authorization(map(), binary() | list(), create_vpc_association_authorization_request(), proplists:proplist()) ->
+    {ok, create_vpc_association_authorization_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, too_many_vpc_association_authorizations(), tuple()}.
 create_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
@@ -1310,8 +3274,29 @@ create_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
 %% signing by DNSSEC.
 %%
 %% This operation changes the KSK status to `INACTIVE'.
+-spec deactivate_key_signing_key(map(), binary() | list(), binary() | list(), deactivate_key_signing_key_request()) ->
+    {ok, deactivate_key_signing_key_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_signing_status(), tuple()} |
+    {error, key_signing_key_in_parent_d_s_record(), tuple()} |
+    {error, key_signing_key_in_use(), tuple()} |
+    {error, no_such_key_signing_key(), tuple()}.
 deactivate_key_signing_key(Client, HostedZoneId, Name, Input) ->
     deactivate_key_signing_key(Client, HostedZoneId, Name, Input, []).
+
+-spec deactivate_key_signing_key(map(), binary() | list(), binary() | list(), deactivate_key_signing_key_request(), proplists:proplist()) ->
+    {ok, deactivate_key_signing_key_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_signing_status(), tuple()} |
+    {error, key_signing_key_in_parent_d_s_record(), tuple()} |
+    {error, key_signing_key_in_use(), tuple()} |
+    {error, no_such_key_signing_key(), tuple()}.
 deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/deactivate"],
@@ -1338,8 +3323,23 @@ deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %%
 %% The collection
 %% must be empty before it can be deleted.
+-spec delete_cidr_collection(map(), binary() | list(), delete_cidr_collection_request()) ->
+    {ok, delete_cidr_collection_response(), tuple()} |
+    {error, any()} |
+    {error, cidr_collection_in_use_exception(), tuple()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()}.
 delete_cidr_collection(Client, Id, Input) ->
     delete_cidr_collection(Client, Id, Input, []).
+
+-spec delete_cidr_collection(map(), binary() | list(), delete_cidr_collection_request(), proplists:proplist()) ->
+    {ok, delete_cidr_collection_response(), tuple()} |
+    {error, any()} |
+    {error, cidr_collection_in_use_exception(), tuple()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()}.
 delete_cidr_collection(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(Id), ""],
@@ -1387,8 +3387,21 @@ delete_cidr_collection(Client, Id, Input0, Options0) ->
 %% is deleted automatically when you deregister the instance; there can be a
 %% delay of
 %% several hours before the health check is deleted from Route 53.
+-spec delete_health_check(map(), binary() | list(), delete_health_check_request()) ->
+    {ok, delete_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, health_check_in_use(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 delete_health_check(Client, HealthCheckId, Input) ->
     delete_health_check(Client, HealthCheckId, Input, []).
+
+-spec delete_health_check(map(), binary() | list(), delete_health_check_request(), proplists:proplist()) ->
+    {ok, delete_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, health_check_in_use(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 delete_health_check(Client, HealthCheckId, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
@@ -1477,8 +3490,25 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %%
 %% Use the `ListHostedZones' action to get a list of the hosted zones
 %% associated with the current Amazon Web Services account.
+-spec delete_hosted_zone(map(), binary() | list(), delete_hosted_zone_request()) ->
+    {ok, delete_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, hosted_zone_not_empty(), tuple()} |
+    {error, invalid_domain_name(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 delete_hosted_zone(Client, Id, Input) ->
     delete_hosted_zone(Client, Id, Input, []).
+
+-spec delete_hosted_zone(map(), binary() | list(), delete_hosted_zone_request(), proplists:proplist()) ->
+    {ok, delete_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, hosted_zone_not_empty(), tuple()} |
+    {error, invalid_domain_name(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 delete_hosted_zone(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
@@ -1516,8 +3546,27 @@ delete_hosted_zone(Client, Id, Input0, Options0) ->
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetDNSSEC.html
 %% to verify that the KSK is in an `INACTIVE'
 %% status.
+-spec delete_key_signing_key(map(), binary() | list(), binary() | list(), delete_key_signing_key_request()) ->
+    {ok, delete_key_signing_key_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, invalid_signing_status(), tuple()} |
+    {error, no_such_key_signing_key(), tuple()}.
 delete_key_signing_key(Client, HostedZoneId, Name, Input) ->
     delete_key_signing_key(Client, HostedZoneId, Name, Input, []).
+
+-spec delete_key_signing_key(map(), binary() | list(), binary() | list(), delete_key_signing_key_request(), proplists:proplist()) ->
+    {ok, delete_key_signing_key_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, invalid_signing_status(), tuple()} |
+    {error, no_such_key_signing_key(), tuple()}.
 delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), ""],
@@ -1549,8 +3598,21 @@ delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %%
 %% For more information about DNS query logs, see CreateQueryLoggingConfig:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html.
+-spec delete_query_logging_config(map(), binary() | list(), delete_query_logging_config_request()) ->
+    {ok, delete_query_logging_config_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_query_logging_config(), tuple()}.
 delete_query_logging_config(Client, Id, Input) ->
     delete_query_logging_config(Client, Id, Input, []).
+
+-spec delete_query_logging_config(map(), binary() | list(), delete_query_logging_config_request(), proplists:proplist()) ->
+    {ok, delete_query_logging_config_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_query_logging_config(), tuple()}.
 delete_query_logging_config(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
@@ -1585,8 +3647,23 @@ delete_query_logging_config(Client, Id, Input0, Options0) ->
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSet.html
 %% request and specify the ID of the reusable
 %% delegation set that you want to delete.
+-spec delete_reusable_delegation_set(map(), binary() | list(), delete_reusable_delegation_set_request()) ->
+    {ok, delete_reusable_delegation_set_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_in_use(), tuple()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 delete_reusable_delegation_set(Client, Id, Input) ->
     delete_reusable_delegation_set(Client, Id, Input, []).
+
+-spec delete_reusable_delegation_set(map(), binary() | list(), delete_reusable_delegation_set_request(), proplists:proplist()) ->
+    {ok, delete_reusable_delegation_set_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_in_use(), tuple()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 delete_reusable_delegation_set(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
@@ -1626,8 +3703,23 @@ delete_reusable_delegation_set(Client, Id, Input0, Options0) ->
 %% policy,
 %% including the traffic policy document, by running GetTrafficPolicy:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html.
+-spec delete_traffic_policy(map(), binary() | list(), binary() | list(), delete_traffic_policy_request()) ->
+    {ok, delete_traffic_policy_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, traffic_policy_in_use(), tuple()}.
 delete_traffic_policy(Client, Id, Version, Input) ->
     delete_traffic_policy(Client, Id, Version, Input, []).
+
+-spec delete_traffic_policy(map(), binary() | list(), binary() | list(), delete_traffic_policy_request(), proplists:proplist()) ->
+    {ok, delete_traffic_policy_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, traffic_policy_in_use(), tuple()}.
 delete_traffic_policy(Client, Id, Version, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
@@ -1656,8 +3748,21 @@ delete_traffic_policy(Client, Id, Version, Input0, Options0) ->
 %%
 %% In the Route 53 console, traffic policy instances are known as policy
 %% records.
+-spec delete_traffic_policy_instance(map(), binary() | list(), delete_traffic_policy_instance_request()) ->
+    {ok, delete_traffic_policy_instance_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 delete_traffic_policy_instance(Client, Id, Input) ->
     delete_traffic_policy_instance(Client, Id, Input, []).
+
+-spec delete_traffic_policy_instance(map(), binary() | list(), delete_traffic_policy_instance_request(), proplists:proplist()) ->
+    {ok, delete_traffic_policy_instance_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 delete_traffic_policy_instance(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
@@ -1697,8 +3802,25 @@ delete_traffic_policy_instance(Client, Id, Input0, Options0) ->
 %% from
 %% the hosted zone. If you want to delete an existing association, use
 %% `DisassociateVPCFromHostedZone'.
+-spec delete_vpc_association_authorization(map(), binary() | list(), delete_vpc_association_authorization_request()) ->
+    {ok, delete_vpc_association_authorization_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, vpc_association_authorization_not_found(), tuple()}.
 delete_vpc_association_authorization(Client, HostedZoneId, Input) ->
     delete_vpc_association_authorization(Client, HostedZoneId, Input, []).
+
+-spec delete_vpc_association_authorization(map(), binary() | list(), delete_vpc_association_authorization_request(), proplists:proplist()) ->
+    {ok, delete_vpc_association_authorization_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, vpc_association_authorization_not_found(), tuple()}.
 delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/deauthorizevpcassociation"],
@@ -1725,8 +3847,31 @@ delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
 %%
 %% This action does not deactivate any
 %% key-signing keys (KSKs) that are active in the hosted zone.
+-spec disable_hosted_zone_dns_sec(map(), binary() | list(), disable_hosted_zone_dns_sec_request()) ->
+    {ok, disable_hosted_zone_dns_sec_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, dns_sec_not_found(), tuple()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, key_signing_key_in_parent_d_s_record(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 disable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
     disable_hosted_zone_dns_sec(Client, HostedZoneId, Input, []).
+
+-spec disable_hosted_zone_dns_sec(map(), binary() | list(), disable_hosted_zone_dns_sec_request(), proplists:proplist()) ->
+    {ok, disable_hosted_zone_dns_sec_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, dns_sec_not_found(), tuple()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, key_signing_key_in_parent_d_s_record(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disable-dnssec"],
@@ -1796,8 +3941,25 @@ disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
 %% For more information, see Access Management:
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% in the Amazon Web Services General Reference.
+-spec disassociate_vpc_from_hosted_zone(map(), binary() | list(), disassociate_vpc_from_hosted_zone_request()) ->
+    {ok, disassociate_vpc_from_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, last_vpc_association(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, vpc_association_not_found(), tuple()}.
 disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input) ->
     disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input, []).
+
+-spec disassociate_vpc_from_hosted_zone(map(), binary() | list(), disassociate_vpc_from_hosted_zone_request(), proplists:proplist()) ->
+    {ok, disassociate_vpc_from_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_vpc_id(), tuple()} |
+    {error, last_vpc_association(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, vpc_association_not_found(), tuple()}.
 disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disassociatevpc"],
@@ -1821,8 +3983,33 @@ disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables DNSSEC signing in a specific hosted zone.
+-spec enable_hosted_zone_dns_sec(map(), binary() | list(), enable_hosted_zone_dns_sec_request()) ->
+    {ok, enable_hosted_zone_dns_sec_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, dns_sec_not_found(), tuple()} |
+    {error, hosted_zone_partially_delegated(), tuple()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, key_signing_key_with_active_status_not_found(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 enable_hosted_zone_dns_sec(Client, HostedZoneId, Input) ->
     enable_hosted_zone_dns_sec(Client, HostedZoneId, Input, []).
+
+-spec enable_hosted_zone_dns_sec(map(), binary() | list(), enable_hosted_zone_dns_sec_request(), proplists:proplist()) ->
+    {ok, enable_hosted_zone_dns_sec_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, dns_sec_not_found(), tuple()} |
+    {error, hosted_zone_partially_delegated(), tuple()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_key_signing_key_status(), tuple()} |
+    {error, invalid_kms_arn(), tuple()} |
+    {error, key_signing_key_with_active_status_not_found(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/enable-dnssec"],
@@ -1862,14 +4049,26 @@ enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
 %% console at https://console.aws.amazon.com/trustedadvisor/:
 %% https://console.aws.amazon.com/trustedadvisor. Then choose Service limits
 %% in the navigation pane.
+-spec get_account_limit(map(), binary() | list()) ->
+    {ok, get_account_limit_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 get_account_limit(Client, Type)
   when is_map(Client) ->
     get_account_limit(Client, Type, #{}, #{}).
 
+-spec get_account_limit(map(), binary() | list(), map(), map()) ->
+    {ok, get_account_limit_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 get_account_limit(Client, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_limit(Client, Type, QueryMap, HeadersMap, []).
 
+-spec get_account_limit(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_account_limit_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 get_account_limit(Client, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/accountlimit/", aws_util:encode_uri(Type), ""],
@@ -1898,14 +4097,29 @@ get_account_limit(Client, Type, QueryMap, HeadersMap, Options0)
 %%
 %% `INSYNC' indicates that the changes have propagated to all Route 53
 %% DNS servers managing the hosted zone.
+-spec get_change(map(), binary() | list()) ->
+    {ok, get_change_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_change(), tuple()}.
 get_change(Client, Id)
   when is_map(Client) ->
     get_change(Client, Id, #{}, #{}).
 
+-spec get_change(map(), binary() | list(), map(), map()) ->
+    {ok, get_change_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_change(), tuple()}.
 get_change(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_change(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_change(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_change_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_change(), tuple()}.
 get_change(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/change/", aws_util:encode_uri(Id), ""],
@@ -1934,14 +4148,23 @@ get_change(Client, Id, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/route-53-ip-addresses.html
 %% in the Amazon Route 53 Developer
 %% Guide.
+-spec get_checker_ip_ranges(map()) ->
+    {ok, get_checker_ip_ranges_response(), tuple()} |
+    {error, any()}.
 get_checker_ip_ranges(Client)
   when is_map(Client) ->
     get_checker_ip_ranges(Client, #{}, #{}).
 
+-spec get_checker_ip_ranges(map(), map(), map()) ->
+    {ok, get_checker_ip_ranges_response(), tuple()} |
+    {error, any()}.
 get_checker_ip_ranges(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_checker_ip_ranges(Client, QueryMap, HeadersMap, []).
 
+-spec get_checker_ip_ranges(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_checker_ip_ranges_response(), tuple()} |
+    {error, any()}.
 get_checker_ip_ranges(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/checkeripranges"],
@@ -1961,14 +4184,32 @@ get_checker_ip_ranges(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns information about DNSSEC for a specific hosted zone,
 %% including the key-signing
 %% keys (KSKs) in the hosted zone.
+-spec get_dns_sec(map(), binary() | list()) ->
+    {ok, get_dns_sec_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 get_dns_sec(Client, HostedZoneId)
   when is_map(Client) ->
     get_dns_sec(Client, HostedZoneId, #{}, #{}).
 
+-spec get_dns_sec(map(), binary() | list(), map(), map()) ->
+    {ok, get_dns_sec_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
+-spec get_dns_sec(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_dns_sec_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_argument(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/dnssec"],
@@ -2014,14 +4255,29 @@ get_dns_sec(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
 %% ```
 %% GET /2013-04-01/geolocation?countrycode=two-character country
 %% code&amp;subdivisioncode=subdivision code '''
+-spec get_geo_location(map()) ->
+    {ok, get_geo_location_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_geo_location(), tuple()}.
 get_geo_location(Client)
   when is_map(Client) ->
     get_geo_location(Client, #{}, #{}).
 
+-spec get_geo_location(map(), map(), map()) ->
+    {ok, get_geo_location_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_geo_location(), tuple()}.
 get_geo_location(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_geo_location(Client, QueryMap, HeadersMap, []).
 
+-spec get_geo_location(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_geo_location_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_geo_location(), tuple()}.
 get_geo_location(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/geolocation"],
@@ -2045,14 +4301,32 @@ get_geo_location(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a specified health check.
+-spec get_health_check(map(), binary() | list()) ->
+    {ok, get_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, incompatible_version(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 get_health_check(Client, HealthCheckId)
   when is_map(Client) ->
     get_health_check(Client, HealthCheckId, #{}, #{}).
 
+-spec get_health_check(map(), binary() | list(), map(), map()) ->
+    {ok, get_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, incompatible_version(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 get_health_check(Client, HealthCheckId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, []).
 
+-spec get_health_check(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, incompatible_version(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
@@ -2071,14 +4345,23 @@ get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the number of health checks that are associated with the
 %% current Amazon Web Services account.
+-spec get_health_check_count(map()) ->
+    {ok, get_health_check_count_response(), tuple()} |
+    {error, any()}.
 get_health_check_count(Client)
   when is_map(Client) ->
     get_health_check_count(Client, #{}, #{}).
 
+-spec get_health_check_count(map(), map(), map()) ->
+    {ok, get_health_check_count_response(), tuple()} |
+    {error, any()}.
 get_health_check_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check_count(Client, QueryMap, HeadersMap, []).
 
+-spec get_health_check_count(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_health_check_count_response(), tuple()} |
+    {error, any()}.
 get_health_check_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheckcount"],
@@ -2096,14 +4379,29 @@ get_health_check_count(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the reason that a specified health check failed most recently.
+-spec get_health_check_last_failure_reason(map(), binary() | list()) ->
+    {ok, get_health_check_last_failure_reason_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 get_health_check_last_failure_reason(Client, HealthCheckId)
   when is_map(Client) ->
     get_health_check_last_failure_reason(Client, HealthCheckId, #{}, #{}).
 
+-spec get_health_check_last_failure_reason(map(), binary() | list(), map(), map()) ->
+    {ok, get_health_check_last_failure_reason_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap, []).
 
+-spec get_health_check_last_failure_reason(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_health_check_last_failure_reason_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/lastfailurereason"],
@@ -2127,14 +4425,29 @@ get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap
 %% support production use-cases with high query rates that require immediate
 %% and
 %% actionable responses.
+-spec get_health_check_status(map(), binary() | list()) ->
+    {ok, get_health_check_status_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 get_health_check_status(Client, HealthCheckId)
   when is_map(Client) ->
     get_health_check_status(Client, HealthCheckId, #{}, #{}).
 
+-spec get_health_check_status(map(), binary() | list(), map(), map()) ->
+    {ok, get_health_check_status_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, []).
 
+-spec get_health_check_status(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_health_check_status_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), "/status"],
@@ -2154,14 +4467,29 @@ get_health_check_status(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
 %% @doc Gets information about a specified hosted zone including the four
 %% name servers
 %% assigned to the hosted zone.
+-spec get_hosted_zone(map(), binary() | list()) ->
+    {ok, get_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 get_hosted_zone(Client, Id)
   when is_map(Client) ->
     get_hosted_zone(Client, Id, #{}, #{}).
 
+-spec get_hosted_zone(map(), binary() | list(), map(), map()) ->
+    {ok, get_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 get_hosted_zone(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_zone(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_hosted_zone(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 get_hosted_zone(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
@@ -2180,14 +4508,26 @@ get_hosted_zone(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the number of hosted zones that are associated with the
 %% current Amazon Web Services account.
+-spec get_hosted_zone_count(map()) ->
+    {ok, get_hosted_zone_count_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 get_hosted_zone_count(Client)
   when is_map(Client) ->
     get_hosted_zone_count(Client, #{}, #{}).
 
+-spec get_hosted_zone_count(map(), map(), map()) ->
+    {ok, get_hosted_zone_count_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 get_hosted_zone_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_zone_count(Client, QueryMap, HeadersMap, []).
 
+-spec get_hosted_zone_count(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_hosted_zone_count_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 get_hosted_zone_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonecount"],
@@ -2214,14 +4554,32 @@ get_hosted_zone_count(Client, QueryMap, HeadersMap, Options0)
 %% Amazon Route 53 Developer Guide. To request a higher limit,
 %% open a case:
 %% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
+-spec get_hosted_zone_limit(map(), binary() | list(), binary() | list()) ->
+    {ok, get_hosted_zone_limit_response(), tuple()} |
+    {error, any()} |
+    {error, hosted_zone_not_private(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 get_hosted_zone_limit(Client, HostedZoneId, Type)
   when is_map(Client) ->
     get_hosted_zone_limit(Client, HostedZoneId, Type, #{}, #{}).
 
+-spec get_hosted_zone_limit(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_hosted_zone_limit_response(), tuple()} |
+    {error, any()} |
+    {error, hosted_zone_not_private(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, []).
 
+-spec get_hosted_zone_limit(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_hosted_zone_limit_response(), tuple()} |
+    {error, any()} |
+    {error, hosted_zone_not_private(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonelimit/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Type), ""],
@@ -2246,14 +4604,29 @@ get_hosted_zone_limit(Client, HostedZoneId, Type, QueryMap, HeadersMap, Options0
 %% and Logging DNS
 %% Queries:
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html.
+-spec get_query_logging_config(map(), binary() | list()) ->
+    {ok, get_query_logging_config_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_query_logging_config(), tuple()}.
 get_query_logging_config(Client, Id)
   when is_map(Client) ->
     get_query_logging_config(Client, Id, #{}, #{}).
 
+-spec get_query_logging_config(map(), binary() | list(), map(), map()) ->
+    {ok, get_query_logging_config_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_query_logging_config(), tuple()}.
 get_query_logging_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_query_logging_config(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_query_logging_config(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_query_logging_config_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_query_logging_config(), tuple()}.
 get_query_logging_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
@@ -2273,14 +4646,32 @@ get_query_logging_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about a specified reusable delegation set,
 %% including the four
 %% name servers that are assigned to the delegation set.
+-spec get_reusable_delegation_set(map(), binary() | list()) ->
+    {ok, get_reusable_delegation_set_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 get_reusable_delegation_set(Client, Id)
   when is_map(Client) ->
     get_reusable_delegation_set(Client, Id, #{}, #{}).
 
+-spec get_reusable_delegation_set(map(), binary() | list(), map(), map()) ->
+    {ok, get_reusable_delegation_set_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_reusable_delegation_set(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_reusable_delegation_set_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
@@ -2307,14 +4698,29 @@ get_reusable_delegation_set(Client, Id, QueryMap, HeadersMap, Options0)
 %% Amazon Route 53 Developer Guide. To request a higher limit,
 %% open a case:
 %% https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&amp;limitType=service-code-route53.
+-spec get_reusable_delegation_set_limit(map(), binary() | list(), binary() | list()) ->
+    {ok, get_reusable_delegation_set_limit_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 get_reusable_delegation_set_limit(Client, DelegationSetId, Type)
   when is_map(Client) ->
     get_reusable_delegation_set_limit(Client, DelegationSetId, Type, #{}, #{}).
 
+-spec get_reusable_delegation_set_limit(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_reusable_delegation_set_limit_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap, []).
 
+-spec get_reusable_delegation_set_limit(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_reusable_delegation_set_limit_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/reusabledelegationsetlimit/", aws_util:encode_uri(DelegationSetId), "/", aws_util:encode_uri(Type), ""],
@@ -2337,14 +4743,29 @@ get_reusable_delegation_set_limit(Client, DelegationSetId, Type, QueryMap, Heade
 %% response from
 %% `GetTrafficPolicy', see DeleteTrafficPolicy:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html.
+-spec get_traffic_policy(map(), binary() | list(), binary() | list()) ->
+    {ok, get_traffic_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()}.
 get_traffic_policy(Client, Id, Version)
   when is_map(Client) ->
     get_traffic_policy(Client, Id, Version, #{}, #{}).
 
+-spec get_traffic_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_traffic_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()}.
 get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, []).
 
+-spec get_traffic_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_traffic_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()}.
 get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
@@ -2372,14 +4793,29 @@ get_traffic_policy(Client, Id, Version, QueryMap, HeadersMap, Options0)
 %%
 %% In the Route 53 console, traffic policy instances are known as policy
 %% records.
+-spec get_traffic_policy_instance(map(), binary() | list()) ->
+    {ok, get_traffic_policy_instance_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 get_traffic_policy_instance(Client, Id)
   when is_map(Client) ->
     get_traffic_policy_instance(Client, Id, #{}, #{}).
 
+-spec get_traffic_policy_instance(map(), binary() | list(), map(), map()) ->
+    {ok, get_traffic_policy_instance_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, []).
 
+-spec get_traffic_policy_instance(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_traffic_policy_instance_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
@@ -2399,14 +4835,23 @@ get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets the number of traffic policy instances that are associated with
 %% the current
 %% Amazon Web Services account.
+-spec get_traffic_policy_instance_count(map()) ->
+    {ok, get_traffic_policy_instance_count_response(), tuple()} |
+    {error, any()}.
 get_traffic_policy_instance_count(Client)
   when is_map(Client) ->
     get_traffic_policy_instance_count(Client, #{}, #{}).
 
+-spec get_traffic_policy_instance_count(map(), map(), map()) ->
+    {ok, get_traffic_policy_instance_count_response(), tuple()} |
+    {error, any()}.
 get_traffic_policy_instance_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, []).
 
+-spec get_traffic_policy_instance_count(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_traffic_policy_instance_count_response(), tuple()} |
+    {error, any()}.
 get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstancecount"],
@@ -2424,14 +4869,32 @@ get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a paginated list of location objects and their CIDR blocks.
+-spec list_cidr_blocks(map(), binary() | list()) ->
+    {ok, list_cidr_blocks_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()} |
+    {error, no_such_cidr_location_exception(), tuple()}.
 list_cidr_blocks(Client, CollectionId)
   when is_map(Client) ->
     list_cidr_blocks(Client, CollectionId, #{}, #{}).
 
+-spec list_cidr_blocks(map(), binary() | list(), map(), map()) ->
+    {ok, list_cidr_blocks_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()} |
+    {error, no_such_cidr_location_exception(), tuple()}.
 list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap, []).
 
+-spec list_cidr_blocks(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_cidr_blocks_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()} |
+    {error, no_such_cidr_location_exception(), tuple()}.
 list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(CollectionId), "/cidrblocks"],
@@ -2457,14 +4920,26 @@ list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap, Options0)
 %% @doc Returns a paginated list of CIDR collections in the Amazon Web
 %% Services account
 %% (metadata only).
+-spec list_cidr_collections(map()) ->
+    {ok, list_cidr_collections_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_cidr_collections(Client)
   when is_map(Client) ->
     list_cidr_collections(Client, #{}, #{}).
 
+-spec list_cidr_collections(map(), map(), map()) ->
+    {ok, list_cidr_collections_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_cidr_collections(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cidr_collections(Client, QueryMap, HeadersMap, []).
 
+-spec list_cidr_collections(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_cidr_collections_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_cidr_collections(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/cidrcollection"],
@@ -2489,14 +4964,29 @@ list_cidr_collections(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a paginated list of CIDR locations for the given collection
 %% (metadata only,
 %% does not include CIDR blocks).
+-spec list_cidr_locations(map(), binary() | list()) ->
+    {ok, list_cidr_locations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()}.
 list_cidr_locations(Client, CollectionId)
   when is_map(Client) ->
     list_cidr_locations(Client, CollectionId, #{}, #{}).
 
+-spec list_cidr_locations(map(), binary() | list(), map(), map()) ->
+    {ok, list_cidr_locations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()}.
 list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, []).
 
+-spec list_cidr_locations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_cidr_locations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_cidr_collection_exception(), tuple()}.
 list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(CollectionId), ""],
@@ -2536,14 +5026,26 @@ list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html
 %% data
 %% type.
+-spec list_geo_locations(map()) ->
+    {ok, list_geo_locations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_geo_locations(Client)
   when is_map(Client) ->
     list_geo_locations(Client, #{}, #{}).
 
+-spec list_geo_locations(map(), map(), map()) ->
+    {ok, list_geo_locations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_geo_locations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_geo_locations(Client, QueryMap, HeadersMap, []).
 
+-spec list_geo_locations(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_geo_locations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_geo_locations(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/geolocations"],
@@ -2569,14 +5071,29 @@ list_geo_locations(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieve a list of the health checks that are associated with the
 %% current Amazon Web Services account.
+-spec list_health_checks(map()) ->
+    {ok, list_health_checks_response(), tuple()} |
+    {error, any()} |
+    {error, incompatible_version(), tuple()} |
+    {error, invalid_input(), tuple()}.
 list_health_checks(Client)
   when is_map(Client) ->
     list_health_checks(Client, #{}, #{}).
 
+-spec list_health_checks(map(), map(), map()) ->
+    {ok, list_health_checks_response(), tuple()} |
+    {error, any()} |
+    {error, incompatible_version(), tuple()} |
+    {error, invalid_input(), tuple()}.
 list_health_checks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_health_checks(Client, QueryMap, HeadersMap, []).
 
+-spec list_health_checks(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_health_checks_response(), tuple()} |
+    {error, any()} |
+    {error, incompatible_version(), tuple()} |
+    {error, invalid_input(), tuple()}.
 list_health_checks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck"],
@@ -2610,14 +5127,32 @@ list_health_checks(Client, QueryMap, HeadersMap, Options0)
 %% hosted zones, you can use the `maxitems' parameter to list them in
 %% groups of
 %% up to 100.
+-spec list_hosted_zones(map()) ->
+    {ok, list_hosted_zones_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 list_hosted_zones(Client)
   when is_map(Client) ->
     list_hosted_zones(Client, #{}, #{}).
 
+-spec list_hosted_zones(map(), map(), map()) ->
+    {ok, list_hosted_zones_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 list_hosted_zones(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_zones(Client, QueryMap, HeadersMap, []).
 
+-spec list_hosted_zones(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_hosted_zones_response(), tuple()} |
+    {error, any()} |
+    {error, delegation_set_not_reusable(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_delegation_set(), tuple()}.
 list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone"],
@@ -2709,14 +5244,29 @@ list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
 %% and specify the value of `NextDNSName' and
 %% `NextHostedZoneId' in the `dnsname' and
 %% `hostedzoneid' parameters, respectively.
+-spec list_hosted_zones_by_name(map()) ->
+    {ok, list_hosted_zones_by_name_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_domain_name(), tuple()} |
+    {error, invalid_input(), tuple()}.
 list_hosted_zones_by_name(Client)
   when is_map(Client) ->
     list_hosted_zones_by_name(Client, #{}, #{}).
 
+-spec list_hosted_zones_by_name(map(), map(), map()) ->
+    {ok, list_hosted_zones_by_name_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_domain_name(), tuple()} |
+    {error, invalid_input(), tuple()}.
 list_hosted_zones_by_name(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_zones_by_name(Client, QueryMap, HeadersMap, []).
 
+-spec list_hosted_zones_by_name(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_hosted_zones_by_name_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_domain_name(), tuple()} |
+    {error, invalid_input(), tuple()}.
 list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonesbyname"],
@@ -2777,14 +5327,29 @@ list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options0)
 %% For more information, see Access Management:
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 %% in the Amazon Web Services General Reference.
+-spec list_hosted_zones_by_vpc(map(), binary() | list(), binary() | list()) ->
+    {ok, list_hosted_zones_by_vpc_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_pagination_token(), tuple()}.
 list_hosted_zones_by_vpc(Client, VPCId, VPCRegion)
   when is_map(Client) ->
     list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, #{}, #{}).
 
+-spec list_hosted_zones_by_vpc(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_hosted_zones_by_vpc_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_pagination_token(), tuple()}.
 list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, []).
 
+-spec list_hosted_zones_by_vpc(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_hosted_zones_by_vpc_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_pagination_token(), tuple()}.
 list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzonesbyvpc"],
@@ -2821,14 +5386,32 @@ list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html
 %% in
 %% the Amazon Route 53 Developer Guide.
+-spec list_query_logging_configs(map()) ->
+    {ok, list_query_logging_configs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_pagination_token(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 list_query_logging_configs(Client)
   when is_map(Client) ->
     list_query_logging_configs(Client, #{}, #{}).
 
+-spec list_query_logging_configs(map(), map(), map()) ->
+    {ok, list_query_logging_configs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_pagination_token(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 list_query_logging_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_query_logging_configs(Client, QueryMap, HeadersMap, []).
 
+-spec list_query_logging_configs(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_query_logging_configs_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_pagination_token(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/queryloggingconfig"],
@@ -2931,14 +5514,29 @@ list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
 %% specify
 %% those values for `StartRecordName', `StartRecordType', and
 %% `StartRecordIdentifier'.
+-spec list_resource_record_sets(map(), binary() | list()) ->
+    {ok, list_resource_record_sets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 list_resource_record_sets(Client, HostedZoneId)
   when is_map(Client) ->
     list_resource_record_sets(Client, HostedZoneId, #{}, #{}).
 
+-spec list_resource_record_sets(map(), binary() | list(), map(), map()) ->
+    {ok, list_resource_record_sets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
+-spec list_resource_record_sets(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_resource_record_sets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset"],
@@ -2965,14 +5563,26 @@ list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a list of the reusable delegation sets that are associated
 %% with the current
 %% Amazon Web Services account.
+-spec list_reusable_delegation_sets(map()) ->
+    {ok, list_reusable_delegation_sets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_reusable_delegation_sets(Client)
   when is_map(Client) ->
     list_reusable_delegation_sets(Client, #{}, #{}).
 
+-spec list_reusable_delegation_sets(map(), map(), map()) ->
+    {ok, list_reusable_delegation_sets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_reusable_delegation_sets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reusable_delegation_sets(Client, QueryMap, HeadersMap, []).
 
+-spec list_reusable_delegation_sets(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_reusable_delegation_sets_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/delegationset"],
@@ -3001,14 +5611,38 @@ list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options0)
 %% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management User Guide.
+-spec list_tags_for_resource(map(), binary() | list(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceId, ResourceType)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceId, ResourceType, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
@@ -3032,8 +5666,25 @@ list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, O
 %% Tags:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html
 %% in the Billing and Cost Management User Guide.
+-spec list_tags_for_resources(map(), binary() | list(), list_tags_for_resources_request()) ->
+    {ok, list_tags_for_resources_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resources(Client, ResourceType, Input) ->
     list_tags_for_resources(Client, ResourceType, Input, []).
+
+-spec list_tags_for_resources(map(), binary() | list(), list_tags_for_resources_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resources_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), ""],
@@ -3067,14 +5718,26 @@ list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
 %% response from
 %% `ListTrafficPolicies', see DeleteTrafficPolicy:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html.
+-spec list_traffic_policies(map()) ->
+    {ok, list_traffic_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_traffic_policies(Client)
   when is_map(Client) ->
     list_traffic_policies(Client, #{}, #{}).
 
+-spec list_traffic_policies(map(), map(), map()) ->
+    {ok, list_traffic_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_traffic_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policies(Client, QueryMap, HeadersMap, []).
 
+-spec list_traffic_policies(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_traffic_policies_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_traffic_policies(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicies"],
@@ -3112,14 +5775,29 @@ list_traffic_policies(Client, QueryMap, HeadersMap, Options0)
 %% policy instances, you can use the `MaxItems' parameter to list them in
 %% groups
 %% of up to 100.
+-spec list_traffic_policy_instances(map()) ->
+    {ok, list_traffic_policy_instances_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 list_traffic_policy_instances(Client)
   when is_map(Client) ->
     list_traffic_policy_instances(Client, #{}, #{}).
 
+-spec list_traffic_policy_instances(map(), map(), map()) ->
+    {ok, list_traffic_policy_instances_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 list_traffic_policy_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_instances(Client, QueryMap, HeadersMap, []).
 
+-spec list_traffic_policy_instances(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_traffic_policy_instances_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 list_traffic_policy_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstances"],
@@ -3159,14 +5837,32 @@ list_traffic_policy_instances(Client, QueryMap, HeadersMap, Options0)
 %% policy instances, you can use the `MaxItems' parameter to list them in
 %% groups
 %% of up to 100.
+-spec list_traffic_policy_instances_by_hosted_zone(map(), binary() | list()) ->
+    {ok, list_traffic_policy_instances_by_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId)
   when is_map(Client) ->
     list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, #{}, #{}).
 
+-spec list_traffic_policy_instances_by_hosted_zone(map(), binary() | list(), map(), map()) ->
+    {ok, list_traffic_policy_instances_by_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
+-spec list_traffic_policy_instances_by_hosted_zone(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_traffic_policy_instances_by_hosted_zone_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstances/hostedzone"],
@@ -3206,14 +5902,32 @@ list_traffic_policy_instances_by_hosted_zone(Client, HostedZoneId, QueryMap, Hea
 %% policy instances, you can use the `MaxItems' parameter to list them in
 %% groups
 %% of up to 100.
+-spec list_traffic_policy_instances_by_policy(map(), binary() | list(), binary() | list()) ->
+    {ok, list_traffic_policy_instances_by_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion)
   when is_map(Client) ->
     list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, #{}, #{}).
 
+-spec list_traffic_policy_instances_by_policy(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_traffic_policy_instances_by_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap, []).
 
+-spec list_traffic_policy_instances_by_policy(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_traffic_policy_instances_by_policy_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()}.
 list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstances/trafficpolicy"],
@@ -3244,14 +5958,29 @@ list_traffic_policy_instances_by_policy(Client, TrafficPolicyId, TrafficPolicyVe
 %%
 %% Traffic policy versions are listed in numerical order by
 %% `VersionNumber'.
+-spec list_traffic_policy_versions(map(), binary() | list()) ->
+    {ok, list_traffic_policy_versions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()}.
 list_traffic_policy_versions(Client, Id)
   when is_map(Client) ->
     list_traffic_policy_versions(Client, Id, #{}, #{}).
 
+-spec list_traffic_policy_versions(map(), binary() | list(), map(), map()) ->
+    {ok, list_traffic_policy_versions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()}.
 list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, []).
 
+-spec list_traffic_policy_versions(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_traffic_policy_versions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()}.
 list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/trafficpolicies/", aws_util:encode_uri(Id), "/versions"],
@@ -3280,14 +6009,32 @@ list_traffic_policy_versions(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% The response includes a `VPCs' element with a `VPC' child
 %% element for each VPC that can be associated with the hosted zone.
+-spec list_vpc_association_authorizations(map(), binary() | list()) ->
+    {ok, list_vpc_association_authorizations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_pagination_token(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 list_vpc_association_authorizations(Client, HostedZoneId)
   when is_map(Client) ->
     list_vpc_association_authorizations(Client, HostedZoneId, #{}, #{}).
 
+-spec list_vpc_association_authorizations(map(), binary() | list(), map(), map()) ->
+    {ok, list_vpc_association_authorizations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_pagination_token(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, []).
 
+-spec list_vpc_association_authorizations(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_vpc_association_authorizations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, invalid_pagination_token(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
@@ -3324,14 +6071,29 @@ list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, 
 %% servers of a subdomain that point to the parent name servers, those will
 %% not be
 %% returned.
+-spec test_dns_answer(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, test_dns_answer_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 test_dns_answer(Client, HostedZoneId, RecordName, RecordType)
   when is_map(Client) ->
     test_dns_answer(Client, HostedZoneId, RecordName, RecordType, #{}, #{}).
 
+-spec test_dns_answer(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, test_dns_answer_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap, []).
 
+-spec test_dns_answer(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, test_dns_answer_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()}.
 test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/testdnsanswer"],
@@ -3366,8 +6128,21 @@ test_dns_answer(Client, HostedZoneId, RecordName, RecordType, QueryMap, HeadersM
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html
 %% in the Amazon Route 53
 %% Developer Guide.
+-spec update_health_check(map(), binary() | list(), update_health_check_request()) ->
+    {ok, update_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, health_check_version_mismatch(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 update_health_check(Client, HealthCheckId, Input) ->
     update_health_check(Client, HealthCheckId, Input, []).
+
+-spec update_health_check(map(), binary() | list(), update_health_check_request(), proplists:proplist()) ->
+    {ok, update_health_check_response(), tuple()} |
+    {error, any()} |
+    {error, health_check_version_mismatch(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_health_check(), tuple()}.
 update_health_check(Client, HealthCheckId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
@@ -3391,8 +6166,21 @@ update_health_check(Client, HealthCheckId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the comment for a specified hosted zone.
+-spec update_hosted_zone_comment(map(), binary() | list(), update_hosted_zone_comment_request()) ->
+    {ok, update_hosted_zone_comment_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 update_hosted_zone_comment(Client, Id, Input) ->
     update_hosted_zone_comment(Client, Id, Input, []).
+
+-spec update_hosted_zone_comment(map(), binary() | list(), update_hosted_zone_comment_request(), proplists:proplist()) ->
+    {ok, update_hosted_zone_comment_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_hosted_zone(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 update_hosted_zone_comment(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
@@ -3416,8 +6204,21 @@ update_hosted_zone_comment(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the comment for a specified traffic policy version.
+-spec update_traffic_policy_comment(map(), binary() | list(), binary() | list(), update_traffic_policy_comment_request()) ->
+    {ok, update_traffic_policy_comment_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()}.
 update_traffic_policy_comment(Client, Id, Version, Input) ->
     update_traffic_policy_comment(Client, Id, Version, Input, []).
+
+-spec update_traffic_policy_comment(map(), binary() | list(), binary() | list(), update_traffic_policy_comment_request(), proplists:proplist()) ->
+    {ok, update_traffic_policy_comment_response(), tuple()} |
+    {error, any()} |
+    {error, concurrent_modification(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()}.
 update_traffic_policy_comment(Client, Id, Version, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
@@ -3477,8 +6278,25 @@ update_traffic_policy_comment(Client, Id, Version, Input0, Options0) ->
 %%
 %% Route 53 deletes the old group of resource record sets that are associated
 %% with the root resource record set name.
+-spec update_traffic_policy_instance(map(), binary() | list(), update_traffic_policy_instance_request()) ->
+    {ok, update_traffic_policy_instance_response(), tuple()} |
+    {error, any()} |
+    {error, conflicting_types(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 update_traffic_policy_instance(Client, Id, Input) ->
     update_traffic_policy_instance(Client, Id, Input, []).
+
+-spec update_traffic_policy_instance(map(), binary() | list(), update_traffic_policy_instance_request(), proplists:proplist()) ->
+    {ok, update_traffic_policy_instance_response(), tuple()} |
+    {error, any()} |
+    {error, conflicting_types(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, no_such_traffic_policy(), tuple()} |
+    {error, no_such_traffic_policy_instance(), tuple()} |
+    {error, prior_request_not_complete(), tuple()}.
 update_traffic_policy_instance(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
@@ -3505,7 +6323,7 @@ update_traffic_policy_instance(Client, Id, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

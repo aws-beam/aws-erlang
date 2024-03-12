@@ -97,6 +97,623 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% delete_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"BudgetName">> := string()
+%% }
+-type delete_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budgets_response() :: #{
+%%   <<"Budgets">> => list(budget()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budgets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_notifications_for_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_notifications_for_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_budget_response() :: #{
+
+%% }
+-type delete_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscriber_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"Notification">> := notification(),
+%%   <<"Subscriber">> := subscriber()
+%% }
+-type delete_subscriber_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_budget_action_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Action">> => action(),
+%%   <<"BudgetName">> => string()
+%% }
+-type delete_budget_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_action_histories_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimePeriod">> => time_period()
+%% }
+-type describe_budget_action_histories_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_budget_response() :: #{
+
+%% }
+-type create_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_subscriber_response() :: #{
+
+%% }
+-type update_subscriber_response() :: #{binary() => any()}.
+
+%% Example:
+%% action_threshold() :: #{
+%%   <<"ActionThresholdType">> => list(any()),
+%%   <<"ActionThresholdValue">> => float()
+%% }
+-type action_threshold() :: #{binary() => any()}.
+
+%% Example:
+%% create_subscriber_response() :: #{
+
+%% }
+-type create_subscriber_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"ActionThreshold">> => action_threshold(),
+%%   <<"ApprovalModel">> => list(any()),
+%%   <<"BudgetName">> := string(),
+%%   <<"Definition">> => definition(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"NotificationType">> => list(any()),
+%%   <<"Subscribers">> => list(subscriber()())
+%% }
+-type update_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_actions_for_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_actions_for_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budgets_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budgets_request() :: #{binary() => any()}.
+
+%% Example:
+%% time_period() :: #{
+%%   <<"End">> => non_neg_integer(),
+%%   <<"Start">> => non_neg_integer()
+%% }
+-type time_period() :: #{binary() => any()}.
+
+%% Example:
+%% create_notification_response() :: #{
+
+%% }
+-type create_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_actions_for_budget_response() :: #{
+%%   <<"Actions">> => list(action()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_actions_for_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_actions_for_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_actions_for_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"NewBudget">> := budget()
+%% }
+-type update_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscriber_response() :: #{
+
+%% }
+-type delete_subscriber_response() :: #{binary() => any()}.
+
+%% Example:
+%% expired_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type expired_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscribers_for_notification_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Subscribers">> => list(subscriber()())
+%% }
+-type describe_subscribers_for_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_notifications_for_account_response() :: #{
+%%   <<"BudgetNotificationsForAccount">> => list(budget_notifications_for_account()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_notifications_for_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% execute_budget_action_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ActionId">> => string(),
+%%   <<"BudgetName">> => string(),
+%%   <<"ExecutionType">> => list(any())
+%% }
+-type execute_budget_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% calculated_spend() :: #{
+%%   <<"ActualSpend">> => spend(),
+%%   <<"ForecastedSpend">> => spend()
+%% }
+-type calculated_spend() :: #{binary() => any()}.
+
+%% Example:
+%% update_subscriber_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"NewSubscriber">> := subscriber(),
+%%   <<"Notification">> := notification(),
+%%   <<"OldSubscriber">> := subscriber()
+%% }
+-type update_subscriber_request() :: #{binary() => any()}.
+
+%% Example:
+%% scp_action_definition() :: #{
+%%   <<"PolicyId">> => string(),
+%%   <<"TargetIds">> => list(string()())
+%% }
+-type scp_action_definition() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_performance_history_response() :: #{
+%%   <<"BudgetPerformanceHistory">> => budget_performance_history(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_performance_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% action_history() :: #{
+%%   <<"ActionHistoryDetails">> => action_history_details(),
+%%   <<"EventType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type action_history() :: #{binary() => any()}.
+
+%% Example:
+%% ssm_action_definition() :: #{
+%%   <<"ActionSubType">> => list(any()),
+%%   <<"InstanceIds">> => list(string()()),
+%%   <<"Region">> => string()
+%% }
+-type ssm_action_definition() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_action_histories_response() :: #{
+%%   <<"ActionHistories">> => list(action_history()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_action_histories_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cost_types() :: #{
+%%   <<"IncludeCredit">> => boolean(),
+%%   <<"IncludeDiscount">> => boolean(),
+%%   <<"IncludeOtherSubscription">> => boolean(),
+%%   <<"IncludeRecurring">> => boolean(),
+%%   <<"IncludeRefund">> => boolean(),
+%%   <<"IncludeSubscription">> => boolean(),
+%%   <<"IncludeSupport">> => boolean(),
+%%   <<"IncludeTax">> => boolean(),
+%%   <<"IncludeUpfront">> => boolean(),
+%%   <<"UseAmortized">> => boolean(),
+%%   <<"UseBlended">> => boolean()
+%% }
+-type cost_types() :: #{binary() => any()}.
+
+%% Example:
+%% update_budget_response() :: #{
+
+%% }
+-type update_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% auto_adjust_data() :: #{
+%%   <<"AutoAdjustType">> => list(any()),
+%%   <<"HistoricalOptions">> => historical_options(),
+%%   <<"LastAutoAdjustTime">> => non_neg_integer()
+%% }
+-type auto_adjust_data() :: #{binary() => any()}.
+
+%% Example:
+%% notification_with_subscribers() :: #{
+%%   <<"Notification">> => notification(),
+%%   <<"Subscribers">> => list(subscriber()())
+%% }
+-type notification_with_subscribers() :: #{binary() => any()}.
+
+%% Example:
+%% subscriber() :: #{
+%%   <<"Address">> => string(),
+%%   <<"SubscriptionType">> => list(any())
+%% }
+-type subscriber() :: #{binary() => any()}.
+
+%% Example:
+%% create_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionThreshold">> := action_threshold(),
+%%   <<"ActionType">> := list(any()),
+%%   <<"ApprovalModel">> := list(any()),
+%%   <<"BudgetName">> := string(),
+%%   <<"Definition">> := definition(),
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"NotificationType">> := list(any()),
+%%   <<"Subscribers">> := list(subscriber()())
+%% }
+-type create_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notifications_for_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_notifications_for_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"BudgetName">> := string()
+%% }
+-type describe_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string()
+%% }
+-type describe_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"NewNotification">> := notification(),
+%%   <<"OldNotification">> := notification()
+%% }
+-type update_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_actions_for_account_response() :: #{
+%%   <<"Actions">> => list(action()()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_budget_actions_for_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% action() :: #{
+%%   <<"ActionId">> => string(),
+%%   <<"ActionThreshold">> => action_threshold(),
+%%   <<"ActionType">> => list(any()),
+%%   <<"ApprovalModel">> => list(any()),
+%%   <<"BudgetName">> => string(),
+%%   <<"Definition">> => definition(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"NotificationType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Subscribers">> => list(subscriber()())
+%% }
+-type action() :: #{binary() => any()}.
+
+%% Example:
+%% budget() :: #{
+%%   <<"AutoAdjustData">> => auto_adjust_data(),
+%%   <<"BudgetLimit">> => spend(),
+%%   <<"BudgetName">> => string(),
+%%   <<"BudgetType">> => list(any()),
+%%   <<"CalculatedSpend">> => calculated_spend(),
+%%   <<"CostFilters">> => map(),
+%%   <<"CostTypes">> => cost_types(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"PlannedBudgetLimits">> => map(),
+%%   <<"TimePeriod">> => time_period(),
+%%   <<"TimeUnit">> => list(any())
+%% }
+-type budget() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% historical_options() :: #{
+%%   <<"BudgetAdjustmentPeriod">> => integer(),
+%%   <<"LookBackAvailablePeriods">> => integer()
+%% }
+-type historical_options() :: #{binary() => any()}.
+
+%% Example:
+%% create_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"Budget">> := budget(),
+%%   <<"NotificationsWithSubscribers">> => list(notification_with_subscribers()())
+%% }
+-type create_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% execute_budget_action_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ActionId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"ExecutionType">> := list(any())
+%% }
+-type execute_budget_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notification_response() :: #{
+
+%% }
+-type delete_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_response() :: #{
+%%   <<"Budget">> => budget()
+%% }
+-type describe_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_locked_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_locked_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notifications_for_budget_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Notifications">> => list(notification()())
+%% }
+-type describe_notifications_for_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_budget_action_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ActionId">> => string(),
+%%   <<"BudgetName">> => string()
+%% }
+-type create_budget_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% definition() :: #{
+%%   <<"IamActionDefinition">> => iam_action_definition(),
+%%   <<"ScpActionDefinition">> => scp_action_definition(),
+%%   <<"SsmActionDefinition">> => ssm_action_definition()
+%% }
+-type definition() :: #{binary() => any()}.
+
+%% Example:
+%% budgeted_and_actual_amounts() :: #{
+%%   <<"ActualAmount">> => spend(),
+%%   <<"BudgetedAmount">> => spend(),
+%%   <<"TimePeriod">> => time_period()
+%% }
+-type budgeted_and_actual_amounts() :: #{binary() => any()}.
+
+%% Example:
+%% update_budget_action_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BudgetName">> => string(),
+%%   <<"NewAction">> => action(),
+%%   <<"OldAction">> => action()
+%% }
+-type update_budget_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% notification() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"NotificationState">> => list(any()),
+%%   <<"NotificationType">> => list(any()),
+%%   <<"Threshold">> => float(),
+%%   <<"ThresholdType">> => list(any())
+%% }
+-type notification() :: #{binary() => any()}.
+
+%% Example:
+%% budget_performance_history() :: #{
+%%   <<"BudgetName">> => string(),
+%%   <<"BudgetType">> => list(any()),
+%%   <<"BudgetedAndActualAmountsList">> => list(budgeted_and_actual_amounts()()),
+%%   <<"CostFilters">> => map(),
+%%   <<"CostTypes">> => cost_types(),
+%%   <<"TimeUnit">> => list(any())
+%% }
+-type budget_performance_history() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_action_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Action">> => action(),
+%%   <<"BudgetName">> => string()
+%% }
+-type describe_budget_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_budget_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string()
+%% }
+-type delete_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_subscriber_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"Notification">> := notification(),
+%%   <<"Subscriber">> := subscriber()
+%% }
+-type create_subscriber_request() :: #{binary() => any()}.
+
+%% Example:
+%% iam_action_definition() :: #{
+%%   <<"Groups">> => list(string()()),
+%%   <<"PolicyArn">> => string(),
+%%   <<"Roles">> => list(string()()),
+%%   <<"Users">> => list(string()())
+%% }
+-type iam_action_definition() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notification_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"Notification">> := notification()
+%% }
+-type delete_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_record_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_record_exception() :: #{binary() => any()}.
+
+%% Example:
+%% budget_notifications_for_account() :: #{
+%%   <<"BudgetName">> => string(),
+%%   <<"Notifications">> => list(notification()())
+%% }
+-type budget_notifications_for_account() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_response() :: #{
+
+%% }
+-type update_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_notification_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"Notification">> := notification(),
+%%   <<"Subscribers">> := list(subscriber()())
+%% }
+-type create_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% spend() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type spend() :: #{binary() => any()}.
+
+%% Example:
+%% describe_budget_performance_history_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimePeriod">> => time_period()
+%% }
+-type describe_budget_performance_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% creation_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type creation_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% action_history_details() :: #{
+%%   <<"Action">> => action(),
+%%   <<"Message">> => string()
+%% }
+-type action_history_details() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscribers_for_notification_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"BudgetName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Notification">> := notification()
+%% }
+-type describe_subscribers_for_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -109,18 +726,58 @@
 %% `PlannedBudgetLimits', see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples
 %% section.
+-spec create_budget(map(), create_budget_request()) ->
+    {ok, create_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, creation_limit_exceeded_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_budget(Client, Input, []).
+
+-spec create_budget(map(), create_budget_request(), proplists:proplist()) ->
+    {ok, create_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, creation_limit_exceeded_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBudget">>, Input, Options).
 
 %% @doc
 %% Creates a budget action.
+-spec create_budget_action(map(), create_budget_action_request()) ->
+    {ok, create_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, creation_limit_exceeded_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_budget_action(Client, Input, []).
+
+-spec create_budget_action(map(), create_budget_action_request(), proplists:proplist()) ->
+    {ok, create_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, creation_limit_exceeded_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_budget_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBudgetAction">>, Input, Options).
@@ -128,9 +785,30 @@ create_budget_action(Client, Input, Options)
 %% @doc Creates a notification.
 %%
 %% You must create the budget before you create the associated notification.
+-spec create_notification(map(), create_notification_request()) ->
+    {ok, create_notification_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, creation_limit_exceeded_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_notification(Client, Input, []).
+
+-spec create_notification(map(), create_notification_request(), proplists:proplist()) ->
+    {ok, create_notification_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, creation_limit_exceeded_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNotification">>, Input, Options).
@@ -139,9 +817,30 @@ create_notification(Client, Input, Options)
 %%
 %% You must create the associated budget and notification before you create
 %% the subscriber.
+-spec create_subscriber(map(), create_subscriber_request()) ->
+    {ok, create_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, creation_limit_exceeded_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_subscriber(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_subscriber(Client, Input, []).
+
+-spec create_subscriber(map(), create_subscriber_request(), proplists:proplist()) ->
+    {ok, create_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, creation_limit_exceeded_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 create_subscriber(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSubscriber">>, Input, Options).
@@ -152,18 +851,54 @@ create_subscriber(Client, Input, Options)
 %%
 %% Deleting a budget also deletes the notifications and subscribers that are
 %% associated with that budget.
+-spec delete_budget(map(), delete_budget_request()) ->
+    {ok, delete_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_budget(Client, Input, []).
+
+-spec delete_budget(map(), delete_budget_request(), proplists:proplist()) ->
+    {ok, delete_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBudget">>, Input, Options).
 
 %% @doc
 %% Deletes a budget action.
+-spec delete_budget_action(map(), delete_budget_action_request()) ->
+    {ok, delete_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, resource_locked_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_budget_action(Client, Input, []).
+
+-spec delete_budget_action(map(), delete_budget_action_request(), proplists:proplist()) ->
+    {ok, delete_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, resource_locked_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_budget_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBudgetAction">>, Input, Options).
@@ -172,9 +907,26 @@ delete_budget_action(Client, Input, Options)
 %%
 %% Deleting a notification also deletes the subscribers that are associated
 %% with the notification.
+-spec delete_notification(map(), delete_notification_request()) ->
+    {ok, delete_notification_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notification(Client, Input, []).
+
+-spec delete_notification(map(), delete_notification_request(), proplists:proplist()) ->
+    {ok, delete_notification_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotification">>, Input, Options).
@@ -183,9 +935,26 @@ delete_notification(Client, Input, Options)
 %%
 %% Deleting the last subscriber to a notification also deletes the
 %% notification.
+-spec delete_subscriber(map(), delete_subscriber_request()) ->
+    {ok, delete_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_subscriber(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_subscriber(Client, Input, []).
+
+-spec delete_subscriber(map(), delete_subscriber_request(), proplists:proplist()) ->
+    {ok, delete_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 delete_subscriber(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSubscriber">>, Input, Options).
@@ -196,45 +965,134 @@ delete_subscriber(Client, Input, Options)
 %% `PlannedBudgetLimits', see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples
 %% section.
+-spec describe_budget(map(), describe_budget_request()) ->
+    {ok, describe_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget(Client, Input, []).
+
+-spec describe_budget(map(), describe_budget_request(), proplists:proplist()) ->
+    {ok, describe_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudget">>, Input, Options).
 
 %% @doc
 %% Describes a budget action detail.
+-spec describe_budget_action(map(), describe_budget_action_request()) ->
+    {ok, describe_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_action(Client, Input, []).
+
+-spec describe_budget_action(map(), describe_budget_action_request(), proplists:proplist()) ->
+    {ok, describe_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetAction">>, Input, Options).
 
 %% @doc
 %% Describes a budget action history detail.
+-spec describe_budget_action_histories(map(), describe_budget_action_histories_request()) ->
+    {ok, describe_budget_action_histories_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_action_histories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_action_histories(Client, Input, []).
+
+-spec describe_budget_action_histories(map(), describe_budget_action_histories_request(), proplists:proplist()) ->
+    {ok, describe_budget_action_histories_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_action_histories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetActionHistories">>, Input, Options).
 
 %% @doc
 %% Describes all of the budget actions for an account.
+-spec describe_budget_actions_for_account(map(), describe_budget_actions_for_account_request()) ->
+    {ok, describe_budget_actions_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_actions_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_actions_for_account(Client, Input, []).
+
+-spec describe_budget_actions_for_account(map(), describe_budget_actions_for_account_request(), proplists:proplist()) ->
+    {ok, describe_budget_actions_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_actions_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetActionsForAccount">>, Input, Options).
 
 %% @doc
 %% Describes all of the budget actions for a budget.
+-spec describe_budget_actions_for_budget(map(), describe_budget_actions_for_budget_request()) ->
+    {ok, describe_budget_actions_for_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_actions_for_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_actions_for_budget(Client, Input, []).
+
+-spec describe_budget_actions_for_budget(map(), describe_budget_actions_for_budget_request(), proplists:proplist()) ->
+    {ok, describe_budget_actions_for_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_actions_for_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetActionsForBudget">>, Input, Options).
@@ -242,9 +1100,30 @@ describe_budget_actions_for_budget(Client, Input, Options)
 %% @doc
 %% Lists the budget names and notifications that are associated with an
 %% account.
+-spec describe_budget_notifications_for_account(map(), describe_budget_notifications_for_account_request()) ->
+    {ok, describe_budget_notifications_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_notifications_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_notifications_for_account(Client, Input, []).
+
+-spec describe_budget_notifications_for_account(map(), describe_budget_notifications_for_account_request(), proplists:proplist()) ->
+    {ok, describe_budget_notifications_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_notifications_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetNotificationsForAccount">>, Input, Options).
@@ -253,9 +1132,30 @@ describe_budget_notifications_for_account(Client, Input, Options)
 %% `QUARTERLY' budgets.
 %%
 %% Budget history isn't available for `ANNUAL' budgets.
+-spec describe_budget_performance_history(map(), describe_budget_performance_history_request()) ->
+    {ok, describe_budget_performance_history_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_performance_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budget_performance_history(Client, Input, []).
+
+-spec describe_budget_performance_history(map(), describe_budget_performance_history_request(), proplists:proplist()) ->
+    {ok, describe_budget_performance_history_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budget_performance_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetPerformanceHistory">>, Input, Options).
@@ -266,34 +1166,116 @@ describe_budget_performance_history(Client, Input, Options)
 %% `PlannedBudgetLimits', see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples
 %% section.
+-spec describe_budgets(map(), describe_budgets_request()) ->
+    {ok, describe_budgets_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budgets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_budgets(Client, Input, []).
+
+-spec describe_budgets(map(), describe_budgets_request(), proplists:proplist()) ->
+    {ok, describe_budgets_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_budgets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgets">>, Input, Options).
 
 %% @doc Lists the notifications that are associated with a budget.
+-spec describe_notifications_for_budget(map(), describe_notifications_for_budget_request()) ->
+    {ok, describe_notifications_for_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_notifications_for_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notifications_for_budget(Client, Input, []).
+
+-spec describe_notifications_for_budget(map(), describe_notifications_for_budget_request(), proplists:proplist()) ->
+    {ok, describe_notifications_for_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_notifications_for_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotificationsForBudget">>, Input, Options).
 
 %% @doc Lists the subscribers that are associated with a notification.
+-spec describe_subscribers_for_notification(map(), describe_subscribers_for_notification_request()) ->
+    {ok, describe_subscribers_for_notification_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_subscribers_for_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subscribers_for_notification(Client, Input, []).
+
+-spec describe_subscribers_for_notification(map(), describe_subscribers_for_notification_request(), proplists:proplist()) ->
+    {ok, describe_subscribers_for_notification_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_next_token_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 describe_subscribers_for_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubscribersForNotification">>, Input, Options).
 
 %% @doc
 %% Executes a budget action.
+-spec execute_budget_action(map(), execute_budget_action_request()) ->
+    {ok, execute_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, resource_locked_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 execute_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_budget_action(Client, Input, []).
+
+-spec execute_budget_action(map(), execute_budget_action_request(), proplists:proplist()) ->
+    {ok, execute_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, resource_locked_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 execute_budget_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteBudgetAction">>, Input, Options).
@@ -311,34 +1293,108 @@ execute_budget_action(Client, Input, Options)
 %% `PlannedBudgetLimits', see the Examples:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples
 %% section.
+-spec update_budget(map(), update_budget_request()) ->
+    {ok, update_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_budget(Client, Input, []).
+
+-spec update_budget(map(), update_budget_request(), proplists:proplist()) ->
+    {ok, update_budget_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBudget">>, Input, Options).
 
 %% @doc
 %% Updates a budget action.
+-spec update_budget_action(map(), update_budget_action_request()) ->
+    {ok, update_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, resource_locked_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_budget_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_budget_action(Client, Input, []).
+
+-spec update_budget_action(map(), update_budget_action_request(), proplists:proplist()) ->
+    {ok, update_budget_action_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, resource_locked_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_budget_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateBudgetAction">>, Input, Options).
 
 %% @doc Updates a notification.
+-spec update_notification(map(), update_notification_request()) ->
+    {ok, update_notification_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_notification(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notification(Client, Input, []).
+
+-spec update_notification(map(), update_notification_request(), proplists:proplist()) ->
+    {ok, update_notification_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_notification(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNotification">>, Input, Options).
 
 %% @doc Updates a subscriber.
+-spec update_subscriber(map(), update_subscriber_request()) ->
+    {ok, update_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_subscriber(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subscriber(Client, Input, []).
+
+-spec update_subscriber(map(), update_subscriber_request(), proplists:proplist()) ->
+    {ok, update_subscriber_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, duplicate_record_exception(), tuple()} |
+    {error, internal_error_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 update_subscriber(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSubscriber">>, Input, Options).

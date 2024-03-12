@@ -77,6 +77,693 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% check_domain_transferability_request() :: #{
+%%   <<"AuthCode">> => string(),
+%%   <<"DomainName">> := string()
+%% }
+-type check_domain_transferability_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_detail_response() :: #{
+%%   <<"AbuseContactEmail">> => string(),
+%%   <<"AbuseContactPhone">> => string(),
+%%   <<"AdminContact">> => contact_detail(),
+%%   <<"AdminPrivacy">> => boolean(),
+%%   <<"AutoRenew">> => boolean(),
+%%   <<"BillingContact">> => contact_detail(),
+%%   <<"BillingPrivacy">> => boolean(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DnsSec">> => string(),
+%%   <<"DnssecKeys">> => list(dnssec_key()()),
+%%   <<"DomainName">> => string(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"Nameservers">> => list(nameserver()()),
+%%   <<"RegistrantContact">> => contact_detail(),
+%%   <<"RegistrantPrivacy">> => boolean(),
+%%   <<"RegistrarName">> => string(),
+%%   <<"RegistrarUrl">> => string(),
+%%   <<"RegistryDomainId">> => string(),
+%%   <<"Reseller">> => string(),
+%%   <<"StatusList">> => list(string()()),
+%%   <<"TechContact">> => contact_detail(),
+%%   <<"TechPrivacy">> => boolean(),
+%%   <<"UpdatedDate">> => non_neg_integer(),
+%%   <<"WhoIsServer">> => string()
+%% }
+-type get_domain_detail_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_domain_auto_renew_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type disable_domain_auto_renew_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type delete_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_operation_detail_request() :: #{
+%%   <<"OperationId">> := string()
+%% }
+-type get_operation_detail_request() :: #{binary() => any()}.
+
+%% Example:
+%% check_domain_transferability_response() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Transferability">> => domain_transferability()
+%% }
+-type check_domain_transferability_response() :: #{binary() => any()}.
+
+%% Example:
+%% reject_domain_transfer_from_another_aws_account_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type reject_domain_transfer_from_another_aws_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% check_domain_availability_response() :: #{
+%%   <<"Availability">> => list(any())
+%% }
+-type check_domain_availability_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_nameservers_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type update_domain_nameservers_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_contact_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type update_domain_contact_response() :: #{binary() => any()}.
+
+%% Example:
+%% filter_condition() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string()())
+%% }
+-type filter_condition() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input() :: #{binary() => any()}.
+
+%% Example:
+%% domain_transferability() :: #{
+%%   <<"Transferable">> => list(any())
+%% }
+-type domain_transferability() :: #{binary() => any()}.
+
+%% Example:
+%% nameserver() :: #{
+%%   <<"GlueIps">> => list(string()()),
+%%   <<"Name">> => string()
+%% }
+-type nameserver() :: #{binary() => any()}.
+
+%% Example:
+%% list_prices_response() :: #{
+%%   <<"NextPageMarker">> => string(),
+%%   <<"Prices">> => list(domain_price()())
+%% }
+-type list_prices_response() :: #{binary() => any()}.
+
+%% Example:
+%% billing_record() :: #{
+%%   <<"BillDate">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"InvoiceId">> => string(),
+%%   <<"Operation">> => list(any()),
+%%   <<"Price">> => float()
+%% }
+-type billing_record() :: #{binary() => any()}.
+
+%% Example:
+%% dnssec_key() :: #{
+%%   <<"Algorithm">> => integer(),
+%%   <<"Digest">> => string(),
+%%   <<"DigestType">> => integer(),
+%%   <<"Flags">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"KeyTag">> => integer(),
+%%   <<"PublicKey">> => string()
+%% }
+-type dnssec_key() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_reachability_status_response() :: #{
+%%   <<"domainName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_contact_reachability_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% domain_summary() :: #{
+%%   <<"AutoRenew">> => boolean(),
+%%   <<"DomainName">> => string(),
+%%   <<"Expiry">> => non_neg_integer(),
+%%   <<"TransferLock">> => boolean()
+%% }
+-type domain_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_detail_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type get_domain_detail_request() :: #{binary() => any()}.
+
+%% Example:
+%% contact_detail() :: #{
+%%   <<"AddressLine1">> => string(),
+%%   <<"AddressLine2">> => string(),
+%%   <<"City">> => string(),
+%%   <<"ContactType">> => list(any()),
+%%   <<"CountryCode">> => list(any()),
+%%   <<"Email">> => string(),
+%%   <<"ExtraParams">> => list(extra_param()()),
+%%   <<"Fax">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"OrganizationName">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"State">> => string(),
+%%   <<"ZipCode">> => string()
+%% }
+-type contact_detail() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_domain_response() :: #{
+%%   <<"TagList">> => list(tag()())
+%% }
+-type list_tags_for_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_domain_request() :: #{
+%%   <<"AdminContact">> := contact_detail(),
+%%   <<"AutoRenew">> => boolean(),
+%%   <<"BillingContact">> => contact_detail(),
+%%   <<"DomainName">> := string(),
+%%   <<"DurationInYears">> := integer(),
+%%   <<"IdnLangCode">> => string(),
+%%   <<"PrivacyProtectAdminContact">> => boolean(),
+%%   <<"PrivacyProtectBillingContact">> => boolean(),
+%%   <<"PrivacyProtectRegistrantContact">> => boolean(),
+%%   <<"PrivacyProtectTechContact">> => boolean(),
+%%   <<"RegistrantContact">> := contact_detail(),
+%%   <<"TechContact">> := contact_detail()
+%% }
+-type register_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% extra_param() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type extra_param() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_for_domain_response() :: #{
+
+%% }
+-type delete_tags_for_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_nameservers_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"FIAuthKey">> => string(),
+%%   <<"Nameservers">> := list(nameserver()())
+%% }
+-type update_domain_nameservers_request() :: #{binary() => any()}.
+
+%% Example:
+%% accept_domain_transfer_from_another_aws_account_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"Password">> := string()
+%% }
+-type accept_domain_transfer_from_another_aws_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type register_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% operation_summary() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusFlag">> => list(any()),
+%%   <<"SubmittedDate">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type operation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_domain_to_another_aws_account_response() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"Password">> => string()
+%% }
+-type transfer_domain_to_another_aws_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% operation_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% enable_domain_auto_renew_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type enable_domain_auto_renew_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_domain_transfer_lock_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type disable_domain_transfer_lock_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_suggestions_response() :: #{
+%%   <<"SuggestionsList">> => list(domain_suggestion()())
+%% }
+-type get_domain_suggestions_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_tags_for_domain_response() :: #{
+
+%% }
+-type update_tags_for_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_domain_request() :: #{
+%%   <<"AdminContact">> := contact_detail(),
+%%   <<"AuthCode">> => string(),
+%%   <<"AutoRenew">> => boolean(),
+%%   <<"BillingContact">> => contact_detail(),
+%%   <<"DomainName">> := string(),
+%%   <<"DurationInYears">> := integer(),
+%%   <<"IdnLangCode">> => string(),
+%%   <<"Nameservers">> => list(nameserver()()),
+%%   <<"PrivacyProtectAdminContact">> => boolean(),
+%%   <<"PrivacyProtectBillingContact">> => boolean(),
+%%   <<"PrivacyProtectRegistrantContact">> => boolean(),
+%%   <<"PrivacyProtectTechContact">> => boolean(),
+%%   <<"RegistrantContact">> := contact_detail(),
+%%   <<"TechContact">> := contact_detail()
+%% }
+-type transfer_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_domain_transfer_lock_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type enable_domain_transfer_lock_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_domain_auto_renew_response() :: #{
+
+%% }
+-type disable_domain_auto_renew_response() :: #{binary() => any()}.
+
+%% Example:
+%% domain_suggestion() :: #{
+%%   <<"Availability">> => string(),
+%%   <<"DomainName">> => string()
+%% }
+-type domain_suggestion() :: #{binary() => any()}.
+
+%% Example:
+%% view_billing_response() :: #{
+%%   <<"BillingRecords">> => list(billing_record()()),
+%%   <<"NextPageMarker">> => string()
+%% }
+-type view_billing_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_contact_privacy_request() :: #{
+%%   <<"AdminPrivacy">> => boolean(),
+%%   <<"BillingPrivacy">> => boolean(),
+%%   <<"DomainName">> := string(),
+%%   <<"RegistrantPrivacy">> => boolean(),
+%%   <<"TechPrivacy">> => boolean()
+%% }
+-type update_domain_contact_privacy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type delete_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% resend_contact_reachability_email_request() :: #{
+%%   <<"domainName">> => string()
+%% }
+-type resend_contact_reachability_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_tags_for_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"TagsToUpdate">> => list(tag()())
+%% }
+-type update_tags_for_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% accept_domain_transfer_from_another_aws_account_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type accept_domain_transfer_from_another_aws_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Status">> => list(list(any())()),
+%%   <<"SubmittedSince">> => non_neg_integer(),
+%%   <<"Type">> => list(list(any())())
+%% }
+-type list_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% dnssec_signing_attributes() :: #{
+%%   <<"Algorithm">> => integer(),
+%%   <<"Flags">> => integer(),
+%%   <<"PublicKey">> => string()
+%% }
+-type dnssec_signing_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% get_operation_detail_response() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusFlag">> => list(any()),
+%%   <<"SubmittedDate">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type get_operation_detail_response() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_domain_auth_code_response() :: #{
+%%   <<"AuthCode">> => string()
+%% }
+-type retrieve_domain_auth_code_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% view_billing_request() :: #{
+%%   <<"End">> => non_neg_integer(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Start">> => non_neg_integer()
+%% }
+-type view_billing_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_response() :: #{
+%%   <<"Domains">> => list(domain_summary()()),
+%%   <<"NextPageMarker">> => string()
+%% }
+-type list_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_delegation_signer_to_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type associate_delegation_signer_to_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_domain_auto_renew_response() :: #{
+
+%% }
+-type enable_domain_auto_renew_response() :: #{binary() => any()}.
+
+%% Example:
+%% renew_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type renew_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_t_l_d() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_t_l_d() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_request() :: #{
+%%   <<"message">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type duplicate_request() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_d_rules_violation() :: #{
+%%   <<"message">> => string()
+%% }
+-type t_l_d_rules_violation() :: #{binary() => any()}.
+
+%% Example:
+%% enable_domain_transfer_lock_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type enable_domain_transfer_lock_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_contact_privacy_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type update_domain_contact_privacy_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_delegation_signer_to_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"SigningAttributes">> := dnssec_signing_attributes()
+%% }
+-type associate_delegation_signer_to_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_domain_auth_code_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type retrieve_domain_auth_code_request() :: #{binary() => any()}.
+
+%% Example:
+%% resend_contact_reachability_email_response() :: #{
+%%   <<"domainName">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"isAlreadyVerified">> => boolean()
+%% }
+-type resend_contact_reachability_email_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"FilterConditions">> => list(filter_condition()()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SortCondition">> => sort_condition()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% dnssec_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type dnssec_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% resend_operation_authorization_request() :: #{
+%%   <<"OperationId">> := string()
+%% }
+-type resend_operation_authorization_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_delegation_signer_from_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type disassociate_delegation_signer_from_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_response() :: #{
+%%   <<"NextPageMarker">> => string(),
+%%   <<"Operations">> => list(operation_summary()())
+%% }
+-type list_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_domain_contact_request() :: #{
+%%   <<"AdminContact">> => contact_detail(),
+%%   <<"BillingContact">> => contact_detail(),
+%%   <<"Consent">> => consent(),
+%%   <<"DomainName">> := string(),
+%%   <<"RegistrantContact">> => contact_detail(),
+%%   <<"TechContact">> => contact_detail()
+%% }
+-type update_domain_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_domain_transfer_to_another_aws_account_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type cancel_domain_transfer_to_another_aws_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% domain_price() :: #{
+%%   <<"ChangeOwnershipPrice">> => price_with_currency(),
+%%   <<"Name">> => string(),
+%%   <<"RegistrationPrice">> => price_with_currency(),
+%%   <<"RenewalPrice">> => price_with_currency(),
+%%   <<"RestorationPrice">> => price_with_currency(),
+%%   <<"TransferPrice">> => price_with_currency()
+%% }
+-type domain_price() :: #{binary() => any()}.
+
+%% Example:
+%% renew_domain_request() :: #{
+%%   <<"CurrentExpiryYear">> := integer(),
+%%   <<"DomainName">> := string(),
+%%   <<"DurationInYears">> => integer()
+%% }
+-type renew_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% check_domain_availability_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"IdnLangCode">> => string()
+%% }
+-type check_domain_availability_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_for_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"TagsToDelete">> := list(string()())
+%% }
+-type delete_tags_for_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% push_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"Target">> := string()
+%% }
+-type push_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_domain_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type list_tags_for_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% domain_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type domain_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% disable_domain_transfer_lock_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type disable_domain_transfer_lock_request() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_domain_to_another_aws_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"DomainName">> := string()
+%% }
+-type transfer_domain_to_another_aws_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_reachability_status_request() :: #{
+%%   <<"domainName">> => string()
+%% }
+-type get_contact_reachability_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% price_with_currency() :: #{
+%%   <<"Currency">> => string(),
+%%   <<"Price">> => float()
+%% }
+-type price_with_currency() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_delegation_signer_from_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"Id">> := string()
+%% }
+-type disassociate_delegation_signer_from_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% reject_domain_transfer_from_another_aws_account_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type reject_domain_transfer_from_another_aws_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% consent() :: #{
+%%   <<"Currency">> => string(),
+%%   <<"MaxPrice">> => float()
+%% }
+-type consent() :: #{binary() => any()}.
+
+%% Example:
+%% list_prices_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Tld">> => string()
+%% }
+-type list_prices_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_domain_transfer_to_another_aws_account_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type cancel_domain_transfer_to_another_aws_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type transfer_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_suggestions_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"OnlyAvailable">> := boolean(),
+%%   <<"SuggestionCount">> := integer()
+%% }
+-type get_domain_suggestions_request() :: #{binary() => any()}.
+
+%% Example:
+%% sort_condition() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type sort_condition() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -104,9 +791,24 @@
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
 %% provides additional information, for example,
 %% `Domain Transfer from Aws Account 111122223333 has been cancelled'.
+-spec accept_domain_transfer_from_another_aws_account(map(), accept_domain_transfer_from_another_aws_account_request()) ->
+    {ok, accept_domain_transfer_from_another_aws_account_response(), tuple()} |
+    {error, any()} |
+    {error, domain_limit_exceeded(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 accept_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_domain_transfer_from_another_aws_account(Client, Input, []).
+
+-spec accept_domain_transfer_from_another_aws_account(map(), accept_domain_transfer_from_another_aws_account_request(), proplists:proplist()) ->
+    {ok, accept_domain_transfer_from_another_aws_account_response(), tuple()} |
+    {error, any()} |
+    {error, domain_limit_exceeded(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 accept_domain_transfer_from_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptDomainTransferFromAnotherAwsAccount">>, Input, Options).
@@ -126,9 +828,28 @@ accept_domain_transfer_from_another_aws_account(Client, Input, Options)
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec.html
 %% in the Route 53 developer
 %% guide.
+-spec associate_delegation_signer_to_domain(map(), associate_delegation_signer_to_domain_request()) ->
+    {ok, associate_delegation_signer_to_domain_response(), tuple()} |
+    {error, any()} |
+    {error, dnssec_limit_exceeded(), tuple()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 associate_delegation_signer_to_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_delegation_signer_to_domain(Client, Input, []).
+
+-spec associate_delegation_signer_to_domain(map(), associate_delegation_signer_to_domain_request(), proplists:proplist()) ->
+    {ok, associate_delegation_signer_to_domain_response(), tuple()} |
+    {error, any()} |
+    {error, dnssec_limit_exceeded(), tuple()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 associate_delegation_signer_to_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDelegationSignerToDomain">>, Input, Options).
@@ -154,9 +875,22 @@ associate_delegation_signer_to_domain(Client, Input, Options)
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
 %% provides additional information, for example,
 %% `Domain Transfer from Aws Account 111122223333 has been cancelled'.
+-spec cancel_domain_transfer_to_another_aws_account(map(), cancel_domain_transfer_to_another_aws_account_request()) ->
+    {ok, cancel_domain_transfer_to_another_aws_account_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 cancel_domain_transfer_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_domain_transfer_to_another_aws_account(Client, Input, []).
+
+-spec cancel_domain_transfer_to_another_aws_account(map(), cancel_domain_transfer_to_another_aws_account_request(), proplists:proplist()) ->
+    {ok, cancel_domain_transfer_to_another_aws_account_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 cancel_domain_transfer_to_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelDomainTransferToAnotherAwsAccount">>, Input, Options).
@@ -167,17 +901,39 @@ cancel_domain_transfer_to_another_aws_account(Client, Input, Options)
 %% availability status of a domain is pending, you must submit another
 %% request to determine
 %% the availability of the domain name.
+-spec check_domain_availability(map(), check_domain_availability_request()) ->
+    {ok, check_domain_availability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 check_domain_availability(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_domain_availability(Client, Input, []).
+
+-spec check_domain_availability(map(), check_domain_availability_request(), proplists:proplist()) ->
+    {ok, check_domain_availability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 check_domain_availability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckDomainAvailability">>, Input, Options).
 
 %% @doc Checks whether a domain name can be transferred to Amazon Route 53.
+-spec check_domain_transferability(map(), check_domain_transferability_request()) ->
+    {ok, check_domain_transferability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 check_domain_transferability(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_domain_transferability(Client, Input, []).
+
+-spec check_domain_transferability(map(), check_domain_transferability_request(), proplists:proplist()) ->
+    {ok, check_domain_transferability_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 check_domain_transferability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckDomainTransferability">>, Input, Options).
@@ -206,9 +962,24 @@ check_domain_transferability(Client, Input, Options)
 %% registrant contact. The email will come from
 %% `noreply@domainnameverification.net' or
 %% `noreply@registrar.amazon.com'.
+-spec delete_domain(map(), delete_domain_request()) ->
+    {ok, delete_domain_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
+
+-spec delete_domain(map(), delete_domain_request(), proplists:proplist()) ->
+    {ok, delete_domain_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 delete_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomain">>, Input, Options).
@@ -218,9 +989,22 @@ delete_domain(Client, Input, Options)
 %% All tag operations are eventually consistent; subsequent operations might
 %% not
 %% immediately represent all issued operations.
+-spec delete_tags_for_domain(map(), delete_tags_for_domain_request()) ->
+    {ok, delete_tags_for_domain_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 delete_tags_for_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags_for_domain(Client, Input, []).
+
+-spec delete_tags_for_domain(map(), delete_tags_for_domain_request(), proplists:proplist()) ->
+    {ok, delete_tags_for_domain_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 delete_tags_for_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTagsForDomain">>, Input, Options).
@@ -228,9 +1012,20 @@ delete_tags_for_domain(Client, Input, Options)
 %% @doc This operation disables automatic renewal of domain registration for
 %% the specified
 %% domain.
+-spec disable_domain_auto_renew(map(), disable_domain_auto_renew_request()) ->
+    {ok, disable_domain_auto_renew_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 disable_domain_auto_renew(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_domain_auto_renew(Client, Input, []).
+
+-spec disable_domain_auto_renew(map(), disable_domain_auto_renew_request(), proplists:proplist()) ->
+    {ok, disable_domain_auto_renew_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 disable_domain_auto_renew(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableDomainAutoRenew">>, Input, Options).
@@ -247,9 +1042,26 @@ disable_domain_auto_renew(Client, Input, Options)
 %% can use to track the progress and completion of the action. If the request
 %% is not
 %% completed successfully, the domain registrant will be notified by email.
+-spec disable_domain_transfer_lock(map(), disable_domain_transfer_lock_request()) ->
+    {ok, disable_domain_transfer_lock_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 disable_domain_transfer_lock(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_domain_transfer_lock(Client, Input, []).
+
+-spec disable_domain_transfer_lock(map(), disable_domain_transfer_lock_request(), proplists:proplist()) ->
+    {ok, disable_domain_transfer_lock_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 disable_domain_transfer_lock(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableDomainTransferLock">>, Input, Options).
@@ -257,9 +1069,26 @@ disable_domain_transfer_lock(Client, Input, Options)
 %% @doc Deletes a delegation signer (DS) record in the registry zone for this
 %% domain
 %% name.
+-spec disassociate_delegation_signer_from_domain(map(), disassociate_delegation_signer_from_domain_request()) ->
+    {ok, disassociate_delegation_signer_from_domain_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 disassociate_delegation_signer_from_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_delegation_signer_from_domain(Client, Input, []).
+
+-spec disassociate_delegation_signer_from_domain(map(), disassociate_delegation_signer_from_domain_request(), proplists:proplist()) ->
+    {ok, disassociate_delegation_signer_from_domain_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 disassociate_delegation_signer_from_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDelegationSignerFromDomain">>, Input, Options).
@@ -279,9 +1108,22 @@ disassociate_delegation_signer_from_domain(Client, Input, Options)
 %% in the Amazon Route 53 Developer
 %% Guide. Route 53 requires that you renew before the end of the renewal
 %% period so we can complete processing before the deadline.
+-spec enable_domain_auto_renew(map(), enable_domain_auto_renew_request()) ->
+    {ok, enable_domain_auto_renew_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 enable_domain_auto_renew(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_domain_auto_renew(Client, Input, []).
+
+-spec enable_domain_auto_renew(map(), enable_domain_auto_renew_request(), proplists:proplist()) ->
+    {ok, enable_domain_auto_renew_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 enable_domain_auto_renew(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableDomainAutoRenew">>, Input, Options).
@@ -294,9 +1136,26 @@ enable_domain_auto_renew(Client, Input, Options)
 %% completion of the action. If the request is not completed successfully,
 %% the domain
 %% registrant will be notified by email.
+-spec enable_domain_transfer_lock(map(), enable_domain_transfer_lock_request()) ->
+    {ok, enable_domain_transfer_lock_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 enable_domain_transfer_lock(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_domain_transfer_lock(Client, Input, []).
+
+-spec enable_domain_transfer_lock(map(), enable_domain_transfer_lock_request(), proplists:proplist()) ->
+    {ok, enable_domain_transfer_lock_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 enable_domain_transfer_lock(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableDomainTransferLock">>, Input, Options).
@@ -309,9 +1168,22 @@ enable_domain_transfer_lock(Client, Input, Options)
 %%
 %% If you want us to resend the email, use the
 %% `ResendContactReachabilityEmail' operation.
+-spec get_contact_reachability_status(map(), get_contact_reachability_status_request()) ->
+    {ok, get_contact_reachability_status_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 get_contact_reachability_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_reachability_status(Client, Input, []).
+
+-spec get_contact_reachability_status(map(), get_contact_reachability_status_request(), proplists:proplist()) ->
+    {ok, get_contact_reachability_status_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 get_contact_reachability_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContactReachabilityStatus">>, Input, Options).
@@ -322,27 +1194,58 @@ get_contact_reachability_status(Client, Input, Options)
 %%
 %% Contact information for the
 %% domain is also returned as part of the output.
+-spec get_domain_detail(map(), get_domain_detail_request()) ->
+    {ok, get_domain_detail_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 get_domain_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_domain_detail(Client, Input, []).
+
+-spec get_domain_detail(map(), get_domain_detail_request(), proplists:proplist()) ->
+    {ok, get_domain_detail_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 get_domain_detail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDomainDetail">>, Input, Options).
 
 %% @doc The GetDomainSuggestions operation returns a list of suggested domain
 %% names.
+-spec get_domain_suggestions(map(), get_domain_suggestions_request()) ->
+    {ok, get_domain_suggestions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 get_domain_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_domain_suggestions(Client, Input, []).
+
+-spec get_domain_suggestions(map(), get_domain_suggestions_request(), proplists:proplist()) ->
+    {ok, get_domain_suggestions_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 get_domain_suggestions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDomainSuggestions">>, Input, Options).
 
 %% @doc This operation returns the current status of an operation that is not
 %% completed.
+-spec get_operation_detail(map(), get_operation_detail_request()) ->
+    {ok, get_operation_detail_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 get_operation_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_operation_detail(Client, Input, []).
+
+-spec get_operation_detail(map(), get_operation_detail_request(), proplists:proplist()) ->
+    {ok, get_operation_detail_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 get_operation_detail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOperationDetail">>, Input, Options).
@@ -350,9 +1253,18 @@ get_operation_detail(Client, Input, Options)
 %% @doc This operation returns all the domain names registered with Amazon
 %% Route 53 for the
 %% current Amazon Web Services account if no filtering conditions are used.
+-spec list_domains(map(), list_domains_request()) ->
+    {ok, list_domains_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
+
+-spec list_domains(map(), list_domains_request(), proplists:proplist()) ->
+    {ok, list_domains_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDomains">>, Input, Options).
@@ -363,9 +1275,18 @@ list_domains(Client, Input, Options)
 %% account.
 %%
 %% This command runs only in the us-east-1 Region.
+-spec list_operations(map(), list_operations_request()) ->
+    {ok, list_operations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_operations(Client, Input, []).
+
+-spec list_operations(map(), list_operations_request(), proplists:proplist()) ->
+    {ok, list_operations_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 list_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOperations">>, Input, Options).
@@ -383,9 +1304,20 @@ list_operations(Client, Input, Options)
 %% Domain renewal
 %%
 %% Domain restoration
+-spec list_prices(map(), list_prices_request()) ->
+    {ok, list_prices_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 list_prices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_prices(Client, Input, []).
+
+-spec list_prices(map(), list_prices_request(), proplists:proplist()) ->
+    {ok, list_prices_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 list_prices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPrices">>, Input, Options).
@@ -397,9 +1329,22 @@ list_prices(Client, Input, Options)
 %% All tag operations are eventually consistent; subsequent operations might
 %% not
 %% immediately represent all issued operations.
+-spec list_tags_for_domain(map(), list_tags_for_domain_request()) ->
+    {ok, list_tags_for_domain_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 list_tags_for_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_domain(Client, Input, []).
+
+-spec list_tags_for_domain(map(), list_tags_for_domain_request(), proplists:proplist()) ->
+    {ok, list_tags_for_domain_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 list_tags_for_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForDomain">>, Input, Options).
@@ -411,9 +1356,22 @@ list_tags_for_domain(Client, Input, Options)
 %% Changes the IPS tags of a .uk domain, and pushes it to transit. Transit
 %% means
 %% that the domain is ready to be transferred to another registrar.
+-spec push_domain(map(), push_domain_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 push_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     push_domain(Client, Input, []).
+
+-spec push_domain(map(), push_domain_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 push_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PushDomain">>, Input, Options).
@@ -458,9 +1416,28 @@ push_domain(Client, Input, Options)
 %% Charges your Amazon Web Services account an amount based on the top-level
 %% domain. For more information, see Amazon Route 53 Pricing:
 %% http://aws.amazon.com/route53/pricing/.
+-spec register_domain(map(), register_domain_request()) ->
+    {ok, register_domain_response(), tuple()} |
+    {error, any()} |
+    {error, domain_limit_exceeded(), tuple()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 register_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_domain(Client, Input, []).
+
+-spec register_domain(map(), register_domain_request(), proplists:proplist()) ->
+    {ok, register_domain_response(), tuple()} |
+    {error, any()} |
+    {error, domain_limit_exceeded(), tuple()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 register_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDomain">>, Input, Options).
@@ -481,9 +1458,22 @@ register_domain(Client, Input, Options)
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
 %% provides additional information, for example,
 %% `Domain Transfer from Aws Account 111122223333 has been cancelled'.
+-spec reject_domain_transfer_from_another_aws_account(map(), reject_domain_transfer_from_another_aws_account_request()) ->
+    {ok, reject_domain_transfer_from_another_aws_account_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 reject_domain_transfer_from_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_domain_transfer_from_another_aws_account(Client, Input, []).
+
+-spec reject_domain_transfer_from_another_aws_account(map(), reject_domain_transfer_from_another_aws_account_request(), proplists:proplist()) ->
+    {ok, reject_domain_transfer_from_another_aws_account_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 reject_domain_transfer_from_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectDomainTransferFromAnotherAwsAccount">>, Input, Options).
@@ -503,9 +1493,26 @@ reject_domain_transfer_from_another_aws_account(Client, Input, Options)
 %% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-renew.html
 %% in the Amazon Route 53 Developer
 %% Guide.
+-spec renew_domain(map(), renew_domain_request()) ->
+    {ok, renew_domain_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 renew_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_domain(Client, Input, []).
+
+-spec renew_domain(map(), renew_domain_request(), proplists:proplist()) ->
+    {ok, renew_domain_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 renew_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RenewDomain">>, Input, Options).
@@ -516,17 +1523,39 @@ renew_domain(Client, Input, Options)
 %% the
 %% confirmation email to the current email address for the registrant
 %% contact.
+-spec resend_contact_reachability_email(map(), resend_contact_reachability_email_request()) ->
+    {ok, resend_contact_reachability_email_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 resend_contact_reachability_email(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_contact_reachability_email(Client, Input, []).
+
+-spec resend_contact_reachability_email(map(), resend_contact_reachability_email_request(), proplists:proplist()) ->
+    {ok, resend_contact_reachability_email_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 resend_contact_reachability_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendContactReachabilityEmail">>, Input, Options).
 
 %% @doc Resend the form of authorization email for this operation.
+-spec resend_operation_authorization(map(), resend_operation_authorization_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 resend_operation_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     resend_operation_authorization(Client, Input, []).
+
+-spec resend_operation_authorization(map(), resend_operation_authorization_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 resend_operation_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendOperationAuthorization">>, Input, Options).
@@ -535,9 +1564,20 @@ resend_operation_authorization(Client, Input, Options)
 %%
 %% To transfer a domain to
 %% another registrar, you provide this value to the new registrar.
+-spec retrieve_domain_auth_code(map(), retrieve_domain_auth_code_request()) ->
+    {ok, retrieve_domain_auth_code_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 retrieve_domain_auth_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     retrieve_domain_auth_code(Client, Input, []).
+
+-spec retrieve_domain_auth_code(map(), retrieve_domain_auth_code_request(), proplists:proplist()) ->
+    {ok, retrieve_domain_auth_code_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 retrieve_domain_auth_code(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetrieveDomainAuthCode">>, Input, Options).
@@ -598,9 +1638,28 @@ retrieve_domain_auth_code(Client, Input, Options)
 %% track the progress and completion of the action. If the transfer
 %% doesn't complete
 %% successfully, the domain registrant will be notified by email.
+-spec transfer_domain(map(), transfer_domain_request()) ->
+    {ok, transfer_domain_response(), tuple()} |
+    {error, any()} |
+    {error, domain_limit_exceeded(), tuple()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 transfer_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     transfer_domain(Client, Input, []).
+
+-spec transfer_domain(map(), transfer_domain_request(), proplists:proplist()) ->
+    {ok, transfer_domain_response(), tuple()} |
+    {error, any()} |
+    {error, domain_limit_exceeded(), tuple()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 transfer_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransferDomain">>, Input, Options).
@@ -649,9 +1708,24 @@ transfer_domain(Client, Input, Options)
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
 %% provides additional information, for example,
 %% `Domain Transfer from Aws Account 111122223333 has been cancelled'.
+-spec transfer_domain_to_another_aws_account(map(), transfer_domain_to_another_aws_account_request()) ->
+    {ok, transfer_domain_to_another_aws_account_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 transfer_domain_to_another_aws_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     transfer_domain_to_another_aws_account(Client, Input, []).
+
+-spec transfer_domain_to_another_aws_account(map(), transfer_domain_to_another_aws_account_request(), proplists:proplist()) ->
+    {ok, transfer_domain_to_another_aws_account_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 transfer_domain_to_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransferDomainToAnotherAwsAccount">>, Input, Options).
@@ -669,9 +1743,26 @@ transfer_domain_to_another_aws_account(Client, Input, Options)
 %% track the progress and completion of the operation. If the request is not
 %% completed
 %% successfully, the domain registrant will be notified by email.
+-spec update_domain_contact(map(), update_domain_contact_request()) ->
+    {ok, update_domain_contact_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 update_domain_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_contact(Client, Input, []).
+
+-spec update_domain_contact(map(), update_domain_contact_request(), proplists:proplist()) ->
+    {ok, update_domain_contact_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 update_domain_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomainContact">>, Input, Options).
@@ -714,9 +1805,26 @@ update_domain_contact(Client, Input, Options)
 %% this domain from the WHOIS database. For more information on our privacy
 %% practices,
 %% see [https://aws.amazon.com/privacy/].
+-spec update_domain_contact_privacy(map(), update_domain_contact_privacy_request()) ->
+    {ok, update_domain_contact_privacy_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 update_domain_contact_privacy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_contact_privacy(Client, Input, []).
+
+-spec update_domain_contact_privacy(map(), update_domain_contact_privacy_request(), proplists:proplist()) ->
+    {ok, update_domain_contact_privacy_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 update_domain_contact_privacy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomainContactPrivacy">>, Input, Options).
@@ -734,9 +1842,26 @@ update_domain_contact_privacy(Client, Input, Options)
 %% progress and completion of the action. If the request is not completed
 %% successfully, the
 %% domain registrant will be notified by email.
+-spec update_domain_nameservers(map(), update_domain_nameservers_request()) ->
+    {ok, update_domain_nameservers_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 update_domain_nameservers(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_nameservers(Client, Input, []).
+
+-spec update_domain_nameservers(map(), update_domain_nameservers_request(), proplists:proplist()) ->
+    {ok, update_domain_nameservers_response(), tuple()} |
+    {error, any()} |
+    {error, duplicate_request(), tuple()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, t_l_d_rules_violation(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 update_domain_nameservers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomainNameservers">>, Input, Options).
@@ -746,18 +1871,40 @@ update_domain_nameservers(Client, Input, Options)
 %% All tag operations are eventually consistent; subsequent operations might
 %% not
 %% immediately represent all issued operations.
+-spec update_tags_for_domain(map(), update_tags_for_domain_request()) ->
+    {ok, update_tags_for_domain_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 update_tags_for_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_tags_for_domain(Client, Input, []).
+
+-spec update_tags_for_domain(map(), update_tags_for_domain_request(), proplists:proplist()) ->
+    {ok, update_tags_for_domain_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()} |
+    {error, operation_limit_exceeded(), tuple()} |
+    {error, unsupported_t_l_d(), tuple()}.
 update_tags_for_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTagsForDomain">>, Input, Options).
 
 %% @doc Returns all the domain-related billing records for the current Amazon
 %% Web Services account for a specified period
+-spec view_billing(map(), view_billing_request()) ->
+    {ok, view_billing_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 view_billing(Client, Input)
   when is_map(Client), is_map(Input) ->
     view_billing(Client, Input, []).
+
+-spec view_billing(map(), view_billing_request(), proplists:proplist()) ->
+    {ok, view_billing_response(), tuple()} |
+    {error, any()} |
+    {error, invalid_input(), tuple()}.
 view_billing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ViewBilling">>, Input, Options).

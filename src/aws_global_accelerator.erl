@@ -200,6 +200,1100 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% create_custom_routing_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => custom_routing_endpoint_group()
+%% }
+-type create_custom_routing_endpoint_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_resource_accounts_request() :: #{
+
+%% }
+-type list_cross_account_resource_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_configuration() :: #{
+%%   <<"AttachmentArn">> => string(),
+%%   <<"ClientIPPreservationEnabled">> => boolean(),
+%%   <<"EndpointId">> => string(),
+%%   <<"Weight">> => integer()
+%% }
+-type endpoint_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% byoip_cidr() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Events">> => list(byoip_cidr_event()()),
+%%   <<"State">> => list(any())
+%% }
+-type byoip_cidr() :: #{binary() => any()}.
+
+%% Example:
+%% describe_accelerator_attributes_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type describe_accelerator_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_attachments_response() :: #{
+%%   <<"CrossAccountAttachments">> => list(attachment()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cross_account_attachments_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_accelerator_attributes_response() :: #{
+%%   <<"AcceleratorAttributes">> => accelerator_attributes()
+%% }
+-type update_accelerator_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_accelerator_response() :: #{
+%%   <<"Accelerator">> => custom_routing_accelerator()
+%% }
+-type describe_custom_routing_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type update_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_attributes() :: #{
+%%   <<"FlowLogsEnabled">> => boolean(),
+%%   <<"FlowLogsS3Bucket">> => string(),
+%%   <<"FlowLogsS3Prefix">> => string()
+%% }
+-type accelerator_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% create_accelerator_response() :: #{
+%%   <<"Accelerator">> => accelerator()
+%% }
+-type create_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_listener_response() :: #{
+%%   <<"Listener">> => listener()
+%% }
+-type create_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_destination_configuration() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"ToPort">> => integer()
+%% }
+-type custom_routing_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_attachments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cross_account_attachments_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type describe_custom_routing_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% deprovision_byoip_cidr_response() :: #{
+%%   <<"ByoipCidr">> => byoip_cidr()
+%% }
+-type deprovision_byoip_cidr_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% listener() :: #{
+%%   <<"ClientAffinity">> => list(any()),
+%%   <<"ListenerArn">> => string(),
+%%   <<"PortRanges">> => list(port_range()()),
+%%   <<"Protocol">> => list(any())
+%% }
+-type listener() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type endpoint_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_listener_response() :: #{
+%%   <<"Listener">> => custom_routing_listener()
+%% }
+-type update_custom_routing_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% socket_address() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type socket_address() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_endpoint_group() :: #{
+%%   <<"DestinationDescriptions">> => list(custom_routing_destination_description()()),
+%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()()),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"EndpointGroupRegion">> => string()
+%% }
+-type custom_routing_endpoint_group() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_routing_listener_response() :: #{
+%%   <<"Listener">> => custom_routing_listener()
+%% }
+-type create_custom_routing_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_endpoint_groups_response() :: #{
+%%   <<"EndpointGroups">> => list(custom_routing_endpoint_group()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_endpoint_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_accelerator_attributes_response() :: #{
+%%   <<"AcceleratorAttributes">> => accelerator_attributes()
+%% }
+-type describe_accelerator_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% byoip_cidr_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type byoip_cidr_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_destination_description() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"ToPort">> => integer()
+%% }
+-type custom_routing_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% attachment() :: #{
+%%   <<"AttachmentArn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Principals">> => list(string()()),
+%%   <<"Resources">> => list(resource()())
+%% }
+-type attachment() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_port_mappings_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PortMappings">> => list(port_mapping()())
+%% }
+-type list_custom_routing_port_mappings_response() :: #{binary() => any()}.
+
+%% Example:
+%% provision_byoip_cidr_response() :: #{
+%%   <<"ByoipCidr">> => byoip_cidr()
+%% }
+-type provision_byoip_cidr_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_listener_request() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type describe_custom_routing_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% incorrect_cidr_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type incorrect_cidr_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_group_request() :: #{
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type delete_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type attachment_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_accelerator_attributes_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"FlowLogsEnabled">> => boolean(),
+%%   <<"FlowLogsS3Bucket">> => string(),
+%%   <<"FlowLogsS3Prefix">> => string()
+%% }
+-type update_accelerator_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_description() :: #{
+%%   <<"ClientIPPreservationEnabled">> => boolean(),
+%%   <<"EndpointId">> => string(),
+%%   <<"HealthReason">> => string(),
+%%   <<"HealthState">> => list(any()),
+%%   <<"Weight">> => integer()
+%% }
+-type endpoint_description() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cross_account_attachment_response() :: #{
+%%   <<"CrossAccountAttachment">> => attachment()
+%% }
+-type describe_cross_account_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_routing_listener_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"PortRanges">> := list(port_range()())
+%% }
+-type create_custom_routing_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_not_disabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type accelerator_not_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_custom_routing_endpoints_request() :: #{
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"EndpointIds">> := list(string()())
+%% }
+-type remove_custom_routing_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_accelerator_request() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpAddresses">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cross_account_attachment_request() :: #{
+%%   <<"AttachmentArn">> := string()
+%% }
+-type describe_cross_account_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_byoip_cidrs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_byoip_cidrs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_listeners_response() :: #{
+%%   <<"Listeners">> => list(custom_routing_listener()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_listeners_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_cross_account_attachment_request() :: #{
+%%   <<"AddPrincipals">> => list(string()()),
+%%   <<"AddResources">> => list(resource()()),
+%%   <<"AttachmentArn">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"RemovePrincipals">> => list(string()()),
+%%   <<"RemoveResources">> => list(resource()())
+%% }
+-type update_cross_account_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_identifier() :: #{
+%%   <<"ClientIPPreservationEnabled">> => boolean(),
+%%   <<"EndpointId">> => string()
+%% }
+-type endpoint_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% update_cross_account_attachment_response() :: #{
+%%   <<"CrossAccountAttachment">> => attachment()
+%% }
+-type update_cross_account_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_endpoints_request() :: #{
+%%   <<"EndpointConfigurations">> := list(endpoint_configuration()()),
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type add_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cross_account_attachment_response() :: #{
+%%   <<"CrossAccountAttachment">> => attachment()
+%% }
+-type create_cross_account_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_port_mappings_by_destination_request() :: #{
+%%   <<"DestinationAddress">> := string(),
+%%   <<"EndpointId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_port_mappings_by_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_accelerator_response() :: #{
+%%   <<"Accelerator">> => accelerator()
+%% }
+-type describe_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% port_override() :: #{
+%%   <<"EndpointPort">> => integer(),
+%%   <<"ListenerPort">> => integer()
+%% }
+-type port_override() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => endpoint_group()
+%% }
+-type create_endpoint_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_listeners_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_listeners_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% advertise_byoip_cidr_request() :: #{
+%%   <<"Cidr">> := string()
+%% }
+-type advertise_byoip_cidr_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_endpoints_request() :: #{
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"EndpointIdentifiers">> := list(endpoint_identifier()())
+%% }
+-type remove_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type accelerator_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_accelerator_attributes_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type describe_custom_routing_accelerator_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_response() :: #{
+%%   <<"Listener">> => listener()
+%% }
+-type describe_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_accelerators_response() :: #{
+%%   <<"Accelerators">> => list(accelerator()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accelerators_response() :: #{binary() => any()}.
+
+%% Example:
+%% cross_account_resource() :: #{
+%%   <<"AttachmentArn">> => string(),
+%%   <<"EndpointId">> => string()
+%% }
+-type cross_account_resource() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_group_request() :: #{
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type describe_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_listener_request() :: #{
+%%   <<"ListenerArn">> := string(),
+%%   <<"PortRanges">> := list(port_range()())
+%% }
+-type update_custom_routing_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_request() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type describe_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => custom_routing_endpoint_group()
+%% }
+-type describe_custom_routing_endpoint_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_port_mappings_by_destination_response() :: #{
+%%   <<"DestinationPortMappings">> => list(destination_port_mapping()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_port_mappings_by_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_listener() :: #{
+%%   <<"ListenerArn">> => string(),
+%%   <<"PortRanges">> => list(port_range()())
+%% }
+-type custom_routing_listener() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_resources_request() :: #{
+%%   <<"AcceleratorArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwnerAwsAccountId">> := string()
+%% }
+-type list_cross_account_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set() :: #{
+%%   <<"IpAddressFamily">> => list(any()),
+%%   <<"IpAddresses">> => list(string()()),
+%%   <<"IpFamily">> => string()
+%% }
+-type ip_set() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator() :: #{
+%%   <<"AcceleratorArn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DnsName">> => string(),
+%%   <<"DualStackDnsName">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Events">> => list(accelerator_event()()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpSets">> => list(ip_set()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type accelerator() :: #{binary() => any()}.
+
+%% Example:
+%% advertise_byoip_cidr_response() :: #{
+%%   <<"ByoipCidr">> => byoip_cidr()
+%% }
+-type advertise_byoip_cidr_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_endpoint_configuration() :: #{
+%%   <<"AttachmentArn">> => string(),
+%%   <<"EndpointId">> => string()
+%% }
+-type custom_routing_endpoint_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_port_range_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_port_range_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_accelerator_attributes_response() :: #{
+%%   <<"AcceleratorAttributes">> => custom_routing_accelerator_attributes()
+%% }
+-type update_custom_routing_accelerator_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_routing_accelerator_request() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpAddresses">> => list(string()()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_custom_routing_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_listeners_response() :: #{
+%%   <<"Listeners">> => list(listener()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_listeners_response() :: #{binary() => any()}.
+
+%% Example:
+%% withdraw_byoip_cidr_response() :: #{
+%%   <<"ByoipCidr">> => byoip_cidr()
+%% }
+-type withdraw_byoip_cidr_response() :: #{binary() => any()}.
+
+%% Example:
+%% allow_custom_routing_traffic_request() :: #{
+%%   <<"AllowAllTrafficToEndpoint">> => boolean(),
+%%   <<"DestinationAddresses">> => list(string()()),
+%%   <<"DestinationPorts">> => list(integer()()),
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"EndpointId">> := string()
+%% }
+-type allow_custom_routing_traffic_request() :: #{binary() => any()}.
+
+%% Example:
+%% deny_custom_routing_traffic_request() :: #{
+%%   <<"DenyAllTrafficToEndpoint">> => boolean(),
+%%   <<"DestinationAddresses">> => list(string()()),
+%%   <<"DestinationPorts">> => list(integer()()),
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"EndpointId">> := string()
+%% }
+-type deny_custom_routing_traffic_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_listeners_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_listeners_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => endpoint_group()
+%% }
+-type describe_endpoint_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_cross_account_attachment_request() :: #{
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Principals">> => list(string()()),
+%%   <<"Resources">> => list(resource()()),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_cross_account_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_accelerator_response() :: #{
+%%   <<"Accelerator">> => accelerator()
+%% }
+-type update_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_resources_response() :: #{
+%%   <<"CrossAccountResources">> => list(cross_account_resource()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cross_account_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% associated_listener_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type associated_listener_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type endpoint_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% port_range() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"ToPort">> => integer()
+%% }
+-type port_range() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_port_mappings_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_port_mappings_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_endpoints_response() :: #{
+%%   <<"EndpointDescriptions">> => list(endpoint_description()()),
+%%   <<"EndpointGroupArn">> => string()
+%% }
+-type add_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_routing_listener_request() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type delete_custom_routing_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% byoip_cidr_event() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type byoip_cidr_event() :: #{binary() => any()}.
+
+%% Example:
+%% associated_endpoint_group_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type associated_endpoint_group_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_group_request() :: #{
+%%   <<"EndpointConfigurations">> => list(endpoint_configuration()()),
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"HealthCheckIntervalSeconds">> => integer(),
+%%   <<"HealthCheckPath">> => string(),
+%%   <<"HealthCheckPort">> => integer(),
+%%   <<"HealthCheckProtocol">> => list(any()),
+%%   <<"PortOverrides">> => list(port_override()()),
+%%   <<"ThresholdCount">> => integer(),
+%%   <<"TrafficDialPercentage">> => float()
+%% }
+-type update_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type update_custom_routing_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_endpoint_group_request() :: #{
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type describe_custom_routing_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_groups_response() :: #{
+%%   <<"EndpointGroups">> => list(endpoint_group()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoint_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cross_account_attachment_request() :: #{
+%%   <<"AttachmentArn">> := string()
+%% }
+-type delete_cross_account_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_listener_request() :: #{
+%%   <<"ClientAffinity">> => list(any()),
+%%   <<"ListenerArn">> := string(),
+%%   <<"PortRanges">> => list(port_range()()),
+%%   <<"Protocol">> => list(any())
+%% }
+-type update_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_listener_response() :: #{
+%%   <<"Listener">> => listener()
+%% }
+-type update_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_accelerator_attributes() :: #{
+%%   <<"FlowLogsEnabled">> => boolean(),
+%%   <<"FlowLogsS3Bucket">> => string(),
+%%   <<"FlowLogsS3Prefix">> => string()
+%% }
+-type custom_routing_accelerator_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_authorization_context() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Signature">> => string()
+%% }
+-type cidr_authorization_context() :: #{binary() => any()}.
+
+%% Example:
+%% port_mapping() :: #{
+%%   <<"AcceleratorPort">> => integer(),
+%%   <<"DestinationSocketAddress">> => socket_address(),
+%%   <<"DestinationTrafficState">> => list(any()),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"EndpointId">> => string(),
+%%   <<"Protocols">> => list(list(any())())
+%% }
+-type port_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_accelerator_response() :: #{
+%%   <<"Accelerator">> => custom_routing_accelerator()
+%% }
+-type update_custom_routing_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_custom_routing_endpoints_request() :: #{
+%%   <<"EndpointConfigurations">> := list(custom_routing_endpoint_configuration()()),
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type add_custom_routing_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_byoip_cidrs_response() :: #{
+%%   <<"ByoipCidrs">> => list(byoip_cidr()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_byoip_cidrs_response() :: #{binary() => any()}.
+
+%% Example:
+%% transaction_in_progress_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type transaction_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type delete_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_groups_request() :: #{
+%%   <<"ListenerArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoint_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% withdraw_byoip_cidr_request() :: #{
+%%   <<"Cidr">> := string()
+%% }
+-type withdraw_byoip_cidr_request() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_group_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type endpoint_group_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_accelerators_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accelerators_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_routing_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type delete_custom_routing_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_accelerators_response() :: #{
+%%   <<"Accelerators">> => list(custom_routing_accelerator()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_accelerators_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_accelerator() :: #{
+%%   <<"AcceleratorArn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DnsName">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpSets">> => list(ip_set()()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type custom_routing_accelerator() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_accelerator_attributes_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"FlowLogsEnabled">> => boolean(),
+%%   <<"FlowLogsS3Bucket">> => string(),
+%%   <<"FlowLogsS3Prefix">> => string()
+%% }
+-type update_custom_routing_accelerator_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type describe_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_custom_routing_endpoints_response() :: #{
+%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()()),
+%%   <<"EndpointGroupArn">> => string()
+%% }
+-type add_custom_routing_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_endpoint_groups_request() :: #{
+%%   <<"ListenerArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_endpoint_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% listener_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type listener_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% destination_port_mapping() :: #{
+%%   <<"AcceleratorArn">> => string(),
+%%   <<"AcceleratorSocketAddresses">> => list(socket_address()()),
+%%   <<"DestinationSocketAddress">> => socket_address(),
+%%   <<"DestinationTrafficState">> => list(any()),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"EndpointGroupRegion">> => string(),
+%%   <<"EndpointId">> => string(),
+%%   <<"IpAddressType">> => list(any())
+%% }
+-type destination_port_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_resource_accounts_response() :: #{
+%%   <<"ResourceOwnerAwsAccountIds">> => list(string()())
+%% }
+-type list_cross_account_resource_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_listener_request() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type delete_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_event() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type accelerator_event() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_group_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type endpoint_group_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => endpoint_group()
+%% }
+-type update_endpoint_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_accelerator_attributes_response() :: #{
+%%   <<"AcceleratorAttributes">> => custom_routing_accelerator_attributes()
+%% }
+-type describe_custom_routing_accelerator_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_routing_endpoint_group_request() :: #{
+%%   <<"DestinationConfigurations">> := list(custom_routing_destination_configuration()()),
+%%   <<"EndpointGroupRegion">> := string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"ListenerArn">> := string()
+%% }
+-type create_custom_routing_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_group() :: #{
+%%   <<"EndpointDescriptions">> => list(endpoint_description()()),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"EndpointGroupRegion">> => string(),
+%%   <<"HealthCheckIntervalSeconds">> => integer(),
+%%   <<"HealthCheckPath">> => string(),
+%%   <<"HealthCheckPort">> => integer(),
+%%   <<"HealthCheckProtocol">> => list(any()),
+%%   <<"PortOverrides">> => list(port_override()()),
+%%   <<"ThresholdCount">> => integer(),
+%%   <<"TrafficDialPercentage">> => float()
+%% }
+-type endpoint_group() :: #{binary() => any()}.
+
+%% Example:
+%% deprovision_byoip_cidr_request() :: #{
+%%   <<"Cidr">> := string()
+%% }
+-type deprovision_byoip_cidr_request() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_endpoint_description() :: #{
+%%   <<"EndpointId">> => string()
+%% }
+-type custom_routing_endpoint_description() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_accelerators_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_accelerators_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_routing_endpoint_group_request() :: #{
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type delete_custom_routing_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_routing_accelerator_response() :: #{
+%%   <<"Accelerator">> => custom_routing_accelerator()
+%% }
+-type create_custom_routing_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_listener_response() :: #{
+%%   <<"Listener">> => custom_routing_listener()
+%% }
+-type describe_custom_routing_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_listener_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"ClientAffinity">> => list(any()),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"PortRanges">> := list(port_range()()),
+%%   <<"Protocol">> := list(any())
+%% }
+-type create_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% provision_byoip_cidr_request() :: #{
+%%   <<"Cidr">> := string(),
+%%   <<"CidrAuthorizationContext">> := cidr_authorization_context()
+%% }
+-type provision_byoip_cidr_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource() :: #{
+%%   <<"EndpointId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_group_request() :: #{
+%%   <<"EndpointConfigurations">> => list(endpoint_configuration()()),
+%%   <<"EndpointGroupRegion">> := string(),
+%%   <<"HealthCheckIntervalSeconds">> => integer(),
+%%   <<"HealthCheckPath">> => string(),
+%%   <<"HealthCheckPort">> => integer(),
+%%   <<"HealthCheckProtocol">> => list(any()),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"ListenerArn">> := string(),
+%%   <<"PortOverrides">> => list(port_override()()),
+%%   <<"ThresholdCount">> => integer(),
+%%   <<"TrafficDialPercentage">> => float()
+%% }
+-type create_endpoint_group_request() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -227,9 +1321,30 @@
 %% AllowCustomRoutingTraffic:
 %% https://docs.aws.amazon.com/global-accelerator/latest/api/API_AllowCustomRoutingTraffic.html
 %% operation.
+-spec add_custom_routing_endpoints(map(), add_custom_routing_endpoints_request()) ->
+    {ok, add_custom_routing_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, endpoint_already_exists_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 add_custom_routing_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_custom_routing_endpoints(Client, Input, []).
+
+-spec add_custom_routing_endpoints(map(), add_custom_routing_endpoints_request(), proplists:proplist()) ->
+    {ok, add_custom_routing_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, endpoint_already_exists_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 add_custom_routing_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCustomRoutingEndpoints">>, Input, Options).
@@ -267,9 +1382,28 @@ add_custom_routing_endpoints(Client, Input, Options)
 %% Endpoints for standard accelerators:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints.html
 %% in the Global Accelerator Developer Guide.
+-spec add_endpoints(map(), add_endpoints_request()) ->
+    {ok, add_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 add_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_endpoints(Client, Input, []).
+
+-spec add_endpoints(map(), add_endpoints_request(), proplists:proplist()) ->
+    {ok, add_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 add_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddEndpoints">>, Input, Options).
@@ -290,9 +1424,26 @@ add_endpoints(Client, Input, Options)
 %% IP addresses (BYOIP):
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
 %% in the Global Accelerator Developer Guide.
+-spec advertise_byoip_cidr(map(), advertise_byoip_cidr_request()) ->
+    {ok, advertise_byoip_cidr_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, byoip_cidr_not_found_exception(), tuple()} |
+    {error, incorrect_cidr_state_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 advertise_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     advertise_byoip_cidr(Client, Input, []).
+
+-spec advertise_byoip_cidr(map(), advertise_byoip_cidr_request(), proplists:proplist()) ->
+    {ok, advertise_byoip_cidr_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, byoip_cidr_not_found_exception(), tuple()} |
+    {error, incorrect_cidr_state_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 advertise_byoip_cidr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdvertiseByoipCidr">>, Input, Options).
@@ -310,9 +1461,22 @@ advertise_byoip_cidr(Client, Input, Options)
 %% After you make changes, you can verify that the updates are complete by
 %% checking the status of your
 %% accelerator: the status changes from IN_PROGRESS to DEPLOYED.
+-spec allow_custom_routing_traffic(map(), allow_custom_routing_traffic_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 allow_custom_routing_traffic(Client, Input)
   when is_map(Client), is_map(Input) ->
     allow_custom_routing_traffic(Client, Input, []).
+
+-spec allow_custom_routing_traffic(map(), allow_custom_routing_traffic_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 allow_custom_routing_traffic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AllowCustomRoutingTraffic">>, Input, Options).
@@ -329,9 +1493,22 @@ allow_custom_routing_traffic(Client, Input, Options)
 %% US West (Oregon) Region to create, update, or otherwise work with
 %% accelerators. That is, for example, specify `--region us-west-2'
 %% on Amazon Web Services CLI commands.
+-spec create_accelerator(map(), create_accelerator_request()) ->
+    {ok, create_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_accelerator(Client, Input, []).
+
+-spec create_accelerator(map(), create_accelerator_request(), proplists:proplist()) ->
+    {ok, create_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccelerator">>, Input, Options).
@@ -355,9 +1532,26 @@ create_accelerator(Client, Input, Options)
 %% anyone with permission to make updates to the accelerator can add as
 %% endpoints resources that are listed in the
 %% attachment.
+-spec create_cross_account_attachment(map(), create_cross_account_attachment_request()) ->
+    {ok, create_cross_account_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 create_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cross_account_attachment(Client, Input, []).
+
+-spec create_cross_account_attachment(map(), create_cross_account_attachment_request(), proplists:proplist()) ->
+    {ok, create_cross_account_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 create_cross_account_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCrossAccountAttachment">>, Input, Options).
@@ -382,9 +1576,24 @@ create_cross_account_attachment(Client, Input, Options)
 %% US West (Oregon) Region to create, update, or otherwise work with
 %% accelerators. That is, for example, specify `--region us-west-2'
 %% on Amazon Web Services CLI commands.
+-spec create_custom_routing_accelerator(map(), create_custom_routing_accelerator_request()) ->
+    {ok, create_custom_routing_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_accelerator(Client, Input, []).
+
+-spec create_custom_routing_accelerator(map(), create_custom_routing_accelerator_request(), proplists:proplist()) ->
+    {ok, create_custom_routing_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_custom_routing_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomRoutingAccelerator">>, Input, Options).
@@ -394,9 +1603,32 @@ create_custom_routing_accelerator(Client, Input, Options)
 %%
 %% An endpoint group is a collection of endpoints in one Amazon Web Services
 %% Region.
+-spec create_custom_routing_endpoint_group(map(), create_custom_routing_endpoint_group_request()) ->
+    {ok, create_custom_routing_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_already_exists_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 create_custom_routing_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_endpoint_group(Client, Input, []).
+
+-spec create_custom_routing_endpoint_group(map(), create_custom_routing_endpoint_group_request(), proplists:proplist()) ->
+    {ok, create_custom_routing_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_already_exists_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 create_custom_routing_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomRoutingEndpointGroup">>, Input, Options).
@@ -406,9 +1638,26 @@ create_custom_routing_endpoint_group(Client, Input, Options)
 %%
 %% Connections arrive to assigned static IP addresses on the port range that
 %% you specify.
+-spec create_custom_routing_listener(map(), create_custom_routing_listener_request()) ->
+    {ok, create_custom_routing_listener_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_routing_listener(Client, Input, []).
+
+-spec create_custom_routing_listener(map(), create_custom_routing_listener_request(), proplists:proplist()) ->
+    {ok, create_custom_routing_listener_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_custom_routing_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomRoutingListener">>, Input, Options).
@@ -425,9 +1674,30 @@ create_custom_routing_listener(Client, Input, Options)
 %% Endpoints for standard accelerators:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoints.html
 %% in the Global Accelerator Developer Guide.
+-spec create_endpoint_group(map(), create_endpoint_group_request()) ->
+    {ok, create_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_already_exists_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 create_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_group(Client, Input, []).
+
+-spec create_endpoint_group(map(), create_endpoint_group_request(), proplists:proplist()) ->
+    {ok, create_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_already_exists_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 create_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpointGroup">>, Input, Options).
@@ -438,9 +1708,26 @@ create_endpoint_group(Client, Input, Options)
 %% Connections arrive to assigned static
 %% IP addresses on a port, port range, or list of port ranges that you
 %% specify.
+-spec create_listener(map(), create_listener_request()) ->
+    {ok, create_listener_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_listener(Client, Input, []).
+
+-spec create_listener(map(), create_listener_request(), proplists:proplist()) ->
+    {ok, create_listener_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 create_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateListener">>, Input, Options).
@@ -471,9 +1758,26 @@ create_listener(Client, Input, Options)
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html
 %% in
 %% the Global Accelerator Developer Guide.
+-spec delete_accelerator(map(), delete_accelerator_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, accelerator_not_disabled_exception(), tuple()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, associated_listener_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 delete_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_accelerator(Client, Input, []).
+
+-spec delete_accelerator(map(), delete_accelerator_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, accelerator_not_disabled_exception(), tuple()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, associated_listener_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 delete_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccelerator">>, Input, Options).
@@ -503,9 +1807,26 @@ delete_accelerator(Client, Input, Options)
 %% the account ID
 %% that owns that accelerator, endpoints will not be removed from the
 %% accelerator.
+-spec delete_cross_account_attachment(map(), delete_cross_account_attachment_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, attachment_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 delete_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cross_account_attachment(Client, Input, []).
+
+-spec delete_cross_account_attachment(map(), delete_cross_account_attachment_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, attachment_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 delete_cross_account_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCrossAccountAttachment">>, Input, Options).
@@ -535,42 +1856,115 @@ delete_cross_account_attachment(Client, Input, Options)
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/auth-and-access-control.html
 %% in
 %% the Global Accelerator Developer Guide.
+-spec delete_custom_routing_accelerator(map(), delete_custom_routing_accelerator_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, accelerator_not_disabled_exception(), tuple()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, associated_listener_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 delete_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_accelerator(Client, Input, []).
+
+-spec delete_custom_routing_accelerator(map(), delete_custom_routing_accelerator_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, accelerator_not_disabled_exception(), tuple()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, associated_listener_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 delete_custom_routing_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomRoutingAccelerator">>, Input, Options).
 
 %% @doc Delete an endpoint group from a listener for a custom routing
 %% accelerator.
+-spec delete_custom_routing_endpoint_group(map(), delete_custom_routing_endpoint_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 delete_custom_routing_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_endpoint_group(Client, Input, []).
+
+-spec delete_custom_routing_endpoint_group(map(), delete_custom_routing_endpoint_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 delete_custom_routing_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomRoutingEndpointGroup">>, Input, Options).
 
 %% @doc Delete a listener for a custom routing accelerator.
+-spec delete_custom_routing_listener(map(), delete_custom_routing_listener_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associated_endpoint_group_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 delete_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_routing_listener(Client, Input, []).
+
+-spec delete_custom_routing_listener(map(), delete_custom_routing_listener_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associated_endpoint_group_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 delete_custom_routing_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomRoutingListener">>, Input, Options).
 
 %% @doc Delete an endpoint group from a listener.
+-spec delete_endpoint_group(map(), delete_endpoint_group_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 delete_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_group(Client, Input, []).
+
+-spec delete_endpoint_group(map(), delete_endpoint_group_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 delete_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpointGroup">>, Input, Options).
 
 %% @doc Delete a listener from an accelerator.
+-spec delete_listener(map(), delete_listener_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associated_endpoint_group_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 delete_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_listener(Client, Input, []).
+
+-spec delete_listener(map(), delete_listener_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, associated_endpoint_group_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 delete_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteListener">>, Input, Options).
@@ -588,9 +1982,22 @@ delete_listener(Client, Input, Options)
 %% After you make changes, you can verify that the updates are complete by
 %% checking the status of your
 %% accelerator: the status changes from IN_PROGRESS to DEPLOYED.
+-spec deny_custom_routing_traffic(map(), deny_custom_routing_traffic_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 deny_custom_routing_traffic(Client, Input)
   when is_map(Client), is_map(Input) ->
     deny_custom_routing_traffic(Client, Input, []).
+
+-spec deny_custom_routing_traffic(map(), deny_custom_routing_traffic_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 deny_custom_routing_traffic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DenyCustomRoutingTraffic">>, Input, Options).
@@ -611,89 +2018,238 @@ deny_custom_routing_traffic(Client, Input, Options)
 %% your own IP addresses (BYOIP):
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
 %% in the Global Accelerator Developer Guide.
+-spec deprovision_byoip_cidr(map(), deprovision_byoip_cidr_request()) ->
+    {ok, deprovision_byoip_cidr_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, byoip_cidr_not_found_exception(), tuple()} |
+    {error, incorrect_cidr_state_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 deprovision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     deprovision_byoip_cidr(Client, Input, []).
+
+-spec deprovision_byoip_cidr(map(), deprovision_byoip_cidr_request(), proplists:proplist()) ->
+    {ok, deprovision_byoip_cidr_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, byoip_cidr_not_found_exception(), tuple()} |
+    {error, incorrect_cidr_state_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 deprovision_byoip_cidr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeprovisionByoipCidr">>, Input, Options).
 
 %% @doc Describe an accelerator.
+-spec describe_accelerator(map(), describe_accelerator_request()) ->
+    {ok, describe_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_accelerator(Client, Input, []).
+
+-spec describe_accelerator(map(), describe_accelerator_request(), proplists:proplist()) ->
+    {ok, describe_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccelerator">>, Input, Options).
 
 %% @doc Describe the attributes of an accelerator.
+-spec describe_accelerator_attributes(map(), describe_accelerator_attributes_request()) ->
+    {ok, describe_accelerator_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_accelerator_attributes(Client, Input, []).
+
+-spec describe_accelerator_attributes(map(), describe_accelerator_attributes_request(), proplists:proplist()) ->
+    {ok, describe_accelerator_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAcceleratorAttributes">>, Input, Options).
 
 %% @doc Gets configuration information about a cross-account attachment.
+-spec describe_cross_account_attachment(map(), describe_cross_account_attachment_request()) ->
+    {ok, describe_cross_account_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, attachment_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cross_account_attachment(Client, Input, []).
+
+-spec describe_cross_account_attachment(map(), describe_cross_account_attachment_request(), proplists:proplist()) ->
+    {ok, describe_cross_account_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, attachment_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_cross_account_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCrossAccountAttachment">>, Input, Options).
 
 %% @doc Describe a custom routing accelerator.
+-spec describe_custom_routing_accelerator(map(), describe_custom_routing_accelerator_request()) ->
+    {ok, describe_custom_routing_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_accelerator(Client, Input, []).
+
+-spec describe_custom_routing_accelerator(map(), describe_custom_routing_accelerator_request(), proplists:proplist()) ->
+    {ok, describe_custom_routing_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_custom_routing_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomRoutingAccelerator">>, Input, Options).
 
 %% @doc Describe the attributes of a custom routing accelerator.
+-spec describe_custom_routing_accelerator_attributes(map(), describe_custom_routing_accelerator_attributes_request()) ->
+    {ok, describe_custom_routing_accelerator_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_custom_routing_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_accelerator_attributes(Client, Input, []).
+
+-spec describe_custom_routing_accelerator_attributes(map(), describe_custom_routing_accelerator_attributes_request(), proplists:proplist()) ->
+    {ok, describe_custom_routing_accelerator_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_custom_routing_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomRoutingAcceleratorAttributes">>, Input, Options).
 
 %% @doc Describe an endpoint group for a custom routing accelerator.
+-spec describe_custom_routing_endpoint_group(map(), describe_custom_routing_endpoint_group_request()) ->
+    {ok, describe_custom_routing_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_custom_routing_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_endpoint_group(Client, Input, []).
+
+-spec describe_custom_routing_endpoint_group(map(), describe_custom_routing_endpoint_group_request(), proplists:proplist()) ->
+    {ok, describe_custom_routing_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_custom_routing_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomRoutingEndpointGroup">>, Input, Options).
 
 %% @doc The description of a listener for a custom routing accelerator.
+-spec describe_custom_routing_listener(map(), describe_custom_routing_listener_request()) ->
+    {ok, describe_custom_routing_listener_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 describe_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_custom_routing_listener(Client, Input, []).
+
+-spec describe_custom_routing_listener(map(), describe_custom_routing_listener_request(), proplists:proplist()) ->
+    {ok, describe_custom_routing_listener_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 describe_custom_routing_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCustomRoutingListener">>, Input, Options).
 
 %% @doc Describe an endpoint group.
+-spec describe_endpoint_group(map(), describe_endpoint_group_request()) ->
+    {ok, describe_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint_group(Client, Input, []).
+
+-spec describe_endpoint_group(map(), describe_endpoint_group_request(), proplists:proplist()) ->
+    {ok, describe_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 describe_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEndpointGroup">>, Input, Options).
 
 %% @doc Describe a listener.
+-spec describe_listener(map(), describe_listener_request()) ->
+    {ok, describe_listener_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 describe_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listener(Client, Input, []).
+
+-spec describe_listener(map(), describe_listener_request(), proplists:proplist()) ->
+    {ok, describe_listener_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 describe_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeListener">>, Input, Options).
 
 %% @doc List the accelerators for an Amazon Web Services account.
+-spec list_accelerators(map(), list_accelerators_request()) ->
+    {ok, list_accelerators_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_accelerators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accelerators(Client, Input, []).
+
+-spec list_accelerators(map(), list_accelerators_request(), proplists:proplist()) ->
+    {ok, list_accelerators_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_accelerators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccelerators">>, Input, Options).
@@ -703,60 +2259,161 @@ list_accelerators(Client, Input, Options)
 %% https://docs.aws.amazon.com/global-accelerator/latest/api/ProvisionByoipCidr.html,
 %% including
 %% the current state and a history of state changes.
+-spec list_byoip_cidrs(map(), list_byoip_cidrs_request()) ->
+    {ok, list_byoip_cidrs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_byoip_cidrs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_byoip_cidrs(Client, Input, []).
+
+-spec list_byoip_cidrs(map(), list_byoip_cidrs_request(), proplists:proplist()) ->
+    {ok, list_byoip_cidrs_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_byoip_cidrs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListByoipCidrs">>, Input, Options).
 
 %% @doc List the cross-account attachments that have been created in Global
 %% Accelerator.
+-spec list_cross_account_attachments(map(), list_cross_account_attachments_request()) ->
+    {ok, list_cross_account_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_cross_account_attachments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cross_account_attachments(Client, Input, []).
+
+-spec list_cross_account_attachments(map(), list_cross_account_attachments_request(), proplists:proplist()) ->
+    {ok, list_cross_account_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_cross_account_attachments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrossAccountAttachments">>, Input, Options).
 
 %% @doc List the accounts that have cross-account endpoints.
+-spec list_cross_account_resource_accounts(map(), list_cross_account_resource_accounts_request()) ->
+    {ok, list_cross_account_resource_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()}.
 list_cross_account_resource_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cross_account_resource_accounts(Client, Input, []).
+
+-spec list_cross_account_resource_accounts(map(), list_cross_account_resource_accounts_request(), proplists:proplist()) ->
+    {ok, list_cross_account_resource_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()}.
 list_cross_account_resource_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrossAccountResourceAccounts">>, Input, Options).
 
 %% @doc List the cross-account endpoints available to add to an accelerator.
+-spec list_cross_account_resources(map(), list_cross_account_resources_request()) ->
+    {ok, list_cross_account_resources_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_cross_account_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_cross_account_resources(Client, Input, []).
+
+-spec list_cross_account_resources(map(), list_cross_account_resources_request(), proplists:proplist()) ->
+    {ok, list_cross_account_resources_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_cross_account_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrossAccountResources">>, Input, Options).
 
 %% @doc List the custom routing accelerators for an Amazon Web Services
 %% account.
+-spec list_custom_routing_accelerators(map(), list_custom_routing_accelerators_request()) ->
+    {ok, list_custom_routing_accelerators_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_custom_routing_accelerators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_accelerators(Client, Input, []).
+
+-spec list_custom_routing_accelerators(map(), list_custom_routing_accelerators_request(), proplists:proplist()) ->
+    {ok, list_custom_routing_accelerators_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_custom_routing_accelerators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingAccelerators">>, Input, Options).
 
 %% @doc List the endpoint groups that are associated with a listener for a
 %% custom routing accelerator.
+-spec list_custom_routing_endpoint_groups(map(), list_custom_routing_endpoint_groups_request()) ->
+    {ok, list_custom_routing_endpoint_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 list_custom_routing_endpoint_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_endpoint_groups(Client, Input, []).
+
+-spec list_custom_routing_endpoint_groups(map(), list_custom_routing_endpoint_groups_request(), proplists:proplist()) ->
+    {ok, list_custom_routing_endpoint_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 list_custom_routing_endpoint_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingEndpointGroups">>, Input, Options).
 
 %% @doc List the listeners for a custom routing accelerator.
+-spec list_custom_routing_listeners(map(), list_custom_routing_listeners_request()) ->
+    {ok, list_custom_routing_listeners_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_custom_routing_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_listeners(Client, Input, []).
+
+-spec list_custom_routing_listeners(map(), list_custom_routing_listeners_request(), proplists:proplist()) ->
+    {ok, list_custom_routing_listeners_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_custom_routing_listeners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingListeners">>, Input, Options).
@@ -781,9 +2438,26 @@ list_custom_routing_listeners(Client, Input, Options)
 %% The mappings also include a flag for each destination denoting which
 %% destination IP addresses and
 %% ports are allowed or denied traffic.
+-spec list_custom_routing_port_mappings(map(), list_custom_routing_port_mappings_request()) ->
+    {ok, list_custom_routing_port_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_custom_routing_port_mappings(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_port_mappings(Client, Input, []).
+
+-spec list_custom_routing_port_mappings(map(), list_custom_routing_port_mappings_request(), proplists:proplist()) ->
+    {ok, list_custom_routing_port_mappings_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_custom_routing_port_mappings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingPortMappings">>, Input, Options).
@@ -797,25 +2471,70 @@ list_custom_routing_port_mappings(Client, Input, Options)
 %% span multiple custom routing accelerators in your account, or for
 %% scenarios where you only want to
 %% list the port mappings for a specific destination instance.
+-spec list_custom_routing_port_mappings_by_destination(map(), list_custom_routing_port_mappings_by_destination_request()) ->
+    {ok, list_custom_routing_port_mappings_by_destination_response(), tuple()} |
+    {error, any()} |
+    {error, endpoint_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_custom_routing_port_mappings_by_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_routing_port_mappings_by_destination(Client, Input, []).
+
+-spec list_custom_routing_port_mappings_by_destination(map(), list_custom_routing_port_mappings_by_destination_request(), proplists:proplist()) ->
+    {ok, list_custom_routing_port_mappings_by_destination_response(), tuple()} |
+    {error, any()} |
+    {error, endpoint_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_custom_routing_port_mappings_by_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomRoutingPortMappingsByDestination">>, Input, Options).
 
 %% @doc List the endpoint groups that are associated with a listener.
+-spec list_endpoint_groups(map(), list_endpoint_groups_request()) ->
+    {ok, list_endpoint_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 list_endpoint_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoint_groups(Client, Input, []).
+
+-spec list_endpoint_groups(map(), list_endpoint_groups_request(), proplists:proplist()) ->
+    {ok, list_endpoint_groups_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 list_endpoint_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpointGroups">>, Input, Options).
 
 %% @doc List the listeners for an accelerator.
+-spec list_listeners(map(), list_listeners_request()) ->
+    {ok, list_listeners_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_listeners(Client, Input, []).
+
+-spec list_listeners(map(), list_listeners_request(), proplists:proplist()) ->
+    {ok, list_listeners_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_next_token_exception(), tuple()}.
 list_listeners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListListeners">>, Input, Options).
@@ -826,9 +2545,22 @@ list_listeners(Client, Input, Options)
 %% in Global Accelerator:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html
 %% in the Global Accelerator Developer Guide.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -846,17 +2578,53 @@ list_tags_for_resource(Client, Input, Options)
 %% IP addresses (BYOIP):
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
 %% in the Global Accelerator Developer Guide.
+-spec provision_byoip_cidr(map(), provision_byoip_cidr_request()) ->
+    {ok, provision_byoip_cidr_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, incorrect_cidr_state_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 provision_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_byoip_cidr(Client, Input, []).
+
+-spec provision_byoip_cidr(map(), provision_byoip_cidr_request(), proplists:proplist()) ->
+    {ok, provision_byoip_cidr_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, incorrect_cidr_state_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 provision_byoip_cidr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ProvisionByoipCidr">>, Input, Options).
 
 %% @doc Remove endpoints from a custom routing accelerator.
+-spec remove_custom_routing_endpoints(map(), remove_custom_routing_endpoints_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, endpoint_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 remove_custom_routing_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_custom_routing_endpoints(Client, Input, []).
+
+-spec remove_custom_routing_endpoints(map(), remove_custom_routing_endpoints_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, endpoint_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 remove_custom_routing_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveCustomRoutingEndpoints">>, Input, Options).
@@ -882,9 +2650,26 @@ remove_custom_routing_endpoints(Client, Input, Options)
 %% `UpdateEndpointGroup' API operation, Global Accelerator must resolve
 %% all of the endpoints that
 %% remain in the group.
+-spec remove_endpoints(map(), remove_endpoints_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 remove_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_endpoints(Client, Input, []).
+
+-spec remove_endpoints(map(), remove_endpoints_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 remove_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveEndpoints">>, Input, Options).
@@ -895,9 +2680,22 @@ remove_endpoints(Client, Input, Options)
 %% in Global Accelerator:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html
 %% in the Global Accelerator Developer Guide.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -913,9 +2711,22 @@ tag_resource(Client, Input, Options)
 %% in Global Accelerator:
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html
 %% in the Global Accelerator Developer Guide.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -944,17 +2755,47 @@ untag_resource(Client, Input, Options)
 %% US West (Oregon) Region to create, update, or otherwise work with
 %% accelerators. That is, for example, specify `--region us-west-2'
 %% on Amazon Web Services CLI commands.
+-spec update_accelerator(map(), update_accelerator_request()) ->
+    {ok, update_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 update_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_accelerator(Client, Input, []).
+
+-spec update_accelerator(map(), update_accelerator_request(), proplists:proplist()) ->
+    {ok, update_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 update_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccelerator">>, Input, Options).
 
 %% @doc Update the attributes for an accelerator.
+-spec update_accelerator_attributes(map(), update_accelerator_attributes_request()) ->
+    {ok, update_accelerator_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 update_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_accelerator_attributes(Client, Input, []).
+
+-spec update_accelerator_attributes(map(), update_accelerator_attributes_request(), proplists:proplist()) ->
+    {ok, update_accelerator_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 update_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAcceleratorAttributes">>, Input, Options).
@@ -985,33 +2826,97 @@ update_accelerator_attributes(Client, Input, Options)
 %% the account ID
 %% that owns that accelerator, endpoints will not be removed from the
 %% accelerator.
+-spec update_cross_account_attachment(map(), update_cross_account_attachment_request()) ->
+    {ok, update_cross_account_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, attachment_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 update_cross_account_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_cross_account_attachment(Client, Input, []).
+
+-spec update_cross_account_attachment(map(), update_cross_account_attachment_request(), proplists:proplist()) ->
+    {ok, update_cross_account_attachment_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, attachment_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, transaction_in_progress_exception(), tuple()}.
 update_cross_account_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCrossAccountAttachment">>, Input, Options).
 
 %% @doc Update a custom routing accelerator.
+-spec update_custom_routing_accelerator(map(), update_custom_routing_accelerator_request()) ->
+    {ok, update_custom_routing_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 update_custom_routing_accelerator(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_routing_accelerator(Client, Input, []).
+
+-spec update_custom_routing_accelerator(map(), update_custom_routing_accelerator_request(), proplists:proplist()) ->
+    {ok, update_custom_routing_accelerator_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 update_custom_routing_accelerator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomRoutingAccelerator">>, Input, Options).
 
 %% @doc Update the attributes for a custom routing accelerator.
+-spec update_custom_routing_accelerator_attributes(map(), update_custom_routing_accelerator_attributes_request()) ->
+    {ok, update_custom_routing_accelerator_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 update_custom_routing_accelerator_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_routing_accelerator_attributes(Client, Input, []).
+
+-spec update_custom_routing_accelerator_attributes(map(), update_custom_routing_accelerator_attributes_request(), proplists:proplist()) ->
+    {ok, update_custom_routing_accelerator_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, accelerator_not_found_exception(), tuple()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 update_custom_routing_accelerator_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomRoutingAcceleratorAttributes">>, Input, Options).
 
 %% @doc Update a listener for a custom routing accelerator.
+-spec update_custom_routing_listener(map(), update_custom_routing_listener_request()) ->
+    {ok, update_custom_routing_listener_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 update_custom_routing_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_custom_routing_listener(Client, Input, []).
+
+-spec update_custom_routing_listener(map(), update_custom_routing_listener_request(), proplists:proplist()) ->
+    {ok, update_custom_routing_listener_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 update_custom_routing_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCustomRoutingListener">>, Input, Options).
@@ -1019,17 +2924,51 @@ update_custom_routing_listener(Client, Input, Options)
 %% @doc Update an endpoint group.
 %%
 %% A resource must be valid and active when you add it as an endpoint.
+-spec update_endpoint_group(map(), update_endpoint_group_request()) ->
+    {ok, update_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 update_endpoint_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_group(Client, Input, []).
+
+-spec update_endpoint_group(map(), update_endpoint_group_request(), proplists:proplist()) ->
+    {ok, update_endpoint_group_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, endpoint_group_not_found_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()}.
 update_endpoint_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpointGroup">>, Input, Options).
 
 %% @doc Update a listener.
+-spec update_listener(map(), update_listener_request()) ->
+    {ok, update_listener_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 update_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_listener(Client, Input, []).
+
+-spec update_listener(map(), update_listener_request(), proplists:proplist()) ->
+    {ok, update_listener_response(), tuple()} |
+    {error, any()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()} |
+    {error, invalid_port_range_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()}.
 update_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateListener">>, Input, Options).
@@ -1049,9 +2988,26 @@ update_listener(Client, Input, Options)
 %% IP addresses (BYOIP):
 %% https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
 %% in the Global Accelerator Developer Guide.
+-spec withdraw_byoip_cidr(map(), withdraw_byoip_cidr_request()) ->
+    {ok, withdraw_byoip_cidr_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, byoip_cidr_not_found_exception(), tuple()} |
+    {error, incorrect_cidr_state_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 withdraw_byoip_cidr(Client, Input)
   when is_map(Client), is_map(Input) ->
     withdraw_byoip_cidr(Client, Input, []).
+
+-spec withdraw_byoip_cidr(map(), withdraw_byoip_cidr_request(), proplists:proplist()) ->
+    {ok, withdraw_byoip_cidr_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, byoip_cidr_not_found_exception(), tuple()} |
+    {error, incorrect_cidr_state_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_argument_exception(), tuple()}.
 withdraw_byoip_cidr(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"WithdrawByoipCidr">>, Input, Options).

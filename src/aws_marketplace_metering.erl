@@ -75,6 +75,202 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% batch_meter_usage_request() :: #{
+%%   <<"ProductCode">> := string(),
+%%   <<"UsageRecords">> := list(usage_record()())
+%% }
+-type batch_meter_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_meter_usage_result() :: #{
+%%   <<"Results">> => list(usage_record_result()()),
+%%   <<"UnprocessedRecords">> => list(usage_record()())
+%% }
+-type batch_meter_usage_result() :: #{binary() => any()}.
+
+%% Example:
+%% customer_not_entitled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type customer_not_entitled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disabled_api_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type disabled_api_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% expired_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_customer_identifier_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_customer_identifier_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_endpoint_region_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_endpoint_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_product_code_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_product_code_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_public_key_version_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_public_key_version_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_region_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_usage_allocations_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_usage_allocations_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_usage_dimension_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_usage_dimension_exception() :: #{binary() => any()}.
+
+%% Example:
+%% meter_usage_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ProductCode">> := string(),
+%%   <<"Timestamp">> := non_neg_integer(),
+%%   <<"UsageAllocations">> => list(usage_allocation()()),
+%%   <<"UsageDimension">> := string(),
+%%   <<"UsageQuantity">> => integer()
+%% }
+-type meter_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% meter_usage_result() :: #{
+%%   <<"MeteringRecordId">> => string()
+%% }
+-type meter_usage_result() :: #{binary() => any()}.
+
+%% Example:
+%% platform_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type platform_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% register_usage_request() :: #{
+%%   <<"Nonce">> => string(),
+%%   <<"ProductCode">> := string(),
+%%   <<"PublicKeyVersion">> := integer()
+%% }
+-type register_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_usage_result() :: #{
+%%   <<"PublicKeyRotationTimestamp">> => non_neg_integer(),
+%%   <<"Signature">> => string()
+%% }
+-type register_usage_result() :: #{binary() => any()}.
+
+%% Example:
+%% resolve_customer_request() :: #{
+%%   <<"RegistrationToken">> := string()
+%% }
+-type resolve_customer_request() :: #{binary() => any()}.
+
+%% Example:
+%% resolve_customer_result() :: #{
+%%   <<"CustomerAWSAccountId">> => string(),
+%%   <<"CustomerIdentifier">> => string(),
+%%   <<"ProductCode">> => string()
+%% }
+-type resolve_customer_result() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% timestamp_out_of_bounds_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type timestamp_out_of_bounds_exception() :: #{binary() => any()}.
+
+%% Example:
+%% usage_allocation() :: #{
+%%   <<"AllocatedUsageQuantity">> => integer(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type usage_allocation() :: #{binary() => any()}.
+
+%% Example:
+%% usage_record() :: #{
+%%   <<"CustomerIdentifier">> => string(),
+%%   <<"Dimension">> => string(),
+%%   <<"Quantity">> => integer(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"UsageAllocations">> => list(usage_allocation()())
+%% }
+-type usage_record() :: #{binary() => any()}.
+
+%% Example:
+%% usage_record_result() :: #{
+%%   <<"MeteringRecordId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UsageRecord">> => usage_record()
+%% }
+-type usage_record_result() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -116,9 +312,34 @@
 %% https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-batchmeterusage-example
 %% in the AWS Marketplace Seller
 %% Guide.
+-spec batch_meter_usage(map(), batch_meter_usage_request()) ->
+    {ok, batch_meter_usage_result(), tuple()} |
+    {error, any()} |
+    {error, disabled_api_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_customer_identifier_exception(), tuple()} |
+    {error, invalid_product_code_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, invalid_usage_allocations_exception(), tuple()} |
+    {error, invalid_usage_dimension_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, timestamp_out_of_bounds_exception(), tuple()}.
 batch_meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_meter_usage(Client, Input, []).
+
+-spec batch_meter_usage(map(), batch_meter_usage_request(), proplists:proplist()) ->
+    {ok, batch_meter_usage_result(), tuple()} |
+    {error, any()} |
+    {error, disabled_api_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_customer_identifier_exception(), tuple()} |
+    {error, invalid_product_code_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, invalid_usage_allocations_exception(), tuple()} |
+    {error, invalid_usage_dimension_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, timestamp_out_of_bounds_exception(), tuple()}.
 batch_meter_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchMeterUsage">>, Input, Options).
@@ -141,9 +362,36 @@ batch_meter_usage(Client, Input, Options)
 %% Usage records are expected to be submitted as quickly as possible after
 %% the event that
 %% is being recorded, and are not accepted more than 6 hours after the event.
+-spec meter_usage(map(), meter_usage_request()) ->
+    {ok, meter_usage_result(), tuple()} |
+    {error, any()} |
+    {error, customer_not_entitled_exception(), tuple()} |
+    {error, duplicate_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_endpoint_region_exception(), tuple()} |
+    {error, invalid_product_code_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, invalid_usage_allocations_exception(), tuple()} |
+    {error, invalid_usage_dimension_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, timestamp_out_of_bounds_exception(), tuple()}.
 meter_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     meter_usage(Client, Input, []).
+
+-spec meter_usage(map(), meter_usage_request(), proplists:proplist()) ->
+    {ok, meter_usage_result(), tuple()} |
+    {error, any()} |
+    {error, customer_not_entitled_exception(), tuple()} |
+    {error, duplicate_request_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_endpoint_region_exception(), tuple()} |
+    {error, invalid_product_code_exception(), tuple()} |
+    {error, invalid_tag_exception(), tuple()} |
+    {error, invalid_usage_allocations_exception(), tuple()} |
+    {error, invalid_usage_dimension_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, timestamp_out_of_bounds_exception(), tuple()}.
 meter_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MeterUsage">>, Input, Options).
@@ -198,9 +446,32 @@ meter_usage(Client, Input, Options)
 %% pods, regardless of the customers subscription state, removing the need
 %% for your
 %% software to perform entitlement checks at runtime.
+-spec register_usage(map(), register_usage_request()) ->
+    {ok, register_usage_result(), tuple()} |
+    {error, any()} |
+    {error, customer_not_entitled_exception(), tuple()} |
+    {error, disabled_api_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_product_code_exception(), tuple()} |
+    {error, invalid_public_key_version_exception(), tuple()} |
+    {error, invalid_region_exception(), tuple()} |
+    {error, platform_not_supported_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 register_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_usage(Client, Input, []).
+
+-spec register_usage(map(), register_usage_request(), proplists:proplist()) ->
+    {ok, register_usage_result(), tuple()} |
+    {error, any()} |
+    {error, customer_not_entitled_exception(), tuple()} |
+    {error, disabled_api_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_product_code_exception(), tuple()} |
+    {error, invalid_public_key_version_exception(), tuple()} |
+    {error, invalid_region_exception(), tuple()} |
+    {error, platform_not_supported_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 register_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterUsage">>, Input, Options).
@@ -228,9 +499,26 @@ register_usage(Client, Input, Options)
 %% https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-resolvecustomer-example
 %% in the AWS Marketplace Seller
 %% Guide.
+-spec resolve_customer(map(), resolve_customer_request()) ->
+    {ok, resolve_customer_result(), tuple()} |
+    {error, any()} |
+    {error, disabled_api_exception(), tuple()} |
+    {error, expired_token_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 resolve_customer(Client, Input)
   when is_map(Client), is_map(Input) ->
     resolve_customer(Client, Input, []).
+
+-spec resolve_customer(map(), resolve_customer_request(), proplists:proplist()) ->
+    {ok, resolve_customer_result(), tuple()} |
+    {error, any()} |
+    {error, disabled_api_exception(), tuple()} |
+    {error, expired_token_exception(), tuple()} |
+    {error, internal_service_error_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 resolve_customer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResolveCustomer">>, Input, Options).

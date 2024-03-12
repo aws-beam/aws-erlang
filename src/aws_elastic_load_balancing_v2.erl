@@ -135,6 +135,1338 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% target_health() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type target_health() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_target_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rules_input() :: #{
+%%   <<"ListenerArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"RuleArns">> => list(string()())
+%% }
+-type describe_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_ca_certificates_bundle_output() :: #{
+%%   <<"Location">> => string()
+%% }
+-type get_trust_store_ca_certificates_bundle_output() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_revocation() :: #{
+%%   <<"NumberOfRevokedEntries">> => float(),
+%%   <<"RevocationId">> => float(),
+%%   <<"RevocationType">> => list(any()),
+%%   <<"TrustStoreArn">> => string()
+%% }
+-type trust_store_revocation() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone() :: #{
+%%   <<"LoadBalancerAddresses">> => list(load_balancer_address()()),
+%%   <<"OutpostId">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"ZoneName">> => string()
+%% }
+-type availability_zone() :: #{binary() => any()}.
+
+%% Example:
+%% revocation_content() :: #{
+%%   <<"RevocationType">> => list(any()),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3ObjectVersion">> => string()
+%% }
+-type revocation_content() :: #{binary() => any()}.
+
+%% Example:
+%% delete_listener_output() :: #{
+
+%% }
+-type delete_listener_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_trust_store_revocations_output() :: #{
+%%   <<"TrustStoreRevocations">> => list(trust_store_revocation()())
+%% }
+-type add_trust_store_revocations_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_target_group_output() :: #{
+%%   <<"TargetGroups">> => list(target_group()())
+%% }
+-type create_target_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% listener() :: #{
+%%   <<"AlpnPolicy">> => list(string()()),
+%%   <<"Certificates">> => list(certificate()()),
+%%   <<"DefaultActions">> => list(action()()),
+%%   <<"ListenerArn">> => string(),
+%%   <<"LoadBalancerArn">> => string(),
+%%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"SslPolicy">> => string()
+%% }
+-type listener() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone_not_supported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type availability_zone_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_listener_input() :: #{
+%%   <<"AlpnPolicy">> => list(string()()),
+%%   <<"Certificates">> => list(certificate()()),
+%%   <<"DefaultActions">> := list(action()()),
+%%   <<"LoadBalancerArn">> := string(),
+%%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"SslPolicy">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_listener_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_output() :: #{
+
+%% }
+-type delete_load_balancer_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_listener_certificates_output() :: #{
+%%   <<"Certificates">> => list(certificate()())
+%% }
+-type add_listener_certificates_output() :: #{binary() => any()}.
+
+%% Example:
+%% modify_target_group_output() :: #{
+%%   <<"TargetGroups">> => list(target_group()())
+%% }
+-type modify_target_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_security_groups_input() :: #{
+%%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => list(any()),
+%%   <<"LoadBalancerArn">> := string(),
+%%   <<"SecurityGroups">> := list(string()())
+%% }
+-type set_security_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_output() :: #{
+
+%% }
+-type add_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% modify_trust_store_input() :: #{
+%%   <<"CaCertificatesBundleS3Bucket">> := string(),
+%%   <<"CaCertificatesBundleS3Key">> := string(),
+%%   <<"CaCertificatesBundleS3ObjectVersion">> => string(),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type modify_trust_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% modify_target_group_attributes_input() :: #{
+%%   <<"Attributes">> := list(target_group_attribute()()),
+%%   <<"TargetGroupArn">> := string()
+%% }
+-type modify_target_group_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_listener_certificates_input() :: #{
+%%   <<"Certificates">> := list(certificate()()),
+%%   <<"ListenerArn">> := string()
+%% }
+-type add_listener_certificates_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_subnets_input() :: #{
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"LoadBalancerArn">> := string(),
+%%   <<"SubnetMappings">> => list(subnet_mapping()()),
+%%   <<"Subnets">> => list(string()())
+%% }
+-type set_subnets_input() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_mapping() :: #{
+%%   <<"AllocationId">> => string(),
+%%   <<"IPv6Address">> => string(),
+%%   <<"PrivateIPv4Address">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type subnet_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% ssl_policy() :: #{
+%%   <<"Ciphers">> => list(cipher()()),
+%%   <<"Name">> => string(),
+%%   <<"SslProtocols">> => list(string()()),
+%%   <<"SupportedLoadBalancerTypes">> => list(string()())
+%% }
+-type ssl_policy() :: #{binary() => any()}.
+
+%% Example:
+%% fixed_response_action_config() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"MessageBody">> => string(),
+%%   <<"StatusCode">> => string()
+%% }
+-type fixed_response_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% modify_listener_output() :: #{
+%%   <<"Listeners">> => list(listener()())
+%% }
+-type modify_listener_output() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_targets_input() :: #{
+%%   <<"TargetGroupArn">> := string(),
+%%   <<"Targets">> := list(target_description()())
+%% }
+-type deregister_targets_input() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_association() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type trust_store_association() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_input() :: #{
+%%   <<"ResourceArns">> := list(string()()),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type add_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% mutual_authentication_attributes() :: #{
+%%   <<"IgnoreClientCertificateExpiry">> => boolean(),
+%%   <<"Mode">> => string(),
+%%   <<"TrustStoreArn">> => string()
+%% }
+-type mutual_authentication_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% limit() :: #{
+%%   <<"Max">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type limit() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_configuration_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_configuration_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type subnet_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_output() :: #{
+%%   <<"Rules">> => list(rule()())
+%% }
+-type create_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_trust_store_revocations_input() :: #{
+%%   <<"RevocationContents">> => list(revocation_content()()),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type add_trust_store_revocations_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_target_group_attributes_output() :: #{
+%%   <<"Attributes">> => list(target_group_attribute()())
+%% }
+-type describe_target_group_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_rules_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_rules_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target_description() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type target_description() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trust_stores_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TrustStores">> => list(trust_store()())
+%% }
+-type describe_trust_stores_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ssl_policies_input() :: #{
+%%   <<"LoadBalancerType">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"Names">> => list(string()()),
+%%   <<"PageSize">> => integer()
+%% }
+-type describe_ssl_policies_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_output() :: #{
+%%   <<"LoadBalancers">> => list(load_balancer()())
+%% }
+-type create_load_balancer_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_target_group_output() :: #{
+
+%% }
+-type delete_target_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_load_balancers_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_load_balancers_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_output() :: #{
+
+%% }
+-type remove_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% allocation_id_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type allocation_id_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_output() :: #{
+
+%% }
+-type delete_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_trust_store_input() :: #{
+%%   <<"CaCertificatesBundleS3Bucket">> := string(),
+%%   <<"CaCertificatesBundleS3Key">> := string(),
+%%   <<"CaCertificatesBundleS3ObjectVersion">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_trust_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% query_string_condition_config() :: #{
+%%   <<"Values">> => list(query_string_key_value_pair()())
+%% }
+-type query_string_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_listener_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_listener_exception() :: #{binary() => any()}.
+
+%% Example:
+%% query_string_key_value_pair() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type query_string_key_value_pair() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_revocation_content_output() :: #{
+%%   <<"Location">> => string()
+%% }
+-type get_trust_store_revocation_content_output() :: #{binary() => any()}.
+
+%% Example:
+%% host_header_condition_config() :: #{
+%%   <<"Values">> => list(string()())
+%% }
+-type host_header_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ssl_policies_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"SslPolicies">> => list(ssl_policy()())
+%% }
+-type describe_ssl_policies_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trust_store_revocation() :: #{
+%%   <<"NumberOfRevokedEntries">> => float(),
+%%   <<"RevocationId">> => float(),
+%%   <<"RevocationType">> => list(any()),
+%%   <<"TrustStoreArn">> => string()
+%% }
+-type describe_trust_store_revocation() :: #{binary() => any()}.
+
+%% Example:
+%% authenticate_oidc_action_config() :: #{
+%%   <<"AuthenticationRequestExtraParams">> => map(),
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"OnUnauthenticatedRequest">> => list(any()),
+%%   <<"Scope">> => string(),
+%%   <<"SessionCookieName">> => string(),
+%%   <<"SessionTimeout">> => float(),
+%%   <<"TokenEndpoint">> => string(),
+%%   <<"UseExistingClientSecret">> => boolean(),
+%%   <<"UserInfoEndpoint">> => string()
+%% }
+-type authenticate_oidc_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% redirect_action_config() :: #{
+%%   <<"Host">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Port">> => string(),
+%%   <<"Protocol">> => string(),
+%%   <<"Query">> => string(),
+%%   <<"StatusCode">> => list(any())
+%% }
+-type redirect_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_input() :: #{
+%%   <<"ResourceArns">> := list(string()())
+%% }
+-type describe_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% priority_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type priority_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_target_group_input() :: #{
+%%   <<"HealthCheckEnabled">> => boolean(),
+%%   <<"HealthCheckIntervalSeconds">> => integer(),
+%%   <<"HealthCheckPath">> => string(),
+%%   <<"HealthCheckPort">> => string(),
+%%   <<"HealthCheckProtocol">> => list(any()),
+%%   <<"HealthCheckTimeoutSeconds">> => integer(),
+%%   <<"HealthyThresholdCount">> => integer(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Matcher">> => matcher(),
+%%   <<"Name">> := string(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ProtocolVersion">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"TargetType">> => list(any()),
+%%   <<"UnhealthyThresholdCount">> => integer(),
+%%   <<"VpcId">> => string()
+%% }
+-type create_target_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type certificate_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_targets_output() :: #{
+
+%% }
+-type deregister_targets_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% modify_listener_input() :: #{
+%%   <<"AlpnPolicy">> => list(string()()),
+%%   <<"Certificates">> => list(certificate()()),
+%%   <<"DefaultActions">> => list(action()()),
+%%   <<"ListenerArn">> := string(),
+%%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"SslPolicy">> => string()
+%% }
+-type modify_listener_input() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_unique_target_groups_per_load_balancer_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_unique_target_groups_per_load_balancer_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_load_balancer_input() :: #{
+%%   <<"LoadBalancerArn">> := string()
+%% }
+-type delete_load_balancer_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_rule_priorities_output() :: #{
+%%   <<"Rules">> => list(rule()())
+%% }
+-type set_rule_priorities_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag_description() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type tag_description() :: #{binary() => any()}.
+
+%% Example:
+%% delete_target_group_input() :: #{
+%%   <<"TargetGroupArn">> := string()
+%% }
+-type delete_target_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% target_group_tuple() :: #{
+%%   <<"TargetGroupArn">> => string(),
+%%   <<"Weight">> => integer()
+%% }
+-type target_group_tuple() :: #{binary() => any()}.
+
+%% Example:
+%% set_subnets_output() :: #{
+%%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"IpAddressType">> => list(any())
+%% }
+-type set_subnets_output() :: #{binary() => any()}.
+
+%% Example:
+%% incompatible_protocols_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type incompatible_protocols_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_listener_output() :: #{
+%%   <<"Listeners">> => list(listener()())
+%% }
+-type create_listener_output() :: #{binary() => any()}.
+
+%% Example:
+%% revocation_id_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type revocation_id_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_ip_address_type_input() :: #{
+%%   <<"IpAddressType">> := list(any()),
+%%   <<"LoadBalancerArn">> := string()
+%% }
+-type set_ip_address_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_targets_output() :: #{
+
+%% }
+-type register_targets_output() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_target_groups_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_target_groups_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_listener_input() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type delete_listener_input() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_state() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Reason">> => string()
+%% }
+-type load_balancer_state() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trust_store_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_listener_certificates_input() :: #{
+%%   <<"Certificates">> := list(certificate()()),
+%%   <<"ListenerArn">> := string()
+%% }
+-type remove_listener_certificates_input() :: #{binary() => any()}.
+
+%% Example:
+%% forward_action_config() :: #{
+%%   <<"TargetGroupStickinessConfig">> => target_group_stickiness_config(),
+%%   <<"TargetGroups">> => list(target_group_tuple()())
+%% }
+-type forward_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_ca_certificates_bundle_input() :: #{
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type get_trust_store_ca_certificates_bundle_input() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type load_balancer_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_output() :: #{
+%%   <<"TagDescriptions">> => list(tag_description()())
+%% }
+-type describe_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_actions_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_actions_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trust_stores_input() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Names">> => list(string()()),
+%%   <<"PageSize">> => integer(),
+%%   <<"TrustStoreArns">> => list(string()())
+%% }
+-type describe_trust_stores_input() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_targets_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_targets_exception() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_permitted_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_not_permitted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_certificates_output() :: #{
+%%   <<"Certificates">> => list(certificate()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type describe_listener_certificates_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trust_store_associations_input() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type describe_trust_store_associations_input() :: #{binary() => any()}.
+
+%% Example:
+%% target_health_description() :: #{
+%%   <<"AnomalyDetection">> => anomaly_detection(),
+%%   <<"HealthCheckPort">> => string(),
+%%   <<"Target">> => target_description(),
+%%   <<"TargetHealth">> => target_health()
+%% }
+-type target_health_description() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_load_balancer_action_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_load_balancer_action_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule() :: #{
+%%   <<"Actions">> => list(action()()),
+%%   <<"Conditions">> => list(rule_condition()()),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Priority">> => string(),
+%%   <<"RuleArn">> => string()
+%% }
+-type rule() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_input() :: #{
+%%   <<"Actions">> := list(action()()),
+%%   <<"Conditions">> := list(rule_condition()()),
+%%   <<"ListenerArn">> := string(),
+%%   <<"Priority">> := integer(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_rule_priorities_input() :: #{
+%%   <<"RulePriorities">> := list(rule_priority_pair()())
+%% }
+-type set_rule_priorities_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_limits_output() :: #{
+%%   <<"Limits">> => list(limit()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type describe_account_limits_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trust_store_output() :: #{
+
+%% }
+-type delete_trust_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% revocation_content_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type revocation_content_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_listeners_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_listeners_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancers_input() :: #{
+%%   <<"LoadBalancerArns">> => list(string()()),
+%%   <<"Marker">> => string(),
+%%   <<"Names">> => list(string()()),
+%%   <<"PageSize">> => integer()
+%% }
+-type describe_load_balancers_input() :: #{binary() => any()}.
+
+%% Example:
+%% rule_priority_pair() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"RuleArn">> => string()
+%% }
+-type rule_priority_pair() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_target_group_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_target_group_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listeners_output() :: #{
+%%   <<"Listeners">> => list(listener()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type describe_listeners_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_attributes_output() :: #{
+%%   <<"Attributes">> => list(load_balancer_attribute()())
+%% }
+-type describe_load_balancer_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% certificate() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"IsDefault">> => boolean()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+%% Example:
+%% modify_load_balancer_attributes_output() :: #{
+%%   <<"Attributes">> => list(load_balancer_attribute()())
+%% }
+-type modify_load_balancer_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type load_balancer_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% remove_trust_store_revocations_input() :: #{
+%%   <<"RevocationIds">> := list(float()()),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type remove_trust_store_revocations_input() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_certificates_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_certificates_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ssl_policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ssl_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_listener_certificates_output() :: #{
+
+%% }
+-type remove_listener_certificates_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_security_group_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_security_group_exception() :: #{binary() => any()}.
+
+%% Example:
+%% action() :: #{
+%%   <<"AuthenticateCognitoConfig">> => authenticate_cognito_action_config(),
+%%   <<"AuthenticateOidcConfig">> => authenticate_oidc_action_config(),
+%%   <<"FixedResponseConfig">> => fixed_response_action_config(),
+%%   <<"ForwardConfig">> => forward_action_config(),
+%%   <<"Order">> => integer(),
+%%   <<"RedirectConfig">> => redirect_action_config(),
+%%   <<"TargetGroupArn">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type action() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trust_store_associations_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TrustStoreAssociations">> => list(trust_store_association()())
+%% }
+-type describe_trust_store_associations_output() :: #{binary() => any()}.
+
+%% Example:
+%% authenticate_cognito_action_config() :: #{
+%%   <<"AuthenticationRequestExtraParams">> => map(),
+%%   <<"OnUnauthenticatedRequest">> => list(any()),
+%%   <<"Scope">> => string(),
+%%   <<"SessionCookieName">> => string(),
+%%   <<"SessionTimeout">> => float(),
+%%   <<"UserPoolArn">> => string(),
+%%   <<"UserPoolClientId">> => string(),
+%%   <<"UserPoolDomain">> => string()
+%% }
+-type authenticate_cognito_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trust_store_input() :: #{
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type delete_trust_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_target_groups_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TargetGroups">> => list(target_group()())
+%% }
+-type describe_target_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_trust_store_revocations_output() :: #{
+
+%% }
+-type remove_trust_store_revocations_output() :: #{binary() => any()}.
+
+%% Example:
+%% target_group_stickiness_config() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type target_group_stickiness_config() :: #{binary() => any()}.
+
+%% Example:
+%% http_request_method_condition_config() :: #{
+%%   <<"Values">> => list(string()())
+%% }
+-type http_request_method_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trust_store_revocations_input() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"RevocationIds">> => list(float()()),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type describe_trust_store_revocations_input() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_trust_store_revocation_entries_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_trust_store_revocation_entries_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule_condition() :: #{
+%%   <<"Field">> => string(),
+%%   <<"HostHeaderConfig">> => host_header_condition_config(),
+%%   <<"HttpHeaderConfig">> => http_header_condition_config(),
+%%   <<"HttpRequestMethodConfig">> => http_request_method_condition_config(),
+%%   <<"PathPatternConfig">> => path_pattern_condition_config(),
+%%   <<"QueryStringConfig">> => query_string_condition_config(),
+%%   <<"SourceIpConfig">> => source_ip_condition_config(),
+%%   <<"Values">> => list(string()())
+%% }
+-type rule_condition() :: #{binary() => any()}.
+
+%% Example:
+%% target_group_association_limit_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type target_group_association_limit_exception() :: #{binary() => any()}.
+
+%% Example:
+%% modify_load_balancer_attributes_input() :: #{
+%%   <<"Attributes">> := list(load_balancer_attribute()()),
+%%   <<"LoadBalancerArn">> := string()
+%% }
+-type modify_load_balancer_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_input() :: #{
+%%   <<"CustomerOwnedIpv4Pool">> => string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"Scheme">> => list(any()),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SubnetMappings">> => list(subnet_mapping()()),
+%%   <<"Subnets">> => list(string()()),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Type">> => list(any())
+%% }
+-type create_load_balancer_input() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_trust_stores_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_trust_stores_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_target_group_attributes_input() :: #{
+%%   <<"TargetGroupArn">> := string()
+%% }
+-type describe_target_group_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_tag_keys_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_tag_keys_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target_group() :: #{
+%%   <<"HealthCheckEnabled">> => boolean(),
+%%   <<"HealthCheckIntervalSeconds">> => integer(),
+%%   <<"HealthCheckPath">> => string(),
+%%   <<"HealthCheckPort">> => string(),
+%%   <<"HealthCheckProtocol">> => list(any()),
+%%   <<"HealthCheckTimeoutSeconds">> => integer(),
+%%   <<"HealthyThresholdCount">> => integer(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"LoadBalancerArns">> => list(string()()),
+%%   <<"Matcher">> => matcher(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ProtocolVersion">> => string(),
+%%   <<"TargetGroupArn">> => string(),
+%%   <<"TargetGroupName">> => string(),
+%%   <<"TargetType">> => list(any()),
+%%   <<"UnhealthyThresholdCount">> => integer(),
+%%   <<"VpcId">> => string()
+%% }
+-type target_group() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer() :: #{
+%%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"CanonicalHostedZoneId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"CustomerOwnedIpv4Pool">> => string(),
+%%   <<"DNSName">> => string(),
+%%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"LoadBalancerArn">> => string(),
+%%   <<"LoadBalancerName">> => string(),
+%%   <<"Scheme">> => list(any()),
+%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"State">> => load_balancer_state(),
+%%   <<"Type">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type load_balancer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_target_health_input() :: #{
+%%   <<"Include">> => list(list(any())()),
+%%   <<"TargetGroupArn">> := string(),
+%%   <<"Targets">> => list(target_description()())
+%% }
+-type describe_target_health_input() :: #{binary() => any()}.
+
+%% Example:
+%% matcher() :: #{
+%%   <<"GrpcCode">> => string(),
+%%   <<"HttpCode">> => string()
+%% }
+-type matcher() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_trust_store_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_trust_store_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trust_store_revocations_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TrustStoreRevocations">> => list(describe_trust_store_revocation()())
+%% }
+-type describe_trust_store_revocations_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listeners_input() :: #{
+%%   <<"ListenerArns">> => list(string()()),
+%%   <<"LoadBalancerArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type describe_listeners_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_targets_input() :: #{
+%%   <<"TargetGroupArn">> := string(),
+%%   <<"Targets">> := list(target_description()())
+%% }
+-type register_targets_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_ip_address_type_output() :: #{
+%%   <<"IpAddressType">> => list(any())
+%% }
+-type set_ip_address_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_attributes_input() :: #{
+%%   <<"LoadBalancerArn">> := string()
+%% }
+-type describe_load_balancer_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_revocation_content_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_revocation_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% a_l_p_n_policy_not_supported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type a_l_p_n_policy_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target_group_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type target_group_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_certificates_input() :: #{
+%%   <<"ListenerArn">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type describe_listener_certificates_input() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_registrations_for_target_id_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_registrations_for_target_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_revocation_content_input() :: #{
+%%   <<"RevocationId">> := float(),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type get_trust_store_revocation_content_input() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trust_store_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rules_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Rules">> => list(rule()())
+%% }
+-type describe_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_limits_input() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type describe_account_limits_input() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_address() :: #{
+%%   <<"AllocationId">> => string(),
+%%   <<"IPv6Address">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"PrivateIPv4Address">> => string()
+%% }
+-type load_balancer_address() :: #{binary() => any()}.
+
+%% Example:
+%% modify_rule_input() :: #{
+%%   <<"Actions">> => list(action()()),
+%%   <<"Conditions">> => list(rule_condition()()),
+%%   <<"RuleArn">> := string()
+%% }
+-type modify_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_input() :: #{
+%%   <<"RuleArn">> := string()
+%% }
+-type delete_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_ca_certificates_bundle_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_ca_certificates_bundle_exception() :: #{binary() => any()}.
+
+%% Example:
+%% health_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type health_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancers_output() :: #{
+%%   <<"LoadBalancers">> => list(load_balancer()()),
+%%   <<"NextMarker">> => string()
+%% }
+-type describe_load_balancers_output() :: #{binary() => any()}.
+
+%% Example:
+%% target_group_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type target_group_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_subnet_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_not_ready_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trust_store_not_ready_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_target_groups_input() :: #{
+%%   <<"LoadBalancerArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"Names">> => list(string()()),
+%%   <<"PageSize">> => integer(),
+%%   <<"TargetGroupArns">> => list(string()())
+%% }
+-type describe_target_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_load_balancer_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_load_balancer_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_input() :: #{
+%%   <<"ResourceArns">> := list(string()()),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type remove_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% http_header_condition_config() :: #{
+%%   <<"HttpHeaderName">> => string(),
+%%   <<"Values">> => list(string()())
+%% }
+-type http_header_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% listener_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type listener_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% path_pattern_condition_config() :: #{
+%%   <<"Values">> => list(string()())
+%% }
+-type path_pattern_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% ca_certificates_bundle_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ca_certificates_bundle_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_scheme_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_scheme_exception() :: #{binary() => any()}.
+
+%% Example:
+%% anomaly_detection() :: #{
+%%   <<"MitigationInEffect">> => list(any()),
+%%   <<"Result">> => list(any())
+%% }
+-type anomaly_detection() :: #{binary() => any()}.
+
+%% Example:
+%% describe_target_health_output() :: #{
+%%   <<"TargetHealthDescriptions">> => list(target_health_description()())
+%% }
+-type describe_target_health_output() :: #{binary() => any()}.
+
+%% Example:
+%% source_ip_condition_config() :: #{
+%%   <<"Values">> => list(string()())
+%% }
+-type source_ip_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% cipher() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type cipher() :: #{binary() => any()}.
+
+%% Example:
+%% rule_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type rule_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_trust_store_output() :: #{
+%%   <<"TrustStores">> => list(trust_store()())
+%% }
+-type create_trust_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_security_groups_output() :: #{
+%%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => list(any()),
+%%   <<"SecurityGroupIds">> => list(string()())
+%% }
+-type set_security_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% modify_trust_store_output() :: #{
+%%   <<"TrustStores">> => list(trust_store()())
+%% }
+-type modify_trust_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_protocol_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_protocol_exception() :: #{binary() => any()}.
+
+%% Example:
+%% modify_target_group_input() :: #{
+%%   <<"HealthCheckEnabled">> => boolean(),
+%%   <<"HealthCheckIntervalSeconds">> => integer(),
+%%   <<"HealthCheckPath">> => string(),
+%%   <<"HealthCheckPort">> => string(),
+%%   <<"HealthCheckProtocol">> => list(any()),
+%%   <<"HealthCheckTimeoutSeconds">> => integer(),
+%%   <<"HealthyThresholdCount">> => integer(),
+%%   <<"Matcher">> => matcher(),
+%%   <<"TargetGroupArn">> := string(),
+%%   <<"UnhealthyThresholdCount">> => integer()
+%% }
+-type modify_target_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% modify_rule_output() :: #{
+%%   <<"Rules">> => list(rule()())
+%% }
+-type modify_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store() :: #{
+%%   <<"Name">> => string(),
+%%   <<"NumberOfCaCertificates">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalRevokedEntries">> => float(),
+%%   <<"TrustStoreArn">> => string()
+%% }
+-type trust_store() :: #{binary() => any()}.
+
+%% Example:
+%% modify_target_group_attributes_output() :: #{
+%%   <<"Attributes">> => list(target_group_attribute()())
+%% }
+-type modify_target_group_attributes_output() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -154,9 +1486,22 @@
 %% listeners:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html
 %% in the Network Load Balancers Guide.
+-spec add_listener_certificates(map(), add_listener_certificates_input()) ->
+    {ok, add_listener_certificates_output(), tuple()} |
+    {error, any()} |
+    {error, certificate_not_found_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, too_many_certificates_exception(), tuple()}.
 add_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_listener_certificates(Client, Input, []).
+
+-spec add_listener_certificates(map(), add_listener_certificates_input(), proplists:proplist()) ->
+    {ok, add_listener_certificates_output(), tuple()} |
+    {error, any()} |
+    {error, certificate_not_found_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, too_many_certificates_exception(), tuple()}.
 add_listener_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddListenerCertificates">>, Input, Options).
@@ -172,17 +1517,53 @@ add_listener_certificates(Client, Input, Options)
 %% Each tag consists of a key and an optional value. If a resource already
 %% has a tag with the
 %% same key, `AddTags' updates its value.
+-spec add_tags(map(), add_tags_input()) ->
+    {ok, add_tags_output(), tuple()} |
+    {error, any()} |
+    {error, duplicate_tag_keys_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
+
+-spec add_tags(map(), add_tags_input(), proplists:proplist()) ->
+    {ok, add_tags_output(), tuple()} |
+    {error, any()} |
+    {error, duplicate_tag_keys_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
 
 %% @doc Adds the specified revocation file to the specified trust store.
+-spec add_trust_store_revocations(map(), add_trust_store_revocations_input()) ->
+    {ok, add_trust_store_revocations_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_revocation_content_exception(), tuple()} |
+    {error, revocation_content_not_found_exception(), tuple()} |
+    {error, too_many_trust_store_revocation_entries_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 add_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_trust_store_revocations(Client, Input, []).
+
+-spec add_trust_store_revocations(map(), add_trust_store_revocations_input(), proplists:proplist()) ->
+    {ok, add_trust_store_revocations_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_revocation_content_exception(), tuple()} |
+    {error, revocation_content_not_found_exception(), tuple()} |
+    {error, too_many_trust_store_revocation_entries_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 add_trust_store_revocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTrustStoreRevocations">>, Input, Options).
@@ -209,9 +1590,56 @@ add_trust_store_revocations(Client, Input, Options)
 %% time. If you
 %% attempt to create multiple listeners with the same settings, each call
 %% succeeds.
+-spec create_listener(map(), create_listener_input()) ->
+    {ok, create_listener_output(), tuple()} |
+    {error, any()} |
+    {error, a_l_p_n_policy_not_supported_exception(), tuple()} |
+    {error, certificate_not_found_exception(), tuple()} |
+    {error, duplicate_listener_exception(), tuple()} |
+    {error, incompatible_protocols_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_load_balancer_action_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, ssl_policy_not_found_exception(), tuple()} |
+    {error, target_group_association_limit_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_actions_exception(), tuple()} |
+    {error, too_many_certificates_exception(), tuple()} |
+    {error, too_many_listeners_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()} |
+    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()} |
+    {error, trust_store_not_ready_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 create_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_listener(Client, Input, []).
+
+-spec create_listener(map(), create_listener_input(), proplists:proplist()) ->
+    {ok, create_listener_output(), tuple()} |
+    {error, any()} |
+    {error, a_l_p_n_policy_not_supported_exception(), tuple()} |
+    {error, certificate_not_found_exception(), tuple()} |
+    {error, duplicate_listener_exception(), tuple()} |
+    {error, incompatible_protocols_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_load_balancer_action_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, ssl_policy_not_found_exception(), tuple()} |
+    {error, target_group_association_limit_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_actions_exception(), tuple()} |
+    {error, too_many_certificates_exception(), tuple()} |
+    {error, too_many_listeners_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()} |
+    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()} |
+    {error, trust_store_not_ready_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 create_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateListener">>, Input, Options).
@@ -237,9 +1665,42 @@ create_listener(Client, Input, Options)
 %% time. If you
 %% attempt to create multiple load balancers with the same settings, each
 %% call succeeds.
+-spec create_load_balancer(map(), create_load_balancer_input()) ->
+    {ok, create_load_balancer_output(), tuple()} |
+    {error, any()} |
+    {error, allocation_id_not_found_exception(), tuple()} |
+    {error, availability_zone_not_supported_exception(), tuple()} |
+    {error, duplicate_load_balancer_name_exception(), tuple()} |
+    {error, duplicate_tag_keys_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_scheme_exception(), tuple()} |
+    {error, invalid_security_group_exception(), tuple()} |
+    {error, invalid_subnet_exception(), tuple()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, subnet_not_found_exception(), tuple()} |
+    {error, too_many_load_balancers_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_load_balancer(Client, Input, []).
+
+-spec create_load_balancer(map(), create_load_balancer_input(), proplists:proplist()) ->
+    {ok, create_load_balancer_output(), tuple()} |
+    {error, any()} |
+    {error, allocation_id_not_found_exception(), tuple()} |
+    {error, availability_zone_not_supported_exception(), tuple()} |
+    {error, duplicate_load_balancer_name_exception(), tuple()} |
+    {error, duplicate_tag_keys_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_scheme_exception(), tuple()} |
+    {error, invalid_security_group_exception(), tuple()} |
+    {error, invalid_subnet_exception(), tuple()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, subnet_not_found_exception(), tuple()} |
+    {error, too_many_load_balancers_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLoadBalancer">>, Input, Options).
@@ -259,9 +1720,46 @@ create_load_balancer(Client, Input, Options)
 %% see Listener rules:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules
 %% in the Application Load Balancers Guide.
+-spec create_rule(map(), create_rule_input()) ->
+    {ok, create_rule_output(), tuple()} |
+    {error, any()} |
+    {error, incompatible_protocols_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_load_balancer_action_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, priority_in_use_exception(), tuple()} |
+    {error, target_group_association_limit_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_actions_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_rules_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, too_many_target_groups_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()} |
+    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 create_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule(Client, Input, []).
+
+-spec create_rule(map(), create_rule_input(), proplists:proplist()) ->
+    {ok, create_rule_output(), tuple()} |
+    {error, any()} |
+    {error, incompatible_protocols_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_load_balancer_action_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, priority_in_use_exception(), tuple()} |
+    {error, target_group_association_limit_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_actions_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_rules_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, too_many_target_groups_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()} |
+    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 create_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRule">>, Input, Options).
@@ -286,17 +1784,51 @@ create_rule(Client, Input, Options)
 %% time. If you
 %% attempt to create multiple target groups with the same settings, each call
 %% succeeds.
+-spec create_target_group(map(), create_target_group_input()) ->
+    {ok, create_target_group_output(), tuple()} |
+    {error, any()} |
+    {error, duplicate_target_group_name_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, too_many_target_groups_exception(), tuple()}.
 create_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_target_group(Client, Input, []).
+
+-spec create_target_group(map(), create_target_group_input(), proplists:proplist()) ->
+    {ok, create_target_group_output(), tuple()} |
+    {error, any()} |
+    {error, duplicate_target_group_name_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, too_many_target_groups_exception(), tuple()}.
 create_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTargetGroup">>, Input, Options).
 
 %% @doc Creates a trust store.
+-spec create_trust_store(map(), create_trust_store_input()) ->
+    {ok, create_trust_store_output(), tuple()} |
+    {error, any()} |
+    {error, ca_certificates_bundle_not_found_exception(), tuple()} |
+    {error, duplicate_tag_keys_exception(), tuple()} |
+    {error, duplicate_trust_store_name_exception(), tuple()} |
+    {error, invalid_ca_certificates_bundle_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, too_many_trust_stores_exception(), tuple()}.
 create_trust_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trust_store(Client, Input, []).
+
+-spec create_trust_store(map(), create_trust_store_input(), proplists:proplist()) ->
+    {ok, create_trust_store_output(), tuple()} |
+    {error, any()} |
+    {error, ca_certificates_bundle_not_found_exception(), tuple()} |
+    {error, duplicate_tag_keys_exception(), tuple()} |
+    {error, duplicate_trust_store_name_exception(), tuple()} |
+    {error, invalid_ca_certificates_bundle_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, too_many_trust_stores_exception(), tuple()}.
 create_trust_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrustStore">>, Input, Options).
@@ -306,9 +1838,20 @@ create_trust_store(Client, Input, Options)
 %% Alternatively, your listener is deleted when you delete the load balancer
 %% to which it is
 %% attached.
+-spec delete_listener(map(), delete_listener_input()) ->
+    {ok, delete_listener_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()}.
 delete_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_listener(Client, Input, []).
+
+-spec delete_listener(map(), delete_listener_input(), proplists:proplist()) ->
+    {ok, delete_listener_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()}.
 delete_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteListener">>, Input, Options).
@@ -328,9 +1871,22 @@ delete_listener(Client, Input, Options)
 %% instances continue to run and are still registered to their target groups.
 %% If you no longer
 %% need these EC2 instances, you can stop or terminate them.
+-spec delete_load_balancer(map(), delete_load_balancer_input()) ->
+    {ok, delete_load_balancer_output(), tuple()} |
+    {error, any()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()}.
 delete_load_balancer(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_load_balancer(Client, Input, []).
+
+-spec delete_load_balancer(map(), delete_load_balancer_input(), proplists:proplist()) ->
+    {ok, delete_load_balancer_output(), tuple()} |
+    {error, any()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()}.
 delete_load_balancer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLoadBalancer">>, Input, Options).
@@ -338,9 +1894,20 @@ delete_load_balancer(Client, Input, Options)
 %% @doc Deletes the specified rule.
 %%
 %% You can't delete the default rule.
+-spec delete_rule(map(), delete_rule_input()) ->
+    {ok, delete_rule_output(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()}.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
+
+-spec delete_rule(map(), delete_rule_input(), proplists:proplist()) ->
+    {ok, delete_rule_output(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()}.
 delete_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRule">>, Input, Options).
@@ -354,17 +1921,37 @@ delete_rule(Client, Input, Options)
 %% registered targets. For example, any EC2 instances continue to run until
 %% you stop or terminate
 %% them.
+-spec delete_target_group(map(), delete_target_group_input()) ->
+    {ok, delete_target_group_output(), tuple()} |
+    {error, any()} |
+    {error, resource_in_use_exception(), tuple()}.
 delete_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_target_group(Client, Input, []).
+
+-spec delete_target_group(map(), delete_target_group_input(), proplists:proplist()) ->
+    {ok, delete_target_group_output(), tuple()} |
+    {error, any()} |
+    {error, resource_in_use_exception(), tuple()}.
 delete_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTargetGroup">>, Input, Options).
 
 %% @doc Deletes a trust store.
+-spec delete_trust_store(map(), delete_trust_store_input()) ->
+    {ok, delete_trust_store_output(), tuple()} |
+    {error, any()} |
+    {error, trust_store_in_use_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 delete_trust_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trust_store(Client, Input, []).
+
+-spec delete_trust_store(map(), delete_trust_store_input(), proplists:proplist()) ->
+    {ok, delete_trust_store_output(), tuple()} |
+    {error, any()} |
+    {error, trust_store_in_use_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 delete_trust_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrustStore">>, Input, Options).
@@ -397,9 +1984,20 @@ delete_trust_store(Client, Input, Options)
 %%
 %% Note: If the specified target does not exist, the action returns
 %% successfully.
+-spec deregister_targets(map(), deregister_targets_input()) ->
+    {ok, deregister_targets_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_target_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 deregister_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_targets(Client, Input, []).
+
+-spec deregister_targets(map(), deregister_targets_input(), proplists:proplist()) ->
+    {ok, deregister_targets_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_target_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 deregister_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterTargets">>, Input, Options).
@@ -421,9 +2019,16 @@ deregister_targets(Client, Input, Options)
 %% Quotas for your Gateway
 %% Load Balancers:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html
+-spec describe_account_limits(map(), describe_account_limits_input()) ->
+    {ok, describe_account_limits_output(), tuple()} |
+    {error, any()}.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
+
+-spec describe_account_limits(map(), describe_account_limits_input(), proplists:proplist()) ->
+    {ok, describe_account_limits_output(), tuple()} |
+    {error, any()}.
 describe_account_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountLimits">>, Input, Options).
@@ -445,9 +2050,18 @@ describe_account_limits(Client, Input, Options)
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#tls-listener-certificate
 %% in the Network Load Balancers
 %% Guide.
+-spec describe_listener_certificates(map(), describe_listener_certificates_input()) ->
+    {ok, describe_listener_certificates_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()}.
 describe_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listener_certificates(Client, Input, []).
+
+-spec describe_listener_certificates(map(), describe_listener_certificates_input(), proplists:proplist()) ->
+    {ok, describe_listener_certificates_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()}.
 describe_listener_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeListenerCertificates">>, Input, Options).
@@ -458,9 +2072,22 @@ describe_listener_certificates(Client, Input, Options)
 %%
 %% You must specify either a load
 %% balancer or one or more listeners.
+-spec describe_listeners(map(), describe_listeners_input()) ->
+    {ok, describe_listeners_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 describe_listeners(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_listeners(Client, Input, []).
+
+-spec describe_listeners(map(), describe_listeners_input(), proplists:proplist()) ->
+    {ok, describe_listeners_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 describe_listeners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeListeners">>, Input, Options).
@@ -485,17 +2112,35 @@ describe_listeners(Client, Input, Options)
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html#load-balancer-attributes
 %% in the Gateway Load Balancers
 %% Guide
+-spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input()) ->
+    {ok, describe_load_balancer_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 describe_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_attributes(Client, Input, []).
+
+-spec describe_load_balancer_attributes(map(), describe_load_balancer_attributes_input(), proplists:proplist()) ->
+    {ok, describe_load_balancer_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 describe_load_balancer_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancerAttributes">>, Input, Options).
 
 %% @doc Describes the specified load balancers or all of your load balancers.
+-spec describe_load_balancers(map(), describe_load_balancers_input()) ->
+    {ok, describe_load_balancers_output(), tuple()} |
+    {error, any()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
+
+-spec describe_load_balancers(map(), describe_load_balancers_input(), proplists:proplist()) ->
+    {ok, describe_load_balancers_output(), tuple()} |
+    {error, any()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 describe_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancers">>, Input, Options).
@@ -505,9 +2150,22 @@ describe_load_balancers(Client, Input, Options)
 %%
 %% You must specify
 %% either a listener or one or more rules.
+-spec describe_rules(map(), describe_rules_input()) ->
+    {ok, describe_rules_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 describe_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_rules(Client, Input, []).
+
+-spec describe_rules(map(), describe_rules_input(), proplists:proplist()) ->
+    {ok, describe_rules_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 describe_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRules">>, Input, Options).
@@ -521,9 +2179,18 @@ describe_rules(Client, Input, Options)
 %% Security policies:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies
 %% in the Network Load Balancers Guide.
+-spec describe_ssl_policies(map(), describe_ssl_policies_input()) ->
+    {ok, describe_ssl_policies_output(), tuple()} |
+    {error, any()} |
+    {error, ssl_policy_not_found_exception(), tuple()}.
 describe_ssl_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_ssl_policies(Client, Input, []).
+
+-spec describe_ssl_policies(map(), describe_ssl_policies_input(), proplists:proplist()) ->
+    {ok, describe_ssl_policies_output(), tuple()} |
+    {error, any()} |
+    {error, ssl_policy_not_found_exception(), tuple()}.
 describe_ssl_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSSLPolicies">>, Input, Options).
@@ -535,9 +2202,26 @@ describe_ssl_policies(Client, Input, Options)
 %% the tags for one or more Application Load Balancers, Network Load
 %% Balancers, Gateway Load
 %% Balancers, target groups, listeners, or rules.
+-spec describe_tags(map(), describe_tags_input()) ->
+    {ok, describe_tags_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 describe_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tags(Client, Input, []).
+
+-spec describe_tags(map(), describe_tags_input(), proplists:proplist()) ->
+    {ok, describe_tags_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 describe_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTags">>, Input, Options).
@@ -560,9 +2244,18 @@ describe_tags(Client, Input, Options)
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#target-group-attributes
 %% in the Gateway Load Balancers
 %% Guide
+-spec describe_target_group_attributes(map(), describe_target_group_attributes_input()) ->
+    {ok, describe_target_group_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, target_group_not_found_exception(), tuple()}.
 describe_target_group_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_group_attributes(Client, Input, []).
+
+-spec describe_target_group_attributes(map(), describe_target_group_attributes_input(), proplists:proplist()) ->
+    {ok, describe_target_group_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, target_group_not_found_exception(), tuple()}.
 describe_target_group_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTargetGroupAttributes">>, Input, Options).
@@ -575,43 +2268,96 @@ describe_target_group_attributes(Client, Input, Options)
 %% results: the ARN of the load balancer, the names of one or more target
 %% groups, or the ARNs of
 %% one or more target groups.
+-spec describe_target_groups(map(), describe_target_groups_input()) ->
+    {ok, describe_target_groups_output(), tuple()} |
+    {error, any()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 describe_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_groups(Client, Input, []).
+
+-spec describe_target_groups(map(), describe_target_groups_input(), proplists:proplist()) ->
+    {ok, describe_target_groups_output(), tuple()} |
+    {error, any()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 describe_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTargetGroups">>, Input, Options).
 
 %% @doc Describes the health of the specified targets or all of your targets.
+-spec describe_target_health(map(), describe_target_health_input()) ->
+    {ok, describe_target_health_output(), tuple()} |
+    {error, any()} |
+    {error, health_unavailable_exception(), tuple()} |
+    {error, invalid_target_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 describe_target_health(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_target_health(Client, Input, []).
+
+-spec describe_target_health(map(), describe_target_health_input(), proplists:proplist()) ->
+    {ok, describe_target_health_output(), tuple()} |
+    {error, any()} |
+    {error, health_unavailable_exception(), tuple()} |
+    {error, invalid_target_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 describe_target_health(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTargetHealth">>, Input, Options).
 
 %% @doc Describes all resources associated with the specified trust store.
+-spec describe_trust_store_associations(map(), describe_trust_store_associations_input()) ->
+    {ok, describe_trust_store_associations_output(), tuple()} |
+    {error, any()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 describe_trust_store_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_store_associations(Client, Input, []).
+
+-spec describe_trust_store_associations(map(), describe_trust_store_associations_input(), proplists:proplist()) ->
+    {ok, describe_trust_store_associations_output(), tuple()} |
+    {error, any()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 describe_trust_store_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStoreAssociations">>, Input, Options).
 
 %% @doc Describes the revocation files in use by the specified
 %% trust store arn, or revocation ID.
+-spec describe_trust_store_revocations(map(), describe_trust_store_revocations_input()) ->
+    {ok, describe_trust_store_revocations_output(), tuple()} |
+    {error, any()} |
+    {error, revocation_id_not_found_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 describe_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_store_revocations(Client, Input, []).
+
+-spec describe_trust_store_revocations(map(), describe_trust_store_revocations_input(), proplists:proplist()) ->
+    {ok, describe_trust_store_revocations_output(), tuple()} |
+    {error, any()} |
+    {error, revocation_id_not_found_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 describe_trust_store_revocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStoreRevocations">>, Input, Options).
 
 %% @doc Describes all trust stores for a given account
 %% by trust store arn’s or name.
+-spec describe_trust_stores(map(), describe_trust_stores_input()) ->
+    {ok, describe_trust_stores_output(), tuple()} |
+    {error, any()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 describe_trust_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trust_stores(Client, Input, []).
+
+-spec describe_trust_stores(map(), describe_trust_stores_input(), proplists:proplist()) ->
+    {ok, describe_trust_stores_output(), tuple()} |
+    {error, any()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 describe_trust_stores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustStores">>, Input, Options).
@@ -620,9 +2366,18 @@ describe_trust_stores(Client, Input, Options)
 %%
 %% This action returns a pre-signed S3 URI which is
 %% active for ten minutes.
+-spec get_trust_store_ca_certificates_bundle(map(), get_trust_store_ca_certificates_bundle_input()) ->
+    {ok, get_trust_store_ca_certificates_bundle_output(), tuple()} |
+    {error, any()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 get_trust_store_ca_certificates_bundle(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trust_store_ca_certificates_bundle(Client, Input, []).
+
+-spec get_trust_store_ca_certificates_bundle(map(), get_trust_store_ca_certificates_bundle_input(), proplists:proplist()) ->
+    {ok, get_trust_store_ca_certificates_bundle_output(), tuple()} |
+    {error, any()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 get_trust_store_ca_certificates_bundle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrustStoreCaCertificatesBundle">>, Input, Options).
@@ -631,9 +2386,20 @@ get_trust_store_ca_certificates_bundle(Client, Input, Options)
 %%
 %% This action returns a pre-signed S3 URI which is
 %% active for ten minutes.
+-spec get_trust_store_revocation_content(map(), get_trust_store_revocation_content_input()) ->
+    {ok, get_trust_store_revocation_content_output(), tuple()} |
+    {error, any()} |
+    {error, revocation_id_not_found_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 get_trust_store_revocation_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trust_store_revocation_content(Client, Input, []).
+
+-spec get_trust_store_revocation_content(map(), get_trust_store_revocation_content_input(), proplists:proplist()) ->
+    {ok, get_trust_store_revocation_content_output(), tuple()} |
+    {error, any()} |
+    {error, revocation_id_not_found_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 get_trust_store_revocation_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrustStoreRevocationContent">>, Input, Options).
@@ -655,9 +2421,54 @@ get_trust_store_revocation_content(Client, Input, Options)
 %% must provide the entire list. For example, to add an action, specify a
 %% list with the current
 %% actions plus the new action.
+-spec modify_listener(map(), modify_listener_input()) ->
+    {ok, modify_listener_output(), tuple()} |
+    {error, any()} |
+    {error, a_l_p_n_policy_not_supported_exception(), tuple()} |
+    {error, certificate_not_found_exception(), tuple()} |
+    {error, duplicate_listener_exception(), tuple()} |
+    {error, incompatible_protocols_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_load_balancer_action_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, ssl_policy_not_found_exception(), tuple()} |
+    {error, target_group_association_limit_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_actions_exception(), tuple()} |
+    {error, too_many_certificates_exception(), tuple()} |
+    {error, too_many_listeners_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()} |
+    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()} |
+    {error, trust_store_not_ready_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 modify_listener(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_listener(Client, Input, []).
+
+-spec modify_listener(map(), modify_listener_input(), proplists:proplist()) ->
+    {ok, modify_listener_output(), tuple()} |
+    {error, any()} |
+    {error, a_l_p_n_policy_not_supported_exception(), tuple()} |
+    {error, certificate_not_found_exception(), tuple()} |
+    {error, duplicate_listener_exception(), tuple()} |
+    {error, incompatible_protocols_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_load_balancer_action_exception(), tuple()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, ssl_policy_not_found_exception(), tuple()} |
+    {error, target_group_association_limit_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_actions_exception(), tuple()} |
+    {error, too_many_certificates_exception(), tuple()} |
+    {error, too_many_listeners_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()} |
+    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()} |
+    {error, trust_store_not_ready_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 modify_listener(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyListener">>, Input, Options).
@@ -669,9 +2480,20 @@ modify_listener(Client, Input, Options)
 %% If any of the specified attributes can't be modified as requested, the
 %% call fails. Any
 %% existing attributes that you do not modify retain their current values.
+-spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input()) ->
+    {ok, modify_load_balancer_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 modify_load_balancer_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_load_balancer_attributes(Client, Input, []).
+
+-spec modify_load_balancer_attributes(map(), modify_load_balancer_attributes_input(), proplists:proplist()) ->
+    {ok, modify_load_balancer_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 modify_load_balancer_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyLoadBalancerAttributes">>, Input, Options).
@@ -686,9 +2508,38 @@ modify_load_balancer_attributes(Client, Input, Options)
 %% must provide the entire list. For example, to add an action, specify a
 %% list with the current
 %% actions plus the new action.
+-spec modify_rule(map(), modify_rule_input()) ->
+    {ok, modify_rule_output(), tuple()} |
+    {error, any()} |
+    {error, incompatible_protocols_exception(), tuple()} |
+    {error, invalid_load_balancer_action_exception(), tuple()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, target_group_association_limit_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_actions_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()} |
+    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 modify_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_rule(Client, Input, []).
+
+-spec modify_rule(map(), modify_rule_input(), proplists:proplist()) ->
+    {ok, modify_rule_output(), tuple()} |
+    {error, any()} |
+    {error, incompatible_protocols_exception(), tuple()} |
+    {error, invalid_load_balancer_action_exception(), tuple()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, target_group_association_limit_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_actions_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()} |
+    {error, too_many_unique_target_groups_per_load_balancer_exception(), tuple()} |
+    {error, unsupported_protocol_exception(), tuple()}.
 modify_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyRule">>, Input, Options).
@@ -696,25 +2547,60 @@ modify_rule(Client, Input, Options)
 %% @doc Modifies the health checks used when evaluating the health state of
 %% the targets in the
 %% specified target group.
+-spec modify_target_group(map(), modify_target_group_input()) ->
+    {ok, modify_target_group_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 modify_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_target_group(Client, Input, []).
+
+-spec modify_target_group(map(), modify_target_group_input(), proplists:proplist()) ->
+    {ok, modify_target_group_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 modify_target_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTargetGroup">>, Input, Options).
 
 %% @doc Modifies the specified attributes of the specified target group.
+-spec modify_target_group_attributes(map(), modify_target_group_attributes_input()) ->
+    {ok, modify_target_group_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 modify_target_group_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_target_group_attributes(Client, Input, []).
+
+-spec modify_target_group_attributes(map(), modify_target_group_attributes_input(), proplists:proplist()) ->
+    {ok, modify_target_group_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()}.
 modify_target_group_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTargetGroupAttributes">>, Input, Options).
 
 %% @doc Update the ca certificate bundle for a given trust store.
+-spec modify_trust_store(map(), modify_trust_store_input()) ->
+    {ok, modify_trust_store_output(), tuple()} |
+    {error, any()} |
+    {error, ca_certificates_bundle_not_found_exception(), tuple()} |
+    {error, invalid_ca_certificates_bundle_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 modify_trust_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_trust_store(Client, Input, []).
+
+-spec modify_trust_store(map(), modify_trust_store_input(), proplists:proplist()) ->
+    {ok, modify_trust_store_output(), tuple()} |
+    {error, any()} |
+    {error, ca_certificates_bundle_not_found_exception(), tuple()} |
+    {error, invalid_ca_certificates_bundle_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 modify_trust_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTrustStore">>, Input, Options).
@@ -738,9 +2624,24 @@ modify_trust_store(Client, Input, Options)
 %% the following instance types: C1, CC1, CC2, CG1, CG2, CR1, CS1, G1, G2,
 %% HI1, HS1, M1, M2, M3,
 %% and T1. You can register instances of these types by IP address.
+-spec register_targets(map(), register_targets_input()) ->
+    {ok, register_targets_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_target_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()}.
 register_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_targets(Client, Input, []).
+
+-spec register_targets(map(), register_targets_input(), proplists:proplist()) ->
+    {ok, register_targets_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_target_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_registrations_for_target_id_exception(), tuple()} |
+    {error, too_many_targets_exception(), tuple()}.
 register_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterTargets">>, Input, Options).
@@ -748,9 +2649,20 @@ register_targets(Client, Input, Options)
 %% @doc Removes the specified certificate from the certificate list for the
 %% specified HTTPS or TLS
 %% listener.
+-spec remove_listener_certificates(map(), remove_listener_certificates_input()) ->
+    {ok, remove_listener_certificates_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, operation_not_permitted_exception(), tuple()}.
 remove_listener_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_listener_certificates(Client, Input, []).
+
+-spec remove_listener_certificates(map(), remove_listener_certificates_input(), proplists:proplist()) ->
+    {ok, remove_listener_certificates_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, operation_not_permitted_exception(), tuple()}.
 remove_listener_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveListenerCertificates">>, Input, Options).
@@ -762,26 +2674,69 @@ remove_listener_certificates(Client, Input, Options)
 %% remove the tags for one or more Application Load Balancers, Network Load
 %% Balancers, Gateway
 %% Load Balancers, target groups, listeners, or rules.
+-spec remove_tags(map(), remove_tags_input()) ->
+    {ok, remove_tags_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
+
+-spec remove_tags(map(), remove_tags_input(), proplists:proplist()) ->
+    {ok, remove_tags_output(), tuple()} |
+    {error, any()} |
+    {error, listener_not_found_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()} |
+    {error, target_group_not_found_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
 
 %% @doc Removes the specified revocation file from the specified trust store.
+-spec remove_trust_store_revocations(map(), remove_trust_store_revocations_input()) ->
+    {ok, remove_trust_store_revocations_output(), tuple()} |
+    {error, any()} |
+    {error, revocation_id_not_found_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 remove_trust_store_revocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_trust_store_revocations(Client, Input, []).
+
+-spec remove_trust_store_revocations(map(), remove_trust_store_revocations_input(), proplists:proplist()) ->
+    {ok, remove_trust_store_revocations_output(), tuple()} |
+    {error, any()} |
+    {error, revocation_id_not_found_exception(), tuple()} |
+    {error, trust_store_not_found_exception(), tuple()}.
 remove_trust_store_revocations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTrustStoreRevocations">>, Input, Options).
 
 %% @doc Sets the type of IP addresses used by the subnets of the specified
 %% load balancer.
+-spec set_ip_address_type(map(), set_ip_address_type_input()) ->
+    {ok, set_ip_address_type_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_subnet_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 set_ip_address_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ip_address_type(Client, Input, []).
+
+-spec set_ip_address_type(map(), set_ip_address_type_input(), proplists:proplist()) ->
+    {ok, set_ip_address_type_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_subnet_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 set_ip_address_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetIpAddressType">>, Input, Options).
@@ -791,9 +2746,22 @@ set_ip_address_type(Client, Input, Options)
 %% You can reorder the rules as long as there are no priority conflicts in
 %% the new order. Any
 %% existing rules that you do not specify retain their current priority.
+-spec set_rule_priorities(map(), set_rule_priorities_input()) ->
+    {ok, set_rule_priorities_output(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, priority_in_use_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()}.
 set_rule_priorities(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_rule_priorities(Client, Input, []).
+
+-spec set_rule_priorities(map(), set_rule_priorities_input(), proplists:proplist()) ->
+    {ok, set_rule_priorities_output(), tuple()} |
+    {error, any()} |
+    {error, operation_not_permitted_exception(), tuple()} |
+    {error, priority_in_use_exception(), tuple()} |
+    {error, rule_not_found_exception(), tuple()}.
 set_rule_priorities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetRulePriorities">>, Input, Options).
@@ -810,9 +2778,22 @@ set_rule_priorities(Client, Input, Options)
 %% security group for the load balancer when you created it.
 %%
 %% You can't associate a security group with a Gateway Load Balancer.
+-spec set_security_groups(map(), set_security_groups_input()) ->
+    {ok, set_security_groups_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_security_group_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 set_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_groups(Client, Input, []).
+
+-spec set_security_groups(map(), set_security_groups_input(), proplists:proplist()) ->
+    {ok, set_security_groups_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_security_group_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()}.
 set_security_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSecurityGroups">>, Input, Options).
@@ -829,9 +2810,28 @@ set_security_groups(Client, Input, Options)
 %% were enabled previously, with their existing configurations, plus any
 %% additional
 %% subnets.
+-spec set_subnets(map(), set_subnets_input()) ->
+    {ok, set_subnets_output(), tuple()} |
+    {error, any()} |
+    {error, allocation_id_not_found_exception(), tuple()} |
+    {error, availability_zone_not_supported_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_subnet_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, subnet_not_found_exception(), tuple()}.
 set_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_subnets(Client, Input, []).
+
+-spec set_subnets(map(), set_subnets_input(), proplists:proplist()) ->
+    {ok, set_subnets_output(), tuple()} |
+    {error, any()} |
+    {error, allocation_id_not_found_exception(), tuple()} |
+    {error, availability_zone_not_supported_exception(), tuple()} |
+    {error, invalid_configuration_request_exception(), tuple()} |
+    {error, invalid_subnet_exception(), tuple()} |
+    {error, load_balancer_not_found_exception(), tuple()} |
+    {error, subnet_not_found_exception(), tuple()}.
 set_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetSubnets">>, Input, Options).

@@ -32,13 +32,301 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% active_context() :: #{
+%%   <<"name">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"timeToLive">> => active_context_time_to_live()
+%% }
+-type active_context() :: #{binary() => any()}.
+
+%% Example:
+%% active_context_time_to_live() :: #{
+%%   <<"timeToLiveInSeconds">> => integer(),
+%%   <<"turnsToLive">> => integer()
+%% }
+-type active_context_time_to_live() :: #{binary() => any()}.
+
+%% Example:
+%% bad_gateway_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_gateway_exception() :: #{binary() => any()}.
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% button() :: #{
+%%   <<"text">> => string(),
+%%   <<"value">> => string()
+%% }
+-type button() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+%% Example:
+%% delete_session_request() :: #{}
+-type delete_session_request() :: #{}.
+
+%% Example:
+%% delete_session_response() :: #{
+%%   <<"botAlias">> => string(),
+%%   <<"botName">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type delete_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% dependency_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type dependency_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% dialog_action() :: #{
+%%   <<"fulfillmentState">> => list(any()),
+%%   <<"intentName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"messageFormat">> => list(any()),
+%%   <<"slotToElicit">> => string(),
+%%   <<"slots">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type dialog_action() :: #{binary() => any()}.
+
+%% Example:
+%% generic_attachment() :: #{
+%%   <<"attachmentLinkUrl">> => string(),
+%%   <<"buttons">> => list(button()()),
+%%   <<"imageUrl">> => string(),
+%%   <<"subTitle">> => string(),
+%%   <<"title">> => string()
+%% }
+-type generic_attachment() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{
+%%   <<"checkpointLabelFilter">> => string()
+%% }
+-type get_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_response() :: #{
+%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"dialogAction">> => dialog_action(),
+%%   <<"recentIntentSummaryView">> => list(intent_summary()()),
+%%   <<"sessionAttributes">> => map(),
+%%   <<"sessionId">> => string()
+%% }
+-type get_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% intent_confidence() :: #{
+%%   <<"score">> => float()
+%% }
+-type intent_confidence() :: #{binary() => any()}.
+
+%% Example:
+%% intent_summary() :: #{
+%%   <<"checkpointLabel">> => string(),
+%%   <<"confirmationStatus">> => list(any()),
+%%   <<"dialogActionType">> => list(any()),
+%%   <<"fulfillmentState">> => list(any()),
+%%   <<"intentName">> => string(),
+%%   <<"slotToElicit">> => string(),
+%%   <<"slots">> => map()
+%% }
+-type intent_summary() :: #{binary() => any()}.
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% loop_detected_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type loop_detected_exception() :: #{binary() => any()}.
+
+%% Example:
+%% not_acceptable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_acceptable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% post_content_request() :: #{
+%%   <<"accept">> => string(),
+%%   <<"activeContexts">> => string(),
+%%   <<"contentType">> := string(),
+%%   <<"inputStream">> := binary(),
+%%   <<"requestAttributes">> => string(),
+%%   <<"sessionAttributes">> => string()
+%% }
+-type post_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% post_content_response() :: #{
+%%   <<"activeContexts">> => string(),
+%%   <<"alternativeIntents">> => string(),
+%%   <<"audioStream">> => binary(),
+%%   <<"botVersion">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"dialogState">> => list(any()),
+%%   <<"encodedInputTranscript">> => string(),
+%%   <<"encodedMessage">> => string(),
+%%   <<"inputTranscript">> => string(),
+%%   <<"intentName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"messageFormat">> => list(any()),
+%%   <<"nluIntentConfidence">> => string(),
+%%   <<"sentimentResponse">> => string(),
+%%   <<"sessionAttributes">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"slotToElicit">> => string(),
+%%   <<"slots">> => string()
+%% }
+-type post_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% post_text_request() :: #{
+%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"inputText">> := string(),
+%%   <<"requestAttributes">> => map(),
+%%   <<"sessionAttributes">> => map()
+%% }
+-type post_text_request() :: #{binary() => any()}.
+
+%% Example:
+%% post_text_response() :: #{
+%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"alternativeIntents">> => list(predicted_intent()()),
+%%   <<"botVersion">> => string(),
+%%   <<"dialogState">> => list(any()),
+%%   <<"intentName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"messageFormat">> => list(any()),
+%%   <<"nluIntentConfidence">> => intent_confidence(),
+%%   <<"responseCard">> => response_card(),
+%%   <<"sentimentResponse">> => sentiment_response(),
+%%   <<"sessionAttributes">> => map(),
+%%   <<"sessionId">> => string(),
+%%   <<"slotToElicit">> => string(),
+%%   <<"slots">> => map()
+%% }
+-type post_text_response() :: #{binary() => any()}.
+
+%% Example:
+%% predicted_intent() :: #{
+%%   <<"intentName">> => string(),
+%%   <<"nluIntentConfidence">> => intent_confidence(),
+%%   <<"slots">> => map()
+%% }
+-type predicted_intent() :: #{binary() => any()}.
+
+%% Example:
+%% put_session_request() :: #{
+%%   <<"accept">> => string(),
+%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"dialogAction">> => dialog_action(),
+%%   <<"recentIntentSummaryView">> => list(intent_summary()()),
+%%   <<"sessionAttributes">> => map()
+%% }
+-type put_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_session_response() :: #{
+%%   <<"activeContexts">> => string(),
+%%   <<"audioStream">> => binary(),
+%%   <<"contentType">> => string(),
+%%   <<"dialogState">> => list(any()),
+%%   <<"encodedMessage">> => string(),
+%%   <<"intentName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"messageFormat">> => list(any()),
+%%   <<"sessionAttributes">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"slotToElicit">> => string(),
+%%   <<"slots">> => string()
+%% }
+-type put_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% request_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_timeout_exception() :: #{binary() => any()}.
+
+%% Example:
+%% response_card() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"genericAttachments">> => list(generic_attachment()()),
+%%   <<"version">> => string()
+%% }
+-type response_card() :: #{binary() => any()}.
+
+%% Example:
+%% sentiment_response() :: #{
+%%   <<"sentimentLabel">> => string(),
+%%   <<"sentimentScore">> => string()
+%% }
+-type sentiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_media_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_media_type_exception() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
 
 %% @doc Removes session information for a specified bot, alias, and user ID.
+-spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), delete_session_request()) ->
+    {ok, delete_session_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_found_exception(), tuple()}.
 delete_session(Client, BotAlias, BotName, UserId, Input) ->
     delete_session(Client, BotAlias, BotName, UserId, Input, []).
+
+-spec delete_session(map(), binary() | list(), binary() | list(), binary() | list(), delete_session_request(), proplists:proplist()) ->
+    {ok, delete_session_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_found_exception(), tuple()}.
 delete_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
@@ -63,14 +351,35 @@ delete_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 
 %% @doc Returns session information for a specified bot, alias, and user
 %% ID.
+-spec get_session(map(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_found_exception(), tuple()}.
 get_session(Client, BotAlias, BotName, UserId)
   when is_map(Client) ->
     get_session(Client, BotAlias, BotName, UserId, #{}, #{}).
 
+-spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_found_exception(), tuple()}.
 get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, []).
 
+-spec get_session(map(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_session_response(), tuple()} |
+    {error, any()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_found_exception(), tuple()}.
 get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
@@ -157,8 +466,37 @@ get_session(Client, BotAlias, BotName, UserId, QueryMap, HeadersMap, Options0)
 %% `sessionAttributes'. For more information, see Managing
 %% Conversation Context:
 %% https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
+-spec post_content(map(), binary() | list(), binary() | list(), binary() | list(), post_content_request()) ->
+    {ok, post_content_response(), tuple()} |
+    {error, any()} |
+    {error, bad_gateway_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, dependency_failed_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, loop_detected_exception(), tuple()} |
+    {error, not_acceptable_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, request_timeout_exception(), tuple()} |
+    {error, unsupported_media_type_exception(), tuple()}.
 post_content(Client, BotAlias, BotName, UserId, Input) ->
     post_content(Client, BotAlias, BotName, UserId, Input, []).
+
+-spec post_content(map(), binary() | list(), binary() | list(), binary() | list(), post_content_request(), proplists:proplist()) ->
+    {ok, post_content_response(), tuple()} |
+    {error, any()} |
+    {error, bad_gateway_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, dependency_failed_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, loop_detected_exception(), tuple()} |
+    {error, not_acceptable_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, request_timeout_exception(), tuple()} |
+    {error, unsupported_media_type_exception(), tuple()}.
 post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/content"],
@@ -281,8 +619,31 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 %% `sessionAttributes'. For more information, see Managing
 %% Conversation Context:
 %% https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html.
+-spec post_text(map(), binary() | list(), binary() | list(), binary() | list(), post_text_request()) ->
+    {ok, post_text_response(), tuple()} |
+    {error, any()} |
+    {error, bad_gateway_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, dependency_failed_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, loop_detected_exception(), tuple()} |
+    {error, not_found_exception(), tuple()}.
 post_text(Client, BotAlias, BotName, UserId, Input) ->
     post_text(Client, BotAlias, BotName, UserId, Input, []).
+
+-spec post_text(map(), binary() | list(), binary() | list(), binary() | list(), post_text_request(), proplists:proplist()) ->
+    {ok, post_text_response(), tuple()} |
+    {error, any()} |
+    {error, bad_gateway_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, dependency_failed_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, loop_detected_exception(), tuple()} |
+    {error, not_found_exception(), tuple()}.
 post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/text"],
@@ -314,8 +675,31 @@ post_text(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 %%
 %% For more information, see Managing
 %% Sessions: https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html.
+-spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), put_session_request()) ->
+    {ok, put_session_response(), tuple()} |
+    {error, any()} |
+    {error, bad_gateway_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, dependency_failed_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_acceptable_exception(), tuple()} |
+    {error, not_found_exception(), tuple()}.
 put_session(Client, BotAlias, BotName, UserId, Input) ->
     put_session(Client, BotAlias, BotName, UserId, Input, []).
+
+-spec put_session(map(), binary() | list(), binary() | list(), binary() | list(), put_session_request(), proplists:proplist()) ->
+    {ok, put_session_response(), tuple()} |
+    {error, any()} |
+    {error, bad_gateway_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, dependency_failed_exception(), tuple()} |
+    {error, internal_failure_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, not_acceptable_exception(), tuple()} |
+    {error, not_found_exception(), tuple()}.
 put_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/bot/", aws_util:encode_uri(BotName), "/alias/", aws_util:encode_uri(BotAlias), "/user/", aws_util:encode_uri(UserId), "/session"],
@@ -370,7 +754,7 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

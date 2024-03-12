@@ -59,6 +59,307 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_suite_definitions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"suiteDefinitionInformationList">> => list(suite_definition_information()())
+%% }
+-type list_suite_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+%% Example:
+%% get_suite_run_request() :: #{}
+-type get_suite_run_request() :: #{}.
+
+%% Example:
+%% start_suite_run_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpoint">> => string(),
+%%   <<"suiteRunArn">> => string(),
+%%   <<"suiteRunId">> => string()
+%% }
+-type start_suite_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% suite_run_configuration() :: #{
+%%   <<"parallelRun">> => boolean(),
+%%   <<"primaryDevice">> => device_under_test(),
+%%   <<"selectedTestList">> => list(string()())
+%% }
+-type suite_run_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% suite_definition_information() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"defaultDevices">> => list(device_under_test()()),
+%%   <<"intendedForQualification">> => boolean(),
+%%   <<"isLongDurationTest">> => boolean(),
+%%   <<"protocol">> => list(any()),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionName">> => string()
+%% }
+-type suite_definition_information() :: #{binary() => any()}.
+
+%% Example:
+%% create_suite_definition_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"suiteDefinitionArn">> => string(),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionName">> => string()
+%% }
+-type create_suite_definition_response() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% test_result() :: #{
+%%   <<"groups">> => list(group_result()())
+%% }
+-type test_result() :: #{binary() => any()}.
+
+%% Example:
+%% suite_run_information() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endAt">> => non_neg_integer(),
+%%   <<"failed">> => integer(),
+%%   <<"passed">> => integer(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionName">> => string(),
+%%   <<"suiteDefinitionVersion">> => string(),
+%%   <<"suiteRunId">> => string()
+%% }
+-type suite_run_information() :: #{binary() => any()}.
+
+%% Example:
+%% device_under_test() :: #{
+%%   <<"certificateArn">> => string(),
+%%   <<"deviceRoleArn">> => string(),
+%%   <<"thingArn">> => string()
+%% }
+-type device_under_test() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+%% Example:
+%% stop_suite_run_response() :: #{}
+-type stop_suite_run_response() :: #{}.
+
+%% Example:
+%% get_suite_run_report_response() :: #{
+%%   <<"qualificationReportDownloadUrl">> => string()
+%% }
+-type get_suite_run_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_suite_definitions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_suite_definitions_request() :: #{binary() => any()}.
+%% Example:
+%% get_suite_run_report_request() :: #{}
+-type get_suite_run_report_request() :: #{}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_response() :: #{
+%%   <<"endpoint">> => string()
+%% }
+-type get_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_suite_run_response() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"errorReason">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionVersion">> => string(),
+%%   <<"suiteRunArn">> => string(),
+%%   <<"suiteRunConfiguration">> => suite_run_configuration(),
+%%   <<"suiteRunId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"testResult">> => test_result()
+%% }
+-type get_suite_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_suite_definition_request() :: #{
+%%   <<"suiteDefinitionConfiguration">> := suite_definition_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_suite_definition_request() :: #{binary() => any()}.
+%% Example:
+%% stop_suite_run_request() :: #{}
+-type stop_suite_run_request() :: #{}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_suite_definition_request() :: #{
+%%   <<"suiteDefinitionVersion">> => string()
+%% }
+-type get_suite_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_suite_runs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionVersion">> => string()
+%% }
+-type list_suite_runs_request() :: #{binary() => any()}.
+%% Example:
+%% delete_suite_definition_request() :: #{}
+-type delete_suite_definition_request() :: #{}.
+
+%% Example:
+%% suite_definition_configuration() :: #{
+%%   <<"devicePermissionRoleArn">> => string(),
+%%   <<"devices">> => list(device_under_test()()),
+%%   <<"intendedForQualification">> => boolean(),
+%%   <<"isLongDurationTest">> => boolean(),
+%%   <<"protocol">> => list(any()),
+%%   <<"rootGroup">> => string(),
+%%   <<"suiteDefinitionName">> => string()
+%% }
+-type suite_definition_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% test_case_scenario() :: #{
+%%   <<"failure">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"systemMessage">> => string(),
+%%   <<"testCaseScenarioId">> => string(),
+%%   <<"testCaseScenarioType">> => list(any())
+%% }
+-type test_case_scenario() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+%% Example:
+%% delete_suite_definition_response() :: #{}
+-type delete_suite_definition_response() :: #{}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% update_suite_definition_request() :: #{
+%%   <<"suiteDefinitionConfiguration">> := suite_definition_configuration()
+%% }
+-type update_suite_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_suite_definition_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastModifiedAt">> => non_neg_integer(),
+%%   <<"latestVersion">> => string(),
+%%   <<"suiteDefinitionArn">> => string(),
+%%   <<"suiteDefinitionConfiguration">> => suite_definition_configuration(),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionVersion">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_suite_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_suite_runs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"suiteRunsList">> => list(suite_run_information()())
+%% }
+-type list_suite_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% group_result() :: #{
+%%   <<"groupId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"tests">> => list(test_case_run()())
+%% }
+-type group_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_suite_run_request() :: #{
+%%   <<"suiteDefinitionVersion">> => string(),
+%%   <<"suiteRunConfiguration">> := suite_run_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type start_suite_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_case_run() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"failure">> => string(),
+%%   <<"logUrl">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"testCaseDefinitionId">> => string(),
+%%   <<"testCaseDefinitionName">> => string(),
+%%   <<"testCaseRunId">> => string(),
+%%   <<"testScenarios">> => list(test_case_scenario()()),
+%%   <<"warnings">> => string()
+%% }
+-type test_case_run() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_request() :: #{
+%%   <<"authenticationMethod">> => list(any()),
+%%   <<"certificateArn">> => string(),
+%%   <<"deviceRoleArn">> => string(),
+%%   <<"thingArn">> => string()
+%% }
+-type get_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_suite_definition_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"suiteDefinitionArn">> => string(),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionName">> => string(),
+%%   <<"suiteDefinitionVersion">> => string()
+%% }
+-type update_suite_definition_response() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -68,8 +369,19 @@
 %% Requires permission to access the CreateSuiteDefinition:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec create_suite_definition(map(), create_suite_definition_request()) ->
+    {ok, create_suite_definition_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_suite_definition(Client, Input) ->
     create_suite_definition(Client, Input, []).
+
+-spec create_suite_definition(map(), create_suite_definition_request(), proplists:proplist()) ->
+    {ok, create_suite_definition_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_suite_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/suiteDefinitions"],
@@ -97,8 +409,19 @@ create_suite_definition(Client, Input0, Options0) ->
 %% Requires permission to access the DeleteSuiteDefinition:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec delete_suite_definition(map(), binary() | list(), delete_suite_definition_request()) ->
+    {ok, delete_suite_definition_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_suite_definition(Client, SuiteDefinitionId, Input) ->
     delete_suite_definition(Client, SuiteDefinitionId, Input, []).
+
+-spec delete_suite_definition(map(), binary() | list(), delete_suite_definition_request(), proplists:proplist()) ->
+    {ok, delete_suite_definition_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],
@@ -122,14 +445,32 @@ delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about an Device Advisor endpoint.
+-spec get_endpoint(map()) ->
+    {ok, get_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_endpoint(Client)
   when is_map(Client) ->
     get_endpoint(Client, #{}, #{}).
 
+-spec get_endpoint(map(), map(), map()) ->
+    {ok, get_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_endpoint(Client, QueryMap, HeadersMap, []).
 
+-spec get_endpoint(map(), map(), map(), proplists:proplist()) ->
+    {ok, get_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_endpoint(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoint"],
@@ -158,14 +499,32 @@ get_endpoint(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetSuiteDefinition:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec get_suite_definition(map(), binary() | list()) ->
+    {ok, get_suite_definition_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_suite_definition(Client, SuiteDefinitionId)
   when is_map(Client) ->
     get_suite_definition(Client, SuiteDefinitionId, #{}, #{}).
 
+-spec get_suite_definition(map(), binary() | list(), map(), map()) ->
+    {ok, get_suite_definition_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, []).
 
+-spec get_suite_definition(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_suite_definition_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],
@@ -191,14 +550,32 @@ get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the GetSuiteRun:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec get_suite_run(map(), binary() | list(), binary() | list()) ->
+    {ok, get_suite_run_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_suite_run(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
 
+-spec get_suite_run(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_suite_run_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
 
+-spec get_suite_run(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_suite_run_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), ""],
@@ -221,14 +598,32 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Optio
 %% Requires permission to access the GetSuiteRunReport:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec get_suite_run_report(map(), binary() | list(), binary() | list()) ->
+    {ok, get_suite_run_report_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
 
+-spec get_suite_run_report(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_suite_run_report_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
 
+-spec get_suite_run_report(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_suite_run_report_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), "/report"],
@@ -250,14 +645,29 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap
 %% Requires permission to access the ListSuiteDefinitions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec list_suite_definitions(map()) ->
+    {ok, list_suite_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_suite_definitions(Client)
   when is_map(Client) ->
     list_suite_definitions(Client, #{}, #{}).
 
+-spec list_suite_definitions(map(), map(), map()) ->
+    {ok, list_suite_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_suite_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suite_definitions(Client, QueryMap, HeadersMap, []).
 
+-spec list_suite_definitions(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_suite_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_suite_definitions(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteDefinitions"],
@@ -287,14 +697,29 @@ list_suite_definitions(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListSuiteRuns:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec list_suite_runs(map()) ->
+    {ok, list_suite_runs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_suite_runs(Client)
   when is_map(Client) ->
     list_suite_runs(Client, #{}, #{}).
 
+-spec list_suite_runs(map(), map(), map()) ->
+    {ok, list_suite_runs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_suite_runs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_suite_runs(Client, QueryMap, HeadersMap, []).
 
+-spec list_suite_runs(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_suite_runs_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_suite_runs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/suiteRuns"],
@@ -323,14 +748,32 @@ list_suite_runs(Client, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the ListTagsForResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -352,8 +795,21 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% Requires permission to access the StartSuiteRun:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec start_suite_run(map(), binary() | list(), start_suite_run_request()) ->
+    {ok, start_suite_run_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_suite_run(Client, SuiteDefinitionId, Input) ->
     start_suite_run(Client, SuiteDefinitionId, Input, []).
+
+-spec start_suite_run(map(), binary() | list(), start_suite_run_request(), proplists:proplist()) ->
+    {ok, start_suite_run_response(), tuple()} |
+    {error, any()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns"],
@@ -381,8 +837,21 @@ start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
 %% Requires permission to access the StopSuiteRun:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec stop_suite_run(map(), binary() | list(), binary() | list(), stop_suite_run_request()) ->
+    {ok, stop_suite_run_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input) ->
     stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input, []).
+
+-spec stop_suite_run(map(), binary() | list(), binary() | list(), stop_suite_run_request(), proplists:proplist()) ->
+    {ok, stop_suite_run_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
     Method = post,
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), "/stop"],
@@ -410,8 +879,21 @@ stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
 %% Requires permission to access the TagResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec tag_resource(map(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -439,8 +921,21 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Requires permission to access the UntagResource:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec untag_resource(map(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -469,8 +964,19 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Requires permission to access the UpdateSuiteDefinition:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
 %% action.
+-spec update_suite_definition(map(), binary() | list(), update_suite_definition_request()) ->
+    {ok, update_suite_definition_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_suite_definition(Client, SuiteDefinitionId, Input) ->
     update_suite_definition(Client, SuiteDefinitionId, Input, []).
+
+-spec update_suite_definition(map(), binary() | list(), update_suite_definition_request(), proplists:proplist()) ->
+    {ok, update_suite_definition_response(), tuple()} |
+    {error, any()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
     Method = patch,
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],
@@ -497,7 +1003,7 @@ update_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

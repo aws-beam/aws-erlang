@@ -82,6 +82,402 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% get_health_event_output() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"EndedAt">> => [non_neg_integer()],
+%%   <<"EventArn">> := string(),
+%%   <<"EventId">> := string(),
+%%   <<"HealthScoreThreshold">> => float(),
+%%   <<"ImpactType">> := string(),
+%%   <<"ImpactedLocations">> := list(impacted_location()()),
+%%   <<"LastUpdatedAt">> := [non_neg_integer()],
+%%   <<"PercentOfTotalTrafficImpacted">> => [float()],
+%%   <<"StartedAt">> := [non_neg_integer()],
+%%   <<"Status">> := string()
+%% }
+-type get_health_event_output() :: #{binary() => any()}.
+
+%% Example:
+%% health_events_config() :: #{
+%%   <<"AvailabilityLocalHealthEventsConfig">> => local_health_events_config(),
+%%   <<"AvailabilityScoreThreshold">> => float(),
+%%   <<"PerformanceLocalHealthEventsConfig">> => local_health_events_config(),
+%%   <<"PerformanceScoreThreshold">> => float()
+%% }
+-type health_events_config() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitors_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MonitorStatus">> => [string()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_monitors_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_output() :: #{
+%%   <<"Data">> => list(list([string()]())()),
+%%   <<"Fields">> => list(query_field()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type get_query_results_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_monitor_output() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"HealthEventsConfig">> => health_events_config(),
+%%   <<"InternetMeasurementsLogDelivery">> => internet_measurements_log_delivery(),
+%%   <<"MaxCityNetworksToMonitor">> => integer(),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MonitorArn">> => string(),
+%%   <<"MonitorName">> => string(),
+%%   <<"ProcessingStatus">> => string(),
+%%   <<"ProcessingStatusInfo">> => [string()],
+%%   <<"Resources">> => list(string()()),
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TrafficPercentageToMonitor">> => integer()
+%% }
+-type get_monitor_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_query_output() :: #{
+%%   <<"QueryId">> => [string()]
+%% }
+-type start_query_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_monitors_output() :: #{
+%%   <<"Monitors">> => list(monitor()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_monitors_output() :: #{binary() => any()}.
+
+%% Example:
+%% filter_parameter() :: #{
+%%   <<"Field">> => [string()],
+%%   <<"Operator">> => string(),
+%%   <<"Values">> => list([string()]())
+%% }
+-type filter_parameter() :: #{binary() => any()}.
+%% Example:
+%% stop_query_input() :: #{}
+-type stop_query_input() :: #{}.
+
+%% Example:
+%% network_impairment() :: #{
+%%   <<"AsPath">> => list(network()()),
+%%   <<"NetworkEventType">> => string(),
+%%   <<"Networks">> => list(network()())
+%% }
+-type network_impairment() :: #{binary() => any()}.
+%% Example:
+%% delete_monitor_output() :: #{}
+-type delete_monitor_output() :: #{}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% monitor() :: #{
+%%   <<"MonitorArn">> => string(),
+%%   <<"MonitorName">> => string(),
+%%   <<"ProcessingStatus">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type monitor() :: #{binary() => any()}.
+
+%% Example:
+%% impacted_location() :: #{
+%%   <<"ASName">> => [string()],
+%%   <<"ASNumber">> => [float()],
+%%   <<"CausedBy">> => network_impairment(),
+%%   <<"City">> => [string()],
+%%   <<"Country">> => [string()],
+%%   <<"CountryCode">> => [string()],
+%%   <<"InternetHealth">> => internet_health(),
+%%   <<"Ipv4Prefixes">> => list([string()]()),
+%%   <<"Latitude">> => [float()],
+%%   <<"Longitude">> => [float()],
+%%   <<"Metro">> => [string()],
+%%   <<"ServiceLocation">> => [string()],
+%%   <<"Status">> => string(),
+%%   <<"Subdivision">> => [string()],
+%%   <<"SubdivisionCode">> => [string()]
+%% }
+-type impacted_location() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_status_output() :: #{
+%%   <<"Status">> => string()
+%% }
+-type get_query_status_output() :: #{binary() => any()}.
+%% Example:
+%% delete_monitor_input() :: #{}
+-type delete_monitor_input() :: #{}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internet_measurements_log_delivery() :: #{
+%%   <<"S3Config">> => s3_config()
+%% }
+-type internet_measurements_log_delivery() :: #{binary() => any()}.
+
+%% Example:
+%% local_health_events_config() :: #{
+%%   <<"HealthScoreThreshold">> => float(),
+%%   <<"MinTrafficImpact">> => float(),
+%%   <<"Status">> => string()
+%% }
+-type local_health_events_config() :: #{binary() => any()}.
+
+%% Example:
+%% s3_config() :: #{
+%%   <<"BucketName">> => [string()],
+%%   <<"BucketPrefix">> => [string()],
+%%   <<"LogDeliveryStatus">> => string()
+%% }
+-type s3_config() :: #{binary() => any()}.
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% performance_measurement() :: #{
+%%   <<"ExperienceScore">> => [float()],
+%%   <<"PercentOfClientLocationImpacted">> => [float()],
+%%   <<"PercentOfTotalTrafficImpacted">> => [float()],
+%%   <<"RoundTripTime">> => round_trip_time()
+%% }
+-type performance_measurement() :: #{binary() => any()}.
+%% Example:
+%% get_query_status_input() :: #{}
+-type get_query_status_input() :: #{}.
+%% Example:
+%% get_monitor_input() :: #{}
+-type get_monitor_input() :: #{}.
+%% Example:
+%% stop_query_output() :: #{}
+-type stop_query_output() :: #{}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_health_events_output() :: #{
+%%   <<"HealthEvents">> := list(health_event()()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_health_events_output() :: #{binary() => any()}.
+%% Example:
+%% get_health_event_input() :: #{}
+-type get_health_event_input() :: #{}.
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% availability_measurement() :: #{
+%%   <<"ExperienceScore">> => [float()],
+%%   <<"PercentOfClientLocationImpacted">> => [float()],
+%%   <<"PercentOfTotalTrafficImpacted">> => [float()]
+%% }
+-type availability_measurement() :: #{binary() => any()}.
+
+%% Example:
+%% list_health_events_input() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"EventStatus">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_health_events_input() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% query_field() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type query_field() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"TagKeys">> => list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitor_input() :: #{
+%%   <<"ClientToken">> => [string()],
+%%   <<"HealthEventsConfig">> => health_events_config(),
+%%   <<"InternetMeasurementsLogDelivery">> => internet_measurements_log_delivery(),
+%%   <<"MaxCityNetworksToMonitor">> => integer(),
+%%   <<"ResourcesToAdd">> => list(string()()),
+%%   <<"ResourcesToRemove">> => list(string()()),
+%%   <<"Status">> => string(),
+%%   <<"TrafficPercentageToMonitor">> => integer()
+%% }
+-type update_monitor_input() :: #{binary() => any()}.
+
+%% Example:
+%% health_event() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"EndedAt">> => [non_neg_integer()],
+%%   <<"EventArn">> => string(),
+%%   <<"EventId">> => string(),
+%%   <<"HealthScoreThreshold">> => float(),
+%%   <<"ImpactType">> => string(),
+%%   <<"ImpactedLocations">> => list(impacted_location()()),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"PercentOfTotalTrafficImpacted">> => [float()],
+%%   <<"StartedAt">> => [non_neg_integer()],
+%%   <<"Status">> => string()
+%% }
+-type health_event() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type get_query_results_input() :: #{binary() => any()}.
+
+%% Example:
+%% network() :: #{
+%%   <<"ASName">> => [string()],
+%%   <<"ASNumber">> => [float()]
+%% }
+-type network() :: #{binary() => any()}.
+
+%% Example:
+%% round_trip_time() :: #{
+%%   <<"P50">> => [float()],
+%%   <<"P90">> => [float()],
+%%   <<"P95">> => [float()]
+%% }
+-type round_trip_time() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_monitor_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type create_monitor_output() :: #{binary() => any()}.
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internet_health() :: #{
+%%   <<"Availability">> => availability_measurement(),
+%%   <<"Performance">> => performance_measurement()
+%% }
+-type internet_health() :: #{binary() => any()}.
+
+%% Example:
+%% start_query_input() :: #{
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"FilterParameters">> => list(filter_parameter()()),
+%%   <<"QueryType">> := string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type start_query_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitor_output() :: #{
+%%   <<"MonitorArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type update_monitor_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_monitor_input() :: #{
+%%   <<"ClientToken">> => [string()],
+%%   <<"HealthEventsConfig">> => health_events_config(),
+%%   <<"InternetMeasurementsLogDelivery">> => internet_measurements_log_delivery(),
+%%   <<"MaxCityNetworksToMonitor">> => integer(),
+%%   <<"MonitorName">> := string(),
+%%   <<"Resources">> => list(string()()),
+%%   <<"Tags">> => map(),
+%%   <<"TrafficPercentageToMonitor">> => integer()
+%% }
+-type create_monitor_input() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -112,8 +508,27 @@
 %% maximum value:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/IMCityNetworksMaximum.html
 %% in the Amazon CloudWatch User Guide.
+-spec create_monitor(map(), create_monitor_input()) ->
+    {ok, create_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_monitor(Client, Input) ->
     create_monitor(Client, Input, []).
+
+-spec create_monitor(map(), create_monitor_input(), proplists:proplist()) ->
+    {ok, create_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 create_monitor(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v20210603/Monitors"],
@@ -137,8 +552,23 @@ create_monitor(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a monitor in Amazon CloudWatch Internet Monitor.
+-spec delete_monitor(map(), binary() | list(), delete_monitor_input()) ->
+    {ok, delete_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_monitor(Client, MonitorName, Input) ->
     delete_monitor(Client, MonitorName, Input, []).
+
+-spec delete_monitor(map(), binary() | list(), delete_monitor_input(), proplists:proplist()) ->
+    {ok, delete_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_monitor(Client, MonitorName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), ""],
@@ -173,14 +603,35 @@ delete_monitor(Client, MonitorName, Input0, Options0) ->
 %%
 %% Information rolled up at the global traffic level is also returned,
 %% including the impact type and total traffic impact.
+-spec get_health_event(map(), binary() | list(), binary() | list()) ->
+    {ok, get_health_event_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_health_event(Client, EventId, MonitorName)
   when is_map(Client) ->
     get_health_event(Client, EventId, MonitorName, #{}, #{}).
 
+-spec get_health_event(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_health_event_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap, []).
 
+-spec get_health_event(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_health_event_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/HealthEvents/", aws_util:encode_uri(EventId), ""],
@@ -203,14 +654,35 @@ get_health_event(Client, EventId, MonitorName, QueryMap, HeadersMap, Options0)
 %% The information returned includes the Amazon Resource Name (ARN), create
 %% time,
 %% modified time, resources included in the monitor, and status information.
+-spec get_monitor(map(), binary() | list()) ->
+    {ok, get_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_monitor(Client, MonitorName)
   when is_map(Client) ->
     get_monitor(Client, MonitorName, #{}, #{}).
 
+-spec get_monitor(map(), binary() | list(), map(), map()) ->
+    {ok, get_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_monitor(Client, MonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_monitor(Client, MonitorName, QueryMap, HeadersMap, []).
 
+-spec get_monitor(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), ""],
@@ -238,14 +710,38 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 %% Using the Amazon CloudWatch Internet Monitor query interface:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html
 %% in the Amazon CloudWatch Internet Monitor User Guide.
+-spec get_query_results(map(), binary() | list(), binary() | list()) ->
+    {ok, get_query_results_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_query_results(Client, MonitorName, QueryId)
   when is_map(Client) ->
     get_query_results(Client, MonitorName, QueryId, #{}, #{}).
 
+-spec get_query_results(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_query_results_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap, []).
 
+-spec get_query_results(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_query_results_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries/", aws_util:encode_uri(QueryId), "/Results"],
@@ -282,14 +778,38 @@ get_query_results(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
 %% `FAILED': The query failed due to an error.
 %%
 %% `CANCELED': The query was canceled.
+-spec get_query_status(map(), binary() | list(), binary() | list()) ->
+    {ok, get_query_status_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_query_status(Client, MonitorName, QueryId)
   when is_map(Client) ->
     get_query_status(Client, MonitorName, QueryId, #{}, #{}).
 
+-spec get_query_status(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_query_status_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, []).
 
+-spec get_query_status(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_query_status_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries/", aws_util:encode_uri(QueryId), "/Status"],
@@ -315,14 +835,35 @@ get_query_status(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
 %%
 %% Health events that have start times during the time frame that is
 %% requested are not included in the list of health events.
+-spec list_health_events(map(), binary() | list()) ->
+    {ok, list_health_events_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_health_events(Client, MonitorName)
   when is_map(Client) ->
     list_health_events(Client, MonitorName, #{}, #{}).
 
+-spec list_health_events(map(), binary() | list(), map(), map()) ->
+    {ok, list_health_events_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_health_events(Client, MonitorName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_health_events(Client, MonitorName, QueryMap, HeadersMap, []).
 
+-spec list_health_events(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_health_events_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_health_events(Client, MonitorName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/HealthEvents"],
@@ -350,14 +891,35 @@ list_health_events(Client, MonitorName, QueryMap, HeadersMap, Options0)
 %% @doc Lists all of your monitors for Amazon CloudWatch Internet Monitor and
 %% their statuses, along with the Amazon Resource Name (ARN) and name of each
 %% monitor.
+-spec list_monitors(map()) ->
+    {ok, list_monitors_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_monitors(Client)
   when is_map(Client) ->
     list_monitors(Client, #{}, #{}).
 
+-spec list_monitors(map(), map(), map()) ->
+    {ok, list_monitors_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_monitors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_monitors(Client, QueryMap, HeadersMap, []).
 
+-spec list_monitors(map(), map(), map(), proplists:proplist()) ->
+    {ok, list_monitors_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_monitors(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20210603/Monitors"],
@@ -384,14 +946,38 @@ list_monitors(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Tags are supported only for monitors in Amazon CloudWatch Internet
 %% Monitor.
+-spec list_tags_for_resource(map(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec list_tags_for_resource(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -422,8 +1008,25 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% Using the Amazon CloudWatch Internet Monitor query interface:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-IM-view-cw-tools-cwim-query.html
 %% in the Amazon CloudWatch Internet Monitor User Guide.
+-spec start_query(map(), binary() | list(), start_query_input()) ->
+    {ok, start_query_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_query(Client, MonitorName, Input) ->
     start_query(Client, MonitorName, Input, []).
+
+-spec start_query(map(), binary() | list(), start_query_input(), proplists:proplist()) ->
+    {ok, start_query_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_query(Client, MonitorName, Input0, Options0) ->
     Method = post,
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries"],
@@ -447,8 +1050,25 @@ start_query(Client, MonitorName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stop a query that is progress for a specific monitor.
+-spec stop_query(map(), binary() | list(), binary() | list(), stop_query_input()) ->
+    {ok, stop_query_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_query(Client, MonitorName, QueryId, Input) ->
     stop_query(Client, MonitorName, QueryId, Input, []).
+
+-spec stop_query(map(), binary() | list(), binary() | list(), stop_query_input(), proplists:proplist()) ->
+    {ok, stop_query_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 stop_query(Client, MonitorName, QueryId, Input0, Options0) ->
     Method = delete,
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), "/Queries/", aws_util:encode_uri(QueryId), ""],
@@ -478,8 +1098,25 @@ stop_query(Client, MonitorName, QueryId, Input0, Options0) ->
 %%
 %% A minimum of one tag is required for this call. It returns an error if you
 %% use the `TagResource' request with 0 tags.
+-spec tag_resource(map(), binary() | list(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(map(), binary() | list(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -503,8 +1140,25 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a tag from a resource.
+-spec untag_resource(map(), binary() | list(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(map(), binary() | list(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, bad_request_exception(), tuple()} |
+    {error, internal_server_error_exception(), tuple()} |
+    {error, not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
@@ -540,8 +1194,27 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% For more information, see Choosing a city-network maximum value:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/IMCityNetworksMaximum.html
 %% in the Amazon CloudWatch User Guide.
+-spec update_monitor(map(), binary() | list(), update_monitor_input()) ->
+    {ok, update_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_monitor(Client, MonitorName, Input) ->
     update_monitor(Client, MonitorName, Input, []).
+
+-spec update_monitor(map(), binary() | list(), update_monitor_input(), proplists:proplist()) ->
+    {ok, update_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, limit_exceeded_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 update_monitor(Client, MonitorName, Input0, Options0) ->
     Method = patch,
     Path = ["/v20210603/Monitors/", aws_util:encode_uri(MonitorName), ""],
@@ -568,7 +1241,7 @@ update_monitor(Client, MonitorName, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

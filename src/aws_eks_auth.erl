@@ -11,6 +11,108 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_for_pod_identity_request() :: #{
+%%   <<"token">> := string()
+%% }
+-type assume_role_for_pod_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_for_pod_identity_response() :: #{
+%%   <<"assumedRoleUser">> => assumed_role_user(),
+%%   <<"audience">> => [string()],
+%%   <<"credentials">> => credentials(),
+%%   <<"podIdentityAssociation">> => pod_identity_association(),
+%%   <<"subject">> => subject()
+%% }
+-type assume_role_for_pod_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% assumed_role_user() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"assumeRoleId">> => [string()]
+%% }
+-type assumed_role_user() :: #{binary() => any()}.
+
+%% Example:
+%% credentials() :: #{
+%%   <<"accessKeyId">> => [string()],
+%%   <<"expiration">> => [non_neg_integer()],
+%%   <<"secretAccessKey">> => [string()],
+%%   <<"sessionToken">> => [string()]
+%% }
+-type credentials() :: #{binary() => any()}.
+
+%% Example:
+%% expired_token_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type expired_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_token_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pod_identity_association() :: #{
+%%   <<"associationArn">> => [string()],
+%%   <<"associationId">> => [string()]
+%% }
+-type pod_identity_association() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% subject() :: #{
+%%   <<"namespace">> => [string()],
+%%   <<"serviceAccount">> => [string()]
+%% }
+-type subject() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -24,8 +126,33 @@
 %% credentials from an EKS Pod Identity association are available in the pod,
 %% the latest versions of the
 %% SDKs use them automatically.
+-spec assume_role_for_pod_identity(map(), binary() | list(), assume_role_for_pod_identity_request()) ->
+    {ok, assume_role_for_pod_identity_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_token_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 assume_role_for_pod_identity(Client, ClusterName, Input) ->
     assume_role_for_pod_identity(Client, ClusterName, Input, []).
+
+-spec assume_role_for_pod_identity(map(), binary() | list(), assume_role_for_pod_identity_request(), proplists:proplist()) ->
+    {ok, assume_role_for_pod_identity_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, expired_token_exception(), tuple()} |
+    {error, internal_server_exception(), tuple()} |
+    {error, invalid_parameter_exception(), tuple()} |
+    {error, invalid_request_exception(), tuple()} |
+    {error, invalid_token_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_unavailable_exception(), tuple()} |
+    {error, throttling_exception(), tuple()}.
 assume_role_for_pod_identity(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/assume-role-for-pod-identity"],
@@ -52,7 +179,7 @@ assume_role_for_pod_identity(Client, ClusterName, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

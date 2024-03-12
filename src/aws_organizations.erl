@@ -202,6 +202,1101 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% organization() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailablePolicyTypes">> => list(policy_type_summary()()),
+%%   <<"FeatureSet">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"MasterAccountArn">> => string(),
+%%   <<"MasterAccountEmail">> => string(),
+%%   <<"MasterAccountId">> => string()
+%% }
+-type organization() :: #{binary() => any()}.
+
+%% Example:
+%% policy_target_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"TargetId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type policy_target_summary() :: #{binary() => any()}.
+
+%% Example:
+%% handshake_constraint_violation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type handshake_constraint_violation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_gov_cloud_account_response() :: #{
+%%   <<"CreateAccountStatus">> => create_account_status()
+%% }
+-type create_gov_cloud_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_account_from_organization_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type remove_account_from_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% organizational_unit_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organizational_unit_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_aws_service_access_for_organization_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aws_service_access_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_create_account_status_response() :: #{
+%%   <<"CreateAccountStatuses">> => list(create_account_status()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_create_account_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_account_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_account_exception() :: #{binary() => any()}.
+
+%% Example:
+%% move_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"DestinationParentId">> := string(),
+%%   <<"SourceParentId">> := string()
+%% }
+-type move_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_handshake_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_handshake_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type describe_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% finalizing_organization_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type finalizing_organization_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_organizational_unit_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"OrganizationalUnitId">> := string()
+%% }
+-type update_organizational_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% enabled_service_principal() :: #{
+%%   <<"DateEnabled">> => non_neg_integer(),
+%%   <<"ServicePrincipal">> => string()
+%% }
+-type enabled_service_principal() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Policies">> => list(policy_summary()())
+%% }
+-type list_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% decline_handshake_request() :: #{
+%%   <<"HandshakeId">> := string()
+%% }
+-type decline_handshake_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_roots_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Roots">> => list(root()())
+%% }
+-type list_roots_response() :: #{binary() => any()}.
+
+%% Example:
+%% root() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PolicyTypes">> => list(policy_type_summary()())
+%% }
+-type root() :: #{binary() => any()}.
+
+%% Example:
+%% aws_organizations_not_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type aws_organizations_not_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_request() :: #{
+%%   <<"Filter">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_for_target_request() :: #{
+%%   <<"Filter">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetId">> := string()
+%% }
+-type list_policies_for_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_for_parent_response() :: #{
+%%   <<"Accounts">> => list(account()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accounts_for_parent_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizational_units_for_parent_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationalUnits">> => list(organizational_unit()())
+%% }
+-type list_organizational_units_for_parent_response() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_organizational_unit_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_organizational_unit_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_request() :: #{
+%%   <<"Content">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_create_account_status_request() :: #{
+%%   <<"CreateAccountRequestId">> := string()
+%% }
+-type describe_create_account_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_status_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type create_account_status_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_handshake_request() :: #{
+%%   <<"HandshakeId">> := string()
+%% }
+-type cancel_handshake_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_parents_request() :: #{
+%%   <<"ChildId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_parents_request() :: #{binary() => any()}.
+
+%% Example:
+%% handshake_party() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type handshake_party() :: #{binary() => any()}.
+
+%% Example:
+%% policy_type_not_available_for_organization_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_type_not_available_for_organization_exception() :: #{binary() => any()}.
+
+%% Example:
+%% detach_policy_request() :: #{
+%%   <<"PolicyId">> := string(),
+%%   <<"TargetId">> := string()
+%% }
+-type detach_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type update_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_roots_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_roots_request() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% register_delegated_administrator_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ServicePrincipal">> := string()
+%% }
+-type register_delegated_administrator_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_organizational_unit_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"ParentId">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_organizational_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_response() :: #{
+%%   <<"Account">> => account()
+%% }
+-type describe_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% handshake_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type handshake_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% accept_handshake_request() :: #{
+%%   <<"HandshakeId">> := string()
+%% }
+-type accept_handshake_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizational_units_for_parent_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParentId">> := string()
+%% }
+-type list_organizational_units_for_parent_request() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_policy_attachment_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_policy_attachment_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_policy_type_request() :: #{
+%%   <<"PolicyType">> := list(any()),
+%%   <<"RootId">> := string()
+%% }
+-type enable_policy_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_handshake_response() :: #{
+%%   <<"Handshake">> => handshake()
+%% }
+-type cancel_handshake_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_create_account_status_response() :: #{
+%%   <<"CreateAccountStatus">> => create_account_status()
+%% }
+-type describe_create_account_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_organizational_unit_response() :: #{
+%%   <<"OrganizationalUnit">> => organizational_unit()
+%% }
+-type create_organizational_unit_response() :: #{binary() => any()}.
+
+%% Example:
+%% decline_handshake_response() :: #{
+%%   <<"Handshake">> => handshake()
+%% }
+-type decline_handshake_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_handshakes_for_organization_request() :: #{
+%%   <<"Filter">> => handshake_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_handshakes_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% organization_not_empty_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organization_not_empty_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_targets_for_policy_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Targets">> => list(policy_target_summary()())
+%% }
+-type list_targets_for_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_effective_policy_request() :: #{
+%%   <<"PolicyType">> := list(any()),
+%%   <<"TargetId">> => string()
+%% }
+-type describe_effective_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% child_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type child_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_response() :: #{
+%%   <<"Accounts">> => list(account()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_all_features_response() :: #{
+%%   <<"Handshake">> => handshake()
+%% }
+-type enable_all_features_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% child() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type child() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegated_administrators_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServicePrincipal">> => string()
+%% }
+-type list_delegated_administrators_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_policy_type_response() :: #{
+%%   <<"Root">> => root()
+%% }
+-type disable_policy_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% handshake_already_in_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type handshake_already_in_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% effective_policy() :: #{
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"PolicyContent">> => string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"TargetId">> => string()
+%% }
+-type effective_policy() :: #{binary() => any()}.
+
+%% Example:
+%% attach_policy_request() :: #{
+%%   <<"PolicyId">> := string(),
+%%   <<"TargetId">> := string()
+%% }
+-type attach_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% account_already_closed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_already_closed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_not_registered_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_not_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_status() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AccountName">> => string(),
+%%   <<"CompletedTimestamp">> => non_neg_integer(),
+%%   <<"FailureReason">> => list(any()),
+%%   <<"GovCloudAccountId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"RequestedTimestamp">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type create_account_status() :: #{binary() => any()}.
+
+%% Example:
+%% account() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"JoinedMethod">> => list(any()),
+%%   <<"JoinedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type account() :: #{binary() => any()}.
+
+%% Example:
+%% update_organizational_unit_response() :: #{
+%%   <<"OrganizationalUnit">> => organizational_unit()
+%% }
+-type update_organizational_unit_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_handshakes_for_organization_response() :: #{
+%%   <<"Handshakes">> => list(handshake()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_handshakes_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% delegated_service() :: #{
+%%   <<"DelegationEnabledDate">> => non_neg_integer(),
+%%   <<"ServicePrincipal">> => string()
+%% }
+-type delegated_service() :: #{binary() => any()}.
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_policy_request() :: #{
+%%   <<"PolicyId">> := string()
+%% }
+-type describe_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% invite_account_to_organization_request() :: #{
+%%   <<"Notes">> => string(),
+%%   <<"Tags">> => list(tag()()),
+%%   <<"Target">> := handshake_party()
+%% }
+-type invite_account_to_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_policy_request() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PolicyId">> := string()
+%% }
+-type update_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_effective_policy_response() :: #{
+%%   <<"EffectivePolicy">> => effective_policy()
+%% }
+-type describe_effective_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% account_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% parent_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type parent_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% root_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type root_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% effective_policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type effective_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type create_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_organizational_unit_response() :: #{
+%%   <<"OrganizationalUnit">> => organizational_unit()
+%% }
+-type describe_organizational_unit_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_organization_response() :: #{
+%%   <<"Organization">> => organization()
+%% }
+-type describe_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_api_endpoint_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_api_endpoint_exception() :: #{binary() => any()}.
+
+%% Example:
+%% master_cannot_leave_organization_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type master_cannot_leave_organization_exception() :: #{binary() => any()}.
+
+%% Example:
+%% handshake_filter() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"ParentHandshakeId">> => string()
+%% }
+-type handshake_filter() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_request() :: #{
+%%   <<"AccountName">> := string(),
+%%   <<"Email">> := string(),
+%%   <<"IamUserAccessToBilling">> => list(any()),
+%%   <<"RoleName">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% organizational_unit_not_empty_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type organizational_unit_not_empty_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ResourcePolicySummary">> => resource_policy_summary()
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_request() :: #{
+%%   <<"PolicyId">> := string()
+%% }
+-type delete_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_aws_service_access_for_organization_response() :: #{
+%%   <<"EnabledServicePrincipals">> => list(enabled_service_principal()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_aws_service_access_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_policy_type_request() :: #{
+%%   <<"PolicyType">> := list(any()),
+%%   <<"RootId">> := string()
+%% }
+-type disable_policy_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% handshake() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"ExpirationTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Parties">> => list(handshake_party()()),
+%%   <<"RequestedTimestamp">> => non_neg_integer(),
+%%   <<"Resources">> => list(handshake_resource()()),
+%%   <<"State">> => list(any())
+%% }
+-type handshake() :: #{binary() => any()}.
+
+%% Example:
+%% policy() :: #{
+%%   <<"Content">> => string(),
+%%   <<"PolicySummary">> => policy_summary()
+%% }
+-type policy() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Content">> := string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_policies_for_target_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Policies">> => list(policy_summary()())
+%% }
+-type list_policies_for_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_organizational_unit_request() :: #{
+%%   <<"OrganizationalUnitId">> := string()
+%% }
+-type delete_organizational_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% already_in_organization_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type already_in_organization_exception() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_delegated_administrator_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"ServicePrincipal">> := string()
+%% }
+-type deregister_delegated_administrator_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_children_request() :: #{
+%%   <<"ChildType">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParentId">> := string()
+%% }
+-type list_children_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_handshake_transition_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_handshake_transition_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invite_account_to_organization_response() :: #{
+%%   <<"Handshake">> => handshake()
+%% }
+-type invite_account_to_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_type_not_enabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_type_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% accept_handshake_response() :: #{
+%%   <<"Handshake">> => handshake()
+%% }
+-type accept_handshake_response() :: #{binary() => any()}.
+
+%% Example:
+%% close_account_request() :: #{
+%%   <<"AccountId">> := string()
+%% }
+-type close_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% policy_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_children_response() :: #{
+%%   <<"Children">> => list(child()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_children_response() :: #{binary() => any()}.
+
+%% Example:
+%% constraint_violation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type constraint_violation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_already_registered_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_already_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_owner_not_verified_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type account_owner_not_verified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% handshake_resource() :: #{
+%%   <<"Resources">> => list(handshake_resource()()),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type handshake_resource() :: #{binary() => any()}.
+
+%% Example:
+%% target_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type target_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_parents_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Parents">> => list(parent()())
+%% }
+-type list_parents_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_organization_response() :: #{
+%%   <<"Organization">> => organization()
+%% }
+-type create_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_attached_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_not_attached_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_targets_for_policy_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyId">> := string()
+%% }
+-type list_targets_for_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AwsManaged">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type policy_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_response() :: #{
+%%   <<"ResourcePolicy">> => resource_policy()
+%% }
+-type describe_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% organizational_unit() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type organizational_unit() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegated_services_for_account_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_delegated_services_for_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_organizational_unit_request() :: #{
+%%   <<"OrganizationalUnitId">> := string()
+%% }
+-type describe_organizational_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_handshakes_for_account_response() :: #{
+%%   <<"Handshakes">> => list(handshake()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_handshakes_for_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegated_administrators_response() :: #{
+%%   <<"DelegatedAdministrators">> => list(delegated_administrator()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_delegated_administrators_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_policy_type_response() :: #{
+%%   <<"Root">> => root()
+%% }
+-type enable_policy_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_all_features_request() :: #{
+
+%% }
+-type enable_all_features_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"ResourcePolicy">> => resource_policy()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination_parent_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type destination_parent_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_parent_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type source_parent_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_for_dependency_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type access_denied_for_dependency_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_delegated_services_for_account_response() :: #{
+%%   <<"DelegatedServices">> => list(delegated_service()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_delegated_services_for_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_account_response() :: #{
+%%   <<"CreateAccountStatus">> => create_account_status()
+%% }
+-type create_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_changes_in_progress_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_changes_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disable_aws_service_access_request() :: #{
+%%   <<"ServicePrincipal">> := string()
+%% }
+-type disable_aws_service_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% parent() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type parent() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_for_parent_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParentId">> := string()
+%% }
+-type list_accounts_for_parent_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type resource_policy_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_aws_service_access_request() :: #{
+%%   <<"ServicePrincipal">> := string()
+%% }
+-type enable_aws_service_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_gov_cloud_account_request() :: #{
+%%   <<"AccountName">> := string(),
+%%   <<"Email">> := string(),
+%%   <<"IamUserAccessToBilling">> => list(any()),
+%%   <<"RoleName">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type create_gov_cloud_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_handshake_response() :: #{
+%%   <<"Handshake">> => handshake()
+%% }
+-type describe_handshake_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_handshakes_for_account_request() :: #{
+%%   <<"Filter">> => handshake_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_handshakes_for_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_create_account_status_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"States">> => list(list(any())())
+%% }
+-type list_create_account_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% delegated_administrator() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DelegationEnabledDate">> => non_neg_integer(),
+%%   <<"Email">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"JoinedMethod">> => list(any()),
+%%   <<"JoinedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type delegated_administrator() :: #{binary() => any()}.
+
+%% Example:
+%% policy_type_summary() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type policy_type_summary() :: #{binary() => any()}.
+
+%% Example:
+%% describe_handshake_request() :: #{
+%%   <<"HandshakeId">> := string()
+%% }
+-type describe_handshake_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_policy_response() :: #{
+%%   <<"Policy">> => policy()
+%% }
+-type describe_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_type_already_enabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_type_already_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_organization_request() :: #{
+%%   <<"FeatureSet">> => list(any())
+%% }
+-type create_organization_request() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -246,9 +1341,38 @@
 %% After you accept a handshake, it continues to appear in the results of
 %% relevant APIs
 %% for only 30 days. After that, it's deleted.
+-spec accept_handshake(map(), accept_handshake_request()) ->
+    {ok, accept_handshake_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, access_denied_for_dependency_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_already_in_state_exception(), tuple()} |
+    {error, handshake_constraint_violation_exception(), tuple()} |
+    {error, handshake_not_found_exception(), tuple()} |
+    {error, invalid_handshake_transition_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 accept_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_handshake(Client, Input, []).
+
+-spec accept_handshake(map(), accept_handshake_request(), proplists:proplist()) ->
+    {ok, accept_handshake_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, access_denied_for_dependency_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_already_in_state_exception(), tuple()} |
+    {error, handshake_constraint_violation_exception(), tuple()} |
+    {error, handshake_not_found_exception(), tuple()} |
+    {error, invalid_handshake_transition_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 accept_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptHandshake">>, Input, Options).
@@ -275,9 +1399,42 @@ accept_handshake(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec attach_policy(map(), attach_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_policy_attachment_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, policy_type_not_enabled_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 attach_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_policy(Client, Input, []).
+
+-spec attach_policy(map(), attach_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_policy_attachment_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, policy_type_not_enabled_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 attach_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachPolicy">>, Input, Options).
@@ -296,9 +1453,32 @@ attach_policy(Client, Input, Options)
 %% After you cancel a handshake, it continues to appear in the results of
 %% relevant APIs
 %% for only 30 days. After that, it's deleted.
+-spec cancel_handshake(map(), cancel_handshake_request()) ->
+    {ok, cancel_handshake_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_already_in_state_exception(), tuple()} |
+    {error, handshake_not_found_exception(), tuple()} |
+    {error, invalid_handshake_transition_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 cancel_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_handshake(Client, Input, []).
+
+-spec cancel_handshake(map(), cancel_handshake_request(), proplists:proplist()) ->
+    {ok, cancel_handshake_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_already_in_state_exception(), tuple()} |
+    {error, handshake_not_found_exception(), tuple()} |
+    {error, invalid_handshake_transition_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 cancel_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelHandshake">>, Input, Options).
@@ -360,9 +1540,38 @@ cancel_handshake(Client, Input, Options)
 %% https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/Closing-govcloud-account.html
 %% in the
 %% Amazon Web Services GovCloud User Guide.
+-spec close_account(map(), close_account_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_already_closed_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 close_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_account(Client, Input, []).
+
+-spec close_account(map(), close_account_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_already_closed_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, conflict_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 close_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CloseAccount">>, Input, Options).
@@ -467,9 +1676,34 @@ close_account(Client, Input, Options)
 %% Granting access to
 %% your billing information and tools:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#grantaccess.
+-spec create_account(map(), create_account_request()) ->
+    {ok, create_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, finalizing_organization_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 create_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account(Client, Input, []).
+
+-spec create_account(map(), create_account_request(), proplists:proplist()) ->
+    {ok, create_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, finalizing_organization_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 create_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccount">>, Input, Options).
@@ -638,9 +1872,34 @@ create_account(Client, Input, Options)
 %% Granting
 %% access to your billing information and tools:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html.
+-spec create_gov_cloud_account(map(), create_gov_cloud_account_request()) ->
+    {ok, create_gov_cloud_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, finalizing_organization_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 create_gov_cloud_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_gov_cloud_account(Client, Input, []).
+
+-spec create_gov_cloud_account(map(), create_gov_cloud_account_request(), proplists:proplist()) ->
+    {ok, create_gov_cloud_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, finalizing_organization_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 create_gov_cloud_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGovCloudAccount">>, Input, Options).
@@ -669,9 +1928,32 @@ create_gov_cloud_account(Client, Input, Options)
 %% parameter to `CONSOLIDATED_BILLING', no policy types are enabled by
 %% default
 %% and you can't use organization policies.
+-spec create_organization(map(), create_organization_request()) ->
+    {ok, create_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, access_denied_for_dependency_exception(), tuple()} |
+    {error, already_in_organization_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organization(Client, Input, []).
+
+-spec create_organization(map(), create_organization_request(), proplists:proplist()) ->
+    {ok, create_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, access_denied_for_dependency_exception(), tuple()} |
+    {error, already_in_organization_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOrganization">>, Input, Options).
@@ -697,9 +1979,34 @@ create_organization(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
+-spec create_organizational_unit(map(), create_organizational_unit_request()) ->
+    {ok, create_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_organizational_unit_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, parent_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organizational_unit(Client, Input, []).
+
+-spec create_organizational_unit(map(), create_organizational_unit_request(), proplists:proplist()) ->
+    {ok, create_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_organizational_unit_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, parent_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 create_organizational_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOrganizationalUnit">>, Input, Options).
@@ -718,9 +2025,38 @@ create_organizational_unit(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec create_policy(map(), create_policy_request()) ->
+    {ok, create_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_policy_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, policy_type_not_available_for_organization_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 create_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_policy(Client, Input, []).
+
+-spec create_policy(map(), create_policy_request(), proplists:proplist()) ->
+    {ok, create_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_policy_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, policy_type_not_available_for_organization_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 create_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePolicy">>, Input, Options).
@@ -739,9 +2075,32 @@ create_policy(Client, Input, Options)
 %% After you decline a handshake, it continues to appear in the results of
 %% relevant APIs
 %% for only 30 days. After that, it's deleted.
+-spec decline_handshake(map(), decline_handshake_request()) ->
+    {ok, decline_handshake_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_already_in_state_exception(), tuple()} |
+    {error, handshake_not_found_exception(), tuple()} |
+    {error, invalid_handshake_transition_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 decline_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     decline_handshake(Client, Input, []).
+
+-spec decline_handshake(map(), decline_handshake_request(), proplists:proplist()) ->
+    {ok, decline_handshake_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_already_in_state_exception(), tuple()} |
+    {error, handshake_not_found_exception(), tuple()} |
+    {error, invalid_handshake_transition_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 decline_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeclineHandshake">>, Input, Options).
@@ -751,9 +2110,30 @@ decline_handshake(Client, Input, Options)
 %% You can delete an organization only by using credentials
 %% from the management account. The organization must be empty of member
 %% accounts.
+-spec delete_organization(map(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, organization_not_empty_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization(Client, Input, []).
+
+-spec delete_organization(map(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, organization_not_empty_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOrganization">>, Input, Options).
@@ -765,9 +2145,32 @@ delete_organization(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
+-spec delete_organizational_unit(map(), delete_organizational_unit_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, organizational_unit_not_empty_exception(), tuple()} |
+    {error, organizational_unit_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organizational_unit(Client, Input, []).
+
+-spec delete_organizational_unit(map(), delete_organizational_unit_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, organizational_unit_not_empty_exception(), tuple()} |
+    {error, organizational_unit_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 delete_organizational_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteOrganizationalUnit">>, Input, Options).
@@ -782,9 +2185,34 @@ delete_organizational_unit(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec delete_policy(map(), delete_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_in_use_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
+
+-spec delete_policy(map(), delete_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_in_use_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
@@ -793,9 +2221,32 @@ delete_policy(Client, Input, Options)
 %%
 %% You can only call this operation from the organization's management
 %% account.
+-spec delete_resource_policy(map(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, resource_policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(map(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, resource_policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
@@ -823,9 +2274,36 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
+-spec deregister_delegated_administrator(map(), deregister_delegated_administrator_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, account_not_registered_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 deregister_delegated_administrator(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_delegated_administrator(Client, Input, []).
+
+-spec deregister_delegated_administrator(map(), deregister_delegated_administrator_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, account_not_registered_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 deregister_delegated_administrator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterDelegatedAdministrator">>, Input, Options).
@@ -836,9 +2314,28 @@ deregister_delegated_administrator(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec describe_account(map(), describe_account_request()) ->
+    {ok, describe_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account(Client, Input, []).
+
+-spec describe_account(map(), describe_account_request(), proplists:proplist()) ->
+    {ok, describe_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccount">>, Input, Options).
@@ -849,9 +2346,30 @@ describe_account(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec describe_create_account_status(map(), describe_create_account_status_request()) ->
+    {ok, describe_create_account_status_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, create_account_status_not_found_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 describe_create_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_create_account_status(Client, Input, []).
+
+-spec describe_create_account_status(map(), describe_create_account_status_request(), proplists:proplist()) ->
+    {ok, describe_create_account_status_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, create_account_status_not_found_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 describe_create_account_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCreateAccountStatus">>, Input, Options).
@@ -875,9 +2393,34 @@ describe_create_account_status(Client, Input, Options)
 %% Organizations User Guide.
 %%
 %% This operation can be called from any account in the organization.
+-spec describe_effective_policy(map(), describe_effective_policy_request()) ->
+    {ok, describe_effective_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, effective_policy_not_found_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 describe_effective_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_policy(Client, Input, []).
+
+-spec describe_effective_policy(map(), describe_effective_policy_request(), proplists:proplist()) ->
+    {ok, describe_effective_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, effective_policy_not_found_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 describe_effective_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEffectivePolicy">>, Input, Options).
@@ -894,9 +2437,28 @@ describe_effective_policy(Client, Input, Options)
 %% deleted and no longer accessible.
 %%
 %% This operation can be called from any account in the organization.
+-spec describe_handshake(map(), describe_handshake_request()) ->
+    {ok, describe_handshake_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_not_found_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_handshake(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_handshake(Client, Input, []).
+
+-spec describe_handshake(map(), describe_handshake_request(), proplists:proplist()) ->
+    {ok, describe_handshake_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_not_found_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHandshake">>, Input, Options).
@@ -912,9 +2474,26 @@ describe_handshake(Client, Input, Options)
 %% it separately at the root level with `DisablePolicyType'. Use
 %% `ListRoots' to see the status of policy types for a specified
 %% root.
+-spec describe_organization(map(), #{}) ->
+    {ok, describe_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization(Client, Input, []).
+
+-spec describe_organization(map(), #{}, proplists:proplist()) ->
+    {ok, describe_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganization">>, Input, Options).
@@ -924,9 +2503,28 @@ describe_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec describe_organizational_unit(map(), describe_organizational_unit_request()) ->
+    {ok, describe_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, organizational_unit_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organizational_unit(Client, Input, []).
+
+-spec describe_organizational_unit(map(), describe_organizational_unit_request(), proplists:proplist()) ->
+    {ok, describe_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, organizational_unit_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 describe_organizational_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganizationalUnit">>, Input, Options).
@@ -936,9 +2534,30 @@ describe_organizational_unit(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec describe_policy(map(), describe_policy_request()) ->
+    {ok, describe_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 describe_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_policy(Client, Input, []).
+
+-spec describe_policy(map(), describe_policy_request(), proplists:proplist()) ->
+    {ok, describe_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 describe_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePolicy">>, Input, Options).
@@ -948,9 +2567,30 @@ describe_policy(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec describe_resource_policy(map(), #{}) ->
+    {ok, describe_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, resource_policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
+
+-spec describe_resource_policy(map(), #{}, proplists:proplist()) ->
+    {ok, describe_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, resource_policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 describe_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeResourcePolicy">>, Input, Options).
@@ -985,9 +2625,40 @@ describe_resource_policy(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec detach_policy(map(), detach_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_not_attached_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 detach_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_policy(Client, Input, []).
+
+-spec detach_policy(map(), detach_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_not_attached_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 detach_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachPolicy">>, Input, Options).
@@ -1076,9 +2747,32 @@ detach_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
+-spec disable_aws_service_access(map(), disable_aws_service_access_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 disable_aws_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_aws_service_access(Client, Input, []).
+
+-spec disable_aws_service_access(map(), disable_aws_service_access_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 disable_aws_service_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAWSServiceAccess">>, Input, Options).
@@ -1110,9 +2804,38 @@ disable_aws_service_access(Client, Input, Options)
 %%
 %% To view the status of available policy types in the organization, use
 %% `DescribeOrganization'.
+-spec disable_policy_type(map(), disable_policy_type_request()) ->
+    {ok, disable_policy_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_type_not_enabled_exception(), tuple()} |
+    {error, root_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 disable_policy_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_policy_type(Client, Input, []).
+
+-spec disable_policy_type(map(), disable_policy_type_request(), proplists:proplist()) ->
+    {ok, disable_policy_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_type_not_enabled_exception(), tuple()} |
+    {error, root_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 disable_policy_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisablePolicyType">>, Input, Options).
@@ -1166,9 +2889,30 @@ disable_policy_type(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
+-spec enable_all_features(map(), enable_all_features_request()) ->
+    {ok, enable_all_features_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 enable_all_features(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_all_features(Client, Input, []).
+
+-spec enable_all_features(map(), enable_all_features_request(), proplists:proplist()) ->
+    {ok, enable_all_features_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, handshake_constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 enable_all_features(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAllFeatures">>, Input, Options).
@@ -1209,9 +2953,32 @@ enable_all_features(Client, Input, Options)
 %% if the organization has enabled all
 %% features:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html.
+-spec enable_aws_service_access(map(), enable_aws_service_access_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 enable_aws_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_aws_service_access(Client, Input, []).
+
+-spec enable_aws_service_access(map(), enable_aws_service_access_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 enable_aws_service_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAWSServiceAccess">>, Input, Options).
@@ -1238,9 +3005,40 @@ enable_aws_service_access(Client, Input, Options)
 %% organization. To view the status of available policy types in the
 %% organization, use
 %% `DescribeOrganization'.
+-spec enable_policy_type(map(), enable_policy_type_request()) ->
+    {ok, enable_policy_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_type_already_enabled_exception(), tuple()} |
+    {error, policy_type_not_available_for_organization_exception(), tuple()} |
+    {error, root_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 enable_policy_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_policy_type(Client, Input, []).
+
+-spec enable_policy_type(map(), enable_policy_type_request(), proplists:proplist()) ->
+    {ok, enable_policy_type_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_type_already_enabled_exception(), tuple()} |
+    {error, policy_type_not_available_for_organization_exception(), tuple()} |
+    {error, root_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 enable_policy_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnablePolicyType">>, Input, Options).
@@ -1280,9 +3078,38 @@ enable_policy_type(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
+-spec invite_account_to_organization(map(), invite_account_to_organization_request()) ->
+    {ok, invite_account_to_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_owner_not_verified_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_handshake_exception(), tuple()} |
+    {error, finalizing_organization_exception(), tuple()} |
+    {error, handshake_constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 invite_account_to_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     invite_account_to_organization(Client, Input, []).
+
+-spec invite_account_to_organization(map(), invite_account_to_organization_request(), proplists:proplist()) ->
+    {ok, invite_account_to_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_owner_not_verified_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_handshake_exception(), tuple()} |
+    {error, finalizing_organization_exception(), tuple()} |
+    {error, handshake_constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 invite_account_to_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InviteAccountToOrganization">>, Input, Options).
@@ -1357,9 +3184,34 @@ invite_account_to_organization(Client, Input, Options)
 %% If you are using an organization principal to call
 %% `LeaveOrganization' across multiple accounts, you can only do
 %% this up to 5 accounts per second in a single organization.
+-spec leave_organization(map(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, master_cannot_leave_organization_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 leave_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     leave_organization(Client, Input, []).
+
+-spec leave_organization(map(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, master_cannot_leave_organization_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 leave_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LeaveOrganization">>, Input, Options).
@@ -1382,9 +3234,26 @@ leave_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_accounts(map(), list_accounts_request()) ->
+    {ok, list_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accounts(Client, Input, []).
+
+-spec list_accounts(map(), list_accounts_request(), proplists:proplist()) ->
+    {ok, list_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_accounts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccounts">>, Input, Options).
@@ -1412,9 +3281,28 @@ list_accounts(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_accounts_for_parent(map(), list_accounts_for_parent_request()) ->
+    {ok, list_accounts_for_parent_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, parent_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_accounts_for_parent(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accounts_for_parent(Client, Input, []).
+
+-spec list_accounts_for_parent(map(), list_accounts_for_parent_request(), proplists:proplist()) ->
+    {ok, list_accounts_for_parent_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, parent_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_accounts_for_parent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountsForParent">>, Input, Options).
@@ -1438,9 +3326,30 @@ list_accounts_for_parent(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_aws_service_access_for_organization(map(), list_aws_service_access_for_organization_request()) ->
+    {ok, list_aws_service_access_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_aws_service_access_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aws_service_access_for_organization(Client, Input, []).
+
+-spec list_aws_service_access_for_organization(map(), list_aws_service_access_for_organization_request(), proplists:proplist()) ->
+    {ok, list_aws_service_access_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_aws_service_access_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAWSServiceAccessForOrganization">>, Input, Options).
@@ -1464,9 +3373,28 @@ list_aws_service_access_for_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_children(map(), list_children_request()) ->
+    {ok, list_children_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, parent_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_children(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_children(Client, Input, []).
+
+-spec list_children(map(), list_children_request(), proplists:proplist()) ->
+    {ok, list_children_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, parent_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_children(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListChildren">>, Input, Options).
@@ -1487,9 +3415,28 @@ list_children(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_create_account_status(map(), list_create_account_status_request()) ->
+    {ok, list_create_account_status_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_create_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_create_account_status(Client, Input, []).
+
+-spec list_create_account_status(map(), list_create_account_status_request(), proplists:proplist()) ->
+    {ok, list_create_account_status_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_create_account_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCreateAccountStatus">>, Input, Options).
@@ -1501,9 +3448,30 @@ list_create_account_status(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_delegated_administrators(map(), list_delegated_administrators_request()) ->
+    {ok, list_delegated_administrators_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_delegated_administrators(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_delegated_administrators(Client, Input, []).
+
+-spec list_delegated_administrators(map(), list_delegated_administrators_request(), proplists:proplist()) ->
+    {ok, list_delegated_administrators_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_delegated_administrators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDelegatedAdministrators">>, Input, Options).
@@ -1515,9 +3483,34 @@ list_delegated_administrators(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_delegated_services_for_account(map(), list_delegated_services_for_account_request()) ->
+    {ok, list_delegated_services_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, account_not_registered_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_delegated_services_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_delegated_services_for_account(Client, Input, []).
+
+-spec list_delegated_services_for_account(map(), list_delegated_services_for_account_request(), proplists:proplist()) ->
+    {ok, list_delegated_services_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, account_not_registered_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_delegated_services_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDelegatedServicesForAccount">>, Input, Options).
@@ -1542,9 +3535,26 @@ list_delegated_services_for_account(Client, Input, Options)
 %% when there are no more results to display.
 %%
 %% This operation can be called from any account in the organization.
+-spec list_handshakes_for_account(map(), list_handshakes_for_account_request()) ->
+    {ok, list_handshakes_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_handshakes_for_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_handshakes_for_account(Client, Input, []).
+
+-spec list_handshakes_for_account(map(), list_handshakes_for_account_request(), proplists:proplist()) ->
+    {ok, list_handshakes_for_account_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_handshakes_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHandshakesForAccount">>, Input, Options).
@@ -1576,9 +3586,28 @@ list_handshakes_for_account(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_handshakes_for_organization(map(), list_handshakes_for_organization_request()) ->
+    {ok, list_handshakes_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_handshakes_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_handshakes_for_organization(Client, Input, []).
+
+-spec list_handshakes_for_organization(map(), list_handshakes_for_organization_request(), proplists:proplist()) ->
+    {ok, list_handshakes_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_handshakes_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHandshakesForOrganization">>, Input, Options).
@@ -1598,9 +3627,28 @@ list_handshakes_for_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_organizational_units_for_parent(map(), list_organizational_units_for_parent_request()) ->
+    {ok, list_organizational_units_for_parent_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, parent_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_organizational_units_for_parent(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_organizational_units_for_parent(Client, Input, []).
+
+-spec list_organizational_units_for_parent(map(), list_organizational_units_for_parent_request(), proplists:proplist()) ->
+    {ok, list_organizational_units_for_parent_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, parent_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_organizational_units_for_parent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOrganizationalUnitsForParent">>, Input, Options).
@@ -1626,9 +3674,28 @@ list_organizational_units_for_parent(Client, Input, Options)
 %% administrator for an Amazon Web Services service.
 %%
 %% In the current release, a child can have only a single parent.
+-spec list_parents(map(), list_parents_request()) ->
+    {ok, list_parents_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, child_not_found_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_parents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_parents(Client, Input, []).
+
+-spec list_parents(map(), list_parents_request(), proplists:proplist()) ->
+    {ok, list_parents_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, child_not_found_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_parents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListParents">>, Input, Options).
@@ -1648,9 +3715,28 @@ list_parents(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_policies(map(), list_policies_request()) ->
+    {ok, list_policies_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies(Client, Input, []).
+
+-spec list_policies(map(), list_policies_request(), proplists:proplist()) ->
+    {ok, list_policies_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPolicies">>, Input, Options).
@@ -1674,9 +3760,30 @@ list_policies(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_policies_for_target(map(), list_policies_for_target_request()) ->
+    {ok, list_policies_for_target_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_policies_for_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_policies_for_target(Client, Input, []).
+
+-spec list_policies_for_target(map(), list_policies_for_target_request(), proplists:proplist()) ->
+    {ok, list_policies_for_target_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_policies_for_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPoliciesForTarget">>, Input, Options).
@@ -1705,9 +3812,26 @@ list_policies_for_target(Client, Input, Options)
 %% enabled and disabled in a root. To see the availability of a policy type
 %% in an
 %% organization, use `DescribeOrganization'.
+-spec list_roots(map(), list_roots_request()) ->
+    {ok, list_roots_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_roots(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_roots(Client, Input, []).
+
+-spec list_roots(map(), list_roots_request(), proplists:proplist()) ->
+    {ok, list_roots_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_roots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoots">>, Input, Options).
@@ -1727,9 +3851,28 @@ list_roots(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
@@ -1750,9 +3893,30 @@ list_tags_for_resource(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec list_targets_for_policy(map(), list_targets_for_policy_request()) ->
+    {ok, list_targets_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_targets_for_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_targets_for_policy(Client, Input, []).
+
+-spec list_targets_for_policy(map(), list_targets_for_policy_request(), proplists:proplist()) ->
+    {ok, list_targets_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 list_targets_for_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTargetsForPolicy">>, Input, Options).
@@ -1763,9 +3927,36 @@ list_targets_for_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
+-spec move_account(map(), move_account_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, destination_parent_not_found_exception(), tuple()} |
+    {error, duplicate_account_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, source_parent_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 move_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     move_account(Client, Input, []).
+
+-spec move_account(map(), move_account_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, destination_parent_not_found_exception(), tuple()} |
+    {error, duplicate_account_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, source_parent_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 move_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MoveAccount">>, Input, Options).
@@ -1774,9 +3965,32 @@ move_account(Client, Input, Options)
 %%
 %% You can only call this operation from the organization's management
 %% account.
+-spec put_resource_policy(map(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
@@ -1802,9 +4016,36 @@ put_resource_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
+-spec register_delegated_administrator(map(), register_delegated_administrator_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_already_registered_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 register_delegated_administrator(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_delegated_administrator(Client, Input, []).
+
+-spec register_delegated_administrator(map(), register_delegated_administrator_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_already_registered_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 register_delegated_administrator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDelegatedAdministrator">>, Input, Options).
@@ -1846,9 +4087,34 @@ register_delegated_administrator(Client, Input, Options)
 %% the account object in the organization are deleted. Amazon Web Services
 %% accounts outside
 %% of an organization do not support tags.
+-spec remove_account_from_organization(map(), remove_account_from_organization_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, master_cannot_leave_organization_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 remove_account_from_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_account_from_organization(Client, Input, []).
+
+-spec remove_account_from_organization(map(), remove_account_from_organization_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, account_not_found_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, master_cannot_leave_organization_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 remove_account_from_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveAccountFromOrganization">>, Input, Options).
@@ -1869,9 +4135,32 @@ remove_account_from_organization(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1891,9 +4180,32 @@ tag_resource(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, target_not_found_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1907,9 +4219,32 @@ untag_resource(Client, Input, Options)
 %%
 %% This operation can be called only from the organization's management
 %% account.
+-spec update_organizational_unit(map(), update_organizational_unit_request()) ->
+    {ok, update_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, duplicate_organizational_unit_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, organizational_unit_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_organizational_unit(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_organizational_unit(Client, Input, []).
+
+-spec update_organizational_unit(map(), update_organizational_unit_request(), proplists:proplist()) ->
+    {ok, update_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, duplicate_organizational_unit_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, organizational_unit_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()}.
 update_organizational_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOrganizationalUnit">>, Input, Options).
@@ -1924,9 +4259,40 @@ update_organizational_unit(Client, Input, Options)
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
 %% administrator for an Amazon Web Services service.
+-spec update_policy(map(), update_policy_request()) ->
+    {ok, update_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_policy_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 update_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_policy(Client, Input, []).
+
+-spec update_policy(map(), update_policy_request(), proplists:proplist()) ->
+    {ok, update_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, aws_organizations_not_in_use_exception(), tuple()} |
+    {error, concurrent_modification_exception(), tuple()} |
+    {error, constraint_violation_exception(), tuple()} |
+    {error, duplicate_policy_exception(), tuple()} |
+    {error, invalid_input_exception(), tuple()} |
+    {error, malformed_policy_document_exception(), tuple()} |
+    {error, policy_changes_in_progress_exception(), tuple()} |
+    {error, policy_not_found_exception(), tuple()} |
+    {error, service_exception(), tuple()} |
+    {error, too_many_requests_exception(), tuple()} |
+    {error, unsupported_api_endpoint_exception(), tuple()}.
 update_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePolicy">>, Input, Options).

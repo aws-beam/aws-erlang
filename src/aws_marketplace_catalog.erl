@@ -48,6 +48,832 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% resale_authorization_product_name_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type resale_authorization_product_name_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"EntityType">> := string(),
+%%   <<"EntityTypeFilters">> => list(),
+%%   <<"EntityTypeSort">> => list(),
+%%   <<"FilterList">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OwnershipType">> => list(any()),
+%%   <<"Sort">> => sort()
+%% }
+-type list_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_change_set_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ChangeSetId">> := string()
+%% }
+-type describe_change_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag()())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
+
+%% Example:
+%% cancel_change_set_response() :: #{
+%%   <<"ChangeSetArn">> => string(),
+%%   <<"ChangeSetId">> => string()
+%% }
+-type cancel_change_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% change() :: #{
+%%   <<"ChangeName">> => string(),
+%%   <<"ChangeType">> => string(),
+%%   <<"Details">> => string(),
+%%   <<"DetailsDocument">> => any(),
+%%   <<"Entity">> => entity(),
+%%   <<"EntityTags">> => list(tag()())
+%% }
+-type change() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_created_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type resale_authorization_created_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% list_change_sets_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"FilterList">> => list(filter()()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Sort">> => sort()
+%% }
+-type list_change_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% data_product_filters() :: #{
+%%   <<"EntityId">> => data_product_entity_id_filter(),
+%%   <<"LastModifiedDate">> => data_product_last_modified_date_filter(),
+%%   <<"ProductTitle">> => data_product_title_filter(),
+%%   <<"Visibility">> => data_product_visibility_filter()
+%% }
+-type data_product_filters() :: #{binary() => any()}.
+
+%% Example:
+%% entity_detail() :: #{
+%%   <<"DetailsDocument">> => any(),
+%%   <<"EntityArn">> => string(),
+%%   <<"EntityIdentifier">> => string(),
+%%   <<"EntityType">> => string(),
+%%   <<"LastModifiedDate">> => string()
+%% }
+-type entity_detail() :: #{binary() => any()}.
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+%% Example:
+%% entity() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
+%% ami_product_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type ami_product_sort() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_manufacturer_account_id_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type resale_authorization_manufacturer_account_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% ami_product_title_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type ami_product_title_filter() :: #{binary() => any()}.
+
+%% Example:
+%% offer_targeting_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type offer_targeting_filter() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_summary() :: #{
+%%   <<"AvailabilityEndDate">> => string(),
+%%   <<"CreatedDate">> => string(),
+%%   <<"ManufacturerAccountId">> => string(),
+%%   <<"ManufacturerLegalName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OfferExtendedStatus">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProductName">> => string(),
+%%   <<"ResellerAccountID">> => string(),
+%%   <<"ResellerLegalName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type resale_authorization_summary() :: #{binary() => any()}.
+
+%% Example:
+%% saa_s_product_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type saa_s_product_entity_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% data_product_summary() :: #{
+%%   <<"ProductTitle">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type data_product_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_manufacturer_legal_name_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type resale_authorization_manufacturer_legal_name_filter() :: #{binary() => any()}.
+
+%% Example:
+%% saa_s_product_title_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type saa_s_product_title_filter() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_created_date_filter() :: #{
+%%   <<"DateRange">> => resale_authorization_created_date_filter_date_range(),
+%%   <<"ValueList">> => list(string()())
+%% }
+-type resale_authorization_created_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% entity_summary() :: #{
+%%   <<"AmiProductSummary">> => ami_product_summary(),
+%%   <<"ContainerProductSummary">> => container_product_summary(),
+%%   <<"DataProductSummary">> => data_product_summary(),
+%%   <<"EntityArn">> => string(),
+%%   <<"EntityId">> => string(),
+%%   <<"EntityType">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OfferSummary">> => offer_summary(),
+%%   <<"ResaleAuthorizationSummary">> => resale_authorization_summary(),
+%%   <<"SaaSProductSummary">> => saa_s_product_summary(),
+%%   <<"Visibility">> => string()
+%% }
+-type entity_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_availability_end_date_filter() :: #{
+%%   <<"DateRange">> => resale_authorization_availability_end_date_filter_date_range(),
+%%   <<"ValueList">> => list(string()())
+%% }
+-type resale_authorization_availability_end_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_change_set_response() :: #{
+%%   <<"ChangeSet">> => list(change_summary()()),
+%%   <<"ChangeSetArn">> => string(),
+%%   <<"ChangeSetId">> => string(),
+%%   <<"ChangeSetName">> => string(),
+%%   <<"EndTime">> => string(),
+%%   <<"FailureCode">> => list(any()),
+%%   <<"FailureDescription">> => string(),
+%%   <<"Intent">> => list(any()),
+%%   <<"StartTime">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_change_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% offer_availability_end_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type offer_availability_end_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% ami_product_summary() :: #{
+%%   <<"ProductTitle">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type ami_product_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_product_last_modified_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type data_product_last_modified_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% container_product_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type container_product_entity_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% container_product_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type container_product_sort() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_response() :: #{
+%%   <<"Details">> => string(),
+%%   <<"DetailsDocument">> => any(),
+%%   <<"EntityArn">> => string(),
+%%   <<"EntityIdentifier">> => string(),
+%%   <<"EntityType">> => string(),
+%%   <<"LastModifiedDate">> => string()
+%% }
+-type describe_entity_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string()())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_product_id_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type resale_authorization_product_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_filters() :: #{
+%%   <<"AvailabilityEndDate">> => resale_authorization_availability_end_date_filter(),
+%%   <<"CreatedDate">> => resale_authorization_created_date_filter(),
+%%   <<"EntityId">> => resale_authorization_entity_id_filter(),
+%%   <<"LastModifiedDate">> => resale_authorization_last_modified_date_filter(),
+%%   <<"ManufacturerAccountId">> => resale_authorization_manufacturer_account_id_filter(),
+%%   <<"ManufacturerLegalName">> => resale_authorization_manufacturer_legal_name_filter(),
+%%   <<"Name">> => resale_authorization_name_filter(),
+%%   <<"OfferExtendedStatus">> => resale_authorization_offer_extended_status_filter(),
+%%   <<"ProductId">> => resale_authorization_product_id_filter(),
+%%   <<"ProductName">> => resale_authorization_product_name_filter(),
+%%   <<"ResellerAccountID">> => resale_authorization_reseller_account_id_filter(),
+%%   <<"ResellerLegalName">> => resale_authorization_reseller_legal_name_filter(),
+%%   <<"Status">> => resale_authorization_status_filter()
+%% }
+-type resale_authorization_filters() :: #{binary() => any()}.
+
+%% Example:
+%% data_product_visibility_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type data_product_visibility_filter() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_offer_extended_status_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type resale_authorization_offer_extended_status_filter() :: #{binary() => any()}.
+
+%% Example:
+%% container_product_visibility_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type container_product_visibility_filter() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_last_modified_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type resale_authorization_last_modified_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_reseller_legal_name_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type resale_authorization_reseller_legal_name_filter() :: #{binary() => any()}.
+
+%% Example:
+%% container_product_filters() :: #{
+%%   <<"EntityId">> => container_product_entity_id_filter(),
+%%   <<"LastModifiedDate">> => container_product_last_modified_date_filter(),
+%%   <<"ProductTitle">> => container_product_title_filter(),
+%%   <<"Visibility">> => container_product_visibility_filter()
+%% }
+-type container_product_filters() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_entities_request() :: #{
+%%   <<"EntityRequestList">> := list(entity_request()())
+%% }
+-type batch_describe_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% saa_s_product_last_modified_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type saa_s_product_last_modified_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% saa_s_product_visibility_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type saa_s_product_visibility_filter() :: #{binary() => any()}.
+
+%% Example:
+%% offer_last_modified_date_filter() :: #{
+%%   <<"DateRange">> => offer_last_modified_date_filter_date_range()
+%% }
+-type offer_last_modified_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% container_product_last_modified_date_filter() :: #{
+%%   <<"DateRange">> => container_product_last_modified_date_filter_date_range()
+%% }
+-type container_product_last_modified_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% ami_product_visibility_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type ami_product_visibility_filter() :: #{binary() => any()}.
+
+%% Example:
+%% offer_release_date_filter() :: #{
+%%   <<"DateRange">> => offer_release_date_filter_date_range()
+%% }
+-type offer_release_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% start_change_set_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ChangeSet">> := list(change()()),
+%%   <<"ChangeSetName">> => string(),
+%%   <<"ChangeSetTags">> => list(tag()()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Intent">> => list(any())
+%% }
+-type start_change_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% ami_product_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type ami_product_entity_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% container_product_summary() :: #{
+%%   <<"ProductTitle">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type container_product_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type resale_authorization_entity_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% offer_product_id_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type offer_product_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% change_set_summary_list_item() :: #{
+%%   <<"ChangeSetArn">> => string(),
+%%   <<"ChangeSetId">> => string(),
+%%   <<"ChangeSetName">> => string(),
+%%   <<"EndTime">> => string(),
+%%   <<"EntityIdList">> => list(string()()),
+%%   <<"FailureCode">> => list(any()),
+%%   <<"StartTime">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type change_set_summary_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"Tags">> => list(tag()())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_supported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_name_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type resale_authorization_name_filter() :: #{binary() => any()}.
+
+%% Example:
+%% data_product_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type data_product_sort() :: #{binary() => any()}.
+
+%% Example:
+%% saa_s_product_filters() :: #{
+%%   <<"EntityId">> => saa_s_product_entity_id_filter(),
+%%   <<"LastModifiedDate">> => saa_s_product_last_modified_date_filter(),
+%%   <<"ProductTitle">> => saa_s_product_title_filter(),
+%%   <<"Visibility">> => saa_s_product_visibility_filter()
+%% }
+-type saa_s_product_filters() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% offer_summary() :: #{
+%%   <<"AvailabilityEndDate">> => string(),
+%%   <<"BuyerAccounts">> => list(string()()),
+%%   <<"Name">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ReleaseDate">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Targeting">> => list(list(any())())
+%% }
+-type offer_summary() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"ValueList">> => list(string()())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% saa_s_product_summary() :: #{
+%%   <<"ProductTitle">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type saa_s_product_summary() :: #{binary() => any()}.
+
+%% Example:
+%% sort() :: #{
+%%   <<"SortBy">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type sort() :: #{binary() => any()}.
+
+%% Example:
+%% ami_product_last_modified_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type ami_product_last_modified_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% data_product_title_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type data_product_title_filter() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_status_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type resale_authorization_status_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entity_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"EntityId">> := string()
+%% }
+-type describe_entity_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% change_summary() :: #{
+%%   <<"ChangeName">> => string(),
+%%   <<"ChangeType">> => string(),
+%%   <<"Details">> => string(),
+%%   <<"DetailsDocument">> => any(),
+%%   <<"Entity">> => entity(),
+%%   <<"ErrorDetailList">> => list(error_detail()())
+%% }
+-type change_summary() :: #{binary() => any()}.
+
+%% Example:
+%% start_change_set_response() :: #{
+%%   <<"ChangeSetArn">> => string(),
+%%   <<"ChangeSetId">> => string()
+%% }
+-type start_change_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% saa_s_product_last_modified_date_filter() :: #{
+%%   <<"DateRange">> => saa_s_product_last_modified_date_filter_date_range()
+%% }
+-type saa_s_product_last_modified_date_filter() :: #{binary() => any()}.
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+%% Example:
+%% offer_name_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type offer_name_filter() :: #{binary() => any()}.
+
+%% Example:
+%% offer_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type offer_sort() :: #{binary() => any()}.
+
+%% Example:
+%% saa_s_product_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type saa_s_product_sort() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% offer_state_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type offer_state_filter() :: #{binary() => any()}.
+
+%% Example:
+%% offer_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type offer_entity_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% offer_buyer_accounts_filter() :: #{
+%%   <<"WildCardValue">> => string()
+%% }
+-type offer_buyer_accounts_filter() :: #{binary() => any()}.
+%% Example:
+%% put_resource_policy_response() :: #{}
+-type put_resource_policy_response() :: #{}.
+
+%% Example:
+%% data_product_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string()())
+%% }
+-type data_product_entity_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% offer_last_modified_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type offer_last_modified_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% entity_request() :: #{
+%%   <<"Catalog">> => string(),
+%%   <<"EntityId">> => string()
+%% }
+-type entity_request() :: #{binary() => any()}.
+
+%% Example:
+%% container_product_title_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type container_product_title_filter() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% ami_product_filters() :: #{
+%%   <<"EntityId">> => ami_product_entity_id_filter(),
+%%   <<"LastModifiedDate">> => ami_product_last_modified_date_filter(),
+%%   <<"ProductTitle">> => ami_product_title_filter(),
+%%   <<"Visibility">> => ami_product_visibility_filter()
+%% }
+-type ami_product_filters() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_availability_end_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type resale_authorization_availability_end_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_entities_response() :: #{
+%%   <<"EntityDetails">> => map(),
+%%   <<"Errors">> => map()
+%% }
+-type batch_describe_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_error_detail() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type batch_describe_error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_response() :: #{
+%%   <<"EntitySummaryList">> => list(entity_summary()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_last_modified_date_filter() :: #{
+%%   <<"DateRange">> => resale_authorization_last_modified_date_filter_date_range()
+%% }
+-type resale_authorization_last_modified_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_reseller_account_id_filter() :: #{
+%%   <<"ValueList">> => list(string()()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type resale_authorization_reseller_account_id_filter() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_change_set_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ChangeSetId">> := string()
+%% }
+-type cancel_change_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% resale_authorization_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type resale_authorization_sort() :: #{binary() => any()}.
+
+%% Example:
+%% container_product_last_modified_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type container_product_last_modified_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% offer_filters() :: #{
+%%   <<"AvailabilityEndDate">> => offer_availability_end_date_filter(),
+%%   <<"BuyerAccounts">> => offer_buyer_accounts_filter(),
+%%   <<"EntityId">> => offer_entity_id_filter(),
+%%   <<"LastModifiedDate">> => offer_last_modified_date_filter(),
+%%   <<"Name">> => offer_name_filter(),
+%%   <<"ProductId">> => offer_product_id_filter(),
+%%   <<"ReleaseDate">> => offer_release_date_filter(),
+%%   <<"State">> => offer_state_filter(),
+%%   <<"Targeting">> => offer_targeting_filter()
+%% }
+-type offer_filters() :: #{binary() => any()}.
+
+%% Example:
+%% ami_product_last_modified_date_filter() :: #{
+%%   <<"DateRange">> => ami_product_last_modified_date_filter_date_range()
+%% }
+-type ami_product_last_modified_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% list_change_sets_response() :: #{
+%%   <<"ChangeSetSummaryList">> => list(change_set_summary_list_item()()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_change_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_product_last_modified_date_filter() :: #{
+%%   <<"DateRange">> => data_product_last_modified_date_filter_date_range()
+%% }
+-type data_product_last_modified_date_filter() :: #{binary() => any()}.
+
+%% Example:
+%% offer_release_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type offer_release_date_filter_date_range() :: #{binary() => any()}.
+
+%% Example:
+%% offer_availability_end_date_filter() :: #{
+%%   <<"DateRange">> => offer_availability_end_date_filter_date_range()
+%% }
+-type offer_availability_end_date_filter() :: #{binary() => any()}.
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -56,8 +882,23 @@
 %%
 %% This is the Batch version of the `DescribeEntity' API and uses the
 %% same IAM permission action as `DescribeEntity' API.
+-spec batch_describe_entities(map(), batch_describe_entities_request()) ->
+    {ok, batch_describe_entities_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_describe_entities(Client, Input) ->
     batch_describe_entities(Client, Input, []).
+
+-spec batch_describe_entities(map(), batch_describe_entities_request(), proplists:proplist()) ->
+    {ok, batch_describe_entities_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 batch_describe_entities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchDescribeEntities"],
@@ -88,8 +929,27 @@ batch_describe_entities(Client, Input0, Options0) ->
 %% can describe a change during the 60-day request history retention period
 %% for API
 %% calls.
+-spec cancel_change_set(map(), cancel_change_set_request()) ->
+    {ok, cancel_change_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 cancel_change_set(Client, Input) ->
     cancel_change_set(Client, Input, []).
+
+-spec cancel_change_set(map(), cancel_change_set_request(), proplists:proplist()) ->
+    {ok, cancel_change_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 cancel_change_set(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/CancelChangeSet"],
@@ -117,8 +977,25 @@ cancel_change_set(Client, Input0, Options0) ->
 %% @doc Deletes a resource-based policy on an entity that is identified by
 %% its resource
 %% ARN.
+-spec delete_resource_policy(map(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(map(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 delete_resource_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteResourcePolicy"],
@@ -143,14 +1020,38 @@ delete_resource_policy(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides information about a given change set.
+-spec describe_change_set(map(), binary() | list(), binary() | list()) ->
+    {ok, describe_change_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_change_set(Client, Catalog, ChangeSetId)
   when is_map(Client) ->
     describe_change_set(Client, Catalog, ChangeSetId, #{}, #{}).
 
+-spec describe_change_set(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_change_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, []).
 
+-spec describe_change_set(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_change_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/DescribeChangeSet"],
@@ -173,14 +1074,41 @@ describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the metadata and content of the entity.
+-spec describe_entity(map(), binary() | list(), binary() | list()) ->
+    {ok, describe_entity_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_not_supported_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_entity(Client, Catalog, EntityId)
   when is_map(Client) ->
     describe_entity(Client, Catalog, EntityId, #{}, #{}).
 
+-spec describe_entity(map(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_entity_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_not_supported_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, []).
 
+-spec describe_entity(map(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_entity_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, resource_not_supported_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/DescribeEntity"],
@@ -205,14 +1133,38 @@ describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options0)
 %% @doc Gets a resource-based policy of an entity that is identified by its
 %% resource
 %% ARN.
+-spec get_resource_policy(map(), binary() | list()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_resource_policy(Client, ResourceArn)
   when is_map(Client) ->
     get_resource_policy(Client, ResourceArn, #{}, #{}).
 
+-spec get_resource_policy(map(), binary() | list(), map(), map()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
 
+-spec get_resource_policy(map(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetResourcePolicy"],
@@ -245,8 +1197,23 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% You can describe a change during the 60-day request history retention
 %% period for API
 %% calls.
+-spec list_change_sets(map(), list_change_sets_request()) ->
+    {ok, list_change_sets_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_change_sets(Client, Input) ->
     list_change_sets(Client, Input, []).
+
+-spec list_change_sets(map(), list_change_sets_request(), proplists:proplist()) ->
+    {ok, list_change_sets_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_change_sets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListChangeSets"],
@@ -270,8 +1237,25 @@ list_change_sets(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides the list of entities of a given type.
+-spec list_entities(map(), list_entities_request()) ->
+    {ok, list_entities_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_entities(Client, Input) ->
     list_entities(Client, Input, []).
+
+-spec list_entities(map(), list_entities_request(), proplists:proplist()) ->
+    {ok, list_entities_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_entities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListEntities"],
@@ -298,8 +1282,25 @@ list_entities(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities
 %% or change set:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
+-spec list_tags_for_resource(map(), list_tags_for_resource_request()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_request(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTagsForResource"],
@@ -326,8 +1327,25 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %%
 %% Examples of an entity include:
 %% `AmiProduct' and `ContainerProduct'.
+-spec put_resource_policy(map(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(map(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 put_resource_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutResourcePolicy"],
@@ -381,8 +1399,29 @@ put_resource_policy(Client, Input0, Options0) ->
 %% types available for container-based products, see Working with container
 %% products:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/container-products.html#working-with-container-products.
+-spec start_change_set(map(), start_change_set_request()) ->
+    {ok, start_change_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_change_set(Client, Input) ->
     start_change_set(Client, Input, []).
+
+-spec start_change_set(map(), start_change_set_request(), proplists:proplist()) ->
+    {ok, start_change_set_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_in_use_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, service_quota_exceeded_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 start_change_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartChangeSet"],
@@ -409,8 +1448,25 @@ start_change_set(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities
 %% or change set:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
+-spec tag_resource(map(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TagResource"],
@@ -437,8 +1493,25 @@ tag_resource(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities
 %% or change set:
 %% https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
+-spec untag_resource(map(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, access_denied_exception(), tuple()} |
+    {error, internal_service_exception(), tuple()} |
+    {error, resource_not_found_exception(), tuple()} |
+    {error, throttling_exception(), tuple()} |
+    {error, validation_exception(), tuple()}.
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UntagResource"],
@@ -465,7 +1538,7 @@ untag_resource(Client, Input0, Options0) ->
 %% Internal functions
 %%====================================================================
 
--spec proplists_take(any(), proplists:proplists(), any()) -> {any(), proplists:proplists()}.
+-spec proplists_take(any(), proplists:proplist(), any()) -> {any(), proplists:proplist()}.
 proplists_take(Key, Proplist, Default) ->
   Value = proplists:get_value(Key, Proplist, Default),
   {Value, proplists:delete(Key, Proplist)}.

@@ -461,6 +461,2840 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% branch_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type branch_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_and_destination_are_same_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_and_destination_are_same_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_repositories_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"repositoryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type batch_get_repositories_error() :: #{binary() => any()}.
+
+%% Example:
+%% evaluate_pull_request_approval_rules_output() :: #{
+%%   <<"evaluation">> => evaluation()
+%% }
+-type evaluate_pull_request_approval_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% default_branch_cannot_be_deleted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type default_branch_cannot_be_deleted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% client_request_token_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type client_request_token_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_rule_templates_associated_with_repository_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_rule_templates_associated_with_repository_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_approval_rule_template_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type get_approval_rule_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type get_pull_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% commit() :: #{
+%%   <<"additionalData">> => string(),
+%%   <<"author">> => user_info(),
+%%   <<"commitId">> => string(),
+%%   <<"committer">> => user_info(),
+%%   <<"message">> => string(),
+%%   <<"parents">> => list(string()()),
+%%   <<"treeId">> => string()
+%% }
+-type commit() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_order_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_order_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_file_output() :: #{
+%%   <<"blobId">> => string(),
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type put_file_output() :: #{binary() => any()}.
+
+%% Example:
+%% tips_divergence_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tips_divergence_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_template_description_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_template_description_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_name_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_name_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_max_results_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_max_results_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_blob_input() :: #{
+%%   <<"blobId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_blob_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_file_position_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_file_position_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_continuation_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_continuation_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% symbolic_link() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"blobId">> => string(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"relativePath">> => string()
+%% }
+-type symbolic_link() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_target_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_merge_options_input() :: #{
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
+%% }
+-type get_merge_options_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_encryption_key_output() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"originalKmsKeyId">> => string(),
+%%   <<"repositoryId">> => string()
+%% }
+-type update_repository_encryption_key_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_commit_input() :: #{
+%%   <<"commitId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_destination_commit_specifier_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_destination_commit_specifier_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment_deleted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_deleted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_associated_approval_rule_templates_for_repository_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type list_associated_approval_rule_templates_for_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pull_request_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pull_request_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_names_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_names_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_branch_input() :: #{
+%%   <<"branchName">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type delete_branch_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_pull_requests_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestIds">> => list(string()())
+%% }
+-type list_pull_requests_output() :: #{binary() => any()}.
+
+%% Example:
+%% blob_id_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type blob_id_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_input() :: #{
+%%   <<"repositoryName">> := string()
+%% }
+-type get_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_squash_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolution">> => conflict_resolution(),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string(),
+%%   <<"targetBranch">> => string()
+%% }
+-type merge_branches_by_squash_input() :: #{binary() => any()}.
+
+%% Example:
+%% comment_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_ids_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_ids_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_integrity_checks_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_integrity_checks_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_name_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_name_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_merge_conflicts_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"conflictMetadata">> => conflict_metadata(),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"mergeHunks">> => list(merge_hunk()()),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type describe_merge_conflicts_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_max_merge_hunks_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_max_merge_hunks_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_resolution() :: #{
+%%   <<"deleteFiles">> => list(delete_file_entry()()),
+%%   <<"replaceContents">> => list(replace_content_entry()()),
+%%   <<"setFileModes">> => list(set_file_mode_entry()())
+%% }
+-type conflict_resolution() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_client_request_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_client_request_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_repository_output() :: #{
+%%   <<"repositoryMetadata">> => repository_metadata()
+%% }
+-type create_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% source_file_specifier() :: #{
+%%   <<"filePath">> => string(),
+%%   <<"isMove">> => boolean()
+%% }
+-type source_file_specifier() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_content_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type update_approval_rule_template_content_output() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_target() :: #{
+%%   <<"destinationCommit">> => string(),
+%%   <<"destinationReference">> => string(),
+%%   <<"mergeBase">> => string(),
+%%   <<"mergeMetadata">> => merge_metadata(),
+%%   <<"repositoryName">> => string(),
+%%   <<"sourceCommit">> => string(),
+%%   <<"sourceReference">> => string()
+%% }
+-type pull_request_target() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pull_request_approval_rule_input() :: #{
+%%   <<"approvalRuleName">> := string(),
+%%   <<"pullRequestId">> := string()
+%% }
+-type delete_pull_request_approval_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% difference() :: #{
+%%   <<"afterBlob">> => blob_metadata(),
+%%   <<"beforeBlob">> => blob_metadata(),
+%%   <<"changeType">> => list(any())
+%% }
+-type difference() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_for_approval_rule_template_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryNames">> => list(string()())
+%% }
+-type list_repositories_for_approval_rule_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_approval_rules_not_satisfied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pull_request_approval_rules_not_satisfied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_pull_requests_input() :: #{
+%%   <<"authorArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestStatus">> => list(any()),
+%%   <<"repositoryName">> := string()
+%% }
+-type list_pull_requests_input() :: #{binary() => any()}.
+
+%% Example:
+%% blob_metadata() :: #{
+%%   <<"blobId">> => string(),
+%%   <<"mode">> => string(),
+%%   <<"path">> => string()
+%% }
+-type blob_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% reaction_value_formats() :: #{
+%%   <<"emoji">> => string(),
+%%   <<"shortCode">> => string(),
+%%   <<"unicode">> => string()
+%% }
+-type reaction_value_formats() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_author_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_author_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_repository_triggers_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_repository_triggers_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_reaction_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_reaction_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_event_metadata() :: #{
+%%   <<"approvalRuleContent">> => string(),
+%%   <<"approvalRuleId">> => string(),
+%%   <<"approvalRuleName">> => string()
+%% }
+-type approval_rule_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% folder_content_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type folder_content_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_file_or_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type source_file_or_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_custom_data_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_custom_data_exception() :: #{binary() => any()}.
+
+%% Example:
+%% test_repository_triggers_input() :: #{
+%%   <<"repositoryName">> := string(),
+%%   <<"triggers">> := list(repository_trigger()())
+%% }
+-type test_repository_triggers_input() :: #{binary() => any()}.
+
+%% Example:
+%% tags_map_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tags_map_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_differences_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"differences">> => list(difference()())
+%% }
+-type get_differences_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_conflict_resolution_strategy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_conflict_resolution_strategy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_merge_conflicts_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"conflictMetadataList">> => list(conflict_metadata()()),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"mergeable">> => boolean(),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type get_merge_conflicts_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_override_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_override_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_merge_options_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"mergeOptions">> => list(list(any())()),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type get_merge_options_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_entry() :: #{
+%%   <<"filePath">> => string()
+%% }
+-type delete_file_entry() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_targets_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_targets_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_triggers_list_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_triggers_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_hunk_detail() :: #{
+%%   <<"endLine">> => integer(),
+%%   <<"hunkContent">> => string(),
+%%   <<"startLine">> => integer()
+%% }
+-type merge_hunk_detail() :: #{binary() => any()}.
+
+%% Example:
+%% path_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type path_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_approval_states_output() :: #{
+%%   <<"approvals">> => list(approval()())
+%% }
+-type get_pull_request_approval_states_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_pull_request_input() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"targets">> := list(target()()),
+%%   <<"title">> := string()
+%% }
+-type create_pull_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_status_changed_event_metadata() :: #{
+%%   <<"pullRequestStatus">> => list(any())
+%% }
+-type pull_request_status_changed_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% file_name_conflicts_with_directory_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_name_conflicts_with_directory_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_approval_rule_template_output() :: #{
+%%   <<"approvalRuleTemplateId">> => string()
+%% }
+-type delete_approval_rule_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_branches_output() :: #{
+%%   <<"branches">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_branches_output() :: #{binary() => any()}.
+
+%% Example:
+%% same_file_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type same_file_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"order">> => list(any()),
+%%   <<"sortBy">> => list(any())
+%% }
+-type list_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% repository_name_id_pair() :: #{
+%%   <<"repositoryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type repository_name_id_pair() :: #{binary() => any()}.
+
+%% Example:
+%% create_approval_rule_template_input() :: #{
+%%   <<"approvalRuleTemplateContent">> := string(),
+%%   <<"approvalRuleTemplateDescription">> => string(),
+%%   <<"approvalRuleTemplateName">> := string()
+%% }
+-type create_approval_rule_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% commit_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_triggers_output() :: #{
+%%   <<"configurationId">> => string(),
+%%   <<"triggers">> => list(repository_trigger()())
+%% }
+-type get_repository_triggers_output() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_reply_output() :: #{
+%%   <<"comment">> => comment()
+%% }
+-type post_comment_reply_output() :: #{binary() => any()}.
+
+%% Example:
+%% same_path_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type same_path_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_output() :: #{
+%%   <<"repositoryMetadata">> => repository_metadata()
+%% }
+-type get_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_number_of_approvals_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_number_of_approvals_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_rule_content_sha256_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_rule_content_sha256_exception() :: #{binary() => any()}.
+
+%% Example:
+%% author_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type author_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_for_pull_request_output() :: #{
+%%   <<"afterBlobId">> => string(),
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeBlobId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"comment">> => comment(),
+%%   <<"location">> => location(),
+%%   <<"pullRequestId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type post_comment_for_pull_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% file() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"blobId">> => string(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"relativePath">> => string()
+%% }
+-type file() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tip_of_source_reference_is_different_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tip_of_source_reference_is_different_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_replacement_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_replacement_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_description_input() :: #{
+%%   <<"repositoryDescription">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type update_repository_description_input() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_description_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type update_approval_rule_template_description_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_state_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_state_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_entry_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_entry_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_merge_conflicts_error() :: #{
+%%   <<"exceptionName">> => string(),
+%%   <<"filePath">> => string(),
+%%   <<"message">> => string()
+%% }
+-type batch_describe_merge_conflicts_error() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_fast_forward_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type merge_branches_by_fast_forward_output() :: #{binary() => any()}.
+
+%% Example:
+%% target_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type target_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_modes() :: #{
+%%   <<"base">> => list(any()),
+%%   <<"destination">> => list(any()),
+%%   <<"source">> => list(any())
+%% }
+-type file_modes() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_branch_name_list_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_trigger_branch_name_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_approval_rule_content_input() :: #{
+%%   <<"approvalRuleName">> := string(),
+%%   <<"existingRuleContentSha256">> => string(),
+%%   <<"newRuleContent">> := string(),
+%%   <<"pullRequestId">> := string()
+%% }
+-type update_pull_request_approval_rule_content_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parent_commit_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parent_commit_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_three_way_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type merge_branches_by_three_way_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_branch_output() :: #{
+%%   <<"deletedBranch">> => branch_info()
+%% }
+-type delete_branch_output() :: #{binary() => any()}.
+
+%% Example:
+%% cannot_modify_approval_rule_from_template_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cannot_modify_approval_rule_from_template_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% blob_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type blob_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_approval_rule_template_from_repository_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type disassociate_approval_rule_template_from_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_cannot_be_approved_by_author_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pull_request_cannot_be_approved_by_author_exception() :: #{binary() => any()}.
+
+%% Example:
+%% branch_name_is_tag_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type branch_name_is_tag_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_commit_history_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"revisionDag">> => list(file_version()())
+%% }
+-type list_file_commit_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% file_metadata() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"blobId">> => string(),
+%%   <<"fileMode">> => list(any())
+%% }
+-type file_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_description_input() :: #{
+%%   <<"approvalRuleTemplateDescription">> := string(),
+%%   <<"approvalRuleTemplateName">> := string()
+%% }
+-type update_approval_rule_template_description_input() :: #{binary() => any()}.
+
+%% Example:
+%% reference_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type reference_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment_content_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_content_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replacement_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replacement_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_three_way_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolution">> => conflict_resolution(),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string(),
+%%   <<"targetBranch">> => string()
+%% }
+-type merge_branches_by_three_way_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_approval_rule_template_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type create_approval_rule_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% replace_content_entry() :: #{
+%%   <<"content">> => binary(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"filePath">> => string(),
+%%   <<"replacementType">> => list(any())
+%% }
+-type replace_content_entry() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_events_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_events_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target() :: #{
+%%   <<"destinationReference">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"sourceReference">> => string()
+%% }
+-type target() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pull_request_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_option_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type merge_option_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_approval_rule_template_with_repositories_output() :: #{
+%%   <<"associatedRepositoryNames">> => list(string()()),
+%%   <<"errors">> => list(batch_associate_approval_rule_template_with_repositories_error()())
+%% }
+-type batch_associate_approval_rule_template_with_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_comment_content_input() :: #{
+%%   <<"commentId">> := string()
+%% }
+-type delete_comment_content_input() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_items_to_compare_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_items_to_compare_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_merge_commit_input() :: #{
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
+%% }
+-type get_merge_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_output() :: #{
+%%   <<"repositoryId">> => string()
+%% }
+-type delete_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% multiple_conflict_resolution_entries_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type multiple_conflict_resolution_entries_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_fast_forward_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type merge_pull_request_by_fast_forward_output() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_template_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_template_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_metadata() :: #{
+%%   <<"isMerged">> => boolean(),
+%%   <<"mergeCommitId">> => string(),
+%%   <<"mergeOption">> => list(any()),
+%%   <<"mergedBy">> => string()
+%% }
+-type merge_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_replacement_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_replacement_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_merge_conflicts_input() :: #{
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"maxConflictFiles">> => integer(),
+%%   <<"mergeOption">> := list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
+%% }
+-type get_merge_conflicts_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_comment_reactions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reactionsForComment">> => list(reaction_for_comment()())
+%% }
+-type get_comment_reactions_output() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_squash_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type merge_pull_request_by_squash_output() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_squash_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type merge_branches_by_squash_output() :: #{binary() => any()}.
+
+%% Example:
+%% revision_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type revision_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_branches_by_fast_forward_input() :: #{
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string(),
+%%   <<"targetBranch">> => string()
+%% }
+-type merge_branches_by_fast_forward_input() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_status_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pull_request_status_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_branch_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_branch_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_hunk() :: #{
+%%   <<"base">> => merge_hunk_detail(),
+%%   <<"destination">> => merge_hunk_detail(),
+%%   <<"isConflict">> => boolean(),
+%%   <<"source">> => merge_hunk_detail()
+%% }
+-type merge_hunk() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_content_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment() :: #{
+%%   <<"authorArn">> => string(),
+%%   <<"callerReactions">> => list(string()()),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"commentId">> => string(),
+%%   <<"content">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
+%%   <<"inReplyTo">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"reactionCounts">> => map()
+%% }
+-type comment() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_for_pull_request_input() :: #{
+%%   <<"afterCommitId">> := string(),
+%%   <<"beforeCommitId">> := string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"content">> := string(),
+%%   <<"location">> => location(),
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type post_comment_for_pull_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_encryption_key_input() :: #{
+%%   <<"kmsKeyId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type update_repository_encryption_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pull_request_event_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pull_request_event_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_file_mode_entry() :: #{
+%%   <<"fileMode">> => list(any()),
+%%   <<"filePath">> => string()
+%% }
+-type set_file_mode_entry() :: #{binary() => any()}.
+
+%% Example:
+%% reaction_value_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type reaction_value_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_comment_reactions_input() :: #{
+%%   <<"commentId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reactionUserArn">> => string()
+%% }
+-type get_comment_reactions_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_folder_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"files">> => list(file()()),
+%%   <<"folderPath">> => string(),
+%%   <<"subFolders">> => list(folder()()),
+%%   <<"subModules">> => list(sub_module()()),
+%%   <<"symbolicLinks">> => list(symbolic_link()()),
+%%   <<"treeId">> => string()
+%% }
+-type get_folder_output() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_repository_names_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_repository_names_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_fast_forward_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type merge_pull_request_by_fast_forward_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_revision_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_revision_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_branch_input() :: #{
+%%   <<"branchName">> := string(),
+%%   <<"commitId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type create_branch_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_commits_error() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_get_commits_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_blob_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_blob_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_merge_conflicts_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"conflicts">> => list(conflict()()),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"errors">> => list(batch_describe_merge_conflicts_error()()),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type batch_describe_merge_conflicts_output() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pull_request_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_trigger_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_three_way_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type merge_pull_request_by_three_way_output() :: #{binary() => any()}.
+
+%% Example:
+%% commit_ids_list_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_ids_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_email_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_email_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_invalid_usage_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_invalid_usage_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_commit_output() :: #{
+%%   <<"commit">> => commit()
+%% }
+-type get_commit_output() :: #{binary() => any()}.
+
+%% Example:
+%% comment_not_created_by_caller_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_not_created_by_caller_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_relative_file_version_enum_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_relative_file_version_enum_exception() :: #{binary() => any()}.
+
+%% Example:
+%% parent_commit_id_outdated_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type parent_commit_id_outdated_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_sizes() :: #{
+%%   <<"base">> => float(),
+%%   <<"destination">> => float(),
+%%   <<"source">> => float()
+%% }
+-type file_sizes() :: #{binary() => any()}.
+
+%% Example:
+%% create_unreferenced_merge_commit_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolution">> => conflict_resolution(),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"mergeOption">> := list(any()),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
+%% }
+-type create_unreferenced_merge_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_title_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type update_pull_request_title_output() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_source_reference_updated_event_metadata() :: #{
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"mergeBase">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type pull_request_source_reference_updated_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_input() :: #{
+%%   <<"pullRequestId">> := string()
+%% }
+-type get_pull_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_comment_output() :: #{
+%%   <<"comment">> => comment()
+%% }
+-type get_comment_output() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template() :: #{
+%%   <<"approvalRuleTemplateContent">> => string(),
+%%   <<"approvalRuleTemplateDescription">> => string(),
+%%   <<"approvalRuleTemplateId">> => string(),
+%%   <<"approvalRuleTemplateName">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"lastModifiedUser">> => string(),
+%%   <<"ruleContentSha256">> => string()
+%% }
+-type approval_rule_template() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_reply_input() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"content">> := string(),
+%%   <<"inReplyTo">> := string()
+%% }
+-type post_comment_reply_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_approval_rule_template_with_repositories_error() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type batch_associate_approval_rule_template_with_repositories_error() :: #{binary() => any()}.
+
+%% Example:
+%% conflict() :: #{
+%%   <<"conflictMetadata">> => conflict_metadata(),
+%%   <<"mergeHunks">> => list(merge_hunk()())
+%% }
+-type conflict() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_reaction_user_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_reaction_user_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_mode_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_mode_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% reaction_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type reaction_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_merge_conflicts_input() :: #{
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"filePath">> := string(),
+%%   <<"maxMergeHunks">> => integer(),
+%%   <<"mergeOption">> := list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
+%% }
+-type describe_merge_conflicts_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_approval_rule_template_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string()
+%% }
+-type delete_approval_rule_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% override_already_set_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type override_already_set_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_file_entry() :: #{
+%%   <<"fileContent">> => binary(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"filePath">> => string(),
+%%   <<"sourceFile">> => source_file_specifier()
+%% }
+-type put_file_entry() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_approval_rule_template_with_repositories_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"repositoryNames">> := list(string()())
+%% }
+-type batch_associate_approval_rule_template_with_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_commit_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_commit_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comment_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% location() :: #{
+%%   <<"filePath">> => string(),
+%%   <<"filePosition">> => float(),
+%%   <<"relativeFileVersion">> => list(any())
+%% }
+-type location() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_destination_arn_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_trigger_destination_arn_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_override_state_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"revisionId">> := string()
+%% }
+-type get_pull_request_override_state_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_branch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_target_branch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_description_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_description_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_commit_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"filesAdded">> => list(file_metadata()()),
+%%   <<"filesDeleted">> => list(file_metadata()()),
+%%   <<"filesUpdated">> => list(file_metadata()()),
+%%   <<"treeId">> => string()
+%% }
+-type create_commit_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_max_conflict_files_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_max_conflict_files_exception() :: #{binary() => any()}.
+
+%% Example:
+%% targets_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type targets_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_commit_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_commit_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_commit_history_request() :: #{
+%%   <<"commitSpecifier">> => string(),
+%%   <<"filePath">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type list_file_commit_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request() :: #{
+%%   <<"approvalRules">> => list(approval_rule()()),
+%%   <<"authorArn">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastActivityDate">> => non_neg_integer(),
+%%   <<"pullRequestId">> => string(),
+%%   <<"pullRequestStatus">> => list(any()),
+%%   <<"pullRequestTargets">> => list(pull_request_target()()),
+%%   <<"revisionId">> => string(),
+%%   <<"title">> => string()
+%% }
+-type pull_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% manual_merge_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type manual_merge_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_squash_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolution">> => conflict_resolution(),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type merge_pull_request_by_squash_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_commits_output() :: #{
+%%   <<"commits">> => list(commit()()),
+%%   <<"errors">> => list(batch_get_commits_error()())
+%% }
+-type batch_get_commits_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_file_input() :: #{
+%%   <<"commitSpecifier">> => string(),
+%%   <<"filePath">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_file_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_triggers_input() :: #{
+%%   <<"repositoryName">> := string()
+%% }
+-type get_repository_triggers_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_commit_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"branchName">> := string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"deleteFiles">> => list(delete_file_entry()()),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"parentCommitId">> => string(),
+%%   <<"putFiles">> => list(put_file_entry()()),
+%%   <<"repositoryName">> := string(),
+%%   <<"setFileModes">> => list(set_file_mode_entry()())
+%% }
+-type create_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% file_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% multiple_repositories_in_pull_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type multiple_repositories_in_pull_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_status_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type update_pull_request_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deletion_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deletion_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% number_of_rule_templates_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type number_of_rule_templates_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_approval_rule_templates_output() :: #{
+%%   <<"approvalRuleTemplateNames">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_approval_rule_templates_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_actor_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_actor_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_conflict_resolution_entries_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_conflict_resolution_entries_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% before_commit_id_and_after_commit_id_are_same_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type before_commit_id_and_after_commit_id_are_same_exception() :: #{binary() => any()}.
+
+%% Example:
+%% override_pull_request_approval_rules_input() :: #{
+%%   <<"overrideStatus">> := list(any()),
+%%   <<"pullRequestId">> := string(),
+%%   <<"revisionId">> := string()
+%% }
+-type override_pull_request_approval_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_pull_request_by_three_way_input() :: #{
+%%   <<"authorName">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolution">> => conflict_resolution(),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"email">> => string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type merge_pull_request_by_three_way_input() :: #{binary() => any()}.
+
+%% Example:
+%% folder_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type folder_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pull_request_approval_rule_output() :: #{
+%%   <<"approvalRuleId">> => string()
+%% }
+-type delete_pull_request_approval_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_repository_triggers_output() :: #{
+%%   <<"configurationId">> => string()
+%% }
+-type put_repository_triggers_output() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_invalid_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_invalid_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_arn_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_arn_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_region_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_region_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_override_state_output() :: #{
+%%   <<"overridden">> => boolean(),
+%%   <<"overrider">> => string()
+%% }
+-type get_pull_request_override_state_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_approval_rule_content_output() :: #{
+%%   <<"approvalRule">> => approval_rule()
+%% }
+-type update_pull_request_approval_rule_content_output() :: #{binary() => any()}.
+
+%% Example:
+%% sub_module() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"commitId">> => string(),
+%%   <<"relativePath">> => string()
+%% }
+-type sub_module() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_description_input() :: #{
+%%   <<"description">> := string(),
+%%   <<"pullRequestId">> := string()
+%% }
+-type update_pull_request_description_input() :: #{binary() => any()}.
+
+%% Example:
+%% title_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type title_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_merge_commit_output() :: #{
+%%   <<"baseCommitId">> => string(),
+%%   <<"destinationCommitId">> => string(),
+%%   <<"mergedCommitId">> => string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type get_merge_commit_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_message_length_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_message_length_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_open_pull_requests_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_open_pull_requests_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_file_entry_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type put_file_entry_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_associated_approval_rule_templates_for_repository_output() :: #{
+%%   <<"approvalRuleTemplateNames">> => list(string()()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_associated_approval_rule_templates_for_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% actor_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type actor_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_comment_content_output() :: #{
+%%   <<"comment">> => comment()
+%% }
+-type delete_comment_content_output() :: #{binary() => any()}.
+
+%% Example:
+%% repository_not_associated_with_pull_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_not_associated_with_pull_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_repository_input() :: #{
+%%   <<"repositoryName">> := string()
+%% }
+-type delete_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_already_closed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pull_request_already_closed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_file_input() :: #{
+%%   <<"branchName">> := string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"email">> => string(),
+%%   <<"fileContent">> := binary(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"filePath">> := string(),
+%%   <<"name">> => string(),
+%%   <<"parentCommitId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type put_file_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_title_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_title_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_key_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type encryption_key_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% is_binary_file() :: #{
+%%   <<"base">> => boolean(),
+%%   <<"destination">> => boolean(),
+%%   <<"source">> => boolean()
+%% }
+-type is_binary_file() :: #{binary() => any()}.
+
+%% Example:
+%% get_branch_input() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type get_branch_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_merge_conflicts_input() :: #{
+%%   <<"conflictDetailLevel">> => list(any()),
+%%   <<"conflictResolutionStrategy">> => list(any()),
+%%   <<"destinationCommitSpecifier">> := string(),
+%%   <<"filePaths">> => list(string()()),
+%%   <<"maxConflictFiles">> => integer(),
+%%   <<"maxMergeHunks">> => integer(),
+%%   <<"mergeOption">> := list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"sourceCommitSpecifier">> := string()
+%% }
+-type batch_describe_merge_conflicts_input() :: #{binary() => any()}.
+
+%% Example:
+%% file_content_and_source_file_specified_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_content_and_source_file_specified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string()())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_approval_rule_template_from_repositories_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"repositoryNames">> := list(string()())
+%% }
+-type batch_disassociate_approval_rule_template_from_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% replacement_type_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replacement_type_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_keys_list_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_keys_list_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sort_by_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sort_by_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_differences_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"afterCommitSpecifier">> := string(),
+%%   <<"afterPath">> => string(),
+%%   <<"beforeCommitSpecifier">> => string(),
+%%   <<"beforePath">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_differences_input() :: #{binary() => any()}.
+
+%% Example:
+%% parent_commit_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type parent_commit_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger() :: #{
+%%   <<"branches">> => list(string()()),
+%%   <<"customData">> => string(),
+%%   <<"destinationArn">> => string(),
+%%   <<"events">> => list(list(any())()),
+%%   <<"name">> => string()
+%% }
+-type repository_trigger() :: #{binary() => any()}.
+
+%% Example:
+%% branch_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type branch_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_repository_triggers_input() :: #{
+%%   <<"repositoryName">> := string(),
+%%   <<"triggers">> := list(repository_trigger()())
+%% }
+-type put_repository_triggers_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pull_request_events_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestEvents">> => list(pull_request_event()())
+%% }
+-type describe_pull_request_events_output() :: #{binary() => any()}.
+
+%% Example:
+%% file_content_size_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_content_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% comments_for_compared_commit() :: #{
+%%   <<"afterBlobId">> => string(),
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeBlobId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"comments">> => list(comment()()),
+%%   <<"location">> => location(),
+%%   <<"repositoryName">> => string()
+%% }
+-type comments_for_compared_commit() :: #{binary() => any()}.
+
+%% Example:
+%% origin_approval_rule_template() :: #{
+%%   <<"approvalRuleTemplateId">> => string(),
+%%   <<"approvalRuleTemplateName">> => string()
+%% }
+-type origin_approval_rule_template() :: #{binary() => any()}.
+
+%% Example:
+%% parent_commit_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type parent_commit_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_system_tag_usage_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_system_tag_usage_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pull_request_events_input() :: #{
+%%   <<"actorArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestEventType">> => list(any()),
+%%   <<"pullRequestId">> := string()
+%% }
+-type describe_pull_request_events_input() :: #{binary() => any()}.
+
+%% Example:
+%% idempotency_parameter_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type idempotency_parameter_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% file_path_conflicts_with_submodule_path_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_path_conflicts_with_submodule_path_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_commits_input() :: #{
+%%   <<"commitIds">> := list(string()()),
+%%   <<"repositoryName">> := string()
+%% }
+-type batch_get_commits_input() :: #{binary() => any()}.
+
+%% Example:
+%% reaction_for_comment() :: #{
+%%   <<"reaction">> => reaction_value_formats(),
+%%   <<"reactionUsers">> => list(string()()),
+%%   <<"reactionsFromDeletedUsersCount">> => integer()
+%% }
+-type reaction_for_comment() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_execution_failure() :: #{
+%%   <<"failureMessage">> => string(),
+%%   <<"trigger">> => string()
+%% }
+-type repository_trigger_execution_failure() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositories">> => list(repository_name_id_pair()())
+%% }
+-type list_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_description_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type update_pull_request_description_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_input() :: #{
+%%   <<"branchName">> := string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"email">> => string(),
+%%   <<"filePath">> := string(),
+%%   <<"keepEmptyFolders">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"parentCommitId">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type delete_file_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_approval_state_input() :: #{
+%%   <<"approvalState">> := list(any()),
+%%   <<"pullRequestId">> := string(),
+%%   <<"revisionId">> := string()
+%% }
+-type update_pull_request_approval_state_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_branch_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_branch_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_too_large_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type file_too_large_exception() :: #{binary() => any()}.
+
+%% Example:
+%% file_version() :: #{
+%%   <<"blobId">> => string(),
+%%   <<"commit">> => commit(),
+%%   <<"path">> => string(),
+%%   <<"revisionChildren">> => list(string()())
+%% }
+-type file_version() :: #{binary() => any()}.
+
+%% Example:
+%% get_blob_output() :: #{
+%%   <<"content">> => binary()
+%% }
+-type get_blob_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_path_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_path_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_comments_for_pull_request_input() :: #{
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pullRequestId">> := string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type get_comments_for_pull_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pull_request_status_update_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pull_request_status_update_exception() :: #{binary() => any()}.
+
+%% Example:
+%% folder() :: #{
+%%   <<"absolutePath">> => string(),
+%%   <<"relativePath">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type folder() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_destination_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_destination_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_comments_for_compared_commit_output() :: #{
+%%   <<"commentsForComparedCommitData">> => list(comments_for_compared_commit()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_comments_for_compared_commit_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_resource_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_approval_rule_template_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string()
+%% }
+-type get_approval_rule_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_source_commit_specifier_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_source_commit_specifier_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_comment_reaction_input() :: #{
+%%   <<"commentId">> := string(),
+%%   <<"reactionValue">> := string()
+%% }
+-type put_comment_reaction_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_comment_output() :: #{
+%%   <<"comment">> => comment()
+%% }
+-type update_comment_output() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_branches_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_branches_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_merge_option_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_merge_option_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_unreferenced_merge_commit_output() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type create_unreferenced_merge_commit_output() :: #{binary() => any()}.
+
+%% Example:
+%% cannot_delete_approval_rule_from_template_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cannot_delete_approval_rule_from_template_exception() :: #{binary() => any()}.
+
+%% Example:
+%% override_status_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type override_status_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% reference_type_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type reference_type_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_folder_input() :: #{
+%%   <<"commitSpecifier">> => string(),
+%%   <<"folderPath">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_folder_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_comment_input() :: #{
+%%   <<"commentId">> := string()
+%% }
+-type get_comment_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_name_output() :: #{
+%%   <<"approvalRuleTemplate">> => approval_rule_template()
+%% }
+-type update_approval_rule_template_name_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_conflict_resolution_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_conflict_resolution_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_approval_rule_templates_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_approval_rule_templates_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pull_request_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pull_request_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_comments_for_pull_request_output() :: #{
+%%   <<"commentsForPullRequestData">> => list(comments_for_pull_request()()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_comments_for_pull_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_reference_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_reference_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_approval_rule_template_from_repositories_error() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type batch_disassociate_approval_rule_template_from_repositories_error() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation() :: #{
+%%   <<"approvalRulesNotSatisfied">> => list(string()()),
+%%   <<"approvalRulesSatisfied">> => list(string()()),
+%%   <<"approved">> => boolean(),
+%%   <<"overridden">> => boolean()
+%% }
+-type evaluation() :: #{binary() => any()}.
+
+%% Example:
+%% create_pull_request_output() :: #{
+%%   <<"pullRequest">> => pull_request()
+%% }
+-type create_pull_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% comment_content_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type comment_content_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_file_output() :: #{
+%%   <<"blobId">> => string(),
+%%   <<"commitId">> => string(),
+%%   <<"filePath">> => string(),
+%%   <<"treeId">> => string()
+%% }
+-type delete_file_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_comment_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_comment_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_branch_output() :: #{
+%%   <<"branch">> => branch_info()
+%% }
+-type get_branch_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag_keys_list_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_keys_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% reference_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type reference_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% object_types() :: #{
+%%   <<"base">> => list(any()),
+%%   <<"destination">> => list(any()),
+%%   <<"source">> => list(any())
+%% }
+-type object_types() :: #{binary() => any()}.
+
+%% Example:
+%% revision_not_current_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type revision_not_current_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_comment_input() :: #{
+%%   <<"commentId">> := string(),
+%%   <<"content">> := string()
+%% }
+-type update_comment_input() :: #{binary() => any()}.
+
+%% Example:
+%% commit_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval() :: #{
+%%   <<"approvalState">> => list(any()),
+%%   <<"userArn">> => string()
+%% }
+-type approval() :: #{binary() => any()}.
+
+%% Example:
+%% name_length_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type name_length_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_file_location_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_file_location_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_repository_input() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"repositoryDescription">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% repository_trigger_events_list_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_trigger_events_list_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_for_compared_commit_output() :: #{
+%%   <<"afterBlobId">> => string(),
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeBlobId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"comment">> => comment(),
+%%   <<"location">> => location(),
+%%   <<"repositoryName">> => string()
+%% }
+-type post_comment_for_compared_commit_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_approval_rule_template_from_repositories_output() :: #{
+%%   <<"disassociatedRepositoryNames">> => list(string()()),
+%%   <<"errors">> => list(batch_disassociate_approval_rule_template_from_repositories_error()())
+%% }
+-type batch_disassociate_approval_rule_template_from_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_created_event_metadata() :: #{
+%%   <<"destinationCommitId">> => string(),
+%%   <<"mergeBase">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"sourceCommitId">> => string()
+%% }
+-type pull_request_created_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_repositories_input() :: #{
+%%   <<"repositoryNames">> := list(string()())
+%% }
+-type batch_get_repositories_input() :: #{binary() => any()}.
+
+%% Example:
+%% branch_info() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"commitId">> => string()
+%% }
+-type branch_info() :: #{binary() => any()}.
+
+%% Example:
+%% list_branches_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type list_branches_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_name_input() :: #{
+%%   <<"newApprovalRuleTemplateName">> := string(),
+%%   <<"oldApprovalRuleTemplateName">> := string()
+%% }
+-type update_approval_rule_template_name_input() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_conflict_detail_level_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_conflict_detail_level_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restricted_source_file_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type restricted_source_file_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_id_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_id_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% number_of_rules_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type number_of_rules_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_overridden_event_metadata() :: #{
+%%   <<"overrideStatus">> => list(any()),
+%%   <<"revisionId">> => string()
+%% }
+-type approval_rule_overridden_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_template_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_template_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_repositories_for_approval_rule_template_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_repositories_for_approval_rule_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_repositories_output() :: #{
+%%   <<"errors">> => list(batch_get_repositories_error()()),
+%%   <<"repositories">> => list(repository_metadata()()),
+%%   <<"repositoriesNotFound">> => list(string()())
+%% }
+-type batch_get_repositories_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pull_request_approval_states_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"revisionId">> := string()
+%% }
+-type get_pull_request_approval_states_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_repository_name_input() :: #{
+%%   <<"newName">> := string(),
+%%   <<"oldName">> := string()
+%% }
+-type update_repository_name_input() :: #{binary() => any()}.
+
+%% Example:
+%% merge_operations() :: #{
+%%   <<"destination">> => list(any()),
+%%   <<"source">> => list(any())
+%% }
+-type merge_operations() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_status_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"pullRequestStatus">> := list(any())
+%% }
+-type update_pull_request_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% comments_for_pull_request() :: #{
+%%   <<"afterBlobId">> => string(),
+%%   <<"afterCommitId">> => string(),
+%%   <<"beforeBlobId">> => string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"comments">> => list(comment()()),
+%%   <<"location">> => location(),
+%%   <<"pullRequestId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type comments_for_pull_request() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_approval_rule_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_approval_rule_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% commit_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type commit_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% post_comment_for_compared_commit_input() :: #{
+%%   <<"afterCommitId">> := string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"clientRequestToken">> => string(),
+%%   <<"content">> := string(),
+%%   <<"location">> => location(),
+%%   <<"repositoryName">> := string()
+%% }
+-type post_comment_for_compared_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% branch_name_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type branch_name_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule_template_name_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type approval_rule_template_name_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_pull_request_title_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"title">> := string()
+%% }
+-type update_pull_request_title_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_file_output() :: #{
+%%   <<"blobId">> => string(),
+%%   <<"commitId">> => string(),
+%%   <<"fileContent">> => binary(),
+%%   <<"fileMode">> => list(any()),
+%%   <<"filePath">> => string(),
+%%   <<"fileSize">> => float()
+%% }
+-type get_file_output() :: #{binary() => any()}.
+
+%% Example:
+%% test_repository_triggers_output() :: #{
+%%   <<"failedExecutions">> => list(repository_trigger_execution_failure()()),
+%%   <<"successfulExecutions">> => list(string()())
+%% }
+-type test_repository_triggers_output() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_file_entries_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_file_entries_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_approval_rule_template_content_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"existingRuleContentSha256">> => string(),
+%%   <<"newRuleContent">> := string()
+%% }
+-type update_approval_rule_template_content_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_comments_for_compared_commit_input() :: #{
+%%   <<"afterCommitId">> := string(),
+%%   <<"beforeCommitId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_comments_for_compared_commit_input() :: #{binary() => any()}.
+
+%% Example:
+%% path_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type path_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_default_branch_input() :: #{
+%%   <<"defaultBranchName">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type update_default_branch_input() :: #{binary() => any()}.
+
+%% Example:
+%% evaluate_pull_request_approval_rules_input() :: #{
+%%   <<"pullRequestId">> := string(),
+%%   <<"revisionId">> := string()
+%% }
+-type evaluate_pull_request_approval_rules_input() :: #{binary() => any()}.
+
+%% Example:
+%% approval_state_changed_event_metadata() :: #{
+%%   <<"approvalStatus">> => list(any()),
+%%   <<"revisionId">> => string()
+%% }
+-type approval_state_changed_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_event() :: #{
+%%   <<"actorArn">> => string(),
+%%   <<"approvalRuleEventMetadata">> => approval_rule_event_metadata(),
+%%   <<"approvalRuleOverriddenEventMetadata">> => approval_rule_overridden_event_metadata(),
+%%   <<"approvalStateChangedEventMetadata">> => approval_state_changed_event_metadata(),
+%%   <<"eventDate">> => non_neg_integer(),
+%%   <<"pullRequestCreatedEventMetadata">> => pull_request_created_event_metadata(),
+%%   <<"pullRequestEventType">> => list(any()),
+%%   <<"pullRequestId">> => string(),
+%%   <<"pullRequestMergedStateChangedEventMetadata">> => pull_request_merged_state_changed_event_metadata(),
+%%   <<"pullRequestSourceReferenceUpdatedEventMetadata">> => pull_request_source_reference_updated_event_metadata(),
+%%   <<"pullRequestStatusChangedEventMetadata">> => pull_request_status_changed_event_metadata()
+%% }
+-type pull_request_event() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_merged_state_changed_event_metadata() :: #{
+%%   <<"destinationReference">> => string(),
+%%   <<"mergeMetadata">> => merge_metadata(),
+%%   <<"repositoryName">> => string()
+%% }
+-type pull_request_merged_state_changed_event_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% approval_rule() :: #{
+%%   <<"approvalRuleContent">> => string(),
+%%   <<"approvalRuleId">> => string(),
+%%   <<"approvalRuleName">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"lastModifiedUser">> => string(),
+%%   <<"originApprovalRuleTemplate">> => origin_approval_rule_template(),
+%%   <<"ruleContentSha256">> => string()
+%% }
+-type approval_rule() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tags_map_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tags_map_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_reference_update_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_reference_update_exception() :: #{binary() => any()}.
+
+%% Example:
+%% associate_approval_rule_template_with_repository_input() :: #{
+%%   <<"approvalRuleTemplateName">> := string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type associate_approval_rule_template_with_repository_input() :: #{binary() => any()}.
+
+%% Example:
+%% directory_name_conflicts_with_file_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type directory_name_conflicts_with_file_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_pull_request_approval_rule_output() :: #{
+%%   <<"approvalRule">> => approval_rule()
+%% }
+-type create_pull_request_approval_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_file_mode_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_file_mode_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_description_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_description_exception() :: #{binary() => any()}.
+
+%% Example:
+%% user_info() :: #{
+%%   <<"date">> => string(),
+%%   <<"email">> => string(),
+%%   <<"name">> => string()
+%% }
+-type user_info() :: #{binary() => any()}.
+
+%% Example:
+%% create_pull_request_approval_rule_input() :: #{
+%%   <<"approvalRuleContent">> := string(),
+%%   <<"approvalRuleName">> := string(),
+%%   <<"pullRequestId">> := string()
+%% }
+-type create_pull_request_approval_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% maximum_file_content_to_load_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type maximum_file_content_to_load_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"accountId">> => string(),
+%%   <<"cloneUrlHttp">> => string(),
+%%   <<"cloneUrlSsh">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"defaultBranch">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer(),
+%%   <<"repositoryDescription">> => string(),
+%%   <<"repositoryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type repository_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_repository_trigger_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_repository_trigger_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_metadata() :: #{
+%%   <<"contentConflict">> => boolean(),
+%%   <<"fileModeConflict">> => boolean(),
+%%   <<"fileModes">> => file_modes(),
+%%   <<"filePath">> => string(),
+%%   <<"fileSizes">> => file_sizes(),
+%%   <<"isBinaryFile">> => is_binary_file(),
+%%   <<"mergeOperations">> => merge_operations(),
+%%   <<"numberOfConflicts">> => integer(),
+%%   <<"objectTypeConflict">> => boolean(),
+%%   <<"objectTypes">> => object_types()
+%% }
+-type conflict_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% no_change_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_change_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_does_not_exist_exception() :: #{binary() => any()}.
+
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -479,18 +3313,76 @@
 %% approval rule that matches the template contents is created for all pull
 %% requests in
 %% that repository.
+-spec associate_approval_rule_template_with_repository(map(), associate_approval_rule_template_with_repository_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_rule_templates_associated_with_repository_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 associate_approval_rule_template_with_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_approval_rule_template_with_repository(Client, Input, []).
+
+-spec associate_approval_rule_template_with_repository(map(), associate_approval_rule_template_with_repository_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_rule_templates_associated_with_repository_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 associate_approval_rule_template_with_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateApprovalRuleTemplateWithRepository">>, Input, Options).
 
 %% @doc Creates an association between an approval rule template and one or
 %% more specified repositories.
+-spec batch_associate_approval_rule_template_with_repositories(map(), batch_associate_approval_rule_template_with_repositories_input()) ->
+    {ok, batch_associate_approval_rule_template_with_repositories_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, maximum_repository_names_exceeded_exception(), tuple()} |
+    {error, repository_names_required_exception(), tuple()}.
 batch_associate_approval_rule_template_with_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_associate_approval_rule_template_with_repositories(Client, Input, []).
+
+-spec batch_associate_approval_rule_template_with_repositories(map(), batch_associate_approval_rule_template_with_repositories_input(), proplists:proplist()) ->
+    {ok, batch_associate_approval_rule_template_with_repositories_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, maximum_repository_names_exceeded_exception(), tuple()} |
+    {error, repository_names_required_exception(), tuple()}.
 batch_associate_approval_rule_template_with_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchAssociateApprovalRuleTemplateWithRepositories">>, Input, Options).
@@ -498,27 +3390,130 @@ batch_associate_approval_rule_template_with_repositories(Client, Input, Options)
 %% @doc Returns information about one or more merge conflicts in the
 %% attempted merge of two commit specifiers using the squash or three-way
 %% merge strategy.
+-spec batch_describe_merge_conflicts(map(), batch_describe_merge_conflicts_input()) ->
+    {ok, batch_describe_merge_conflicts_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_conflict_files_exception(), tuple()} |
+    {error, invalid_max_merge_hunks_exception(), tuple()} |
+    {error, invalid_merge_option_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, merge_option_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 batch_describe_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_describe_merge_conflicts(Client, Input, []).
+
+-spec batch_describe_merge_conflicts(map(), batch_describe_merge_conflicts_input(), proplists:proplist()) ->
+    {ok, batch_describe_merge_conflicts_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_conflict_files_exception(), tuple()} |
+    {error, invalid_max_merge_hunks_exception(), tuple()} |
+    {error, invalid_merge_option_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, merge_option_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 batch_describe_merge_conflicts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDescribeMergeConflicts">>, Input, Options).
 
 %% @doc Removes the association between an approval rule template and one or
 %% more specified repositories.
+-spec batch_disassociate_approval_rule_template_from_repositories(map(), batch_disassociate_approval_rule_template_from_repositories_input()) ->
+    {ok, batch_disassociate_approval_rule_template_from_repositories_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, maximum_repository_names_exceeded_exception(), tuple()} |
+    {error, repository_names_required_exception(), tuple()}.
 batch_disassociate_approval_rule_template_from_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_disassociate_approval_rule_template_from_repositories(Client, Input, []).
+
+-spec batch_disassociate_approval_rule_template_from_repositories(map(), batch_disassociate_approval_rule_template_from_repositories_input(), proplists:proplist()) ->
+    {ok, batch_disassociate_approval_rule_template_from_repositories_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, maximum_repository_names_exceeded_exception(), tuple()} |
+    {error, repository_names_required_exception(), tuple()}.
 batch_disassociate_approval_rule_template_from_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDisassociateApprovalRuleTemplateFromRepositories">>, Input, Options).
 
 %% @doc Returns information about the contents of one or more commits in a
 %% repository.
+-spec batch_get_commits(map(), batch_get_commits_input()) ->
+    {ok, batch_get_commits_output(), tuple()} |
+    {error, any()} |
+    {error, commit_ids_limit_exceeded_exception(), tuple()} |
+    {error, commit_ids_list_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 batch_get_commits(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_commits(Client, Input, []).
+
+-spec batch_get_commits(map(), batch_get_commits_input(), proplists:proplist()) ->
+    {ok, batch_get_commits_output(), tuple()} |
+    {error, any()} |
+    {error, commit_ids_limit_exceeded_exception(), tuple()} |
+    {error, commit_ids_list_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 batch_get_commits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCommits">>, Input, Options).
@@ -534,9 +3529,32 @@ batch_get_commits(Client, Input, Options)
 %% HTML-encode the description field in any application that uses this API to
 %% display
 %% the repository description on a webpage.
+-spec batch_get_repositories(map(), batch_get_repositories_input()) ->
+    {ok, batch_get_repositories_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_repository_names_exceeded_exception(), tuple()} |
+    {error, repository_names_required_exception(), tuple()}.
 batch_get_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_repositories(Client, Input, []).
+
+-spec batch_get_repositories(map(), batch_get_repositories_input(), proplists:proplist()) ->
+    {ok, batch_get_repositories_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_repository_names_exceeded_exception(), tuple()} |
+    {error, repository_names_required_exception(), tuple()}.
 batch_get_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetRepositories">>, Input, Options).
@@ -551,9 +3569,30 @@ batch_get_repositories(Client, Input, Options)
 %% pull requests that meet the conditions of the template. For more
 %% information, see
 %% `AssociateApprovalRuleTemplateWithRepository'.
+-spec create_approval_rule_template(map(), create_approval_rule_template_input()) ->
+    {ok, create_approval_rule_template_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_content_required_exception(), tuple()} |
+    {error, approval_rule_template_name_already_exists_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_content_exception(), tuple()} |
+    {error, invalid_approval_rule_template_description_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, number_of_rule_templates_exceeded_exception(), tuple()}.
 create_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_approval_rule_template(Client, Input, []).
+
+-spec create_approval_rule_template(map(), create_approval_rule_template_input(), proplists:proplist()) ->
+    {ok, create_approval_rule_template_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_content_required_exception(), tuple()} |
+    {error, approval_rule_template_name_already_exists_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_content_exception(), tuple()} |
+    {error, invalid_approval_rule_template_description_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, number_of_rule_templates_exceeded_exception(), tuple()}.
 create_approval_rule_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApprovalRuleTemplate">>, Input, Options).
@@ -562,41 +3601,292 @@ create_approval_rule_template(Client, Input, Options)
 %%
 %% Calling the create branch operation does not set a repository's
 %% default branch. To do this, call the update default branch operation.
+-spec create_branch(map(), create_branch_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, branch_name_exists_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 create_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_branch(Client, Input, []).
+
+-spec create_branch(map(), create_branch_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, branch_name_exists_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 create_branch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBranch">>, Input, Options).
 
 %% @doc Creates a commit for a repository on the tip of a specified branch.
+-spec create_commit(map(), create_commit_input()) ->
+    {ok, create_commit_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, directory_name_conflicts_with_file_name_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_and_source_file_specified_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_does_not_exist_exception(), tuple()} |
+    {error, file_entry_required_exception(), tuple()} |
+    {error, file_mode_required_exception(), tuple()} |
+    {error, file_name_conflicts_with_directory_name_exception(), tuple()} |
+    {error, file_path_conflicts_with_submodule_path_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_deletion_parameter_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_parent_commit_id_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_file_entries_exceeded_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, no_change_exception(), tuple()} |
+    {error, parent_commit_does_not_exist_exception(), tuple()} |
+    {error, parent_commit_id_outdated_exception(), tuple()} |
+    {error, parent_commit_id_required_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, put_file_entry_conflict_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, restricted_source_file_exception(), tuple()} |
+    {error, same_path_request_exception(), tuple()} |
+    {error, source_file_or_content_required_exception(), tuple()}.
 create_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_commit(Client, Input, []).
+
+-spec create_commit(map(), create_commit_input(), proplists:proplist()) ->
+    {ok, create_commit_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, directory_name_conflicts_with_file_name_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_and_source_file_specified_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_does_not_exist_exception(), tuple()} |
+    {error, file_entry_required_exception(), tuple()} |
+    {error, file_mode_required_exception(), tuple()} |
+    {error, file_name_conflicts_with_directory_name_exception(), tuple()} |
+    {error, file_path_conflicts_with_submodule_path_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_deletion_parameter_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_parent_commit_id_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_file_entries_exceeded_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, no_change_exception(), tuple()} |
+    {error, parent_commit_does_not_exist_exception(), tuple()} |
+    {error, parent_commit_id_outdated_exception(), tuple()} |
+    {error, parent_commit_id_required_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, put_file_entry_conflict_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, restricted_source_file_exception(), tuple()} |
+    {error, same_path_request_exception(), tuple()} |
+    {error, source_file_or_content_required_exception(), tuple()}.
 create_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCommit">>, Input, Options).
 
 %% @doc Creates a pull request in the specified repository.
+-spec create_pull_request(map(), create_pull_request_input()) ->
+    {ok, create_pull_request_output(), tuple()} |
+    {error, any()} |
+    {error, client_request_token_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, idempotency_parameter_mismatch_exception(), tuple()} |
+    {error, invalid_client_request_token_exception(), tuple()} |
+    {error, invalid_description_exception(), tuple()} |
+    {error, invalid_reference_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_target_exception(), tuple()} |
+    {error, invalid_targets_exception(), tuple()} |
+    {error, invalid_title_exception(), tuple()} |
+    {error, maximum_open_pull_requests_exceeded_exception(), tuple()} |
+    {error, multiple_repositories_in_pull_request_exception(), tuple()} |
+    {error, reference_does_not_exist_exception(), tuple()} |
+    {error, reference_name_required_exception(), tuple()} |
+    {error, reference_type_not_supported_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, source_and_destination_are_same_exception(), tuple()} |
+    {error, target_required_exception(), tuple()} |
+    {error, targets_required_exception(), tuple()} |
+    {error, title_required_exception(), tuple()}.
 create_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pull_request(Client, Input, []).
+
+-spec create_pull_request(map(), create_pull_request_input(), proplists:proplist()) ->
+    {ok, create_pull_request_output(), tuple()} |
+    {error, any()} |
+    {error, client_request_token_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, idempotency_parameter_mismatch_exception(), tuple()} |
+    {error, invalid_client_request_token_exception(), tuple()} |
+    {error, invalid_description_exception(), tuple()} |
+    {error, invalid_reference_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_target_exception(), tuple()} |
+    {error, invalid_targets_exception(), tuple()} |
+    {error, invalid_title_exception(), tuple()} |
+    {error, maximum_open_pull_requests_exceeded_exception(), tuple()} |
+    {error, multiple_repositories_in_pull_request_exception(), tuple()} |
+    {error, reference_does_not_exist_exception(), tuple()} |
+    {error, reference_name_required_exception(), tuple()} |
+    {error, reference_type_not_supported_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, source_and_destination_are_same_exception(), tuple()} |
+    {error, target_required_exception(), tuple()} |
+    {error, targets_required_exception(), tuple()} |
+    {error, title_required_exception(), tuple()}.
 create_pull_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePullRequest">>, Input, Options).
 
 %% @doc Creates an approval rule for a pull request.
+-spec create_pull_request_approval_rule(map(), create_pull_request_approval_rule_input()) ->
+    {ok, create_pull_request_approval_rule_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_content_required_exception(), tuple()} |
+    {error, approval_rule_name_already_exists_exception(), tuple()} |
+    {error, approval_rule_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_content_exception(), tuple()} |
+    {error, invalid_approval_rule_name_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, number_of_rules_exceeded_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 create_pull_request_approval_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pull_request_approval_rule(Client, Input, []).
+
+-spec create_pull_request_approval_rule(map(), create_pull_request_approval_rule_input(), proplists:proplist()) ->
+    {ok, create_pull_request_approval_rule_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_content_required_exception(), tuple()} |
+    {error, approval_rule_name_already_exists_exception(), tuple()} |
+    {error, approval_rule_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_content_exception(), tuple()} |
+    {error, invalid_approval_rule_name_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, number_of_rules_exceeded_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 create_pull_request_approval_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePullRequestApprovalRule">>, Input, Options).
 
 %% @doc Creates a new, empty repository.
+-spec create_repository(map(), create_repository_input()) ->
+    {ok, create_repository_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_invalid_id_exception(), tuple()} |
+    {error, encryption_key_invalid_usage_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_description_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_system_tag_usage_exception(), tuple()} |
+    {error, invalid_tags_map_exception(), tuple()} |
+    {error, repository_limit_exceeded_exception(), tuple()} |
+    {error, repository_name_exists_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
+
+-spec create_repository(map(), create_repository_input(), proplists:proplist()) ->
+    {ok, create_repository_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_invalid_id_exception(), tuple()} |
+    {error, encryption_key_invalid_usage_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_description_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_system_tag_usage_exception(), tuple()} |
+    {error, invalid_tags_map_exception(), tuple()} |
+    {error, repository_limit_exceeded_exception(), tuple()} |
+    {error, repository_name_exists_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 create_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRepository">>, Input, Options).
@@ -614,9 +3904,88 @@ create_repository(Client, Input, Options)
 %% can only be accessed using the GetCommit API or through git commands such
 %% as git fetch. To retrieve this commit, you must specify its commit ID or
 %% otherwise reference it.
+-spec create_unreferenced_merge_commit(map(), create_unreferenced_merge_commit_input()) ->
+    {ok, create_unreferenced_merge_commit_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_mode_required_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_merge_option_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, merge_option_required_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 create_unreferenced_merge_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_unreferenced_merge_commit(Client, Input, []).
+
+-spec create_unreferenced_merge_commit(map(), create_unreferenced_merge_commit_input(), proplists:proplist()) ->
+    {ok, create_unreferenced_merge_commit_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_mode_required_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_merge_option_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, merge_option_required_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 create_unreferenced_merge_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUnreferencedMergeCommit">>, Input, Options).
@@ -625,27 +3994,84 @@ create_unreferenced_merge_commit(Client, Input, Options)
 %%
 %% Deleting a template does not remove approval rules on pull requests
 %% already created with the template.
+-spec delete_approval_rule_template(map(), delete_approval_rule_template_input()) ->
+    {ok, delete_approval_rule_template_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_in_use_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()}.
 delete_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_approval_rule_template(Client, Input, []).
+
+-spec delete_approval_rule_template(map(), delete_approval_rule_template_input(), proplists:proplist()) ->
+    {ok, delete_approval_rule_template_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_in_use_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()}.
 delete_approval_rule_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApprovalRuleTemplate">>, Input, Options).
 
 %% @doc Deletes a branch from a repository, unless that branch is the default
 %% branch for the repository.
+-spec delete_branch(map(), delete_branch_input()) ->
+    {ok, delete_branch_output(), tuple()} |
+    {error, any()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, default_branch_cannot_be_deleted_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 delete_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_branch(Client, Input, []).
+
+-spec delete_branch(map(), delete_branch_input(), proplists:proplist()) ->
+    {ok, delete_branch_output(), tuple()} |
+    {error, any()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, default_branch_cannot_be_deleted_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 delete_branch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBranch">>, Input, Options).
 
 %% @doc Deletes the content of a comment made on a change, file, or commit in
 %% a repository.
+-spec delete_comment_content(map(), delete_comment_content_input()) ->
+    {ok, delete_comment_content_output(), tuple()} |
+    {error, any()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()}.
 delete_comment_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_comment_content(Client, Input, []).
+
+-spec delete_comment_content(map(), delete_comment_content_input(), proplists:proplist()) ->
+    {ok, delete_comment_content_output(), tuple()} |
+    {error, any()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()}.
 delete_comment_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCommentContent">>, Input, Options).
@@ -656,9 +4082,60 @@ delete_comment_content(Client, Input, Options)
 %% that contains the revision. The file still exists in the commits earlier
 %% to the commit
 %% that contains the deletion.
+-spec delete_file(map(), delete_file_input()) ->
+    {ok, delete_file_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_does_not_exist_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_parent_commit_id_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, parent_commit_does_not_exist_exception(), tuple()} |
+    {error, parent_commit_id_outdated_exception(), tuple()} |
+    {error, parent_commit_id_required_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 delete_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file(Client, Input, []).
+
+-spec delete_file(map(), delete_file_input(), proplists:proplist()) ->
+    {ok, delete_file_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_does_not_exist_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_parent_commit_id_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, parent_commit_does_not_exist_exception(), tuple()} |
+    {error, parent_commit_id_outdated_exception(), tuple()} |
+    {error, parent_commit_id_required_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 delete_file(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFile">>, Input, Options).
@@ -672,9 +4149,40 @@ delete_file(Client, Input, Options)
 %% where the
 %% pull request was created. You cannot delete an approval rule from a merged
 %% or closed pull request.
+-spec delete_pull_request_approval_rule(map(), delete_pull_request_approval_rule_input()) ->
+    {ok, delete_pull_request_approval_rule_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_name_required_exception(), tuple()} |
+    {error, cannot_delete_approval_rule_from_template_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_name_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 delete_pull_request_approval_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pull_request_approval_rule(Client, Input, []).
+
+-spec delete_pull_request_approval_rule(map(), delete_pull_request_approval_rule_input(), proplists:proplist()) ->
+    {ok, delete_pull_request_approval_rule_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_name_required_exception(), tuple()} |
+    {error, cannot_delete_approval_rule_from_template_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_name_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 delete_pull_request_approval_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePullRequestApprovalRule">>, Input, Options).
@@ -687,9 +4195,30 @@ delete_pull_request_approval_rule(Client, Input, Options)
 %% Deleting a repository also deletes all associated objects and metadata.
 %% After a repository is
 %% deleted, all future push calls to the deleted repository fail.
+-spec delete_repository(map(), delete_repository_input()) ->
+    {ok, delete_repository_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
+
+-spec delete_repository(map(), delete_repository_input(), proplists:proplist()) ->
+    {ok, delete_repository_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
@@ -701,17 +4230,103 @@ delete_repository(Client, Input, Options)
 %% If the merge option for
 %% the attempted merge is specified as FAST_FORWARD_MERGE, an exception is
 %% thrown.
+-spec describe_merge_conflicts(map(), describe_merge_conflicts_input()) ->
+    {ok, describe_merge_conflicts_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_does_not_exist_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_merge_hunks_exception(), tuple()} |
+    {error, invalid_merge_option_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, merge_option_required_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 describe_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_merge_conflicts(Client, Input, []).
+
+-spec describe_merge_conflicts(map(), describe_merge_conflicts_input(), proplists:proplist()) ->
+    {ok, describe_merge_conflicts_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_does_not_exist_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_merge_hunks_exception(), tuple()} |
+    {error, invalid_merge_option_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, merge_option_required_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 describe_merge_conflicts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMergeConflicts">>, Input, Options).
 
 %% @doc Returns information about one or more pull request events.
+-spec describe_pull_request_events(map(), describe_pull_request_events_input()) ->
+    {ok, describe_pull_request_events_output(), tuple()} |
+    {error, any()} |
+    {error, actor_does_not_exist_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_actor_arn_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_pull_request_event_type_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 describe_pull_request_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_pull_request_events(Client, Input, []).
+
+-spec describe_pull_request_events(map(), describe_pull_request_events_input(), proplists:proplist()) ->
+    {ok, describe_pull_request_events_output(), tuple()} |
+    {error, any()} |
+    {error, actor_does_not_exist_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_actor_arn_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_pull_request_event_type_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 describe_pull_request_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePullRequestEvents">>, Input, Options).
@@ -724,44 +4339,175 @@ describe_pull_request_events(Client, Input, Options)
 %%
 %% This does not delete any approval rules previously created for
 %% pull requests through the template association.
+-spec disassociate_approval_rule_template_from_repository(map(), disassociate_approval_rule_template_from_repository_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 disassociate_approval_rule_template_from_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_approval_rule_template_from_repository(Client, Input, []).
+
+-spec disassociate_approval_rule_template_from_repository(map(), disassociate_approval_rule_template_from_repository_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 disassociate_approval_rule_template_from_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateApprovalRuleTemplateFromRepository">>, Input, Options).
 
 %% @doc Evaluates whether a pull request has met all the conditions specified
 %% in its associated approval rules.
+-spec evaluate_pull_request_approval_rules(map(), evaluate_pull_request_approval_rules_input()) ->
+    {ok, evaluate_pull_request_approval_rules_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()} |
+    {error, revision_not_current_exception(), tuple()}.
 evaluate_pull_request_approval_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     evaluate_pull_request_approval_rules(Client, Input, []).
+
+-spec evaluate_pull_request_approval_rules(map(), evaluate_pull_request_approval_rules_input(), proplists:proplist()) ->
+    {ok, evaluate_pull_request_approval_rules_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()} |
+    {error, revision_not_current_exception(), tuple()}.
 evaluate_pull_request_approval_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EvaluatePullRequestApprovalRules">>, Input, Options).
 
 %% @doc Returns information about a specified approval rule template.
+-spec get_approval_rule_template(map(), get_approval_rule_template_input()) ->
+    {ok, get_approval_rule_template_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()}.
 get_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_approval_rule_template(Client, Input, []).
+
+-spec get_approval_rule_template(map(), get_approval_rule_template_input(), proplists:proplist()) ->
+    {ok, get_approval_rule_template_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()}.
 get_approval_rule_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApprovalRuleTemplate">>, Input, Options).
 
 %% @doc Returns the base-64 encoded content of an individual blob in a
 %% repository.
+-spec get_blob(map(), get_blob_input()) ->
+    {ok, get_blob_output(), tuple()} |
+    {error, any()} |
+    {error, blob_id_does_not_exist_exception(), tuple()} |
+    {error, blob_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_too_large_exception(), tuple()} |
+    {error, invalid_blob_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_blob(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_blob(Client, Input, []).
+
+-spec get_blob(map(), get_blob_input(), proplists:proplist()) ->
+    {ok, get_blob_output(), tuple()} |
+    {error, any()} |
+    {error, blob_id_does_not_exist_exception(), tuple()} |
+    {error, blob_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_too_large_exception(), tuple()} |
+    {error, invalid_blob_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_blob(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlob">>, Input, Options).
 
 %% @doc Returns information about a repository branch, including its name and
 %% the last commit ID.
+-spec get_branch(map(), get_branch_input()) ->
+    {ok, get_branch_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_branch(Client, Input, []).
+
+-spec get_branch(map(), get_branch_input(), proplists:proplist()) ->
+    {ok, get_branch_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_branch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBranch">>, Input, Options).
@@ -772,9 +4518,34 @@ get_branch(Client, Input, Options)
 %% Reaction counts might include numbers from user identities who were
 %% deleted after the reaction was made. For a count of
 %% reactions from active identities, use GetCommentReactions.
+-spec get_comment(map(), get_comment_input()) ->
+    {ok, get_comment_output(), tuple()} |
+    {error, any()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()}.
 get_comment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comment(Client, Input, []).
+
+-spec get_comment(map(), get_comment_input(), proplists:proplist()) ->
+    {ok, get_comment_output(), tuple()} |
+    {error, any()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()}.
 get_comment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetComment">>, Input, Options).
@@ -783,9 +4554,30 @@ get_comment(Client, Input, Options)
 %%
 %% Reactions from users who have been deleted will not be included in the
 %% count.
+-spec get_comment_reactions(map(), get_comment_reactions_input()) ->
+    {ok, get_comment_reactions_output(), tuple()} |
+    {error, any()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_reaction_user_arn_exception(), tuple()}.
 get_comment_reactions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comment_reactions(Client, Input, []).
+
+-spec get_comment_reactions(map(), get_comment_reactions_input(), proplists:proplist()) ->
+    {ok, get_comment_reactions_output(), tuple()} |
+    {error, any()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_reaction_user_arn_exception(), tuple()}.
 get_comment_reactions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommentReactions">>, Input, Options).
@@ -796,9 +4588,42 @@ get_comment_reactions(Client, Input, Options)
 %% Reaction counts might include numbers from user identities who were
 %% deleted after the reaction was made. For a count of
 %% reactions from active identities, use GetCommentReactions.
+-spec get_comments_for_compared_commit(map(), get_comments_for_compared_commit_input()) ->
+    {ok, get_comments_for_compared_commit_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_comments_for_compared_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comments_for_compared_commit(Client, Input, []).
+
+-spec get_comments_for_compared_commit(map(), get_comments_for_compared_commit_input(), proplists:proplist()) ->
+    {ok, get_comments_for_compared_commit_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_comments_for_compared_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommentsForComparedCommit">>, Input, Options).
@@ -808,18 +4633,88 @@ get_comments_for_compared_commit(Client, Input, Options)
 %% Reaction counts might include numbers from user identities who were
 %% deleted after the reaction was made. For a count of
 %% reactions from active identities, use GetCommentReactions.
+-spec get_comments_for_pull_request(map(), get_comments_for_pull_request_input()) ->
+    {ok, get_comments_for_pull_request_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()}.
 get_comments_for_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_comments_for_pull_request(Client, Input, []).
+
+-spec get_comments_for_pull_request(map(), get_comments_for_pull_request_input(), proplists:proplist()) ->
+    {ok, get_comments_for_pull_request_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()}.
 get_comments_for_pull_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommentsForPullRequest">>, Input, Options).
 
 %% @doc Returns information about a commit, including commit message and
 %% committer information.
+-spec get_commit(map(), get_commit_input()) ->
+    {ok, get_commit_output(), tuple()} |
+    {error, any()} |
+    {error, commit_id_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_commit(Client, Input, []).
+
+-spec get_commit(map(), get_commit_input(), proplists:proplist()) ->
+    {ok, get_commit_output(), tuple()} |
+    {error, any()} |
+    {error, commit_id_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommit">>, Input, Options).
@@ -830,43 +4725,234 @@ get_commit(Client, Input, Options)
 %%
 %% Results can be
 %% limited to a specified path.
+-spec get_differences(map(), get_differences_input()) ->
+    {ok, get_differences_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_does_not_exist_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_differences(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_differences(Client, Input, []).
+
+-spec get_differences(map(), get_differences_input(), proplists:proplist()) ->
+    {ok, get_differences_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_does_not_exist_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_differences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDifferences">>, Input, Options).
 
 %% @doc Returns the base-64 encoded contents of a specified file and its
 %% metadata.
+-spec get_file(map(), get_file_input()) ->
+    {ok, get_file_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_does_not_exist_exception(), tuple()} |
+    {error, file_too_large_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_file(Client, Input, []).
+
+-spec get_file(map(), get_file_input(), proplists:proplist()) ->
+    {ok, get_file_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_does_not_exist_exception(), tuple()} |
+    {error, file_too_large_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_file(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFile">>, Input, Options).
 
 %% @doc Returns the contents of a specified folder in a repository.
+-spec get_folder(map(), get_folder_input()) ->
+    {ok, get_folder_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, folder_does_not_exist_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_folder(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_folder(Client, Input, []).
+
+-spec get_folder(map(), get_folder_input(), proplists:proplist()) ->
+    {ok, get_folder_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, folder_does_not_exist_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_folder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFolder">>, Input, Options).
 
 %% @doc Returns information about a specified merge commit.
+-spec get_merge_commit(map(), get_merge_commit_input()) ->
+    {ok, get_merge_commit_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_merge_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_commit(Client, Input, []).
+
+-spec get_merge_commit(map(), get_merge_commit_input(), proplists:proplist()) ->
+    {ok, get_merge_commit_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_merge_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMergeCommit">>, Input, Options).
 
 %% @doc Returns information about merge conflicts between the before and
 %% after commit IDs for a pull request in a repository.
+-spec get_merge_conflicts(map(), get_merge_conflicts_input()) ->
+    {ok, get_merge_conflicts_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_destination_commit_specifier_exception(), tuple()} |
+    {error, invalid_max_conflict_files_exception(), tuple()} |
+    {error, invalid_merge_option_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_source_commit_specifier_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, merge_option_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 get_merge_conflicts(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_conflicts(Client, Input, []).
+
+-spec get_merge_conflicts(map(), get_merge_conflicts_input(), proplists:proplist()) ->
+    {ok, get_merge_conflicts_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_destination_commit_specifier_exception(), tuple()} |
+    {error, invalid_max_conflict_files_exception(), tuple()} |
+    {error, invalid_merge_option_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_source_commit_specifier_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, merge_option_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 get_merge_conflicts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMergeConflicts">>, Input, Options).
@@ -878,17 +4964,79 @@ get_merge_conflicts(Client, Input, Options)
 %% For details about why a merge option is not available, use
 %% GetMergeConflicts
 %% or DescribeMergeConflicts.
+-spec get_merge_options(map(), get_merge_options_input()) ->
+    {ok, get_merge_options_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 get_merge_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_merge_options(Client, Input, []).
+
+-spec get_merge_options(map(), get_merge_options_input(), proplists:proplist()) ->
+    {ok, get_merge_options_output(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 get_merge_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMergeOptions">>, Input, Options).
 
 %% @doc Gets information about a pull request in a specified repository.
+-spec get_pull_request(map(), get_pull_request_input()) ->
+    {ok, get_pull_request_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 get_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request(Client, Input, []).
+
+-spec get_pull_request(map(), get_pull_request_input(), proplists:proplist()) ->
+    {ok, get_pull_request_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 get_pull_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPullRequest">>, Input, Options).
@@ -898,9 +5046,36 @@ get_pull_request(Client, Input, Options)
 %%
 %% Approval states only apply to pull requests that have one or more
 %% approval rules applied to them.
+-spec get_pull_request_approval_states(map(), get_pull_request_approval_states_input()) ->
+    {ok, get_pull_request_approval_states_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()}.
 get_pull_request_approval_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request_approval_states(Client, Input, []).
+
+-spec get_pull_request_approval_states(map(), get_pull_request_approval_states_input(), proplists:proplist()) ->
+    {ok, get_pull_request_approval_states_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()}.
 get_pull_request_approval_states(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPullRequestApprovalStates">>, Input, Options).
@@ -910,9 +5085,36 @@ get_pull_request_approval_states(Client, Input, Options)
 %% pull request, and if so, the Amazon Resource Name (ARN) of the user or
 %% identity that overrode the rules and their requirements for the pull
 %% request.
+-spec get_pull_request_override_state(map(), get_pull_request_override_state_input()) ->
+    {ok, get_pull_request_override_state_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()}.
 get_pull_request_override_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pull_request_override_state(Client, Input, []).
+
+-spec get_pull_request_override_state(map(), get_pull_request_override_state_input(), proplists:proplist()) ->
+    {ok, get_pull_request_override_state_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()}.
 get_pull_request_override_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPullRequestOverrideState">>, Input, Options).
@@ -928,17 +5130,63 @@ get_pull_request_override_state(Client, Input, Options)
 %% HTML-encode the description field in any application that uses this API to
 %% display
 %% the repository description on a webpage.
+-spec get_repository(map(), get_repository_input()) ->
+    {ok, get_repository_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository(Client, Input, []).
+
+-spec get_repository(map(), get_repository_input(), proplists:proplist()) ->
+    {ok, get_repository_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepository">>, Input, Options).
 
 %% @doc Gets information about triggers configured for a repository.
+-spec get_repository_triggers(map(), get_repository_triggers_input()) ->
+    {ok, get_repository_triggers_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_triggers(Client, Input, []).
+
+-spec get_repository_triggers(map(), get_repository_triggers_input(), proplists:proplist()) ->
+    {ok, get_repository_triggers_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 get_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositoryTriggers">>, Input, Options).
@@ -949,34 +5197,132 @@ get_repository_triggers(Client, Input, Options)
 %% If
 %% an Amazon Web Services Region is not specified, the Amazon Web Services
 %% Region where you are signed in is used.
+-spec list_approval_rule_templates(map(), list_approval_rule_templates_input()) ->
+    {ok, list_approval_rule_templates_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()}.
 list_approval_rule_templates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_approval_rule_templates(Client, Input, []).
+
+-spec list_approval_rule_templates(map(), list_approval_rule_templates_input(), proplists:proplist()) ->
+    {ok, list_approval_rule_templates_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()}.
 list_approval_rule_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApprovalRuleTemplates">>, Input, Options).
 
 %% @doc Lists all approval rule templates that are associated with a
 %% specified repository.
+-spec list_associated_approval_rule_templates_for_repository(map(), list_associated_approval_rule_templates_for_repository_input()) ->
+    {ok, list_associated_approval_rule_templates_for_repository_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 list_associated_approval_rule_templates_for_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_associated_approval_rule_templates_for_repository(Client, Input, []).
+
+-spec list_associated_approval_rule_templates_for_repository(map(), list_associated_approval_rule_templates_for_repository_input(), proplists:proplist()) ->
+    {ok, list_associated_approval_rule_templates_for_repository_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 list_associated_approval_rule_templates_for_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociatedApprovalRuleTemplatesForRepository">>, Input, Options).
 
 %% @doc Gets information about one or more branches in a repository.
+-spec list_branches(map(), list_branches_input()) ->
+    {ok, list_branches_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 list_branches(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_branches(Client, Input, []).
+
+-spec list_branches(map(), list_branches_input(), proplists:proplist()) ->
+    {ok, list_branches_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 list_branches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBranches">>, Input, Options).
 
 %% @doc Retrieves a list of commits and changes to a specified file.
+-spec list_file_commit_history(map(), list_file_commit_history_request()) ->
+    {ok, list_file_commit_history_response(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 list_file_commit_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_commit_history(Client, Input, []).
+
+-spec list_file_commit_history(map(), list_file_commit_history_request(), proplists:proplist()) ->
+    {ok, list_file_commit_history_response(), tuple()} |
+    {error, any()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 list_file_commit_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFileCommitHistory">>, Input, Options).
@@ -985,26 +5331,99 @@ list_file_commit_history(Client, Input, Options)
 %%
 %% The return list can be refined by pull request
 %% status or pull request author ARN.
+-spec list_pull_requests(map(), list_pull_requests_input()) ->
+    {ok, list_pull_requests_output(), tuple()} |
+    {error, any()} |
+    {error, author_does_not_exist_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_author_arn_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_pull_request_status_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 list_pull_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_pull_requests(Client, Input, []).
+
+-spec list_pull_requests(map(), list_pull_requests_input(), proplists:proplist()) ->
+    {ok, list_pull_requests_output(), tuple()} |
+    {error, any()} |
+    {error, author_does_not_exist_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_author_arn_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()} |
+    {error, invalid_pull_request_status_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 list_pull_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPullRequests">>, Input, Options).
 
 %% @doc Gets information about one or more repositories.
+-spec list_repositories(map(), list_repositories_input()) ->
+    {ok, list_repositories_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_order_exception(), tuple()} |
+    {error, invalid_sort_by_exception(), tuple()}.
 list_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repositories(Client, Input, []).
+
+-spec list_repositories(map(), list_repositories_input(), proplists:proplist()) ->
+    {ok, list_repositories_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_order_exception(), tuple()} |
+    {error, invalid_sort_by_exception(), tuple()}.
 list_repositories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositories">>, Input, Options).
 
 %% @doc Lists all repositories associated with the specified approval rule
 %% template.
+-spec list_repositories_for_approval_rule_template(map(), list_repositories_for_approval_rule_template_input()) ->
+    {ok, list_repositories_for_approval_rule_template_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()}.
 list_repositories_for_approval_rule_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repositories_for_approval_rule_template(Client, Input, []).
+
+-spec list_repositories_for_approval_rule_template(map(), list_repositories_for_approval_rule_template_input(), proplists:proplist()) ->
+    {ok, list_repositories_for_approval_rule_template_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, invalid_continuation_token_exception(), tuple()} |
+    {error, invalid_max_results_exception(), tuple()}.
 list_repositories_for_approval_rule_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositoriesForApprovalRuleTemplate">>, Input, Options).
@@ -1017,33 +5436,263 @@ list_repositories_for_approval_rule_template(Client, Input, Options)
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
 %% in the CodeCommit User
 %% Guide.
+-spec list_tags_for_resource(map(), list_tags_for_resource_input()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_resource_arn_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, resource_arn_required_exception(), tuple()}.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
+
+-spec list_tags_for_resource(map(), list_tags_for_resource_input(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_resource_arn_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, resource_arn_required_exception(), tuple()}.
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Merges two branches using the fast-forward merge strategy.
+-spec merge_branches_by_fast_forward(map(), merge_branches_by_fast_forward_input()) ->
+    {ok, merge_branches_by_fast_forward_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_target_branch_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_branches_by_fast_forward(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_branches_by_fast_forward(Client, Input, []).
+
+-spec merge_branches_by_fast_forward(map(), merge_branches_by_fast_forward_input(), proplists:proplist()) ->
+    {ok, merge_branches_by_fast_forward_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_target_branch_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_branches_by_fast_forward(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeBranchesByFastForward">>, Input, Options).
 
 %% @doc Merges two branches using the squash merge strategy.
+-spec merge_branches_by_squash(map(), merge_branches_by_squash_input()) ->
+    {ok, merge_branches_by_squash_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_mode_required_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_target_branch_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_branches_by_squash(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_branches_by_squash(Client, Input, []).
+
+-spec merge_branches_by_squash(map(), merge_branches_by_squash_input(), proplists:proplist()) ->
+    {ok, merge_branches_by_squash_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_mode_required_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_target_branch_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_branches_by_squash(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeBranchesBySquash">>, Input, Options).
 
 %% @doc Merges two specified branches using the three-way merge strategy.
+-spec merge_branches_by_three_way(map(), merge_branches_by_three_way_input()) ->
+    {ok, merge_branches_by_three_way_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_mode_required_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_target_branch_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_branches_by_three_way(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_branches_by_three_way(Client, Input, []).
+
+-spec merge_branches_by_three_way(map(), merge_branches_by_three_way_input(), proplists:proplist()) ->
+    {ok, merge_branches_by_three_way_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, commit_required_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_mode_required_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_commit_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_target_branch_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_branches_by_three_way(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergeBranchesByThreeWay">>, Input, Options).
@@ -1054,9 +5703,54 @@ merge_branches_by_three_way(Client, Input, Options)
 %% fast-forward merge strategy.
 %%
 %% If the merge is successful, it closes the pull request.
+-spec merge_pull_request_by_fast_forward(map(), merge_pull_request_by_fast_forward_input()) ->
+    {ok, merge_pull_request_by_fast_forward_output(), tuple()} |
+    {error, any()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, reference_does_not_exist_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
+    {error, tip_of_source_reference_is_different_exception(), tuple()}.
 merge_pull_request_by_fast_forward(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_fast_forward(Client, Input, []).
+
+-spec merge_pull_request_by_fast_forward(map(), merge_pull_request_by_fast_forward_input(), proplists:proplist()) ->
+    {ok, merge_pull_request_by_fast_forward_output(), tuple()} |
+    {error, any()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, reference_does_not_exist_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
+    {error, tip_of_source_reference_is_different_exception(), tuple()}.
 merge_pull_request_by_fast_forward(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergePullRequestByFastForward">>, Input, Options).
@@ -1067,9 +5761,92 @@ merge_pull_request_by_fast_forward(Client, Input, Options)
 %% merge strategy.
 %%
 %% If the merge is successful, it closes the pull request.
+-spec merge_pull_request_by_squash(map(), merge_pull_request_by_squash_input()) ->
+    {ok, merge_pull_request_by_squash_output(), tuple()} |
+    {error, any()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
+    {error, tip_of_source_reference_is_different_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_pull_request_by_squash(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_squash(Client, Input, []).
+
+-spec merge_pull_request_by_squash(map(), merge_pull_request_by_squash_input(), proplists:proplist()) ->
+    {ok, merge_pull_request_by_squash_output(), tuple()} |
+    {error, any()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
+    {error, tip_of_source_reference_is_different_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_pull_request_by_squash(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergePullRequestBySquash">>, Input, Options).
@@ -1080,43 +5857,300 @@ merge_pull_request_by_squash(Client, Input, Options)
 %% merge strategy.
 %%
 %% If the merge is successful, it closes the pull request.
+-spec merge_pull_request_by_three_way(map(), merge_pull_request_by_three_way_input()) ->
+    {ok, merge_pull_request_by_three_way_output(), tuple()} |
+    {error, any()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
+    {error, tip_of_source_reference_is_different_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_pull_request_by_three_way(Client, Input)
   when is_map(Client), is_map(Input) ->
     merge_pull_request_by_three_way(Client, Input, []).
+
+-spec merge_pull_request_by_three_way(map(), merge_pull_request_by_three_way_input(), proplists:proplist()) ->
+    {ok, merge_pull_request_by_three_way_output(), tuple()} |
+    {error, any()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, concurrent_reference_update_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_conflict_detail_level_exception(), tuple()} |
+    {error, invalid_conflict_resolution_exception(), tuple()} |
+    {error, invalid_conflict_resolution_strategy_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_replacement_content_exception(), tuple()} |
+    {error, invalid_replacement_type_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, manual_merge_required_exception(), tuple()} |
+    {error, maximum_conflict_resolution_entries_exceeded_exception(), tuple()} |
+    {error, maximum_file_content_to_load_exceeded_exception(), tuple()} |
+    {error, maximum_items_to_compare_exceeded_exception(), tuple()} |
+    {error, multiple_conflict_resolution_entries_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_approval_rules_not_satisfied_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, replacement_content_required_exception(), tuple()} |
+    {error, replacement_type_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()} |
+    {error, tip_of_source_reference_is_different_exception(), tuple()} |
+    {error, tips_divergence_exceeded_exception(), tuple()}.
 merge_pull_request_by_three_way(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MergePullRequestByThreeWay">>, Input, Options).
 
 %% @doc Sets aside (overrides) all approval rule requirements for a specified
 %% pull request.
+-spec override_pull_request_approval_rules(map(), override_pull_request_approval_rules_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_override_status_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, override_already_set_exception(), tuple()} |
+    {error, override_status_required_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()} |
+    {error, revision_not_current_exception(), tuple()}.
 override_pull_request_approval_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     override_pull_request_approval_rules(Client, Input, []).
+
+-spec override_pull_request_approval_rules(map(), override_pull_request_approval_rules_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_override_status_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, override_already_set_exception(), tuple()} |
+    {error, override_status_required_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()} |
+    {error, revision_not_current_exception(), tuple()}.
 override_pull_request_approval_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"OverridePullRequestApprovalRules">>, Input, Options).
 
 %% @doc Posts a comment on the comparison between two commits.
+-spec post_comment_for_compared_commit(map(), post_comment_for_compared_commit_input()) ->
+    {ok, post_comment_for_compared_commit_output(), tuple()} |
+    {error, any()} |
+    {error, before_commit_id_and_after_commit_id_are_same_exception(), tuple()} |
+    {error, client_request_token_required_exception(), tuple()} |
+    {error, comment_content_required_exception(), tuple()} |
+    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, idempotency_parameter_mismatch_exception(), tuple()} |
+    {error, invalid_client_request_token_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_file_location_exception(), tuple()} |
+    {error, invalid_file_position_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_relative_file_version_enum_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_does_not_exist_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 post_comment_for_compared_commit(Client, Input)
   when is_map(Client), is_map(Input) ->
     post_comment_for_compared_commit(Client, Input, []).
+
+-spec post_comment_for_compared_commit(map(), post_comment_for_compared_commit_input(), proplists:proplist()) ->
+    {ok, post_comment_for_compared_commit_output(), tuple()} |
+    {error, any()} |
+    {error, before_commit_id_and_after_commit_id_are_same_exception(), tuple()} |
+    {error, client_request_token_required_exception(), tuple()} |
+    {error, comment_content_required_exception(), tuple()} |
+    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, idempotency_parameter_mismatch_exception(), tuple()} |
+    {error, invalid_client_request_token_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_file_location_exception(), tuple()} |
+    {error, invalid_file_position_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_relative_file_version_enum_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_does_not_exist_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 post_comment_for_compared_commit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PostCommentForComparedCommit">>, Input, Options).
 
 %% @doc Posts a comment on a pull request.
+-spec post_comment_for_pull_request(map(), post_comment_for_pull_request_input()) ->
+    {ok, post_comment_for_pull_request_output(), tuple()} |
+    {error, any()} |
+    {error, before_commit_id_and_after_commit_id_are_same_exception(), tuple()} |
+    {error, client_request_token_required_exception(), tuple()} |
+    {error, comment_content_required_exception(), tuple()} |
+    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, idempotency_parameter_mismatch_exception(), tuple()} |
+    {error, invalid_client_request_token_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_file_location_exception(), tuple()} |
+    {error, invalid_file_position_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_relative_file_version_enum_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_does_not_exist_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()}.
 post_comment_for_pull_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     post_comment_for_pull_request(Client, Input, []).
+
+-spec post_comment_for_pull_request(map(), post_comment_for_pull_request_input(), proplists:proplist()) ->
+    {ok, post_comment_for_pull_request_output(), tuple()} |
+    {error, any()} |
+    {error, before_commit_id_and_after_commit_id_are_same_exception(), tuple()} |
+    {error, client_request_token_required_exception(), tuple()} |
+    {error, comment_content_required_exception(), tuple()} |
+    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
+    {error, commit_does_not_exist_exception(), tuple()} |
+    {error, commit_id_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, idempotency_parameter_mismatch_exception(), tuple()} |
+    {error, invalid_client_request_token_exception(), tuple()} |
+    {error, invalid_commit_id_exception(), tuple()} |
+    {error, invalid_file_location_exception(), tuple()} |
+    {error, invalid_file_position_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_relative_file_version_enum_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, path_does_not_exist_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_not_associated_with_pull_request_exception(), tuple()}.
 post_comment_for_pull_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PostCommentForPullRequest">>, Input, Options).
 
 %% @doc Posts a comment in reply to an existing comment on a comparison
 %% between commits or a pull request.
+-spec post_comment_reply(map(), post_comment_reply_input()) ->
+    {ok, post_comment_reply_output(), tuple()} |
+    {error, any()} |
+    {error, client_request_token_required_exception(), tuple()} |
+    {error, comment_content_required_exception(), tuple()} |
+    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, idempotency_parameter_mismatch_exception(), tuple()} |
+    {error, invalid_client_request_token_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()}.
 post_comment_reply(Client, Input)
   when is_map(Client), is_map(Input) ->
     post_comment_reply(Client, Input, []).
+
+-spec post_comment_reply(map(), post_comment_reply_input(), proplists:proplist()) ->
+    {ok, post_comment_reply_output(), tuple()} |
+    {error, any()} |
+    {error, client_request_token_required_exception(), tuple()} |
+    {error, comment_content_required_exception(), tuple()} |
+    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, idempotency_parameter_mismatch_exception(), tuple()} |
+    {error, invalid_client_request_token_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()}.
 post_comment_reply(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PostCommentReply">>, Input, Options).
@@ -1127,18 +6161,106 @@ post_comment_reply(Client, Input, Options)
 %% You can only add or
 %% update a reaction for yourself. You cannot add, modify, or delete a
 %% reaction for another user.
+-spec put_comment_reaction(map(), put_comment_reaction_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()} |
+    {error, invalid_reaction_value_exception(), tuple()} |
+    {error, reaction_limit_exceeded_exception(), tuple()} |
+    {error, reaction_value_required_exception(), tuple()}.
 put_comment_reaction(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_comment_reaction(Client, Input, []).
+
+-spec put_comment_reaction(map(), put_comment_reaction_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()} |
+    {error, invalid_reaction_value_exception(), tuple()} |
+    {error, reaction_limit_exceeded_exception(), tuple()} |
+    {error, reaction_value_required_exception(), tuple()}.
 put_comment_reaction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutCommentReaction">>, Input, Options).
 
 %% @doc Adds or updates a file in a branch in an CodeCommit repository, and
 %% generates a commit for the addition in the specified branch.
+-spec put_file(map(), put_file_input()) ->
+    {ok, put_file_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, directory_name_conflicts_with_file_name_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_required_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_name_conflicts_with_directory_name_exception(), tuple()} |
+    {error, file_path_conflicts_with_submodule_path_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_deletion_parameter_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_parent_commit_id_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, parent_commit_does_not_exist_exception(), tuple()} |
+    {error, parent_commit_id_outdated_exception(), tuple()} |
+    {error, parent_commit_id_required_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, same_file_content_exception(), tuple()}.
 put_file(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_file(Client, Input, []).
+
+-spec put_file(map(), put_file_input(), proplists:proplist()) ->
+    {ok, put_file_output(), tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_is_tag_name_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, commit_message_length_exceeded_exception(), tuple()} |
+    {error, directory_name_conflicts_with_file_name_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, file_content_required_exception(), tuple()} |
+    {error, file_content_size_limit_exceeded_exception(), tuple()} |
+    {error, file_name_conflicts_with_directory_name_exception(), tuple()} |
+    {error, file_path_conflicts_with_submodule_path_exception(), tuple()} |
+    {error, folder_content_size_limit_exceeded_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_deletion_parameter_exception(), tuple()} |
+    {error, invalid_email_exception(), tuple()} |
+    {error, invalid_file_mode_exception(), tuple()} |
+    {error, invalid_parent_commit_id_exception(), tuple()} |
+    {error, invalid_path_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, name_length_exceeded_exception(), tuple()} |
+    {error, parent_commit_does_not_exist_exception(), tuple()} |
+    {error, parent_commit_id_outdated_exception(), tuple()} |
+    {error, parent_commit_id_required_exception(), tuple()} |
+    {error, path_required_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, same_file_content_exception(), tuple()}.
 put_file(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutFile">>, Input, Options).
@@ -1146,9 +6268,58 @@ put_file(Client, Input, Options)
 %% @doc Replaces all triggers for a repository.
 %%
 %% Used to create or delete triggers.
+-spec put_repository_triggers(map(), put_repository_triggers_input()) ->
+    {ok, put_repository_triggers_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_branch_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_custom_data_exception(), tuple()} |
+    {error, invalid_repository_trigger_destination_arn_exception(), tuple()} |
+    {error, invalid_repository_trigger_events_exception(), tuple()} |
+    {error, invalid_repository_trigger_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_region_exception(), tuple()} |
+    {error, maximum_branches_exceeded_exception(), tuple()} |
+    {error, maximum_repository_triggers_exceeded_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_trigger_branch_name_list_required_exception(), tuple()} |
+    {error, repository_trigger_destination_arn_required_exception(), tuple()} |
+    {error, repository_trigger_events_list_required_exception(), tuple()} |
+    {error, repository_trigger_name_required_exception(), tuple()} |
+    {error, repository_triggers_list_required_exception(), tuple()}.
 put_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_repository_triggers(Client, Input, []).
+
+-spec put_repository_triggers(map(), put_repository_triggers_input(), proplists:proplist()) ->
+    {ok, put_repository_triggers_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_branch_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_custom_data_exception(), tuple()} |
+    {error, invalid_repository_trigger_destination_arn_exception(), tuple()} |
+    {error, invalid_repository_trigger_events_exception(), tuple()} |
+    {error, invalid_repository_trigger_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_region_exception(), tuple()} |
+    {error, maximum_branches_exceeded_exception(), tuple()} |
+    {error, maximum_repository_triggers_exceeded_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_trigger_branch_name_list_required_exception(), tuple()} |
+    {error, repository_trigger_destination_arn_required_exception(), tuple()} |
+    {error, repository_trigger_events_list_required_exception(), tuple()} |
+    {error, repository_trigger_name_required_exception(), tuple()} |
+    {error, repository_triggers_list_required_exception(), tuple()}.
 put_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRepositoryTriggers">>, Input, Options).
@@ -1160,9 +6331,34 @@ put_repository_triggers(Client, Input, Options)
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
 %% in the CodeCommit User
 %% Guide.
+-spec tag_resource(map(), tag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_resource_arn_exception(), tuple()} |
+    {error, invalid_system_tag_usage_exception(), tuple()} |
+    {error, invalid_tags_map_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, resource_arn_required_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, tags_map_required_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
+
+-spec tag_resource(map(), tag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_resource_arn_exception(), tuple()} |
+    {error, invalid_system_tag_usage_exception(), tuple()} |
+    {error, invalid_tags_map_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, resource_arn_required_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, tags_map_required_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
@@ -1174,9 +6370,58 @@ tag_resource(Client, Input, Options)
 %% If real data is available in the repository, the test sends data from the
 %% last
 %% commit. If no data is available, sample data is generated.
+-spec test_repository_triggers(map(), test_repository_triggers_input()) ->
+    {ok, test_repository_triggers_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_branch_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_custom_data_exception(), tuple()} |
+    {error, invalid_repository_trigger_destination_arn_exception(), tuple()} |
+    {error, invalid_repository_trigger_events_exception(), tuple()} |
+    {error, invalid_repository_trigger_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_region_exception(), tuple()} |
+    {error, maximum_branches_exceeded_exception(), tuple()} |
+    {error, maximum_repository_triggers_exceeded_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_trigger_branch_name_list_required_exception(), tuple()} |
+    {error, repository_trigger_destination_arn_required_exception(), tuple()} |
+    {error, repository_trigger_events_list_required_exception(), tuple()} |
+    {error, repository_trigger_name_required_exception(), tuple()} |
+    {error, repository_triggers_list_required_exception(), tuple()}.
 test_repository_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_repository_triggers(Client, Input, []).
+
+-spec test_repository_triggers(map(), test_repository_triggers_input(), proplists:proplist()) ->
+    {ok, test_repository_triggers_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_branch_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_custom_data_exception(), tuple()} |
+    {error, invalid_repository_trigger_destination_arn_exception(), tuple()} |
+    {error, invalid_repository_trigger_events_exception(), tuple()} |
+    {error, invalid_repository_trigger_name_exception(), tuple()} |
+    {error, invalid_repository_trigger_region_exception(), tuple()} |
+    {error, maximum_branches_exceeded_exception(), tuple()} |
+    {error, maximum_repository_triggers_exceeded_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()} |
+    {error, repository_trigger_branch_name_list_required_exception(), tuple()} |
+    {error, repository_trigger_destination_arn_required_exception(), tuple()} |
+    {error, repository_trigger_events_list_required_exception(), tuple()} |
+    {error, repository_trigger_name_required_exception(), tuple()} |
+    {error, repository_triggers_list_required_exception(), tuple()}.
 test_repository_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestRepositoryTriggers">>, Input, Options).
@@ -1188,9 +6433,34 @@ test_repository_triggers(Client, Input, Options)
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
 %% in the CodeCommit User
 %% Guide.
+-spec untag_resource(map(), untag_resource_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_resource_arn_exception(), tuple()} |
+    {error, invalid_system_tag_usage_exception(), tuple()} |
+    {error, invalid_tag_keys_list_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, resource_arn_required_exception(), tuple()} |
+    {error, tag_keys_list_required_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
+
+-spec untag_resource(map(), untag_resource_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, invalid_resource_arn_exception(), tuple()} |
+    {error, invalid_system_tag_usage_exception(), tuple()} |
+    {error, invalid_tag_keys_list_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, resource_arn_required_exception(), tuple()} |
+    {error, tag_keys_list_required_exception(), tuple()} |
+    {error, tag_policy_exception(), tuple()} |
+    {error, too_many_tags_exception(), tuple()}.
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
@@ -1201,33 +6471,103 @@ untag_resource(Client, Input, Options)
 %% required approvals, the membership of the approval rule, and whether an
 %% approval pool is
 %% defined.
+-spec update_approval_rule_template_content(map(), update_approval_rule_template_content_input()) ->
+    {ok, update_approval_rule_template_content_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_content_required_exception(), tuple()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_content_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, invalid_rule_content_sha256_exception(), tuple()}.
 update_approval_rule_template_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_content(Client, Input, []).
+
+-spec update_approval_rule_template_content(map(), update_approval_rule_template_content_input(), proplists:proplist()) ->
+    {ok, update_approval_rule_template_content_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_content_required_exception(), tuple()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_content_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()} |
+    {error, invalid_rule_content_sha256_exception(), tuple()}.
 update_approval_rule_template_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApprovalRuleTemplateContent">>, Input, Options).
 
 %% @doc Updates the description for a specified approval rule template.
+-spec update_approval_rule_template_description(map(), update_approval_rule_template_description_input()) ->
+    {ok, update_approval_rule_template_description_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_description_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()}.
 update_approval_rule_template_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_description(Client, Input, []).
+
+-spec update_approval_rule_template_description(map(), update_approval_rule_template_description_input(), proplists:proplist()) ->
+    {ok, update_approval_rule_template_description_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_description_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()}.
 update_approval_rule_template_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApprovalRuleTemplateDescription">>, Input, Options).
 
 %% @doc Updates the name of a specified approval rule template.
+-spec update_approval_rule_template_name(map(), update_approval_rule_template_name_input()) ->
+    {ok, update_approval_rule_template_name_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_already_exists_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()}.
 update_approval_rule_template_name(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_approval_rule_template_name(Client, Input, []).
+
+-spec update_approval_rule_template_name(map(), update_approval_rule_template_name_input(), proplists:proplist()) ->
+    {ok, update_approval_rule_template_name_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_template_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_template_name_already_exists_exception(), tuple()} |
+    {error, approval_rule_template_name_required_exception(), tuple()} |
+    {error, invalid_approval_rule_template_name_exception(), tuple()}.
 update_approval_rule_template_name(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApprovalRuleTemplateName">>, Input, Options).
 
 %% @doc Replaces the contents of a comment.
+-spec update_comment(map(), update_comment_input()) ->
+    {ok, update_comment_output(), tuple()} |
+    {error, any()} |
+    {error, comment_content_required_exception(), tuple()} |
+    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, comment_not_created_by_caller_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()}.
 update_comment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_comment(Client, Input, []).
+
+-spec update_comment(map(), update_comment_input(), proplists:proplist()) ->
+    {ok, update_comment_output(), tuple()} |
+    {error, any()} |
+    {error, comment_content_required_exception(), tuple()} |
+    {error, comment_content_size_limit_exceeded_exception(), tuple()} |
+    {error, comment_deleted_exception(), tuple()} |
+    {error, comment_does_not_exist_exception(), tuple()} |
+    {error, comment_id_required_exception(), tuple()} |
+    {error, comment_not_created_by_caller_exception(), tuple()} |
+    {error, invalid_comment_id_exception(), tuple()}.
 update_comment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateComment">>, Input, Options).
@@ -1237,9 +6577,38 @@ update_comment(Client, Input, Options)
 %% If you use this operation to change the default branch name to the current
 %% default branch name, a success message is returned even though the default
 %% branch did not change.
+-spec update_default_branch(map(), update_default_branch_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 update_default_branch(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_default_branch(Client, Input, []).
+
+-spec update_default_branch(map(), update_default_branch_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, branch_does_not_exist_exception(), tuple()} |
+    {error, branch_name_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_branch_name_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 update_default_branch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDefaultBranch">>, Input, Options).
@@ -1249,9 +6618,48 @@ update_default_branch(Client, Input, Options)
 %%
 %% For example, you can change the number of required approvers and
 %% the approval pool for approvers.
+-spec update_pull_request_approval_rule_content(map(), update_pull_request_approval_rule_content_input()) ->
+    {ok, update_pull_request_approval_rule_content_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_content_required_exception(), tuple()} |
+    {error, approval_rule_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_name_required_exception(), tuple()} |
+    {error, cannot_modify_approval_rule_from_template_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_content_exception(), tuple()} |
+    {error, invalid_approval_rule_name_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_rule_content_sha256_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 update_pull_request_approval_rule_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_approval_rule_content(Client, Input, []).
+
+-spec update_pull_request_approval_rule_content(map(), update_pull_request_approval_rule_content_input(), proplists:proplist()) ->
+    {ok, update_pull_request_approval_rule_content_output(), tuple()} |
+    {error, any()} |
+    {error, approval_rule_content_required_exception(), tuple()} |
+    {error, approval_rule_does_not_exist_exception(), tuple()} |
+    {error, approval_rule_name_required_exception(), tuple()} |
+    {error, cannot_modify_approval_rule_from_template_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_rule_content_exception(), tuple()} |
+    {error, invalid_approval_rule_name_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_rule_content_sha256_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 update_pull_request_approval_rule_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestApprovalRuleContent">>, Input, Options).
@@ -1259,33 +6667,137 @@ update_pull_request_approval_rule_content(Client, Input, Options)
 %% @doc Updates the state of a user's approval on a pull request.
 %%
 %% The user is derived from the signed-in account when the request is made.
+-spec update_pull_request_approval_state(map(), update_pull_request_approval_state_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, approval_state_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_state_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, maximum_number_of_approvals_exceeded_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_cannot_be_approved_by_author_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()} |
+    {error, revision_not_current_exception(), tuple()}.
 update_pull_request_approval_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_approval_state(Client, Input, []).
+
+-spec update_pull_request_approval_state(map(), update_pull_request_approval_state_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, approval_state_required_exception(), tuple()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_approval_state_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_revision_id_exception(), tuple()} |
+    {error, maximum_number_of_approvals_exceeded_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_cannot_be_approved_by_author_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, revision_id_required_exception(), tuple()} |
+    {error, revision_not_current_exception(), tuple()}.
 update_pull_request_approval_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestApprovalState">>, Input, Options).
 
 %% @doc Replaces the contents of the description of a pull request.
+-spec update_pull_request_description(map(), update_pull_request_description_input()) ->
+    {ok, update_pull_request_description_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_description_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 update_pull_request_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_description(Client, Input, []).
+
+-spec update_pull_request_description(map(), update_pull_request_description_input(), proplists:proplist()) ->
+    {ok, update_pull_request_description_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_description_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()}.
 update_pull_request_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestDescription">>, Input, Options).
 
 %% @doc Updates the status of a pull request.
+-spec update_pull_request_status(map(), update_pull_request_status_input()) ->
+    {ok, update_pull_request_status_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_pull_request_status_exception(), tuple()} |
+    {error, invalid_pull_request_status_update_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, pull_request_status_required_exception(), tuple()}.
 update_pull_request_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_status(Client, Input, []).
+
+-spec update_pull_request_status(map(), update_pull_request_status_input(), proplists:proplist()) ->
+    {ok, update_pull_request_status_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_pull_request_status_exception(), tuple()} |
+    {error, invalid_pull_request_status_update_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, pull_request_status_required_exception(), tuple()}.
 update_pull_request_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestStatus">>, Input, Options).
 
 %% @doc Replaces the title of a pull request.
+-spec update_pull_request_title(map(), update_pull_request_title_input()) ->
+    {ok, update_pull_request_title_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_title_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, title_required_exception(), tuple()}.
 update_pull_request_title(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pull_request_title(Client, Input, []).
+
+-spec update_pull_request_title(map(), update_pull_request_title_input(), proplists:proplist()) ->
+    {ok, update_pull_request_title_output(), tuple()} |
+    {error, any()} |
+    {error, invalid_pull_request_id_exception(), tuple()} |
+    {error, invalid_title_exception(), tuple()} |
+    {error, pull_request_already_closed_exception(), tuple()} |
+    {error, pull_request_does_not_exist_exception(), tuple()} |
+    {error, pull_request_id_required_exception(), tuple()} |
+    {error, title_required_exception(), tuple()}.
 update_pull_request_title(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePullRequestTitle">>, Input, Options).
@@ -1301,18 +6813,72 @@ update_pull_request_title(Client, Input, Options)
 %% HTML-encode the description field in any application that uses this API to
 %% display
 %% the repository description on a webpage.
+-spec update_repository_description(map(), update_repository_description_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_description_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 update_repository_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_description(Client, Input, []).
+
+-spec update_repository_description(map(), update_repository_description_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_description_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 update_repository_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRepositoryDescription">>, Input, Options).
 
 %% @doc Updates the Key Management Service encryption key used to encrypt and
 %% decrypt a CodeCommit repository.
+-spec update_repository_encryption_key(map(), update_repository_encryption_key_input()) ->
+    {ok, update_repository_encryption_key_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_invalid_id_exception(), tuple()} |
+    {error, encryption_key_invalid_usage_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_required_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 update_repository_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_encryption_key(Client, Input, []).
+
+-spec update_repository_encryption_key(map(), update_repository_encryption_key_input(), proplists:proplist()) ->
+    {ok, update_repository_encryption_key_output(), tuple()} |
+    {error, any()} |
+    {error, encryption_integrity_checks_failed_exception(), tuple()} |
+    {error, encryption_key_access_denied_exception(), tuple()} |
+    {error, encryption_key_disabled_exception(), tuple()} |
+    {error, encryption_key_invalid_id_exception(), tuple()} |
+    {error, encryption_key_invalid_usage_exception(), tuple()} |
+    {error, encryption_key_not_found_exception(), tuple()} |
+    {error, encryption_key_required_exception(), tuple()} |
+    {error, encryption_key_unavailable_exception(), tuple()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 update_repository_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRepositoryEncryptionKey">>, Input, Options).
@@ -1328,9 +6894,24 @@ update_repository_encryption_key(Client, Input, Options)
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html in the
 %% CodeCommit
 %% User Guide.
+-spec update_repository_name(map(), update_repository_name_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_exists_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 update_repository_name(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_repository_name(Client, Input, []).
+
+-spec update_repository_name(map(), update_repository_name_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, invalid_repository_name_exception(), tuple()} |
+    {error, repository_does_not_exist_exception(), tuple()} |
+    {error, repository_name_exists_exception(), tuple()} |
+    {error, repository_name_required_exception(), tuple()}.
 update_repository_name(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRepositoryName">>, Input, Options).
