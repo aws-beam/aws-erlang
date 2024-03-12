@@ -732,8 +732,10 @@ update_channel(Client, ChannelGroupName, ChannelName, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"x-amzn-update-if-match">>, <<"ETag">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -764,8 +766,10 @@ update_channel_group(Client, ChannelGroupName, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"x-amzn-update-if-match">>, <<"ETag">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -795,8 +799,10 @@ update_origin_endpoint(Client, ChannelGroupName, ChannelName, OriginEndpointName
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"x-amzn-update-if-match">>, <<"ETag">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
